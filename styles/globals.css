@@ -1,0 +1,7 @@
+@import tailwindcss;
+
+html, body {
+  font-family: 'Jost', sans-serif; /* Ensure this matches the font loaded via next/font/google */
+  background-color: #161616;
+  color: #eeba2c;
+}
