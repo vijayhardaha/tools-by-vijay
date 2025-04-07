@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-import Footer from "@/components/Footer";
+import Footer from "@/components/footer/Footer";
 import Header from "@/components/header/Header";
 
 /**
@@ -15,7 +15,7 @@ const PageLayout = ({ children }) => {
   return (
     <div>
       <Header />
-      <main className="py-8">
+      <main className="min-h-160 py-8">
         <div className="mx-auto max-w-5xl px-4">{children}</div>
       </main>
       <Footer />
