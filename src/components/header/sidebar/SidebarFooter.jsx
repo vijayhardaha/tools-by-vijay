@@ -1,10 +1,11 @@
 "use client";
 
-import { SheetFooter } from "@/components/ui/sheet";
-import { Button } from "@/components/ui/button";
+import PropTypes from "prop-types";
 import { FaFacebook, FaTwitter, FaInstagram, FaGithub } from "react-icons/fa";
 import { TbWorldWww } from "react-icons/tb";
-import PropTypes from "prop-types";
+
+import { Button } from "@/components/ui/button";
+import { SheetFooter } from "@/components/ui/sheet";
 
 /**
  * SocialButton component for social media links
