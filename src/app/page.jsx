@@ -1,5 +1,5 @@
-import ToolCard from "./components/ToolCard";
-import PageLayout from "@/components/layout/Layout";
+import ToolCard from "@/components/home/ToolCard";
+import PageLayout from "@/components/page/PageLayout";
 
 /**
  * Home component that renders a grid of tools.

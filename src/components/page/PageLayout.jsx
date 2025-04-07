@@ -15,7 +15,7 @@ const PageLayout = ({ children }) => {
   return (
     <div>
       <Header />
-      <main className="min-h-160 py-8">
+      <main className="min-h-160 pt-4 pb-16">
         <div className="mx-auto max-w-5xl px-4">{children}</div>
       </main>
       <Footer />

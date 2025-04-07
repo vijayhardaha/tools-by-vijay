@@ -33,20 +33,25 @@ const Header = () => {
   const closeDrawer = () => setIsOpen(false);
 
   return (
-    <div className="mx-auto max-w-5xl px-4">
-      <Box
-        component="header"
-        flex={true}
-        align="center"
-        justify="between"
-        py="4"
-        className="bg-dark2 text-primary-400"
-      >
-        <Logo />
-        <MenuButton onClick={toggleDrawer} />
-      </Box>
-      <Sidebar isOpen={isOpen} onClose={closeDrawer} />
-    </div>
+    <>
+      <header className="sticky top-0 z-50 shadow-xs">
+        <div className="absolute top-0 left-0 z-10 h-full w-full bg-white/65 backdrop-blur-xs"></div>
+        <div className="relative z-20 mx-auto max-w-5xl px-4">
+          <Box
+            component="header"
+            flex={true}
+            align="center"
+            justify="between"
+            py="4"
+            className="bg-dark2/80 text-primary-400"
+          >
+            <Logo />
+            <MenuButton onClick={toggleDrawer} />
+          </Box>
+          <Sidebar isOpen={isOpen} onClose={closeDrawer} />
+        </div>
+      </header>
+    </>
   );
 };
 

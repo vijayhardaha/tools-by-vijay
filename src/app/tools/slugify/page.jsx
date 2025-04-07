@@ -1,12 +1,30 @@
-import PageLayout from "@/components/layout/Layout";
+import PageContent from "@/components/page/PageContent";
+import PageHeader from "@/components/page/PageHeader";
+import PageLayout from "@/components/page/PageLayout";
+import SlugifyTool from "@/components/tools/slugify/SlugifyTool";
+import { getToolBySlug } from "@/lib/utils/getToolBySlug";
+import { getToolIcon } from "@/lib/utils/getToolIcon";
+
+// Get tool data
+const tool = getToolBySlug("slugify");
+
+// Export metadata for SEO
+export const metadata = {
+  title: tool?.seoTitle || "",
+  description: tool?.seoDescription || "",
+};
 
 const Slugify = () => {
   return (
     <PageLayout>
-      <div>
-        <h1 className="text-2xl font-bold">Slugify Tool</h1>
-        <p>Convert your text into URL-friendly slugs.</p>
-      </div>
+      <PageHeader
+        title={tool.name}
+        description={tool.pageDescription}
+        icon={getToolIcon(tool.slug)}
+      />
+      <PageContent>
+        <SlugifyTool />
+      </PageContent>
     </PageLayout>
   );
 };

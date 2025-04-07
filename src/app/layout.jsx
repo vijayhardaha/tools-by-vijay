@@ -7,6 +7,8 @@ export const metadata = {
   description: "A collection of useful tools.",
 };
 
+import PropTypes from "prop-types";
+
 import "../styles/fonts.css";
 import "../styles/globals.css";
 
@@ -23,6 +25,10 @@ const RootLayout = ({ children }) => {
       </body>
     </html>
   );
+};
+
+RootLayout.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export default RootLayout;
