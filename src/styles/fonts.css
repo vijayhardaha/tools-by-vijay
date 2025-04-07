@@ -1,13 +1,1 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap");
-
-@font-face {
-  font-family: "Custom";
-  font-weight: 400; /* Regular */
-  src: url("/fonts/PPAgrandir-Regular.otf") format("opentype");
-}
-
-@font-face {
-  font-family: "Custom";
-  font-weight: 700; /* Text Bold */
-  src: url("/fonts/PPAgrandirText-Bold.otf") format("opentype");
-}
+@import url("https://fonts.googleapis.com/css2?family=Reddit+Mono:wght@200..900&display=swap");

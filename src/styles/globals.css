@@ -76,8 +76,8 @@
   --color-alt-900: #3e3743;
   --color-alt-950: #100e11;
 
-  --font-sans: "DM Mono", sans-serif;
-  --font-mono: "DM Mono", monospace;
+  --font-sans: "Reddit Mono", sans-serif;
+  --font-mono: "Reddit Mono", monospace;
 }
 
 @theme inline {
