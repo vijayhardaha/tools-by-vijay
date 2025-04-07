@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { GiGearStickPattern } from 'react-icons/gi';
-import { RiCloseFill } from 'react-icons/ri';
+import { GiGearStickPattern } from "react-icons/gi";
+import { RiCloseFill } from "react-icons/ri";
 
-const DrawerHeader = ({ onClose }: { onClose: () => void }) => (
+const DrawerHeader = ({ onClose }) => (
   <div className="relative mb-4">
     <h5 className="inline-flex items-center text-base font-semibold text-gray-500 dark:text-gray-400">
       <GiGearStickPattern className="mr-2.5 h-4 w-4" />

@@ -1,0 +1,11 @@
+@font-face {
+  font-family: "PPAgrandir";
+  font-weight: 400; /* Regular */
+  src: url("/fonts/PPAgrandir-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "PPAgrandir";
+  font-weight: 700; /* Text Bold */
+  src: url("/fonts/PPAgrandirText-Bold.otf") format("opentype");
+}
