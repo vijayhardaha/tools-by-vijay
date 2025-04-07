@@ -11,6 +11,7 @@ const tools = [
     seoDescription:
       "Convert text into SEO-friendly URL slugs instantly. Simple and effective slug generator.",
     seoTitle: "Slugify Tool – Generate SEO-Friendly Slugs Online",
+    category: "Text Transformation",
   },
   {
     name: "Bulk Slugify",
@@ -21,6 +22,7 @@ const tools = [
     seoDescription:
       "Quickly generate slugs from multiple strings. Ideal for bulk content operations.",
     seoTitle: "Bulk Slugify Tool – Convert Multiple Strings into Slugs",
+    category: "Text Transformation",
   },
   {
     name: "Password Generator",
@@ -31,6 +33,7 @@ const tools = [
     seoDescription:
       "Generate secure, random passwords to protect your accounts. Free and customizable.",
     seoTitle: "Password Generator – Create Strong Passwords Online",
+    category: "Security",
   },
   {
     name: "Password Strength Checker",
@@ -41,6 +44,7 @@ const tools = [
     seoDescription:
       "Test your password strength with real-time feedback. Improve your security today.",
     seoTitle: "Password Strength Checker – Test Your Password Security",
+    category: "Security",
   },
   {
     name: "HTML Minifier",
@@ -51,6 +55,7 @@ const tools = [
     seoDescription:
       "Minify and compress HTML code for better website speed and SEO.",
     seoTitle: "HTML Minifier – Optimize Your HTML Code",
+    category: "Code Optimization",
   },
   {
     name: "CSS Minifier",
@@ -61,6 +66,7 @@ const tools = [
     seoDescription:
       "Minify your CSS files to enhance website loading speed. Fast and efficient tool.",
     seoTitle: "CSS Minifier – Reduce CSS File Size Online",
+    category: "Code Optimization",
   },
   {
     name: "JS Minifier",
@@ -71,6 +77,7 @@ const tools = [
     seoDescription:
       "Minify JavaScript files for better performance and faster load times.",
     seoTitle: "JavaScript Minifier – Compress JS Code Easily",
+    category: "Code Optimization",
   },
   {
     name: "URL Shortener",
@@ -81,6 +88,7 @@ const tools = [
     seoDescription:
       "Bulk URL Shortener powered by TinyURL. Quickly generate short links for multiple URLs.",
     seoTitle: "URL Shortener – Bulk Short Link Generator with TinyURL",
+    category: "Web Utilities",
   },
   {
     name: "Dropdown to Array",
@@ -91,6 +99,7 @@ const tools = [
     seoDescription:
       "Convert dropdown options into arrays for PHP or JavaScript. Fast and easy utility for developers.",
     seoTitle: "Dropdown to Array – Convert Select Options to PHP/JS Array",
+    category: "Data Conversion",
   },
   {
     name: "Text to Array",
@@ -101,6 +110,7 @@ const tools = [
     seoDescription:
       "Convert plain text into key-value arrays for PHP or JavaScript. Ideal for quick data formatting.",
     seoTitle: "Text to Array – Convert Text into PHP/JS Arrays Instantly",
+    category: "Data Conversion",
   },
 ];
 
