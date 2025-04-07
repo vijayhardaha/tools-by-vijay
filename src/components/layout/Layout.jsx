@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 import Footer from "@/components/Footer";
 import Header from "@/components/header/Header";
 
@@ -19,6 +21,10 @@ const PageLayout = ({ children }) => {
       <Footer />
     </div>
   );
+};
+
+PageLayout.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export default PageLayout;

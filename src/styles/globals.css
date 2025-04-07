@@ -6,11 +6,11 @@
 
   --base-color-white: #ffffff;
   --base-color-black: var(--color-alt-500);
-  --base-color-primary: var(--color-primary-500);
-  --base-color-gray-light: #f5f5f5;
-  --base-color-gray-dark: #8a8a8a;
+  --base-color-primary: var(--color-alt-500);
+  --base-color-gray-light: var(--color-alt-50);
+  --base-color-gray-dark: var(--color-alt-400);
   --base-color-red: #d9534f;
-  --base-color-border-gray: #e5e5e5;
+  --base-color-border-gray: var(--color-alt-50);
   --base-color-ring-gray: #b3b3b3;
   --base-color-gold: #d4a017;
   --base-color-teal: #4d8f8f;
@@ -52,7 +52,6 @@
 }
 
 @theme {
-  --color-primary: #eeba2c;
   --color-primary-50: #fff4db;
   --color-primary-100: #ffe8b8;
   --color-primary-200: #ffdb94;
@@ -64,7 +63,6 @@
   --color-primary-800: #815d15;
   --color-primary-900: #5d3e0e;
 
-  --color-alt: #161616;
   --color-alt-50: #f2f2f2;
   --color-alt-100: #d9d9d9;
   --color-alt-200: #bfbfbf;

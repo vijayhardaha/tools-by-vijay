@@ -1,6 +1,7 @@
 import React from "react";
-import PropTypes from "prop-types";
+
 import clsx from "clsx";
+import PropTypes from "prop-types";
 
 /**
  * A flexible and customizable Box component based on Tailwind CSS.
