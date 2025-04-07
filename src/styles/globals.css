@@ -76,7 +76,8 @@
   --color-alt-900: #3e3743;
   --color-alt-950: #100e11;
 
-  --font-sans: "PPAgrandir", sans-serif;
+  --font-sans: "DM Mono", sans-serif;
+  --font-mono: "DM Mono", monospace;
 }
 
 @theme inline {
