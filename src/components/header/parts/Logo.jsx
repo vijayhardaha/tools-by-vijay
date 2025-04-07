@@ -10,7 +10,7 @@ import Box from "@/components/ui/box";
  * @returns {JSX.Element} A link to the homepage containing the site logo
  */
 const Logo = () => (
-  <Link href="/" className="flex items-center">
+  <Link href="/" className="group flex items-center">
     <Box
       flex
       align="center"
@@ -25,7 +25,7 @@ const Logo = () => (
       align="center"
       py={2}
       px={4}
-      className="bg-foreground text-background h-10 min-w-10"
+      className="bg-foreground text-background group-hover:text-primary-400 h-10 min-w-10 transition-colors duration-200 ease-in-out"
     >
       <span className="text-base font-bold">Tools by Vijay</span>
     </Box>

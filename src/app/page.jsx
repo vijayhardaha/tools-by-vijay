@@ -1,100 +1,5 @@
-import clsx from "clsx";
-import PropTypes from "prop-types";
-import { CgArrowRight } from "react-icons/cg";
-
+import ToolCard from "./components/ToolCard";
 import PageLayout from "@/components/layout/Layout";
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  CardFooter,
-  CardTitle,
-  CardDescription,
-} from "@/components/ui/card";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
-import { cn } from "@/lib/utils";
-import { getToolBySlug } from "@/lib/utils/getToolBySlug";
-import { getToolIcon } from "@/lib/utils/getToolIcon";
-
-/**
- * ToolCard component that renders a card for a specific tool.
- * @param {Object} props - The component props.
- * @param {string} props.slug - The slug of the tool to display.
- * @returns {JSX.Element} The rendered ToolCard component.
- */
-const ToolCard = ({
-  slug,
-  iconButton = false,
-  size = "sm",
-  className = "",
-  btnClassName = "",
-  btnRounded = false,
-}) => {
-  const tool = getToolBySlug(slug);
-
-  if (!tool) return null;
-
-  const btnClasses = clsx(btnClassName, {
-    [`rounded-full transform -rotate-25`]: btnRounded,
-  });
-
-  const button = (
-    <Button
-      variant="default"
-      size={size}
-      href={`/tools/${tool.slug}`}
-      className={btnClasses}
-    >
-      <span className={`text-xs font-medium ${iconButton ? "sr-only" : ""}`}>
-        Get Started
-      </span>
-      <CgArrowRight />
-    </Button>
-  );
-
-  return (
-    <Card className={cn("flex h-full flex-col gap-4 shadow-none", className)}>
-      <CardContent>
-        <div className="h10 w-10 text-5xl">{getToolIcon(tool.slug)}</div>
-      </CardContent>
-
-      <CardHeader>
-        <CardTitle className="text-primary-400 text-lg">{tool.name}</CardTitle>
-        <CardDescription>{tool.pageDescription}</CardDescription>
-      </CardHeader>
-
-      <CardFooter className="mt-auto">
-        {iconButton ? (
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger asChild>{button}</TooltipTrigger>
-              <TooltipContent>
-                <p>Get Started</p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
-        ) : (
-          button
-        )}
-      </CardFooter>
-    </Card>
-  );
-};
-
-ToolCard.propTypes = {
-  slug: PropTypes.string.isRequired,
-  iconButton: PropTypes.bool,
-  size: PropTypes.string,
-  className: PropTypes.string,
-  btnClassName: PropTypes.string,
-  btnRounded: PropTypes.bool,
-};
 
 /**
  * Home component that renders a grid of tools.
@@ -103,7 +8,7 @@ ToolCard.propTypes = {
 const Home = () => {
   return (
     <PageLayout>
-      <div className="grid grid-cols-6 grid-rows-7 gap-4">
+      <div className="grid grid-cols-6 grid-rows-7 gap-8">
         {/* Position 1 */}
         <ToolCard
           slug="slugify"
