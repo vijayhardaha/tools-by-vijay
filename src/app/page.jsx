@@ -65,7 +65,7 @@ const ToolCard = ({
       </CardContent>
 
       <CardHeader>
-        <CardTitle className="text-primary text-lg">{tool.name}</CardTitle>
+        <CardTitle className="text-primary-400 text-lg">{tool.name}</CardTitle>
         <CardDescription>{tool.pageDescription}</CardDescription>
       </CardHeader>
 

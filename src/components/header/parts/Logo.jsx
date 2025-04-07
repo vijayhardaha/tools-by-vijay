@@ -16,7 +16,7 @@ const Logo = () => (
       align="center"
       justify="center"
       p={2}
-      className="bg-primary-500 text-foreground h-10 w-10"
+      className="bg-primary-300 text-foreground h-10 w-10"
     >
       <SiCodesandbox className="text-xl" />
     </Box>

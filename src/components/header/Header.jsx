@@ -40,7 +40,7 @@ const Header = () => {
         align="center"
         justify="between"
         py="4"
-        className="bg-dark2 text-primary-500"
+        className="bg-dark2 text-primary-400"
       >
         <Logo />
         <MenuButton onClick={toggleDrawer} />
