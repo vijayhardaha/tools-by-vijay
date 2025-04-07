@@ -1,8 +1,10 @@
-import * as React from "react"
-import { Slot } from "@radix-ui/react-slot"
-import { cva } from "class-variance-authority";
+import * as React from "react";
 
-import { cn } from "@/lib/utils"
+import { Slot } from "@radix-ui/react-slot";
+import { cva } from "class-variance-authority";
+import PropTypes from "prop-types";
+
+import { cn } from "@/lib/utils";
 
 const badgeVariants = cva(
   "inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&>svg]:size-3 gap-1 [&>svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden",
@@ -23,22 +25,37 @@ const badgeVariants = cva(
       variant: "default",
     },
   }
-)
+);
 
-function Badge({
-  className,
-  variant,
-  asChild = false,
-  ...props
-}) {
-  const Comp = asChild ? Slot : "span"
+/**
+ * Badge component for displaying short status descriptors.
+ *
+ * @param {Object} props - Component props
+ * @param {string} [props.className] - Additional CSS classes
+ * @param {string} [props.variant="default"] - Visual style variant
+ * @param {boolean} [props.asChild=false] - Whether to merge props onto the immediate child
+ * @param {React.ReactNode} props.children - Badge content
+ * @returns {React.ReactElement} Badge component
+ */
+function Badge({ className, variant, asChild = false, children, ...props }) {
+  const Comp = asChild ? Slot : "span";
 
   return (
-    (<Comp
+    <Comp
       data-slot="badge"
       className={cn(badgeVariants({ variant }), className)}
-      {...props} />)
+      {...props}
+    >
+      {children}
+    </Comp>
   );
 }
 
-export { Badge, badgeVariants }
+Badge.propTypes = {
+  className: PropTypes.string,
+  variant: PropTypes.oneOf(["default", "secondary", "destructive", "outline"]),
+  asChild: PropTypes.bool,
+  children: PropTypes.node,
+};
+
+export { Badge, badgeVariants };

@@ -2,13 +2,35 @@
 
 import { useState } from "react";
 
-import Drawer from "./drawer/Drawer";
-import Logo from "./parts/Logo";
-import MenuButton from "./parts/MenuButton";
-import Box from "../ui/box"; // Import Box component
+import Logo from "@/components/header/parts/Logo";
+import MenuButton from "@/components/header/parts/MenuButton";
+import Sidebar from "@/components/header/sidebar/Sidebar";
+import Box from "@/components/ui/box";
 
+/**
+ * Header component that displays the app logo and menu button
+ * Controls the sidebar visibility
+ *
+ * @returns {JSX.Element} Header component with logo, menu button and sidebar
+ */
 const Header = () => {
+  /**
+   * State to control sidebar visibility
+   * @type {[boolean, function]} isOpen - Whether the sidebar is open, setIsOpen - Function to update state
+   */
   const [isOpen, setIsOpen] = useState(false);
+
+  /**
+   * Toggles the sidebar open/closed state
+   * @returns {void}
+   */
+  const toggleDrawer = () => setIsOpen(!isOpen);
+
+  /**
+   * Closes the sidebar
+   * @returns {void}
+   */
+  const closeDrawer = () => setIsOpen(false);
 
   return (
     <div className="mx-auto max-w-5xl px-4">
@@ -21,10 +43,9 @@ const Header = () => {
         className="bg-dark2 text-primary-500"
       >
         <Logo />
-        <MenuButton onClick={() => setIsOpen(!isOpen)} />
+        <MenuButton onClick={toggleDrawer} />
       </Box>
-      <Drawer isOpen={isOpen} onClose={() => setIsOpen(false)} />{" "}
-      {/* Renamed */}
+      <Sidebar isOpen={isOpen} onClose={closeDrawer} />
     </div>
   );
 };

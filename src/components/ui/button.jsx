@@ -1,6 +1,8 @@
 import * as React from "react";
+
 import { Slot } from "@radix-ui/react-slot";
 import { cva } from "class-variance-authority";
+import PropTypes from "prop-types";
 
 import { cn } from "@/lib/utils";
 
@@ -10,9 +12,9 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-foreground text-background shadow-xs hover:bg-foreground/90",
+          "bg-foreground text-background shadow-xs hover:bg-primary-500 hover:text-foreground",
         primary:
-          "bg-primary text-primary-foreground shadow-xs hover:bg-primary/90",
+          "bg-primary text-primary-foreground shadow-xs hover:bg-foreground hover:text-background",
         destructive:
           "bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
         outline:
@@ -37,7 +39,25 @@ const buttonVariants = cva(
   }
 );
 
-function Button({ className, variant, size, asChild = false, ...props }) {
+/**
+ * Button component with various styles and sizes.
+ *
+ * @param {Object} props - Component props
+ * @param {string} [props.className] - Additional CSS classes
+ * @param {string} [props.variant="default"] - Visual style variant
+ * @param {string} [props.size="default"] - Button size
+ * @param {boolean} [props.asChild=false] - Whether to merge props onto the immediate child
+ * @param {React.ReactNode} props.children - Button content
+ * @returns {React.ReactElement} Button component
+ */
+function Button({
+  className,
+  variant,
+  size,
+  asChild = false,
+  children,
+  ...props
+}) {
   const Comp = asChild ? Slot : "button";
 
   return (
@@ -45,8 +65,26 @@ function Button({ className, variant, size, asChild = false, ...props }) {
       data-slot="button"
       className={cn(buttonVariants({ variant, size, className }))}
       {...props}
-    />
+    >
+      {children}
+    </Comp>
   );
 }
+
+Button.propTypes = {
+  className: PropTypes.string,
+  variant: PropTypes.oneOf([
+    "default",
+    "primary",
+    "destructive",
+    "outline",
+    "secondary",
+    "ghost",
+    "link",
+  ]),
+  size: PropTypes.oneOf(["default", "sm", "lg", "icon"]),
+  asChild: PropTypes.bool,
+  children: PropTypes.node,
+};
 
 export { Button, buttonVariants };

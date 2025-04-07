@@ -1,7 +1,14 @@
 import Link from "next/link";
-import Box from "../../ui/box";
-
 import { SiCodesandbox } from "react-icons/si";
+
+import Box from "@/components/ui/box";
+
+/**
+ * Logo component that displays the site logo with "Tools by Vijay" text
+ *
+ * @component
+ * @returns {JSX.Element} A link to the homepage containing the site logo
+ */
 const Logo = () => (
   <Link href="/" className="flex items-center">
     <Box
