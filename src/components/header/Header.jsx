@@ -21,7 +21,7 @@ const Header = () => {
         className="bg-dark2 text-primary-500"
       >
         <Logo />
-        <MenuButton onClick={() => setIsOpen(true)} />
+        <MenuButton onClick={() => setIsOpen(!isOpen)} />
       </Box>
       <Drawer isOpen={isOpen} onClose={() => setIsOpen(false)} />{" "}
       {/* Renamed */}

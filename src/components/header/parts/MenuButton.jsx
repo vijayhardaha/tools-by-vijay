@@ -1,13 +1,13 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
+import { RiMenu3Fill } from "react-icons/ri";
+
 const MenuButton = ({ onClick }) => (
-  <button
-    className="rounded-lg bg-blue-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-800"
-    type="button"
-    onClick={onClick}
-  >
+  <Button onClick={onClick} variant="default">
     Menu
-  </button>
+    <RiMenu3Fill />
+  </Button>
 );
 
 export default MenuButton;

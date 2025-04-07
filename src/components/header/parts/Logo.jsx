@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { GiGearStickPattern } from "react-icons/gi";
 import Box from "../../ui/box";
 
+import { SiCodesandbox } from "react-icons/si";
 const Logo = () => (
   <Link href="/" className="flex items-center">
     <Box
@@ -9,18 +9,18 @@ const Logo = () => (
       align="center"
       justify="center"
       p={2}
-      className="bg-primary text-foreground h-12 w-12"
+      className="bg-primary text-foreground h-10 w-10"
     >
-      <GiGearStickPattern className="text-2xl" />
+      <SiCodesandbox className="text-xl" />
     </Box>
     <Box
       flex
       align="center"
       py={2}
       px={4}
-      className="bg-foreground text-background h-12 min-w-12"
+      className="bg-foreground text-background h-10 min-w-10"
     >
-      <span className="text-lg font-bold">Tools by Vijay</span>
+      <span className="text-base font-bold">Tools by Vijay</span>
     </Box>
   </Link>
 );
