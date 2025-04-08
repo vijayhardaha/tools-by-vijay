@@ -8,7 +8,7 @@ import PageLayout from "@/components/page/PageLayout";
 const Home = () => {
   return (
     <PageLayout>
-      <div className="grid grid-cols-6 grid-rows-7 gap-8">
+      <div className="grid grid-cols-6 grid-rows-7 gap-6">
         {/* Position 1 */}
         <ToolCard
           slug="slugify"

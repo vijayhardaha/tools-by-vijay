@@ -42,7 +42,7 @@ const ToolCard = ({
 
   const btnClasses = clsx(btnClassName, {
     [`p-0 h-10 w-10`]: iconButton,
-    [`rounded-full transform -rotate-25 `]: btnRounded,
+    [`rounded-full`]: btnRounded,
   });
 
   const button = (
@@ -63,7 +63,7 @@ const ToolCard = ({
       </CardContent>
 
       <CardHeader>
-        <CardTitle className="text-primary-400 text-lg">{tool.name}</CardTitle>
+        <CardTitle className="text-primary-500 text-lg">{tool.name}</CardTitle>
         <CardDescription>{tool.pageDescription}</CardDescription>
       </CardHeader>
 
