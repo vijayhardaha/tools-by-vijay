@@ -7,9 +7,23 @@ export const metadata = {
   description: "A collection of useful tools.",
 };
 
+import { League_Spartan, Geist_Mono } from "next/font/google";
 import PropTypes from "prop-types";
 
-import "../styles/fonts.css";
+const leagueSpartan = League_Spartan({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-league-spartan",
+});
+
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-geist-mono",
+});
+
 import "../styles/globals.css";
 
 /**
@@ -19,10 +33,11 @@ import "../styles/globals.css";
  */
 const RootLayout = ({ children }) => {
   return (
-    <html lang="en">
-      <body>
-        <div>{children}</div>
-      </body>
+    <html
+      lang="en"
+      className={`${leagueSpartan.variable} ${geistMono.variable}`}
+    >
+      <body>{children}</body>
     </html>
   );
 };
