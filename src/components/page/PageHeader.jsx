@@ -13,12 +13,12 @@ import PropTypes from "prop-types";
  */
 const PageHeader = ({ title, description, icon = null }) => {
   return (
-    <div className="mb-6">
+    <div className="mb-4">
       <h1 className="inline-flex items-center space-x-2 text-2xl font-bold">
         {icon && <span className="mr-2 inline-block">{icon}</span>}
         {title}
       </h1>
-      {description && <p className="mt-2">{description}</p>}
+      {description && <p className="mt-1">{description}</p>}
     </div>
   );
 };
