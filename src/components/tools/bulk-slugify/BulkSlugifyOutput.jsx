@@ -6,7 +6,13 @@ import { CopyIcon, CheckIcon } from "lucide-react";
 import PropTypes from "prop-types";
 
 import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardContent,
+  CardDescription,
+} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
@@ -33,6 +39,7 @@ const BulkSlugifyOutput = ({ output }) => {
     <Card>
       <CardHeader>
         <CardTitle>OUTPUT</CardTitle>
+        <CardDescription>Cleaned and formatted slugs</CardDescription>
       </CardHeader>
       <CardContent>
         <div className="flex flex-col gap-2">
@@ -41,7 +48,7 @@ const BulkSlugifyOutput = ({ output }) => {
             readOnly
             disabled={!output}
             rows={unfilteredLinesLength || 1}
-            className="outline-none focus-visible:ring-0 focus-visible:outline-none"
+            className="resize-none outline-none focus-visible:ring-0 focus-visible:outline-none"
           />
           <Button
             variant="primary"

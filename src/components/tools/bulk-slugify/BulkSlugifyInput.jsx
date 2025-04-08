@@ -139,7 +139,8 @@ const BulkSlugifyInput = ({
           </div>
         </div>
       </CardContent>
-      <CardFooter className="mt-6 flex justify-start gap-2">
+
+      <CardFooter className="flex justify-start gap-2">
         <Button
           variant="default"
           size="lg"
