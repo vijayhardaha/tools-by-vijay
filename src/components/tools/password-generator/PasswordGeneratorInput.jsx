@@ -3,24 +3,41 @@
 import PropTypes from "prop-types";
 import { FiInfo } from "react-icons/fi";
 
-import { Button } from "../../../../comps/ui/button";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardHeader,
   CardTitle,
   CardContent,
   CardDescription,
-} from "../../../../comps/ui/card";
-import { Checkbox } from "../../../../comps/ui/checkbox";
+} from "@/components/ui/card";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
-import { Slider } from "../../../../comps/ui/slider";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "../../../../comps/ui/tooltip";
+import { Slider } from "@/components/ui/slider";
+import { Tooltip } from "@/components/ui/tooltip";
 
+/**
+ * Component for configuring password generation options.
+ * Provides a form with controls for password length, character types, and other settings.
+ *
+ * @component
+ * @param {Object} props - Component props
+ * @param {number} props.length - Current password length setting
+ * @param {Function} props.setLength - Function to update password length
+ * @param {boolean} props.useUppercase - Whether to include uppercase letters
+ * @param {Function} props.setUseUppercase - Function to toggle uppercase letters
+ * @param {boolean} props.useLowercase - Whether to include lowercase letters
+ * @param {Function} props.setUseLowercase - Function to toggle lowercase letters
+ * @param {boolean} props.useNumbers - Whether to include numbers
+ * @param {Function} props.setUseNumbers - Function to toggle numbers
+ * @param {boolean} props.useSymbols - Whether to include symbols
+ * @param {Function} props.setUseSymbols - Function to toggle symbols
+ * @param {boolean} props.excludeSimilar - Whether to exclude similar characters
+ * @param {Function} props.setExcludeSimilar - Function to toggle exclusion of similar characters
+ * @param {Function} props.onGenerate - Function to generate a password with current settings
+ * @param {Function} props.onReset - Function to reset all settings to defaults
+ * @returns {JSX.Element} The rendered form with password generation options
+ */
 const PasswordGeneratorInput = ({
   length,
   setLength,
@@ -37,6 +54,10 @@ const PasswordGeneratorInput = ({
   onGenerate,
   onReset,
 }) => {
+  /**
+   * Handles form submission by preventing default behavior and triggering password generation
+   * @param {React.FormEvent} e - Form event object
+   */
   const handleSubmit = (e) => {
     e.preventDefault();
     onGenerate();
@@ -54,18 +75,18 @@ const PasswordGeneratorInput = ({
         <form onSubmit={handleSubmit} className="flex flex-col gap-6">
           <div className="space-y-2">
             <div className="flex items-center justify-between">
-              <Label htmlFor="password-length">Password Length: {length}</Label>
+              <Label htmlFor="password-length">Password Length:</Label>
               <span className="text-muted-foreground text-sm">
                 {length} characters
               </span>
             </div>
             <Slider
               id="password-length"
-              min={4}
+              min={8}
               max={64}
               step={1}
-              value={[length]}
-              onValueChange={(value) => setLength(value[0])}
+              value={length}
+              onValueChange={(value) => setLength(value)}
             />
           </div>
 
@@ -119,21 +140,13 @@ const PasswordGeneratorInput = ({
             />
             <Label htmlFor="excludeSimilar" className="flex items-center">
               Exclude similar characters (i, l, 1, L, o, 0, O)
-              <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger aschild>
-                    <FiInfo className="text-muted-foreground ml-1.5 h-4 w-4 cursor-help" />
-                  </TooltipTrigger>
-                  <TooltipContent className="max-w-xs">
-                    <p>
-                      This option removes characters that look alike (such as
-                      the letter ‘O’ and number ‘0’). Use this to create
-                      passwords that are less confusing to read and type,
-                      especially when sharing passwords verbally or in print.
-                    </p>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
+              <Tooltip
+                className="!w-80"
+                text="This option removes characters that look alike (such as the letter 'O' and number '0'). Use this to create passwords that are less confusing to read and type, especially when sharing passwords verbally or in print."
+                delayDuration={300}
+              >
+                <FiInfo className="text-muted-foreground ml-1.5 h-4 w-4 cursor-help" />
+              </Tooltip>
             </Label>
           </div>
 

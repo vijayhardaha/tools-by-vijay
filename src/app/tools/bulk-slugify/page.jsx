@@ -5,7 +5,10 @@ import BulkSlugifyTool from "@/components/tools/bulk-slugify/BulkSlugifyTool";
 import { getToolBySlug } from "@/lib/utils/getToolBySlug";
 import { getToolIcon } from "@/lib/utils/getToolIcon";
 
-// Get tool data
+/**
+ * Fetches tool data from the tools database
+ * @constant {Object} tool - Tool configuration with properties like name, description, and SEO metadata
+ */
 const tool = getToolBySlug("bulk-slugify");
 
 /**

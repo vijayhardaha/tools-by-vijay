@@ -5,19 +5,34 @@ import { useState } from "react";
 import { CopyIcon, CheckIcon } from "lucide-react";
 import PropTypes from "prop-types";
 
-import { Button } from "../../../../comps/ui/button";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
-} from "../../../../comps/ui/card";
-import { Input } from "../../../../comps/ui/input";
+import { Button } from "@/components/ui/button";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 
+/**
+ * Displays the generated password with a copy functionality.
+ * Shows the generated password in a readonly input field and allows the user to copy it
+ * to the clipboard with visual feedback when copied.
+ *
+ * @component
+ * @param {Object} props - Component props
+ * @param {string} props.password - The generated password to display
+ * @returns {JSX.Element} The rendered card with password display and copy functionality
+ */
 const PasswordGeneratorOutput = ({ password }) => {
+  /**
+   * State to track whether the password has been copied to clipboard
+   * @type {[boolean, function]} - State and setter for copied status
+   */
   const [copied, setCopied] = useState(false);
 
+  /**
+   * Copies the current password to the clipboard and provides visual feedback
+   * @async
+   * @function
+   * @returns {Promise<void>}
+   */
   const copyToClipboard = async () => {
     await navigator.clipboard.writeText(password);
     setCopied(true);
