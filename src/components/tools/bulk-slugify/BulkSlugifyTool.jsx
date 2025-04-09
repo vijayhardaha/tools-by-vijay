@@ -9,6 +9,15 @@ import BulkSlugifyInfo from "./BulkSlugifyInfo";
 import BulkSlugifyInput from "./BulkSlugifyInput";
 import BulkSlugifyOutput from "./BulkSlugifyOutput";
 
+/**
+ * Main component for the Bulk Slugify Tool
+ *
+ * This component manages the state and functionality of the bulk slugify tool,
+ * allowing users to convert multiple text strings into URL-friendly slugs
+ * with various configuration options.
+ *
+ * @returns {JSX.Element} The complete Bulk Slugify Tool interface
+ */
 const BulkSlugifyTool = () => {
   const [input, setInput] = useState("");
   const [useUnderscore, setUseUnderscore] = useState(false);
@@ -17,6 +26,12 @@ const BulkSlugifyTool = () => {
   const [useLitinize, setUseLitinize] = useState(true);
   const [generatedOutput, setGeneratedOutput] = useState("");
 
+  /**
+   * Generates slugs from the input text based on configuration options
+   *
+   * @param {string} text - The input text to convert to slugs
+   * @returns {string} The processed slugs as a newline-separated string
+   */
   const generateSlugs = (text) => {
     return text
       .split("\n")
@@ -41,16 +56,25 @@ const BulkSlugifyTool = () => {
       .join("\n");
   };
 
+  /**
+   * Handles the generation of slugs when the user clicks the generate button
+   */
   const handleGenerate = () => {
     const slugs = generateSlugs(input);
     setGeneratedOutput(slugs);
   };
 
+  /**
+   * Clears the input and output fields
+   */
   const handleClear = () => {
     setInput("");
     setGeneratedOutput("");
   };
 
+  /**
+   * Resets all form fields and options to their default values
+   */
   const handleReset = () => {
     setInput("");
     setGeneratedOutput("");
@@ -87,5 +111,7 @@ const BulkSlugifyTool = () => {
     </>
   );
 };
+
+BulkSlugifyTool.propTypes = {};
 
 export default BulkSlugifyTool;

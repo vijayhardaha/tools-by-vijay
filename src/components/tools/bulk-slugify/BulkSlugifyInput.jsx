@@ -2,18 +2,41 @@
 
 import PropTypes from "prop-types";
 
-import { Button } from "../../../../comps/ui/button";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardHeader,
   CardTitle,
   CardContent,
   CardDescription,
-} from "../../../../comps/ui/card";
-import { Checkbox } from "../../../../comps/ui/checkbox";
+} from "@/components/ui/card";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "../../../../comps/ui/textarea";
+import { Textarea } from "@/components/ui/textarea";
 
+/**
+ * Component for user input and configuration options for the Bulk Slugify tool
+ *
+ * This component provides a form for users to input text strings to be slugified,
+ * along with configuration options for the slugification process such as separator
+ * type, case conversion, number removal, and character normalization.
+ *
+ * @param {Object} props - Component props
+ * @param {string} props.input - The current input text
+ * @param {boolean} props.useUnderscore - Whether to use underscore as separator instead of dash
+ * @param {Function} props.setInput - Function to update the input text
+ * @param {boolean} props.removeNumbers - Whether to remove numbers from the slugs
+ * @param {boolean} props.useLowercase - Whether to convert slugs to lowercase
+ * @param {boolean} props.useLitinize - Whether to normalize special characters using latinize
+ * @param {Function} props.setUseUnderscore - Function to toggle underscore usage
+ * @param {Function} props.setRemoveNumbers - Function to toggle number removal
+ * @param {Function} props.setUseLowercase - Function to toggle lowercase conversion
+ * @param {Function} props.setUseLitinize - Function to toggle latinize usage
+ * @param {Function} props.onGenerate - Function to handle slug generation
+ * @param {Function} props.onClear - Function to clear the input
+ * @param {Function} props.onReset - Function to reset all options to defaults
+ * @returns {JSX.Element} Input form with configuration options
+ */
 const BulkSlugifyInput = ({
   input = "",
   useUnderscore = false,
@@ -29,10 +52,20 @@ const BulkSlugifyInput = ({
   onClear,
   onReset,
 }) => {
+  /**
+   * Handles changes to the input textarea
+   *
+   * @param {Object} e - Event object
+   */
   const handleInputChange = (e) => {
     setInput(e.target.value);
   };
 
+  /**
+   * Handles form submission to generate slugs
+   *
+   * @param {Object} e - Event object
+   */
   const handleSubmit = (e) => {
     e.preventDefault();
     onGenerate();

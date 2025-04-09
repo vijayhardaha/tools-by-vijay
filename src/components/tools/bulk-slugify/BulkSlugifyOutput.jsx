@@ -5,22 +5,40 @@ import { useState } from "react";
 import { CopyIcon, CheckIcon } from "lucide-react";
 import PropTypes from "prop-types";
 
-import { Button } from "../../../../comps/ui/button";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardHeader,
   CardTitle,
   CardContent,
   CardDescription,
-} from "../../../../comps/ui/card";
-import { Input } from "../../../../comps/ui/input";
-import { Textarea } from "../../../../comps/ui/textarea";
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
 
+/**
+ * Component that displays the generated slugs and provides copy functionality
+ *
+ * This component renders the output of the slugify process, allowing users to
+ * copy individual slugs or all slugs at once. It shows visual feedback when
+ * content is copied to the clipboard.
+ *
+ * @param {Object} props - Component props
+ * @param {string} props.output - The generated slug output as a newline-separated string
+ * @returns {JSX.Element} Output display with copy functionality
+ */
 const BulkSlugifyOutput = ({ output }) => {
   const [copiedIndex, setCopiedIndex] = useState(null);
   const [copiedAll, setCopiedAll] = useState(false);
 
+  /**
+   * Copies the provided text to clipboard and manages the copy state indicators
+   *
+   * @param {string} text - The text to copy to clipboard
+   * @param {number|null} index - Index of the copied line (null for copy all)
+   * @returns {Promise<void>}
+   */
   const copyToClipboard = async (text, index = null) => {
     await navigator.clipboard.writeText(text);
     if (index === null) {
@@ -32,7 +50,9 @@ const BulkSlugifyOutput = ({ output }) => {
     }
   };
 
+  // Split the output into individual lines and filter out empty lines
   const lines = output.split("\n").filter((line) => line.trim() !== "");
+  // Get the total number of lines including empty ones for textarea rows
   const unfilteredLinesLength = output.split("\n").length;
 
   return (

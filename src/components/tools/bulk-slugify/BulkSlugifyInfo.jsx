@@ -1,3 +1,11 @@
+/**
+ * Provides information about the Bulk Slugify Tool
+ *
+ * This component renders detailed information about the Bulk Slugify Tool,
+ * including its purpose, benefits, and credits.
+ *
+ * @returns {JSX.Element} Information section about the Bulk Slugify Tool
+ */
 const BulkSlugifyInfo = () => {
   return (
     <div className="max-w-none space-y-8">
