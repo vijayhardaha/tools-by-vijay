@@ -5,15 +5,31 @@ import JsMinifierTool from "@/components/tools/js-minifier/JsMinifierTool";
 import { getToolBySlug } from "@/lib/utils/getToolBySlug";
 import { getToolIcon } from "@/lib/utils/getToolIcon";
 
-// Get tool data
+/**
+ * Fetches tool data from the tools database
+ * @constant {Object} tool - Tool configuration with properties like name, description, and SEO metadata
+ */
 const tool = getToolBySlug("js-minifier");
 
-// Export metadata for SEO
+/**
+ * Metadata for the Slugify page, used for SEO purposes.
+ * @type {Object}
+ * @property {string} title - The SEO title of the page.
+ * @property {string} description - The SEO description of the page.
+ */
 export const metadata = {
   title: tool?.seoTitle || "",
   description: tool?.seoDescription || "",
 };
 
+/**
+ * JavaScript Minifier Page Component
+ *
+ * @description Renders the JS Minifier tool page with header and content sections.
+ * This page allows users to compress and minify JavaScript code.
+ *
+ * @returns {JSX.Element} The rendered JS Minifier page
+ */
 const JsMinifier = () => {
   return (
     <PageLayout>
