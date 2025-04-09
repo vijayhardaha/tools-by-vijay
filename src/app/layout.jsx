@@ -7,14 +7,14 @@ export const metadata = {
   description: "A collection of useful tools.",
 };
 
-import { League_Spartan, Geist_Mono } from "next/font/google";
+import { Work_Sans, Geist_Mono } from "next/font/google";
 import PropTypes from "prop-types";
 
 /**
  * Configuration for the League Spartan font.
  * @type {import("next/font/google").GoogleFont}
  */
-const leagueSpartan = League_Spartan({
+const leagueSpartan = Work_Sans({
   subsets: ["latin"],
   display: "swap",
   weight: ["400", "500", "600", "700"],
