@@ -74,15 +74,15 @@ const BulkSlugifyOutput = ({ output }) => {
             variant="primary"
             disabled={!output}
             onClick={() => copyToClipboard(output)}
-            className={cn("min-w-40", {
+            className={cn({
               "bg-green-600 text-white hover:bg-green-600 hover:text-white":
                 copiedAll,
             })}
           >
             {copiedAll ? (
-              <CheckIcon className="mr-1 h-4 w-4" />
+              <CheckIcon className="h-4 w-4" />
             ) : (
-              <CopyIcon className="mr-1 h-4 w-4" />
+              <CopyIcon className="h-4 w-4" />
             )}
             {copiedAll ? "Copied All!" : "Copy All"}
           </Button>
@@ -99,15 +99,15 @@ const BulkSlugifyOutput = ({ output }) => {
                   variant="primary"
                   disabled={!line}
                   onClick={() => copyToClipboard(line, index)}
-                  className={cn("min-w-40", {
+                  className={cn("min-w-30", {
                     "bg-green-600 text-white hover:bg-green-600 hover:text-white":
                       copiedIndex === index,
                   })}
                 >
                   {copiedIndex === index ? (
-                    <CheckIcon className="mr-1 h-4 w-4" />
+                    <CheckIcon className="h-4 w-4" />
                   ) : (
-                    <CopyIcon className="mr-1 h-4 w-4" />
+                    <CopyIcon className="h-4 w-4" />
                   )}
                   {copiedIndex === index ? "Copied!" : "Copy"}
                 </Button>

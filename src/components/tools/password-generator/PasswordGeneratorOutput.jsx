@@ -58,15 +58,15 @@ const PasswordGeneratorOutput = ({ password }) => {
             variant="primary"
             disabled={!password}
             onClick={copyToClipboard}
-            className={cn("min-w-40", {
+            className={cn("min-w-30", {
               "bg-green-600 text-white hover:bg-green-600 hover:text-white":
                 copied,
             })}
           >
             {copied ? (
-              <CheckIcon className="mr-1 h-4 w-4" />
+              <CheckIcon className="h-4 w-4" />
             ) : (
-              <CopyIcon className="mr-1 h-4 w-4" />
+              <CopyIcon className="h-4 w-4" />
             )}
             {copied ? "Copied!" : "Copy"}
           </Button>
