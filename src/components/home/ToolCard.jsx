@@ -3,7 +3,7 @@ import Link from "next/link";
 import PropTypes from "prop-types";
 import { CgArrowRight } from "react-icons/cg";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "../ui/button";
 import {
   Card,
   CardHeader,
@@ -11,13 +11,8 @@ import {
   CardFooter,
   CardTitle,
   CardDescription,
-} from "@/components/ui/card";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+} from "../ui/card";
+import { Tooltip } from "../ui/tooltip";
 import { cn } from "@/lib/utils";
 import { getToolBySlug } from "@/lib/utils/getToolBySlug";
 import { getToolIcon } from "@/lib/utils/getToolIcon";
@@ -46,7 +41,7 @@ const ToolCard = ({
   });
 
   const button = (
-    <Button asChild variant="default" size={size} className={btnClasses}>
+    <Button variant="default" size={size} className={btnClasses} asChild>
       <Link href={`/tools/${tool.slug}`}>
         <span className={`text-xs ${iconButton ? "sr-only" : ""}`}>
           Get Started
@@ -68,18 +63,7 @@ const ToolCard = ({
       </CardHeader>
 
       <CardFooter className="mt-auto">
-        {iconButton ? (
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger asChild>{button}</TooltipTrigger>
-              <TooltipContent>
-                <p>Get Started</p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
-        ) : (
-          button
-        )}
+        {iconButton ? <Tooltip text="Get Started">{button}</Tooltip> : button}
       </CardFooter>
     </Card>
   );

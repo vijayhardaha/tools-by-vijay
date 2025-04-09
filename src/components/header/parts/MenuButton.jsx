@@ -3,7 +3,7 @@
 import PropTypes from "prop-types";
 import { RiMenu3Fill } from "react-icons/ri";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "../../ui/button";
 
 /**
  * MenuButton component renders a button that toggles the sidebar menu

@@ -4,8 +4,8 @@ import { useState } from "react";
 
 import Logo from "@/components/header/parts/Logo";
 import MenuButton from "@/components/header/parts/MenuButton";
-import Sidebar from "@/components/header/sidebar/Sidebar";
 import Box from "@/components/ui/box";
+import Sidebar from "@/components/header/sidebar/Sidebar";
 
 /**
  * Header component that displays the app logo and menu button
@@ -14,22 +14,9 @@ import Box from "@/components/ui/box";
  * @returns {JSX.Element} Header component with logo, menu button and sidebar
  */
 const Header = () => {
-  /**
-   * State to control sidebar visibility
-   * @type {[boolean, function]} isOpen - Whether the sidebar is open, setIsOpen - Function to update state
-   */
   const [isOpen, setIsOpen] = useState(false);
 
-  /**
-   * Toggles the sidebar open/closed state
-   * @returns {void}
-   */
   const toggleDrawer = () => setIsOpen(!isOpen);
-
-  /**
-   * Closes the sidebar
-   * @returns {void}
-   */
   const closeDrawer = () => setIsOpen(false);
 
   return (
@@ -48,9 +35,9 @@ const Header = () => {
             <Logo />
             <MenuButton onClick={toggleDrawer} />
           </Box>
-          <Sidebar isOpen={isOpen} onClose={closeDrawer} />
         </div>
       </header>
+      <Sidebar isOpen={isOpen} onClose={closeDrawer} />
     </>
   );
 };

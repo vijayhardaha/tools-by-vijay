@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { SiCodesandbox } from "react-icons/si";
 
-import Box from "@/components/ui/box";
+import Box from "../../ui/box";
 
 /**
  * Logo component that displays the site logo with "Tools by Vijay" text

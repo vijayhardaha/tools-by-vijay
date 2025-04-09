@@ -4,8 +4,8 @@ import PropTypes from "prop-types";
 import { FaFacebook, FaTwitter, FaInstagram, FaGithub } from "react-icons/fa";
 import { TbWorldWww } from "react-icons/tb";
 
-import { Button } from "@/components/ui/button";
-import { SheetFooter } from "@/components/ui/sheet";
+import { Button } from "../../ui/button";
+import { SheetFooter } from "../../ui/sheet";
 
 /**
  * SocialButton component for social media links

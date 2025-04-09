@@ -1,55 +1,43 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import * as TooltipPrimitive from "@radix-ui/react-tooltip"
+import * as React from "react";
+import { Tooltip as ReactTooltip } from "react-tooltip";
+import { cn } from "@/lib/utils";
+import "react-tooltip/dist/react-tooltip.css";
 
-import { cn } from "@/lib/utils"
-
-function TooltipProvider({
+function Tooltip({
+  text,
+  children,
+  className,
+  sideOffset = 4,
   delayDuration = 0,
   ...props
 }) {
-  return (<TooltipPrimitive.Provider data-slot="tooltip-provider" delayDuration={delayDuration} {...props} />);
-}
+  const tooltipId = React.useId();
 
-function Tooltip({
-  ...props
-}) {
   return (
-    (<TooltipProvider>
-      <TooltipPrimitive.Root data-slot="tooltip" {...props} />
-    </TooltipProvider>)
-  );
-}
+    <>
+      <span
+        data-tooltip-id={tooltipId}
+        data-tooltip-content={text}
+        tabIndex={0}
+        {...props}
+      >
+        {children}
+      </span>
 
-function TooltipTrigger({
-  ...props
-}) {
-  return <TooltipPrimitive.Trigger data-slot="tooltip-trigger" {...props} />;
-}
-
-function TooltipContent({
-  className,
-  sideOffset = 0,
-  children,
-  ...props
-}) {
-  return (
-    (<TooltipPrimitive.Portal>
-      <TooltipPrimitive.Content
-        data-slot="tooltip-content"
-        sideOffset={sideOffset}
+      <ReactTooltip
+        id={tooltipId}
+        delayShow={delayDuration}
+        offset={sideOffset}
+        style={{ zIndex: 9999 }}
         className={cn(
-          "bg-primary text-primary-foreground animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 w-fit origin-(--radix-tooltip-content-transform-origin) rounded-md px-3 py-1.5 text-xs text-balance",
+          "!text-primary-foreground !rounded-none !bg-black !px-3 !py-1.5 !text-xs",
           className
         )}
-        {...props}>
-        {children}
-        <TooltipPrimitive.Arrow
-          className="bg-primary fill-primary z-50 size-2.5 translate-y-[calc(-50%_-_2px)] rotate-45 rounded-[2px]" />
-      </TooltipPrimitive.Content>
-    </TooltipPrimitive.Portal>)
+      />
+    </>
   );
 }
 
-export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider }
+export { Tooltip };

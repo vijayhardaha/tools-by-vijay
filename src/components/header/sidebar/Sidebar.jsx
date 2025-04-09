@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import SidebarBody from "./SidebarBody";
 import SidebarFooter from "./SidebarFooter";
 import SidebarHeader from "./SidebarHeader";
-import { Sheet, SheetContent } from "@/components/ui/sheet";
+import { Sheet, SheetContent } from "../../ui/sheet";
 
 const Sidebar = ({ isOpen, onClose }) => (
   <Sheet open={isOpen} onOpenChange={onClose}>

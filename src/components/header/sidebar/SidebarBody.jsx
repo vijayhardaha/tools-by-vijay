@@ -3,7 +3,7 @@
 import Link from "next/link";
 import PropTypes from "prop-types";
 
-import { SheetDescription } from "@/components/ui/sheet";
+import { SheetDescription } from "../../ui/sheet";
 import tools from "@/constants/tools";
 
 /**
@@ -78,27 +78,25 @@ const SidebarBody = () => {
 
   return (
     <div className="p-4">
-      <SheetDescription asChild>
-        <nav>
-          {Object.entries(categorizedTools).map(([category, categoryTools]) => (
-            <CategorySection
-              key={category}
-              title={category}
-              tools={categoryTools}
-            />
-          ))}
-          <div className="border-border border-t pt-4">
-            <ul className="space-y-3">
-              <li>
-                <NavLink href="/about">About</NavLink>
-              </li>
-              <li>
-                <NavLink href="/contact">Contact</NavLink>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </SheetDescription>
+      <nav className="text-muted-foreground text-sm">
+        {Object.entries(categorizedTools).map(([category, categoryTools]) => (
+          <CategorySection
+            key={category}
+            title={category}
+            tools={categoryTools}
+          />
+        ))}
+        <div className="border-border border-t pt-4">
+          <ul className="space-y-3">
+            <li>
+              <NavLink href="/about">About</NavLink>
+            </li>
+            <li>
+              <NavLink href="/contact">Contact</NavLink>
+            </li>
+          </ul>
+        </div>
+      </nav>
     </div>
   );
 };
