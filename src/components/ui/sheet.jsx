@@ -3,7 +3,7 @@
 import * as React from "react";
 import PropTypes from "prop-types";
 import { createPortal } from "react-dom";
-import { XIcon } from "lucide-react";
+import { LuX as XIcon } from "react-icons/lu";
 import { cn } from "@/lib/utils";
 
 // Create context for state management

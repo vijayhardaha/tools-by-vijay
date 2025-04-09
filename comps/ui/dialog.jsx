@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { XIcon } from "lucide-react";
+import { LuX as XIcon } from "react-icons/lu";
 import PropTypes from "prop-types";
 import { cn } from "@/lib/utils";
 

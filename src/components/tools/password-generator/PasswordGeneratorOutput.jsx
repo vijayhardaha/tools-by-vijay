@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import { CopyIcon, CheckIcon } from "lucide-react";
+import { LuCopy as CopyIcon, LuCheck as CheckIcon } from "react-icons/lu";
 import PropTypes from "prop-types";
 
 import { Button } from "@/components/ui/button";

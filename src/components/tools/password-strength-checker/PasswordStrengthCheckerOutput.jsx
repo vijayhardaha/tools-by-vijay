@@ -1,6 +1,6 @@
 "use client";
 
-import { CheckIcon, XIcon } from "lucide-react";
+import { LuCheck as CheckIcon, LuX as XIcon } from "react-icons/lu";
 import PropTypes from "prop-types";
 
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
