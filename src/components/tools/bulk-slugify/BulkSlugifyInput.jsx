@@ -29,24 +29,8 @@ const BulkSlugifyInput = ({
   onClear,
   onReset,
 }) => {
-  const maxLines = 100;
-  const linesUsed = input
-    .split("\n")
-    .filter((line) => line.trim() !== "").length;
-  const linesRemaining = maxLines - linesUsed;
-
   const handleInputChange = (e) => {
-    const newValue = e.target.value;
-    const newLines = newValue.split("\n").slice(0, maxLines); // Limit to maxLines
-    setInput(newLines.join("\n")); // Remove extra lines
-  };
-
-  const handleInputBlur = () => {
-    const cleanedInput = input
-      .split("\n")
-      .filter((line) => line.trim() !== "")
-      .join("\n");
-    setInput(cleanedInput);
+    setInput(e.target.value);
   };
 
   const handleSubmit = (e) => {
@@ -69,18 +53,7 @@ const BulkSlugifyInput = ({
             value={input}
             rows={5}
             onChange={handleInputChange}
-            onBlur={handleInputBlur}
           />
-
-          <p className="text-muted-foreground text-sm">
-            Lines used: <span className="font-bold">{linesUsed}</span> /{" "}
-            {maxLines}
-            {linesRemaining >= 0 ? (
-              <span> ({linesRemaining} remaining)</span>
-            ) : (
-              <span className="text-red-500"> (Limit exceeded)</span>
-            )}
-          </p>
 
           <div className="flex flex-col gap-2">
             <p className="text-muted-foreground text-sm">
