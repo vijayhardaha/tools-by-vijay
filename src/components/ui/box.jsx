@@ -31,7 +31,7 @@ import PropTypes from "prop-types";
  * @param {string} [props.mt=null] - Tailwind top margin class (e.g., `mt-4`).
  * @param {string} [props.mb=null] - Tailwind bottom margin class (e.g., `mb-4`).
  * @param {React.ReactNode} props.children - The content to render inside the Box.
- * @param {Object} rest - Additional props passed to the `div` element.
+ * @param {Object} [props.rest] - Additional props passed to the rendered component.
  * @returns {JSX.Element} The rendered Box component.
  */
 const Box = ({
@@ -119,6 +119,7 @@ Box.propTypes = {
   mt: PropTypes.string,
   mb: PropTypes.string,
   children: PropTypes.node,
+  rest: PropTypes.object, // Added prop type for rest
 };
 
 export default Box;

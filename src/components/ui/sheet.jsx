@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import PropTypes from "prop-types";
 import { createPortal } from "react-dom";
 import { XIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -13,6 +14,16 @@ const SheetContext = React.createContext({
   disableClose: true,
 });
 
+/**
+ * Sheet component to manage state and provide context.
+ *
+ * @param {Object} props - Component props
+ * @param {boolean} [props.open] - Controlled open state
+ * @param {Function} [props.onOpenChange] - Callback for open state change
+ * @param {boolean} [props.disableClose=true] - Disable close button
+ * @param {React.ReactNode} props.children - Content inside the sheet
+ * @returns {React.ReactElement} Sheet component
+ */
 function Sheet({
   open: controlledOpen,
   onOpenChange,
@@ -44,6 +55,20 @@ function Sheet({
   );
 }
 
+Sheet.propTypes = {
+  open: PropTypes.bool,
+  onOpenChange: PropTypes.func,
+  disableClose: PropTypes.bool,
+  children: PropTypes.node,
+};
+
+/**
+ * Button to trigger the opening of the sheet.
+ *
+ * @param {Object} props - Component props
+ * @param {React.ReactNode} props.children - Trigger content
+ * @returns {React.ReactElement} SheetTrigger component
+ */
 function SheetTrigger({ children, ...props }) {
   const { onOpenChange } = React.useContext(SheetContext);
 
@@ -59,6 +84,17 @@ function SheetTrigger({ children, ...props }) {
   );
 }
 
+SheetTrigger.propTypes = {
+  children: PropTypes.node,
+};
+
+/**
+ * Button to close the sheet.
+ *
+ * @param {Object} props - Component props
+ * @param {React.ReactNode} props.children - Close button content
+ * @returns {React.ReactElement} SheetClose component
+ */
 function SheetClose({ children, ...props }) {
   const { onOpenChange } = React.useContext(SheetContext);
 
@@ -74,6 +110,17 @@ function SheetClose({ children, ...props }) {
   );
 }
 
+SheetClose.propTypes = {
+  children: PropTypes.node,
+};
+
+/**
+ * Portal for rendering sheet content outside the DOM hierarchy.
+ *
+ * @param {Object} props - Component props
+ * @param {React.ReactNode} props.children - Portal content
+ * @returns {React.ReactElement|null} SheetPortal component
+ */
 function SheetPortal({ children, ...props }) {
   const [mounted, setMounted] = React.useState(false);
 
@@ -92,6 +139,17 @@ function SheetPortal({ children, ...props }) {
   );
 }
 
+SheetPortal.propTypes = {
+  children: PropTypes.node,
+};
+
+/**
+ * Overlay for the sheet, used as a backdrop.
+ *
+ * @param {Object} props - Component props
+ * @param {string} [props.className] - Additional CSS classes
+ * @returns {React.ReactElement|null} SheetOverlay component
+ */
 function SheetOverlay({ className, ...props }) {
   const { open, onOpenChange } = React.useContext(SheetContext);
 
@@ -111,6 +169,19 @@ function SheetOverlay({ className, ...props }) {
   );
 }
 
+SheetOverlay.propTypes = {
+  className: PropTypes.string,
+};
+
+/**
+ * Main content area of the sheet.
+ *
+ * @param {Object} props - Component props
+ * @param {string} [props.className] - Additional CSS classes
+ * @param {React.ReactNode} props.children - Content inside the sheet
+ * @param {string} [props.side="right"] - Side of the screen where the sheet appears
+ * @returns {React.ReactElement|null} SheetContent component
+ */
 function SheetContent({ className, children, side = "right", ...props }) {
   const { open, onOpenChange, disableClose } = React.useContext(SheetContext);
   const contentRef = React.useRef(null);
@@ -177,6 +248,19 @@ function SheetContent({ className, children, side = "right", ...props }) {
   );
 }
 
+SheetContent.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.node,
+  side: PropTypes.oneOf(["right", "left", "top", "bottom"]),
+};
+
+/**
+ * Header section of the sheet.
+ *
+ * @param {Object} props - Component props
+ * @param {string} [props.className] - Additional CSS classes
+ * @returns {React.ReactElement} SheetHeader component
+ */
 function SheetHeader({ className, ...props }) {
   return (
     <div
@@ -187,6 +271,17 @@ function SheetHeader({ className, ...props }) {
   );
 }
 
+SheetHeader.propTypes = {
+  className: PropTypes.string,
+};
+
+/**
+ * Footer section of the sheet.
+ *
+ * @param {Object} props - Component props
+ * @param {string} [props.className] - Additional CSS classes
+ * @returns {React.ReactElement} SheetFooter component
+ */
 function SheetFooter({ className, ...props }) {
   return (
     <div
@@ -197,6 +292,17 @@ function SheetFooter({ className, ...props }) {
   );
 }
 
+SheetFooter.propTypes = {
+  className: PropTypes.string,
+};
+
+/**
+ * Title of the sheet.
+ *
+ * @param {Object} props - Component props
+ * @param {string} [props.className] - Additional CSS classes
+ * @returns {React.ReactElement} SheetTitle component
+ */
 function SheetTitle({ className, ...props }) {
   return (
     <h2
@@ -207,6 +313,17 @@ function SheetTitle({ className, ...props }) {
   );
 }
 
+SheetTitle.propTypes = {
+  className: PropTypes.string,
+};
+
+/**
+ * Description text for the sheet.
+ *
+ * @param {Object} props - Component props
+ * @param {string} [props.className] - Additional CSS classes
+ * @returns {React.ReactElement} SheetDescription component
+ */
 function SheetDescription({ className, ...props }) {
   return (
     <p
@@ -216,6 +333,10 @@ function SheetDescription({ className, ...props }) {
     />
   );
 }
+
+SheetDescription.propTypes = {
+  className: PropTypes.string,
+};
 
 export {
   Sheet,

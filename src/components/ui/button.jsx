@@ -4,7 +4,15 @@ import PropTypes from "prop-types";
 
 import { cn } from "@/lib/utils";
 
-// Custom Slot implementation to replace @radix-ui/react-slot
+/**
+ * Custom Slot implementation to replace @radix-ui/react-slot.
+ * It clones the child element and merges props, including forwarding refs.
+ *
+ * @param {Object} props - Component props
+ * @param {React.ReactNode} props.children - The child element to clone
+ * @param {React.Ref} [props.ref] - Ref to forward to the child element
+ * @returns {React.ReactElement|null} Cloned child element or null if invalid
+ */
 const Slot = React.forwardRef(({ children, ...props }, ref) => {
   if (!React.isValidElement(children)) {
     return null;
