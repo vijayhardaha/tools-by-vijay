@@ -8,12 +8,22 @@ import { getToolIcon } from "@/lib/utils/getToolIcon";
 // Get tool data
 const tool = getToolBySlug("slugify");
 
-// Export metadata for SEO
+/**
+ * Metadata for the Slugify page, used for SEO purposes.
+ * @type {Object}
+ * @property {string} title - The SEO title of the page.
+ * @property {string} description - The SEO description of the page.
+ */
 export const metadata = {
   title: tool?.seoTitle || "",
   description: tool?.seoDescription || "",
 };
 
+/**
+ * Slugify page component that renders the layout, header, and content for the Slugify tool.
+ *
+ * @returns {JSX.Element} The rendered Slugify page.
+ */
 const Slugify = () => {
   return (
     <PageLayout>

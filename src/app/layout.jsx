@@ -10,6 +10,10 @@ export const metadata = {
 import { League_Spartan, Geist_Mono } from "next/font/google";
 import PropTypes from "prop-types";
 
+/**
+ * Configuration for the League Spartan font.
+ * @type {import("next/font/google").GoogleFont}
+ */
 const leagueSpartan = League_Spartan({
   subsets: ["latin"],
   display: "swap",
@@ -17,6 +21,10 @@ const leagueSpartan = League_Spartan({
   variable: "--font-league-spartan",
 });
 
+/**
+ * Configuration for the Geist Mono font.
+ * @type {import("next/font/google").GoogleFont}
+ */
 const geistMono = Geist_Mono({
   subsets: ["latin"],
   display: "swap",

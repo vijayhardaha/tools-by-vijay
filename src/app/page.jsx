@@ -2,8 +2,12 @@ import ToolCard from "@/components/home/ToolCard";
 import PageLayout from "@/components/page/PageLayout";
 
 /**
- * Home component that renders a grid of tools.
- * @returns {JSX.Element} The rendered Home component.
+ * Home component that renders a grid layout of tool cards.
+ *
+ * Each `ToolCard` represents a specific tool with its unique configuration,
+ * such as slug, size, and additional styling options.
+ *
+ * @returns {JSX.Element} The rendered Home component with a grid of tools.
  */
 const Home = () => {
   return (
