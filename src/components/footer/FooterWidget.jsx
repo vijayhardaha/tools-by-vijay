@@ -13,12 +13,12 @@ const FooterWidget = ({ title, links }) => {
   return (
     <div className="footer-widget mb-8">
       <h3 className="mb-2 text-base font-bold">{title}</h3>
-      <ul className="space-y-1">
+      <ul className="flex flex-col gap-1">
         {links.map((link) => (
           <li key={link.name} className="m-0 p-0">
             <Link
               href={link.href}
-              className="text-muted-foreground text-xs transition-colors hover:text-gray-900"
+              className="text-muted-foreground hover:text-primary text-sm transition-colors"
             >
               {link.name}
             </Link>
