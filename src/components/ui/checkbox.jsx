@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { CheckIcon } from "lucide-react";
+import { LuCheck as CheckIcon } from "react-icons/lu";
 import PropTypes from "prop-types";
 
 import { cn } from "@/lib/utils";
@@ -13,6 +13,9 @@ import { cn } from "@/lib/utils";
  * @param {string} [props.className] - Additional CSS classes
  * @param {boolean} [props.checked] - Whether the checkbox is checked
  * @param {Function} [props.onCheckedChange] - Callback when checkbox state changes
+ * @param {boolean} [props.disabled] - Whether the checkbox is disabled
+ * @param {boolean} [props.required] - Whether the checkbox is required
+ * @param {string} [props.id] - ID for the checkbox input element
  * @param {React.ReactNode} [props.children] - Optional child elements
  * @returns {React.ReactElement} Checkbox component
  */
@@ -23,6 +26,7 @@ function Checkbox({
   onCheckedChange,
   disabled,
   required,
+  id,
   ...props
 }) {
   const [internalChecked, setInternalChecked] = React.useState(
@@ -32,6 +36,11 @@ function Checkbox({
   const isControlled = controlledChecked !== undefined;
   const isChecked = isControlled ? controlledChecked : internalChecked;
 
+  /**
+   * Handles the checkbox state change event
+   *
+   * @param {React.ChangeEvent<HTMLInputElement>} event - The change event
+   */
   const handleChange = (event) => {
     if (!isControlled) {
       setInternalChecked(event.target.checked);
@@ -53,6 +62,7 @@ function Checkbox({
     >
       <input
         type="checkbox"
+        id={id}
         className="absolute size-4 cursor-pointer opacity-0"
         checked={isChecked}
         onChange={handleChange}
@@ -78,6 +88,7 @@ Checkbox.propTypes = {
   onCheckedChange: PropTypes.func,
   disabled: PropTypes.bool,
   required: PropTypes.bool,
+  id: PropTypes.string,
   children: PropTypes.node,
 };
 

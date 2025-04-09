@@ -2,18 +2,37 @@
 
 import PropTypes from "prop-types";
 
-import { Button } from "../../../../comps/ui/button";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardHeader,
   CardTitle,
   CardContent,
   CardDescription,
-} from "../../../../comps/ui/card";
-import { Checkbox } from "../../../../comps/ui/checkbox";
-import { Input } from "../../../../comps/ui/input";
+} from "@/components/ui/card";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
+/**
+ * Component for inputting text to generate slugs with various options
+ *
+ * @param {Object} props - Component props
+ * @param {string} props.input - The input text to be slugified
+ * @param {boolean} props.useUnderscore - Whether to use underscore instead of dash
+ * @param {Function} props.setInput - Function to update input state
+ * @param {boolean} props.removeNumbers - Whether to remove numbers from the slug
+ * @param {boolean} props.useLowercase - Whether to convert the slug to lowercase
+ * @param {boolean} props.useLitinize - Whether to latinize the text (convert accents)
+ * @param {Function} props.setUseUnderscore - Function to toggle underscore usage
+ * @param {Function} props.setRemoveNumbers - Function to toggle number removal
+ * @param {Function} props.setUseLowercase - Function to toggle lowercase conversion
+ * @param {Function} props.setUseLitinize - Function to toggle latinize usage
+ * @param {Function} props.onGenerate - Function called when generate button is clicked
+ * @param {Function} props.onClear - Function to clear the input
+ * @param {Function} props.onReset - Function to reset all options to defaults
+ * @returns {JSX.Element} The SlugifyInput component
+ */
 const SlugifyInput = ({
   input = "",
   useUnderscore = false,
@@ -29,6 +48,11 @@ const SlugifyInput = ({
   onClear,
   onReset,
 }) => {
+  /**
+   * Handles form submission and triggers slug generation
+   *
+   * @param {React.FormEvent} e - The form event
+   */
   const handleSubmit = (e) => {
     e.preventDefault();
     onGenerate();

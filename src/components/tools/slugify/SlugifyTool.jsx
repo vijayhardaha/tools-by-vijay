@@ -17,6 +17,11 @@ const SlugifyTool = () => {
   const [useLitinize, setUseLitinize] = useState(true);
   const [generatedOutput, setGeneratedOutput] = useState("");
 
+  /**
+   * Generates a slug from the given text based on the current settings.
+   * @param {string} text - The input text to be slugified.
+   * @returns {string} The generated slug.
+   */
   const generateSlug = (text) => {
     let processedText = text;
 
@@ -41,17 +46,28 @@ const SlugifyTool = () => {
     return slug;
   };
 
+  /**
+   * Handles the generation of the slug and updates the output state.
+   * This function is triggered when the "Generate" button is clicked.
+   */
   const handleGenerate = () => {
-    // Generate the slug only when the button is clicked
     const slug = generateSlug(input);
     setGeneratedOutput(slug);
   };
 
+  /**
+   * Clears the input and output fields.
+   * This function is triggered when the "Clear" button is clicked.
+   */
   const handleClear = () => {
     setInput("");
     setGeneratedOutput("");
   };
 
+  /**
+   * Resets all input fields and settings to their default values.
+   * This function is triggered when the "Reset" button is clicked.
+   */
   const handleReset = () => {
     setInput("");
     setGeneratedOutput("");

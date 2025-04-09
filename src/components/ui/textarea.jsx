@@ -1,7 +1,16 @@
 import * as React from "react";
+import PropTypes from "prop-types";
 
 import { cn } from "@/lib/utils";
 
+/**
+ * Textarea component for multi-line text input.
+ *
+ * @param {Object} props - The component props
+ * @param {string} [props.className] - Additional CSS classes to apply to the textarea
+ * @param {React.TextareaHTMLAttributes<HTMLTextAreaElement>} props.props - All other props are passed to the textarea element
+ * @returns {JSX.Element} A styled textarea element
+ */
 function Textarea({ className, ...props }) {
   return (
     <textarea
@@ -14,5 +23,12 @@ function Textarea({ className, ...props }) {
     />
   );
 }
+
+Textarea.propTypes = {
+  /**
+   * Additional CSS classes to apply to the textarea
+   */
+  className: PropTypes.string,
+};
 
 export { Textarea };

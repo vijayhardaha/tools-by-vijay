@@ -1,3 +1,12 @@
+/**
+ * SlugifyInfo component
+ *
+ * Displays information about the Slugify Tool, including its description,
+ * benefits, and credits. This component provides contextual information
+ * to users about what the tool does and why they might want to use it.
+ *
+ * @returns {JSX.Element} The rendered SlugifyInfo component
+ */
 const SlugifyInfo = () => {
   return (
     <div className="max-w-none space-y-8">

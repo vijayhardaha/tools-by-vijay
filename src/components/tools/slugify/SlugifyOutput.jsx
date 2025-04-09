@@ -5,19 +5,29 @@ import { useState } from "react";
 import { CopyIcon, CheckIcon } from "lucide-react";
 import PropTypes from "prop-types";
 
-import { Button } from "../../../../comps/ui/button";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
-} from "../../../../comps/ui/card";
-import { Input } from "../../../../comps/ui/input";
+import { Button } from "@/components/ui/button";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 
+/**
+ * Component that displays the slugified output and provides copy functionality.
+ *
+ * @component
+ * @param {Object} props - The component props
+ * @param {string} props.output - The slugified text to display
+ * @returns {JSX.Element} The SlugifyOutput component
+ */
 const SlugifyOutput = ({ output }) => {
   const [copied, setCopied] = useState(false);
 
+  /**
+   * Copies the output text to the clipboard and shows a temporary confirmation.
+   *
+   * @async
+   * @function
+   * @returns {Promise<void>}
+   */
   const copyToClipboard = async () => {
     await navigator.clipboard.writeText(output);
     setCopied(true);

@@ -1,7 +1,16 @@
 import * as React from "react";
+import PropTypes from "prop-types";
 
 import { cn } from "@/lib/utils";
 
+/**
+ * Input component for text entry, file uploads, and other input types.
+ *
+ * @param {Object} props - Component props
+ * @param {string} [props.className] - Additional CSS classes
+ * @param {string} [props.type="text"] - Type of input (text, password, email, etc.)
+ * @returns {React.ReactElement} Input component
+ */
 function Input({ className, type, ...props }) {
   return (
     <input
@@ -17,5 +26,14 @@ function Input({ className, type, ...props }) {
     />
   );
 }
+
+Input.propTypes = {
+  className: PropTypes.string,
+  type: PropTypes.string,
+};
+
+Input.defaultProps = {
+  type: "text",
+};
 
 export { Input };
