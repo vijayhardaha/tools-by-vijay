@@ -1,6 +1,6 @@
+import Box from "../ui/box";
 import FooterAbout from "@/components/footer/FooterAbout";
 import FooterWidget from "@/components/footer/FooterWidget";
-import Box from "../ui/box";
 import footerLinks from "@/constants/footerLinks";
 
 /**

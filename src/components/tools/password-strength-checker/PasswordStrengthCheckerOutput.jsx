@@ -1,7 +1,7 @@
 "use client";
 
-import { LuCheck as CheckIcon, LuX as XIcon } from "react-icons/lu";
 import PropTypes from "prop-types";
+import { LuCheck as CheckIcon, LuX as XIcon } from "react-icons/lu";
 
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";

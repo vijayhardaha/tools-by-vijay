@@ -1,6 +1,13 @@
 "use client";
 
-import * as React from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
 import {
   LuCheck as CheckIcon,
@@ -10,7 +17,7 @@ import {
 
 import { cn } from "@/lib/utils";
 
-const SelectContext = React.createContext({
+const SelectContext = createContext({
   selectedValue: "",
   handleValueChange: () => {},
   open: false,
@@ -26,32 +33,33 @@ function Select({
   disabled = false,
   ...props
 }) {
-  const [selectedValue, setSelectedValue] = React.useState(
+  const [selectedValue, setSelectedValue] = useState(
     defaultValue || value || ""
   );
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (value !== undefined && value !== selectedValue) {
       setSelectedValue(value);
     }
   }, [value, selectedValue]);
 
-  const handleValueChange = React.useCallback(
+  const handleValueChange = useCallback(
     (newValue) => {
-      if (value === undefined) {
-        setSelectedValue(newValue);
-      }
+      // Always update internal state regardless of controlled/uncontrolled mode
+      setSelectedValue(newValue);
+
+      // Call the callback if provided
       onValueChange?.(newValue);
       setOpen(false);
     },
-    [onValueChange, value]
+    [onValueChange]
   );
 
   // Close dropdown when clicking outside
-  const selectRef = React.useRef(null);
+  const selectRef = useRef(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const handleOutsideClick = (event) => {
       if (selectRef.current && !selectRef.current.contains(event.target)) {
         setOpen(false);
@@ -77,23 +85,17 @@ function Select({
         disabled,
       }}
     >
-      <div data-slot="select" ref={selectRef} {...props}>
+      <div className="relative" data-slot="select" ref={selectRef} {...props}>
         {children}
       </div>
     </SelectContext.Provider>
   );
 }
 
-function SelectGroup({ children, ...props }) {
-  return (
-    <div data-slot="select-group" {...props}>
-      {children}
-    </div>
-  );
-}
-
 function SelectValue({ children, placeholder, ...props }) {
-  const { selectedValue } = React.useContext(SelectContext);
+  const { selectedValue } = useContext(SelectContext);
+
+  // If there's a selected value, show it, otherwise show the placeholder
   return (
     <span data-slot="select-value" {...props}>
       {selectedValue ? children : placeholder}
@@ -102,7 +104,7 @@ function SelectValue({ children, placeholder, ...props }) {
 }
 
 function SelectTrigger({ className, size = "default", children, ...props }) {
-  const { open, setOpen, disabled } = React.useContext(SelectContext);
+  const { open, setOpen, disabled } = useContext(SelectContext);
 
   return (
     <button
@@ -127,7 +129,7 @@ function SelectTrigger({ className, size = "default", children, ...props }) {
 }
 
 function SelectContent({ className, children, position = "popper", ...props }) {
-  const { open } = React.useContext(SelectContext);
+  const { open } = useContext(SelectContext);
 
   if (!open) return null;
 
@@ -135,7 +137,7 @@ function SelectContent({ className, children, position = "popper", ...props }) {
     <div
       data-slot="select-content"
       className={cn(
-        "bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 absolute z-50 max-h-60 min-w-[8rem] overflow-x-hidden overflow-y-auto rounded-md border shadow-md",
+        "bg-popover text-popover-foreground absolute z-50 max-h-60 min-w-[8rem] overflow-x-hidden overflow-y-auto rounded-md border shadow-md",
         position === "popper" && "left-0 mt-1",
         className
       )}
@@ -165,29 +167,48 @@ function SelectItem({
   disabled = false,
   ...props
 }) {
-  const { selectedValue, handleValueChange } = React.useContext(SelectContext);
+  const { selectedValue, handleValueChange } = useContext(SelectContext);
   const isSelected = selectedValue === value;
+
+  // Fix the handleClick function by using event parameter
+  const handleClick = (e) => {
+    e.preventDefault(); // Prevent default behavior
+    e.stopPropagation(); // Stop event from bubbling
+
+    if (!disabled) {
+      handleValueChange(value);
+    }
+  };
+
+  const handleKeyDown = (e) => {
+    if (!disabled && (e.key === "Enter" || e.key === " ")) {
+      e.preventDefault();
+      handleValueChange(value);
+    }
+  };
 
   return (
     <div
       data-slot="select-item"
       data-selected={isSelected}
-      data-disabled={disabled}
+      aria-disabled={disabled}
       className={cn(
-        "focus:bg-accent focus:text-accent-foreground [&_svg:not([class*='text-'])]:text-muted-foreground relative flex w-full cursor-default items-center gap-2 rounded-sm py-1.5 pr-8 pl-2 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        "focus:bg-accent focus:text-accent-foreground [&_svg:not([class*='text-'])]:text-muted-foreground hover:bg-accent/50 relative flex w-full items-center gap-2 rounded-sm py-1.5 pr-8 pl-2 text-sm outline-hidden select-none aria-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
         isSelected && "bg-accent/50",
         disabled ? "cursor-not-allowed opacity-50" : "cursor-pointer",
         className
       )}
-      onClick={() => !disabled && handleValueChange(value)}
+      onClick={handleClick}
+      onKeyDown={handleKeyDown}
       role="option"
       aria-selected={isSelected}
+      tabIndex={disabled ? -1 : 0}
       {...props}
     >
       <span className="absolute right-2 flex size-3.5 items-center justify-center">
         {isSelected && <CheckIcon className="size-4" />}
       </span>
-      <span>{children}</span>
+      <span className="whitespace-nowrap">{children}</span>
     </div>
   );
 }
@@ -243,7 +264,6 @@ function SelectScrollDownButton({ className, ...props }) {
 export {
   Select,
   SelectContent,
-  SelectGroup,
   SelectItem,
   SelectLabel,
   SelectScrollDownButton,

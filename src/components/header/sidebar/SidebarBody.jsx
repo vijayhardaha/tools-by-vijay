@@ -3,7 +3,6 @@
 import Link from "next/link";
 import PropTypes from "prop-types";
 
-import { SheetDescription } from "../../ui/sheet";
 import tools from "@/constants/tools";
 
 /**

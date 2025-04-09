@@ -5,15 +5,31 @@ import CssMinifierTool from "@/components/tools/css-minifier/CssMinifierTool";
 import { getToolBySlug } from "@/lib/utils/getToolBySlug";
 import { getToolIcon } from "@/lib/utils/getToolIcon";
 
-// Get tool data
+/**
+ * Fetches tool data from the tools database
+ * @constant {Object} tool - Tool configuration with properties like name, description, and SEO metadata
+ */
 const tool = getToolBySlug("css-minifier");
 
-// Export metadata for SEO
+/**
+ * Metadata for the Slugify page, used for SEO purposes.
+ * @type {Object}
+ * @property {string} title - The SEO title of the page.
+ * @property {string} description - The SEO description of the page.
+ */
 export const metadata = {
   title: tool?.seoTitle || "",
   description: tool?.seoDescription || "",
 };
 
+/**
+ * CSS Minifier page component.
+ *
+ * Renders the CSS Minifier tool page with appropriate layout, header,
+ * and the minifier tool component.
+ *
+ * @returns {JSX.Element} The rendered CSS Minifier page
+ */
 const CssMinifier = () => {
   return (
     <PageLayout>

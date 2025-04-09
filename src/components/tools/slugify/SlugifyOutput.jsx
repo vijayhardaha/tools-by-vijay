@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 
-import { LuCopy as CopyIcon, LuCheck as CheckIcon } from "react-icons/lu";
 import PropTypes from "prop-types";
+import { LuCopy as CopyIcon, LuCheck as CheckIcon } from "react-icons/lu";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";

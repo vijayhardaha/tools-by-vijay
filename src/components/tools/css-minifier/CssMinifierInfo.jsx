@@ -1,33 +1,31 @@
 /**
- * HtmlMinifierInfo component
+ * CssMinifierInfo component
  *
- * Displays information about the HTML Minifier Tool, including its description,
+ * Displays information about the CSS Minifier Tool, including its description,
  * benefits, and credits. This component provides contextual information
  * to users about what the tool does and why they might want to use it.
  *
- * @returns {JSX.Element} The rendered HtmlMinifierInfo component
+ * @returns {JSX.Element} The rendered CssMinifierInfo component
  */
-const HtmlMinifierInfo = () => {
+const CssMinifierInfo = () => {
   return (
     <div className="max-w-none space-y-8">
       <section>
         <h2 className="text-primary mb-4 text-xl font-bold">
-          About HTML Minifier Tool
+          About CSS Minifier Tool
         </h2>
         <p className="mb-4">
-          The HTML Minifier Tool is an online utility designed to reduce the
-          size of your HTML files by removing unnecessary characters,
-          whitespace, comments, and optimizing the code structure. This process,
-          known as minification, helps improve page load times and reduce
-          bandwidth usage, resulting in a better user experience and potentially
-          better search engine rankings.
+          The CSS Minifier Tool is an online utility designed to reduce the size
+          of your CSS files by removing unnecessary characters, whitespace,
+          comments, and optimizing the code structure. This process, known as
+          minification, helps improve page load times and reduce bandwidth
+          usage, resulting in a better user experience and potentially better
+          search engine rankings.
         </p>
         <p className="mb-4">
           We use the{" "}
-          <code className="bg-dark2 rounded px-1 py-0.5">
-            html-minifier-terser
-          </code>{" "}
-          package under the hood, which provides powerful and configurable HTML
+          <code className="bg-dark2 rounded px-1 py-0.5">clean-css</code>{" "}
+          package under the hood, which provides powerful and configurable CSS
           minification capabilities. With our tool, you can customize the
           minification process to suit your specific needs, whether you’re
           working on a small website or a large web application.
@@ -36,7 +34,7 @@ const HtmlMinifierInfo = () => {
 
       <section>
         <h3 className="text-primary mb-4 text-lg font-bold">
-          Why You Should Use an HTML Minifier
+          Why You Should Use a CSS Minifier
         </h3>
         <ul className="list-inside list-disc space-y-1 pl-4">
           <li>
@@ -52,12 +50,12 @@ const HtmlMinifierInfo = () => {
             rankings
           </li>
           <li>
-            Removes comments and unnecessary code that might reveal sensitive
-            information
+            Removes comments and unnecessary whitespace while preserving
+            functionality
           </li>
           <li>
-            Makes your code harder to read for humans, adding a small layer of
-            obfuscation
+            Helps to optimize your website for mobile and low-bandwidth
+            connections
           </li>
         </ul>
       </section>
@@ -67,11 +65,11 @@ const HtmlMinifierInfo = () => {
           How to Use This Tool
         </h3>
         <ol className="list-inside list-decimal space-y-1 pl-4">
-          <li>Paste your HTML code into the input box</li>
+          <li>Paste your CSS code into the input box</li>
           <li>
             Configure the minification options according to your preferences
           </li>
-          <li>Click the “Minify” button to process your HTML</li>
+          <li>Click the “Minify” button to process your CSS</li>
           <li>Copy the minified output using the “Copy to Clipboard” button</li>
         </ol>
       </section>
@@ -94,18 +92,18 @@ const HtmlMinifierInfo = () => {
           </strong>
           . This tool uses the open-source library{" "}
           <a
-            href="https://www.npmjs.com/package/html-minifier-terser"
+            href="https://www.npmjs.com/package/clean-css"
             className="text-blue-400 underline"
             target="_blank"
             rel="noreferrer"
           >
-            html-minifier-terser
+            clean-css
           </a>{" "}
-          for HTML minification.
+          for CSS minification.
         </p>
       </section>
     </div>
   );
 };
 
-export default HtmlMinifierInfo;
+export default CssMinifierInfo;

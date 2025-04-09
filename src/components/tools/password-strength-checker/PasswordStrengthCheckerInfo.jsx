@@ -48,7 +48,7 @@ const PasswordStrengthCheckerInfo = () => {
           </li>
           <li>
             <strong>Unpredictability:</strong> Avoiding common words, patterns
-            (like "123456"), and personal information makes passwords harder to
+            (like “123456”), and personal information makes passwords harder to
             guess.
           </li>
           <li>
@@ -74,12 +74,12 @@ const PasswordStrengthCheckerInfo = () => {
           </li>
           <li>
             <strong>Character Substitution:</strong> Simple substitutions (like
-            "p@ssw0rd") are well-known patterns that password cracking tools can
+            “p@ssw0rd”) are well-known patterns that password cracking tools can
             easily detect.
           </li>
           <li>
-            <strong>Keyboard Patterns:</strong> Sequences like "qwerty" or
-            "12345" are among the first combinations attackers try.
+            <strong>Keyboard Patterns:</strong> Sequences like “qwerty” or
+            “12345” are among the first combinations attackers try.
           </li>
           <li>
             <strong>Password Reuse:</strong> Using the same password across

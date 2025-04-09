@@ -11,14 +11,14 @@ import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
 
 /**
- * Component that displays the minified HTML output and provides copy functionality
+ * Component that displays the minified CSS output and provides copy functionality
  *
  * @component
  * @param {Object} props - The component props
- * @param {string} props.output - The minified HTML to display
- * @returns {JSX.Element} The HtmlMinifierOutput component
+ * @param {string} props.output - The minified CSS to display
+ * @returns {JSX.Element} The CssMinifierOutput component
  */
-const HtmlMinifierOutput = ({ output }) => {
+const CssMinifierOutput = ({ output }) => {
   const [copied, setCopied] = useState(false);
 
   /**
@@ -35,21 +35,21 @@ const HtmlMinifierOutput = ({ output }) => {
   };
 
   /**
-   * Calculates the size reduction percentage if there is output
+   * Calculates the size information if there is output
    *
    * @function
-   * @returns {string|null} The percentage of size reduction or null if no output
+   * @returns {string|null} The size information or null if no output
    */
-  const getSizeReduction = () => {
+  const getSizeInfo = () => {
     if (!output) return null;
 
     // Get the byte lengths
-    const originalSize = new Blob([output]).size;
+    const outputSize = new Blob([output]).size;
 
-    if (originalSize === 0) return "0%";
+    if (outputSize === 0) return "0 bytes";
 
     // Format the sizes for display
-    return `${originalSize} bytes`;
+    return `${outputSize} bytes`;
   };
 
   return (
@@ -57,9 +57,7 @@ const HtmlMinifierOutput = ({ output }) => {
       <CardHeader>
         <CardTitle>MINIFIED OUTPUT</CardTitle>
         <p className="text-muted-foreground text-sm">
-          {output
-            ? `Size: ${getSizeReduction()}`
-            : "Minified HTML will appear here"}
+          {output ? `Size: ${getSizeInfo()}` : "Minified CSS will appear here"}
         </p>
       </CardHeader>
       <CardContent>
@@ -94,8 +92,8 @@ const HtmlMinifierOutput = ({ output }) => {
   );
 };
 
-HtmlMinifierOutput.propTypes = {
+CssMinifierOutput.propTypes = {
   output: PropTypes.string.isRequired,
 };
 
-export default HtmlMinifierOutput;
+export default CssMinifierOutput;

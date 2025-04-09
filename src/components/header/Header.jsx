@@ -4,8 +4,8 @@ import { useState } from "react";
 
 import Logo from "@/components/header/parts/Logo";
 import MenuButton from "@/components/header/parts/MenuButton";
-import Box from "@/components/ui/box";
 import Sidebar from "@/components/header/sidebar/Sidebar";
+import Box from "@/components/ui/box";
 
 /**
  * Header component that displays the app logo and menu button
