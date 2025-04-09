@@ -35,10 +35,11 @@ function Input({ className, type, ...props }) {
         "aria-invalid:border-destructive aria-invalid:ring-destructive/20",
 
         // Disabled states
-        "disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50",
+        "disabled:cursor-not-allowed disabled:opacity-50",
 
         // Transitions and outline
         "transition-[color,box-shadow] outline-none",
+
         // Data output
         "data-[output]:outline-none data-[output]:focus-visible:ring-0 data-[output]:focus-visible:outline-none",
         "data-[output]:focus-visible:border-input",

@@ -45,7 +45,7 @@ const SlugifyOutput = ({ output }) => {
         <div className="flex gap-2">
           <Input value={output} readOnly data-output />
           <Button
-            variant={copied ? "success" : "primary"}
+            variant={copied ? "success" : "secondary"}
             disabled={!output}
             onClick={copyToClipboard}
             className="min-w-30"

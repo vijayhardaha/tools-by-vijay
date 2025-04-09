@@ -15,7 +15,6 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { cn } from "@/lib/utils";
 
 /**
  * Component that displays the generated slugs and provides copy functionality
@@ -66,18 +65,14 @@ const BulkSlugifyOutput = ({ output }) => {
           <Textarea
             value={output}
             readOnly
+            data-output
             disabled={!output}
             rows={unfilteredLinesLength || 1}
-            className="resize-none outline-none focus-visible:ring-0 focus-visible:outline-none"
           />
           <Button
-            variant="primary"
+            variant={copiedAll ? "success" : "secondary"}
             disabled={!output}
             onClick={() => copyToClipboard(output)}
-            className={cn({
-              "bg-green-600 text-white hover:bg-green-600 hover:text-white":
-                copiedAll,
-            })}
           >
             {copiedAll ? (
               <CheckIcon className="h-4 w-4" />
@@ -92,17 +87,15 @@ const BulkSlugifyOutput = ({ output }) => {
                 <Input
                   value={line}
                   readOnly
+                  data-output
                   disabled={!line}
-                  className="flex-1 outline-none focus-visible:ring-0 focus-visible:outline-none"
+                  className="flex-1"
                 />
                 <Button
-                  variant="primary"
+                  variant={copiedIndex === index ? "success" : "secondary"}
                   disabled={!line}
                   onClick={() => copyToClipboard(line, index)}
-                  className={cn("min-w-30", {
-                    "bg-green-600 text-white hover:bg-green-600 hover:text-white":
-                      copiedIndex === index,
-                  })}
+                  className="min-w-30"
                 >
                   {copiedIndex === index ? (
                     <CheckIcon className="h-4 w-4" />
