@@ -13,6 +13,7 @@ import {
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { cn } from "@/lib/utils";
 
 /**
  * Component for inputting text to generate slugs with various options
@@ -87,7 +88,13 @@ const SlugifyInput = ({
                 size="sm"
                 variant="default"
                 onClick={() => setUseUnderscore(false)}
-                className={`${!useUnderscore ? "bg-primary-400 text-foreground" : "hover:bg-foreground hover:text-background"}`}
+                disabled={!useUnderscore}
+                className={cn(
+                  "!opacity-100",
+                  !useUnderscore
+                    ? "bg-primary-400 text-foreground"
+                    : "hover:bg-foreground hover:text-background"
+                )}
               >
                 <span className="text-xs">Separate with dash (-)</span>
               </Button>
@@ -95,7 +102,13 @@ const SlugifyInput = ({
                 size="sm"
                 variant="default"
                 onClick={() => setUseUnderscore(true)}
-                className={`${useUnderscore ? "bg-primary-400 text-foreground" : "hover:bg-foreground hover:text-background"}`}
+                disabled={useUnderscore}
+                className={cn(
+                  "!opacity-100",
+                  useUnderscore
+                    ? "bg-primary-400 text-foreground"
+                    : "hover:bg-foreground hover:text-background"
+                )}
               >
                 <span className="text-xs">Separate with underscore (_)</span>
               </Button>
