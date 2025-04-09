@@ -3,15 +3,29 @@
 import { CheckIcon, XIcon } from "lucide-react";
 import PropTypes from "prop-types";
 
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
-} from "../../../../comps/ui/card";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { cn } from "@/lib/utils";
 
+/**
+ * Component to display password strength analysis results
+ *
+ * @component
+ * @param {Object} props - Component props
+ * @param {Object} props.strength - The password strength evaluation results
+ * @param {number} props.strength.score - Score from 0-4 indicating password strength
+ * @param {Object} props.strength.feedback - Feedback on the password
+ * @param {string} props.strength.feedback.warning - Warning message about password weakness
+ * @param {string[]} props.strength.feedback.suggestions - List of suggestions to improve the password
+ * @param {Object} props.strength.criteria - Password criteria evaluation
+ * @param {boolean} props.strength.criteria.length - If password meets minimum length
+ * @param {boolean} props.strength.criteria.hasUppercase - If password contains uppercase letters
+ * @param {boolean} props.strength.criteria.hasLowercase - If password contains lowercase letters
+ * @param {boolean} props.strength.criteria.hasDigit - If password contains numbers
+ * @param {boolean} props.strength.criteria.hasSpecialChar - If password contains special characters
+ * @param {string} props.password - The password being evaluated
+ * @returns {JSX.Element} The rendered password strength analysis
+ */
 const PasswordStrengthCheckerOutput = ({ strength, password }) => {
   // Strength level names
   const strengthLevels = ["Very Weak", "Weak", "Fair", "Good", "Strong"];

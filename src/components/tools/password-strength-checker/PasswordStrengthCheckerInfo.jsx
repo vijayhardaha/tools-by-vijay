@@ -1,3 +1,13 @@
+/**
+ * PasswordStrengthCheckerInfo Component
+ *
+ * @description Renders information about the Password Strength Checker tool,
+ * including explanations of how password strength is measured, common
+ * vulnerabilities, and best practices for creating secure passwords.
+ * The component is informational only and does not accept any props.
+ *
+ * @returns {JSX.Element} A div containing sections with information about password security
+ */
 const PasswordStrengthCheckerInfo = () => {
   return (
     <div className="max-w-none space-y-8">

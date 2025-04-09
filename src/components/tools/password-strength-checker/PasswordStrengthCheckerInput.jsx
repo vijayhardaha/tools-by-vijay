@@ -5,17 +5,28 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 
-import { Button } from "../../../../comps/ui/button";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardHeader,
   CardTitle,
   CardContent,
   CardDescription,
-} from "../../../../comps/ui/card";
-import { Input } from "../../../../comps/ui/input";
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Tooltip } from "@/components/ui/tooltip";
 
+/**
+ * Password Strength Checker Input Component
+ *
+ * @component
+ * @param {Object} props - Component props
+ * @param {string} props.password - The current password value
+ * @param {Function} props.onPasswordChange - Callback function when password changes
+ * @param {Function} props.onClear - Callback function to clear the password
+ * @returns {JSX.Element} Password input with visibility toggle and clear button
+ */
 const PasswordStrengthCheckerInput = ({
   password,
   onPasswordChange,
@@ -23,10 +34,18 @@ const PasswordStrengthCheckerInput = ({
 }) => {
   const [showPassword, setShowPassword] = useState(false);
 
+  /**
+   * Toggles password visibility between plain text and hidden
+   */
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
 
+  /**
+   * Handles password input changes
+   *
+   * @param {React.ChangeEvent<HTMLInputElement>} e - Input change event
+   */
   const handleChange = (e) => {
     onPasswordChange(e.target.value);
   };
@@ -52,13 +71,26 @@ const PasswordStrengthCheckerInput = ({
                 onChange={handleChange}
                 className="pr-10"
               />
-              <button
-                type="button"
-                className="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400 hover:text-gray-600"
-                onClick={togglePasswordVisibility}
-              >
-                {showPassword ? <FiEyeOff size={18} /> : <FiEye size={18} />}
-              </button>
+              <div className="absolute inset-y-0 right-0 flex items-center justify-center">
+                <Tooltip
+                  text={showPassword ? "Hide password" : "Show password"}
+                >
+                  <button
+                    type="button"
+                    className="flex h-10 w-10 items-center justify-center p-0 text-gray-400 hover:text-gray-600"
+                    onClick={togglePasswordVisibility}
+                  >
+                    <span className="sr-only">
+                      {showPassword ? "Hide password" : "Show password"}
+                    </span>
+                    {showPassword ? (
+                      <FiEyeOff size={18} />
+                    ) : (
+                      <FiEye size={18} />
+                    )}
+                  </button>
+                </Tooltip>
+              </div>
             </div>
           </div>
 

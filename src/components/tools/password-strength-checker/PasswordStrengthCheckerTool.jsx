@@ -6,8 +6,34 @@ import PasswordStrengthCheckerInfo from "./PasswordStrengthCheckerInfo";
 import PasswordStrengthCheckerInput from "./PasswordStrengthCheckerInput";
 import PasswordStrengthCheckerOutput from "./PasswordStrengthCheckerOutput";
 
+/**
+ * Password Strength Checker Tool Component
+ *
+ * Main component that handles password strength checking logic and renders
+ * the input, output, and information components.
+ *
+ * @component
+ * @returns {JSX.Element} Complete password strength checker tool interface
+ */
 const PasswordStrengthCheckerTool = () => {
   const [password, setPassword] = useState("");
+  /**
+   * @typedef {Object} StrengthCriteria
+   * @property {boolean} length - Whether password meets minimum length requirement
+   * @property {boolean} hasUppercase - Whether password contains uppercase letters
+   * @property {boolean} hasLowercase - Whether password contains lowercase letters
+   * @property {boolean} hasDigit - Whether password contains numbers
+   * @property {boolean} hasSpecialChar - Whether password contains special characters
+   *
+   * @typedef {Object} Feedback
+   * @property {string} warning - Warning message for weak passwords
+   * @property {string[]} suggestions - Array of improvement suggestions
+   *
+   * @typedef {Object} PasswordStrength
+   * @property {number} score - Password strength score (0-4)
+   * @property {Feedback} feedback - User feedback about password strength
+   * @property {StrengthCriteria} criteria - Specific criteria met by the password
+   */
   const [strength, setStrength] = useState({
     score: 0,
     feedback: {
@@ -23,6 +49,12 @@ const PasswordStrengthCheckerTool = () => {
     },
   });
 
+  /**
+   * Evaluates password strength based on various criteria
+   *
+   * @param {string} password - The password to analyze
+   * @returns {PasswordStrength} Object containing score, feedback, and criteria
+   */
   const checkPasswordStrength = (password) => {
     // Initialize criteria
     const criteria = {
@@ -84,6 +116,11 @@ const PasswordStrengthCheckerTool = () => {
     };
   };
 
+  /**
+   * Handles password changes and updates strength evaluation
+   *
+   * @param {string} newPassword - The new password value
+   */
   const handlePasswordChange = (newPassword) => {
     setPassword(newPassword);
     if (newPassword) {
@@ -107,6 +144,9 @@ const PasswordStrengthCheckerTool = () => {
     }
   };
 
+  /**
+   * Resets password and strength state to initial values
+   */
   const handleClear = () => {
     setPassword("");
     setStrength({
