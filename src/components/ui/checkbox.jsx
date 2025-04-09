@@ -54,7 +54,29 @@ function Checkbox({
     <div
       data-slot="checkbox"
       className={cn(
-        "peer border-input dark:bg-input/30 data-[checked=true]:bg-primary data-[checked=true]:text-primary-foreground dark:data-[checked=true]:bg-primary data-[checked=true]:border-primary focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive relative size-4 shrink-0 rounded-[4px] border shadow-xs transition-shadow outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50",
+        // Layout & base appearance
+        "relative size-4 shrink-0 rounded-[4px] border",
+
+        // Colors & background
+        "border-input",
+        "data-[checked=true]:bg-primary data-[checked=true]:text-primary-foreground",
+        "data-[checked=true]:border-primary",
+
+        // Accessibility & validation
+        "aria-invalid:border-destructive",
+        "aria-invalid:ring-destructive/20",
+
+        // Focus styles
+        "focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]",
+
+        // Disabled state
+        "disabled:cursor-not-allowed disabled:opacity-50",
+
+        // Transition & outline
+        "transition-shadow outline-none",
+
+        // Peer-related styling
+        "peer",
         className
       )}
       data-checked={isChecked}
@@ -74,7 +96,7 @@ function Checkbox({
           data-slot="checkbox-indicator"
           className="flex size-4 items-center justify-center text-current transition-none"
         >
-          <CheckIcon className="size-3.5" />
+          <CheckIcon className="size-3" />
         </div>
       )}
       {children}

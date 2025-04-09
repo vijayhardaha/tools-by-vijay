@@ -52,7 +52,7 @@ const ToolCard = ({
   );
 
   return (
-    <Card className={cn("flex h-full flex-col gap-4 shadow-none", className)}>
+    <Card className={cn("flex h-full flex-col gap-4", className)}>
       <CardContent>
         <div className="h-10 w-10 text-5xl">{getToolIcon(tool.slug)}</div>
       </CardContent>

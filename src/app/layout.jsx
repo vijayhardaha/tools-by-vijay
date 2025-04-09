@@ -18,7 +18,7 @@ const leagueSpartan = Work_Sans({
   subsets: ["latin"],
   display: "swap",
   weight: ["400", "500", "600", "700"],
-  variable: "--font-league-spartan",
+  variable: "--font-app-sans",
 });
 
 /**
@@ -29,7 +29,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
   display: "swap",
   weight: ["400", "500", "600", "700"],
-  variable: "--font-geist-mono",
+  variable: "--font-app-mono",
 });
 
 import "../styles/globals.css";
