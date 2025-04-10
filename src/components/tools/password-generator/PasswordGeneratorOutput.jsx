@@ -46,7 +46,13 @@ const PasswordGeneratorOutput = ({ password }) => {
       </CardHeader>
       <CardContent>
         <div className="flex gap-2">
-          <Input type="text" value={password} readOnly data-output />
+          <Input
+            type="text"
+            value={password}
+            readOnly
+            data-output
+            className="font-mono"
+          />
           <Button
             variant={copied ? "success" : "secondary"}
             disabled={!password}
