@@ -20,7 +20,7 @@ function Input({ className, type, ...props }) {
         "flex h-10 w-full min-w-0 rounded-lg px-3 py-1",
 
         // Typography
-        "placeholder:text-muted-foreground file:text-foreground text-base file:text-sm file:font-medium md:text-sm",
+        "placeholder:text-muted-foreground/50 file:text-foreground text-base file:text-sm file:font-medium md:text-sm",
 
         // Colors and borders
         "border-input text-foreground border bg-transparent",
