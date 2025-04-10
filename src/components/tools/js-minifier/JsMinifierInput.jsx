@@ -111,7 +111,7 @@ const JsMinifierInput = ({
             </div>
           </div>
 
-          <div className="mt-4 flex justify-start gap-2">
+          <div className="mt-4 flex flex-wrap gap-2">
             <Button
               type="submit"
               variant="default"

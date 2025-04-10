@@ -93,7 +93,7 @@ const PasswordGeneratorInput = ({
           <div className="space-y-4">
             <p className="font-medium">Character Types</p>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div className="flex items-center space-x-2">
                 <Checkbox
                   id="useUppercase"
@@ -150,7 +150,7 @@ const PasswordGeneratorInput = ({
             </Label>
           </div>
 
-          <div className="flex justify-start gap-2">
+          <div className="flex flex-wrap gap-2">
             <Button type="submit" variant="default" size="lg">
               Generate Password
             </Button>

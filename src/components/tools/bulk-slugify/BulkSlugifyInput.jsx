@@ -91,7 +91,7 @@ const BulkSlugifyInput = ({
 
           <div className="flex flex-col gap-2">
             <p className="text-muted-foreground text-sm">
-              Currently using:{" "}
+              urrently separating withW
               <span className="font-bold">
                 {useUnderscore ? "Underscore (_)" : "Dash (-)"}
               </span>
@@ -104,7 +104,7 @@ const BulkSlugifyInput = ({
                 disabled={!useUnderscore}
                 className={cn("!opacity-100")}
               >
-                <span className="text-xs">Separate with dash (-)</span>
+                <span className="text-xs">With dash (-)</span>
               </Button>
               <Button
                 size="sm"
@@ -113,12 +113,12 @@ const BulkSlugifyInput = ({
                 disabled={useUnderscore}
                 className={cn("!opacity-100")}
               >
-                <span className="text-xs">Separate with underscore (_)</span>
+                <span className="text-xs">With underscore (_)</span>
               </Button>
             </div>
           </div>
 
-          <div className="flex space-x-4">
+          <div className="flex flex-wrap gap-4 gap-x-6">
             <div className="flex items-center space-x-1">
               <Checkbox
                 id="useLowercase"
@@ -147,7 +147,7 @@ const BulkSlugifyInput = ({
             </div>
           </div>
 
-          <div className="mt-4 flex justify-start gap-2">
+          <div className="mt-4 flex flex-wrap gap-2">
             <Button type="submit" variant="default" size="lg" disabled={!input}>
               Generate
             </Button>

@@ -65,7 +65,7 @@ const HtmlMinifierInput = ({
 
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             <div className="space-y-4">
-              <h3 className="text-base font-semibold">Content Options</h3>
+              <h3 className="text-base font-bold">Content Options</h3>
               <div className="flex items-center space-x-2">
                 <Checkbox
                   id="removeComments"
@@ -131,7 +131,7 @@ const HtmlMinifierInput = ({
             </div>
 
             <div className="space-y-4">
-              <h3 className="text-base font-semibold">Element Options</h3>
+              <h3 className="text-base font-bold">Element Options</h3>
               <div className="flex items-center space-x-2">
                 <Checkbox
                   id="removeEmptyElements"
@@ -195,7 +195,7 @@ const HtmlMinifierInput = ({
             </div>
 
             <div className="space-y-4">
-              <h3 className="text-base font-semibold">Advanced Options</h3>
+              <h3 className="text-base font-bold">Advanced Options</h3>
               <div className="flex items-center space-x-2">
                 <Checkbox
                   id="removeScriptTypeAttributes"
@@ -263,7 +263,7 @@ const HtmlMinifierInput = ({
             </div>
           </div>
 
-          <div className="mt-4 flex justify-start gap-2">
+          <div className="mt-4 flex flex-wrap gap-2">
             <Button type="submit" variant="default" size="lg" disabled={!input}>
               Minify
             </Button>
