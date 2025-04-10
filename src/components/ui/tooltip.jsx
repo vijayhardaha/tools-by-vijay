@@ -44,7 +44,7 @@ function Tooltip({
         offset={sideOffset}
         style={{ zIndex: 9999 }}
         className={cn(
-          "!text-primary-foreground !rounded-none !bg-black !px-3 !py-1.5 !text-xs !leading-4 !font-semibold !shadow-sm",
+          "!text-primary-foreground !-mt-0.5 !rounded-sm !bg-black !px-3 !py-1.5 !text-xs !leading-4 !font-normal !shadow-sm",
           className
         )}
       />
