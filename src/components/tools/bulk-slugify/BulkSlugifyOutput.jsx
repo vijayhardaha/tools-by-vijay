@@ -3,9 +3,7 @@
 import { useState } from "react";
 
 import PropTypes from "prop-types";
-import { LuCopy as CopyIcon, LuCheck as CheckIcon } from "react-icons/lu";
 
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardHeader,
@@ -13,6 +11,7 @@ import {
   CardContent,
   CardDescription,
 } from "@/components/ui/card";
+import CopyButton from "@/components/ui/copy-button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
@@ -68,18 +67,15 @@ const BulkSlugifyOutput = ({ output }) => {
             data-output
             rows={unfilteredLinesLength || 1}
           />
-          <Button
-            variant={copiedAll ? "success" : "secondary"}
+
+          <CopyButton
+            copied={copiedAll}
             disabled={!output}
             onClick={() => copyToClipboard(output)}
-          >
-            {copiedAll ? (
-              <CheckIcon className="h-4 w-4" />
-            ) : (
-              <CopyIcon className="h-4 w-4" />
-            )}
-            {copiedAll ? "Copied All!" : "Copy All"}
-          </Button>
+            copyText="Copy All"
+            copiedText="Copied All!"
+          />
+
           <div className="flex flex-col gap-2">
             {lines.map((line, index) => (
               <div key={index} className="flex items-center gap-2">
@@ -90,19 +86,11 @@ const BulkSlugifyOutput = ({ output }) => {
                   data-output
                   className="flex-1"
                 />
-                <Button
-                  variant={copiedIndex === index ? "success" : "secondary"}
+                <CopyButton
+                  copied={copiedIndex === index}
                   disabled={!line}
                   onClick={() => copyToClipboard(line, index)}
-                  className="min-w-30"
-                >
-                  {copiedIndex === index ? (
-                    <CheckIcon className="h-4 w-4" />
-                  ) : (
-                    <CopyIcon className="h-4 w-4" />
-                  )}
-                  {copiedIndex === index ? "Copied!" : "Copy"}
-                </Button>
+                />
               </div>
             ))}
           </div>

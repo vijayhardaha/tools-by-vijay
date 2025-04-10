@@ -3,10 +3,9 @@
 import { useState } from "react";
 
 import PropTypes from "prop-types";
-import { LuCopy as CopyIcon, LuCheck as CheckIcon } from "react-icons/lu";
 
-import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import CopyButton from "@/components/ui/copy-button";
 import { Input } from "@/components/ui/input";
 
 /**
@@ -41,7 +40,7 @@ const PasswordGeneratorOutput = ({ password }) => {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>GENERATED PASSWORD</CardTitle>
+        <CardTitle>Generated Password</CardTitle>
         <p className="text-muted-foreground text-sm">Your secure password</p>
       </CardHeader>
       <CardContent>
@@ -53,19 +52,11 @@ const PasswordGeneratorOutput = ({ password }) => {
             data-output
             className="font-mono"
           />
-          <Button
-            variant={copied ? "success" : "secondary"}
+          <CopyButton
+            copied={copied}
             disabled={!password}
             onClick={copyToClipboard}
-            className="min-w-30"
-          >
-            {copied ? (
-              <CheckIcon className="h-4 w-4" />
-            ) : (
-              <CopyIcon className="h-4 w-4" />
-            )}
-            {copied ? "Copied!" : "Copy"}
-          </Button>
+          />
         </div>
       </CardContent>
     </Card>

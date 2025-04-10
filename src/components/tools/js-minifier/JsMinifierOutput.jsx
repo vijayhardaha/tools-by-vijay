@@ -3,12 +3,16 @@
 import { useState } from "react";
 
 import PropTypes from "prop-types";
-import { LuCopy as CopyIcon, LuCheck as CheckIcon } from "react-icons/lu";
 
-import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardContent,
+  CardDescription,
+} from "@/components/ui/card";
+import CopyButton from "@/components/ui/copy-button";
 import { Textarea } from "@/components/ui/textarea";
-import { cn } from "@/lib/utils";
 
 /**
  * Component that displays the minified JavaScript output and provides copy functionality
@@ -76,30 +80,19 @@ const JsMinifierOutput = ({ output, input }) => {
       <CardHeader>
         <div className="flex items-center justify-between gap-4">
           <div>
-            <CardTitle>MINIFIED OUTPUT</CardTitle>
-            <p className="text-muted-foreground text-sm">
+            <CardTitle>Minified Output</CardTitle>
+            <CardDescription>
               {output
                 ? `Size: ${sizeInfo.size}${sizeInfo.stats ? ` • ${sizeInfo.stats}` : ""}`
                 : "Minified JavaScript will appear here"}
-            </p>
+            </CardDescription>
           </div>
           <div className="inline-flex">
-            <Button
-              variant="primary"
+            <CopyButton
+              copied={copied}
               disabled={!output}
               onClick={copyToClipboard}
-              className={cn("min-w-30", {
-                "bg-green-600 text-white hover:bg-green-600 hover:text-white":
-                  copied,
-              })}
-            >
-              {copied ? (
-                <CheckIcon className="mr-1 h-4 w-4" />
-              ) : (
-                <CopyIcon className="mr-1 h-4 w-4" />
-              )}
-              {copied ? "Copied!" : "Copy to Clipboard"}
-            </Button>
+            />
           </div>
         </div>
       </CardHeader>

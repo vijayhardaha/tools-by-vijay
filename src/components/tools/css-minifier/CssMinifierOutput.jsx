@@ -3,12 +3,16 @@
 import { useState } from "react";
 
 import PropTypes from "prop-types";
-import { LuCopy as CopyIcon, LuCheck as CheckIcon } from "react-icons/lu";
 
-import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardContent,
+  CardDescription,
+} from "@/components/ui/card";
+import CopyButton from "@/components/ui/copy-button";
 import { Textarea } from "@/components/ui/textarea";
-import { cn } from "@/lib/utils";
 
 /**
  * Component that displays the minified CSS output and provides copy functionality
@@ -55,38 +59,31 @@ const CssMinifierOutput = ({ output }) => {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>MINIFIED OUTPUT</CardTitle>
-        <p className="text-muted-foreground text-sm">
-          {output ? `Size: ${getSizeInfo()}` : "Minified CSS will appear here"}
-        </p>
-      </CardHeader>
-      <CardContent>
-        <div className="flex flex-col gap-2">
-          <Textarea
-            value={output}
-            readOnly
-            disabled={!output}
-            className="min-h-[200px] font-mono text-sm outline-none focus-visible:ring-0 focus-visible:outline-none"
-          />
-          <div className="flex justify-end">
-            <Button
-              variant="primary"
+        <div className="flex items-center justify-between gap-4">
+          <div>
+            <CardTitle>Minified Output</CardTitle>
+            <CardDescription>
+              {output
+                ? `Size: ${getSizeInfo()}`
+                : "Minified CSS will appear here"}
+            </CardDescription>
+          </div>
+          <div className="inline-flex">
+            <CopyButton
+              copied={copied}
               disabled={!output}
               onClick={copyToClipboard}
-              className={cn("min-w-30", {
-                "bg-green-600 text-white hover:bg-green-600 hover:text-white":
-                  copied,
-              })}
-            >
-              {copied ? (
-                <CheckIcon className="mr-1 h-4 w-4" />
-              ) : (
-                <CopyIcon className="mr-1 h-4 w-4" />
-              )}
-              {copied ? "Copied!" : "Copy to Clipboard"}
-            </Button>
+            />
           </div>
         </div>
+      </CardHeader>
+      <CardContent>
+        <Textarea
+          value={output}
+          readOnly
+          disabled={!output}
+          className="min-h-[200px] font-mono text-sm outline-none focus-visible:ring-0 focus-visible:outline-none"
+        />
       </CardContent>
     </Card>
   );

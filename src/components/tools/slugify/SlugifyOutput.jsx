@@ -3,10 +3,9 @@
 import { useState } from "react";
 
 import PropTypes from "prop-types";
-import { LuCopy as CopyIcon, LuCheck as CheckIcon } from "react-icons/lu";
 
-import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import CopyButton from "@/components/ui/copy-button";
 import { Input } from "@/components/ui/input";
 
 /**
@@ -44,19 +43,11 @@ const SlugifyOutput = ({ output }) => {
       <CardContent>
         <div className="flex gap-2">
           <Input type="text" value={output} readOnly data-output />
-          <Button
-            variant={copied ? "success" : "secondary"}
+          <CopyButton
+            copied={copied}
             disabled={!output}
             onClick={copyToClipboard}
-            className="min-w-30"
-          >
-            {copied ? (
-              <CheckIcon className="h-4 w-4" />
-            ) : (
-              <CopyIcon className="h-4 w-4" />
-            )}
-            {copied ? "Copied!" : "Copy"}
-          </Button>
+          />
         </div>
       </CardContent>
     </Card>
