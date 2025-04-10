@@ -12,13 +12,7 @@ import {
 } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { Select } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 
 /**
@@ -83,27 +77,16 @@ const CssMinifierInput = ({
                   onValueChange={(value) =>
                     updateOption("level", parseInt(value, 10))
                   }
-                >
-                  <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Optimization Level">
-                      {options.level === 0 && "Level 0 - Basic compression"}
-                      {options.level === 1 &&
-                        "Level 1 - Standard compression (Default)"}
-                      {options.level === 2 && "Level 2 - Advanced compression"}
-                    </SelectValue>
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="0">
-                      Level 0 - Basic compression
-                    </SelectItem>
-                    <SelectItem value="1">
-                      Level 1 - Standard compression (Default)
-                    </SelectItem>
-                    <SelectItem value="2">
-                      Level 2 - Advanced compression
-                    </SelectItem>
-                  </SelectContent>
-                </Select>
+                  options={[
+                    { value: "0", label: "Level 0 - Basic compression" },
+                    {
+                      value: "1",
+                      label: "Level 1 - Standard compression (Default)",
+                    },
+                    { value: "2", label: "Level 2 - Advanced compression" },
+                  ]}
+                  className="w-full"
+                />
               </div>
 
               <div className="flex items-center space-x-2 pt-4">

@@ -12,13 +12,7 @@ import {
   CardDescription,
 } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { Select } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { Tooltip } from "@/components/ui/tooltip";
 
@@ -105,20 +99,14 @@ const DropdownToArrayInput = ({
                 id="output-format"
                 value={outputFormat}
                 onValueChange={setOutputFormat}
-              >
-                <SelectTrigger>
-                  <SelectValue placeholder="Select output format" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="json">JSON</SelectItem>
-                  <SelectItem value="jsArray">JavaScript Array</SelectItem>
-                  <SelectItem value="jsObject">JavaScript Object</SelectItem>
-                  <SelectItem value="php">PHP Array</SelectItem>
-                  <SelectItem value="wordpress">
-                    WordPress Select Options
-                  </SelectItem>
-                </SelectContent>
-              </Select>
+                options={[
+                  { value: "json", label: "JSON" },
+                  { value: "jsArray", label: "JavaScript Array" },
+                  { value: "jsObject", label: "JavaScript Object" },
+                  { value: "php", label: "PHP Array" },
+                  { value: "wordpress", label: "WordPress Select Options" },
+                ]}
+              />
             </div>
 
             <div className="space-y-2">
@@ -135,22 +123,12 @@ const DropdownToArrayInput = ({
                 id="array-type"
                 value={arrayType}
                 onValueChange={setArrayType}
-              >
-                <SelectTrigger>
-                  <SelectValue placeholder="Select array structure" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="simple">
-                    Simple Array (Text Only)
-                  </SelectItem>
-                  <SelectItem value="numeric">
-                    Numeric Array (Value & Text)
-                  </SelectItem>
-                  <SelectItem value="associative">
-                    Associative Array/Object
-                  </SelectItem>
-                </SelectContent>
-              </Select>
+                options={[
+                  { value: "simple", label: "Simple Array (Text Only)" },
+                  { value: "numeric", label: "Numeric Array (Value & Text)" },
+                  { value: "associative", label: "Associative Array/Object" },
+                ]}
+              />
             </div>
           </div>
 
