@@ -5,13 +5,23 @@ import PropTypes from "prop-types";
 import SidebarBody from "./SidebarBody";
 import SidebarFooter from "./SidebarFooter";
 import SidebarHeader from "./SidebarHeader";
-import { Sheet, SheetContent } from "../../ui/sheet";
+import { Sheet, SheetContent } from "@/components/ui/sheet";
 
+/**
+ * Sidebar component that displays a sliding panel from the right side of the screen.
+ * Contains header, body, and footer sections.
+ *
+ * @component
+ * @param {Object} props - Component props
+ * @param {boolean} props.isOpen - Controls the visibility of the sidebar
+ * @param {Function} props.onClose - Callback function triggered when closing the sidebar
+ * @returns {JSX.Element} Sidebar component
+ */
 const Sidebar = ({ isOpen, onClose }) => (
   <Sheet open={isOpen} onOpenChange={onClose}>
     <SheetContent
       side="right"
-      className="fixed inset-y-0 right-0 m-0 h-full w-80 max-w-full rounded-none p-0 shadow-lg dark:bg-gray-800"
+      className="fixed inset-y-0 right-0 m-0 h-full w-80 max-w-full rounded-none p-0 shadow-lg"
     >
       <SidebarHeader onClose={onClose} />
 

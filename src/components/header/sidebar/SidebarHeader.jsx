@@ -3,12 +3,20 @@
 import PropTypes from "prop-types";
 import { RiCloseFill } from "react-icons/ri";
 
-import { Button } from "../../ui/button";
-import { SheetHeader, SheetTitle } from "../../ui/sheet";
-import Logo from "../parts/Logo";
+import Logo from "@/components/header/parts/Logo";
+import { Button } from "@/components/ui/button";
+import { SheetHeader, SheetTitle } from "@/components/ui/sheet";
 
+/**
+ * Header component for the sidebar that displays the logo and close button
+ *
+ * @component
+ * @param {Object} props - Component props
+ * @param {Function} props.onClose - Function to be called when the close button is clicked
+ * @returns {JSX.Element} - Rendered SidebarHeader component
+ */
 const SidebarHeader = ({ onClose }) => (
-  <SheetHeader className="flex flex-row items-center justify-between gap-4 border-b border-gray-200 p-4 dark:border-gray-700">
+  <SheetHeader className="border-border flex flex-row items-center justify-between gap-4 border-b p-4">
     <SheetTitle className="flex">
       <Logo />
     </SheetTitle>
