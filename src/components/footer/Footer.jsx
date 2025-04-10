@@ -9,7 +9,7 @@ import FooterTop from "@/components/footer/FooterTop";
  */
 const Footer = () => {
   return (
-    <footer className="bg-alt-50 py-10">
+    <footer className="bg-amber-200 pt-14 pb-4">
       <div className="mx-auto max-w-5xl px-4">
         <FooterTop />
         <FooterBottom />

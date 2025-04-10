@@ -144,8 +144,8 @@ const PasswordStrengthCheckerOutput = ({ strength, password }) => {
             </div>
           </>
         ) : (
-          <div className="flex h-40 items-center justify-center rounded-lg border border-cyan-200 bg-cyan-50 p-4 text-center">
-            <p className="font-semibold text-cyan-500">
+          <div className="flex h-40 items-center justify-center rounded-lg border border-sky-200 bg-sky-50 p-4 text-center">
+            <p className="font-semibold text-sky-500">
               Enter a password to see its strength analysis.
             </p>
           </div>

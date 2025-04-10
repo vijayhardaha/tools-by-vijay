@@ -1,24 +1,10 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@theme {
-  --color-accent-50: #fdfbed;
-  --color-accent-100: #f9f2cc;
-  --color-accent-200: #f2e395;
-  --color-accent-300: #ebd05e;
-  --color-accent-400: #e8c246;
-  --color-accent-500: #dfa021;
-  --color-accent-600: #c57e1a;
-  --color-accent-700: #a45b19;
-  --color-accent-800: #85481b;
-  --color-accent-900: #6e3c19;
-  --color-accent-900: #3f1e09;
-
+@theme inline {
   --font-sans: var(--font-app-sans);
   --font-mono: var(--font-app-mono);
-}
 
-@theme inline {
   --base-color-black: var(--color-neutral-900);
   --base-color-primary: var(--color-neutral-900);
 
@@ -40,8 +26,8 @@
   --color-muted: var(--color-neutral-100);
   --color-muted-foreground: var(--color-neutral-500);
 
-  --color-accent: var(--color-accent-50);
-  --color-accent-foreground: var(--color-accent-400);
+  --color-accent: var(--color-amber-50);
+  --color-accent-foreground: var(--color-amber-300);
 
   --color-destructive: var(--color-red-600);
 
