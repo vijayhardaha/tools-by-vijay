@@ -3,9 +3,8 @@
 import { useState } from "react";
 
 import PropTypes from "prop-types";
-import { FiAlertTriangle } from "react-icons/fi";
 
-import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
+import { Alert } from "@/components/ui/alert";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import CopyButton from "@/components/ui/copy-button";
 import { Textarea } from "@/components/ui/textarea";
@@ -49,13 +48,7 @@ const DropdownToArrayOutput = ({ output, error }) => {
         </p>
       </CardHeader>
       <CardContent className="space-y-4">
-        {error && (
-          <Alert variant="destructive">
-            <FiAlertTriangle className="h-4 w-4" />
-            <AlertTitle>Error</AlertTitle>
-            <AlertDescription>{error}</AlertDescription>
-          </Alert>
-        )}
+        {error && <Alert variant="danger" title="Error" text={error} />}
 
         <div className="flex flex-col gap-2">
           <Textarea

@@ -115,6 +115,7 @@ const DropdownToArrayInput = ({
                 <Tooltip
                   text="Simple: Just the text values. Numeric: Arrays with [value, text]. Associative: Object with value as key and text as value."
                   delayDuration={300}
+                  className="!w-72"
                 >
                   <FiInfo className="text-muted-foreground ml-1.5 h-4 w-4 cursor-help" />
                 </Tooltip>
