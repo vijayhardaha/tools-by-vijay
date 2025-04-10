@@ -12,70 +12,36 @@ import PageLayout from "@/components/page/PageLayout";
 const Home = () => {
   return (
     <PageLayout>
-      <div className="grid grid-cols-6 grid-rows-7 gap-6">
-        {/* Position 1 */}
-        <ToolCard
-          slug="slugify"
-          className="col-span-2 row-span-2"
-          iconButton={true}
-          size="default"
-        />
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
+        <ToolCard slug="slugify" iconButton={true} size="default" />
 
-        {/* Position 2 */}
         <ToolCard
           slug="bulk-slugify"
-          className="col-span-2 col-start-3 row-span-2"
           iconButton={true}
           size="default"
           btnRounded={true}
         />
 
-        {/* Position 3 */}
-        <ToolCard
-          slug="password-generator"
-          className="col-span-2 col-start-5 row-span-3"
-        />
+        <ToolCard slug="password-generator" />
 
-        {/* Position 6 */}
-        <ToolCard
-          slug="password-strength-checker"
-          className="col-span-2 row-span-3 row-start-3"
-        />
+        <ToolCard slug="password-strength-checker" />
 
-        {/* Position 7 */}
-        <ToolCard
-          slug="html-minifier"
-          className="col-span-2 col-start-3 row-span-2 row-start-3"
-        />
+        <ToolCard slug="html-minifier" />
 
-        {/* Position 8 */}
         <ToolCard
           slug="css-minifier"
-          className="col-span-2 col-start-5 row-span-2 row-start-4"
           iconButton={true}
           size="default"
           btnRounded={true}
         />
 
-        {/* Position 9 */}
-        <ToolCard
-          slug="js-minifier"
-          className="col-span-2 col-start-3 row-span-3 row-start-5"
-        />
+        <ToolCard slug="js-minifier" />
 
-        {/* Position 10 */}
-        <ToolCard
-          slug="url-shortener"
-          className="col-span-2 row-span-2 row-start-6"
-          iconButton={true}
-          size="default"
-        />
+        <ToolCard slug="url-shortener" iconButton={true} size="default" />
 
-        {/* Position 11 */}
-        <ToolCard
-          slug="dropdown-to-array"
-          className="col-span-2 col-start-5 row-span-2 row-start-6"
-        />
+        <ToolCard slug="dropdown-to-array" />
+
+        <ToolCard slug="text-to-array" />
       </div>
     </PageLayout>
   );
