@@ -78,7 +78,7 @@ function Alert({ className, variant, title, text, icon, children, ...props }) {
       className={cn(alertVariants({ variant }), className)}
       {...props}
     >
-      {iconToRender}
+      {icon !== null && iconToRender}
       {children}
 
       {title && (

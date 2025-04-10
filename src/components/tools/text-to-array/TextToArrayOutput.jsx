@@ -5,7 +5,13 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 
 import { Alert } from "@/components/ui/alert";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardContent,
+  CardDescription,
+} from "@/components/ui/card";
 import CopyButton from "@/components/ui/copy-button";
 import { Textarea } from "@/components/ui/textarea";
 
@@ -45,9 +51,9 @@ const TextToArrayOutput = ({ output, error }) => {
         <div className="flex items-center justify-between gap-4">
           <div>
             <CardTitle>Converted Output</CardTitle>
-            <p className="text-muted-foreground text-sm">
+            <CardDescription>
               Copy the generated array for use in your code
-            </p>
+            </CardDescription>
           </div>
           <div className="inline-flex">
             <CopyButton

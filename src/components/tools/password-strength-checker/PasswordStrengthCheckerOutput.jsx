@@ -3,7 +3,13 @@
 import PropTypes from "prop-types";
 import { LuCheck as CheckIcon, LuX as XIcon } from "react-icons/lu";
 
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardContent,
+  CardDescription,
+} from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { cn } from "@/lib/utils";
 
@@ -52,9 +58,7 @@ const PasswordStrengthCheckerOutput = ({ strength, password }) => {
     <Card>
       <CardHeader>
         <CardTitle>Password Strength Results</CardTitle>
-        <p className="text-muted-foreground text-sm">
-          How secure is your password?
-        </p>
+        <CardDescription>How secure is your password?</CardDescription>
       </CardHeader>
       <CardContent className="space-y-6">
         {password ? (
