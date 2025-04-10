@@ -13,6 +13,7 @@ import {
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { cn } from "@/lib/utils";
 
 /**
  * Component for user input and configuration options for the Bulk Slugify tool
@@ -76,7 +77,7 @@ const BulkSlugifyInput = ({
       <CardHeader>
         <CardTitle>Input Strings</CardTitle>
         <CardDescription className="text-muted-foreground text-sm">
-          (Article title, tutorial title or any web page title)
+          (Article titles, tutorial titles or any web page titles)
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -95,28 +96,22 @@ const BulkSlugifyInput = ({
                 {useUnderscore ? "Underscore (_)" : "Dash (-)"}
               </span>
             </p>
-            <div className="mb-2 flex">
+            <div className="mb-2 flex gap-2">
               <Button
                 size="sm"
-                variant="default"
+                variant={!useUnderscore ? "default" : "outline"}
                 onClick={() => setUseUnderscore(false)}
-                className={`${
-                  !useUnderscore
-                    ? "bg-primary-400 text-foreground"
-                    : "hover:bg-foreground hover:text-background"
-                }`}
+                disabled={!useUnderscore}
+                className={cn("!opacity-100")}
               >
                 <span className="text-xs">Separate with dash (-)</span>
               </Button>
               <Button
                 size="sm"
-                variant="default"
+                variant={useUnderscore ? "default" : "outline"}
                 onClick={() => setUseUnderscore(true)}
-                className={`${
-                  useUnderscore
-                    ? "bg-primary-400 text-foreground"
-                    : "hover:bg-foreground hover:text-background"
-                }`}
+                disabled={useUnderscore}
+                className={cn("!opacity-100")}
               >
                 <span className="text-xs">Separate with underscore (_)</span>
               </Button>
@@ -124,7 +119,7 @@ const BulkSlugifyInput = ({
           </div>
 
           <div className="flex space-x-4">
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-1">
               <Checkbox
                 id="useLowercase"
                 checked={useLowercase}
@@ -133,7 +128,7 @@ const BulkSlugifyInput = ({
               <Label htmlFor="useLowercase">Convert to lowercase</Label>
             </div>
 
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-1">
               <Checkbox
                 id="remove-numbers"
                 checked={removeNumbers}
@@ -142,7 +137,7 @@ const BulkSlugifyInput = ({
               <Label htmlFor="remove-numbers">Remove numbers</Label>
             </div>
 
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-1">
               <Checkbox
                 id="use-latinize"
                 checked={useLitinize}
@@ -152,7 +147,7 @@ const BulkSlugifyInput = ({
             </div>
           </div>
 
-          <div className="flex justify-start gap-2">
+          <div className="mt-4 flex justify-start gap-2">
             <Button type="submit" variant="default" size="lg" disabled={!input}>
               Generate
             </Button>

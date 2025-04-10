@@ -57,7 +57,7 @@ const BulkSlugifyOutput = ({ output }) => {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>OUTPUT</CardTitle>
+        <CardTitle>Output</CardTitle>
         <CardDescription>Cleaned and formatted slugs</CardDescription>
       </CardHeader>
       <CardContent>

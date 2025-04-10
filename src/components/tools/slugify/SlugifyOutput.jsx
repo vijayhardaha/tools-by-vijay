@@ -36,7 +36,7 @@ const SlugifyOutput = ({ output }) => {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>OUTPUT</CardTitle>
+        <CardTitle>Output</CardTitle>
         <p className="text-muted-foreground text-sm">
           Cleaned and formatted slug
         </p>
