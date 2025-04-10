@@ -16,7 +16,7 @@ import { SheetFooter } from "../../ui/sheet";
  * @returns {JSX.Element} A button with social media icon
  */
 const SocialButton = ({ icon: Icon, href, label }) => (
-  <Button variant="outline" size="icon" asChild className="h-10 w-10">
+  <Button variant="outline" size="icon" asChild className="rounded-lg">
     <a href={href} aria-label={label} rel="noopener noreferrer" target="_blank">
       <Icon className="h-4 w-4" />
       <span className="sr-only">{label}</span>
