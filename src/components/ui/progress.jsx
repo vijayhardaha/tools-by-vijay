@@ -22,7 +22,7 @@ const Progress = React.forwardRef(
       aria-valuemax={100}
       aria-valuenow={value}
       className={cn(
-        "bg-secondary relative h-4 w-full overflow-hidden",
+        "bg-secondary relative h-4 w-full overflow-hidden rounded-full",
         className
       )}
       {...props}

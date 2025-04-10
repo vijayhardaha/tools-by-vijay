@@ -10,7 +10,10 @@ import Box from "@/components/ui/box";
  * @returns {JSX.Element} A link to the homepage containing the site logo
  */
 const Logo = () => (
-  <Link href="/" className="flex items-center overflow-hidden rounded-lg">
+  <Link
+    href="/"
+    className="inline-flex items-center overflow-hidden rounded-lg"
+  >
     <Box
       flex
       align="center"
