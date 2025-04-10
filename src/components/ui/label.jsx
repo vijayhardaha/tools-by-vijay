@@ -1,9 +1,11 @@
 "use client";
 
-import * as React from "react";
+import { forwardRef } from "react";
+
 import { cva } from "class-variance-authority";
-import { cn } from "@/lib/utils";
 import PropTypes from "prop-types";
+
+import { cn } from "@/lib/utils";
 
 /**
  * Styling variants for the Label component
@@ -17,22 +19,20 @@ const labelVariants = cva(
  *
  * @param {Object} props - Component props
  * @param {string} [props.className] - Additional CSS classes to apply
- * @param {React.ReactNode} props.children - Content to display inside the label
+ * @param {any} props.children - Content to display inside the label
  * @param {string} props.htmlFor - ID of the form element this label is associated with
  * @returns {JSX.Element} The Label component
  */
-const Label = React.forwardRef(
-  ({ className, children, htmlFor, ...props }, ref) => (
-    <label
-      ref={ref}
-      className={cn(labelVariants(), className)}
-      htmlFor={htmlFor}
-      {...props}
-    >
-      {children}
-    </label>
-  )
-);
+const Label = forwardRef(({ className, children, htmlFor, ...props }, ref) => (
+  <label
+    ref={ref}
+    className={cn(labelVariants(), className)}
+    htmlFor={htmlFor}
+    {...props}
+  >
+    {children}
+  </label>
+));
 
 Label.displayName = "Label";
 

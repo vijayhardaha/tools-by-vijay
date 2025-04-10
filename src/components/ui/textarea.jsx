@@ -1,4 +1,3 @@
-import * as React from "react";
 import PropTypes from "prop-types";
 
 import { cn } from "@/lib/utils";
@@ -8,7 +7,7 @@ import { cn } from "@/lib/utils";
  *
  * @param {Object} props - The component props
  * @param {string} [props.className] - Additional CSS classes to apply to the textarea
- * @param {React.TextareaHTMLAttributes<HTMLTextAreaElement>} props.props - All other props are passed to the textarea element
+ * @param {Object} props.props - All other props are passed to the textarea element
  * @returns {JSX.Element} A styled textarea element
  */
 function Textarea({ className, ...props }) {

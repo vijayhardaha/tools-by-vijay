@@ -9,6 +9,7 @@ import {
   useState,
 } from "react";
 
+import PropTypes from "prop-types";
 import {
   LuCheck as CheckIcon,
   LuChevronDown as ChevronDownIcon,
@@ -25,6 +26,17 @@ const SelectContext = createContext({
   disabled: false,
 });
 
+/**
+ * Select component for dropdown selection functionality
+ *
+ * @param {Object} props - Component props
+ * @param {React.ReactNode} props.children - Child components
+ * @param {string} [props.value] - Controlled value for the select
+ * @param {string} [props.defaultValue] - Default value for uncontrolled mode
+ * @param {Function} [props.onValueChange] - Callback when value changes
+ * @param {boolean} [props.disabled=false] - Whether the select is disabled
+ * @returns {JSX.Element} Select component
+ */
 function Select({
   children,
   value,
@@ -92,6 +104,22 @@ function Select({
   );
 }
 
+Select.propTypes = {
+  children: PropTypes.node.isRequired,
+  value: PropTypes.string,
+  defaultValue: PropTypes.string,
+  onValueChange: PropTypes.func,
+  disabled: PropTypes.bool,
+};
+
+/**
+ * SelectValue component to display the currently selected value
+ *
+ * @param {Object} props - Component props
+ * @param {React.ReactNode} props.children - Content to display when a value is selected
+ * @param {string} [props.placeholder] - Text to display when no value is selected
+ * @returns {JSX.Element} SelectValue component
+ */
 function SelectValue({ children, placeholder, ...props }) {
   const { selectedValue } = useContext(SelectContext);
 
@@ -103,6 +131,20 @@ function SelectValue({ children, placeholder, ...props }) {
   );
 }
 
+SelectValue.propTypes = {
+  children: PropTypes.node.isRequired,
+  placeholder: PropTypes.string,
+};
+
+/**
+ * SelectTrigger component for the button that opens the dropdown
+ *
+ * @param {Object} props - Component props
+ * @param {string} [props.className] - Additional CSS classes
+ * @param {string} [props.size='default'] - Size of the trigger button
+ * @param {React.ReactNode} props.children - Content of the trigger button
+ * @returns {JSX.Element} SelectTrigger component
+ */
 function SelectTrigger({ className, size = "default", children, ...props }) {
   const { open, setOpen, disabled } = useContext(SelectContext);
 
@@ -128,6 +170,21 @@ function SelectTrigger({ className, size = "default", children, ...props }) {
   );
 }
 
+SelectTrigger.propTypes = {
+  className: PropTypes.string,
+  size: PropTypes.oneOf(["default", "sm"]),
+  children: PropTypes.node.isRequired,
+};
+
+/**
+ * SelectContent component that contains the dropdown options
+ *
+ * @param {Object} props - Component props
+ * @param {string} [props.className] - Additional CSS classes
+ * @param {React.ReactNode} props.children - Content of the dropdown
+ * @param {string} [props.position='popper'] - Position strategy for the dropdown
+ * @returns {JSX.Element|null} SelectContent component or null if closed
+ */
 function SelectContent({ className, children, position = "popper", ...props }) {
   const { open } = useContext(SelectContext);
 
@@ -148,6 +205,20 @@ function SelectContent({ className, children, position = "popper", ...props }) {
   );
 }
 
+SelectContent.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.node.isRequired,
+  position: PropTypes.string,
+};
+
+/**
+ * SelectLabel component for group labels within the dropdown
+ *
+ * @param {Object} props - Component props
+ * @param {string} [props.className] - Additional CSS classes
+ * @param {React.ReactNode} props.children - Content of the label
+ * @returns {JSX.Element} SelectLabel component
+ */
 function SelectLabel({ className, children, ...props }) {
   return (
     <div
@@ -160,6 +231,21 @@ function SelectLabel({ className, children, ...props }) {
   );
 }
 
+SelectLabel.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.node.isRequired,
+};
+
+/**
+ * SelectItem component represents a selectable option in the dropdown
+ *
+ * @param {Object} props - Component props
+ * @param {string} [props.className] - Additional CSS classes
+ * @param {React.ReactNode} props.children - Content of the select item
+ * @param {string} props.value - Value associated with this item
+ * @param {boolean} [props.disabled=false] - Whether this item is disabled
+ * @returns {JSX.Element} SelectItem component
+ */
 function SelectItem({
   className,
   children,
@@ -213,6 +299,20 @@ function SelectItem({
   );
 }
 
+SelectItem.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.node.isRequired,
+  value: PropTypes.string.isRequired,
+  disabled: PropTypes.bool,
+};
+
+/**
+ * SelectSeparator creates a horizontal divider between select options
+ *
+ * @param {Object} props - Component props
+ * @param {string} [props.className] - Additional CSS classes for styling the separator
+ * @returns {JSX.Element} SelectSeparator component
+ */
 function SelectSeparator({ className, ...props }) {
   return (
     <div
@@ -223,10 +323,23 @@ function SelectSeparator({ className, ...props }) {
   );
 }
 
+SelectSeparator.propTypes = {
+  className: PropTypes.string,
+};
+
+/**
+ * SelectScrollUpButton provides a button to scroll up in the dropdown
+ *
+ * @param {Object} props - Component props
+ * @param {string} [props.className] - Additional CSS classes
+ * @returns {JSX.Element} SelectScrollUpButton component
+ */
 function SelectScrollUpButton({ className, ...props }) {
   return (
     <div
       data-slot="select-scroll-up-button"
+      role="button"
+      tabIndex={0}
       className={cn(
         "flex cursor-default items-center justify-center py-1",
         className
@@ -235,6 +348,15 @@ function SelectScrollUpButton({ className, ...props }) {
         const content = document.querySelector('[data-slot="select-content"]');
         if (content) content.scrollTop -= 40;
       }}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          const content = document.querySelector(
+            '[data-slot="select-content"]'
+          );
+          if (content) content.scrollTop -= 40;
+        }
+      }}
       {...props}
     >
       <ChevronUpIcon className="size-4" />
@@ -242,10 +364,23 @@ function SelectScrollUpButton({ className, ...props }) {
   );
 }
 
+SelectScrollUpButton.propTypes = {
+  className: PropTypes.string,
+};
+
+/**
+ * SelectScrollDownButton provides a button to scroll down in the dropdown
+ *
+ * @param {Object} props - Component props
+ * @param {string} [props.className] - Additional CSS classes
+ * @returns {JSX.Element} SelectScrollDownButton component
+ */
 function SelectScrollDownButton({ className, ...props }) {
   return (
     <div
       data-slot="select-scroll-down-button"
+      role="button"
+      tabIndex={0}
       className={cn(
         "flex cursor-default items-center justify-center py-1",
         className
@@ -254,12 +389,25 @@ function SelectScrollDownButton({ className, ...props }) {
         const content = document.querySelector('[data-slot="select-content"]');
         if (content) content.scrollTop += 40;
       }}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          const content = document.querySelector(
+            '[data-slot="select-content"]'
+          );
+          if (content) content.scrollTop += 40;
+        }
+      }}
       {...props}
     >
       <ChevronDownIcon className="size-4" />
     </div>
   );
 }
+
+SelectScrollDownButton.propTypes = {
+  className: PropTypes.string,
+};
 
 export {
   Select,

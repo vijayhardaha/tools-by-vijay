@@ -44,7 +44,7 @@ const PasswordStrengthCheckerInput = ({
   /**
    * Handles password input changes
    *
-   * @param {React.ChangeEvent<HTMLInputElement>} e - Input change event
+   * @param {ChangeEvent<HTMLInputElement>} e - Input change event
    */
   const handleChange = (e) => {
     onPasswordChange(e.target.value);

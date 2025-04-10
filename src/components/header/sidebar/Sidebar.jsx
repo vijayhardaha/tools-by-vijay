@@ -2,10 +2,11 @@
 
 import PropTypes from "prop-types";
 
+import { Sheet, SheetContent } from "@/components/ui/sheet";
+
 import SidebarBody from "./SidebarBody";
 import SidebarFooter from "./SidebarFooter";
 import SidebarHeader from "./SidebarHeader";
-import { Sheet, SheetContent } from "@/components/ui/sheet";
 
 /**
  * Sidebar component that displays a sliding panel from the right side of the screen.

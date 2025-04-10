@@ -1,5 +1,3 @@
-import * as React from "react";
-
 import PropTypes from "prop-types";
 
 import { cn } from "@/lib/utils";
@@ -9,8 +7,8 @@ import { cn } from "@/lib/utils";
  *
  * @param {Object} props - Component props
  * @param {string} [props.className] - Additional CSS classes
- * @param {React.ReactNode} props.children - Card content
- * @returns {React.ReactElement} Card component
+ * @param {any} props.children - Card content
+ * @returns {JSX.Element} Card component
  */
 function Card({ className, children, ...props }) {
   return (
@@ -37,8 +35,8 @@ Card.propTypes = {
  *
  * @param {Object} props - Component props
  * @param {string} [props.className] - Additional CSS classes
- * @param {React.ReactNode} props.children - Header content
- * @returns {React.ReactElement} CardHeader component
+ * @param {any} props.children - Header content
+ * @returns {JSX.Element} CardHeader component
  */
 function CardHeader({ className, children, ...props }) {
   return (
@@ -65,8 +63,8 @@ CardHeader.propTypes = {
  *
  * @param {Object} props - Component props
  * @param {string} [props.className] - Additional CSS classes
- * @param {React.ReactNode} props.children - Title content
- * @returns {React.ReactElement} CardTitle component
+ * @param {any} props.children - Title content
+ * @returns {JSX.Element} CardTitle component
  */
 function CardTitle({ className, children, ...props }) {
   return (
@@ -90,8 +88,8 @@ CardTitle.propTypes = {
  *
  * @param {Object} props - Component props
  * @param {string} [props.className] - Additional CSS classes
- * @param {React.ReactNode} props.children - Description content
- * @returns {React.ReactElement} CardDescription component
+ * @param {any} props.children - Description content
+ * @returns {JSX.Element} CardDescription component
  */
 function CardDescription({ className, children, ...props }) {
   return (
@@ -115,8 +113,8 @@ CardDescription.propTypes = {
  *
  * @param {Object} props - Component props
  * @param {string} [props.className] - Additional CSS classes
- * @param {React.ReactNode} props.children - Action content
- * @returns {React.ReactElement} CardAction component
+ * @param {any} props.children - Action content
+ * @returns {JSX.Element} CardAction component
  */
 function CardAction({ className, children, ...props }) {
   return (
@@ -143,8 +141,8 @@ CardAction.propTypes = {
  *
  * @param {Object} props - Component props
  * @param {string} [props.className] - Additional CSS classes
- * @param {React.ReactNode} props.children - Card body content
- * @returns {React.ReactElement} CardContent component
+ * @param {any} props.children - Card body content
+ * @returns {JSX.Element} CardContent component
  */
 function CardContent({ className, children, ...props }) {
   return (
@@ -164,8 +162,8 @@ CardContent.propTypes = {
  *
  * @param {Object} props - Component props
  * @param {string} [props.className] - Additional CSS classes
- * @param {React.ReactNode} props.children - Footer content
- * @returns {React.ReactElement} CardFooter component
+ * @param {any} props.children - Footer content
+ * @returns {JSX.Element} CardFooter component
  */
 function CardFooter({ className, children, ...props }) {
   return (

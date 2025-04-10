@@ -10,8 +10,8 @@ import PropTypes from "prop-types";
  *
  * @component
  * @param {Object} props - Component props
- * @param {React.ReactNode} props.children - The content to be displayed inside the container
- * @returns {React.ReactElement} The rendered component
+ * @param {ReactNode} props.children - The content to be displayed inside the container
+ * @returns {ReactElement} The rendered component
  */
 const PageContent = ({ children }) => {
   return <div className="relative">{children}</div>;

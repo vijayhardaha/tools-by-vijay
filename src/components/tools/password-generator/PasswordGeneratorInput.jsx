@@ -56,7 +56,7 @@ const PasswordGeneratorInput = ({
 }) => {
   /**
    * Handles form submission by preventing default behavior and triggering password generation
-   * @param {React.FormEvent} e - Form event object
+   * @param {FormEvent} e - Form event object
    */
   const handleSubmit = (e) => {
     e.preventDefault();

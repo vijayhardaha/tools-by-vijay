@@ -8,7 +8,7 @@ import Header from "@/components/header/Header";
  * with a header, main content area, and footer.
  *
  * @param {Object} props - Component props.
- * @param {React.ReactNode} props.children - The content to be displayed within the layout.
+ * @param {ReactNode} props.children - The content to be displayed within the layout.
  * @returns {JSX.Element} The rendered layout component.
  */
 const PageLayout = ({ children }) => {

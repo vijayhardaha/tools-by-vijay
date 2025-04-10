@@ -10,8 +10,8 @@ import PageBreadcrumb from "./PageBreadcrumb";
  * @param {Object} props - Component props
  * @param {string} props.title - The title of the page
  * @param {string} [props.description] - Optional description text for the page
- * @param {React.ReactElement} [props.icon] - Optional icon element to display next to the title
- * @returns {React.ReactElement} Rendered component
+ * @param {ReactElement} [props.icon] - Optional icon element to display next to the title
+ * @returns {ReactElement} Rendered component
  */
 const PageHeader = ({ title, description, icon = null }) => {
   return (

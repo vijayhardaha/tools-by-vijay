@@ -1,4 +1,5 @@
-import * as React from "react";
+import { cloneElement, forwardRef, isValidElement } from "react";
+
 import { cva } from "class-variance-authority";
 import PropTypes from "prop-types";
 
@@ -6,19 +7,32 @@ import { cn } from "@/lib/utils";
 
 /**
  * Custom Slot implementation to replace @radix-ui/react-slot.
- * It clones the child element and merges props, including forwarding refs.
+ * A utility component that projects its children's props through to a single element.
+ * Useful for creating polymorphic components where you want to forward props to a child element.
  *
+ * The Slot component essentially becomes transparent in the props hierarchy, merging its own props
+ * with the child's props and properly handling ref forwarding to ensure compatibility with React's
+ * ref system.
+ *
+ * @component
  * @param {Object} props - Component props
- * @param {React.ReactNode} props.children - The child element to clone
+ * @param {React.ReactElement} props.children - The child element to clone and merge props with
  * @param {React.Ref} [props.ref] - Ref to forward to the child element
- * @returns {React.ReactElement|null} Cloned child element or null if invalid
+ * @returns {React.ReactElement|null} Cloned child element with merged props or null if the child is invalid
+ * @example
+ * // Basic usage to pass props to a child component
+ * <Slot className="text-red-500">
+ *   <SomeComponent />
+ * </Slot>
+ *
+ * // The className will be passed to SomeComponent
  */
-const Slot = React.forwardRef(({ children, ...props }, ref) => {
-  if (!React.isValidElement(children)) {
+const Slot = forwardRef(({ children, ...props }, ref) => {
+  if (!isValidElement(children)) {
     return null;
   }
 
-  return React.cloneElement(children, {
+  return cloneElement(children, {
     ...props,
     ...children.props,
     ref: ref
@@ -41,6 +55,22 @@ const Slot = React.forwardRef(({ children, ...props }, ref) => {
 });
 
 Slot.displayName = "Slot";
+
+/**
+ * PropTypes for the Slot component
+ */
+Slot.propTypes = {
+  /**
+   * The child element to clone and merge props with.
+   * Must be a valid React element.
+   */
+  children: PropTypes.element.isRequired,
+
+  /**
+   * Any additional props to be merged with the child element's props.
+   */
+  // The spread props are implicitly handled and don't need explicit PropTypes
+};
 
 const buttonVariants = cva(
   [
@@ -116,8 +146,8 @@ const buttonVariants = cva(
  * @param {string} [props.variant="default"] - Visual style variant
  * @param {string} [props.size="default"] - Button size
  * @param {boolean} [props.asChild=false] - Whether to merge props onto the immediate child
- * @param {React.ReactNode} props.children - Button content
- * @returns {React.ReactElement} Button component
+ * @param {any} props.children - Button content
+ * @returns {JSX.Element} Button component
  */
 function Button({
   className,
@@ -130,6 +160,7 @@ function Button({
   const Comp = asChild ? Slot : "button";
 
   // Explicitly exclude `asChild` from props passed to the DOM
+  // eslint-disable-next-line no-unused-vars
   const { asChild: _, ...componentProps } = props;
 
   return (

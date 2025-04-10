@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+
 import PropTypes from "prop-types";
 
 import tools from "@/constants/tools";
@@ -9,7 +10,7 @@ import tools from "@/constants/tools";
  * NavLink component for consistent link styling in the sidebar using Shadcn classes
  * @param {Object} props - Component props
  * @param {string} props.href - Link destination
- * @param {React.ReactNode} props.children - Link content
+ * @param {ReactNode} props.children - Link content
  * @param {string} [props.className] - Additional CSS classes
  * @returns {JSX.Element} Styled navigation link
  */

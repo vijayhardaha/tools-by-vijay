@@ -1,13 +1,33 @@
 "use client";
 
-import * as React from "react";
+import {
+  useCallback,
+  useContext,
+  createContext,
+  useState,
+  useEffect,
+} from "react";
+
+import PropTypes from "prop-types";
+
 import { cn } from "@/lib/utils";
 
-const TabsContext = React.createContext({
+const TabsContext = createContext({
   selectedTab: "",
   setSelectedTab: () => {},
 });
 
+/**
+ * Tabs component that manages the state of tab navigation
+ *
+ * @param {Object} props - Component props
+ * @param {string} [props.className] - Additional CSS classes
+ * @param {string} [props.defaultValue] - Default selected tab
+ * @param {string} [props.value] - Controlled selected tab value
+ * @param {Function} [props.onValueChange] - Callback when tab changes
+ * @param {React.ReactNode} props.children - Tab elements
+ * @returns {JSX.Element} Tabs component
+ */
 function Tabs({
   className,
   defaultValue,
@@ -16,17 +36,15 @@ function Tabs({
   children,
   ...props
 }) {
-  const [selectedTab, setSelectedTab] = React.useState(
-    value || defaultValue || ""
-  );
+  const [selectedTab, setSelectedTab] = useState(value || defaultValue || "");
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (value !== undefined) {
       setSelectedTab(value);
     }
   }, [value]);
 
-  const handleTabChange = React.useCallback(
+  const handleTabChange = useCallback(
     (newValue) => {
       if (value === undefined) {
         setSelectedTab(newValue);
@@ -52,6 +70,22 @@ function Tabs({
   );
 }
 
+Tabs.propTypes = {
+  className: PropTypes.string,
+  defaultValue: PropTypes.string,
+  value: PropTypes.string,
+  onValueChange: PropTypes.func,
+  children: PropTypes.node.isRequired,
+};
+
+/**
+ * Container for tab triggers
+ *
+ * @param {Object} props - Component props
+ * @param {string} [props.className] - Additional CSS classes
+ * @param {React.ReactNode} props.children - Tab trigger elements
+ * @returns {JSX.Element} TabsList component
+ */
 function TabsList({ className, children, ...props }) {
   return (
     <div
@@ -68,8 +102,23 @@ function TabsList({ className, children, ...props }) {
   );
 }
 
+TabsList.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.node.isRequired,
+};
+
+/**
+ * Button that selects a tab when clicked
+ *
+ * @param {Object} props - Component props
+ * @param {string} [props.className] - Additional CSS classes
+ * @param {string} props.value - Value of the tab
+ * @param {boolean} [props.disabled] - Whether the tab is disabled
+ * @param {React.ReactNode} props.children - Tab content
+ * @returns {JSX.Element} TabsTrigger component
+ */
 function TabsTrigger({ className, value, disabled, children, ...props }) {
-  const { selectedTab, setSelectedTab } = React.useContext(TabsContext);
+  const { selectedTab, setSelectedTab } = useContext(TabsContext);
   const isActive = selectedTab === value;
 
   return (
@@ -92,8 +141,30 @@ function TabsTrigger({ className, value, disabled, children, ...props }) {
   );
 }
 
+TabsTrigger.propTypes = {
+  className: PropTypes.string,
+  value: PropTypes.string.isRequired,
+  disabled: PropTypes.bool,
+  children: PropTypes.node.isRequired,
+};
+
+/**
+ * Content shown when a tab is selected
+ *
+ * This component renders its children only when the tab is active,
+ * serving as a container for the tab's content panel. It uses the
+ * TabsContext to determine if it should be visible based on the
+ * current selected tab value.
+ *
+ * @param {Object} props - Component props
+ * @param {string} [props.className] - Additional CSS classes to apply to the content panel
+ * @param {string} props.value - Value of the tab that controls this content
+ * @param {React.ReactNode} props.children - Content to display when this tab is active
+ * @param {Object} [props...rest] - Additional props to pass to the div element
+ * @returns {JSX.Element|null} The tab content when active, or null when inactive
+ */
 function TabsContent({ className, value, children, ...props }) {
-  const { selectedTab } = React.useContext(TabsContext);
+  const { selectedTab } = useContext(TabsContext);
   const isSelected = selectedTab === value;
 
   if (!isSelected) return null;
@@ -111,5 +182,11 @@ function TabsContent({ className, value, children, ...props }) {
     </div>
   );
 }
+
+TabsContent.propTypes = {
+  className: PropTypes.string,
+  value: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+};
 
 export { Tabs, TabsList, TabsTrigger, TabsContent };

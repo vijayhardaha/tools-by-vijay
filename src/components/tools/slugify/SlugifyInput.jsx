@@ -52,7 +52,7 @@ const SlugifyInput = ({
   /**
    * Handles form submission and triggers slug generation
    *
-   * @param {React.FormEvent} e - The form event
+   * @param {FormEvent} e - The form event
    */
   const handleSubmit = (e) => {
     e.preventDefault();

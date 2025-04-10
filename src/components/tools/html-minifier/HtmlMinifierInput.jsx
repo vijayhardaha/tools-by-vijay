@@ -39,7 +39,7 @@ const HtmlMinifierInput = ({
   /**
    * Handles form submission and triggers HTML minification
    *
-   * @param {React.FormEvent} e - The form event
+   * @param {FormEvent} e - The form event
    */
   const handleSubmit = (e) => {
     e.preventDefault();

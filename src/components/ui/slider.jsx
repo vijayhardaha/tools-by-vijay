@@ -1,9 +1,11 @@
 "use client";
 
-import { Range } from "react-range";
-import { cn } from "@/lib/utils";
-import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
+
+import PropTypes from "prop-types";
+import { Range } from "react-range";
+
+import { cn } from "@/lib/utils";
 
 /**
  * A simplified slider component that allows users to select a value by moving a handle along a track.

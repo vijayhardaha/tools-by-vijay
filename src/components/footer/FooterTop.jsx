@@ -1,7 +1,8 @@
-import Box from "../ui/box";
 import FooterAbout from "@/components/footer/FooterAbout";
 import FooterWidget from "@/components/footer/FooterWidget";
 import footerLinks from "@/constants/footerLinks";
+
+import Box from "../ui/box";
 
 /**
  * Top section of the footer containing about information and navigation widgets

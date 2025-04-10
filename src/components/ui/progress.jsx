@@ -1,19 +1,35 @@
 "use client";
 
-import * as React from "react";
+import { forwardRef } from "react";
+
+import PropTypes from "prop-types";
+
 import { cn } from "@/lib/utils";
 
 /**
- * Progress component that shows a progress bar
+ * Progress component that shows a horizontal progress bar
  *
  * @component
  * @param {Object} props - Component props
- * @param {number} props.value - Current progress value (0-100)
- * @param {string} props.className - Additional classes for the outer container
- * @param {string} props.indicatorClassName - Additional classes for the progress indicator
- * @returns {JSX.Element} The rendered progress bar
+ * @param {number} [props.value=0] - Current progress value (0-100)
+ * @param {string} [props.className] - Additional CSS classes for the outer container
+ * @param {string} [props.indicatorClassName] - Additional CSS classes for the progress indicator bar
+ * @param {React.Ref} ref - Forwarded ref to access the DOM node
+ *
+ * @example
+ * // Basic usage
+ * <Progress value={50} />
+ *
+ * // With custom styling
+ * <Progress
+ *   value={75}
+ *   className="h-6 w-full bg-gray-200"
+ *   indicatorClassName="bg-blue-500"
+ * />
+ *
+ * @returns {JSX.Element} The rendered progress bar component
  */
-const Progress = React.forwardRef(
+const Progress = forwardRef(
   ({ className, value = 0, indicatorClassName, ...props }, ref) => (
     <div
       ref={ref}
@@ -39,5 +55,22 @@ const Progress = React.forwardRef(
 );
 
 Progress.displayName = "Progress";
+
+Progress.propTypes = {
+  /**
+   * Current progress value (between 0 and 100)
+   */
+  value: PropTypes.number,
+
+  /**
+   * Additional CSS classes for the outer container
+   */
+  className: PropTypes.string,
+
+  /**
+   * Additional CSS classes for the progress indicator bar
+   */
+  indicatorClassName: PropTypes.string,
+};
 
 export { Progress };

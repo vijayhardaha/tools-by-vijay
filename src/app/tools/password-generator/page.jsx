@@ -26,7 +26,7 @@ export const metadata = {
  * Password Generator page component
  * Renders the password generator tool with appropriate layout and header
  *
- * @returns {React.ReactElement} The password generator page component
+ * @returns {ReactElement} The password generator page component
  */
 const PasswordGenerator = () => {
   return (

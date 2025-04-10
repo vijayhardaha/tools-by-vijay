@@ -43,21 +43,39 @@ module.exports = {
     "import/order": [
       "error",
       {
-        groups: ["builtin", "external", "internal"], // Enforces order of imports: built-in, external, and internal.
+        groups: [
+          "builtin", // Node.js built-in modules like fs, path, etc.
+          "external", // External packages from node_modules (react, next, lodash, etc.)
+          "internal", // Internal modules using aliases (e.g., @/components)
+          "parent", // Imports from parent directories (../foo)
+          "sibling", // Imports from the same or sibling directories (./bar)
+          "index", // Imports from the current directory (./)
+          "object", // Object imports (import { foo } from 'foo')
+          "type", // Type imports (import type { Foo } from 'foo')
+        ],
         pathGroups: [
           {
-            pattern: "react", // Ensures React imports are grouped separately.
-            group: "external",
-            position: "before", // Places React imports before other external imports.
+            pattern: "react", // Specifies that React imports should be placed first
+            group: "external", // Categorizes React as an external dependency
+            position: "before", // Positions React imports before other external imports
+          },
+          {
+            pattern: "next/**", // Matches all Next.js imports (next/router, next/image, etc.)
+            group: "external", // Categorizes Next.js as external dependencies
+            position: "before", // Places Next.js imports before other external imports but after React
+          },
+          {
+            pattern: "@/**", // Matches all imports using the @ alias (project-specific absolute imports)
+            group: "internal", // Categorizes aliased imports as internal
+            position: "after", // Places them after regular internal imports
           },
         ],
-        pathGroupsExcludedImportTypes: ["react"], // Excludes React from being alphabetized with other imports.
+        pathGroupsExcludedImportTypes: ["react", "next"], // Prevents react and next imports from being matched by multiple patterns
         alphabetize: {
-          order: "asc", // Alphabetizes imports in ascending order.
-          caseInsensitive: true, // Ignores case when alphabetizing.
+          order: "asc", // Sorts imports alphabetically in ascending order within each group
+          caseInsensitive: true, // Makes alphabetical sorting case-insensitive
         },
-        "newlines-between": "always", // Enforces newlines between import groups.
-        warnOnUnassignedImports: true, // Warns if there are unassigned imports (e.g., importing a module without using it).
+        "newlines-between": "always", // Requires an empty line between each import group for better readability
       },
     ],
   },

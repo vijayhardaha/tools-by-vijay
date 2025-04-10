@@ -41,7 +41,7 @@ const JsMinifierInput = ({
   /**
    * Handles form submission and triggers JavaScript minification
    *
-   * @param {React.FormEvent} e - The form event
+   * @param {FormEvent} e - The form event
    */
   const handleSubmit = (e) => {
     e.preventDefault();

@@ -8,6 +8,7 @@ export const metadata = {
 };
 
 import { Work_Sans, Geist_Mono } from "next/font/google";
+
 import PropTypes from "prop-types";
 
 /**
@@ -36,7 +37,7 @@ import "../styles/globals.css";
 
 /**
  * Root layout component for the application.
- * @param {{ children: React.ReactNode }} props - The props for the RootLayout component.
+ * @param {{ children: ReactNode }} props - The props for the RootLayout component.
  * @returns {JSX.Element} The root layout structure.
  */
 const RootLayout = ({ children }) => {

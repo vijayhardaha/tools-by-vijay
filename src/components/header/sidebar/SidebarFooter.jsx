@@ -10,7 +10,7 @@ import { SheetFooter } from "@/components/ui/sheet";
 /**
  * SocialButton component for social media links
  * @param {Object} props - Component props
- * @param {React.ElementType} props.icon - Icon component to display
+ * @param {ElementType} props.icon - Icon component to display
  * @param {string} props.href - URL to navigate to
  * @param {string} props.label - Accessible label for the button
  * @returns {JSX.Element} A button with social media icon

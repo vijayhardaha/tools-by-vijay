@@ -1,13 +1,22 @@
 "use client";
 
-import * as React from "react";
+import {
+  useState,
+  useEffect,
+  useContext,
+  createContext,
+  useCallback,
+  useRef,
+} from "react";
+
 import PropTypes from "prop-types";
 import { createPortal } from "react-dom";
 import { LuX as XIcon } from "react-icons/lu";
+
 import { cn } from "@/lib/utils";
 
 // Create context for state management
-const SheetContext = React.createContext({
+const SheetContext = createContext({
   open: false,
   onOpenChange: () => {},
   side: "right",
@@ -21,8 +30,8 @@ const SheetContext = React.createContext({
  * @param {boolean} [props.open] - Controlled open state
  * @param {Function} [props.onOpenChange] - Callback for open state change
  * @param {boolean} [props.disableClose=true] - Disable close button
- * @param {React.ReactNode} props.children - Content inside the sheet
- * @returns {React.ReactElement} Sheet component
+ * @param {any} props.children - Content inside the sheet
+ * @returns {JSX.Element} Sheet component
  */
 function Sheet({
   open: controlledOpen,
@@ -31,10 +40,10 @@ function Sheet({
   children,
   ...props
 }) {
-  const [uncontrolledOpen, setUncontrolledOpen] = React.useState(false);
+  const [uncontrolledOpen, setUncontrolledOpen] = useState(false);
 
   const open = controlledOpen !== undefined ? controlledOpen : uncontrolledOpen;
-  const handleOpenChange = React.useCallback(
+  const handleOpenChange = useCallback(
     (value) => {
       if (controlledOpen === undefined) {
         setUncontrolledOpen(value);
@@ -66,11 +75,11 @@ Sheet.propTypes = {
  * Button to trigger the opening of the sheet.
  *
  * @param {Object} props - Component props
- * @param {React.ReactNode} props.children - Trigger content
- * @returns {React.ReactElement} SheetTrigger component
+ * @param {any} props.children - Trigger content
+ * @returns {JSX.Element} SheetTrigger component
  */
 function SheetTrigger({ children, ...props }) {
-  const { onOpenChange } = React.useContext(SheetContext);
+  const { onOpenChange } = useContext(SheetContext);
 
   return (
     <button
@@ -92,11 +101,11 @@ SheetTrigger.propTypes = {
  * Button to close the sheet.
  *
  * @param {Object} props - Component props
- * @param {React.ReactNode} props.children - Close button content
- * @returns {React.ReactElement} SheetClose component
+ * @param {any} props.children - Close button content
+ * @returns {JSX.Element} SheetClose component
  */
 function SheetClose({ children, ...props }) {
-  const { onOpenChange } = React.useContext(SheetContext);
+  const { onOpenChange } = useContext(SheetContext);
 
   return (
     <button
@@ -118,13 +127,13 @@ SheetClose.propTypes = {
  * Portal for rendering sheet content outside the DOM hierarchy.
  *
  * @param {Object} props - Component props
- * @param {React.ReactNode} props.children - Portal content
- * @returns {React.ReactElement|null} SheetPortal component
+ * @param {any} props.children - Portal content
+ * @returns {JSX.Element|null} SheetPortal component
  */
 function SheetPortal({ children, ...props }) {
-  const [mounted, setMounted] = React.useState(false);
+  const [mounted, setMounted] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     setMounted(true);
     return () => setMounted(false);
   }, []);
@@ -148,15 +157,17 @@ SheetPortal.propTypes = {
  *
  * @param {Object} props - Component props
  * @param {string} [props.className] - Additional CSS classes
- * @returns {React.ReactElement|null} SheetOverlay component
+ * @returns {JSX.Element|null} SheetOverlay component
  */
 function SheetOverlay({ className, ...props }) {
-  const { open, onOpenChange } = React.useContext(SheetContext);
+  const { open, onOpenChange } = useContext(SheetContext);
 
   if (!open) return null;
 
   return (
     <div
+      role="presentation"
+      aria-hidden="true"
       data-slot="sheet-overlay"
       data-state={open ? "open" : "closed"}
       className={cn(
@@ -178,16 +189,16 @@ SheetOverlay.propTypes = {
  *
  * @param {Object} props - Component props
  * @param {string} [props.className] - Additional CSS classes
- * @param {React.ReactNode} props.children - Content inside the sheet
+ * @param {any} props.children - Content inside the sheet
  * @param {string} [props.side="right"] - Side of the screen where the sheet appears
- * @returns {React.ReactElement|null} SheetContent component
+ * @returns {JSX.Element|null} SheetContent component
  */
 function SheetContent({ className, children, side = "right", ...props }) {
-  const { open, onOpenChange, disableClose } = React.useContext(SheetContext);
-  const contentRef = React.useRef(null);
+  const { open, onOpenChange, disableClose } = useContext(SheetContext);
+  const contentRef = useRef(null);
 
   // Handle ESC key
-  React.useEffect(() => {
+  useEffect(() => {
     if (!open) return;
 
     const handleKeyDown = (e) => {
@@ -201,7 +212,7 @@ function SheetContent({ className, children, side = "right", ...props }) {
   }, [open, onOpenChange]);
 
   // Prevent scroll when open
-  React.useEffect(() => {
+  useEffect(() => {
     if (open) {
       document.body.style.overflow = "hidden";
     } else {
@@ -259,7 +270,7 @@ SheetContent.propTypes = {
  *
  * @param {Object} props - Component props
  * @param {string} [props.className] - Additional CSS classes
- * @returns {React.ReactElement} SheetHeader component
+ * @returns {JSX.Element} SheetHeader component
  */
 function SheetHeader({ className, ...props }) {
   return (
@@ -280,7 +291,7 @@ SheetHeader.propTypes = {
  *
  * @param {Object} props - Component props
  * @param {string} [props.className] - Additional CSS classes
- * @returns {React.ReactElement} SheetFooter component
+ * @returns {JSX.Element} SheetFooter component
  */
 function SheetFooter({ className, ...props }) {
   return (
@@ -301,20 +312,24 @@ SheetFooter.propTypes = {
  *
  * @param {Object} props - Component props
  * @param {string} [props.className] - Additional CSS classes
- * @returns {React.ReactElement} SheetTitle component
+ * @param {React.ReactNode} props.children - Heading content
+ * @returns {JSX.Element} SheetTitle component
  */
-function SheetTitle({ className, ...props }) {
+function SheetTitle({ className, children, ...props }) {
   return (
     <h2
       data-slot="sheet-title"
       className={cn("text-foreground font-semibold", className)}
       {...props}
-    />
+    >
+      {children}
+    </h2>
   );
 }
 
 SheetTitle.propTypes = {
   className: PropTypes.string,
+  children: PropTypes.node,
 };
 
 /**
@@ -322,7 +337,7 @@ SheetTitle.propTypes = {
  *
  * @param {Object} props - Component props
  * @param {string} [props.className] - Additional CSS classes
- * @returns {React.ReactElement} SheetDescription component
+ * @returns {JSX.Element} SheetDescription component
  */
 function SheetDescription({ className, ...props }) {
   return (

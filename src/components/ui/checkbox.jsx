@@ -1,8 +1,9 @@
 "use client";
 
-import * as React from "react";
-import { LuCheck as CheckIcon } from "react-icons/lu";
+import { useState } from "react";
+
 import PropTypes from "prop-types";
+import { LuCheck as CheckIcon } from "react-icons/lu";
 
 import { cn } from "@/lib/utils";
 
@@ -16,8 +17,8 @@ import { cn } from "@/lib/utils";
  * @param {boolean} [props.disabled] - Whether the checkbox is disabled
  * @param {boolean} [props.required] - Whether the checkbox is required
  * @param {string} [props.id] - ID for the checkbox input element
- * @param {React.ReactNode} [props.children] - Optional child elements
- * @returns {React.ReactElement} Checkbox component
+ * @param {any} [props.children] - Optional child elements
+ * @returns {JSX.Element} Checkbox component
  */
 function Checkbox({
   className,
@@ -29,7 +30,7 @@ function Checkbox({
   id,
   ...props
 }) {
-  const [internalChecked, setInternalChecked] = React.useState(
+  const [internalChecked, setInternalChecked] = useState(
     controlledChecked || false
   );
 
@@ -39,7 +40,7 @@ function Checkbox({
   /**
    * Handles the checkbox state change event
    *
-   * @param {React.ChangeEvent<HTMLInputElement>} event - The change event
+   * @param {ChangeEvent<HTMLInputElement>} event - The change event
    */
   const handleChange = (event) => {
     if (!isControlled) {

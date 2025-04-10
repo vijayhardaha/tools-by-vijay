@@ -1,4 +1,3 @@
-import * as React from "react";
 import PropTypes from "prop-types";
 
 import { cn } from "@/lib/utils";
@@ -9,7 +8,7 @@ import { cn } from "@/lib/utils";
  * @param {Object} props - Component props
  * @param {string} [props.className] - Additional CSS classes
  * @param {string} [props.type="text"] - Type of input (text, password, email, etc.)
- * @returns {React.ReactElement} Input component
+ * @returns {JSX.Element} Input component
  */
 function Input({ className, type, ...props }) {
   return (

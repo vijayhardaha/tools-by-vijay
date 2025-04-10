@@ -1,7 +1,12 @@
-import clsx from "clsx";
 import Link from "next/link";
+
+import clsx from "clsx";
 import PropTypes from "prop-types";
 import { CgArrowRight } from "react-icons/cg";
+
+import { cn } from "@/lib/utils";
+import { getToolBySlug } from "@/lib/utils/getToolBySlug";
+import { getToolIcon } from "@/lib/utils/getToolIcon";
 
 import { Button } from "../ui/button";
 import {
@@ -13,9 +18,6 @@ import {
   CardDescription,
 } from "../ui/card";
 import { Tooltip } from "../ui/tooltip";
-import { cn } from "@/lib/utils";
-import { getToolBySlug } from "@/lib/utils/getToolBySlug";
-import { getToolIcon } from "@/lib/utils/getToolIcon";
 
 /**
  * ToolCard component that renders a card for a specific tool.
