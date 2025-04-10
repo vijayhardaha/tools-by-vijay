@@ -1,6 +1,8 @@
 import * as React from "react";
+
 import { cva } from "class-variance-authority";
 import PropTypes from "prop-types";
+
 import { cn } from "@/lib/utils";
 
 // Define variants using shadcn-like styling
@@ -9,10 +11,9 @@ const alertVariants = cva(
   {
     variants: {
       variant: {
-        default:
-          "bg-white dark:bg-gray-950 text-gray-950 dark:text-gray-50 border-gray-200 dark:border-gray-800",
+        default: "bg-white text-gray-950 border-gray-200",
         destructive:
-          "text-red-500 dark:text-red-500 bg-white dark:bg-gray-950 border-red-200 dark:border-red-900 [&>svg]:text-current *:data-[slot=alert-description]:text-red-500/90",
+          "text-red-500 bg-white  border-red-200  [&>svg]:text-current *:data-[slot=alert-description]:text-red-500/90",
       },
     },
     defaultVariants: {
@@ -23,6 +24,13 @@ const alertVariants = cva(
 
 /**
  * Alert component for showing important messages to users.
+ *
+ * @param {Object} props - The component props
+ * @param {string} [props.className] - Additional CSS classes to apply to the alert
+ * @param {('default'|'destructive')} [props.variant='default'] - The visual style variant of the alert
+ * @param {React.ReactNode} props.children - The content to be displayed inside the alert
+ * @param {Object} [props.rest] - Any additional props will be spread onto the underlying div element
+ * @returns {JSX.Element} The rendered Alert component
  */
 function Alert({ className, variant, children, ...props }) {
   return (
@@ -40,7 +48,12 @@ function Alert({ className, variant, children, ...props }) {
 Alert.propTypes = {
   className: PropTypes.string,
   variant: PropTypes.oneOf(["default", "destructive"]),
-  children: PropTypes.node,
+  children: PropTypes.node.isRequired,
+};
+
+Alert.defaultProps = {
+  variant: "default",
+  className: "",
 };
 
 /**

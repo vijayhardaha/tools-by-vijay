@@ -5,15 +5,29 @@ import DropdownToArrayTool from "@/components/tools/dropdown-to-array/DropdownTo
 import { getToolBySlug } from "@/lib/utils/getToolBySlug";
 import { getToolIcon } from "@/lib/utils/getToolIcon";
 
-// Get tool data
+/**
+ * Fetches tool data from the tools database
+ * @constant {Object} tool - Tool configuration with properties like name, description, and SEO metadata
+ */
 const tool = getToolBySlug("dropdown-to-array");
 
-// Export metadata for SEO
+/**
+ * Metadata for the Slugify page, used for SEO purposes.
+ * @type {Object}
+ * @property {string} title - The SEO title of the page.
+ * @property {string} description - The SEO description of the page.
+ */
 export const metadata = {
   title: tool?.seoTitle || "",
   description: tool?.seoDescription || "",
 };
 
+/**
+ * DropdownToArray component renders the dropdown-to-array tool page.
+ * Displays a page header with tool information and the tool's main functionality.
+ *
+ * @returns {JSX.Element} The rendered dropdown-to-array tool page
+ */
 const DropdownToArray = () => {
   return (
     <PageLayout>
