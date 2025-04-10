@@ -18,31 +18,39 @@ import { Textarea } from "@/components/ui/textarea";
 import { Tooltip } from "@/components/ui/tooltip";
 
 /**
- * Component for inputting HTML dropdown and configuring conversion options.
- * Provides a form with controls for HTML input, output format, and array structure.
+ * Component for inputting multiline text and configuring conversion options.
+ * Provides a form with controls for text input, output format, and array structure.
  *
  * @component
  * @param {Object} props - Component props
- * @param {string} props.htmlInput - Current HTML input
- * @param {Function} props.setHtmlInput - Function to update HTML input
+ * @param {string} props.textInput - Current text input
+ * @param {Function} props.setTextInput - Function to update text input
  * @param {string} props.outputFormat - Selected output format
  * @param {Function} props.setOutputFormat - Function to update output format
  * @param {string} props.arrayType - Selected array structure type
  * @param {Function} props.setArrayType - Function to update array structure type
+ * @param {boolean} props.trimLines - Whether to trim whitespace from lines
+ * @param {Function} props.setTrimLines - Function to update trim lines setting
+ * @param {boolean} props.removeEmptyLines - Whether to remove empty lines
+ * @param {Function} props.setRemoveEmptyLines - Function to update remove empty lines setting
  * @param {boolean} props.useSlugKeys - Whether to use slugified keys
  * @param {Function} props.setUseSlugKeys - Function to update slug keys setting
- * @param {Function} props.onConvert - Function to convert HTML to array
- * @param {Function} props.onClear - Function to clear only the input field
+ * @param {Function} props.onConvert - Function to convert text to array
+ * @param {Function} props.onClear - Function to clear text input only
  * @param {Function} props.onReset - Function to reset all settings to defaults
  * @returns {JSX.Element} The rendered form with conversion options
  */
-const DropdownToArrayInput = ({
-  htmlInput,
-  setHtmlInput,
+const TextToArrayInput = ({
+  textInput,
+  setTextInput,
   outputFormat,
   setOutputFormat,
   arrayType,
   setArrayType,
+  trimLines,
+  setTrimLines,
+  removeEmptyLines,
+  setRemoveEmptyLines,
   useSlugKeys,
   setUseSlugKeys,
   onConvert,
@@ -61,33 +69,31 @@ const DropdownToArrayInput = ({
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Dropdown HTML</CardTitle>
+        <CardTitle>Text Input</CardTitle>
         <CardDescription className="text-muted-foreground text-sm">
-          Paste HTML select/dropdown content and convert to various array
-          formats
+          Paste multiline text and convert to various array formats
         </CardDescription>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="flex flex-col gap-6">
           <div className="space-y-2">
-            <Label htmlFor="html-input" className="flex items-center">
-              HTML Select/Dropdown Code
+            <Label htmlFor="text-input" className="flex items-center">
+              Multiline Text
               <Tooltip
-                text="Paste your HTML <select> element with <option> tags. You can also paste just the <option> tags."
+                text="Enter or paste text with one item per line. Each line will become an element in the resulting array."
                 delayDuration={300}
               >
                 <FiInfo className="text-muted-foreground ml-1.5 h-4 w-4 cursor-help" />
               </Tooltip>
             </Label>
             <Textarea
-              id="html-input"
-              placeholder={`<select>
-  <option value='option1'>Option 1</option>
-  <option value='option2'>Option 2</option>
-</select>`}
+              id="text-input"
+              placeholder="Item 1
+Item 2
+Item 3"
               className="h-40 font-mono"
-              value={htmlInput}
-              onChange={(e) => setHtmlInput(e.target.value)}
+              value={textInput}
+              onChange={(e) => setTextInput(e.target.value)}
             />
           </div>
 
@@ -111,7 +117,7 @@ const DropdownToArrayInput = ({
                   { value: "jsArray", label: "JavaScript Array" },
                   { value: "jsObject", label: "JavaScript Object" },
                   { value: "php", label: "PHP Array" },
-                  { value: "wordpress", label: "WordPress Select Options" },
+                  { value: "wordpress", label: "WordPress Array" },
                 ]}
               />
             </div>
@@ -120,7 +126,7 @@ const DropdownToArrayInput = ({
               <Label htmlFor="array-type" className="flex items-center">
                 Array Structure
                 <Tooltip
-                  text="Simple: Just values. Numeric: Indexed entries with ID/position and values. Associative: Key-value pairs using option values as keys."
+                  text="Simple: Just values. Numeric: Indexed entries with ID/position and values. Associative: Key-value pairs."
                   delayDuration={300}
                   className="!w-72"
                 >
@@ -132,32 +138,74 @@ const DropdownToArrayInput = ({
                 value={arrayType}
                 onValueChange={setArrayType}
                 options={[
-                  { value: "associative", label: "Associative (Key-Value)" },
-                  { value: "numeric", label: "Numeric (ID & Value)" },
                   { value: "simple", label: "Simple (Values Only)" },
+                  { value: "numeric", label: "Numeric (ID & Value)" },
+                  { value: "associative", label: "Associative (Key-Value)" },
                 ]}
               />
             </div>
           </div>
 
-          <div className="flex items-center space-x-2">
-            <Checkbox
-              id="use-slug-keys"
-              checked={useSlugKeys}
-              onCheckedChange={setUseSlugKeys}
-            />
-            <Label
-              htmlFor="use-slug-keys"
-              className="cursor-pointer text-sm leading-none font-medium"
-            >
-              Use slugified keys
-              <Tooltip
-                text="Generate slugified keys from option text instead of using original values"
-                delayDuration={300}
+          <div className="flex flex-col gap-4">
+            <div className="flex items-center space-x-2">
+              <Checkbox
+                id="trim-lines"
+                checked={trimLines}
+                onCheckedChange={setTrimLines}
+              />
+              <Label
+                htmlFor="trim-lines"
+                className="cursor-pointer text-sm leading-none font-medium"
               >
-                <FiInfo className="text-muted-foreground ml-1.5 inline-block h-4 w-4 cursor-help" />
-              </Tooltip>
-            </Label>
+                Trim whitespace from each line
+                <Tooltip
+                  text="Remove leading and trailing whitespace from each line"
+                  delayDuration={300}
+                >
+                  <FiInfo className="text-muted-foreground ml-1.5 inline-block h-4 w-4 cursor-help" />
+                </Tooltip>
+              </Label>
+            </div>
+
+            <div className="flex items-center space-x-2">
+              <Checkbox
+                id="remove-empty-lines"
+                checked={removeEmptyLines}
+                onCheckedChange={setRemoveEmptyLines}
+              />
+              <Label
+                htmlFor="remove-empty-lines"
+                className="cursor-pointer text-sm leading-none font-medium"
+              >
+                Remove empty lines
+                <Tooltip
+                  text="Skip blank lines in the input text"
+                  delayDuration={300}
+                >
+                  <FiInfo className="text-muted-foreground ml-1.5 inline-block h-4 w-4 cursor-help" />
+                </Tooltip>
+              </Label>
+            </div>
+
+            <div className="flex items-center space-x-2">
+              <Checkbox
+                id="use-slug-keys"
+                checked={useSlugKeys}
+                onCheckedChange={setUseSlugKeys}
+              />
+              <Label
+                htmlFor="use-slug-keys"
+                className="cursor-pointer text-sm leading-none font-medium"
+              >
+                Use slugified keys
+                <Tooltip
+                  text="Generate slugified keys from the text instead of using generic item_N keys"
+                  delayDuration={300}
+                >
+                  <FiInfo className="text-muted-foreground ml-1.5 inline-block h-4 w-4 cursor-help" />
+                </Tooltip>
+              </Label>
+            </div>
           </div>
 
           <div className="flex flex-wrap gap-2">
@@ -165,7 +213,7 @@ const DropdownToArrayInput = ({
               Convert
             </Button>
             <Button type="button" variant="outline" size="lg" onClick={onClear}>
-              Clear Input
+              Clear
             </Button>
             <Button
               type="button"
@@ -182,13 +230,17 @@ const DropdownToArrayInput = ({
   );
 };
 
-DropdownToArrayInput.propTypes = {
-  htmlInput: PropTypes.string.isRequired,
-  setHtmlInput: PropTypes.func.isRequired,
+TextToArrayInput.propTypes = {
+  textInput: PropTypes.string.isRequired,
+  setTextInput: PropTypes.func.isRequired,
   outputFormat: PropTypes.string.isRequired,
   setOutputFormat: PropTypes.func.isRequired,
   arrayType: PropTypes.string.isRequired,
   setArrayType: PropTypes.func.isRequired,
+  trimLines: PropTypes.bool.isRequired,
+  setTrimLines: PropTypes.func.isRequired,
+  removeEmptyLines: PropTypes.bool.isRequired,
+  setRemoveEmptyLines: PropTypes.func.isRequired,
   useSlugKeys: PropTypes.bool.isRequired,
   setUseSlugKeys: PropTypes.func.isRequired,
   onConvert: PropTypes.func.isRequired,
@@ -196,4 +248,4 @@ DropdownToArrayInput.propTypes = {
   onReset: PropTypes.func.isRequired,
 };
 
-export default DropdownToArrayInput;
+export default TextToArrayInput;

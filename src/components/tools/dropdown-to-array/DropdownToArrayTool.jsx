@@ -166,12 +166,22 @@ const DropdownToArrayTool = () => {
    */
   const formatJsonOutput = (options) => {
     try {
-      const numericArray = options.map((option, index) => ({
-        id: index + 1,
-        key: getKey(option),
-        value: option.text,
-      }));
-      return JSON.stringify(numericArray, null, 2);
+      if (arrayType === "simple") {
+        return JSON.stringify(options, null, 2);
+      } else if (arrayType === "numeric") {
+        const numericArray = options.map((option, index) => ({
+          id: index + 1,
+          value: option.text,
+        }));
+        return JSON.stringify(numericArray, null, 2);
+      } else {
+        // associative
+        const associativeArray = options.map((option) => ({
+          key: getKey(option),
+          value: option.text,
+        }));
+        return JSON.stringify(associativeArray, null, 2);
+      }
     } catch (err) {
       setError(`Error formatting JSON: ${err.message}`);
       return "";
@@ -322,13 +332,22 @@ const DropdownToArrayTool = () => {
   };
 
   /**
+   * Clears only the input field while keeping other settings intact
+   */
+  const handleClear = () => {
+    setHtmlInput("");
+    setError("");
+    setConvertedOutput("");
+  };
+
+  /**
    * Resets all input fields and output
    */
   const handleReset = () => {
     setHtmlInput("");
     setOutputFormat("json");
-    setArrayType("simple");
-    setUseSlugKeys(false);
+    setArrayType("associative");
+    setUseSlugKeys(true);
     setConvertedOutput("");
     setError("");
   };
@@ -346,6 +365,7 @@ const DropdownToArrayTool = () => {
           useSlugKeys={useSlugKeys}
           setUseSlugKeys={setUseSlugKeys}
           onConvert={handleConvert}
+          onClear={handleClear}
           onReset={handleReset}
         />
         <DropdownToArrayOutput output={convertedOutput} error={error} />

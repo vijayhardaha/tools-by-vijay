@@ -1,30 +1,30 @@
 "use client";
 
 /**
- * Provides information about the Dropdown to Array Converter tool, including its purpose,
+ * Provides information about the Text to Array Converter tool, including its purpose,
  * usage instructions, and examples.
  *
  * @component
  * @returns {JSX.Element} The rendered component displaying tool information
  */
-const DropdownToArrayInfo = () => {
+const TextToArrayInfo = () => {
   return (
     <div className="max-w-none space-y-8">
       <section>
         <h2 className="text-primary mb-4 text-xl font-bold">
-          About Dropdown to Array Converter
+          About Text to Array Converter
         </h2>
         <p className="mb-4">
-          The Dropdown to Array Converter is a utility tool that helps
-          developers convert HTML select/dropdown elements into various array
-          and object formats for different programming languages. This tool
-          saves time when working with form elements across platforms, allowing
-          you to quickly transform dropdown options into usable data structures.
+          The Text to Array Converter is a utility tool that helps developers
+          convert multiline text into various array and object formats for
+          different programming languages. This tool is especially useful for
+          quickly transforming lists, comma-separated values, or any line-based
+          data into structured arrays for your code.
         </p>
         <p className="mb-4">
-          All conversion happens directly in your browser – your HTML code is
-          never sent to a server, ensuring privacy and security when working
-          with sensitive data.
+          All conversion happens directly in your browser – your text is never
+          sent to a server, ensuring privacy and security when working with
+          sensitive data.
         </p>
       </section>
 
@@ -34,9 +34,14 @@ const DropdownToArrayInfo = () => {
         </h3>
         <ol className="list-decimal space-y-2 pl-6">
           <li>
-            <strong>Paste Your HTML:</strong> Copy and paste your HTML select
-            element with options into the input area. You can paste a complete
-            select element or just the option tags.
+            <strong>Enter Your Text:</strong> Type or paste your multiline text
+            into the input area. Each line will become an element in the
+            resulting array.
+          </li>
+          <li>
+            <strong>Configure Processing Options:</strong> Choose whether to
+            trim whitespace from each line and whether to remove empty lines
+            from the input.
           </li>
           <li>
             <strong>Select Output Format:</strong> Choose the programming
@@ -48,23 +53,22 @@ const DropdownToArrayInfo = () => {
             structured:
             <ul className="list-disc pt-2 pl-6">
               <li>
-                <strong>Associative:</strong> Object/array with value as key and
-                text as value
+                <strong>Simple:</strong> Just the values in a basic array
               </li>
               <li>
                 <strong>Numeric:</strong> Arrays containing both ID and text
                 value
               </li>
               <li>
-                <strong>Simple:</strong> Just the text values in an array
+                <strong>Associative:</strong> Key-value pairs with slugified
+                keys or numeric keys
               </li>
             </ul>
           </li>
           <li>
-            <strong>Enable Slugified Keys:</strong> Optionally, you can enable
-            this feature to automatically generate clean, URL-friendly keys from
-            the option values instead of using the raw values, which is
-            especially useful for associative structures.
+            <strong>Enable Slugified Keys:</strong> For associative arrays, you
+            can enable this feature to automatically generate clean,
+            URL-friendly keys from the line text.
           </li>
           <li>
             <strong>Convert:</strong> Click the “Convert” button to generate
@@ -83,12 +87,10 @@ const DropdownToArrayInfo = () => {
           <div>
             <h4 className="mb-2 font-medium">Input Example:</h4>
             <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 dark:bg-gray-800">
-              {`<select name="country">
-  <option value="us">United States</option>
-  <option value="ca">Canada</option>
-  <option value="uk">United Kingdom</option>
-  <option value="au">Australia</option>
-</select>`}
+              {`United States
+Canada
+United Kingdom
+Australia`}
             </pre>
           </div>
 
@@ -96,27 +98,13 @@ const DropdownToArrayInfo = () => {
             <h4 className="mb-2 font-medium">Output Examples:</h4>
             <div className="space-y-4">
               <div>
-                <h5 className="text-sm font-medium">
-                  JSON Associative Output:
-                </h5>
+                <h5 className="text-sm font-medium">JSON (Simple):</h5>
                 <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 dark:bg-gray-800">
                   {`[
-  {
-    "key": "us",
-    "value": "United States"
-  },
-  {
-    "key": "ca",
-    "value": "Canada"
-  },
-  {
-    "key": "uk",
-    "value": "United Kingdom"
-  },
-  {
-    "key": "au",
-    "value": "Australia"
-  }
+  "United States",
+  "Canada",
+  "United Kingdom",
+  "Australia"
 ]`}
                 </pre>
               </div>
@@ -126,21 +114,21 @@ const DropdownToArrayInfo = () => {
                   JavaScript Array (Associative with Slugified Keys):
                 </h5>
                 <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 dark:bg-gray-800">
-                  {`const dropdownArray = [
+                  {`const textArray = [
   {
-    "key": "us",
+    "key": "united_states",
     "value": "United States"
   },
   {
-    "key": "ca",
+    "key": "canada",
     "value": "Canada"
   },
   {
-    "key": "uk",
+    "key": "united_kingdom",
     "value": "United Kingdom"
   },
   {
-    "key": "au",
+    "key": "australia",
     "value": "Australia"
   }
 ];`}
@@ -148,29 +136,14 @@ const DropdownToArrayInfo = () => {
               </div>
 
               <div>
-                <h5 className="text-sm font-medium">PHP Array (Simple):</h5>
+                <h5 className="text-sm font-medium">PHP Array (Numeric):</h5>
                 <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 dark:bg-gray-800">
                   {`<?php
 $data = array(
-  'United States',
-  'Canada',
-  'United Kingdom',
-  'Australia'
-);`}
-                </pre>
-              </div>
-
-              <div>
-                <h5 className="text-sm font-medium">
-                  WordPress Select Options (Associative):
-                </h5>
-                <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 dark:bg-gray-800">
-                  {`<?php
-$data = array(
-  'us' => __( 'United States', 'text-domain' ),
-  'ca' => __( 'Canada', 'text-domain' ),
-  'uk' => __( 'United Kingdom', 'text-domain' ),
-  'au' => __( 'Australia', 'text-domain' )
+  1 => 'United States',
+  2 => 'Canada',
+  3 => 'United Kingdom',
+  4 => 'Australia'
 );`}
                 </pre>
               </div>
@@ -185,25 +158,26 @@ $data = array(
         </h3>
         <ul className="list-inside list-disc space-y-1 pl-4">
           <li>
-            Quickly convert HTML dropdowns to usable data structures for your
-            code.
+            Convert any line-based text into structured data arrays quickly.
           </li>
-          <li>Save time when migrating between platforms or languages.</li>
+          <li>
+            Transform plain lists into code-ready arrays for immediate use.
+          </li>
+          <li>
+            Prepare data from spreadsheets or text files for use in your
+            applications.
+          </li>
           <li>
             Generate slugified keys automatically for cleaner code and better
             compatibility.
           </li>
           <li>
-            Easily format data for use in JavaScript, PHP, or WordPress
+            Format text data for use in JavaScript, PHP, or WordPress
             applications.
           </li>
           <li>
-            Transform user interface elements directly into data structures for
-            API integration.
-          </li>
-          <li>
-            Generate WordPress-ready select option arrays with proper
-            formatting.
+            Process and clean up text data by trimming whitespace and removing
+            empty lines.
           </li>
         </ul>
       </section>
@@ -225,7 +199,7 @@ $data = array(
             </a>
           </strong>
           . This tool is built with web developers in mind to streamline the
-          process of working with dropdown menus across different programming
+          process of working with text data in different programming
           environments.
         </p>
       </section>
@@ -233,4 +207,4 @@ $data = array(
   );
 };
 
-export default DropdownToArrayInfo;
+export default TextToArrayInfo;
