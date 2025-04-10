@@ -48,20 +48,27 @@ const DropdownToArrayInfo = () => {
             structured:
             <ul className="list-disc pt-2 pl-6">
               <li>
-                <strong>Simple:</strong> Just the text values in an array
-              </li>
-              <li>
-                <strong>Numeric:</strong> Arrays containing both value and text
-              </li>
-              <li>
                 <strong>Associative:</strong> Object/array with value as key and
                 text as value
+              </li>
+              <li>
+                <strong>Numeric:</strong> Arrays containing both ID and text
+                value
+              </li>
+              <li>
+                <strong>Simple:</strong> Just the text values in an array
               </li>
             </ul>
           </li>
           <li>
-            <strong>Convert:</strong> Click the "Convert to Array" button to
-            generate your output.
+            <strong>Enable Slugified Keys:</strong> Optionally, you can enable
+            this feature to automatically generate clean, URL-friendly keys from
+            the option values instead of using the raw values, which is
+            especially useful for associative structures.
+          </li>
+          <li>
+            <strong>Convert:</strong> Click the “Convert” button to generate
+            your output.
           </li>
           <li>
             <strong>Copy Result:</strong> Use the copy button to copy the result
@@ -89,43 +96,84 @@ const DropdownToArrayInfo = () => {
             <h4 className="mb-2 font-medium">Output Examples:</h4>
             <div className="space-y-4">
               <div>
-                <h5 className="text-sm font-medium">JSON (Associative):</h5>
+                <h5 className="text-sm font-medium">JSON Output:</h5>
                 <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 dark:bg-gray-800">
-                  {`{
-  "us": "United States",
-  "ca": "Canada",
-  "uk": "United Kingdom",
-  "au": "Australia"
-}`}
+                  {`[
+  {
+    "id": 1,
+    "key": "us",
+    "value": "United States"
+  },
+  {
+    "id": 2,
+    "key": "ca",
+    "value": "Canada"
+  },
+  {
+    "id": 3,
+    "key": "uk",
+    "value": "United Kingdom"
+  },
+  {
+    "id": 4,
+    "key": "au",
+    "value": "Australia"
+  }
+]`}
                 </pre>
               </div>
 
               <div>
                 <h5 className="text-sm font-medium">
-                  JavaScript Array (Simple):
+                  JavaScript Array (Associative with Slugified Keys):
                 </h5>
                 <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 dark:bg-gray-800">
                   {`const dropdownArray = [
-  "United States",
-  "Canada",
-  "United Kingdom",
-  "Australia"
+  {
+    "key": "us",
+    "value": "United States"
+  },
+  {
+    "key": "ca",
+    "value": "Canada"
+  },
+  {
+    "key": "uk",
+    "value": "United Kingdom"
+  },
+  {
+    "key": "au",
+    "value": "Australia"
+  }
 ];`}
                 </pre>
               </div>
 
               <div>
+                <h5 className="text-sm font-medium">PHP Array (Simple):</h5>
+                <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 dark:bg-gray-800">
+                  {`<?php
+$data = array(
+  'United States',
+  'Canada',
+  'United Kingdom',
+  'Australia'
+);`}
+                </pre>
+              </div>
+
+              <div>
                 <h5 className="text-sm font-medium">
-                  PHP Array (Associative):
+                  WordPress Select Options (Associative):
                 </h5>
                 <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 dark:bg-gray-800">
                   {`<?php
-$dropdown_array = [
-  'us' => 'United States',
-  'ca' => 'Canada',
-  'uk' => 'United Kingdom',
-  'au' => 'Australia'
-];`}
+$data = array(
+  'us' => __( 'United States', 'text-domain' ),
+  'ca' => __( 'Canada', 'text-domain' ),
+  'uk' => __( 'United Kingdom', 'text-domain' ),
+  'au' => __( 'Australia', 'text-domain' )
+);`}
                 </pre>
               </div>
             </div>
@@ -143,6 +191,10 @@ $dropdown_array = [
             code.
           </li>
           <li>Save time when migrating between platforms or languages.</li>
+          <li>
+            Generate slugified keys automatically for cleaner code and better
+            compatibility.
+          </li>
           <li>
             Easily format data for use in JavaScript, PHP, or WordPress
             applications.

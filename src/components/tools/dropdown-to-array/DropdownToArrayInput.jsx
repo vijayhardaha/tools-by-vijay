@@ -11,6 +11,7 @@ import {
   CardContent,
   CardDescription,
 } from "@/components/ui/card";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { Select } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
@@ -28,6 +29,8 @@ import { Tooltip } from "@/components/ui/tooltip";
  * @param {Function} props.setOutputFormat - Function to update output format
  * @param {string} props.arrayType - Selected array structure type
  * @param {Function} props.setArrayType - Function to update array structure type
+ * @param {boolean} props.useSlugKeys - Whether to use slugified keys
+ * @param {Function} props.setUseSlugKeys - Function to update slug keys setting
  * @param {Function} props.onConvert - Function to convert HTML to array
  * @param {Function} props.onReset - Function to reset all settings to defaults
  * @returns {JSX.Element} The rendered form with conversion options
@@ -39,6 +42,8 @@ const DropdownToArrayInput = ({
   setOutputFormat,
   arrayType,
   setArrayType,
+  useSlugKeys,
+  setUseSlugKeys,
   onConvert,
   onReset,
 }) => {
@@ -54,7 +59,7 @@ const DropdownToArrayInput = ({
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Dropdown to Array Converter</CardTitle>
+        <CardTitle>Dropdown HTML</CardTitle>
         <CardDescription className="text-muted-foreground text-sm">
           Paste HTML select/dropdown content and convert to various array
           formats
@@ -89,7 +94,7 @@ const DropdownToArrayInput = ({
               <Label htmlFor="output-format" className="flex items-center">
                 Output Format
                 <Tooltip
-                  text="Select the programming language and format for the output"
+                  text="Select the programming language and format for the output array or object"
                   delayDuration={300}
                 >
                   <FiInfo className="text-muted-foreground ml-1.5 h-4 w-4 cursor-help" />
@@ -109,33 +114,55 @@ const DropdownToArrayInput = ({
               />
             </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="array-type" className="flex items-center">
-                Array Structure
-                <Tooltip
-                  text="Simple: Just the text values. Numeric: Arrays with [value, text]. Associative: Object with value as key and text as value."
-                  delayDuration={300}
-                  className="!w-72"
-                >
-                  <FiInfo className="text-muted-foreground ml-1.5 h-4 w-4 cursor-help" />
-                </Tooltip>
-              </Label>
-              <Select
-                id="array-type"
-                value={arrayType}
-                onValueChange={setArrayType}
-                options={[
-                  { value: "simple", label: "Simple Array (Text Only)" },
-                  { value: "numeric", label: "Numeric Array (Value & Text)" },
-                  { value: "associative", label: "Associative Array/Object" },
-                ]}
-              />
-            </div>
+            {outputFormat !== "json" && (
+              <div className="space-y-2">
+                <Label htmlFor="array-type" className="flex items-center">
+                  Array Structure
+                  <Tooltip
+                    text="Simple: Just values. Numeric: Indexed entries with ID/position and values. Associative: Key-value pairs using option values as keys."
+                    delayDuration={300}
+                    className="!w-72"
+                  >
+                    <FiInfo className="text-muted-foreground ml-1.5 h-4 w-4 cursor-help" />
+                  </Tooltip>
+                </Label>
+                <Select
+                  id="array-type"
+                  value={arrayType}
+                  onValueChange={setArrayType}
+                  options={[
+                    { value: "associative", label: "Associative (Key-Value)" },
+                    { value: "numeric", label: "Numeric (ID & Value)" },
+                    { value: "simple", label: "Simple (Values Only)" },
+                  ]}
+                />
+              </div>
+            )}
+          </div>
+
+          <div className="flex items-center space-x-2">
+            <Checkbox
+              id="use-slug-keys"
+              checked={useSlugKeys}
+              onCheckedChange={setUseSlugKeys}
+            />
+            <Label
+              htmlFor="use-slug-keys"
+              className="cursor-pointer text-sm leading-none font-medium"
+            >
+              Use slugified keys
+              <Tooltip
+                text="Generate slugified keys from option text instead of using original values"
+                delayDuration={300}
+              >
+                <FiInfo className="text-muted-foreground ml-1.5 inline-block h-4 w-4 cursor-help" />
+              </Tooltip>
+            </Label>
           </div>
 
           <div className="flex flex-wrap gap-2">
             <Button type="submit" variant="default" size="lg">
-              Convert to Array
+              Convert
             </Button>
             <Button
               type="button"
@@ -159,6 +186,8 @@ DropdownToArrayInput.propTypes = {
   setOutputFormat: PropTypes.func.isRequired,
   arrayType: PropTypes.string.isRequired,
   setArrayType: PropTypes.func.isRequired,
+  useSlugKeys: PropTypes.bool.isRequired,
+  setUseSlugKeys: PropTypes.func.isRequired,
   onConvert: PropTypes.func.isRequired,
   onReset: PropTypes.func.isRequired,
 };

@@ -2,6 +2,9 @@
 
 import { useState } from "react";
 
+import latinize from "latinize";
+import slugify from "slugify";
+
 import DropdownToArrayInfo from "./DropdownToArrayInfo";
 import DropdownToArrayInput from "./DropdownToArrayInput";
 import DropdownToArrayOutput from "./DropdownToArrayOutput";
@@ -30,7 +33,13 @@ const DropdownToArrayTool = () => {
    * The array structure type (simple, numeric, associative)
    * @type {[string, function]} State and setter for array structure
    */
-  const [arrayType, setArrayType] = useState("simple");
+  const [arrayType, setArrayType] = useState("associative");
+
+  /**
+   * Whether to use slugified keys for associative arrays
+   * @type {[boolean, function]} State and setter for slug keys option
+   */
+  const [useSlugKeys, setUseSlugKeys] = useState(true);
 
   /**
    * The converted output result
@@ -43,6 +52,31 @@ const DropdownToArrayTool = () => {
    * @type {[string, function]} State and setter for error messages
    */
   const [error, setError] = useState("");
+
+  /**
+   * Generates a slug from the given text.
+   * @param {string} text - The input text to be slugified.
+   * @returns {string} The generated slug.
+   */
+  const generateSlug = (text) =>
+    slugify(latinize(text).toLowerCase(), {
+      replacement: "_",
+      remove: null,
+      lower: true,
+      strict: true,
+    });
+
+  /**
+   * Gets the key to use for an option based on settings
+   * @param {Object} option - The option element with value and text
+   * @returns {string} The key to use
+   */
+  const getKey = (option) => {
+    if (useSlugKeys) {
+      return generateSlug(option.value);
+    }
+    return option.value;
+  };
 
   /**
    * Parses the HTML input and extracts option values and text
@@ -132,23 +166,12 @@ const DropdownToArrayTool = () => {
    */
   const formatJsonOutput = (options) => {
     try {
-      if (arrayType === "simple") {
-        const simpleArray = options.map((option) => option.text);
-        return JSON.stringify(simpleArray, null, 2);
-      } else if (arrayType === "numeric") {
-        const numericArray = options.map((option) => [
-          option.value,
-          option.text,
-        ]);
-        return JSON.stringify(numericArray, null, 2);
-      } else {
-        // associative
-        const associativeArray = options.reduce((acc, option) => {
-          acc[option.value] = option.text;
-          return acc;
-        }, {});
-        return JSON.stringify(associativeArray, null, 2);
-      }
+      const numericArray = options.map((option, index) => ({
+        id: index + 1,
+        key: getKey(option),
+        value: option.text,
+      }));
+      return JSON.stringify(numericArray, null, 2);
     } catch (err) {
       setError(`Error formatting JSON: ${err.message}`);
       return "";
@@ -164,22 +187,22 @@ const DropdownToArrayTool = () => {
     try {
       if (arrayType === "simple") {
         const simpleArray = options.map(
-          (option) => `"${option.text.replace(/"/g, '\\"')}"`
+          (option) => `  "${option.text.replace(/"/g, '\\"')}"`
         );
-        return `const dropdownArray = [\n  ${simpleArray.join(",\n  ")}\n];`;
+        return `const dropdownArray = [\n${simpleArray.join(",\n")}\n];`;
       } else if (arrayType === "numeric") {
         const numericArray = options.map(
-          (option) =>
-            `  ["${option.value.replace(/"/g, '\\"')}", "${option.text.replace(/"/g, '\\"')}"]`
+          (option, index) =>
+            `  {\n    "id": ${index + 1},\n    "value": "${option.text.replace(/"/g, '\\"')}"\n  }`
         );
         return `const dropdownArray = [\n${numericArray.join(",\n")}\n];`;
       } else {
         // associative
         const associativeArray = options.map(
           (option) =>
-            `  "${option.value.replace(/"/g, '\\"')}": "${option.text.replace(/"/g, '\\"')}"`
+            `  {\n    "key": "${getKey(option).replace(/"/g, '\\"')}",\n    "value": "${option.text.replace(/"/g, '\\"')}"\n  }`
         );
-        return `const dropdownObject = {\n${associativeArray.join(",\n")}\n};`;
+        return `const dropdownArray = [\n${associativeArray.join(",\n")}\n];`;
       }
     } catch (err) {
       setError(`Error formatting JavaScript array: ${err.message}`);
@@ -196,20 +219,21 @@ const DropdownToArrayTool = () => {
     try {
       if (arrayType === "simple") {
         const objectItems = options.map(
-          (option, index) => `  ${index}: "${option.text.replace(/"/g, '\\"')}"`
+          (option, index) =>
+            `  "${index + 1}": "${option.text.replace(/"/g, '\\"')}"`
         );
         return `const dropdownObject = {\n${objectItems.join(",\n")}\n};`;
       } else if (arrayType === "numeric") {
         const objectItems = options.map(
           (option, index) =>
-            `  ${index}: { value: "${option.value.replace(/"/g, '\\"')}", text: "${option.text.replace(/"/g, '\\"')}" }`
+            `  "${index + 1}": "${option.text.replace(/"/g, '\\"')}"`
         );
         return `const dropdownObject = {\n${objectItems.join(",\n")}\n};`;
       } else {
         // associative
         const objectItems = options.map(
           (option) =>
-            `  "${option.value.replace(/"/g, '\\"')}": "${option.text.replace(/"/g, '\\"')}"`
+            `  "${getKey(option).replace(/"/g, '\\"')}": "${option.text.replace(/"/g, '\\"')}"`
         );
         return `const dropdownObject = {\n${objectItems.join(",\n")}\n};`;
       }
@@ -230,20 +254,20 @@ const DropdownToArrayTool = () => {
         const arrayItems = options.map(
           (option) => `  '${option.text.replace(/'/g, "\\'")}'`
         );
-        return `<?php\n$dropdown_array = [\n${arrayItems.join(",\n")}\n];`;
+        return `<?php\n$data = array(\n${arrayItems.join(",\n")}\n);`;
       } else if (arrayType === "numeric") {
         const arrayItems = options.map(
-          (option) =>
-            `  ['${option.value.replace(/'/g, "\\'")}', '${option.text.replace(/'/g, "\\'")}'`
+          (option, index) =>
+            `  '${index + 1}' => '${option.text.replace(/'/g, "\\'")}'`
         );
-        return `<?php\n$dropdown_array = [\n${arrayItems.join("],\n")}\n]];`;
+        return `<?php\n$data = array(\n${arrayItems.join(",\n")}\n);`;
       } else {
         // associative
         const arrayItems = options.map(
           (option) =>
-            `  '${option.value.replace(/'/g, "\\'")}' => '${option.text.replace(/'/g, "\\'")}'`
+            `  '${getKey(option).replace(/'/g, "\\'")}' => '${option.text.replace(/'/g, "\\'")}'`
         );
-        return `<?php\n$dropdown_array = [\n${arrayItems.join(",\n")}\n];`;
+        return `<?php\n$data = array(\n${arrayItems.join(",\n")}\n);`;
       }
     } catch (err) {
       setError(`Error formatting PHP array: ${err.message}`);
@@ -260,22 +284,23 @@ const DropdownToArrayTool = () => {
     try {
       if (arrayType === "simple") {
         const arrayItems = options.map(
-          (option) => `  '${option.text.replace(/'/g, "\\'")}'`
+          (option) =>
+            `  __( '${option.text.replace(/'/g, "\\'")}', 'text-domain' )`
         );
-        return `<?php\n$dropdown_options = [\n${arrayItems.join(",\n")}\n];`;
+        return `<?php\n$data = array(\n${arrayItems.join(",\n")}\n);`;
       } else if (arrayType === "numeric") {
         const arrayItems = options.map(
-          (option) =>
-            `  '${option.value.replace(/'/g, "\\'")}' => '${option.text.replace(/'/g, "\\'")}'`
+          (option, index) =>
+            `  '${index + 1}' => __( '${option.text.replace(/'/g, "\\'")}', 'text-domain' )`
         );
-        return `<?php\n$dropdown_options = [\n${arrayItems.join(",\n")}\n];\n\n// Example usage in a field definition\n$fields[] = [\n  'type' => 'select',\n  'name' => 'dropdown_field',\n  'options' => $dropdown_options,\n];`;
+        return `<?php\n$data = array(\n${arrayItems.join(",\n")}\n);`;
       } else {
         // associative
         const arrayItems = options.map(
           (option) =>
-            `  '${option.value.replace(/'/g, "\\'")}' => '${option.text.replace(/'/g, "\\'")}'`
+            `  '${getKey(option).replace(/'/g, "\\'")}' => __( '${option.text.replace(/'/g, "\\'")}', 'text-domain' )`
         );
-        return `<?php\n$dropdown_options = [\n${arrayItems.join(",\n")}\n];\n\n// Example usage with add_settings_field\nadd_settings_field(\n  'dropdown_field',\n  'Dropdown Field Label',\n  'my_dropdown_callback',\n  'my_page',\n  'my_section',\n  ['options' => $dropdown_options]\n);`;
+        return `<?php\n$data = array(\n${arrayItems.join(",\n")}\n);`;
       }
     } catch (err) {
       setError(`Error formatting WordPress output: ${err.message}`);
@@ -303,6 +328,7 @@ const DropdownToArrayTool = () => {
     setHtmlInput("");
     setOutputFormat("json");
     setArrayType("simple");
+    setUseSlugKeys(false);
     setConvertedOutput("");
     setError("");
   };
@@ -317,6 +343,8 @@ const DropdownToArrayTool = () => {
           setOutputFormat={setOutputFormat}
           arrayType={arrayType}
           setArrayType={setArrayType}
+          useSlugKeys={useSlugKeys}
+          setUseSlugKeys={setUseSlugKeys}
           onConvert={handleConvert}
           onReset={handleReset}
         />
