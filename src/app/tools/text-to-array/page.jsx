@@ -24,8 +24,8 @@ export const metadata = {
 
 /**
  * Text to Array tool page component
- * Renders the page layout with header and the Text to Array conversion tool
- * @returns {JSX.Element} The rendered Text to Array page
+ * Renders the page layout with header and the Text to Array tool
+ * @returns {JSX.Element} The rendered Text to Array page component.
  */
 const TextToArray = () => {
   return (

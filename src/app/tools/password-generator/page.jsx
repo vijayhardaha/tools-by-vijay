@@ -6,13 +6,13 @@ import { getToolBySlug } from "@/lib/utils/getToolBySlug";
 import { getToolIcon } from "@/lib/utils/getToolIcon";
 
 /**
- * Fetches password generator tool data from the tools database
- * @constant {Object} tool - Tool configuration with properties like name, description, and SEO metadata
+ * Retrieves tool data for the Password Generator tool
+ * @constant {Object} tool - The tool object containing metadata and configuration
  */
 const tool = getToolBySlug("password-generator");
 
 /**
- * SEO metadata for the password generator page
+ * SEO metadata for the Password Generator page
  * @type {Object}
  * @property {string} title - The page title for SEO
  * @property {string} description - The page description for SEO
@@ -24,9 +24,8 @@ export const metadata = {
 
 /**
  * Password Generator page component
- * Renders the password generator tool with appropriate layout and header
- *
- * @returns {ReactElement} The password generator page component
+ * Renders the page layout with header and the Password Generator tool
+ * @returns {ReactElement} The rendered Password Generator page component.
  */
 const PasswordGenerator = () => {
   return (

@@ -6,8 +6,8 @@ import { getToolBySlug } from "@/lib/utils/getToolBySlug";
 import { getToolIcon } from "@/lib/utils/getToolIcon";
 
 /**
- * Retrieves tool data for the password strength checker
- * @constant {Object} tool - The tool data object containing properties like name, slug, and descriptions
+ * Retrieves tool data for the Password Strength Checker tool
+ * @constant {Object} tool - The tool object containing metadata and configuration
  */
 const tool = getToolBySlug("password-strength-checker");
 
@@ -24,11 +24,8 @@ export const metadata = {
 
 /**
  * Password Strength Checker Page Component
- *
- * Renders the complete Password Strength Checker tool page with header and content
- * utilizing tool metadata for SEO and display purposes.
- *
- * @returns {JSX.Element} Rendered Password Strength Checker page
+ * Renders the page layout with header and the Password Strength Checker tool
+ * @returns {JSX.Element} The rendered Password Strength Checker page component.
  */
 const PasswordStrengthChecker = () => {
   return (

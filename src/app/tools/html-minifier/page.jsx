@@ -6,14 +6,16 @@ import { getToolBySlug } from "@/lib/utils/getToolBySlug";
 import { getToolIcon } from "@/lib/utils/getToolIcon";
 
 /**
- * Get tool data for HTML Minifier
- * @type {Object} Tool configuration object
+ * Retrieves tool data for the HTML Minifier tool
+ * @constant {Object} tool - The tool object containing metadata and configuration
  */
 const tool = getToolBySlug("html-minifier");
 
 /**
- * Export metadata for SEO
+ * SEO metadata for the HTML Minifier page
  * @type {Object}
+ * @property {string} title - The SEO title of the page.
+ * @property {string} description - The SEO description of the page.
  */
 export const metadata = {
   title: tool?.seoTitle || "",
@@ -22,9 +24,8 @@ export const metadata = {
 
 /**
  * HTML Minifier page component
- * Renders the HTML Minifier tool with appropriate layout and header
- *
- * @returns {JSX.Element} The rendered HTML Minifier page
+ * Renders the page layout with header and the HTML Minifier tool
+ * @returns {JSX.Element} The rendered HTML Minifier page component.
  */
 const HtmlMinifier = () => {
   return (

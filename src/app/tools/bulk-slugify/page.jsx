@@ -6,16 +6,16 @@ import { getToolBySlug } from "@/lib/utils/getToolBySlug";
 import { getToolIcon } from "@/lib/utils/getToolIcon";
 
 /**
- * Fetches tool data from the tools database
- * @constant {Object} tool - Tool configuration with properties like name, description, and SEO metadata
+ * Retrieves tool data for the Bulk Slugify tool.
+ * @constant {Object} tool - The tool object containing metadata and configuration
  */
 const tool = getToolBySlug("bulk-slugify");
 
 /**
- * Metadata for the Slugify page, used for SEO purposes.
+ * SEO metadata for the Bulk Slugify page.
  * @type {Object}
- * @property {string} title - The SEO title of the page.
- * @property {string} description - The SEO description of the page.
+ * @property {string} title - The SEO title of the page
+ * @property {string} description - The SEO description of the page
  */
 export const metadata = {
   title: tool?.seoTitle || "",
@@ -23,12 +23,8 @@ export const metadata = {
 };
 
 /**
- * BulkSlugify page component that renders the Bulk Slugify tool.
- * This page allows users to convert multiple text entries into slugs at once.
- *
- * Uses data from the tools configuration to display page title, description,
- * and relevant metadata for SEO.
- *
+ * Bulk Slugify page component
+ * Renders the page layout with header and the Bulk Slugify tool
  * @returns {JSX.Element} The rendered BulkSlugify page component.
  */
 const BulkSlugify = () => {

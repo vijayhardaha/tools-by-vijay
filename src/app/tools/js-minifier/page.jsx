@@ -6,13 +6,13 @@ import { getToolBySlug } from "@/lib/utils/getToolBySlug";
 import { getToolIcon } from "@/lib/utils/getToolIcon";
 
 /**
- * Fetches tool data from the tools database
- * @constant {Object} tool - Tool configuration with properties like name, description, and SEO metadata
+ * Retrieves tool data for the JavaScript Minifier tool
+ * @constant {Object} tool - The tool object containing metadata and configuration
  */
 const tool = getToolBySlug("js-minifier");
 
 /**
- * Metadata for the Slugify page, used for SEO purposes.
+ * SEO metadata for the JavaScript Minifier page
  * @type {Object}
  * @property {string} title - The SEO title of the page.
  * @property {string} description - The SEO description of the page.
@@ -24,11 +24,8 @@ export const metadata = {
 
 /**
  * JavaScript Minifier Page Component
- *
- * @description Renders the JS Minifier tool page with header and content sections.
- * This page allows users to compress and minify JavaScript code.
- *
- * @returns {JSX.Element} The rendered JS Minifier page
+ * Renders the page layout with header and the JavaScript Minifier tool
+ * @returns {JSX.Element} The rendered JS Minifier page component.
  */
 const JsMinifier = () => {
   return (
