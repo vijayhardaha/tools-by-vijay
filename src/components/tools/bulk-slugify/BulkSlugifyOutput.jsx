@@ -66,7 +66,6 @@ const BulkSlugifyOutput = ({ output }) => {
             value={output}
             readOnly
             data-output
-            disabled={!output}
             rows={unfilteredLinesLength || 1}
           />
           <Button
@@ -85,10 +84,10 @@ const BulkSlugifyOutput = ({ output }) => {
             {lines.map((line, index) => (
               <div key={index} className="flex items-center gap-2">
                 <Input
+                  type="text"
                   value={line}
                   readOnly
                   data-output
-                  disabled={!line}
                   className="flex-1"
                 />
                 <Button

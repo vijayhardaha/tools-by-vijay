@@ -8,7 +8,6 @@ import { LuCopy as CopyIcon, LuCheck as CheckIcon } from "react-icons/lu";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { cn } from "@/lib/utils";
 
 /**
  * Displays the generated password with a copy functionality.
@@ -47,21 +46,12 @@ const PasswordGeneratorOutput = ({ password }) => {
       </CardHeader>
       <CardContent>
         <div className="flex gap-2">
-          <Input
-            value={password}
-            readOnly
-            disabled={!password}
-            type="text"
-            className="font-mono outline-none focus-visible:ring-0 focus-visible:outline-none"
-          />
+          <Input type="text" value={password} readOnly data-output />
           <Button
-            variant="primary"
+            variant={copied ? "success" : "secondary"}
             disabled={!password}
             onClick={copyToClipboard}
-            className={cn("min-w-30", {
-              "bg-green-600 text-white hover:bg-green-600 hover:text-white":
-                copied,
-            })}
+            className="min-w-30"
           >
             {copied ? (
               <CheckIcon className="h-4 w-4" />

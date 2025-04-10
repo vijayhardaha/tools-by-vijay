@@ -43,7 +43,7 @@ const SlugifyOutput = ({ output }) => {
       </CardHeader>
       <CardContent>
         <div className="flex gap-2">
-          <Input value={output} readOnly data-output />
+          <Input type="text" value={output} readOnly data-output />
           <Button
             variant={copied ? "success" : "secondary"}
             disabled={!output}

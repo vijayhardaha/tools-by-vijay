@@ -2,6 +2,8 @@ import React from "react";
 
 import PropTypes from "prop-types";
 
+import PageBreadcrumb from "./PageBreadcrumb";
+
 /**
  * PageHeader component for displaying page titles and descriptions
  *
@@ -22,12 +24,15 @@ const PageHeader = ({ title, description, icon = null }) => {
       }}
     >
       <div className="mx-auto mb-4 max-w-5xl px-6 md:px-4">
-        <div className="py-24">
+        <div className="py-16">
           <h1 className="inline-flex items-center space-x-2 text-2xl font-bold">
             {icon && <span className="mr-2 inline-block">{icon}</span>}
             {title}
           </h1>
           {description && <p className="mt-1">{description}</p>}
+          <div className="mt-6">
+            <PageBreadcrumb pageName={title} />
+          </div>
         </div>
       </div>
     </div>
