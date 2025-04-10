@@ -22,9 +22,9 @@ const Sidebar = ({ isOpen, onClose }) => (
   <Sheet open={isOpen} onOpenChange={onClose}>
     <SheetContent
       side="right"
-      className="fixed inset-y-0 right-0 m-0 h-full w-80 max-w-full rounded-none p-0 shadow-lg"
+      className="fixed inset-y-0 right-0 m-0 h-full w-[480px] max-w-full rounded-none p-0 shadow-lg"
     >
-      <SidebarHeader onClose={onClose} />
+      <SidebarHeader />
 
       <div className="flex h-[calc(100%-var(--header-height))] flex-col">
         <div className="flex-1 overflow-y-auto">

@@ -11,8 +11,9 @@ import {
 
 import PropTypes from "prop-types";
 import { createPortal } from "react-dom";
-import { LuX as XIcon } from "react-icons/lu";
+import { RiCloseFill } from "react-icons/ri";
 
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 // Create context for state management
@@ -20,7 +21,6 @@ const SheetContext = createContext({
   open: false,
   onOpenChange: () => {},
   side: "right",
-  disableClose: true,
 });
 
 /**
@@ -29,17 +29,10 @@ const SheetContext = createContext({
  * @param {Object} props - Component props
  * @param {boolean} [props.open] - Controlled open state
  * @param {Function} [props.onOpenChange] - Callback for open state change
- * @param {boolean} [props.disableClose=true] - Disable close button
  * @param {any} props.children - Content inside the sheet
  * @returns {JSX.Element} Sheet component
  */
-function Sheet({
-  open: controlledOpen,
-  onOpenChange,
-  disableClose = true,
-  children,
-  ...props
-}) {
+function Sheet({ open: controlledOpen, onOpenChange, children, ...props }) {
   const [uncontrolledOpen, setUncontrolledOpen] = useState(false);
 
   const open = controlledOpen !== undefined ? controlledOpen : uncontrolledOpen;
@@ -55,7 +48,11 @@ function Sheet({
 
   return (
     <SheetContext.Provider
-      value={{ open, onOpenChange: handleOpenChange, disableClose }}
+      value={{
+        open,
+        onOpenChange: handleOpenChange,
+        side: "right",
+      }}
     >
       <div data-slot="sheet" {...props}>
         {children}
@@ -67,33 +64,6 @@ function Sheet({
 Sheet.propTypes = {
   open: PropTypes.bool,
   onOpenChange: PropTypes.func,
-  disableClose: PropTypes.bool,
-  children: PropTypes.node,
-};
-
-/**
- * Button to trigger the opening of the sheet.
- *
- * @param {Object} props - Component props
- * @param {any} props.children - Trigger content
- * @returns {JSX.Element} SheetTrigger component
- */
-function SheetTrigger({ children, ...props }) {
-  const { onOpenChange } = useContext(SheetContext);
-
-  return (
-    <button
-      type="button"
-      data-slot="sheet-trigger"
-      onClick={() => onOpenChange(true)}
-      {...props}
-    >
-      {children}
-    </button>
-  );
-}
-
-SheetTrigger.propTypes = {
   children: PropTypes.node,
 };
 
@@ -101,25 +71,29 @@ SheetTrigger.propTypes = {
  * Button to close the sheet.
  *
  * @param {Object} props - Component props
+ * @param {string} [props.className] - Additional CSS classes
  * @param {any} props.children - Close button content
  * @returns {JSX.Element} SheetClose component
  */
-function SheetClose({ children, ...props }) {
+function SheetClose({ className, children, ...props }) {
   const { onOpenChange } = useContext(SheetContext);
 
   return (
-    <button
+    <Button
       type="button"
       data-slot="sheet-close"
+      variant="secondary"
+      className={cn("h-10 w-10", className)}
       onClick={() => onOpenChange(false)}
       {...props}
     >
       {children}
-    </button>
+    </Button>
   );
 }
 
 SheetClose.propTypes = {
+  className: PropTypes.string,
   children: PropTypes.node,
 };
 
@@ -157,21 +131,22 @@ SheetPortal.propTypes = {
  *
  * @param {Object} props - Component props
  * @param {string} [props.className] - Additional CSS classes
- * @returns {JSX.Element|null} SheetOverlay component
+ * @returns {JSX.Element} SheetOverlay component
  */
 function SheetOverlay({ className, ...props }) {
   const { open, onOpenChange } = useContext(SheetContext);
 
-  if (!open) return null;
-
   return (
     <div
       role="presentation"
-      aria-hidden="true"
+      aria-hidden={!open}
       data-slot="sheet-overlay"
       data-state={open ? "open" : "closed"}
       className={cn(
-        "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/50",
+        "fixed inset-0 z-50 bg-black/50 transition-opacity duration-300",
+        "data-[state=open]:animate-in data-[state=closed]:animate-out",
+        "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
+        open ? "opacity-100" : "pointer-events-none opacity-0",
         className
       )}
       onClick={() => onOpenChange(false)}
@@ -194,7 +169,7 @@ SheetOverlay.propTypes = {
  * @returns {JSX.Element|null} SheetContent component
  */
 function SheetContent({ className, children, side = "right", ...props }) {
-  const { open, onOpenChange, disableClose } = useContext(SheetContext);
+  const { open, onOpenChange } = useContext(SheetContext);
   const contentRef = useRef(null);
 
   // Handle ESC key
@@ -224,8 +199,7 @@ function SheetContent({ className, children, side = "right", ...props }) {
     };
   }, [open]);
 
-  if (!open) return null;
-
+  // Always render, use CSS transforms to hide
   return (
     <SheetPortal>
       <SheetOverlay />
@@ -233,27 +207,41 @@ function SheetContent({ className, children, side = "right", ...props }) {
         ref={contentRef}
         data-slot="sheet-content"
         data-state={open ? "open" : "closed"}
+        aria-hidden={!open}
         className={cn(
-          "bg-background border-border/50 data-[state=open]:animate-in data-[state=closed]:animate-out fixed z-50 flex flex-col gap-4 shadow-lg transition ease-in-out data-[state=closed]:duration-300 data-[state=open]:duration-300",
-          side === "right" &&
-            "data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right inset-y-0 right-0 h-full w-3/4 border-l sm:max-w-sm",
-          side === "left" &&
-            "data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left inset-y-0 left-0 h-full w-3/4 border-r sm:max-w-sm",
-          side === "top" &&
-            "data-[state=closed]:slide-out-to-top data-[state=open]:slide-in-from-top inset-x-0 top-0 h-auto border-b",
-          side === "bottom" &&
-            "data-[state=closed]:slide-out-to-bottom data-[state=open]:slide-in-from-bottom inset-x-0 bottom-0 h-auto border-t",
+          "bg-background border-border/50 fixed z-50 flex flex-col gap-4 shadow-lg",
+          "transition-all duration-300 ease-in-out",
+          !open && "pointer-events-none",
+          // Side-specific transforms and animations
+          side === "right" && [
+            "inset-y-0 right-0 h-full w-3/4 border-l sm:max-w-sm",
+            open
+              ? "data-[state=open]:animate-in data-[state=open]:slide-in-from-right translate-x-0"
+              : "data-[state=closed]:animate-out data-[state=closed]:slide-out-to-right translate-x-full",
+          ],
+          side === "left" && [
+            "inset-y-0 left-0 h-full w-3/4 border-r sm:max-w-sm",
+            open
+              ? "data-[state=open]:animate-in data-[state=open]:slide-in-from-left translate-x-0"
+              : "data-[state=closed]:animate-out data-[state=closed]:slide-out-to-left translate-x-[-100%]",
+          ],
+          side === "top" && [
+            "inset-x-0 top-0 h-auto border-b",
+            open
+              ? "data-[state=open]:animate-in data-[state=open]:slide-in-from-top translate-y-0"
+              : "data-[state=closed]:animate-out data-[state=closed]:slide-out-to-top translate-y-[-100%]",
+          ],
+          side === "bottom" && [
+            "inset-x-0 bottom-0 h-auto border-t",
+            open
+              ? "data-[state=open]:animate-in data-[state=open]:slide-in-from-bottom translate-y-0"
+              : "data-[state=closed]:animate-out data-[state=closed]:slide-out-to-bottom translate-y-full",
+          ],
           className
         )}
         {...props}
       >
         {children}
-        {!disableClose && (
-          <SheetClose className="ring-offset-background focus:ring-ring absolute top-4 right-4 rounded-sm opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-none disabled:pointer-events-none">
-            <XIcon className="h-4 w-4" />
-            <span className="sr-only">Close</span>
-          </SheetClose>
-        )}
       </div>
     </SheetPortal>
   );
@@ -270,20 +258,31 @@ SheetContent.propTypes = {
  *
  * @param {Object} props - Component props
  * @param {string} [props.className] - Additional CSS classes
+ * @param {any} props.children - Content inside the header
  * @returns {JSX.Element} SheetHeader component
  */
-function SheetHeader({ className, ...props }) {
+function SheetHeader({ className, children, ...props }) {
   return (
     <div
       data-slot="sheet-header"
-      className={cn("flex flex-col gap-1.5 p-4", className)}
+      className={cn(
+        "flex flex-row items-center justify-between gap-4",
+        className
+      )}
       {...props}
-    />
+    >
+      <div className="flex flex-col gap-1.5">{children}</div>
+      <SheetClose>
+        <RiCloseFill className="h-4 w-4" />
+        <span className="sr-only">Close</span>
+      </SheetClose>
+    </div>
   );
 }
 
 SheetHeader.propTypes = {
   className: PropTypes.string,
+  children: PropTypes.node,
 };
 
 /**
@@ -307,59 +306,4 @@ SheetFooter.propTypes = {
   className: PropTypes.string,
 };
 
-/**
- * Title of the sheet.
- *
- * @param {Object} props - Component props
- * @param {string} [props.className] - Additional CSS classes
- * @param {React.ReactNode} props.children - Heading content
- * @returns {JSX.Element} SheetTitle component
- */
-function SheetTitle({ className, children, ...props }) {
-  return (
-    <h2
-      data-slot="sheet-title"
-      className={cn("text-foreground font-semibold", className)}
-      {...props}
-    >
-      {children}
-    </h2>
-  );
-}
-
-SheetTitle.propTypes = {
-  className: PropTypes.string,
-  children: PropTypes.node,
-};
-
-/**
- * Description text for the sheet.
- *
- * @param {Object} props - Component props
- * @param {string} [props.className] - Additional CSS classes
- * @returns {JSX.Element} SheetDescription component
- */
-function SheetDescription({ className, ...props }) {
-  return (
-    <p
-      data-slot="sheet-description"
-      className={cn("text-muted-foreground text-sm", className)}
-      {...props}
-    />
-  );
-}
-
-SheetDescription.propTypes = {
-  className: PropTypes.string,
-};
-
-export {
-  Sheet,
-  SheetTrigger,
-  SheetClose,
-  SheetContent,
-  SheetHeader,
-  SheetFooter,
-  SheetTitle,
-  SheetDescription,
-};
+export { Sheet, SheetClose, SheetContent, SheetHeader, SheetFooter };
