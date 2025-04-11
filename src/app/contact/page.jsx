@@ -83,7 +83,7 @@ const Contact = () => {
               href="https://x.com/vijayhardaha"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1 rounded-lg bg-black px-4 py-2 text-sm font-medium text-white transition hover:opacity-90 hover:ring-2 hover:ring-black/30"
+              className="flex items-center gap-1 rounded-lg bg-[#0f1419] px-4 py-2 text-sm font-medium text-white transition hover:opacity-90 hover:ring-2 hover:ring-[#0f1419]/30"
             >
               <FaXTwitter />
               Twitter / X
@@ -92,7 +92,7 @@ const Contact = () => {
               href="https://facebook.com/vegan.vijay"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1 rounded-lg bg-[#1877F2] px-4 py-2 text-sm font-medium text-white transition hover:opacity-90 hover:ring-2 hover:ring-[#1877F2]/30"
+              className="flex items-center gap-1 rounded-lg bg-[#145dbf] px-4 py-2 text-sm font-medium text-white transition hover:opacity-90 hover:ring-2 hover:ring-[#145dbf]/30"
             >
               <FaFacebookF />
               Facebook
@@ -101,7 +101,7 @@ const Contact = () => {
               href="https://instagram.com/vegan.vijay"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1 rounded-lg bg-[#E1306C] px-4 py-2 text-sm font-medium text-white transition hover:opacity-90 hover:ring-2 hover:ring-[#E1306C]/30"
+              className="flex items-center gap-1 rounded-lg bg-[#ff0069] px-4 py-2 text-sm font-medium text-white transition hover:opacity-90 hover:ring-2 hover:ring-[#ff0069]/30"
             >
               <FaInstagram />
               Instagram
@@ -110,7 +110,7 @@ const Contact = () => {
               href="https://github.com/vijayhardaha"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1 rounded-lg bg-gray-800 px-4 py-2 text-sm font-medium text-white transition hover:opacity-90 hover:ring-2 hover:ring-gray-800/30"
+              className="flex items-center gap-1 rounded-lg bg-[#24292e] px-4 py-2 text-sm font-medium text-white transition hover:opacity-90 hover:ring-2 hover:ring-[#24292e]/30"
             >
               <FaGithub />
               GitHub
@@ -119,7 +119,7 @@ const Contact = () => {
               href="https://pph.me/vijayhardaha"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1 rounded-lg bg-[#F88C2B] px-4 py-2 text-sm font-medium text-white transition hover:opacity-90 hover:ring-2 hover:ring-[#F88C2B]/30"
+              className="flex items-center gap-1 rounded-lg bg-[#ff7300] px-4 py-2 text-sm font-medium text-white transition hover:opacity-90 hover:ring-2 hover:ring-[#ff7300]/30"
             >
               <TbWorldWww />
               PeoplePerHour

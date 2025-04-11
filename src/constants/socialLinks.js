@@ -31,7 +31,7 @@ export const socialMediaLinks = [
     key: "twitter",
     name: "Twitter",
     url: "https://x.com/vijayhardaha",
-    color: "hover:bg-[#1a91da]",
+    color: "hover:bg-[#0f1419]",
     icon: FaXTwitter,
   },
   {
@@ -45,14 +45,14 @@ export const socialMediaLinks = [
     key: "instagram",
     name: "Instagram",
     url: "https://instagram.com/vegan.vijay",
-    color: "hover:bg-[#d62445]",
+    color: "hover:bg-[#ff0069]",
     icon: FaInstagram,
   },
   {
     key: "pph",
     name: "PeoplePerHour",
     url: "https://pph.me/vijayhardaha",
-    color: "hover:bg-[#e65c00]",
+    color: "hover:bg-[#ff7300]",
     icon: TbWorldWww,
   },
 ];
