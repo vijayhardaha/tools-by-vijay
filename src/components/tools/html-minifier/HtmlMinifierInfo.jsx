@@ -24,7 +24,7 @@ const HtmlMinifierInfo = () => {
         </p>
         <p className="mb-4">
           We use the{" "}
-          <code className="bg-dark2 rounded px-1 py-0.5">
+          <code className="bg-muted rounded px-1 py-0.5 text-xs font-medium text-pink-500">
             html-minifier-terser
           </code>{" "}
           package under the hood, which provides powerful and configurable HTML

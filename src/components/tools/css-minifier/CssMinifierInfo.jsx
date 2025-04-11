@@ -24,7 +24,9 @@ const CssMinifierInfo = () => {
         </p>
         <p className="mb-4">
           We use the{" "}
-          <code className="bg-dark2 rounded px-1 py-0.5">clean-css</code>{" "}
+          <code className="bg-muted rounded px-1 py-0.5 text-xs font-medium text-pink-500">
+            clean-css
+          </code>{" "}
           package under the hood, which provides powerful and configurable CSS
           minification capabilities. With our tool, you can customize the
           minification process to suit your specific needs, whether you’re

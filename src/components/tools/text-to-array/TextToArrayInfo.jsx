@@ -86,7 +86,7 @@ const TextToArrayInfo = () => {
         <div className="space-y-4">
           <div>
             <h4 className="mb-2 font-medium">Input Example:</h4>
-            <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 dark:bg-gray-800">
+            <pre className="overflow-x-auto rounded-md bg-gray-100 p-4">
               {`United States
 Canada
 United Kingdom
@@ -99,7 +99,7 @@ Australia`}
             <div className="space-y-4">
               <div>
                 <h5 className="text-sm font-medium">JSON (Simple):</h5>
-                <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 dark:bg-gray-800">
+                <pre className="overflow-x-auto rounded-md bg-gray-100 p-4">
                   {`[
   "United States",
   "Canada",
@@ -113,7 +113,7 @@ Australia`}
                 <h5 className="text-sm font-medium">
                   JavaScript Array (Associative with Slugified Keys):
                 </h5>
-                <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 dark:bg-gray-800">
+                <pre className="overflow-x-auto rounded-md bg-gray-100 p-4">
                   {`const textArray = [
   {
     "key": "united_states",
@@ -137,7 +137,7 @@ Australia`}
 
               <div>
                 <h5 className="text-sm font-medium">PHP Array (Numeric):</h5>
-                <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 dark:bg-gray-800">
+                <pre className="overflow-x-auto rounded-md bg-gray-100 p-4">
                   {`<?php
 $data = array(
   1 => 'United States',

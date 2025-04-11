@@ -24,11 +24,15 @@ const SlugifyInfo = () => {
         </p>
         <p className="mb-4">
           We use the{" "}
-          <code className="bg-dark2 rounded px-1 py-0.5">slugify</code> package
-          under the hood, with support for{" "}
-          <code className="bg-dark2 rounded px-1 py-0.5">latinize</code> to
-          ensure that your output works seamlessly across the web and maintains
-          compatibility with different languages and character sets.
+          <code className="bg-muted rounded px-1 py-0.5 text-xs font-medium text-pink-500">
+            slugify
+          </code>{" "}
+          package under the hood, with support for{" "}
+          <code className="bg-muted rounded px-1 py-0.5 text-xs font-medium text-pink-500">
+            latinize
+          </code>{" "}
+          to ensure that your output works seamlessly across the web and
+          maintains compatibility with different languages and character sets.
         </p>
       </section>
 
