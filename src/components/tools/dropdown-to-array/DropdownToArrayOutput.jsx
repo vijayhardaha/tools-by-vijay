@@ -4,7 +4,6 @@ import { useState } from "react";
 
 import PropTypes from "prop-types";
 
-import { Alert } from "@/components/ui/alert";
 import {
   Card,
   CardHeader,
@@ -26,7 +25,7 @@ import { Textarea } from "@/components/ui/textarea";
  * @param {string} props.error - Error message to display, if any
  * @returns {JSX.Element} The rendered card with output display and copy functionality
  */
-const DropdownToArrayOutput = ({ output, error }) => {
+const DropdownToArrayOutput = ({ output }) => {
   /**
    * State to track whether the output has been copied to clipboard
    * @type {[boolean, function]} - State and setter for copied status
@@ -44,6 +43,8 @@ const DropdownToArrayOutput = ({ output, error }) => {
     setCopied(true);
     setTimeout(() => setCopied(false), 1000);
   };
+
+  if (!output) return;
 
   return (
     <Card>
@@ -64,17 +65,13 @@ const DropdownToArrayOutput = ({ output, error }) => {
           </div>
         </div>
       </CardHeader>
-      <CardContent className="space-y-4">
-        {error && <Alert variant="danger" title="Error" text={error} />}
-
-        <div className="flex flex-col gap-2">
-          <Textarea
-            value={output}
-            readOnly
-            className="h-60 font-mono"
-            data-output
-          />
-        </div>
+      <CardContent>
+        <Textarea
+          value={output}
+          readOnly
+          data-output
+          className="min-h-[200px] font-mono text-sm"
+        />
       </CardContent>
     </Card>
   );
@@ -82,11 +79,6 @@ const DropdownToArrayOutput = ({ output, error }) => {
 
 DropdownToArrayOutput.propTypes = {
   output: PropTypes.string.isRequired,
-  error: PropTypes.string,
-};
-
-DropdownToArrayOutput.defaultProps = {
-  error: "",
 };
 
 export default DropdownToArrayOutput;

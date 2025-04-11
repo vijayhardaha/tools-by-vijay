@@ -16,6 +16,7 @@ import { Label } from "@/components/ui/label";
 import { Select } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { Tooltip } from "@/components/ui/tooltip";
+import { Alert } from "@/components/ui/alert";
 
 /**
  * Component for inputting HTML dropdown and configuring conversion options.
@@ -48,6 +49,7 @@ const DropdownToArrayInput = ({
   onConvert,
   onClear,
   onReset,
+  error,
 }) => {
   /**
    * Handles form submission by preventing default behavior and triggering conversion
@@ -161,7 +163,12 @@ const DropdownToArrayInput = ({
           </div>
 
           <div className="flex flex-wrap gap-2">
-            <Button type="submit" variant="default" size="lg">
+            <Button
+              type="submit"
+              variant="default"
+              size="lg"
+              disabled={!htmlInput}
+            >
               Convert
             </Button>
             <Button type="button" variant="outline" size="lg" onClick={onClear}>
@@ -176,6 +183,8 @@ const DropdownToArrayInput = ({
               Reset
             </Button>
           </div>
+
+          {error && <Alert variant="danger" title="Error" text={error} />}
         </form>
       </CardContent>
     </Card>
@@ -194,6 +203,7 @@ DropdownToArrayInput.propTypes = {
   onConvert: PropTypes.func.isRequired,
   onClear: PropTypes.func.isRequired,
   onReset: PropTypes.func.isRequired,
+  error: PropTypes.string,
 };
 
 export default DropdownToArrayInput;

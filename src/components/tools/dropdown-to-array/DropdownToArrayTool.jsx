@@ -367,8 +367,9 @@ const DropdownToArrayTool = () => {
           onConvert={handleConvert}
           onClear={handleClear}
           onReset={handleReset}
+          error={error}
         />
-        <DropdownToArrayOutput output={convertedOutput} error={error} />
+        <DropdownToArrayOutput output={convertedOutput} />
       </div>
 
       <div className="mt-16">
