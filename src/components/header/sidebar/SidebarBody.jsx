@@ -94,6 +94,9 @@ const SidebarBody = () => {
             <li>
               <NavLink href="/contact">Contact</NavLink>
             </li>
+            <li>
+              <NavLink href="/text-story-maker">Text Story Maker</NavLink>
+            </li>
           </ul>
         </div>
       </nav>
