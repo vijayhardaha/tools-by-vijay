@@ -14,7 +14,7 @@ import { cn } from "@/lib/utils";
  * @returns {JSX.Element} A link to the homepage containing the site logo
  */
 const Logo = ({ className }) => (
-  <Link href="/" className="inline-flex">
+  <Link href="/">
     <Image
       src="/images/site-logo.svg"
       alt="Tools by Vijay Hardaha Logo"

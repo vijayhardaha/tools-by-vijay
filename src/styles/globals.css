@@ -24,7 +24,7 @@
   --color-secondary-foreground: var(--base-color-primary);
 
   --color-muted: var(--color-neutral-100);
-  --color-muted-foreground: var(--color-neutral-500);
+  --color-muted-foreground: var(--color-neutral-600);
 
   --color-accent: var(--color-amber-50);
   --color-accent-foreground: var(--color-amber-300);

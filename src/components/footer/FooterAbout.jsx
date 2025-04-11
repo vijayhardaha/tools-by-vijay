@@ -7,10 +7,12 @@ import Logo from "../header/parts/Logo";
  */
 const FooterAbout = () => {
   return (
-    <div className="footer-about">
-      <Logo />
+    <div className="footer-about space-y-2">
+      <div>
+        <Logo className="mb-3 h-14" />
+      </div>
 
-      <p className="text-foreground my-4 text-sm">
+      <p className="text-foreground text-sm">
         A collection of free online tools built to make developer’s lives
         easier. From code optimization to text transformation, find the tools
         you need for your projects.

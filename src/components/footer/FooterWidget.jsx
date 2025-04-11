@@ -21,7 +21,7 @@ const FooterWidget = ({ title, links }) => {
   };
 
   return (
-    <div className="footer-widget mb-8">
+    <div className="footer-widget">
       <h3 className="mb-2 text-base font-bold">{title}</h3>
       <ul className="flex flex-col gap-1">
         {links.map((link) => (
