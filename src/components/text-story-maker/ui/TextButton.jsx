@@ -16,8 +16,8 @@ const TextButton = ({ className, children, ...props }) => (
     type="button"
     className={cn(
       "inline-flex shrink-0 items-center justify-center whitespace-nowrap",
-      "text-xs",
-      "rounded-xl outline-none",
+      "text-sm",
+      "rounded-lg outline-none",
       "cursor-pointer disabled:pointer-events-none disabled:opacity-50",
       "outline-none focus-visible:outline-none",
       "transition-all duration-100 ease-in-out",

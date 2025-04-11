@@ -173,9 +173,9 @@ const TextToolBar = ({ options, updateOption }) => {
             active={activeTool === "text-color"}
             onClick={() => setActiveTool("text-color")}
             srText="Text Color Tool"
-            className="h-10 min-w-10 p-0.5"
+            className="h-10 min-w-10 rounded-xl p-0.5"
           >
-            <div className="h-5 w-5 rounded-full bg-[conic-gradient(from_0deg,_red,_yellow,_lime,_cyan,_blue,_magenta,_red)] shadow-lg"></div>
+            <div className="h-6 w-6 rounded-full bg-[conic-gradient(from_0deg,_red,_yellow,_lime,_cyan,_blue,_magenta,_red)] shadow-lg"></div>
           </ToolBarButton>
           <ToolBarButton
             icon={getAlignmentIcon()}
