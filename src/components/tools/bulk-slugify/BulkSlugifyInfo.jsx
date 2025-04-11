@@ -24,11 +24,11 @@ const BulkSlugifyInfo = () => {
         </p>
         <p className="mb-4">
           We use the{" "}
-          <code className="bg-muted rounded px-1 py-0.5 text-xs font-medium text-pink-500">
+          <code className="bg-muted rounded px-1 py-0.5 text-sm font-medium text-pink-500">
             slugify
           </code>{" "}
           package under the hood, with support for{" "}
-          <code className="bg-muted rounded px-1 py-0.5 text-xs font-medium text-pink-500">
+          <code className="bg-muted rounded px-1 py-0.5 text-sm font-medium text-pink-500">
             latinize
           </code>{" "}
           to ensure that your output works seamlessly across the web and
@@ -71,16 +71,16 @@ const BulkSlugifyInfo = () => {
           Maintained by{" "}
           <a
             href="https://x.com/vijayhardaha"
+            className="font-medium text-pink-500 underline hover:no-underline"
             rel="noopener noreferrer"
             target="_blank"
-            className="text-blue-400 underline"
           >
             Vijay Hardaha
           </a>
           . This tool uses open-source libraries like{" "}
           <a
             href="https://www.npmjs.com/package/slugify"
-            className="text-blue-400 underline"
+            className="font-medium text-pink-500 underline hover:no-underline"
             target="_blank"
             rel="noreferrer"
           >
@@ -89,7 +89,7 @@ const BulkSlugifyInfo = () => {
           and{" "}
           <a
             href="https://www.npmjs.com/package/latinize"
-            className="text-blue-400 underline"
+            className="font-medium text-pink-500 underline hover:no-underline"
             target="_blank"
             rel="noreferrer"
           >

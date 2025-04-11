@@ -64,16 +64,16 @@ const UrlShortenerInfo = () => {
           Maintained by{" "}
           <a
             href="https://x.com/vijayhardaha"
+            className="font-medium text-pink-500 underline hover:no-underline"
             rel="noopener noreferrer"
             target="_blank"
-            className="text-blue-400 underline"
           >
             Vijay Hardaha
           </a>
           . This tool uses the{" "}
           <a
             href="https://tinyurl.com/"
-            className="text-blue-400 underline"
+            className="font-medium text-pink-500 underline hover:no-underline"
             target="_blank"
             rel="noreferrer"
           >
@@ -82,7 +82,7 @@ const UrlShortenerInfo = () => {
           service for URL shortening and the{" "}
           <a
             href="https://www.npmjs.com/package/valid-url"
-            className="text-blue-400 underline"
+            className="font-medium text-pink-500 underline hover:no-underline"
             target="_blank"
             rel="noreferrer"
           >

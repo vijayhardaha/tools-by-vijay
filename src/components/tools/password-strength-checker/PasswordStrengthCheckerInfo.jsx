@@ -122,9 +122,9 @@ const PasswordStrengthCheckerInfo = () => {
           Maintained by{" "}
           <a
             href="https://x.com/vijayhardaha"
+            className="font-medium text-pink-500 underline hover:no-underline"
             rel="noopener noreferrer"
             target="_blank"
-            className="text-blue-400 underline"
           >
             Vijay Hardaha
           </a>

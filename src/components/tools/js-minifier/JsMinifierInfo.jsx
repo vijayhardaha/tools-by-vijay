@@ -24,7 +24,7 @@ const JsMinifierInfo = () => {
         </p>
         <p className="mb-4">
           We use the{" "}
-          <code className="bg-muted rounded px-1 py-0.5 text-xs font-medium text-pink-500">
+          <code className="bg-muted rounded px-1 py-0.5 text-sm font-medium text-pink-500">
             @putout/minify
           </code>{" "}
           package under the hood, which provides powerful and configurable
@@ -85,16 +85,16 @@ const JsMinifierInfo = () => {
           Maintained by{" "}
           <a
             href="https://x.com/vijayhardaha"
+            className="font-medium text-pink-500 underline hover:no-underline"
             rel="noopener noreferrer"
             target="_blank"
-            className="text-blue-400 underline"
           >
             Vijay Hardaha
           </a>
           . This tool uses the open-source library{" "}
           <a
             href="https://www.npmjs.com/package/@putout/minify"
-            className="text-blue-400 underline"
+            className="font-medium text-pink-500 underline hover:no-underline"
             target="_blank"
             rel="noreferrer"
           >
