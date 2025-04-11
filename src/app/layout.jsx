@@ -52,7 +52,6 @@ export const metadata = {
   description: SEO.description,
   metadataBase: new URL(getBaseUrl()),
   manifest: "/site.webmanifest",
-  themeColor: "#ffd230",
   appleTouchIcon: "/apple-touch-icon.png",
   alternates: {
     canonical: getBaseUrl(),
