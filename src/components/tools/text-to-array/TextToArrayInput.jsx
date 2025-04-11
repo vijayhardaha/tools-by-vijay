@@ -72,12 +72,12 @@ const TextToArrayInput = ({
     <Card>
       <CardHeader>
         <CardTitle>Text Input</CardTitle>
-        <CardDescription className="text-muted-foreground text-sm">
+        <CardDescription>
           Paste multiline text and convert to various array formats
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <div className="space-y-2">
             <Label htmlFor="text-input" className="flex items-center">
               Multiline Text
@@ -91,7 +91,7 @@ const TextToArrayInput = ({
             <Textarea
               id="text-input"
               placeholder={`Item 1\nItem 2\nItem 3`}
-              className="h-40 font-mono"
+              className="min-h-28 font-mono text-xs"
               value={textInput}
               onChange={(e) => setTextInput(e.target.value)}
             />
@@ -208,24 +208,14 @@ const TextToArrayInput = ({
             </div>
           </div>
 
-          <div className="flex flex-wrap gap-2">
-            <Button
-              type="submit"
-              variant="default"
-              size="lg"
-              disabled={!textInput}
-            >
+          <div className="mt-4 flex flex-wrap gap-2">
+            <Button type="submit" variant="default" disabled={!textInput}>
               Convert
             </Button>
-            <Button type="button" variant="outline" size="lg" onClick={onClear}>
+            <Button type="button" variant="outline" onClick={onClear}>
               Clear
             </Button>
-            <Button
-              type="button"
-              variant="destructive"
-              size="lg"
-              onClick={onReset}
-            >
+            <Button type="button" variant="destructive" onClick={onReset}>
               Reset
             </Button>
           </div>
