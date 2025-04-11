@@ -13,35 +13,53 @@ const Home = () => {
   return (
     <PageLayout>
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
-        <ToolCard slug="slugify" iconButton={true} size="default" />
+        <ToolCard slug="slugify" iconButton={true} btnText="Generate Slug" />
 
         <ToolCard
           slug="bulk-slugify"
+          btnText="Bulk Convert"
           iconButton={true}
-          size="default"
           btnRounded={true}
         />
 
-        <ToolCard slug="password-generator" />
+        <ToolCard slug="password-generator" btnText="Create Password" />
 
-        <ToolCard slug="password-strength-checker" />
+        <ToolCard
+          slug="password-strength-checker"
+          btnText="Check Strength"
+          iconButton={true}
+          btnRounded={true}
+        />
 
-        <ToolCard slug="html-minifier" />
+        <ToolCard slug="html-minifier" btnText="Minify HTML" />
 
         <ToolCard
           slug="css-minifier"
+          btnText="Compress CSS"
           iconButton={true}
-          size="default"
+        />
+
+        <ToolCard slug="js-minifier" btnText="Optimize JS" />
+
+        <ToolCard
+          slug="url-shortener"
+          btnText="Shorten URL"
+          iconButton={true}
+        />
+
+        <ToolCard
+          slug="dropdown-to-array"
+          btnText="Convert Dropdown"
+          iconButton={true}
           btnRounded={true}
         />
 
-        <ToolCard slug="js-minifier" />
-
-        <ToolCard slug="url-shortener" iconButton={true} size="default" />
-
-        <ToolCard slug="dropdown-to-array" />
-
-        <ToolCard slug="text-to-array" />
+        <ToolCard
+          slug="text-to-array"
+          btnText="Transform Text"
+          iconButton={true}
+          btnRounded={true}
+        />
       </div>
     </PageLayout>
   );
