@@ -32,6 +32,7 @@ const ToolCard = ({
   className = "",
   btnClassName = "",
   btnRounded = false,
+  btnText = "Get Started",
 }) => {
   const tool = getToolBySlug(slug);
 
@@ -46,7 +47,7 @@ const ToolCard = ({
     <Button variant="default" size={size} className={btnClasses} asChild>
       <Link href={`/tools/${tool.slug}`}>
         <span className={`text-xs ${iconButton ? "sr-only" : ""}`}>
-          Get Started
+          {btnText}
         </span>
         <CgArrowRight />
       </Link>
@@ -65,7 +66,7 @@ const ToolCard = ({
       </CardHeader>
 
       <CardFooter className="mt-auto">
-        {iconButton ? <Tooltip text="Get Started">{button}</Tooltip> : button}
+        {iconButton ? <Tooltip text={btnText}>{button}</Tooltip> : button}
       </CardFooter>
     </Card>
   );
@@ -78,6 +79,7 @@ ToolCard.propTypes = {
   className: PropTypes.string,
   btnClassName: PropTypes.string,
   btnRounded: PropTypes.bool,
+  btnText: PropTypes.string,
 };
 
 export default ToolCard;
