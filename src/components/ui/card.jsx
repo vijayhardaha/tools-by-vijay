@@ -8,26 +8,29 @@ import { cn } from "@/lib/utils";
  * @param {Object} props - Component props
  * @param {string} [props.className] - Additional CSS classes
  * @param {any} props.children - Card content
+ * @param {React.ElementType} [props.component] - HTML tag to render
  * @returns {JSX.Element} Card component
  */
-function Card({ className, children, ...props }) {
+function Card({ className, children, component, ...props }) {
+  const Tag = component || "div";
   return (
-    <div
+    <Tag
       data-slot="card"
       className={cn(
-        "bg-card text-card-foreground border-border flex flex-col gap-6 rounded-xl border py-6",
+        "bg-card text-card-foreground border-border flex flex-col gap-4 rounded-xl border py-4 md:gap-6 md:py-6",
         className
       )}
       {...props}
     >
       {children}
-    </div>
+    </Tag>
   );
 }
 
 Card.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node,
+  component: PropTypes.elementType,
 };
 
 /**
@@ -36,26 +39,32 @@ Card.propTypes = {
  * @param {Object} props - Component props
  * @param {string} [props.className] - Additional CSS classes
  * @param {any} props.children - Header content
+ * @param {React.ElementType} [props.component] - HTML tag to render
  * @returns {JSX.Element} CardHeader component
  */
-function CardHeader({ className, children, ...props }) {
+function CardHeader({ className, children, component, ...props }) {
+  const Tag = component || "div";
   return (
-    <div
+    <Tag
       data-slot="card-header"
       className={cn(
-        "@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6",
+        "@container/card-header",
+        "grid auto-rows-min grid-rows-[auto_auto] items-start",
+        "gap-1.5 px-4 md:px-6 [.border-b]:pb-4 md:[.border-b]:pb-6",
+        "has-data-[slot=card-action]:grid-cols-[1fr_auto]",
         className
       )}
       {...props}
     >
       {children}
-    </div>
+    </Tag>
   );
 }
 
 CardHeader.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node,
+  component: PropTypes.elementType,
 };
 
 /**
@@ -64,23 +73,26 @@ CardHeader.propTypes = {
  * @param {Object} props - Component props
  * @param {string} [props.className] - Additional CSS classes
  * @param {any} props.children - Title content
+ * @param {React.ElementType} [props.component] - HTML tag to render
  * @returns {JSX.Element} CardTitle component
  */
-function CardTitle({ className, children, ...props }) {
+function CardTitle({ className, children, component, ...props }) {
+  const Tag = component || "h2";
   return (
-    <h2
+    <Tag
       data-slot="card-title"
       className={cn("text-lg leading-none font-bold", className)}
       {...props}
     >
       {children}
-    </h2>
+    </Tag>
   );
 }
 
 CardTitle.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node,
+  component: PropTypes.elementType,
 };
 
 /**
@@ -89,23 +101,26 @@ CardTitle.propTypes = {
  * @param {Object} props - Component props
  * @param {string} [props.className] - Additional CSS classes
  * @param {any} props.children - Description content
+ * @param {React.ElementType} [props.component] - HTML tag to render
  * @returns {JSX.Element} CardDescription component
  */
-function CardDescription({ className, children, ...props }) {
+function CardDescription({ className, children, component, ...props }) {
+  const Tag = component || "p";
   return (
-    <p
+    <Tag
       data-slot="card-description"
       className={cn("text-muted-foreground text-sm", className)}
       {...props}
     >
       {children}
-    </p>
+    </Tag>
   );
 }
 
 CardDescription.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node,
+  component: PropTypes.elementType,
 };
 
 /**
@@ -114,11 +129,13 @@ CardDescription.propTypes = {
  * @param {Object} props - Component props
  * @param {string} [props.className] - Additional CSS classes
  * @param {any} props.children - Action content
+ * @param {React.ElementType} [props.component] - HTML tag to render
  * @returns {JSX.Element} CardAction component
  */
-function CardAction({ className, children, ...props }) {
+function CardAction({ className, children, component, ...props }) {
+  const Tag = component || "div";
   return (
-    <div
+    <Tag
       data-slot="card-action"
       className={cn(
         "col-start-2 row-span-2 row-start-1 self-start justify-self-end",
@@ -127,13 +144,14 @@ function CardAction({ className, children, ...props }) {
       {...props}
     >
       {children}
-    </div>
+    </Tag>
   );
 }
 
 CardAction.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node,
+  component: PropTypes.elementType,
 };
 
 /**
@@ -142,19 +160,26 @@ CardAction.propTypes = {
  * @param {Object} props - Component props
  * @param {string} [props.className] - Additional CSS classes
  * @param {any} props.children - Card body content
+ * @param {React.ElementType} [props.component] - HTML tag to render
  * @returns {JSX.Element} CardContent component
  */
-function CardContent({ className, children, ...props }) {
+function CardContent({ className, children, component, ...props }) {
+  const Tag = component || "div";
   return (
-    <div data-slot="card-content" className={cn("px-6", className)} {...props}>
+    <Tag
+      data-slot="card-content"
+      className={cn("px-4 md:px-6", className)}
+      {...props}
+    >
       {children}
-    </div>
+    </Tag>
   );
 }
 
 CardContent.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node,
+  component: PropTypes.elementType,
 };
 
 /**
@@ -163,23 +188,29 @@ CardContent.propTypes = {
  * @param {Object} props - Component props
  * @param {string} [props.className] - Additional CSS classes
  * @param {any} props.children - Footer content
+ * @param {React.ElementType} [props.component] - HTML tag to render
  * @returns {JSX.Element} CardFooter component
  */
-function CardFooter({ className, children, ...props }) {
+function CardFooter({ className, children, component, ...props }) {
+  const Tag = component || "div";
   return (
-    <div
+    <Tag
       data-slot="card-footer"
-      className={cn("flex items-center px-6 [.border-t]:pt-6", className)}
+      className={cn(
+        "flex items-center px-4 md:px-6 [.border-t]:pt-4 md:[.border-t]:pt-6",
+        className
+      )}
       {...props}
     >
       {children}
-    </div>
+    </Tag>
   );
 }
 
 CardFooter.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node,
+  component: PropTypes.elementType,
 };
 
 export {
