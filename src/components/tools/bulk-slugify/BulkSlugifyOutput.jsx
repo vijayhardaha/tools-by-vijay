@@ -59,7 +59,7 @@ const BulkSlugifyOutput = ({ output }) => {
     <Card>
       <CardHeader>
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <div>
+          <div className="flex flex-col gap-1.5">
             <CardTitle>Output</CardTitle>
             <CardDescription>Cleaned and formatted slugs</CardDescription>
           </div>

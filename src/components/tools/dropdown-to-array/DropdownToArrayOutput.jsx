@@ -50,7 +50,7 @@ const DropdownToArrayOutput = ({ output }) => {
     <Card>
       <CardHeader>
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <div>
+          <div className="flex flex-col gap-1.5">
             <CardTitle>Converted Output</CardTitle>
             <CardDescription>
               Copy the generated array for use in your code
