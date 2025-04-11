@@ -81,10 +81,7 @@ const TextToArrayInput = ({
           <div className="space-y-2">
             <Label htmlFor="text-input" className="flex items-center">
               Multiline Text
-              <Tooltip
-                text="Enter or paste text with one item per line. Each line will become an element in the resulting array."
-                delayDuration={300}
-              >
+              <Tooltip text="Enter or paste text with one item per line. Each line will become an element in the resulting array.">
                 <FiInfo className="text-muted-foreground ml-1.5 h-4 w-4 cursor-help" />
               </Tooltip>
             </Label>
@@ -101,10 +98,7 @@ const TextToArrayInput = ({
             <div className="space-y-2">
               <Label htmlFor="output-format" className="flex items-center">
                 Output Format
-                <Tooltip
-                  text="Select the programming language and format for the output array or object"
-                  delayDuration={300}
-                >
+                <Tooltip text="Select the programming language and format for the output array or object">
                   <FiInfo className="text-muted-foreground ml-1.5 h-4 w-4 cursor-help" />
                 </Tooltip>
               </Label>
@@ -125,11 +119,7 @@ const TextToArrayInput = ({
             <div className="space-y-2">
               <Label htmlFor="array-type" className="flex items-center">
                 Array Structure
-                <Tooltip
-                  text="Simple: Just values. Numeric: Indexed entries with ID/position and values. Associative: Key-value pairs."
-                  delayDuration={300}
-                  className="!w-72"
-                >
+                <Tooltip text="Simple: Just values. Numeric: Indexed entries with ID/position and values. Associative: Key-value pairs.">
                   <FiInfo className="text-muted-foreground ml-1.5 h-4 w-4 cursor-help" />
                 </Tooltip>
               </Label>
@@ -158,13 +148,10 @@ const TextToArrayInput = ({
                 className="cursor-pointer text-sm leading-none font-medium"
               >
                 Trim whitespace from each line
-                <Tooltip
-                  text="Remove leading and trailing whitespace from each line"
-                  delayDuration={300}
-                >
-                  <FiInfo className="text-muted-foreground ml-1.5 inline-block h-4 w-4 cursor-help" />
-                </Tooltip>
               </Label>
+              <Tooltip text="Remove leading and trailing whitespace from each line">
+                <FiInfo className="text-muted-foreground h-4 w-4 cursor-help" />
+              </Tooltip>
             </div>
 
             <div className="flex items-center space-x-2">
@@ -178,13 +165,10 @@ const TextToArrayInput = ({
                 className="cursor-pointer text-sm leading-none font-medium"
               >
                 Remove empty lines
-                <Tooltip
-                  text="Skip blank lines in the input text"
-                  delayDuration={300}
-                >
-                  <FiInfo className="text-muted-foreground ml-1.5 inline-block h-4 w-4 cursor-help" />
-                </Tooltip>
-              </Label>
+              </Label>{" "}
+              <Tooltip text="Skip blank lines in the input text">
+                <FiInfo className="text-muted-foreground h-4 w-4 cursor-help" />
+              </Tooltip>
             </div>
 
             <div className="flex items-center space-x-2">
@@ -198,13 +182,10 @@ const TextToArrayInput = ({
                 className="cursor-pointer text-sm leading-none font-medium"
               >
                 Use slugified keys
-                <Tooltip
-                  text="Generate slugified keys from the text instead of using generic item_N keys"
-                  delayDuration={300}
-                >
-                  <FiInfo className="text-muted-foreground ml-1.5 inline-block h-4 w-4 cursor-help" />
-                </Tooltip>
               </Label>
+              <Tooltip text="Generate slugified keys from the text instead of using generic item_N keys">
+                <FiInfo className="text-muted-foreground h-4 w-4 cursor-help" />
+              </Tooltip>
             </div>
           </div>
 

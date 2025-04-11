@@ -74,11 +74,7 @@ const DropdownToArrayInput = ({
           <div className="space-y-2">
             <Label htmlFor="html-input" className="flex items-center">
               HTML Select/Dropdown Code
-              <Tooltip
-                text="Paste your HTML <select> element with <option> tags. You can also paste just the <option> tags."
-                delayDuration={300}
-                className="!w-72"
-              >
+              <Tooltip text="Paste your HTML <select> element with <option> tags. You can also paste just the <option> tags.">
                 <FiInfo className="text-muted-foreground ml-1.5 h-4 w-4 cursor-help" />
               </Tooltip>
             </Label>
@@ -95,10 +91,7 @@ const DropdownToArrayInput = ({
             <div className="space-y-2">
               <Label htmlFor="output-format" className="flex items-center">
                 Output Format
-                <Tooltip
-                  text="Select the programming language and format for the output array or object"
-                  delayDuration={300}
-                >
+                <Tooltip text="Select the programming language and format for the output array or object">
                   <FiInfo className="text-muted-foreground ml-1.5 h-4 w-4 cursor-help" />
                 </Tooltip>
               </Label>
@@ -119,11 +112,7 @@ const DropdownToArrayInput = ({
             <div className="space-y-2">
               <Label htmlFor="array-type" className="flex items-center">
                 Array Structure
-                <Tooltip
-                  text="Simple: Just values. Numeric: Indexed entries with ID/position and values. Associative: Key-value pairs using option values as keys."
-                  delayDuration={300}
-                  className="!w-72"
-                >
+                <Tooltip text="Simple: Just values. Numeric: Indexed entries with ID/position and values. Associative: Key-value pairs using option values as keys.">
                   <FiInfo className="text-muted-foreground ml-1.5 h-4 w-4 cursor-help" />
                 </Tooltip>
               </Label>
@@ -151,10 +140,7 @@ const DropdownToArrayInput = ({
               className="cursor-pointer text-sm leading-none font-medium"
             >
               Use slugified keys
-              <Tooltip
-                text="Generate slugified keys from option text instead of using original values"
-                delayDuration={300}
-              >
+              <Tooltip text="Generate slugified keys from option text instead of using original values">
                 <FiInfo className="text-muted-foreground ml-1.5 inline-block h-4 w-4 cursor-help" />
               </Tooltip>
             </Label>

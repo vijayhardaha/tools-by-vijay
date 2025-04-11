@@ -138,14 +138,13 @@ const PasswordGeneratorInput = ({
             />
             <Label htmlFor="excludeSimilar" className="flex items-center">
               Exclude similar characters (i, l, 1, L, o, 0, O)
-              <Tooltip
-                className="!w-80"
-                text="This option removes characters that look alike (such as the letter 'O' and number '0'). Use this to create passwords that are less confusing to read and type, especially when sharing passwords verbally or in print."
-                delayDuration={300}
-              >
-                <FiInfo className="text-muted-foreground ml-1.5 h-4 w-4 cursor-help" />
-              </Tooltip>
             </Label>
+            <Tooltip
+              className="!w-80"
+              text="This option removes characters that look alike (such as the letter 'O' and number '0'). Use this to create passwords that are less confusing to read and type, especially when sharing passwords verbally or in print."
+            >
+              <FiInfo className="text-muted-foreground h-4 w-4 cursor-help" />
+            </Tooltip>
           </div>
 
           <div className="flex flex-wrap gap-2">

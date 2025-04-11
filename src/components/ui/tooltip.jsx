@@ -17,7 +17,7 @@ import "react-tooltip/dist/react-tooltip.css";
  * @param {any} props.children - The child element that triggers the tooltip.
  * @param {string} [props.className] - Additional CSS classes for the tooltip.
  * @param {number} [props.sideOffset=4] - The offset of the tooltip from the trigger element.
- * @param {number} [props.delayDuration=0] - The delay in milliseconds before showing the tooltip.
+ * @param {number} [props.delayDuration=300] - The delay in milliseconds before showing the tooltip.
  * @returns {JSX.Element} The rendered Tooltip component.
  */
 function Tooltip({
@@ -25,7 +25,7 @@ function Tooltip({
   children,
   className,
   sideOffset = 4,
-  delayDuration = 0,
+  delayDuration = 300,
   ...props
 }) {
   const tooltipId = useId();
@@ -48,7 +48,7 @@ function Tooltip({
         offset={sideOffset}
         style={{ zIndex: 9999 }}
         className={cn(
-          "!text-primary-foreground !-mt-0.5 !rounded-md !bg-black !px-3 !py-1.5 !text-xs !leading-4 !font-normal !shadow-sm",
+          "!text-primary-foreground !-mt-0.5 !max-w-60 !rounded-md !bg-black !px-3 !py-1.5 !text-xs !leading-4 !font-normal !shadow-sm",
           className
         )}
       />
