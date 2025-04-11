@@ -86,17 +86,17 @@ const TextToolBar = ({ options, updateOption }) => {
 
   return (
     <>
-      <div className="absolute top-1/2 left-6 z-30 h-1/3 -translate-y-1/2 transform">
+      <div className="absolute top-1/2 left-4 z-20 h-1/3 -translate-y-1/2 transform">
         <VerticalRangeSlider
-          step={0.25}
+          step={0.0625}
           min={0.5}
-          max={4}
+          max={3}
           values={[textSize]}
           onChange={handleLeftSliderChange}
         />
       </div>
 
-      <div className="absolute top-1/2 right-6 z-30 h-1/3 -translate-y-1/2 transform">
+      <div className="absolute top-1/2 right-4 z-20 h-1/3 -translate-y-1/2 transform">
         <VerticalRangeSlider
           step={0.125}
           min={1}

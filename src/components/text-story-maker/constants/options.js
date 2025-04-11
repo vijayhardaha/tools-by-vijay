@@ -15,8 +15,8 @@
 export const defaultOptions = {
   // Typography
   textFont: "Arial",
-  textSize: 1,
-  textLineHeight: 1.5,
+  textSize: 0.875,
+  textLineHeight: 1.375,
   textColor: "#ffffff",
   textAlign: "center",
 

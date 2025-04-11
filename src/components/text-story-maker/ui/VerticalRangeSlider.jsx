@@ -51,19 +51,7 @@ const VerticalRangeSlider = ({ min, max, step, values, onChange }) => {
               "flex h-4 w-4 transform items-center justify-center rounded-full bg-white outline-hidden",
               isDragged ? "ring-4 ring-white/30" : ""
             )}
-          >
-            <div
-              className={cn(
-                "absolute -top-9 flex items-center justify-center rounded-md bg-slate-900 px-3 py-1 text-xs text-white outline-hidden",
-                !isDragged ? "hidden" : ""
-              )}
-              role="tooltip"
-              aria-live="polite"
-            >
-              {values[0]}
-              <div className="absolute -bottom-[6px] left-1/2 h-0 w-0 -translate-x-1/2 transform border-t-8 border-r-8 border-l-8 border-t-slate-900 border-r-transparent border-l-transparent"></div>
-            </div>
-          </div>
+          ></div>
         );
       }}
     />
