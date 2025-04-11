@@ -5,8 +5,8 @@ import PropTypes from "prop-types";
 import { CgArrowRight } from "react-icons/cg";
 
 import { cn } from "@/lib/utils";
-import { getToolBySlug } from "@/lib/utils/getToolBySlug";
-import { getToolIcon } from "@/lib/utils/getToolIcon";
+import { getToolBySlug } from "@/lib/getToolBySlug";
+import { getToolIcon } from "@/lib/getToolIcon";
 
 import { Button } from "../ui/button";
 import {

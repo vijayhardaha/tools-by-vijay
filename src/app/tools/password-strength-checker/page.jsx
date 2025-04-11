@@ -2,8 +2,9 @@ import PageContent from "@/components/page/PageContent";
 import PageHeader from "@/components/page/PageHeader";
 import PageLayout from "@/components/page/PageLayout";
 import PasswordStrengthCheckerTool from "@/components/tools/password-strength-checker/PasswordStrengthCheckerTool";
-import { getToolBySlug } from "@/lib/utils/getToolBySlug";
-import { getToolIcon } from "@/lib/utils/getToolIcon";
+import { getToolBySlug } from "@/lib/getToolBySlug";
+import { getToolIcon } from "@/lib/getToolIcon";
+import { generateMetadata as genMeta } from "@/lib/seo";
 
 /**
  * Retrieves tool data for the Password Strength Checker tool
@@ -12,15 +13,14 @@ import { getToolIcon } from "@/lib/utils/getToolIcon";
 const tool = getToolBySlug("password-strength-checker");
 
 /**
- * SEO metadata for the Password Strength Checker page
+ * SEO metadata for the Slugify page
  * @type {Object}
- * @property {string} title - SEO title for the page
- * @property {string} description - SEO description for the page
  */
-export const metadata = {
+export const metadata = genMeta({
   title: tool?.seoTitle || "",
   description: tool?.seoDescription || "",
-};
+  slug: tool?.slug || "",
+});
 
 /**
  * Password Strength Checker Page Component

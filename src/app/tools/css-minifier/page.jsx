@@ -2,8 +2,9 @@ import PageContent from "@/components/page/PageContent";
 import PageHeader from "@/components/page/PageHeader";
 import PageLayout from "@/components/page/PageLayout";
 import CssMinifierTool from "@/components/tools/css-minifier/CssMinifierTool";
-import { getToolBySlug } from "@/lib/utils/getToolBySlug";
-import { getToolIcon } from "@/lib/utils/getToolIcon";
+import { getToolBySlug } from "@/lib/getToolBySlug";
+import { getToolIcon } from "@/lib/getToolIcon";
+import { generateMetadata as genMeta } from "@/lib/seo";
 
 /**
  * Retrieves tool data for the CSS Minifier tool.
@@ -12,15 +13,14 @@ import { getToolIcon } from "@/lib/utils/getToolIcon";
 const tool = getToolBySlug("css-minifier");
 
 /**
- * SEO metadata for the CSS Minifier page.
+ * SEO metadata for the Slugify page
  * @type {Object}
- * @property {string} title - The SEO title of the page
- * @property {string} description - The SEO description of the page
  */
-export const metadata = {
+export const metadata = genMeta({
   title: tool?.seoTitle || "",
   description: tool?.seoDescription || "",
-};
+  slug: tool?.slug || "",
+});
 
 /**
  * CSS Minifier page component

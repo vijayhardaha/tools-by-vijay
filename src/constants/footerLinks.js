@@ -5,7 +5,6 @@ const footerLinks = {
   quickLinks: [
     { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },
-    { name: "Sitemap", href: "/sitemap" },
   ],
   codeTools: [
     { name: "HTML Minifier", href: "/tools/html-minifier" },
@@ -25,6 +24,7 @@ const footerLinks = {
       href: "/tools/password-strength-checker",
     },
     { name: "Dropdown to Array", href: "/tools/dropdown-to-array" },
+    { name: "Text to Array", href: "/tools/text-to-array" },
   ],
 };
 

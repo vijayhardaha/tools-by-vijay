@@ -4,6 +4,9 @@
 export const metadata = {
   title: "Tools by Vijay",
   description: "A collection of useful tools.",
+  alternates: {
+    canonical: "/",
+  },
   keywords: [
     "tools",
     "utilities",

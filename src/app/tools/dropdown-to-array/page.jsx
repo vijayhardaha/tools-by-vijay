@@ -2,8 +2,9 @@ import PageContent from "@/components/page/PageContent";
 import PageHeader from "@/components/page/PageHeader";
 import PageLayout from "@/components/page/PageLayout";
 import DropdownToArrayTool from "@/components/tools/dropdown-to-array/DropdownToArrayTool";
-import { getToolBySlug } from "@/lib/utils/getToolBySlug";
-import { getToolIcon } from "@/lib/utils/getToolIcon";
+import { getToolBySlug } from "@/lib/getToolBySlug";
+import { getToolIcon } from "@/lib/getToolIcon";
+import { generateMetadata as genMeta } from "@/lib/seo";
 
 /**
  * Retrieves tool data for the Dropdown to Array tool.
@@ -12,15 +13,14 @@ import { getToolIcon } from "@/lib/utils/getToolIcon";
 const tool = getToolBySlug("dropdown-to-array");
 
 /**
- * SEO metadata for the Dropdown to Array page.
+ * SEO metadata for the Slugify page
  * @type {Object}
- * @property {string} title - The SEO title of the page.
- * @property {string} description - The SEO description of the page.
  */
-export const metadata = {
+export const metadata = genMeta({
   title: tool?.seoTitle || "",
   description: tool?.seoDescription || "",
-};
+  slug: tool?.slug || "",
+});
 
 /**
  * Dropdown to Array tool page component

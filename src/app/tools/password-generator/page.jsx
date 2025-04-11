@@ -2,8 +2,9 @@ import PageContent from "@/components/page/PageContent";
 import PageHeader from "@/components/page/PageHeader";
 import PageLayout from "@/components/page/PageLayout";
 import PasswordGeneratorTool from "@/components/tools/password-generator/PasswordGeneratorTool";
-import { getToolBySlug } from "@/lib/utils/getToolBySlug";
-import { getToolIcon } from "@/lib/utils/getToolIcon";
+import { getToolBySlug } from "@/lib/getToolBySlug";
+import { getToolIcon } from "@/lib/getToolIcon";
+import { generateMetadata as genMeta } from "@/lib/seo";
 
 /**
  * Retrieves tool data for the Password Generator tool
@@ -12,15 +13,14 @@ import { getToolIcon } from "@/lib/utils/getToolIcon";
 const tool = getToolBySlug("password-generator");
 
 /**
- * SEO metadata for the Password Generator page
+ * SEO metadata for the Slugify page
  * @type {Object}
- * @property {string} title - The page title for SEO
- * @property {string} description - The page description for SEO
  */
-export const metadata = {
+export const metadata = genMeta({
   title: tool?.seoTitle || "",
   description: tool?.seoDescription || "",
-};
+  slug: tool?.slug || "",
+});
 
 /**
  * Password Generator page component

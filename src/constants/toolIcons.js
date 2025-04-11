@@ -1,4 +1,3 @@
-// utils/toolIcons.js
 import {
   PiFadersHorizontalLight,
   PiFadersLight,

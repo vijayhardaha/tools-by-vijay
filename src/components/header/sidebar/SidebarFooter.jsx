@@ -1,7 +1,12 @@
 "use client";
 
 import PropTypes from "prop-types";
-import { FaFacebook, FaTwitter, FaInstagram, FaGithub } from "react-icons/fa";
+import {
+  FaFacebookF,
+  FaXTwitter,
+  FaGithub,
+  FaInstagram,
+} from "react-icons/fa6";
 import { TbWorldWww } from "react-icons/tb";
 
 import { Button } from "@/components/ui/button";
@@ -37,25 +42,29 @@ SocialButton.propTypes = {
 const SidebarFooter = () => (
   <SheetFooter className="border-border border-t p-4">
     <div className="flex justify-center space-x-2">
-      <SocialButton icon={FaGithub} href="https://github.com" label="GitHub" />
       <SocialButton
-        icon={FaTwitter}
-        href="https://example.com"
+        icon={FaGithub}
+        href="https://github.com/vijayhardaha"
+        label="GitHub"
+      />
+      <SocialButton
+        icon={FaXTwitter}
+        href="https://x.com/vijayhardaha"
         label="Twitter"
       />
       <SocialButton
-        icon={FaFacebook}
-        href="https://example.com"
+        icon={FaFacebookF}
+        href="https://facebook.com/vegan.vijay"
         label="Facebook"
       />
       <SocialButton
         icon={FaInstagram}
-        href="https://example.com"
+        href="https://instagram.com/vegan.vijay"
         label="Instagram"
       />
       <SocialButton
         icon={TbWorldWww}
-        href="https://www.peopleperhour.com"
+        href="https://pph.me/vijayhardaha"
         label="PeoplePerHour"
       />
     </div>

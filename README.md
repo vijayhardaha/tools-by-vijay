@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🛠️ Tools by Vijay
 
-## Getting Started
+**Tools by Vijay** is a personal project — a curated collection of online utilities I frequently use as a developer, writer, and web creator. I built this site to centralize these helpful tools for myself, and I figured others might find them useful too.
 
-First, run the development server:
+From slug generation to code minification, every tool is designed to be fast, lightweight, and privacy-friendly — no tracking, no fluff.
+
+## 🌐 Live Website
+
+🔗 [toolsbyvijay.vercel.app](https://toolsbyvijay.vercel.app)
+
+## ✨ Why I Built This
+
+I often found myself switching between different online tools spread across multiple websites. So I created **Tools by Vijay** to bring them together under one clean interface. It’s simple, fast, and focused on just what’s needed — no ads, no distractions.
+
+## 🧰 Tools Included
+
+| Tool                      | Description                                                 |
+| ------------------------- | ----------------------------------------------------------- |
+| Slugify                   | Convert strings into clean, URL-safe slugs                  |
+| Bulk Slugify              | Generate multiple slugs at once                             |
+| Password Generator        | Create strong, random passwords                             |
+| Password Strength Checker | Analyze the strength of a given password                    |
+| HTML Minifier             | Compress and clean HTML code                                |
+| CSS Minifier              | Minify your CSS files for faster page loads                 |
+| JS Minifier               | Shrink JavaScript with UglifyJS and babel-minify            |
+| URL Shortener             | Bulk shorten links using TinyURL                            |
+| Dropdown → Array          | Convert HTML dropdowns into PHP/JS arrays                   |
+| Text → Array              | Convert plain text lists into arrays with key-value mapping |
+
+> More tools coming soon!
+
+## 🚀 Getting Started
 
 ```bash
+# 1. Clone the repo
+git clone https://github.com/vijayhardaha/tools-by-vijay.git
+cd tools-by-vijay
+
+# 2. Install dependencies
+npm install
+
+# 3. Start the development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open your browser at [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠️ Tech Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- [Next.js](https://nextjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [React Icons](https://react-icons.github.io/react-icons/)
 
-## Learn More
+## 🧑‍💻 Author
 
-To learn more about Next.js, take a look at the following resources:
+Made with ❤️ by [Vijay Hardaha](https://x.com/vijayhardaha)
+Follow for updates and feel free to reach out if you’ve got ideas for new tools.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📜 License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT License — free to use, fork, and improve.
