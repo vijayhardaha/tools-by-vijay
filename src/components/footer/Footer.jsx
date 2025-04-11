@@ -9,7 +9,7 @@ import FooterTop from "@/components/footer/FooterTop";
  */
 const Footer = () => {
   return (
-    <footer className="bg-amber-200 bg-[radial-gradient(var(--color-amber-400)_0.5px,var(--color-amber-200)_0.5px)] bg-[length:10px_10px] pt-10 pb-4">
+    <footer className="bg-amber-200 bg-[radial-gradient(var(--color-amber-500)_0.75px,var(--color-amber-200)_0.75px)] bg-[length:10px_10px] pt-10 pb-4">
       <div className="mx-auto max-w-5xl px-4">
         <FooterTop />
         <FooterBottom />
