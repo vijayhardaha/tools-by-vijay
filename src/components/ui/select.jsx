@@ -148,9 +148,12 @@ function Select({
               return (
                 <div
                   key={option.value}
+                  role="option"
+                  tabIndex={isDisabled ? -1 : 0}
+                  aria-selected={isSelected}
+                  aria-disabled={isDisabled}
                   data-slot="select-item"
                   data-selected={isSelected}
-                  aria-disabled={isDisabled}
                   className={cn(
                     "relative flex w-full items-center gap-2",
                     "py-1.5 pr-8 pl-2",
@@ -176,9 +179,6 @@ function Select({
                       handleValueChange(option.value);
                     }
                   }}
-                  role="option"
-                  aria-selected={isSelected}
-                  tabIndex={isDisabled ? -1 : 0}
                 >
                   <span className="absolute right-2 flex size-3.5 items-center justify-center">
                     {isSelected && <CheckIcon className="size-4" />}

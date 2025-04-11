@@ -14,7 +14,30 @@ const DialogContext = React.createContext({
 });
 
 /**
- * Root component for Dialogs
+ * Root component for Dialogs.
+ *
+ * The Dialog component is the container for all dialog-related components.
+ * It manages the state of the dialog (open/closed) and provides this state
+ * to all child components through context.
+ *
+ * @param {Object} props - Component props
+ * @param {React.ReactNode} props.children - Child components to render within the dialog
+ * @param {boolean} [props.open=false] - Controls whether the dialog is open
+ * @param {Function} [props.onOpenChange] - Callback function triggered when dialog open state changes
+ * @returns {React.ReactElement} - Dialog component
+ *
+ * @example
+ * ```jsx
+ * <Dialog open={isOpen} onOpenChange={setIsOpen}>
+ *   <DialogTrigger>Open Dialog</DialogTrigger>
+ *   <DialogContent>
+ *     <DialogHeader>
+ *       <DialogTitle>Example Dialog</DialogTitle>
+ *     </DialogHeader>
+ *     <p>Dialog content goes here</p>
+ *   </DialogContent>
+ * </Dialog>
+ * ```
  */
 function Dialog({ children, open = false, onOpenChange, ...props }) {
   const [isOpen, setIsOpen] = React.useState(open);
@@ -127,13 +150,15 @@ function DialogOverlay({ className, children, ...props }) {
 
   return (
     <div
+      role="dialog"
+      aria-hidden="true"
+      data-state={open ? "open" : "closed"}
       data-slot="dialog-overlay"
       className={cn(
         "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/50",
         className
       )}
       onClick={() => onOpenChange(false)}
-      data-state={open ? "open" : "closed"}
       {...props}
     >
       {children}
@@ -150,7 +175,7 @@ DialogOverlay.propTypes = {
  * Main content container for the dialog
  */
 function DialogContent({ className, children, ...props }) {
-  const { open, onOpenChange } = React.useContext(DialogContext);
+  const { open } = React.useContext(DialogContext);
 
   if (!open) return null;
 
@@ -158,15 +183,20 @@ function DialogContent({ className, children, ...props }) {
     <DialogPortal>
       <DialogOverlay />
       <div
+        role="presentation"
+        aria-hidden={!open}
         data-slot="dialog-content"
-        role="dialog"
-        aria-modal="true"
+        data-state={open ? "open" : "closed"}
         className={cn(
           "bg-background data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border p-6 shadow-lg duration-200 sm:max-w-lg",
           className
         )}
-        data-state={open ? "open" : "closed"}
         onClick={(e) => e.stopPropagation()}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.stopPropagation();
+          }
+        }}
         {...props}
       >
         {children}

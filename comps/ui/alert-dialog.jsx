@@ -102,6 +102,14 @@ AlertDialogPortal.propTypes = {
 
 /**
  * Overlay component that covers the viewport when alert dialog is open.
+ *
+ * The overlay provides a semi-transparent background that dims the content
+ * behind the dialog, helping to focus the user's attention on the alert.
+ * It automatically handles open/closed animations based on the dialog state.
+ *
+ * @param {Object} props - Component props
+ * @param {string} [props.className] - Additional CSS classes to apply to the overlay
+ * @returns {React.ReactElement|null} - Rendered overlay or null when dialog is closed
  */
 function AlertDialogOverlay({ className, ...props }) {
   const { open } = React.useContext(AlertDialogContext);
@@ -123,6 +131,7 @@ function AlertDialogOverlay({ className, ...props }) {
 
 AlertDialogOverlay.propTypes = {
   className: PropTypes.string,
+  // Add propTypes for any additional props spread via ...props
 };
 
 /**

@@ -2,6 +2,7 @@
 
 import * as React from "react";
 
+import PropTypes from "prop-types";
 import { createPortal } from "react-dom";
 
 import { cn } from "@/lib/utils";
@@ -15,6 +16,15 @@ const PopoverContext = React.createContext({
   contentRef: { current: null },
 });
 
+/**
+ * Popover component to manage popover state and provide context to children.
+ * @param {Object} props - Component props.
+ * @param {React.ReactNode} props.children - Child components.
+ * @param {boolean} [props.defaultOpen=false] - Default open state.
+ * @param {boolean} [props.open] - Controlled open state.
+ * @param {function} [props.onOpenChange] - Callback when open state changes.
+ * @returns {JSX.Element} Popover component.
+ */
 function Popover({
   children,
   defaultOpen = false,
@@ -57,6 +67,21 @@ function Popover({
   );
 }
 
+Popover.propTypes = {
+  children: PropTypes.node.isRequired,
+  defaultOpen: PropTypes.bool,
+  open: PropTypes.bool,
+  onOpenChange: PropTypes.func,
+};
+
+/**
+ * PopoverTrigger component to toggle the popover.
+ * @param {Object} props - Component props.
+ * @param {React.ReactNode} props.children - Child components.
+ * @param {boolean} [props.aschild=false] - Whether to use the child as the trigger.
+ * @param {function} [props.onClick] - Click handler.
+ * @returns {JSX.Element} PopoverTrigger component.
+ */
 function PopoverTrigger({ children, aschild, ...props }) {
   const { open, setOpen, triggerRef } = React.useContext(PopoverContext);
 
@@ -91,6 +116,21 @@ function PopoverTrigger({ children, aschild, ...props }) {
   return child;
 }
 
+PopoverTrigger.propTypes = {
+  children: PropTypes.node.isRequired,
+  aschild: PropTypes.bool,
+  onClick: PropTypes.func,
+};
+
+/**
+ * PopoverContent component to display the popover content.
+ * @param {Object} props - Component props.
+ * @param {string} [props.className] - Additional class names.
+ * @param {string} [props.align="center"] - Alignment of the content.
+ * @param {number} [props.sideOffset=4] - Offset from the trigger.
+ * @param {React.ReactNode} props.children - Child components.
+ * @returns {JSX.Element|null} PopoverContent component or null if not mounted/open.
+ */
 function PopoverContent({
   className,
   align = "center",
@@ -258,6 +298,19 @@ function PopoverContent({
   );
 }
 
+PopoverContent.propTypes = {
+  className: PropTypes.string,
+  align: PropTypes.oneOf(["start", "center", "end"]),
+  sideOffset: PropTypes.number,
+  children: PropTypes.node.isRequired,
+};
+
+/**
+ * PopoverAnchor component to define a custom anchor for the popover.
+ * @param {Object} props - Component props.
+ * @param {React.ReactNode} props.children - Child components.
+ * @returns {JSX.Element} PopoverAnchor component.
+ */
 function PopoverAnchor({ children, ...props }) {
   const { anchorRef } = React.useContext(PopoverContext);
 
@@ -267,5 +320,9 @@ function PopoverAnchor({ children, ...props }) {
     </div>
   );
 }
+
+PopoverAnchor.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export { Popover, PopoverTrigger, PopoverContent, PopoverAnchor };
