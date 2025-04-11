@@ -11,7 +11,7 @@ import TextToolBars from "@/components/text-story-maker/toolbars/textToolBars";
  * @returns {JSX.Element} The rendered footer component.
  */
 const Footer = ({ options, updateOption }) => (
-  <footer className="absolute bottom-0 left-0 z-20 flex h-auto w-full items-center justify-center p-4">
+  <footer className="absolute bottom-0 left-0 z-20 flex h-auto w-full items-center justify-center p-4 py-6">
     <TextToolBars options={options} updateOption={updateOption} />
   </footer>
 );

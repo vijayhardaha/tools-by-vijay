@@ -57,7 +57,10 @@ const TextToolBars = ({ options, updateOption }) => {
         : options.textAlign === "left"
           ? "right"
           : "center";
-    updateOption({ textAlign: newAlignment });
+
+    console.log(newAlignment);
+
+    updateOption("textAlign", newAlignment);
   };
 
   const getAlignmentIcon = () => {
@@ -90,6 +93,7 @@ const TextToolBars = ({ options, updateOption }) => {
         </Button>
         <Button
           icon={getAlignmentIcon()}
+          iconClassName="h-8 w-8"
           onClick={() => {
             handleAlignmentChange();
           }}
@@ -97,8 +101,7 @@ const TextToolBars = ({ options, updateOption }) => {
         />
         <Button
           icon={TextBgIcon}
-          active={activeTool === "text-background"}
-          onClick={() => setActiveTool("text-background")}
+          className="h-8 w-8 bg-white text-black"
           srText="Text Background Tool"
         />
       </ToolBarWrapper>

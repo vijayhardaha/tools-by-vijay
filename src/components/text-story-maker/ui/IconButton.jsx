@@ -29,8 +29,9 @@ const IconButton = ({
       "rounded-xl outline-none",
       "cursor-pointer disabled:pointer-events-none disabled:opacity-50",
       "outline-none focus-visible:outline-none",
-      "transition-all",
-      "h-10 w-10 p-1",
+      "transition-all duration-100 ease-in-out",
+      "active:scale-95",
+      "h-10 w-10 p-0.5",
       className
     )}
     aria-label={srText}

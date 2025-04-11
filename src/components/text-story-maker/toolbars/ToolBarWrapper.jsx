@@ -9,7 +9,7 @@ import PropTypes from "prop-types";
  */
 const ToolBarWrapper = ({ children }) => {
   return (
-    <div className="flex items-center gap-2 rounded-xl bg-gray-800 p-2 text-white">
+    <div className="flex items-center gap-2 rounded-xl bg-[#222222] p-2 px-4 text-white">
       {children}
     </div>
   );
