@@ -60,7 +60,7 @@ const HtmlMinifierInput = ({
             placeholder="Paste HTML code here..."
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            className="min-h-[200px] font-mono text-xs"
+            className="min-h-28 font-mono text-xs"
           />
 
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
