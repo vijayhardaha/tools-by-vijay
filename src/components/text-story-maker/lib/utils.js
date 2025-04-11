@@ -14,7 +14,7 @@ export const getRatioClass = (ratio) => {
     case "16/9":
       return "aspect-[16/9]";
     default:
-      return "aspect-auto"; // fallback or default aspect
+      return "aspect-auto";
   }
 };
 

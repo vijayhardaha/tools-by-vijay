@@ -1,4 +1,4 @@
-import { bgColors } from "../constants/bgColors";
+import { bgColors } from "@/components/text-story-maker/constants/bgColors";
 
 /**
  * Utility function to get color class based on type and value.
@@ -10,5 +10,6 @@ export function getBgColorClass(type, value) {
   if (bgColors[type] && bgColors[type][value]) {
     return bgColors[type][value];
   }
+
   return "";
 }
