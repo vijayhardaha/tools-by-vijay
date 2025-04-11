@@ -2,8 +2,6 @@ import React from "react";
 
 import PropTypes from "prop-types";
 
-import PageBreadcrumb from "./PageBreadcrumb";
-
 /**
  * PageHeader component for displaying page titles and descriptions
  *
@@ -30,9 +28,6 @@ const PageHeader = ({ title, description, icon = null }) => {
             {title}
           </h1>
           {description && <p className="mt-1">{description}</p>}
-          <div className="mt-6">
-            <PageBreadcrumb pageName={title} />
-          </div>
         </div>
       </div>
     </div>
