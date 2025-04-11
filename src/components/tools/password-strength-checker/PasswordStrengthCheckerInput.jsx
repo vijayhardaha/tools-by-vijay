@@ -54,12 +54,12 @@ const PasswordStrengthCheckerInput = ({
     <Card>
       <CardHeader>
         <CardTitle>Check Password Strength</CardTitle>
-        <CardDescription className="text-muted-foreground text-sm">
+        <CardDescription>
           Enter a password to check its strength
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <form className="flex flex-col gap-6">
+        <form className="flex flex-col gap-4">
           <div className="space-y-2">
             <Label htmlFor="password">Password</Label>
             <div className="relative">
@@ -69,7 +69,7 @@ const PasswordStrengthCheckerInput = ({
                 placeholder="Enter your password to check"
                 value={password}
                 onChange={handleChange}
-                className="pr-10"
+                className="pr-10 font-mono text-xs"
               />
               <div className="absolute inset-y-0 right-0 flex items-center justify-center">
                 <Tooltip
@@ -95,12 +95,7 @@ const PasswordStrengthCheckerInput = ({
           </div>
 
           <div className="flex justify-start gap-2">
-            <Button
-              type="button"
-              variant="destructive"
-              size="lg"
-              onClick={onClear}
-            >
+            <Button type="button" variant="destructive" onClick={onClear}>
               Clear
             </Button>
           </div>
