@@ -52,7 +52,7 @@ const JsMinifierInput = ({
     <Card>
       <CardHeader>
         <CardTitle>JavaScript Input</CardTitle>
-        <CardDescription className="text-muted-foreground text-sm">
+        <CardDescription>
           Paste your JavaScript code and customize minification options
         </CardDescription>
       </CardHeader>
@@ -62,7 +62,7 @@ const JsMinifierInput = ({
             placeholder="Paste JavaScript code here..."
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            className="min-h-[200px] font-mono text-sm"
+            className="min-h-[200px] font-mono text-xs"
           />
 
           <div className="space-y-4">
@@ -115,7 +115,6 @@ const JsMinifierInput = ({
             <Button
               type="submit"
               variant="default"
-              size="lg"
               disabled={!input || isLoading}
             >
               {isLoading ? "Minifying..." : "Minify"}
@@ -123,7 +122,6 @@ const JsMinifierInput = ({
             <Button
               type="button"
               variant="outline"
-              size="lg"
               onClick={onClear}
               disabled={isLoading}
             >
@@ -132,7 +130,6 @@ const JsMinifierInput = ({
             <Button
               type="reset"
               variant="destructive"
-              size="lg"
               onClick={onReset}
               disabled={isLoading}
             >

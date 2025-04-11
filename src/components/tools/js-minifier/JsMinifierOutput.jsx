@@ -81,7 +81,7 @@ const JsMinifierOutput = ({ output, input }) => {
     <Card>
       <CardHeader>
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <div>
+          <div className="flex flex-col gap-1.5">
             <CardTitle>Minified Output</CardTitle>
             <CardDescription>
               {output
@@ -104,7 +104,7 @@ const JsMinifierOutput = ({ output, input }) => {
             value={output}
             readOnly
             data-output
-            className="min-h-[200px] font-mono text-sm"
+            className="min-h-[200px] font-mono text-xs"
           />
         </div>
       </CardContent>
