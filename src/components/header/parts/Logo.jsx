@@ -1,38 +1,25 @@
 import Link from "next/link";
-
-import { LuPocketKnife as LogoIcon } from "react-icons/lu";
-
-import Box from "@/components/ui/box";
+import Image from "next/image";
+import { cn } from "@/lib/utils";
 
 /**
- * Logo component that displays the site logo with "Tools by Vijay" text
+ * Logo component that displays the site logo with next/image
  *
  * @component
+ * @param {object} props - Component props
+ * @param {string} [props.className] - Additional CSS classes to apply
  * @returns {JSX.Element} A link to the homepage containing the site logo
  */
-const Logo = () => (
-  <Link
-    href="/"
-    className="inline-flex items-center overflow-hidden rounded-lg"
-  >
-    <Box
-      flex
-      align="center"
-      justify="center"
-      p={2}
-      className="bg-accent-foreground text-primary h-10 w-10"
-    >
-      <LogoIcon size={18} />
-    </Box>
-    <Box
-      flex
-      align="center"
-      py={2}
-      px={4}
-      className="bg-primary text-primary-foreground h-10"
-    >
-      <span className="text-sm font-bold tracking-wide">Tools by Vijay</span>
-    </Box>
+const Logo = ({ className }) => (
+  <Link href="/" className="inline-flex">
+    <Image
+      src="/images/site-logo.svg"
+      alt="Tools by Vijay Logo"
+      width={791}
+      height={160}
+      className={cn("h-10 w-auto", className)}
+      priority
+    />
   </Link>
 );
 

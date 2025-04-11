@@ -1,10 +1,40 @@
 /**
  * Metadata for the application.
- * @type {{title: string, description: string}}
  */
 export const metadata = {
   title: "Tools by Vijay",
   description: "A collection of useful tools.",
+  keywords: [
+    "tools",
+    "utilities",
+    "web tools",
+    "online tools",
+    "developer tools",
+  ],
+  author: "Vijay",
+  robots: "index, follow",
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
+  openGraph: {
+    title: "Tools by Vijay - Useful Web Utilities",
+    description:
+      "A collection of free online tools and utilities to help with everyday tasks.",
+    images: ["/images/thumbnail.png"],
+    type: "website",
+    siteName: "Tools by Vijay",
+    locale: "en_US",
+    url: "https://toolsbyvijay.vercel.app",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Tools by Vijay - Web Utilities",
+    description:
+      "Free online tools and utilities for developers and everyday users.",
+    images: ["/images/thumbnail.png"],
+    creator: "@vijayhardaha",
+  },
 };
 
 import { Work_Sans, Geist_Mono } from "next/font/google";
