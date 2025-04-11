@@ -6,12 +6,15 @@ import { SEO } from "@/constants/seo";
  * @returns {string} The base URL.
  */
 export const getBaseUrl = () => {
-  return (
+  const url =
     process.env.VERCEL_PROJECT_PRODUCTION_URL ||
     process.env.VERCEL_BRANCH_URL ||
     process.env.VERCEL_URL ||
-    `http://localhost:${process.env.PORT || 3000}`
-  ).replace(/\/$/, "");
+    `http://localhost:${process.env.PORT || 3000}`;
+
+  return url.startsWith("http://") || url.startsWith("https://")
+    ? url.replace(/\/$/, "")
+    : `https://${url.replace(/\/$/, "")}`;
 };
 
 /**
