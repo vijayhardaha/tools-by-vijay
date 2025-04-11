@@ -9,6 +9,7 @@
  * @property {string} cardRatio - The aspect ratio of the card (e.g., "9/16").
  * @property {string} bgType - The type of background (e.g., "solid", "gradient").
  * @property {string} bgColor - The background color or gradient name.
+ * @property {string} text - The content of the text.
  */
 
 /** @type {DefaultOptions} */
@@ -19,6 +20,9 @@ export const defaultOptions = {
   textLineHeight: 1.375,
   textColor: "color1",
   textAlign: "center",
+
+  // Content
+  text: "",
 
   // Layout
   cardRatio: "9/16",

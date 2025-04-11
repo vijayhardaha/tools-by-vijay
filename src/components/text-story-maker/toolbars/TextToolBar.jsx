@@ -10,15 +10,14 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+import { fonts } from "@/components/text-story-maker/constants/fonts";
+import { textColors } from "@/components/text-story-maker/constants/textColors";
 import {
   ToolBarWrapper,
   ToolBarButton,
 } from "@/components/text-story-maker/toolbars/ToolBarBase";
+import VerticalRangeSlider from "@/components/text-story-maker/ui/VerticalRangeSlider";
 import { cn } from "@/lib/utils";
-
-import { textColors } from "../constants/textColors";
-import { fonts, getFontClass } from "../lib/fonts";
-import VerticalRangeSlider from "../ui/VerticalRangeSlider";
 
 /**
  * TextToolBar component provides a toolbar for text customization, including font size, line height, text alignment, and other text-related options.
@@ -148,8 +147,7 @@ const TextToolBar = ({ options, updateOption }) => {
                       "w-auto text-sm",
                       "backdrop-blur-xs backdrop-opacity-75",
                       "bg-white/20",
-                      { "bg-white text-black": options.textFont === font },
-                      getFontClass(font)
+                      { "bg-white text-black": options.textFont === font }
                     )}
                     onClick={() => {
                       updateOption("textFont", font);

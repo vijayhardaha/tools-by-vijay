@@ -1,3 +1,12 @@
+/**
+ * Background color options for the text story maker.
+ * @typedef {Object} BgColors
+ * @property {Object.<string, string>} solid - Solid background color options.
+ * @property {Object.<string, string>} gradient - Gradient background color options.
+ * @property {Object.<string, string>} mesh - Mesh background color options.
+ */
+
+/** @type {BgColors} */
 export const bgColors = {
   solid: {
     color1: "bg-red-500",
@@ -53,6 +62,26 @@ export const bgColors = {
     color18: "bg-linear-to-tr from-amber-200 via-orange-400 to-red-600",
     color19: "bg-linear-to-tr from-gray-800 via-blue-700 to-gray-900",
     color20: "bg-linear-to-tr from-purple-500 via-indigo-500 to-blue-500",
+    color21:
+      "bg-[linear-gradient(45deg,_#ff9a9e,_#fad0c4,_#fad0c4,_#fbc2eb,_#a18cd1,_#fbc2eb,_#fad0c4,_#ff9a9e)]",
+    color22:
+      "bg-[linear-gradient(90deg,_#ff9966,_#ff5e62,_#ff9966,_#ff5e62,_#ff9966,_#ff5e62,_#ff9966,_#ff5e62)]",
+    color23:
+      "bg-[linear-gradient(120deg,_#ff6a00,_#ee0979,_#ff6a00,_#ee0979,_#ff6a00,_#ee0979,_#ff6a00,_#ee0979)]",
+    color24:
+      "bg-[linear-gradient(135deg,_#00c6ff,_#0072ff,_#00c6ff,_#0072ff,_#00c6ff,_#0072ff,_#00c6ff,_#0072ff)]",
+    color25:
+      "bg-[linear-gradient(150deg,_#f953c6,_#b91d73,_#f953c6,_#b91d73,_#f953c6,_#b91d73,_#f953c6,_#b91d73)]",
+    color26:
+      "bg-[linear-gradient(180deg,_#4facfe,_#00f2fe,_#4facfe,_#00f2fe,_#4facfe,_#00f2fe,_#4facfe,_#00f2fe)]",
+    color27:
+      "bg-[linear-gradient(200deg,_#43e97b,_#38f9d7,_#43e97b,_#38f9d7,_#43e97b,_#38f9d7,_#43e97b,_#38f9d7)]",
+    color28:
+      "bg-[linear-gradient(225deg,_#fa709a,_#fee140,_#fa709a,_#fee140,_#fa709a,_#fee140,_#fa709a,_#fee140)]",
+    color29:
+      "bg-[linear-gradient(240deg,_#30cfd0,_#330867,_#30cfd0,_#330867,_#30cfd0,_#330867,_#30cfd0,_#330867)]",
+    color30:
+      "bg-[linear-gradient(270deg,_#a8edea,_#fed6e3,_#a8edea,_#fed6e3,_#a8edea,_#fed6e3,_#a8edea,_#fed6e3)]",
   },
   mesh: {
     color1:
