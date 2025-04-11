@@ -2,8 +2,9 @@
  * Metadata for the application.
  */
 export const metadata = {
-  title: "Tools by Vijay",
-  description: "A collection of useful tools.",
+  title: "Tools by Vijay Hardaha - Useful Web Utilities",
+  description:
+    "A collection of free online tools and utilities to help with everyday tasks.",
   alternates: {
     canonical: "/",
   },
@@ -21,20 +22,26 @@ export const metadata = {
     apple: "/apple-touch-icon.png",
   },
   openGraph: {
-    title: "Tools by Vijay - Useful Web Utilities",
+    title: "Tools by Vijay Hardaha - Useful Web Utilities",
     description:
       "A collection of free online tools and utilities to help with everyday tasks.",
-    images: ["/images/thumbnail.png"],
+    images: [
+      {
+        url: "/images/thumbnail.png",
+        width: 512,
+        height: 512,
+      },
+    ],
     type: "website",
-    siteName: "Tools by Vijay",
+    siteName: "Tools by Vijay Hardaha",
     locale: "en_US",
     url: "https://toolsbyvijay.vercel.app",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Tools by Vijay - Web Utilities",
+    title: "Tools by Vijay Hardaha - Useful Web Utilities",
     description:
-      "Free online tools and utilities for developers and everyday users.",
+      "A collection of free online tools and utilities to help with everyday tasks.",
     images: ["/images/thumbnail.png"],
     creator: "@vijayhardaha",
   },

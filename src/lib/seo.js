@@ -5,7 +5,7 @@
  * @returns {string} The SEO-friendly title in the format: "{title} - Tools by Vijay".
  */
 export const generateSeoTitle = (title) => {
-  return `${title} - Tools by Vijay`;
+  return `${title} - Tools by Vijay Hardaha`;
 };
 
 /**

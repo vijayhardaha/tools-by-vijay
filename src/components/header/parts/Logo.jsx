@@ -17,7 +17,8 @@ const Logo = ({ className }) => (
   <Link href="/" className="inline-flex">
     <Image
       src="/images/site-logo.svg"
-      alt="Tools by Vijay Logo"
+      alt="Tools by Vijay Hardaha Logo"
+      title="Tools by Vijay Hardaha"
       width={791}
       height={160}
       className={cn("h-10 w-auto", className)}
