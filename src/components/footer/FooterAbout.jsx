@@ -9,7 +9,7 @@ const FooterAbout = () => {
   return (
     <div className="footer-about space-y-2">
       <div>
-        <Logo className="mb-3 h-14" />
+        <Logo className="mb-3 h-12" />
       </div>
 
       <p className="text-foreground text-sm">
