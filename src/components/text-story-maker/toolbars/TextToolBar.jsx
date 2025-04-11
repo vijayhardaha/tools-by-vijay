@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 import PropTypes from "prop-types";
 import { PiTextAa as AaIcon } from "react-icons/pi";
@@ -6,12 +6,17 @@ import { PiTextAlignCenter as AlignCenterIcon } from "react-icons/pi";
 import { PiTextAlignLeft as AlignLeftIcon } from "react-icons/pi";
 import { PiTextAlignRight as AlignRightIcon } from "react-icons/pi";
 import { PiMagicWand as TextBgIcon } from "react-icons/pi";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 import {
   ToolBarWrapper,
   ToolBarButton,
 } from "@/components/text-story-maker/toolbars/ToolBarBase";
+import { cn } from "@/lib/utils";
 
+import { fonts, getFontClass } from "../lib/fonts";
 import VerticalRangeSlider from "../ui/VerticalRangeSlider";
 
 /**
@@ -26,6 +31,7 @@ import VerticalRangeSlider from "../ui/VerticalRangeSlider";
  * @returns {JSX.Element} The rendered TextToolBar component.
  */
 const TextToolBar = ({ options, updateOption }) => {
+  const sliderRef = useRef(null); // Create a ref for the slider
   const [activeTool, setActiveTool] = useState("font-family");
   const [textSize, setTextSize] = useState(options.textSize);
   const [lineHeight, setLineHeight] = useState(options.textLineHeight);
@@ -35,11 +41,10 @@ const TextToolBar = ({ options, updateOption }) => {
    *
    * @param {Array<number>} values - Array containing the new line height value.
    */
-  const handleRightSliderChange = (values) => {
+  const handleLineHeightChange = (values) => {
     const value = parseFloat(values[0]);
     setLineHeight(value);
     updateOption("textLineHeight", value);
-    console.log("Line Height Value:", value);
   };
 
   /**
@@ -47,11 +52,10 @@ const TextToolBar = ({ options, updateOption }) => {
    *
    * @param {Array<number>} values - Array containing the new text size value.
    */
-  const handleLeftSliderChange = (values) => {
+  const handleTextSizeChange = (values) => {
     const value = parseFloat(values[0]);
     setTextSize(value);
     updateOption("textSize", value);
-    console.log("Text Size Value:", value);
   };
 
   /**
@@ -90,9 +94,9 @@ const TextToolBar = ({ options, updateOption }) => {
         <VerticalRangeSlider
           step={0.0625}
           min={0.5}
-          max={3}
+          max={4}
           values={[textSize]}
-          onChange={handleLeftSliderChange}
+          onChange={handleTextSizeChange}
         />
       </div>
 
@@ -102,11 +106,56 @@ const TextToolBar = ({ options, updateOption }) => {
           min={1}
           max={2}
           values={[lineHeight]}
-          onChange={handleRightSliderChange}
+          onChange={handleLineHeightChange}
         />
       </div>
 
-      <div className="absolute bottom-0 left-0 z-20 flex h-auto w-full items-center justify-center p-4 py-6">
+      <div className="absolute bottom-0 left-0 z-20 flex h-auto w-full flex-col items-center justify-center gap-4 p-4 py-6">
+        {activeTool === "font-family" && (
+          <div className="slider-container w-full">
+            <Slider
+              ref={sliderRef} // Attach the ref to the slider
+              dots={false}
+              infinite={false}
+              arrows={false}
+              speed={500}
+              slidesToShow={3}
+              variableWidth={true}
+              centerMode={true}
+              swipeToSlide={true}
+              initialSlide={Object.keys(fonts).indexOf(options.textFont)} // Set initial slide
+            >
+              {Object.keys(fonts).map((font, index) => (
+                <div key={font} className="px-1">
+                  <button
+                    type="button"
+                    className={cn(
+                      "relative whitespace-nowrap",
+                      "inline-flex items-center justify-center",
+                      "rounded-md shadow-sm",
+                      "cursor-pointer outline-none focus-visible:outline-none",
+                      "transition-all duration-200 ease-in-out",
+                      "active:scale-95",
+                      "p-1 px-3",
+                      "border border-white/50 bg-transparent text-white",
+                      "w-auto text-xs",
+                      "backdrop-blur-xs backdrop-opacity-75",
+                      "bg-white/20",
+                      { "bg-white text-black": options.textFont === font },
+                      getFontClass(font)
+                    )}
+                    onClick={() => {
+                      updateOption("textFont", font);
+                      sliderRef.current?.slickGoTo(index); // Center the clicked font
+                    }}
+                  >
+                    {fonts[font].label}
+                  </button>
+                </div>
+              ))}
+            </Slider>
+          </div>
+        )}
         <ToolBarWrapper>
           <ToolBarButton
             icon={AaIcon}

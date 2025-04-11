@@ -14,7 +14,7 @@
 /** @type {DefaultOptions} */
 export const defaultOptions = {
   // Typography
-  textFont: "Arial",
+  textFont: "hind",
   textSize: 0.875,
   textLineHeight: 1.375,
   textColor: "#ffffff",

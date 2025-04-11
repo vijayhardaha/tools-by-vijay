@@ -17,3 +17,20 @@ export const getRatioClass = (ratio) => {
       return "aspect-auto"; // fallback or default aspect
   }
 };
+
+/**
+ * Returns the CSS class for a given alignment value.
+ * @param {string} alignment - The alignment value ("left", "center", "right").
+ * @returns {string} The corresponding CSS class for the alignment.
+ */
+export const getAlignmentClass = (alignment) => {
+  switch (alignment) {
+    case "left":
+      return "text-left items-start";
+    case "right":
+      return "text-right items-end";
+    case "center":
+    default:
+      return "text-center items-center";
+  }
+};
