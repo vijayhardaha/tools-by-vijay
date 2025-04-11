@@ -120,16 +120,14 @@ const PasswordStrengthCheckerInfo = () => {
         </h3>
         <p>
           Maintained by{" "}
-          <strong>
-            <a
-              href="https://x.com/vijayhardaha"
-              rel="noopener noreferrer"
-              target="_blank"
-              className="text-blue-400 underline"
-            >
-              Vijay Hardaha
-            </a>
-          </strong>
+          <a
+            href="https://x.com/vijayhardaha"
+            rel="noopener noreferrer"
+            target="_blank"
+            className="text-blue-400 underline"
+          >
+            Vijay Hardaha
+          </a>
           . This tool evaluates passwords using industry best practices for
           password security and runs entirely in your browser for maximum
           privacy.

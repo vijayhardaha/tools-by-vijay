@@ -188,16 +188,14 @@ $data = array(
         </h3>
         <p>
           Maintained by{" "}
-          <strong>
-            <a
-              href="https://x.com/vijayhardaha"
-              rel="noopener noreferrer"
-              target="_blank"
-              className="text-blue-400 underline"
-            >
-              Vijay Hardaha
-            </a>
-          </strong>
+          <a
+            href="https://x.com/vijayhardaha"
+            rel="noopener noreferrer"
+            target="_blank"
+            className="text-blue-400 underline"
+          >
+            Vijay Hardaha
+          </a>
           . This tool is built with web developers in mind to streamline the
           process of working with text data in different programming
           environments.

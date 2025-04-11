@@ -62,16 +62,14 @@ const UrlShortenerInfo = () => {
         </h3>
         <p>
           Maintained by{" "}
-          <strong>
-            <a
-              href="https://x.com/vijayhardaha"
-              rel="noopener noreferrer"
-              target="_blank"
-              className="text-blue-400 underline"
-            >
-              Vijay Hardaha
-            </a>
-          </strong>
+          <a
+            href="https://x.com/vijayhardaha"
+            rel="noopener noreferrer"
+            target="_blank"
+            className="text-blue-400 underline"
+          >
+            Vijay Hardaha
+          </a>
           . This tool uses the{" "}
           <a
             href="https://tinyurl.com/"
