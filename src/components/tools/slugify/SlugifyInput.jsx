@@ -63,17 +63,18 @@ const SlugifyInput = ({
     <Card>
       <CardHeader>
         <CardTitle>Input String</CardTitle>
-        <CardDescription className="text-muted-foreground text-sm">
+        <CardDescription>
           (Article title, tutorial title or any web page title)
         </CardDescription>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <Input
+            type="text"
             placeholder="Enter text to slugify"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            type="text"
+            className="font-mono text-xs"
           />
 
           <div className="flex flex-col gap-2">
@@ -135,18 +136,13 @@ const SlugifyInput = ({
           </div>
 
           <div className="mt-4 flex flex-wrap gap-2">
-            <Button type="submit" variant="default" size="lg" disabled={!input}>
+            <Button type="submit" variant="default" disabled={!input}>
               Generate
             </Button>
-            <Button type="button" variant="outline" size="lg" onClick={onClear}>
+            <Button type="button" variant="outline" onClick={onClear}>
               Clear
             </Button>
-            <Button
-              type="reset"
-              variant="destructive"
-              size="lg"
-              onClick={onReset}
-            >
+            <Button type="reset" variant="destructive" onClick={onReset}>
               Reset
             </Button>
           </div>
