@@ -51,9 +51,9 @@ const Contact = () => {
           <p>
             <a
               href="https://github.com/vijayhardaha/tools-by-vijay"
+              className="font-medium text-pink-500 underline hover:no-underline"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-medium text-blue-400 underline hover:no-underline"
             >
               github.com/vijayhardaha/tools-by-vijay
             </a>
@@ -68,9 +68,9 @@ const Contact = () => {
           <p>
             <a
               href="https://pph.me/vijayhardaha"
+              className="font-medium text-pink-500 underline hover:no-underline"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-medium text-blue-400 underline hover:no-underline"
             >
               pph.me/vijayhardaha
             </a>

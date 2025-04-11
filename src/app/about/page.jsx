@@ -68,9 +68,9 @@ const About = () => {
             You can reach out to me on{" "}
             <a
               href="https://x.com/vijayhardaha"
+              className="font-medium text-pink-500 underline hover:no-underline"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-medium text-blue-400 underline hover:no-underline"
             >
               Twitter
             </a>
