@@ -16,6 +16,7 @@ import { Label } from "@/components/ui/label";
 import { Select } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { Tooltip } from "@/components/ui/tooltip";
+import { Alert } from "@/components/ui/alert";
 
 /**
  * Component for inputting multiline text and configuring conversion options.
@@ -56,6 +57,7 @@ const TextToArrayInput = ({
   onConvert,
   onClear,
   onReset,
+  error,
 }) => {
   /**
    * Handles form submission by preventing default behavior and triggering conversion
@@ -88,9 +90,7 @@ const TextToArrayInput = ({
             </Label>
             <Textarea
               id="text-input"
-              placeholder="Item 1
-Item 2
-Item 3"
+              placeholder={`Item 1\nItem 2\nItem 3`}
               className="h-40 font-mono"
               value={textInput}
               onChange={(e) => setTextInput(e.target.value)}
@@ -209,7 +209,12 @@ Item 3"
           </div>
 
           <div className="flex flex-wrap gap-2">
-            <Button type="submit" variant="default" size="lg">
+            <Button
+              type="submit"
+              variant="default"
+              size="lg"
+              disabled={!textInput}
+            >
               Convert
             </Button>
             <Button type="button" variant="outline" size="lg" onClick={onClear}>
@@ -224,6 +229,8 @@ Item 3"
               Reset
             </Button>
           </div>
+
+          {error && <Alert variant="danger" title="Error" text={error} />}
         </form>
       </CardContent>
     </Card>
@@ -246,6 +253,7 @@ TextToArrayInput.propTypes = {
   onConvert: PropTypes.func.isRequired,
   onClear: PropTypes.func.isRequired,
   onReset: PropTypes.func.isRequired,
+  error: PropTypes.string,
 };
 
 export default TextToArrayInput;

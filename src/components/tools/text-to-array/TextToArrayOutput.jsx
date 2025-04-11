@@ -45,6 +45,8 @@ const TextToArrayOutput = ({ output, error }) => {
     setTimeout(() => setCopied(false), 1000);
   };
 
+  if (!output) return;
+
   return (
     <Card>
       <CardHeader>
@@ -64,17 +66,13 @@ const TextToArrayOutput = ({ output, error }) => {
           </div>
         </div>
       </CardHeader>
-      <CardContent className="space-y-4">
-        {error && <Alert variant="danger" title="Error" text={error} />}
-
-        <div className="flex flex-col gap-2">
-          <Textarea
-            value={output}
-            readOnly
-            className="h-60 font-mono"
-            data-output
-          />
-        </div>
+      <CardContent>
+        <Textarea
+          value={output}
+          readOnly
+          data-output
+          className="min-h-[200px] font-mono text-sm"
+        />
       </CardContent>
     </Card>
   );
@@ -82,11 +80,6 @@ const TextToArrayOutput = ({ output, error }) => {
 
 TextToArrayOutput.propTypes = {
   output: PropTypes.string.isRequired,
-  error: PropTypes.string,
-};
-
-TextToArrayOutput.defaultProps = {
-  error: "",
 };
 
 export default TextToArrayOutput;

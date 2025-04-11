@@ -102,7 +102,7 @@ const TextToArrayTool = () => {
 
       // If input is empty, return error
       if (!textInput.trim()) {
-        setError("Please enter text content");
+        setError("Please enter the valid text content");
         return null;
       }
 
@@ -366,8 +366,9 @@ const TextToArrayTool = () => {
           onConvert={handleConvert}
           onClear={handleClear}
           onReset={handleReset}
+          error={error}
         />
-        <TextToArrayOutput output={convertedOutput} error={error} />
+        <TextToArrayOutput output={convertedOutput} />
       </div>
 
       <div className="mt-16">
