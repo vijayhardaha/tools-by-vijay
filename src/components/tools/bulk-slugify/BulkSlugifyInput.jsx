@@ -76,7 +76,7 @@ const BulkSlugifyInput = ({
     <Card>
       <CardHeader>
         <CardTitle>Input Strings</CardTitle>
-        <CardDescription className="text-muted-foreground text-sm">
+        <CardDescription>
           (Article titles, tutorial titles or any web page titles)
         </CardDescription>
       </CardHeader>
@@ -87,11 +87,12 @@ const BulkSlugifyInput = ({
             value={input}
             rows={5}
             onChange={handleInputChange}
+            className="font-mono text-xs"
           />
 
           <div className="flex flex-col gap-2">
             <p className="text-muted-foreground text-sm">
-              urrently separating withW
+              Currently separating with:{" "}
               <span className="font-bold">
                 {useUnderscore ? "Underscore (_)" : "Dash (-)"}
               </span>
@@ -148,18 +149,13 @@ const BulkSlugifyInput = ({
           </div>
 
           <div className="mt-4 flex flex-wrap gap-2">
-            <Button type="submit" variant="default" size="lg" disabled={!input}>
+            <Button type="submit" variant="default" disabled={!input}>
               Generate
             </Button>
-            <Button type="button" variant="outline" size="lg" onClick={onClear}>
+            <Button type="button" variant="outline" onClick={onClear}>
               Clear
             </Button>
-            <Button
-              type="button"
-              variant="destructive"
-              size="lg"
-              onClick={onReset}
-            >
+            <Button type="button" variant="destructive" onClick={onReset}>
               Reset
             </Button>
           </div>
