@@ -53,7 +53,7 @@ const Contact = () => {
               href="https://github.com/vijayhardaha/tools-by-vijay"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-semibold text-sky-500 underline"
+              className="font-medium text-blue-400 underline hover:no-underline"
             >
               github.com/vijayhardaha/tools-by-vijay
             </a>
@@ -70,7 +70,7 @@ const Contact = () => {
               href="https://pph.me/vijayhardaha"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-semibold text-sky-500 underline"
+              className="font-medium text-blue-400 underline hover:no-underline"
             >
               pph.me/vijayhardaha
             </a>

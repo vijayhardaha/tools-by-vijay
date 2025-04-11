@@ -1,11 +1,17 @@
+import { SEO } from "@/constants/seo";
+
 /**
  * Generates an SEO-friendly title by appending a fixed suffix to the given title.
  *
  * @param {string} title - The main title to be included in the SEO title.
  * @returns {string} The SEO-friendly title in the format: "{title} - Tools by Vijay".
  */
-export const generateSeoTitle = (title) => {
-  return `${title} - Tools by Vijay Hardaha`;
+export const generateSeoTitle = (title = "") => {
+  if (!title) {
+    return SEO.title;
+  }
+
+  return [title, SEO.separator, SEO.titlePostfix].join(" ");
 };
 
 /**

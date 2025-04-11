@@ -1,52 +1,3 @@
-/**
- * Metadata for the application.
- */
-export const metadata = {
-  title: "Tools by Vijay Hardaha - Useful Web Utilities",
-  description:
-    "A collection of free online tools and utilities to help with everyday tasks.",
-  alternates: {
-    canonical: "/",
-  },
-  keywords: [
-    "tools",
-    "utilities",
-    "web tools",
-    "online tools",
-    "developer tools",
-  ],
-  author: "Vijay",
-  robots: "index, follow",
-  icons: {
-    icon: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
-  },
-  openGraph: {
-    title: "Tools by Vijay Hardaha - Useful Web Utilities",
-    description:
-      "A collection of free online tools and utilities to help with everyday tasks.",
-    images: [
-      {
-        url: "/images/thumbnail.png",
-        width: 512,
-        height: 512,
-      },
-    ],
-    type: "website",
-    siteName: "Tools by Vijay Hardaha",
-    locale: "en_US",
-    url: "https://toolsbyvijay.vercel.app",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Tools by Vijay Hardaha - Useful Web Utilities",
-    description:
-      "A collection of free online tools and utilities to help with everyday tasks.",
-    images: ["/images/thumbnail.png"],
-    creator: "@vijayhardaha",
-  },
-};
-
 import { Work_Sans, Geist_Mono } from "next/font/google";
 
 import PropTypes from "prop-types";
@@ -73,6 +24,7 @@ const geistMono = Geist_Mono({
   variable: "--font-app-mono",
 });
 
+import { SEO } from "@/constants/seo";
 import "../styles/globals.css";
 
 /**
@@ -89,6 +41,52 @@ const RootLayout = ({ children }) => {
       <body>{children}</body>
     </html>
   );
+};
+
+/**
+ * Metadata for the application.
+ */
+export const metadata = {
+  title: SEO.title,
+  description: SEO.description,
+  alternates: {
+    canonical: "/",
+  },
+  keywords: [
+    "tools",
+    "utilities",
+    "web tools",
+    "online tools",
+    "developer tools",
+  ],
+  author: "Vijay",
+  robots: "index, follow",
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
+  openGraph: {
+    title: SEO.title,
+    description: SEO.description,
+    images: [
+      {
+        url: "/images/thumbnail.png",
+        width: 512,
+        height: 512,
+      },
+    ],
+    type: "website",
+    siteName: "Tools by Vijay Hardaha",
+    locale: "en_US",
+    url: "https://toolsbyvijay.vercel.app",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SEO.title,
+    description: SEO.description,
+    images: ["/images/thumbnail.png"],
+    creator: "@vijayhardaha",
+  },
 };
 
 RootLayout.propTypes = {

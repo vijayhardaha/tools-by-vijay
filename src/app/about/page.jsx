@@ -70,7 +70,7 @@ const About = () => {
               href="https://x.com/vijayhardaha"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sky-500 underline"
+              className="font-medium text-blue-400 underline hover:no-underline"
             >
               Twitter
             </a>
