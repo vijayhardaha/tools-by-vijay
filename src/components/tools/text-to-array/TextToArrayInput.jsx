@@ -3,6 +3,7 @@
 import PropTypes from "prop-types";
 import { FiInfo } from "react-icons/fi";
 
+import { Alert } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -16,7 +17,6 @@ import { Label } from "@/components/ui/label";
 import { Select } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { Tooltip } from "@/components/ui/tooltip";
-import { Alert } from "@/components/ui/alert";
 
 /**
  * Component for inputting multiline text and configuring conversion options.

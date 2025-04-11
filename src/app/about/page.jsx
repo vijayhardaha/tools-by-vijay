@@ -29,7 +29,7 @@ const About = () => {
       <PageContent>
         <div className="space-y-4 text-base leading-relaxed">
           <p>
-            Hello! I'm Vijay. I work as a web developer and I’m also a vegan.
+            Hello! I’m Vijay. I work as a web developer and I’m also a vegan.
             Over time, I noticed that I often use some small tools online —
             things like generating slugs for URLs, checking password strength,
             or minifying code. But most websites that offer these tools are full
@@ -38,9 +38,9 @@ const About = () => {
 
           <p>
             I prefer tools that are fast, clean, and respectful of privacy.
-            That's why I started building my own set of tools — for personal use
+            That’s why I started building my own set of tools — for personal use
             at first. I named the collection <strong>Tools by Vijay</strong>.
-            It's a place where I can keep everything I use often, all in one
+            It’s a place where I can keep everything I use often, all in one
             place.
           </p>
 

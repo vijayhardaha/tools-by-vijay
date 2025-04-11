@@ -4,7 +4,6 @@ import { useState } from "react";
 
 import PropTypes from "prop-types";
 
-import { Alert } from "@/components/ui/alert";
 import {
   Card,
   CardHeader,
@@ -26,7 +25,7 @@ import { Textarea } from "@/components/ui/textarea";
  * @param {string} props.error - Error message to display, if any
  * @returns {JSX.Element} The rendered card with output display and copy functionality
  */
-const TextToArrayOutput = ({ output, error }) => {
+const TextToArrayOutput = ({ output }) => {
   /**
    * State to track whether the output has been copied to clipboard
    * @type {[boolean, function]} - State and setter for copied status

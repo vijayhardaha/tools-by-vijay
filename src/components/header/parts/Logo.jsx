@@ -1,5 +1,8 @@
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
+
+import propTypes from "prop-types";
+
 import { cn } from "@/lib/utils";
 
 /**
@@ -22,5 +25,9 @@ const Logo = ({ className }) => (
     />
   </Link>
 );
+
+Logo.propTypes = {
+  className: propTypes.string,
+};
 
 export default Logo;

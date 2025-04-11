@@ -4,9 +4,9 @@ import clsx from "clsx";
 import PropTypes from "prop-types";
 import { CgArrowRight } from "react-icons/cg";
 
-import { cn } from "@/lib/utils";
 import { getToolBySlug } from "@/lib/getToolBySlug";
 import { getToolIcon } from "@/lib/getToolIcon";
+import { cn } from "@/lib/utils";
 
 import { Button } from "../ui/button";
 import {

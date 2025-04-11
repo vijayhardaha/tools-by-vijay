@@ -23,7 +23,7 @@ const UrlShortenerInfo = () => {
         </p>
         <p className="mb-4">
           We perform validation on each URL to ensure that only properly
-          formatted web addresses are processed. For each valid URL, you'll
+          formatted web addresses are processed. For each valid URL, you’ll
           receive a shortened link that redirects to your original destination.
         </p>
       </section>
@@ -48,9 +48,9 @@ const UrlShortenerInfo = () => {
         <ol className="list-inside list-decimal space-y-1 pl-4">
           <li>Enter one URL per line in the input field</li>
           <li>Ensure each URL includes the protocol (http:// or https://)</li>
-          <li>Click the "Shorten URLs" button to process all links</li>
+          <li>Click the “Shorten URLs” button to process all links</li>
           <li>
-            Copy individual shortened URLs or use "Copy All" for valid results
+            Copy individual shortened URLs or use “Copy All” for valid results
           </li>
           <li>Click on any shortened URL to test it</li>
         </ol>
