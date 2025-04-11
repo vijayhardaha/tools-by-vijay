@@ -1,8 +1,10 @@
 "use client";
 
 import * as React from "react";
-import { LuX as XIcon } from "react-icons/lu";
+
 import PropTypes from "prop-types";
+import { LuX as XIcon } from "react-icons/lu";
+
 import { cn } from "@/lib/utils";
 
 // Create Dialog Context
