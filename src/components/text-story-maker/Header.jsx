@@ -1,14 +1,11 @@
 "use client";
 
-import { useState } from "react";
-
 import PropTypes from "prop-types";
 import { PiHouseLine as HomeIcon } from "react-icons/pi";
 import { PiTextAa as AaIcon } from "react-icons/pi";
 import { PiResize as SizeIcon } from "react-icons/pi";
 import { PiPaintBucket as BgFillIcon } from "react-icons/pi";
 import { PiDotsThreeVertical as OptionsIcon } from "react-icons/pi";
-import { PiCheck as CheckIcon } from "react-icons/pi";
 import { PiCheckCircleFill as CheckFillIcon } from "react-icons/pi";
 
 import { cardRatios } from "@/components/text-story-maker/constants/cardRatios";
@@ -75,11 +72,8 @@ DropDownAction.propTypes = {
  * @param {Function} props.updateOption - Function to update options.
  * @returns {JSX.Element} The rendered Header component.
  */
-const Header = ({ options, updateOption }) => {
-  const [activeSize, setActiveSize] = useState(null);
-
+const Header = ({ options, updateOption, setToolbarVisible }) => {
   const handleSizeSelect = (size) => {
-    setActiveSize(size);
     updateOption("cardRatio", size);
   };
 
@@ -93,10 +87,24 @@ const Header = ({ options, updateOption }) => {
         </div>
         <div className="flex items-center justify-end gap-2">
           <div className="relative">
-            <Button icon={AaIcon} srText="Text Options" />
+            <Button
+              icon={AaIcon}
+              srText="Text Options"
+              onClick={() =>
+                setToolbarVisible((prev) => (prev !== "text" ? "text" : ""))
+              }
+            />
           </div>
           <div className="relative">
-            <Button icon={BgFillIcon} srText="Background Fill Options" />
+            <Button
+              icon={BgFillIcon}
+              srText="Background Fill Options"
+              onClick={() =>
+                setToolbarVisible((prev) =>
+                  prev !== "background" ? "background" : ""
+                )
+              }
+            />
           </div>
           <div className="relative">
             <Dropdown>
@@ -114,7 +122,7 @@ const Header = ({ options, updateOption }) => {
                       <DropDownAction
                         key={value}
                         label={label}
-                        active={activeSize === value}
+                        active={options.cardRatio === value}
                         onClick={() => handleSizeSelect(value)}
                       />
                     ))}
@@ -150,6 +158,8 @@ const Header = ({ options, updateOption }) => {
 Header.propTypes = {
   options: PropTypes.object.isRequired,
   updateOption: PropTypes.func.isRequired,
+  toolbarVisible: PropTypes.string.isRequired,
+  setToolbarVisible: PropTypes.func.isRequired,
 };
 
 export default Header;

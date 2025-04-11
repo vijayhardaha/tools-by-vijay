@@ -17,6 +17,7 @@ import { cn } from "@/lib/utils";
  */
 const TextStoryMakerTool = () => {
   const [options, setOptions] = useState(defaultOptions);
+  const [toolbarVisible, setToolbarVisible] = useState("");
 
   /**
    * Updates a specific option in the state.
@@ -33,8 +34,18 @@ const TextStoryMakerTool = () => {
 
   return (
     <div className={cn("relative aspect-9/16 bg-black")}>
-      <Header options={options} updateOption={updateOption} />
-      <Footer options={options} updateOption={updateOption} />
+      <Header
+        options={options}
+        updateOption={updateOption}
+        toolbarVisible={toolbarVisible}
+        setToolbarVisible={setToolbarVisible}
+      />
+      <Footer
+        options={options}
+        updateOption={updateOption}
+        toolbarVisible={toolbarVisible}
+        setToolbarVisible={setToolbarVisible}
+      />
       <MainContent options={options} updateOption={updateOption} />
     </div>
   );
