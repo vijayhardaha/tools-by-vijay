@@ -17,7 +17,7 @@ import tools from "@/constants/tools";
 const NavLink = ({ href, children, className = "" }) => (
   <Link
     href={href}
-    className={`text-muted-foreground hover:text-foreground transition-colors ${className}`}
+    className={`text-muted-foreground hover:text-primary transition-colors hover:underline ${className}`}
   >
     {children}
   </Link>

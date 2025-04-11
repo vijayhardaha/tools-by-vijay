@@ -40,7 +40,7 @@ SocialButton.propTypes = {
  * @returns {JSX.Element} The sidebar footer component
  */
 const SidebarFooter = () => (
-  <SheetFooter className="border-border border-t p-4">
+  <SheetFooter>
     <div className="flex justify-center space-x-2">
       <SocialButton
         icon={FaGithub}

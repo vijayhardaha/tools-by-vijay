@@ -21,7 +21,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="border-border/60 sticky top-0 z-50 border-b bg-white">
+      <header className="border-border sticky top-0 z-50 border-b bg-white">
         <div className="relative z-20 mx-auto max-w-5xl px-4">
           <Box
             component="header"

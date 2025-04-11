@@ -7,14 +7,14 @@ const FooterBottom = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <div className="pt-4">
+    <div className="">
       <p className="text-foreground text-sm">
         © {currentYear} Tools by Vijay. All rights reserved by{" "}
         <a
           href="https://x.com/vijayhardaha"
           rel="noopener noreferrer"
           target="_blank"
-          className="text-primary-400 font-bold underline"
+          className="font-semibold hover:underline"
         >
           Vijay Hardaha
         </a>

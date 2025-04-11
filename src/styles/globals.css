@@ -2,43 +2,43 @@
 @import "tw-animate-css";
 
 @theme inline {
-	--font-sans: var(--font-app-sans);
-	--font-mono: var(--font-app-mono);
+  --font-sans: var(--font-app-sans);
+  --font-mono: var(--font-app-mono);
 
-	--base-color-black: var(--color-neutral-900);
-	--base-color-primary: var(--color-neutral-900);
+  --base-color-black: var(--color-neutral-900);
+  --base-color-primary: var(--color-neutral-900);
 
-	--color-background: var(--color-white);
-	--color-foreground: var(--base-color-black);
+  --color-background: var(--color-white);
+  --color-foreground: var(--base-color-black);
 
-	--color-card: var(--color-white);
-	--color-card-foreground: var(--base-color-black);
+  --color-card: var(--color-white);
+  --color-card-foreground: var(--base-color-black);
 
-	--color-popover: var(--color-white);
-	--color-popover-foreground: var(--base-color-black);
+  --color-popover: var(--color-white);
+  --color-popover-foreground: var(--base-color-black);
 
-	--color-primary: var(--base-color-primary);
-	--color-primary-foreground: var(--color-white);
+  --color-primary: var(--base-color-primary);
+  --color-primary-foreground: var(--color-white);
 
-	--color-secondary: var(--color-neutral-200);
-	--color-secondary-foreground: var(--base-color-primary);
+  --color-secondary: var(--color-neutral-200);
+  --color-secondary-foreground: var(--base-color-primary);
 
-	--color-muted: var(--color-neutral-100);
-	--color-muted-foreground: var(--color-neutral-500);
+  --color-muted: var(--color-neutral-100);
+  --color-muted-foreground: var(--color-neutral-500);
 
-	--color-accent: var(--color-amber-50);
-	--color-accent-foreground: var(--color-amber-300);
+  --color-accent: var(--color-amber-50);
+  --color-accent-foreground: var(--color-amber-300);
 
-	--color-destructive: var(--color-red-600);
+  --color-destructive: var(--color-red-600);
 
-	--color-border: var(--color-neutral-200);
-	--color-input: var(--color-neutral-200);
-	--color-ring: var(--color-neutral-400);
+  --color-border: var(--color-neutral-200);
+  --color-input: var(--color-neutral-300);
+  --color-ring: var(--color-neutral-400);
 }
 
 @layer base {
-	body {
-		@apply text-foreground bg-neutral-50;
-		@apply font-sans;
-	}
+  body {
+    @apply text-foreground bg-neutral-50;
+    @apply font-sans;
+  }
 }

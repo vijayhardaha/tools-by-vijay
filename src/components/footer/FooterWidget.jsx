@@ -28,7 +28,7 @@ const FooterWidget = ({ title, links }) => {
           <li key={link.name} className="m-0 p-0">
             <Link
               href={link.href}
-              className="text-muted-foreground hover:text-primary text-sm transition-colors"
+              className="text-muted-foreground hover:text-primary text-sm transition-colors hover:underline"
               {...(isExternalLink(link.href) && {
                 target: "_blank",
                 rel: "noopener noreferrer",
