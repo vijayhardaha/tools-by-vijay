@@ -84,7 +84,7 @@ const CssMinifierOutput = ({ output }) => {
           value={output}
           readOnly
           data-output
-          className="min-h-[200px] font-mono text-sm"
+          className="min-h-[200px] font-mono text-xs"
         />
       </CardContent>
     </Card>

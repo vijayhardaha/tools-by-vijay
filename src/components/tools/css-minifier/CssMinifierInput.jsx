@@ -55,7 +55,7 @@ const CssMinifierInput = ({
     <Card>
       <CardHeader>
         <CardTitle>CSS Input</CardTitle>
-        <CardDescription className="text-muted-foreground text-sm">
+        <CardDescription>
           Paste your CSS code and customize minification options
         </CardDescription>
       </CardHeader>
@@ -65,7 +65,7 @@ const CssMinifierInput = ({
             placeholder="Paste CSS code here..."
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            className="min-h-[200px] font-mono text-sm"
+            className="min-h-[200px] font-mono text-xs"
           />
 
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
@@ -142,7 +142,6 @@ const CssMinifierInput = ({
             <Button
               type="submit"
               variant="default"
-              size="lg"
               disabled={!input || isLoading}
             >
               {isLoading ? "Minifying..." : "Minify"}
@@ -150,7 +149,6 @@ const CssMinifierInput = ({
             <Button
               type="button"
               variant="outline"
-              size="lg"
               onClick={onClear}
               disabled={isLoading}
             >
@@ -159,7 +157,6 @@ const CssMinifierInput = ({
             <Button
               type="reset"
               variant="destructive"
-              size="lg"
               onClick={onReset}
               disabled={isLoading}
             >
