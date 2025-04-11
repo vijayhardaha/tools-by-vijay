@@ -141,7 +141,7 @@ const TextToolBar = ({ options, updateOption }) => {
                       "rounded-md shadow-sm",
                       "cursor-pointer outline-none focus-visible:outline-none",
                       "transition-colors duration-300 ease-in-out",
-                      "active:scale-95",
+                      "active:scale-94",
                       "p-1.5 px-4",
                       "border border-white/50 bg-transparent text-white",
                       "w-auto text-sm",
@@ -184,7 +184,7 @@ const TextToolBar = ({ options, updateOption }) => {
                       "relative h-10 w-10 rounded-lg shadow-sm",
                       "cursor-pointer outline-none focus-visible:outline-none",
                       "transition-transform duration-300 ease-in-out",
-                      "active:scale-95",
+                      "active:scale-94",
                       "ring-1 ring-white/85",
                       textColors[colorKey].bg,
                       {
@@ -213,7 +213,7 @@ const TextToolBar = ({ options, updateOption }) => {
             active={activeTool === "text-color"}
             onClick={() => setActiveTool("text-color")}
             srText="Text Color Tool"
-            className="h-10 min-w-10 rounded-xl p-0.5"
+            className="h-10 min-w-10 rounded-lg p-0.5"
           >
             <div className="h-6 w-6 rounded-full bg-[conic-gradient(from_0deg,_red,_yellow,_lime,_cyan,_blue,_magenta,_red)] shadow-lg"></div>
           </ToolBarButton>

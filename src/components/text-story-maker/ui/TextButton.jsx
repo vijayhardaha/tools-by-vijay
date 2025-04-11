@@ -21,7 +21,7 @@ const TextButton = ({ className, children, ...props }) => (
       "cursor-pointer disabled:pointer-events-none disabled:opacity-50",
       "outline-none focus-visible:outline-none",
       "transition-all duration-100 ease-in-out",
-      "active:scale-95",
+      "active:scale-94",
       "p-2 px-3",
       "text-white",
       className

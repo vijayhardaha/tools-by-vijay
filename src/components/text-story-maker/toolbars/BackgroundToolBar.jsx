@@ -67,7 +67,7 @@ const BackgroundToolBar = ({ options, updateOption }) => {
                       "relative h-10 w-10 rounded-lg shadow-sm",
                       "cursor-pointer outline-none focus-visible:outline-none",
                       "transition-transform duration-300 ease-in-out",
-                      "active:scale-95",
+                      "active:scale-94",
                       "ring-1 ring-white/85",
                       bgColors[activeTool][colorKey],
                       {

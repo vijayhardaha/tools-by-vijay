@@ -20,14 +20,20 @@ import { cn } from "@/lib/utils";
  *
  * @param {Object} props - Component props.
  * @param {React.ElementType} props.icon - The icon to be displayed inside the button.
+ * @param {React.ElementType} props.className - Additional classes for the button.
  * @returns {JSX.Element} The rendered Button component.
  */
-const Button = ({ icon, ...props }) => (
-  <IconButton icon={icon} className="bg-white text-black" {...props} />
+const Button = ({ icon, className, ...props }) => (
+  <IconButton
+    icon={icon}
+    className={cn("rounded-full bg-white text-black", className)}
+    {...props}
+  />
 );
 
 Button.propTypes = {
   icon: PropTypes.elementType.isRequired,
+  className: PropTypes.string,
 };
 
 /**
@@ -71,7 +77,12 @@ DropDownAction.propTypes = {
  * @param {Function} props.updateOption - Function to update options.
  * @returns {JSX.Element} The rendered Header component.
  */
-const Header = ({ options, updateOption, setToolbarVisible }) => {
+const Header = ({
+  options,
+  updateOption,
+  toolbarVisible,
+  setToolbarVisible,
+}) => {
   const handleSizeSelect = (size) => {
     updateOption("cardRatio", size);
   };
@@ -82,11 +93,14 @@ const Header = ({ options, updateOption, setToolbarVisible }) => {
         <div className="flex items-center">
           <h1 className="text-lg font-semibold text-white">Text Story Maker</h1>
         </div>
-        <div className="flex items-center justify-end gap-2">
+        <div className="flex items-center justify-end gap-1.5">
           <div className="relative">
             <Button
               icon={AaIcon}
               srText="Text Options"
+              className={cn({
+                "bg-accent-foreground text-primary": toolbarVisible === "text",
+              })}
               onClick={() =>
                 setToolbarVisible((prev) => (prev !== "text" ? "text" : ""))
               }
@@ -96,6 +110,10 @@ const Header = ({ options, updateOption, setToolbarVisible }) => {
             <Button
               icon={BgFillIcon}
               srText="Background Fill Options"
+              className={cn({
+                "bg-accent-foreground text-primary":
+                  toolbarVisible === "background",
+              })}
               onClick={() =>
                 setToolbarVisible((prev) =>
                   prev !== "background" ? "background" : ""
@@ -108,11 +126,7 @@ const Header = ({ options, updateOption, setToolbarVisible }) => {
               {({ isOpen, toggleDropdown }) => (
                 <>
                   <DropdownTrigger onClick={toggleDropdown}>
-                    <IconButton
-                      icon={SizeIcon}
-                      className="bg-white text-black"
-                      srText="Size Options"
-                    />
+                    <Button icon={SizeIcon} srText="Size Options" />
                   </DropdownTrigger>
                   <DropdownContent isOpen={isOpen}>
                     {cardRatios.map(({ value, label }) => (
@@ -132,11 +146,7 @@ const Header = ({ options, updateOption, setToolbarVisible }) => {
             {({ isOpen, toggleDropdown }) => (
               <>
                 <DropdownTrigger onClick={toggleDropdown}>
-                  <IconButton
-                    icon={DownloadIcon}
-                    className="bg-white text-black"
-                    srText="Download Image"
-                  />
+                  <Button icon={DownloadIcon} srText="Download Image" />
                 </DropdownTrigger>
                 <DropdownContent isOpen={isOpen}>
                   <DropDownAction label="Option 1" />

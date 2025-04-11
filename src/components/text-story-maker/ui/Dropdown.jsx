@@ -76,7 +76,7 @@ export const DropdownContent = ({ isOpen, children }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="absolute right-0 mt-2 min-w-40 rounded-xl bg-white p-2 shadow-xl">
+    <div className="absolute right-0 mt-2 min-w-40 rounded-lg bg-white p-2 shadow-xl">
       <div>{children}</div>
     </div>
   );
