@@ -33,7 +33,7 @@ const TextStoryMakerTool = () => {
   };
 
   return (
-    <div className={cn("relative aspect-9/16 bg-black")}>
+    <div className={cn("relative h-screen w-full bg-black")}>
       <Header
         options={options}
         updateOption={updateOption}

@@ -1,12 +1,11 @@
 "use client";
 
 import PropTypes from "prop-types";
-import { PiHouseLine as HomeIcon } from "react-icons/pi";
 import { PiTextAa as AaIcon } from "react-icons/pi";
 import { PiResize as SizeIcon } from "react-icons/pi";
 import { PiPaintBucket as BgFillIcon } from "react-icons/pi";
-import { PiDotsThreeVertical as OptionsIcon } from "react-icons/pi";
 import { PiCheckCircleFill as CheckFillIcon } from "react-icons/pi";
+import { PiDownloadSimple as DownloadIcon } from "react-icons/pi";
 
 import { cardRatios } from "@/components/text-story-maker/constants/cardRatios";
 import Dropdown, {
@@ -78,12 +77,10 @@ const Header = ({ options, updateOption, setToolbarVisible }) => {
   };
 
   return (
-    <header className="absolute top-0 left-0 z-20 h-auto w-full bg-white/20 p-2.5 text-white backdrop-blur-sm">
+    <header className="absolute top-0 left-0 z-20 h-auto w-full bg-white/20 p-2.5 px-4 text-white backdrop-blur-sm">
       <div className="flex items-center justify-between gap-2">
         <div className="flex items-center">
-          <div className="relative">
-            <Button icon={HomeIcon} srText="Go to Home" />
-          </div>
+          <h1 className="text-lg font-bold text-white">Text Story Maker</h1>
         </div>
         <div className="flex items-center justify-end gap-2">
           <div className="relative">
@@ -136,9 +133,9 @@ const Header = ({ options, updateOption, setToolbarVisible }) => {
               <>
                 <DropdownTrigger onClick={toggleDropdown}>
                   <IconButton
-                    icon={OptionsIcon}
+                    icon={DownloadIcon}
                     className="bg-white text-black"
-                    srText="More Options"
+                    srText="Download Image"
                   />
                 </DropdownTrigger>
                 <DropdownContent isOpen={isOpen}>

@@ -8,7 +8,7 @@ import TextStoryMakerContent from "@/components/text-story-maker/TextStoryMakerT
  */
 const TextStoryMaker = () => {
   return (
-    <div className="mx-auto max-w-[540px] px-4">
+    <div className="mx-auto max-w-[540px]">
       <TextStoryMakerContent />
     </div>
   );
