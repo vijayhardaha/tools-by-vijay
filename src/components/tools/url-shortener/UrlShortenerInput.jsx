@@ -59,27 +59,26 @@ const UrlShortenerInput = ({
     <Card>
       <CardHeader>
         <CardTitle>Enter URLs to Shorten</CardTitle>
-        <CardDescription className="text-muted-foreground text-sm">
+        <CardDescription>
           Enter one URL per line. Each URL will be shortened individually.
         </CardDescription>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <Textarea
-            placeholder="https://example.com/very-long-url
-https://another-example.com/with/multiple/path/segments"
+            placeholder={`https://example.com/very-long-url\nhttps://another-example.com/with/multiple/path/segments`}
             value={input}
             rows={5}
             onChange={handleInputChange}
+            className="font-mono text-xs"
           />
 
           {error && <Alert variant="danger" text={error} />}
 
-          <div className="mt-4 flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2">
             <Button
               type="submit"
               variant="default"
-              size="lg"
               disabled={!input.trim() || isLoading}
             >
               {isLoading ? "Shortening..." : "Shorten URLs"}
@@ -87,7 +86,6 @@ https://another-example.com/with/multiple/path/segments"
             <Button
               type="button"
               variant="outline"
-              size="lg"
               onClick={onClear}
               disabled={isLoading}
             >
