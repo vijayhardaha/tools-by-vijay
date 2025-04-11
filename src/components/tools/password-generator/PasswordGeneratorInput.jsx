@@ -67,9 +67,7 @@ const PasswordGeneratorInput = ({
     <Card>
       <CardHeader>
         <CardTitle>Password Options</CardTitle>
-        <CardDescription className="text-muted-foreground text-sm">
-          Customize your password settings
-        </CardDescription>
+        <CardDescription>Customize your password settings</CardDescription>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="flex flex-col gap-6">
@@ -151,15 +149,10 @@ const PasswordGeneratorInput = ({
           </div>
 
           <div className="flex flex-wrap gap-2">
-            <Button type="submit" variant="default" size="lg">
+            <Button type="submit" variant="default">
               Generate Password
             </Button>
-            <Button
-              type="button"
-              variant="destructive"
-              size="lg"
-              onClick={onReset}
-            >
+            <Button type="button" variant="destructive" onClick={onReset}>
               Reset
             </Button>
           </div>

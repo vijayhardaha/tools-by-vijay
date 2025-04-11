@@ -58,7 +58,7 @@ const PasswordGeneratorOutput = ({ password }) => {
             value={password}
             readOnly
             data-output
-            className="flex-1 font-mono"
+            className="font-mono text-xs"
           />
           <CopyButton
             copied={copied}
