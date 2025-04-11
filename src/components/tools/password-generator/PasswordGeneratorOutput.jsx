@@ -4,7 +4,13 @@ import { useState } from "react";
 
 import PropTypes from "prop-types";
 
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardContent,
+  CardDescription,
+} from "@/components/ui/card";
 import CopyButton from "@/components/ui/copy-button";
 import { Input } from "@/components/ui/input";
 
@@ -37,20 +43,22 @@ const PasswordGeneratorOutput = ({ password }) => {
     setTimeout(() => setCopied(false), 1000);
   };
 
+  if (!password) return;
+
   return (
     <Card>
       <CardHeader>
         <CardTitle>Generated Password</CardTitle>
-        <p className="text-muted-foreground text-sm">Your secure password</p>
+        <CardDescription>Your secure password</CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="flex gap-2">
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
           <Input
             type="text"
             value={password}
             readOnly
             data-output
-            className="font-mono"
+            className="flex-1 font-mono"
           />
           <CopyButton
             copied={copied}

@@ -53,11 +53,26 @@ const BulkSlugifyOutput = ({ output }) => {
   // Get the total number of lines including empty ones for textarea rows
   const unfilteredLinesLength = output.split("\n").length;
 
+  if (!output) return;
+
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Output</CardTitle>
-        <CardDescription>Cleaned and formatted slugs</CardDescription>
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <CardTitle>Output</CardTitle>
+            <CardDescription>Cleaned and formatted slugs</CardDescription>
+          </div>
+          <div className="inline-flex">
+            <CopyButton
+              copied={copiedAll}
+              disabled={!output}
+              onClick={() => copyToClipboard(output)}
+              copyText="Copy All"
+              copiedText="Copied All!"
+            />
+          </div>
+        </div>
       </CardHeader>
       <CardContent>
         <div className="flex flex-col gap-2">
@@ -68,17 +83,12 @@ const BulkSlugifyOutput = ({ output }) => {
             rows={unfilteredLinesLength || 1}
           />
 
-          <CopyButton
-            copied={copiedAll}
-            disabled={!output}
-            onClick={() => copyToClipboard(output)}
-            copyText="Copy All"
-            copiedText="Copied All!"
-          />
-
           <div className="flex flex-col gap-2">
             {lines.map((line, index) => (
-              <div key={index} className="flex items-center gap-2">
+              <div
+                key={index}
+                className="flex flex-col gap-2 sm:flex-row sm:items-center"
+              >
                 <Input
                   type="text"
                   value={line}

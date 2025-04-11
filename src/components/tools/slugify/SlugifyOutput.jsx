@@ -4,7 +4,13 @@ import { useState } from "react";
 
 import PropTypes from "prop-types";
 
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardContent,
+  CardDescription,
+} from "@/components/ui/card";
 import CopyButton from "@/components/ui/copy-button";
 import { Input } from "@/components/ui/input";
 
@@ -32,17 +38,23 @@ const SlugifyOutput = ({ output }) => {
     setTimeout(() => setCopied(false), 1000);
   };
 
+  if (!output) return;
+
   return (
     <Card>
       <CardHeader>
         <CardTitle>Output</CardTitle>
-        <p className="text-muted-foreground text-sm">
-          Cleaned and formatted slug
-        </p>
+        <CardDescription>Cleaned and formatted slug</CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="flex gap-2">
-          <Input type="text" value={output} readOnly data-output />
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
+          <Input
+            type="text"
+            value={output}
+            readOnly
+            data-output
+            className="flex-1"
+          />
           <CopyButton
             copied={copied}
             disabled={!output}
