@@ -1,6 +1,7 @@
 {
   "name": "tools--by-vijay",
   "version": "0.1.0",
+  "description": "A collection of free online tools built to make developer’s lives easier. From code optimization to text transformation, find the tools you need for your projects.",
   "private": true,
   "scripts": {
     "dev": "next dev",

@@ -68,13 +68,13 @@ CardHeader.propTypes = {
  */
 function CardTitle({ className, children, ...props }) {
   return (
-    <div
+    <h2
       data-slot="card-title"
       className={cn("text-lg leading-none font-bold", className)}
       {...props}
     >
       {children}
-    </div>
+    </h2>
   );
 }
 
@@ -93,13 +93,13 @@ CardTitle.propTypes = {
  */
 function CardDescription({ className, children, ...props }) {
   return (
-    <div
+    <p
       data-slot="card-description"
       className={cn("text-muted-foreground text-sm", className)}
       {...props}
     >
       {children}
-    </div>
+    </p>
   );
 }
 

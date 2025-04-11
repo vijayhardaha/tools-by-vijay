@@ -26,6 +26,7 @@ const geistMono = Geist_Mono({
 
 import { SEO } from "@/constants/seo";
 import "../styles/globals.css";
+import { getBaseUrl } from "@/lib/seo";
 
 /**
  * Root layout component for the application.
@@ -49,8 +50,12 @@ const RootLayout = ({ children }) => {
 export const metadata = {
   title: SEO.title,
   description: SEO.description,
+  metadataBase: new URL(getBaseUrl()),
+  manifest: "/site.webmanifest",
+  themeColor: "#ffd230",
+  appleTouchIcon: "/apple-touch-icon.png",
   alternates: {
-    canonical: "/",
+    canonical: getBaseUrl(),
   },
   keywords: [
     "tools",

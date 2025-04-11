@@ -17,8 +17,8 @@ const Logo = ({ className }) => (
   <Link href="/">
     <Image
       src="/images/site-logo.svg"
-      alt="Tools by Vijay Hardaha Logo"
-      aria-label="Tools by Vijay Hardaha"
+      alt="Site logo for Tools by Vijay Hardaha"
+      aria-label="Site logo for Tools by Vijay Hardaha"
       width={791}
       height={160}
       className={cn("h-10 w-auto", className)}

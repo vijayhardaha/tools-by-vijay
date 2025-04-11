@@ -1,1 +1,25 @@
-{"name":"","short_name":"","icons":[{"src":"/android-chrome-192x192.png","sizes":"192x192","type":"image/png"},{"src":"/android-chrome-512x512.png","sizes":"512x512","type":"image/png"}],"theme_color":"#ffffff","background_color":"#ffffff","display":"standalone"}
+{
+  "name": "Tools by Vijay Hardaha",
+  "short_name": "Tools by Vijay",
+  "description": "A collection of free online tools built to make developer’s lives easier. From code optimization to text transformation, find the tools you need for your projects.",
+  "id": "/",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "theme_color": "#ffd230",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "orientation": "portrait",
+  "start_url": "/"
+}
