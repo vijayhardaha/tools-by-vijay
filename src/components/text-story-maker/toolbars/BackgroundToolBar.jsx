@@ -64,7 +64,7 @@ const BackgroundToolBar = ({ options, updateOption }) => {
                   <button
                     type="button"
                     className={cn(
-                      "relative h-10 w-10 rounded-lg shadow-sm",
+                      "relative h-10 w-10 rounded-lg shadow-sm shadow-black/30",
                       "cursor-pointer outline-none focus-visible:outline-none",
                       "transition-transform duration-300 ease-in-out",
                       "active:scale-94",

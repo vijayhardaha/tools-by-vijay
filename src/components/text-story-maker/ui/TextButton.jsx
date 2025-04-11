@@ -22,7 +22,7 @@ const TextButton = ({ className, children, ...props }) => (
       "outline-none focus-visible:outline-none",
       "transition-all duration-100 ease-in-out",
       "active:scale-94",
-      "p-2 px-3",
+      "h-10 min-w-10 p-2 px-3",
       "text-white",
       className
     )}

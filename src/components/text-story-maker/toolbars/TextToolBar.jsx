@@ -114,7 +114,7 @@ const TextToolBar = ({ options, updateOption }) => {
         {activeTool === "font-family" && (
           <div className="slider-container w-full">
             <Slider
-              ref={sliderRef} // Attach the ref to the slider
+              ref={sliderRef}
               dots={false}
               infinite={false}
               arrows={false}
@@ -160,6 +160,7 @@ const TextToolBar = ({ options, updateOption }) => {
             </Slider>
           </div>
         )}
+
         {activeTool === "text-color" && (
           <div className="slider-container w-full">
             <Slider
@@ -181,7 +182,7 @@ const TextToolBar = ({ options, updateOption }) => {
                   <button
                     type="button"
                     className={cn(
-                      "relative h-10 w-10 rounded-lg shadow-sm",
+                      "relative h-10 w-10 rounded-lg shadow-sm shadow-black/30",
                       "cursor-pointer outline-none focus-visible:outline-none",
                       "transition-transform duration-300 ease-in-out",
                       "active:scale-94",
@@ -201,6 +202,7 @@ const TextToolBar = ({ options, updateOption }) => {
             </Slider>
           </div>
         )}
+
         <ToolBarWrapper>
           <ToolBarButton
             icon={AaIcon}
@@ -213,13 +215,13 @@ const TextToolBar = ({ options, updateOption }) => {
             active={activeTool === "text-color"}
             onClick={() => setActiveTool("text-color")}
             srText="Text Color Tool"
-            className="h-10 min-w-10 rounded-lg p-0.5"
+            className="p-0.5"
           >
             <div className="h-6 w-6 rounded-full bg-[conic-gradient(from_0deg,_red,_yellow,_lime,_cyan,_blue,_magenta,_red)] shadow-lg"></div>
           </ToolBarButton>
           <ToolBarButton
             icon={getAlignmentIcon()}
-            iconClassName="h-8 w-8"
+            iconClassName="h-9 w-9"
             onClick={() => {
               handleAlignmentChange();
             }}
@@ -227,7 +229,7 @@ const TextToolBar = ({ options, updateOption }) => {
           />
           <ToolBarButton
             icon={TextBgIcon}
-            className="h-8 w-8 bg-white text-black"
+            className="h-9 w-9 bg-white text-black"
             srText="Text Background Tool"
           />
         </ToolBarWrapper>
