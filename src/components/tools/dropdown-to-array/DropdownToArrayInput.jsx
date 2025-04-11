@@ -64,19 +64,20 @@ const DropdownToArrayInput = ({
     <Card>
       <CardHeader>
         <CardTitle>Dropdown HTML</CardTitle>
-        <CardDescription className="text-muted-foreground text-sm">
+        <CardDescription>
           Paste HTML select/dropdown content and convert to various array
           formats
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <div className="space-y-2">
             <Label htmlFor="html-input" className="flex items-center">
               HTML Select/Dropdown Code
               <Tooltip
                 text="Paste your HTML <select> element with <option> tags. You can also paste just the <option> tags."
                 delayDuration={300}
+                className="!w-72"
               >
                 <FiInfo className="text-muted-foreground ml-1.5 h-4 w-4 cursor-help" />
               </Tooltip>
@@ -84,7 +85,7 @@ const DropdownToArrayInput = ({
             <Textarea
               id="html-input"
               placeholder={`<select>\n<option value='option1'>Option 1</option>\n<option value='option2'>Option 2</option>\n</select>`}
-              className="h-40 font-mono"
+              className="h-40 font-mono text-xs"
               value={htmlInput}
               onChange={(e) => setHtmlInput(e.target.value)}
             />
@@ -159,24 +160,14 @@ const DropdownToArrayInput = ({
             </Label>
           </div>
 
-          <div className="flex flex-wrap gap-2">
-            <Button
-              type="submit"
-              variant="default"
-              size="lg"
-              disabled={!htmlInput}
-            >
+          <div className="mt-4 flex flex-wrap gap-2">
+            <Button type="submit" variant="default" disabled={!htmlInput}>
               Convert
             </Button>
-            <Button type="button" variant="outline" size="lg" onClick={onClear}>
-              Clear Input
+            <Button type="button" variant="outline" onClick={onClear}>
+              Clear
             </Button>
-            <Button
-              type="button"
-              variant="destructive"
-              size="lg"
-              onClick={onReset}
-            >
+            <Button type="button" variant="destructive" onClick={onReset}>
               Reset
             </Button>
           </div>
