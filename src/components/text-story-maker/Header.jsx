@@ -80,7 +80,7 @@ const Header = ({ options, updateOption, setToolbarVisible }) => {
     <header className="absolute top-0 left-0 z-20 h-auto w-full bg-white/20 p-2.5 px-4 text-white backdrop-blur-sm">
       <div className="flex items-center justify-between gap-2">
         <div className="flex items-center">
-          <h1 className="text-lg font-bold text-white">Text Story Maker</h1>
+          <h1 className="text-lg font-semibold text-white">Text Story Maker</h1>
         </div>
         <div className="flex items-center justify-end gap-2">
           <div className="relative">

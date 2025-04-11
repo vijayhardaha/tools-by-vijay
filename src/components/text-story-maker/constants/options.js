@@ -14,8 +14,8 @@
 /** @type {DefaultOptions} */
 export const defaultOptions = {
   // Typography
-  textFont: "poppins",
-  textSize: 1.125,
+  textFont: "comfortaa",
+  textSize: 1.25,
   textLineHeight: 1.375,
   textColor: "color1",
   textAlign: "center",
@@ -24,6 +24,6 @@ export const defaultOptions = {
   cardRatio: "9/16",
 
   // Background
-  bgType: "solid",
-  bgColor: "color1",
+  bgType: "gradient",
+  bgColor: "color3",
 };
