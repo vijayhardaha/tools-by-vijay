@@ -50,7 +50,7 @@ const HtmlMinifierInput = ({
     <Card>
       <CardHeader>
         <CardTitle>HTML Input</CardTitle>
-        <CardDescription className="text-muted-foreground text-sm">
+        <CardDescription>
           Paste your HTML code and customize minification options
         </CardDescription>
       </CardHeader>
@@ -60,7 +60,7 @@ const HtmlMinifierInput = ({
             placeholder="Paste HTML code here..."
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            className="min-h-[200px] font-mono text-sm"
+            className="min-h-[200px] font-mono text-xs"
           />
 
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
@@ -264,18 +264,13 @@ const HtmlMinifierInput = ({
           </div>
 
           <div className="mt-4 flex flex-wrap gap-2">
-            <Button type="submit" variant="default" size="lg" disabled={!input}>
+            <Button type="submit" variant="default" disabled={!input}>
               Minify
             </Button>
-            <Button type="button" variant="outline" size="lg" onClick={onClear}>
+            <Button type="button" variant="outline" onClick={onClear}>
               Clear
             </Button>
-            <Button
-              type="reset"
-              variant="destructive"
-              size="lg"
-              onClick={onReset}
-            >
+            <Button type="reset" variant="destructive" onClick={onReset}>
               Reset
             </Button>
           </div>
