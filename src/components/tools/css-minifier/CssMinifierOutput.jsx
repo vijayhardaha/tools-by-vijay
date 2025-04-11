@@ -56,10 +56,12 @@ const CssMinifierOutput = ({ output }) => {
     return `${outputSize} bytes`;
   };
 
+  if (!output) return;
+
   return (
     <Card>
       <CardHeader>
-        <div className="flex items-center justify-between gap-4">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <CardTitle>Minified Output</CardTitle>
             <CardDescription>
@@ -81,8 +83,8 @@ const CssMinifierOutput = ({ output }) => {
         <Textarea
           value={output}
           readOnly
-          disabled={!output}
-          className="min-h-[200px] font-mono text-sm outline-none focus-visible:ring-0 focus-visible:outline-none"
+          data-output
+          className="min-h-[200px] font-mono text-sm"
         />
       </CardContent>
     </Card>

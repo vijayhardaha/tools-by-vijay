@@ -83,8 +83,8 @@ const HtmlMinifierOutput = ({ output }) => {
         <Textarea
           value={output}
           readOnly
-          disabled={!output}
-          className="min-h-[200px] font-mono text-sm outline-none focus-visible:ring-0 focus-visible:outline-none"
+          data-output
+          className="min-h-[200px] font-mono text-sm"
         />
       </CardContent>
     </Card>
