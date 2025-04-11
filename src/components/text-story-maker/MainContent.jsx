@@ -2,7 +2,9 @@ import PropTypes from "prop-types";
 
 import { cn } from "@/lib/utils";
 
+import { getBgColorClass } from "./lib/bgColors";
 import { getFontClass } from "./lib/fonts";
+import { getTextColorClass } from "./lib/textColors";
 import { getAlignmentClass, getRatioClass } from "./lib/utils";
 
 // eslint-disable-next-line no-unused-vars
@@ -17,7 +19,12 @@ const MainContent = ({ options, updateOption }) => {
         getRatioClass(options.cardRatio)
       )}
     >
-      <div className="absolute top-0 left-0 h-full w-full bg-gradient-to-r from-pink-500 to-rose-500">
+      <div
+        className={cn(
+          "absolute top-0 left-0 h-full w-full",
+          getBgColorClass(options.bgType, options.bgColor)
+        )}
+      >
         <div
           className={cn(
             "flex flex-col items-start justify-center gap-3",
@@ -25,12 +32,12 @@ const MainContent = ({ options, updateOption }) => {
             "overflow-hidden",
             "p-10",
             getAlignmentClass(options.textAlign),
-            getFontClass(options.textFont)
+            getFontClass(options.textFont),
+            getTextColorClass(options.textColor)
           )}
           style={{
             fontSize: `${options.textSize}rem`,
             lineHeight: `${options.textLineHeight}`,
-            color: options.textColor,
             gap: `calc(var(--spacing) * ${options.textLineHeight * 3.5})`,
           }}
         >

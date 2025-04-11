@@ -16,6 +16,7 @@ import {
 } from "@/components/text-story-maker/toolbars/ToolBarBase";
 import { cn } from "@/lib/utils";
 
+import { textColors } from "../constants/textColors";
 import { fonts, getFontClass } from "../lib/fonts";
 import VerticalRangeSlider from "../ui/VerticalRangeSlider";
 
@@ -31,7 +32,7 @@ import VerticalRangeSlider from "../ui/VerticalRangeSlider";
  * @returns {JSX.Element} The rendered TextToolBar component.
  */
 const TextToolBar = ({ options, updateOption }) => {
-  const sliderRef = useRef(null); // Create a ref for the slider
+  const sliderRef = useRef(null);
   const [activeTool, setActiveTool] = useState("font-family");
   const [textSize, setTextSize] = useState(options.textSize);
   const [lineHeight, setLineHeight] = useState(options.textLineHeight);
@@ -122,9 +123,9 @@ const TextToolBar = ({ options, updateOption }) => {
               slidesToShow={1}
               slidesToScroll={1}
               variableWidth={true}
-              centerMode={true}
               swipeToSlide={true}
               focusOnSelect={true}
+              centerMode={true}
               initialSlide={Object.keys(fonts).indexOf(options.textFont)}
               afterChange={(current) => {
                 const font = Object.keys(fonts)[current];
@@ -132,7 +133,7 @@ const TextToolBar = ({ options, updateOption }) => {
               }}
             >
               {Object.keys(fonts).map((font) => (
-                <div key={font} className="px-1">
+                <div key={font} className="!inline-flex p-1">
                   <button
                     type="button"
                     className={cn(
@@ -156,6 +157,47 @@ const TextToolBar = ({ options, updateOption }) => {
                   >
                     {fonts[font].label}
                   </button>
+                </div>
+              ))}
+            </Slider>
+          </div>
+        )}
+        {activeTool === "text-color" && (
+          <div className="slider-container w-full">
+            <Slider
+              ref={sliderRef}
+              dots={false}
+              infinite={false}
+              arrows={false}
+              speed={100}
+              slidesToShow={1}
+              slidesToScroll={1}
+              variableWidth={true}
+              centerMode={true}
+              swipeToSlide={true}
+              focusOnSelect={true}
+              initialSlide={Object.keys(textColors).indexOf(options.textColor)}
+            >
+              {Object.keys(textColors).map((colorKey) => (
+                <div key={colorKey} className="!inline-flex p-1">
+                  <button
+                    type="button"
+                    className={cn(
+                      "relative h-10 w-10 rounded-lg shadow-sm",
+                      "cursor-pointer outline-none focus-visible:outline-none",
+                      "transition-transform duration-300 ease-in-out",
+                      "active:scale-95",
+                      "ring-1 ring-white/85",
+                      textColors[colorKey].bg,
+                      {
+                        "ring-white ring-offset-2":
+                          options.textColor === colorKey,
+                      }
+                    )}
+                    onClick={() => {
+                      updateOption("textColor", colorKey);
+                    }}
+                  ></button>
                 </div>
               ))}
             </Slider>

@@ -14,10 +14,10 @@
 /** @type {DefaultOptions} */
 export const defaultOptions = {
   // Typography
-  textFont: "hind",
-  textSize: 0.875,
+  textFont: "poppins",
+  textSize: 1.125,
   textLineHeight: 1.375,
-  textColor: "#ffffff",
+  textColor: "color1",
   textAlign: "center",
 
   // Layout
@@ -25,5 +25,5 @@ export const defaultOptions = {
 
   // Background
   bgType: "solid",
-  bgColor: "sunset",
+  bgColor: "color1",
 };
