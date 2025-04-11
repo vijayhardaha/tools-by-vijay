@@ -118,14 +118,20 @@ const TextToolBar = ({ options, updateOption }) => {
               dots={false}
               infinite={false}
               arrows={false}
-              speed={500}
-              slidesToShow={3}
+              speed={100}
+              slidesToShow={1}
+              slidesToScroll={1}
               variableWidth={true}
               centerMode={true}
               swipeToSlide={true}
-              initialSlide={Object.keys(fonts).indexOf(options.textFont)} // Set initial slide
+              focusOnSelect={true}
+              initialSlide={Object.keys(fonts).indexOf(options.textFont)}
+              afterChange={(current) => {
+                const font = Object.keys(fonts)[current];
+                updateOption("textFont", font);
+              }}
             >
-              {Object.keys(fonts).map((font, index) => (
+              {Object.keys(fonts).map((font) => (
                 <div key={font} className="px-1">
                   <button
                     type="button"
@@ -134,11 +140,11 @@ const TextToolBar = ({ options, updateOption }) => {
                       "inline-flex items-center justify-center",
                       "rounded-md shadow-sm",
                       "cursor-pointer outline-none focus-visible:outline-none",
-                      "transition-all duration-200 ease-in-out",
+                      "transition-colors duration-300 ease-in-out",
                       "active:scale-95",
-                      "p-1 px-3",
+                      "p-1.5 px-4",
                       "border border-white/50 bg-transparent text-white",
-                      "w-auto text-xs",
+                      "w-auto text-sm",
                       "backdrop-blur-xs backdrop-opacity-75",
                       "bg-white/20",
                       { "bg-white text-black": options.textFont === font },
@@ -146,7 +152,6 @@ const TextToolBar = ({ options, updateOption }) => {
                     )}
                     onClick={() => {
                       updateOption("textFont", font);
-                      sliderRef.current?.slickGoTo(index); // Center the clicked font
                     }}
                   >
                     {fonts[font].label}
