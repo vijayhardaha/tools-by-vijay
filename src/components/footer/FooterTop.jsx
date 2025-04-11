@@ -22,6 +22,7 @@ const FooterTop = () => {
         <FooterWidget title="Quick Links" links={footerLinks.quickLinks} />
         <FooterWidget title="Code Tools" links={footerLinks.codeTools} />
         <FooterWidget title="Text Tools" links={footerLinks.textTools} />
+        <FooterWidget title="Web Tools" links={footerLinks.webTools} />
       </div>
     </Box>
   );

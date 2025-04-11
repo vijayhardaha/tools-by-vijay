@@ -11,6 +11,15 @@ import PropTypes from "prop-types";
  * @returns {JSX.Element} The rendered footer widget.
  */
 const FooterWidget = ({ title, links }) => {
+  /**
+   * Check if a URL is external (starts with http:// or https://)
+   * @param {string} url - The URL to check
+   * @returns {boolean} True if the URL is external
+   */
+  const isExternalLink = (url) => {
+    return url.startsWith("http://") || url.startsWith("https://");
+  };
+
   return (
     <div className="footer-widget mb-8">
       <h3 className="mb-2 text-base font-bold">{title}</h3>
@@ -20,6 +29,10 @@ const FooterWidget = ({ title, links }) => {
             <Link
               href={link.href}
               className="text-muted-foreground hover:text-primary text-sm transition-colors"
+              {...(isExternalLink(link.href) && {
+                target: "_blank",
+                rel: "noopener noreferrer",
+              })}
             >
               {link.name}
             </Link>
