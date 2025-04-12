@@ -32,7 +32,7 @@ ToolsBox.propTypes = {
  */
 const ToolBarWrapper = ({ children }) => {
   return (
-    <div className="flex items-center gap-2 rounded-lg bg-neutral-950 p-1 text-neutral-100 shadow-xl">
+    <div className="flex items-center gap-2 rounded-lg bg-neutral-900 p-1 text-neutral-100 shadow-xs shadow-neutral-400">
       {children}
     </div>
   );
@@ -69,7 +69,7 @@ const ToolBarButton = ({
   return (
     <Component
       className={cn("bg-transparent text-neutral-100", className, {
-        "bg-neutral-800": active,
+        "bg-neutral-700": active,
       })}
       icon={icon}
       aria-label={srText}

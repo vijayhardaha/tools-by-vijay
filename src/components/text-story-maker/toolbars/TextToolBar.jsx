@@ -23,6 +23,8 @@ import {
 import VerticalRangeSlider from "@/components/text-story-maker/ui/VerticalRangeSlider";
 import { cn } from "@/lib/utils";
 
+import { getFontClass } from "../lib/fonts";
+
 /**
  * TextToolBar component provides a toolbar for text customization, including font size, line height, text alignment, and other text-related options.
  *
@@ -48,7 +50,7 @@ const TextToolBar = ({ options, updateOption }) => {
     initial: Object.keys(fonts).indexOf(options.textFont) + 1,
     slides: {
       origin: "center",
-      perView: 3,
+      perView: 4,
       spacing: 0,
     },
     slideChanged(s) {
@@ -185,20 +187,24 @@ const TextToolBar = ({ options, updateOption }) => {
                       type="button"
                       className={cn(
                         "relative whitespace-nowrap",
-                        "flex items-center justify-center",
-                        "w-full rounded-md shadow-sm",
+                        "flex w-full items-center justify-center rounded-lg shadow-xs shadow-neutral-400",
                         "cursor-pointer outline-none focus-visible:outline-none",
-                        "transition-colors duration-300 ease-in-out active:scale-94",
-                        "p-1.5 px-3",
-                        "bg-black/60 text-white",
-                        "text-xs",
-                        { "bg-black text-white": options.textFont === font }
+                        "transition-colors duration-300 ease-in-out active:scale-97",
+                        "p-2 px-4 text-sm font-semibold",
+                        "bg-neutral-900 text-neutral-100",
+                        {
+                          "bg-accent-foreground text-neutral-900":
+                            options.textFont === font,
+                        },
+                        getFontClass(font)
                       )}
                       onClick={() => {
                         updateOption("textFont", font);
                       }}
                     >
-                      {fonts[font].label}
+                      <span className="truncate overflow-hidden whitespace-nowrap">
+                        {fonts[font].label}
+                      </span>
                     </button>
                   </div>
                 </div>
@@ -220,7 +226,7 @@ const TextToolBar = ({ options, updateOption }) => {
                         "relative h-10 w-10 rounded-lg",
                         "shadow-sm ring-1 shadow-black/30 ring-white/85",
                         "cursor-pointer outline-none focus-visible:outline-none",
-                        "transition-transform duration-300 ease-in-out active:scale-94",
+                        "transition-transform duration-300 ease-in-out active:scale-97",
                         textColors[colorKey].bg,
                         {
                           "ring-white ring-offset-2":

@@ -25,9 +25,9 @@ const IconButton = ({
     type="button"
     className={cn(
       "inline-flex shrink-0 items-center justify-center",
-      "text-sm font-semibold whitespace-nowrap shadow-sm",
+      "text-sm font-semibold whitespace-nowrap shadow-xs",
       "rounded-lg outline-none focus-visible:outline-none",
-      "cursor-pointer active:scale-94 disabled:pointer-events-none disabled:opacity-50",
+      "cursor-pointer active:scale-97 disabled:pointer-events-none disabled:opacity-50",
       "transition-all duration-100 ease-in-out",
       "size-10 p-1",
       className
@@ -35,7 +35,7 @@ const IconButton = ({
     aria-label={srText}
     {...props}
   >
-    <Icon className={cn("h-5 w-5", iconClassName)} />
+    <Icon className={cn("size-5", iconClassName)} />
     {srText && <span className="sr-only">{srText}</span>}
     {children}
   </button>
