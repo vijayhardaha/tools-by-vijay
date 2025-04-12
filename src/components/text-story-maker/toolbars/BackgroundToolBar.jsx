@@ -27,6 +27,7 @@ const BackgroundToolBar = ({ options, updateOption }) => {
     const [sliderRef, slider] = useKeenSlider({
       loop: false,
       mode: "free-snap",
+      renderMode: "performance",
       initial: Object.keys(bgColors[tool]).indexOf(options.bgColor) + 1,
       slides: {
         origin: "center",

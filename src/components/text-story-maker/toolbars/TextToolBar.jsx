@@ -33,10 +33,10 @@ const TextToolBar = ({ options, updateOption }) => {
   const [textSize, setTextSize] = useState(options.textSize);
   const [lineHeight, setLineHeight] = useState(options.textLineHeight);
 
-  console.log(Object.keys(fonts).indexOf(options.textFont));
   const [fontSliderRef, fontSlider] = useKeenSlider({
     loop: false,
     mode: "free-snap",
+    renderMode: "performance",
     initial: Object.keys(fonts).indexOf(options.textFont) + 1,
     slides: {
       origin: "center",
@@ -52,6 +52,7 @@ const TextToolBar = ({ options, updateOption }) => {
   const [colorSliderRef, colorSlider] = useKeenSlider({
     loop: false,
     mode: "free-snap",
+    renderMode: "performance",
     initial: Object.keys(textColors).indexOf(options.textColor) + 1,
     slides: {
       origin: "center",
