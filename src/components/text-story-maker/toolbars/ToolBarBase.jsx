@@ -5,6 +5,25 @@ import IconButton from "@/components/text-story-maker/ui/IconButton";
 import TextButton from "@/components/text-story-maker/ui/TextButton";
 
 /**
+ * A container component for tools, positioned at the bottom of the screen.
+ *
+ * @param {Object} props - The component props.
+ * @param {React.ReactNode} props.children - The child elements to render inside the tools box.
+ * @returns {JSX.Element} The styled tools box component.
+ */
+const ToolsBox = ({ children }) => {
+  return (
+    <div className="absolute bottom-0 left-0 z-20 flex h-auto w-full flex-col items-center justify-center gap-4 p-4 py-6">
+      {children}
+    </div>
+  );
+};
+
+ToolsBox.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
+/**
  * A wrapper component for toolbars that provides consistent styling.
  *
  * @param {Object} props - The component props.
@@ -13,7 +32,7 @@ import TextButton from "@/components/text-story-maker/ui/TextButton";
  */
 const ToolBarWrapper = ({ children }) => {
   return (
-    <div className="flex items-center gap-2 rounded-lg bg-[#222222] p-1 text-white">
+    <div className="flex items-center gap-2 rounded-lg bg-neutral-950 p-1 text-neutral-100 shadow-xl">
       {children}
     </div>
   );
@@ -29,11 +48,11 @@ ToolBarWrapper.propTypes = {
  * @param {Object} props - The component props.
  * @param {"icon"|"text"} [props.type="icon"] - The type of the button, either "icon" or "text".
  * @param {React.ElementType} [props.icon] - The icon component to render (used when type is "icon").
- * @param {React.ElementType} [props.className] - Additional CSS classes to apply to the button.
+ * @param {string} [props.className] - Additional CSS classes to apply to the button.
  * @param {React.ReactNode} [props.children] - The child elements to render inside the button.
  * @param {boolean} [props.active] - Whether the button is in an active state.
  * @param {string} [props.srText] - Screen reader text for accessibility.
- * @param {Object} [props.props] - Additional props to pass to the button component.
+ * @param {Object} [props] - Additional props to pass to the button component.
  * @returns {JSX.Element} The styled toolbar button component.
  */
 const ToolBarButton = ({
@@ -49,8 +68,8 @@ const ToolBarButton = ({
 
   return (
     <Component
-      className={cn("bg-transparent text-white", className, {
-        "bg-white/10": active,
+      className={cn("bg-transparent text-neutral-100", className, {
+        "bg-neutral-800": active,
       })}
       icon={icon}
       aria-label={srText}
@@ -71,4 +90,4 @@ ToolBarButton.propTypes = {
   props: PropTypes.object,
 };
 
-export { ToolBarWrapper, ToolBarButton };
+export { ToolsBox, ToolBarWrapper, ToolBarButton };

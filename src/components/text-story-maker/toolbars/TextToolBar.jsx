@@ -18,6 +18,7 @@ import { textColors } from "@/components/text-story-maker/constants/textColors";
 import {
   ToolBarWrapper,
   ToolBarButton,
+  ToolsBox,
 } from "@/components/text-story-maker/toolbars/ToolBarBase";
 import VerticalRangeSlider from "@/components/text-story-maker/ui/VerticalRangeSlider";
 import { cn } from "@/lib/utils";
@@ -173,7 +174,7 @@ const TextToolBar = ({ options, updateOption }) => {
         />
       </div>
 
-      <div className="absolute bottom-0 left-0 z-20 flex h-auto w-full flex-col items-center justify-center gap-4 p-4 py-6">
+      <ToolsBox>
         {activeTool === "font-family" && (
           <div className="relative w-full overflow-hidden">
             <div className="keen-slider" ref={fontSliderRef}>
@@ -305,7 +306,7 @@ const TextToolBar = ({ options, updateOption }) => {
             srText="Text Background Tool"
           />
         </ToolBarWrapper>
-      </div>
+      </ToolsBox>
     </>
   );
 };

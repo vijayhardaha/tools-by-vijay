@@ -8,6 +8,7 @@ import { bgColors } from "@/components/text-story-maker/constants/bgColors";
 import {
   ToolBarWrapper,
   ToolBarButton,
+  ToolsBox,
 } from "@/components/text-story-maker/toolbars/ToolBarBase";
 import { cn } from "@/lib/utils";
 
@@ -61,64 +62,62 @@ const BackgroundToolBar = ({ options, updateOption }) => {
   };
 
   return (
-    <>
-      <div className="absolute bottom-0 left-0 z-20 flex h-auto w-full flex-col items-center justify-center gap-4 p-4 py-6">
-        {activeTool && (
-          <div className="relative w-full overflow-hidden">
-            <div className="keen-slider" ref={sliders[activeTool].sliderRef}>
-              {Object.keys(bgColors[activeTool]).map((colorKey) => (
-                <div key={colorKey} className="keen-slider__slide">
-                  <div className="flex items-center justify-center p-1">
-                    <button
-                      type="button"
-                      className={cn(
-                        "flex items-center justify-center",
-                        "relative h-10 w-10 rounded-lg",
-                        "shadow-sm ring-1 shadow-black/30 ring-white/85",
-                        "cursor-pointer outline-none focus-visible:outline-none",
-                        "transition-transform duration-300 ease-in-out active:scale-94",
-                        bgColors[activeTool][colorKey],
-                        {
-                          "ring-white ring-offset-2":
-                            options.bgColor === colorKey,
-                        }
-                      )}
-                      onClick={() => {
-                        updateOption("bgType", activeTool);
-                        updateOption("bgColor", colorKey);
-                      }}
-                    ></button>
-                  </div>
+    <ToolsBox>
+      {activeTool && (
+        <div className="relative w-full overflow-hidden">
+          <div className="keen-slider" ref={sliders[activeTool].sliderRef}>
+            {Object.keys(bgColors[activeTool]).map((colorKey) => (
+              <div key={colorKey} className="keen-slider__slide">
+                <div className="flex items-center justify-center p-1">
+                  <button
+                    type="button"
+                    className={cn(
+                      "flex items-center justify-center",
+                      "relative h-10 w-10 rounded-lg",
+                      "shadow-sm ring-1 shadow-black/30 ring-white/85",
+                      "cursor-pointer outline-none focus-visible:outline-none",
+                      "transition-transform duration-300 ease-in-out active:scale-94",
+                      bgColors[activeTool][colorKey],
+                      {
+                        "ring-white ring-offset-2":
+                          options.bgColor === colorKey,
+                      }
+                    )}
+                    onClick={() => {
+                      updateOption("bgType", activeTool);
+                      updateOption("bgColor", colorKey);
+                    }}
+                  ></button>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
-        )}
-        <ToolBarWrapper>
-          <ToolBarButton
-            type="text"
-            active={activeTool === "solid"}
-            onClick={() => handleToolChange("solid")}
-          >
-            Solid
-          </ToolBarButton>
-          <ToolBarButton
-            type="text"
-            active={activeTool === "gradient"}
-            onClick={() => handleToolChange("gradient")}
-          >
-            Gradient
-          </ToolBarButton>
-          <ToolBarButton
-            type="text"
-            active={activeTool === "mesh"}
-            onClick={() => handleToolChange("mesh")}
-          >
-            Mesh
-          </ToolBarButton>
-        </ToolBarWrapper>
-      </div>
-    </>
+        </div>
+      )}
+      <ToolBarWrapper>
+        <ToolBarButton
+          type="text"
+          active={activeTool === "solid"}
+          onClick={() => handleToolChange("solid")}
+        >
+          Solid
+        </ToolBarButton>
+        <ToolBarButton
+          type="text"
+          active={activeTool === "gradient"}
+          onClick={() => handleToolChange("gradient")}
+        >
+          Gradient
+        </ToolBarButton>
+        <ToolBarButton
+          type="text"
+          active={activeTool === "mesh"}
+          onClick={() => handleToolChange("mesh")}
+        >
+          Mesh
+        </ToolBarButton>
+      </ToolBarWrapper>
+    </ToolsBox>
   );
 };
 
