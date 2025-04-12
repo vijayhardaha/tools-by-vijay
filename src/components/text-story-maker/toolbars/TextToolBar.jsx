@@ -244,19 +244,21 @@ const TextToolBar = ({ options, updateOption }) => {
             active={activeTool === "font-family"}
             onClick={() => setActiveTool("font-family")}
             srText="Font Family Tool"
+            className="size-8"
           />
           <ToolBarButton
             type="text"
             active={activeTool === "text-color"}
             onClick={() => setActiveTool("text-color")}
             srText="Text Color Tool"
-            className="p-0.5"
+            className="size-8 p-0"
           >
-            <div className="h-6 w-6 rounded-full bg-[conic-gradient(from_0deg,_red,_yellow,_lime,_cyan,_blue,_magenta,_red)] shadow-lg"></div>
+            <div className="size-5 rounded-full bg-[conic-gradient(from_0deg,_red,_yellow,_lime,_cyan,_blue,_magenta,_red)] shadow-lg"></div>
           </ToolBarButton>
           <ToolBarButton
             icon={getAlignmentIcon()}
-            iconClassName="h-9 w-9"
+            iconClassName="size-8"
+            className="size-8 p-0"
             onClick={() => {
               handleAlignmentChange();
             }}
@@ -265,7 +267,7 @@ const TextToolBar = ({ options, updateOption }) => {
           <ToolBarButton
             icon={TextBoldIcon}
             onClick={handleBoldToggle}
-            className={cn("h-9 w-9", {
+            className={cn("size-8", {
               "bg-white text-black": options.textBold,
             })}
             srText="Bold Text Tool"
@@ -273,7 +275,7 @@ const TextToolBar = ({ options, updateOption }) => {
           <ToolBarButton
             icon={TextItalicIcon}
             onClick={handleItalicToggle}
-            className={cn("h-9 w-9", {
+            className={cn("size-8", {
               "bg-white text-black": options.textItalic,
             })}
             srText="Italic Text Tool"
@@ -284,7 +286,7 @@ const TextToolBar = ({ options, updateOption }) => {
               setShowFontSizeSlider((prev) => !prev);
               setShowLineHeightSlider(false);
             }}
-            className={cn("h-9 w-9", {
+            className={cn("size-8", {
               "bg-white text-black": showFontSizeSlider,
             })}
             srText="Font Size Tool"
@@ -295,14 +297,14 @@ const TextToolBar = ({ options, updateOption }) => {
               setShowLineHeightSlider((prev) => !prev);
               setShowFontSizeSlider(false);
             }}
-            className={cn("h-9 w-9", {
+            className={cn("size-8", {
               "bg-white text-black": showLineHeightSlider,
             })}
             srText="Line Height Tool"
           />
           <ToolBarButton
             icon={TextBgIcon}
-            className="h-9 w-9 bg-white text-black"
+            className="size-8 bg-white text-black"
             srText="Text Background Tool"
           />
         </ToolBarWrapper>

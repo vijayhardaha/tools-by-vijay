@@ -29,7 +29,7 @@ const IconButton = ({
       "rounded-lg outline-none focus-visible:outline-none",
       "cursor-pointer active:scale-94 disabled:pointer-events-none disabled:opacity-50",
       "transition-all duration-100 ease-in-out",
-      "h-10 w-10 p-0.5",
+      "size-10 p-1",
       className
     )}
     aria-label={srText}

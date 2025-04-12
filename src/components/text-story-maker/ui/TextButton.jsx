@@ -20,7 +20,7 @@ const TextButton = ({ className, children, ...props }) => (
       "rounded-lg outline-none focus-visible:outline-none",
       "cursor-pointer active:scale-94 disabled:pointer-events-none disabled:opacity-50",
       "transition-all duration-100 ease-in-out",
-      "h-10 min-w-10 p-2 px-3",
+      "h-8 min-w-8 p-2 px-3",
       className
     )}
     {...props}
