@@ -4,14 +4,13 @@ import { useState } from "react";
 
 import domToImage from "dom-to-image";
 import PropTypes from "prop-types";
-import { PiTextAa as AaIcon } from "react-icons/pi";
-import { PiResize as SizeIcon } from "react-icons/pi";
-import { PiPaintBucket as BgFillIcon } from "react-icons/pi";
+import { PiTextAaBold as AaIcon } from "react-icons/pi";
+import { PiResizeBold as SizeIcon } from "react-icons/pi";
+import { PiPaintBucketBold as BgFillIcon } from "react-icons/pi";
 import { PiCheckCircleFill as CheckFillIcon } from "react-icons/pi";
-import { PiDownloadSimple as DownloadIcon } from "react-icons/pi";
+import { PiDownloadSimpleBold as DownloadIcon } from "react-icons/pi";
 
 import { cardRatios } from "@/components/text-story-maker/constants";
-import { getFontClass } from "@/components/text-story-maker/lib/utils";
 import Dropdown, {
   DropdownTrigger,
   DropdownContent,
@@ -30,10 +29,8 @@ import { cn } from "@/lib/utils";
 const Button = ({ icon, className, ...props }) => (
   <IconButton
     icon={icon}
-    className={cn(
-      "hover:bg-accent-foreground bg-neutral-100 text-neutral-800 hover:text-neutral-800",
-      className
-    )}
+    className={cn("size-14 rounded-full bg-neutral-700 text-white", className)}
+    iconClassName="size-7"
     {...props}
   />
 );
@@ -142,31 +139,13 @@ const Header = ({
   };
 
   return (
-    <header className="absolute top-0 left-0 z-20 h-auto w-full bg-neutral-800/20 p-2 px-4 text-white backdrop-blur-sm">
+    <header className="absolute top-0 left-0 z-40 w-full p-4">
       <div className="flex items-center justify-between gap-2">
-        <div className="inline-flex flex-col items-start">
-          <h1
-            className={cn(
-              "mb-0 text-lg leading-normal font-semibold tracking-wide",
-              getFontClass("bebas_neue")
-            )}
-          >
-            Text Story Maker
-          </h1>
-          <p
-            className={cn(
-              "text-accent-foreground -mt-2 text-sm leading-normal",
-              getFontClass("caveat")
-            )}
-          >
-            A tool by Vijay Hardaha
-          </p>
-        </div>
-        <div className="flex items-center justify-end gap-1.5">
+        <div className="ml-auto flex items-center gap-2">
           <div className="relative">
             <Button
               icon={AaIcon}
-              srText="Text Options"
+              screenReaderText="Text Options"
               className={cn({
                 "bg-accent-foreground text-neutral-900":
                   toolbarVisible === "text",
@@ -179,7 +158,7 @@ const Header = ({
           <div className="relative">
             <Button
               icon={BgFillIcon}
-              srText="Background Fill Options"
+              screenReaderText="Background Fill Options"
               className={cn({
                 "bg-accent-foreground text-neutral-900":
                   toolbarVisible === "background",
@@ -196,7 +175,7 @@ const Header = ({
               {({ isOpen, toggleDropdown }) => (
                 <>
                   <DropdownTrigger onClick={toggleDropdown}>
-                    <Button icon={SizeIcon} srText="Size Options" />
+                    <Button icon={SizeIcon} screenReaderText="Size Options" />
                   </DropdownTrigger>
                   <DropdownContent isOpen={isOpen}>
                     {cardRatios.map(({ value, label }) => (
@@ -216,7 +195,10 @@ const Header = ({
             {({ isOpen, toggleDropdown }) => (
               <>
                 <DropdownTrigger onClick={toggleDropdown}>
-                  <Button icon={DownloadIcon} srText="Download Image" />
+                  <Button
+                    icon={DownloadIcon}
+                    screenReaderText="Download Image"
+                  />
                 </DropdownTrigger>
                 <DropdownContent isOpen={isOpen}>
                   <div

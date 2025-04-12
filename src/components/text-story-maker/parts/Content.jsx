@@ -43,7 +43,7 @@ const renderHtml = (text) =>
     .join("<br>"); // Convert text to multiple <p> elements
 
 /**
- * MainContent component for rendering editable text content with various styles and options.
+ * Content component for rendering editable text content with various styles and options.
  * @param {Object} props - The component props.
  * @param {Object} props.options - The options for styling and content.
  * @param {string} props.options.text - The text content to display.
@@ -57,9 +57,9 @@ const renderHtml = (text) =>
  * @param {string} props.options.bgColor - The background color.
  * @param {string} props.options.cardRatio - The aspect ratio of the card.
  * @param {Function} props.updateOption - Function to update the options.
- * @returns {JSX.Element} - The rendered MainContent component.
+ * @returns {JSX.Element} - The rendered Content component.
  */
-const MainContent = ({ options, updateOption }) => {
+const Content = ({ options, updateOption }) => {
   const [focused, setFocused] = useState(false); // State to track focus
 
   return (
@@ -138,9 +138,9 @@ const MainContent = ({ options, updateOption }) => {
   );
 };
 
-MainContent.propTypes = {
+Content.propTypes = {
   options: PropTypes.object.isRequired,
   updateOption: PropTypes.func.isRequired,
 };
 
-export default MainContent;
+export default Content;

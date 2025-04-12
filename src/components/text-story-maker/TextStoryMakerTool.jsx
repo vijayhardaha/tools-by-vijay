@@ -3,9 +3,10 @@
 import { useState, useEffect } from "react";
 
 import { defaultOptions } from "@/components/text-story-maker/constants";
-import Footer from "@/components/text-story-maker/Footer";
-import Header from "@/components/text-story-maker/Header";
-import MainContent from "@/components/text-story-maker/MainContent";
+import Content from "@/components/text-story-maker/parts/Content";
+import Footer from "@/components/text-story-maker/parts/Footer";
+import Header from "@/components/text-story-maker/parts/Header";
+import ToolInfo from "@/components/text-story-maker/parts/ToolInfo";
 import { cn } from "@/lib/utils";
 
 /**
@@ -78,7 +79,8 @@ const TextStoryMakerTool = () => {
         toolbarVisible={toolbarVisible}
         setToolbarVisible={setToolbarVisible}
       />
-      <MainContent options={options} updateOption={updateOption} />
+      <Content options={options} updateOption={updateOption} />
+      <ToolInfo />
     </div>
   );
 };

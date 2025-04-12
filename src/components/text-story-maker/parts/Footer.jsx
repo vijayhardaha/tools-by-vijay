@@ -1,8 +1,7 @@
 import PropTypes from "prop-types";
 
+import BackgroundToolBar from "@/components/text-story-maker/toolbars/BackgroundToolBar";
 import TextToolBar from "@/components/text-story-maker/toolbars/TextToolBar";
-
-import BackgroundToolBar from "./toolbars/BackgroundToolBar";
 
 /**
  * Footer component for the text story maker.

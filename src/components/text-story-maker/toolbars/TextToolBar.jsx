@@ -280,14 +280,14 @@ const TextToolBar = ({ options, updateOption }) => {
             icon={AaIcon}
             active={activeTool === "font-family"}
             onClick={() => setActiveTool("font-family")}
-            srText="Font Family Tool"
+            screenReaderText="Font Family Tool"
             className="size-8"
           />
           <ToolBarButton
             type="text"
             active={activeTool === "text-color"}
             onClick={() => setActiveTool("text-color")}
-            srText="Text Color Tool"
+            screenReaderText="Text Color Tool"
             className="size-8 p-0"
           >
             <div className="size-5 rounded-full bg-[conic-gradient(from_0deg,_red,_yellow,_lime,_cyan,_blue,_magenta,_red)] shadow-lg"></div>
@@ -299,7 +299,7 @@ const TextToolBar = ({ options, updateOption }) => {
             onClick={() => {
               handleAlignmentChange();
             }}
-            srText="Text Alignment Tool"
+            screenReaderText="Text Alignment Tool"
           />
           <ToolBarButton
             icon={TextBoldIcon}
@@ -307,7 +307,7 @@ const TextToolBar = ({ options, updateOption }) => {
             className={cn("size-8", {
               "bg-white text-black": options.textBold,
             })}
-            srText="Bold Text Tool"
+            screenReaderText="Bold Text Tool"
           />
           <ToolBarButton
             icon={TextItalicIcon}
@@ -315,7 +315,7 @@ const TextToolBar = ({ options, updateOption }) => {
             className={cn("size-8", {
               "bg-white text-black": options.textItalic,
             })}
-            srText="Italic Text Tool"
+            screenReaderText="Italic Text Tool"
           />
           <ToolBarButton
             icon={TextUppercaseIcon}
@@ -323,7 +323,7 @@ const TextToolBar = ({ options, updateOption }) => {
             className={cn("size-8", {
               "bg-white text-black": options.textUppercase,
             })}
-            srText="Uppercase Text Tool"
+            screenReaderText="Uppercase Text Tool"
           />
           <ToolBarButton
             icon={TextEffectIcon}
@@ -331,7 +331,7 @@ const TextToolBar = ({ options, updateOption }) => {
             className={cn("size-8", {
               "bg-white text-black": options.textEffect,
             })}
-            srText="Text Effect Tool"
+            screenReaderText="Text Effect Tool"
           />
           <ToolBarButton
             icon={FontSizeIcon}
@@ -342,7 +342,7 @@ const TextToolBar = ({ options, updateOption }) => {
             className={cn("size-8", {
               "bg-white text-black": showFontSizeSlider,
             })}
-            srText="Font Size Tool"
+            screenReaderText="Font Size Tool"
           />
           <ToolBarButton
             icon={LineHeightIcon}
@@ -353,7 +353,7 @@ const TextToolBar = ({ options, updateOption }) => {
             className={cn("size-8", {
               "bg-white text-black": showLineHeightSlider,
             })}
-            srText="Line Height Tool"
+            screenReaderText="Line Height Tool"
           />
         </ToolBarWrapper>
       </ToolsBox>
