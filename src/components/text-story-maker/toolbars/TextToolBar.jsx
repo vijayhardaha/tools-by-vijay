@@ -2,15 +2,16 @@ import { useState } from "react";
 
 import { useKeenSlider } from "keen-slider/react";
 import PropTypes from "prop-types";
-import { AiOutlineFontSize as FontSizeIcon } from "react-icons/ai";
-import { AiOutlineLineHeight as LineHeightIcon } from "react-icons/ai";
+import { BiFontSize as FontSizeIcon } from "react-icons/bi";
+import { CgFormatUppercase as TextUppercaseIcon } from "react-icons/cg";
+import { MdFormatBold as TextBoldIcon } from "react-icons/md";
+import { MdFormatItalic as TextItalicIcon } from "react-icons/md";
 import { PiTextAa as AaIcon } from "react-icons/pi";
 import { PiTextAlignCenter as AlignCenterIcon } from "react-icons/pi";
 import { PiTextAlignLeft as AlignLeftIcon } from "react-icons/pi";
 import { PiTextAlignRight as AlignRightIcon } from "react-icons/pi";
-import { PiMagicWand as TextBgIcon } from "react-icons/pi";
-import { PiTextBBold as TextBoldIcon } from "react-icons/pi";
-import { PiTextItalic as TextItalicIcon } from "react-icons/pi";
+import { RiFontSizeAi as TextBgIcon } from "react-icons/ri";
+import { RiLineHeight as LineHeightIcon } from "react-icons/ri";
 import "keen-slider/keen-slider.min.css";
 
 import { fonts } from "@/components/text-story-maker/constants/fonts";
@@ -126,6 +127,14 @@ const TextToolBar = ({ options, updateOption }) => {
   const handleItalicToggle = () => {
     const newItalicStatus = !options.textItalic;
     updateOption("textItalic", newItalicStatus);
+  };
+
+  /**
+   * Toggles the uppercase text option.
+   */
+  const handleUppercaseToggle = () => {
+    const newUppercaseStatus = !options.textUppercase;
+    updateOption("textUppercase", newUppercaseStatus);
   };
 
   /**
@@ -287,6 +296,20 @@ const TextToolBar = ({ options, updateOption }) => {
             srText="Italic Text Tool"
           />
           <ToolBarButton
+            icon={TextUppercaseIcon}
+            onClick={handleUppercaseToggle}
+            className={cn("size-8", {
+              "bg-white text-black": options.textUppercase,
+            })}
+            srText="Uppercase Text Tool"
+          />
+
+          <ToolBarButton
+            icon={TextBgIcon}
+            className="size-8 bg-white text-black"
+            srText="Text Background Tool"
+          />
+          <ToolBarButton
             icon={FontSizeIcon}
             onClick={() => {
               setShowFontSizeSlider((prev) => !prev);
@@ -307,11 +330,6 @@ const TextToolBar = ({ options, updateOption }) => {
               "bg-white text-black": showLineHeightSlider,
             })}
             srText="Line Height Tool"
-          />
-          <ToolBarButton
-            icon={TextBgIcon}
-            className="size-8 bg-white text-black"
-            srText="Text Background Tool"
           />
         </ToolBarWrapper>
       </ToolsBox>

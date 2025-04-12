@@ -16,6 +16,9 @@ const MainContent = ({ options, updateOption }) => {
 
   return (
     <main
+      id="main-content"
+      role="main"
+      aria-label="Main content"
       className={cn(
         "absolute top-1/2 left-0 z-10",
         "h-auto w-full",

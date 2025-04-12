@@ -22,6 +22,7 @@ export const defaultOptions = {
   textAlign: "center",
   textBold: false,
   textItalic: false,
+  textUppercase: false,
 
   // Content
   text: "",

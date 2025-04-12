@@ -56,11 +56,11 @@ const DropDownAction = ({ label, active, ...props }) => (
       "inline-flex shrink-0 items-center justify-start whitespace-nowrap",
       "text-xs font-medium",
       "w-full rounded-lg",
+      "p-2",
+      "text-neutral-900 hover:bg-neutral-200",
       "cursor-pointer disabled:pointer-events-none disabled:opacity-50",
       "outline-none focus-visible:outline-none",
-      "transition-all",
-      "p-2",
-      "text-black hover:bg-gray-100"
+      "transition-all"
     )}
     {...props}
   >
@@ -93,12 +93,12 @@ const Header = ({
   };
 
   return (
-    <header className="absolute top-0 left-0 z-20 h-auto w-full bg-neutral-800 p-2 px-4 text-neutral-100 backdrop-blur-sm">
+    <header className="absolute top-0 left-0 z-20 h-auto w-full bg-neutral-800 p-2 px-4 text-white backdrop-blur-sm">
       <div className="flex items-center justify-between gap-2">
         <div className="inline-flex flex-col items-start">
           <h1
             className={cn(
-              "mb-0 text-lg leading-normal font-semibold tracking-wide text-neutral-100",
+              "mb-0 text-lg leading-normal font-semibold tracking-wide",
               getFontClass("bebas_neue")
             )}
           >
@@ -106,7 +106,7 @@ const Header = ({
           </h1>
           <p
             className={cn(
-              "-mt-2 text-xs leading-normal",
+              "text-accent-foreground -mt-2 text-sm leading-normal",
               getFontClass("caveat")
             )}
           >
