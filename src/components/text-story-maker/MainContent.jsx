@@ -11,6 +11,21 @@ import { getFontClass } from "./lib/fonts";
 import { getTextColorClass } from "./lib/textColors";
 import { getAlignmentClass, getRatioClass } from "./lib/utils";
 
+const santize = (html) =>
+  sanitizeHtml(html, {
+    allowedTags: ["p", "strong", "b", "em", "i", "br"], // Allow only specific tags
+    allowedAttributes: {}, // No attributes allowed
+  })
+    .replace(/<\/?p>/g, "\n") // Replace <p> tags with newlines
+    .replace(/\n+/g, "\n") // Remove extra newlines
+    .trim();
+
+const renderHtml = (text) =>
+  text
+    .split("\n")
+    .map((line) => `<p>${line}</p>`)
+    .join(""); // Convert text to multiple <p> elements
+
 const MainContent = ({ options, updateOption }) => {
   const [focused, setFocused] = useState(false); // State to track focus
 
@@ -37,10 +52,7 @@ const MainContent = ({ options, updateOption }) => {
         <ContentEditable
           id="editable-content"
           tagName="div"
-          html={options.text
-            .split("\n")
-            .map((line) => `<p>${line}</p>`)
-            .join("")} // Convert text to multiple <p> elements
+          html={renderHtml(options.text)} // Convert text to multiple <p> elements
           onBlur={(e) => {
             if (e.relatedTarget && e.relatedTarget.id === "editable-content") {
               return; // Prevent blur if focus is still within the editable content
@@ -53,21 +65,26 @@ const MainContent = ({ options, updateOption }) => {
               return;
             }
             setFocused(false); // Set focused to false on blur
-            const sanitizedHtml = sanitizeHtml(e.target.innerHTML, {
-              allowedTags: ["p", "strong", "b", "em", "i", "br"], // Allow only specific tags
-              allowedAttributes: {}, // No attributes allowed
-            });
-            const text = sanitizedHtml
-              .replace(/<\/?p>/g, "\n") // Replace <p> tags with newlines
-              .replace(/\n+/g, "\n") // Remove extra newlines
-              .trim(); // Trim leading/trailing newlines
+
+            const text = santize(e.target.innerHTML);
             updateOption("text", text);
           }}
           onFocus={() => setFocused(true)} // Set focused to true on focus
+          onPaste={(e) => {
+            e.preventDefault(); // Prevent default paste behavior
+            const pastedText =
+              e.clipboardData.getData("text/html") ||
+              e.clipboardData.getData("text/plain");
+            document.execCommand(
+              "insertHTML",
+              false,
+              renderHtml(santize(pastedText))
+            ); // Insert sanitized HTML
+          }}
           tabIndex={0} // Make the element focusable
           className={cn(
             "inline-flex flex-col items-start justify-center gap-3",
-            "min-h-10 min-w-1 [&>.child]:min-w-1",
+            "min-h-10 min-w-1 [&>*]:min-w-1",
             "outline-none",
             getAlignmentClass(options.textAlign),
             getFontClass(options.textFont),
@@ -75,7 +92,8 @@ const MainContent = ({ options, updateOption }) => {
             {
               "!font-bold": options.textBold,
               "!italic": options.textItalic,
-              "h-full w-full": !focused, // Ensure ContentEditable takes full height
+              "!uppercase": options.textUppercase,
+              "h-full w-full": !focused,
             }
           )}
           style={{
