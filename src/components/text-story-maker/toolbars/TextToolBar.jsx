@@ -20,7 +20,7 @@ import {
   ToolBarButton,
   ToolsBox,
 } from "@/components/text-story-maker/toolbars/ToolBarBase";
-import VerticalRangeSlider from "@/components/text-story-maker/ui/VerticalRangeSlider";
+import RangeSlider from "@/components/text-story-maker/ui/RangeSlider";
 import { cn } from "@/lib/utils";
 
 import { getFontClass } from "../lib/fonts";
@@ -152,7 +152,7 @@ const TextToolBar = ({ options, updateOption }) => {
           { hidden: !showFontSizeSlider }
         )}
       >
-        <VerticalRangeSlider
+        <RangeSlider
           step={0.0625}
           min={0.5}
           max={4}
@@ -167,7 +167,7 @@ const TextToolBar = ({ options, updateOption }) => {
           { hidden: !showLineHeightSlider }
         )}
       >
-        <VerticalRangeSlider
+        <RangeSlider
           step={0.125}
           min={1}
           max={2}
