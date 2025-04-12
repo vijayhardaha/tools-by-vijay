@@ -32,7 +32,7 @@ ToolsBox.propTypes = {
  */
 const ToolBarWrapper = ({ children }) => {
   return (
-    <div className="flex items-center gap-1 rounded-lg bg-neutral-900 p-1 text-neutral-100 shadow-xs shadow-neutral-300">
+    <div className="flex items-center gap-1 rounded-lg bg-neutral-900 p-1 text-neutral-100 shadow-sm">
       {children}
     </div>
   );

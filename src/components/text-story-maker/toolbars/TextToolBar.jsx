@@ -177,7 +177,7 @@ const TextToolBar = ({ options, updateOption }) => {
         )}
       >
         <RangeSlider
-          step={0.125}
+          step={0.0625}
           min={1}
           max={2}
           values={[lineHeight]}
@@ -196,7 +196,7 @@ const TextToolBar = ({ options, updateOption }) => {
                       type="button"
                       className={cn(
                         "relative whitespace-nowrap",
-                        "flex w-full items-center justify-center rounded-lg shadow-xs shadow-neutral-300",
+                        "flex w-full items-center justify-center rounded-lg shadow-xs",
                         "cursor-pointer outline-none focus-visible:outline-none",
                         "transition-colors duration-300 ease-in-out active:scale-97",
                         "p-4 py-3 text-xs font-semibold",

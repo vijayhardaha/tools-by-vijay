@@ -17,7 +17,7 @@ import { cn } from "@/lib/utils";
  */
 const RangeSlider = ({ min, max, step, values, onChange }) => {
   return (
-    <div className="h-full rounded-md bg-neutral-800 p-5 px-3 shadow-sm shadow-neutral-300">
+    <div className="h-full rounded-md bg-neutral-800 p-5 px-3 shadow-sm">
       <Range
         step={step}
         min={min}
@@ -34,7 +34,7 @@ const RangeSlider = ({ min, max, step, values, onChange }) => {
             >
               {children}
             </div>
-            <div className="pointer-events-none absolute top-0 h-full w-full rounded-xs bg-neutral-100 [clip-path:polygon(0%_0%,_100%_0%,_50%_100%)]" />
+            <div className="pointer-events-none absolute top-0 h-full w-full rounded-sm bg-neutral-100 [clip-path:polygon(0%_0%,_100%_0%,_50%_100%)]" />
           </div>
         )}
         renderThumb={({ props: thumbProps, isDragged }) => {

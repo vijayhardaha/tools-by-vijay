@@ -33,4 +33,8 @@ export const defaultOptions = {
   // Background
   bgType: "gradient",
   bgColor: "color3",
+
+  // Download
+  downloadSize: "2x",
+  downloadFormat: "png",
 };

@@ -1,5 +1,6 @@
 "use client";
 
+import domToImage from "dom-to-image";
 import PropTypes from "prop-types";
 import { PiTextAa as AaIcon } from "react-icons/pi";
 import { PiResize as SizeIcon } from "react-icons/pi";
@@ -92,8 +93,42 @@ const Header = ({
     updateOption("cardRatio", size);
   };
 
+  const handleDownloadSizeSelect = (size) => {
+    updateOption("downloadSize", size);
+  };
+
+  const handleDownload = (format, size) => {
+    const node = document.querySelector("#main-content");
+    if (!node) return;
+
+    updateOption("downloadFormat", format);
+
+    const rect = node.getBoundingClientRect();
+    const scale = (1080 / rect.width) * parseInt(size, 10);
+    const options = {
+      quality: 1,
+      width: rect.width * scale,
+      height: rect.height * scale,
+      style: {
+        scale: `${scale}`,
+      },
+    };
+
+    const downloadFn =
+      format === "jpeg"
+        ? domToImage.toJpeg(node, options)
+        : domToImage.toPng(node, options);
+
+    downloadFn.then((dataUrl) => {
+      const link = document.createElement("a");
+      link.href = dataUrl;
+      link.download = `text-story.${format}`;
+      link.click();
+    });
+  };
+
   return (
-    <header className="absolute top-0 left-0 z-20 h-auto w-full bg-neutral-800 p-2 px-4 text-white backdrop-blur-sm">
+    <header className="absolute top-0 left-0 z-20 h-auto w-full bg-neutral-800/20 p-2 px-4 text-white backdrop-blur-sm">
       <div className="flex items-center justify-between gap-2">
         <div className="inline-flex flex-col items-start">
           <h1
@@ -119,7 +154,8 @@ const Header = ({
               icon={AaIcon}
               srText="Text Options"
               className={cn({
-                "bg-accent-foreground text-primary": toolbarVisible === "text",
+                "bg-accent-foreground text-neutral-900":
+                  toolbarVisible === "text",
               })}
               onClick={() =>
                 setToolbarVisible((prev) => (prev !== "text" ? "text" : ""))
@@ -131,7 +167,7 @@ const Header = ({
               icon={BgFillIcon}
               srText="Background Fill Options"
               className={cn({
-                "bg-accent-foreground text-primary":
+                "bg-accent-foreground text-neutral-900":
                   toolbarVisible === "background",
               })}
               onClick={() =>
@@ -169,9 +205,59 @@ const Header = ({
                   <Button icon={DownloadIcon} srText="Download Image" />
                 </DropdownTrigger>
                 <DropdownContent isOpen={isOpen}>
-                  <DropDownAction label="Option 1" />
-                  <DropDownAction label="Option 2" />
-                  <DropDownAction label="Option 3" />
+                  <div className="mb-2">
+                    <p className="mb-1 text-xs font-semibold text-neutral-700">
+                      Size:
+                    </p>
+                    <div className="flex gap-1">
+                      {["1x", "2x", "3x"].map((size) => (
+                        <button
+                          key={size}
+                          type="button"
+                          className={cn(
+                            "relatve flex shrink-0 items-center justify-center",
+                            "rounded-md px-3 py-1 text-xs font-medium",
+                            "cursor-pointer outline-none focus-visible:outline-none",
+                            "transition-transform duration-300 ease-in-out active:scale-97",
+                            options.downloadSize === size
+                              ? "bg-neutral-900 text-neutral-100"
+                              : "bg-neutral-200 text-neutral-900 hover:bg-neutral-300"
+                          )}
+                          onClick={() => handleDownloadSizeSelect(size)}
+                        >
+                          {size}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                  <div>
+                    <p className="mb-1 text-xs font-semibold text-neutral-700">
+                      Download:
+                    </p>
+                    <div className="grid grid-cols-2 gap-2">
+                      {["JPEG", "PNG"].map((format) => (
+                        <button
+                          key={format}
+                          type="button"
+                          className={cn(
+                            "relatve flex shrink-0 items-center justify-center",
+                            "rounded-md px-3 py-1 text-xs font-semibold",
+                            "cursor-pointer outline-none focus-visible:outline-none",
+                            "transition-transform duration-300 ease-in-out active:scale-97",
+                            "hover:bg-accent-foreground bg-neutral-900 text-neutral-100 hover:text-neutral-900"
+                          )}
+                          onClick={() =>
+                            handleDownload(
+                              format.toLowerCase(),
+                              options.downloadSize
+                            )
+                          }
+                        >
+                          {format}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
                 </DropdownContent>
               </>
             )}

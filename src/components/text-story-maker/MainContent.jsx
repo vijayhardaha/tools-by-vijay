@@ -16,22 +16,22 @@ const MainContent = ({ options, updateOption }) => {
 
   return (
     <main
+      aria-label="Main content"
       id="main-content"
       role="main"
-      aria-label="Main content"
       className={cn(
-        "absolute top-1/2 left-0 z-10",
+        "relative z-10",
         "h-auto w-full",
-        "-translate-y-1/2 transform",
-        "aspect-9/16",
-        getRatioClass(options.cardRatio)
+        "origin-top-left transform"
       )}
     >
       <div
         className={cn(
-          "absolute top-0 left-0 h-full w-full overflow-hidden p-10",
+          "relative z-10",
+          "w-full overflow-hidden p-10",
           "flex flex-col items-center justify-center",
-          getBgColorClass(options.bgType, options.bgColor)
+          getBgColorClass(options.bgType, options.bgColor),
+          getRatioClass(options.cardRatio)
         )}
       >
         <ContentEditable
@@ -75,13 +75,13 @@ const MainContent = ({ options, updateOption }) => {
             {
               "!font-bold": options.textBold,
               "!italic": options.textItalic,
-              "h-full w-full": !focused,
+              "h-full w-full": !focused, // Ensure ContentEditable takes full height
             }
           )}
           style={{
             fontSize: `${options.textSize}rem`,
             lineHeight: `${options.textLineHeight}`,
-            gap: `calc(var(--spacing) * ${options.textLineHeight * 3.5})`,
+            gap: `calc(var(--spacing) * ${options.textLineHeight * 3})`,
           }}
         />
       </div>
