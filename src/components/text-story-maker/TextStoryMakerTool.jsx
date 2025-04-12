@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { defaultOptions } from "@/components/text-story-maker/constants/options";
 import Footer from "@/components/text-story-maker/Footer";
@@ -19,17 +19,46 @@ const TextStoryMakerTool = () => {
   const [options, setOptions] = useState(defaultOptions);
   const [toolbarVisible, setToolbarVisible] = useState("");
 
+  // Fetch options from local storage on load and merge with default options
+  useEffect(() => {
+    const savedOptions = localStorage.getItem("textStoryMakerOptions");
+    console.log("Saved options from local storage:", savedOptions);
+    if (savedOptions) {
+      try {
+        const parsedOptions = JSON.parse(savedOptions);
+        setOptions(() => ({
+          ...defaultOptions,
+          ...parsedOptions,
+        }));
+      } catch (error) {
+        console.error("Failed to parse options from local storage:", error);
+      }
+    }
+  }, []);
+
   /**
-   * Updates a specific option in the state.
+   * Updates a specific option in the state and saves it to local storage.
    *
    * @param {string} key - The key of the option to update.
    * @param {*} value - The new value for the option.
    */
   const updateOption = (key, value) => {
-    setOptions((prevOptions) => ({
-      ...prevOptions,
-      [key]: value,
-    }));
+    setOptions((prevOptions) => {
+      const updatedOptions = {
+        ...prevOptions,
+        [key]: value,
+      };
+      try {
+        localStorage.setItem(
+          "textStoryMakerOptions",
+          JSON.stringify(updatedOptions)
+        ); // Save to local storage
+        console.log("Options saved to local storage:", updatedOptions);
+      } catch (error) {
+        console.error("Failed to save options to local storage:", error);
+      }
+      return updatedOptions;
+    });
   };
 
   return (

@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+
 import domToImage from "dom-to-image";
 import PropTypes from "prop-types";
 import { PiTextAa as AaIcon } from "react-icons/pi";
@@ -7,7 +9,6 @@ import { PiResize as SizeIcon } from "react-icons/pi";
 import { PiPaintBucket as BgFillIcon } from "react-icons/pi";
 import { PiCheckCircleFill as CheckFillIcon } from "react-icons/pi";
 import { PiDownloadSimple as DownloadIcon } from "react-icons/pi";
-import { useState } from "react";
 
 import { cardRatios } from "@/components/text-story-maker/constants/cardRatios";
 import Dropdown, {
