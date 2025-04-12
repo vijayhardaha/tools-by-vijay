@@ -16,6 +16,7 @@ import Dropdown, {
   DropdownContent,
 } from "@/components/text-story-maker/ui/Dropdown";
 import IconButton from "@/components/text-story-maker/ui/IconButton";
+import TextButton from "@/components/text-story-maker/ui/TextButton";
 import { cn } from "@/lib/utils";
 
 /**
@@ -29,7 +30,7 @@ import { cn } from "@/lib/utils";
 const Button = ({ icon, className, ...props }) => (
   <IconButton
     icon={icon}
-    className={cn("size-14 rounded-full bg-neutral-700 text-white", className)}
+    className={cn("size-14 rounded-full bg-neutral-900 text-white", className)}
     iconClassName="size-7"
     {...props}
   />
@@ -40,61 +41,57 @@ Button.propTypes = {
   className: PropTypes.string,
 };
 
-/**
- * DropDownAction component for rendering individual dropdown options.
- *
- * @param {Object} props - Component props.
- * @param {string} props.label - The label for the button.
- * @param {boolean} props.active - Whether the option is active.
- * @returns {JSX.Element} The rendered DropDownAction component.
- */
-const DropDownAction = ({ label, active, ...props }) => (
-  <button
-    type="button"
-    className={cn(
-      "inline-flex shrink-0 items-center justify-start whitespace-nowrap",
-      "text-xs font-medium",
-      "w-full rounded-lg",
-      "p-2",
-      "text-neutral-900 hover:bg-neutral-200",
-      "cursor-pointer disabled:pointer-events-none disabled:opacity-50",
-      "outline-none focus-visible:outline-none",
-      "transition-all"
-    )}
-    {...props}
-  >
-    {label}
-    {active && <CheckFillIcon className="ml-1 text-green-500" />}
-  </button>
-);
-
-DropDownAction.propTypes = {
-  label: PropTypes.string.isRequired,
-  active: PropTypes.bool,
+const FrameComponent = ({ options, updateOption }) => {
+  return (
+    <Dropdown>
+      {({ isOpen, toggleDropdown }) => (
+        <>
+          <DropdownTrigger onClick={toggleDropdown}>
+            <Button icon={SizeIcon} screenReaderText="Size Options" />
+          </DropdownTrigger>
+          <DropdownContent isOpen={isOpen}>
+            {cardRatios.map(({ value, label }) => (
+              <button
+                key={value}
+                type="button"
+                onClick={() => updateOption("cardRatio", value)}
+                className={cn(
+                  "inline-flex shrink-0 items-center justify-start",
+                  "w-full py-2 text-base whitespace-nowrap",
+                  "cursor-pointer disabled:pointer-events-none disabled:opacity-50",
+                  "outline-none focus-visible:outline-none"
+                )}
+              >
+                {label}
+                {options.cardRatio === value && (
+                  <CheckFillIcon className="text-accent-foreground ml-2 size-6" />
+                )}
+              </button>
+            ))}
+          </DropdownContent>
+        </>
+      )}
+    </Dropdown>
+  );
 };
 
-/**
- * Header component for the text story maker.
- *
- * @param {Object} props - Component props.
- * @param {Object} props.options - Options for the text story maker.
- * @param {Function} props.updateOption - Function to update options.
- * @returns {JSX.Element} The rendered Header component.
- */
-const Header = ({
-  options,
-  updateOption,
-  toolbarVisible,
-  setToolbarVisible,
-}) => {
+FrameComponent.propTypes = {
+  options: PropTypes.object.isRequired,
+  updateOption: PropTypes.func.isRequired,
+};
+
+const DownloadComponent = ({ options, updateOption }) => {
   const [isDownloading, setIsDownloading] = useState(false);
   const [downloadError, setDownloadError] = useState("");
 
-  const handleSizeSelect = (size) => {
-    updateOption("cardRatio", size);
+  const sizes = {
+    hd: { width: 720, label: "HD" },
+    fhd: { width: 1080, label: "FHD" },
+    "2k": { width: 1440, label: "2K" },
+    "4k": { width: 2160, label: "4K" },
   };
 
-  const handleDownloadSizeSelect = (size) => {
+  const handleSizeChange = (size) => {
     updateOption("downloadSize", size);
   };
 
@@ -104,8 +101,10 @@ const Header = ({
 
     updateOption("downloadFormat", format);
 
+    const getSizeWidth = (size) => parseInt(sizes[size].width, 10) || 1080;
+
     const rect = node.getBoundingClientRect();
-    const scale = (1080 / rect.width) * parseInt(size, 10);
+    const scale = getSizeWidth(size) / rect.width;
     const options = {
       quality: 1,
       width: rect.width * scale,
@@ -139,144 +138,152 @@ const Header = ({
   };
 
   return (
-    <header className="absolute top-0 left-0 z-40 w-full p-4">
-      <div className="flex items-center justify-between gap-2">
-        <div className="ml-auto flex items-center gap-2">
-          <div className="relative">
-            <Button
-              icon={AaIcon}
-              screenReaderText="Text Options"
-              className={cn({
-                "bg-accent-foreground text-neutral-900":
-                  toolbarVisible === "text",
-              })}
-              onClick={() =>
-                setToolbarVisible((prev) => (prev !== "text" ? "text" : ""))
-              }
-            />
-          </div>
-          <div className="relative">
-            <Button
-              icon={BgFillIcon}
-              screenReaderText="Background Fill Options"
-              className={cn({
-                "bg-accent-foreground text-neutral-900":
-                  toolbarVisible === "background",
-              })}
-              onClick={() =>
-                setToolbarVisible((prev) =>
-                  prev !== "background" ? "background" : ""
-                )
-              }
-            />
-          </div>
-          <div className="relative">
-            <Dropdown>
-              {({ isOpen, toggleDropdown }) => (
-                <>
-                  <DropdownTrigger onClick={toggleDropdown}>
-                    <Button icon={SizeIcon} screenReaderText="Size Options" />
-                  </DropdownTrigger>
-                  <DropdownContent isOpen={isOpen}>
-                    {cardRatios.map(({ value, label }) => (
-                      <DropDownAction
-                        key={value}
-                        label={label}
-                        active={options.cardRatio === value}
-                        onClick={() => handleSizeSelect(value)}
-                      />
+    <>
+      <Dropdown>
+        {({ isOpen, toggleDropdown }) => (
+          <>
+            <DropdownTrigger onClick={toggleDropdown}>
+              <Button icon={DownloadIcon} screenReaderText="Download Image" />
+            </DropdownTrigger>
+            <DropdownContent isOpen={isOpen}>
+              <div
+                className={cn("pt-1 pb-2 text-white", {
+                  "pointer-events-none": isDownloading,
+                })}
+              >
+                <div className="mb-4">
+                  <p className="mb-1 text-base font-semibold">Size:</p>
+                  <div className="flex gap-2">
+                    {Object.keys(sizes).map((size) => (
+                      <button
+                        key={size}
+                        type="button"
+                        onClick={() => handleSizeChange(size)}
+                        disabled={isDownloading}
+                        className={cn(
+                          "relatve flex shrink-0 items-center justify-center",
+                          "rounded-lg px-3 py-1 text-base font-medium",
+                          "cursor-pointer outline-none focus-visible:outline-none",
+                          "transition-transform duration-300 ease-in-out active:scale-97",
+                          options.downloadSize === size
+                            ? "bg-accent-foreground text-neutral-900"
+                            : "bg-white text-neutral-900 hover:bg-neutral-200"
+                        )}
+                      >
+                        {sizes[size].label}
+                      </button>
                     ))}
-                  </DropdownContent>
-                </>
-              )}
-            </Dropdown>
-          </div>
-          <Dropdown>
-            {({ isOpen, toggleDropdown }) => (
-              <>
-                <DropdownTrigger onClick={toggleDropdown}>
-                  <Button
-                    icon={DownloadIcon}
-                    screenReaderText="Download Image"
-                  />
-                </DropdownTrigger>
-                <DropdownContent isOpen={isOpen}>
-                  <div
-                    className={cn({
-                      "pointer-events-none opacity-50": isDownloading,
-                    })}
-                  >
-                    <div className="mb-2">
-                      <p className="mb-1 text-xs font-semibold text-neutral-700">
-                        Size:
-                      </p>
-                      <div className="flex gap-1">
-                        {["1x", "2x", "3x"].map((size) => (
-                          <button
-                            key={size}
-                            type="button"
-                            className={cn(
-                              "relatve flex shrink-0 items-center justify-center",
-                              "rounded-md px-3 py-1 text-xs font-medium",
-                              "cursor-pointer outline-none focus-visible:outline-none",
-                              "transition-transform duration-300 ease-in-out active:scale-97",
-                              options.downloadSize === size
-                                ? "bg-neutral-900 text-neutral-100"
-                                : "bg-neutral-200 text-neutral-900 hover:bg-neutral-300"
-                            )}
-                            onClick={() => handleDownloadSizeSelect(size)}
-                            disabled={isDownloading}
-                          >
-                            {size}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                    <div>
-                      <p className="mb-1 text-xs font-semibold text-neutral-700">
-                        Download:
-                      </p>
-                      <div className="grid grid-cols-2 gap-2">
-                        {["JPEG", "PNG"].map((format) => (
-                          <button
-                            key={format}
-                            type="button"
-                            className={cn(
-                              "relatve flex shrink-0 items-center justify-center",
-                              "rounded-md px-3 py-1 text-xs font-semibold",
-                              "cursor-pointer outline-none focus-visible:outline-none",
-                              "transition-transform duration-300 ease-in-out active:scale-97",
-                              "hover:bg-accent-foreground bg-neutral-900 text-neutral-100 hover:text-neutral-900"
-                            )}
-                            onClick={() =>
-                              handleDownload(
-                                format.toLowerCase(),
-                                options.downloadSize
-                              )
-                            }
-                            disabled={isDownloading}
-                          >
-                            {format}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                    {downloadError && (
-                      <p className="mt-2 text-xs font-medium text-red-500">
-                        {downloadError}
-                      </p>
-                    )}
-
-                    {isDownloading && (
-                      <p className="mt-2 text-xs font-medium text-neutral-600">
-                        Downloading...
-                      </p>
-                    )}
                   </div>
-                </DropdownContent>
-              </>
-            )}
-          </Dropdown>
+                </div>
+                <div>
+                  <p className="mb-1 text-base font-semibold">Download:</p>
+                  <div className="grid grid-cols-2 gap-2">
+                    {["JPEG", "PNG"].map((format) => (
+                      <button
+                        key={format}
+                        type="button"
+                        className={cn(
+                          "relatve flex shrink-0 items-center justify-center",
+                          "rounded-lg px-3 py-2 text-sm font-semibold",
+                          "cursor-pointer outline-none focus-visible:outline-none",
+                          "transition-transform duration-300 ease-in-out active:scale-97",
+                          "bg-white text-neutral-900",
+                          "hover:bg-accent-foreground hover:text-neutral-900"
+                        )}
+                        onClick={() =>
+                          handleDownload(
+                            format.toLowerCase(),
+                            options.downloadSize
+                          )
+                        }
+                        disabled={isDownloading}
+                      >
+                        {format}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                {downloadError && (
+                  <p className="mt-4 text-xs font-medium text-red-500">
+                    {downloadError}
+                  </p>
+                )}
+
+                {isDownloading && (
+                  <p className="mt-4 text-sm font-medium text-white">
+                    Downloading Image...
+                  </p>
+                )}
+              </div>
+            </DropdownContent>
+          </>
+        )}
+      </Dropdown>
+    </>
+  );
+};
+
+DownloadComponent.propTypes = {
+  options: PropTypes.object.isRequired,
+  updateOption: PropTypes.func.isRequired,
+};
+
+/**
+ * Header component for the text story maker.
+ *
+ * @param {Object} props - Component props.
+ * @param {Object} props.options - Options for the text story maker.
+ * @param {Function} props.updateOption - Function to update options.
+ * @returns {JSX.Element} The rendered Header component.
+ */
+const Header = ({ options, updateOption, activeTool, setActiveTool }) => {
+  if (activeTool) {
+    return (
+      <header className="absolute top-0 right-0 z-40 p-4">
+        <TextButton
+          className={cn(
+            "bg-neutral-800 text-white",
+            "p-2 px-4",
+            "text-base font-semibold"
+          )}
+          onClick={() => setActiveTool("")}
+        >
+          Done
+        </TextButton>
+      </header>
+    );
+  }
+
+  return (
+    <header className="absolute top-0 left-0 z-40 w-full p-4">
+      <div className="flex items-center justify-between gap-4">
+        <div className="ml-auto flex items-center gap-2">
+          <Button
+            icon={AaIcon}
+            screenReaderText="Text Options"
+            className={cn({
+              "bg-accent-foreground text-neutral-900": activeTool === "text",
+            })}
+            onClick={() =>
+              setActiveTool((prev) => (prev !== "text" ? "text" : ""))
+            }
+          />
+          <Button
+            icon={BgFillIcon}
+            screenReaderText="Background Fill Options"
+            className={cn({
+              "bg-accent-foreground text-neutral-900":
+                activeTool === "background",
+            })}
+            onClick={() =>
+              setActiveTool((prev) =>
+                prev !== "background" ? "background" : ""
+              )
+            }
+          />
+
+          <FrameComponent options={options} updateOption={updateOption} />
+          <DownloadComponent options={options} updateOption={updateOption} />
         </div>
       </div>
     </header>
@@ -286,8 +293,8 @@ const Header = ({
 Header.propTypes = {
   options: PropTypes.object.isRequired,
   updateOption: PropTypes.func.isRequired,
-  toolbarVisible: PropTypes.string.isRequired,
-  setToolbarVisible: PropTypes.func.isRequired,
+  activeTool: PropTypes.string.isRequired,
+  setActiveTool: PropTypes.func.isRequired,
 };
 
 export default Header;

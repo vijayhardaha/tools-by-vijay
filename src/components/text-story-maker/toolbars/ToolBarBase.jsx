@@ -51,7 +51,7 @@ ToolBarWrapper.propTypes = {
  * @param {string} [props.className] - Additional CSS classes to apply to the button.
  * @param {React.ReactNode} [props.children] - The child elements to render inside the button.
  * @param {boolean} [props.active] - Whether the button is in an active state.
- * @param {string} [props.srText] - Screen reader text for accessibility.
+ * @param {string} [props.screenReaderText] - Screen reader text for accessibility.
  * @param {Object} [props] - Additional props to pass to the button component.
  * @returns {JSX.Element} The styled toolbar button component.
  */
@@ -61,7 +61,7 @@ const ToolBarButton = ({
   className,
   children,
   active,
-  srText,
+  screenReaderText,
   ...props
 }) => {
   const Component = type === "icon" ? IconButton : TextButton;
@@ -72,7 +72,7 @@ const ToolBarButton = ({
         "bg-neutral-700": active,
       })}
       icon={icon}
-      aria-label={srText}
+      aria-label={screenReaderText}
       {...props}
     >
       {children}
@@ -86,7 +86,7 @@ ToolBarButton.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node,
   active: PropTypes.bool,
-  srText: PropTypes.string,
+  screenReaderText: PropTypes.string,
   props: PropTypes.object,
 };
 

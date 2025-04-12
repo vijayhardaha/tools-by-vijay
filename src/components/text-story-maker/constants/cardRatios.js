@@ -5,8 +5,10 @@
  * - `label` (string): A human-readable label for the aspect ratio.
  */
 export const cardRatios = [
-  { value: "9/16", label: "Story (9:16)" },
-  { value: "1/1", label: "Square (1:1)" },
-  { value: "4/5", label: "Portrait (4:5)" },
-  { value: "16/9", label: "Landscape (16:9)" },
+  { value: "9/16", label: "Instagram Story" },
+  { value: "1/1", label: "Instagram Post (Square)" },
+  { value: "4/5", label: "Instagram Post (4:5)" },
+  { value: "10/16", label: "Experimental (10:16)" },
+  { value: "full", label: "Full Screen" },
+  { value: "16/9", label: "YouTube Ad (16:9)" },
 ];

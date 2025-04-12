@@ -16,11 +16,12 @@ const TextButton = ({ className, children, ...props }) => (
     type="button"
     className={cn(
       "inline-flex shrink-0 items-center justify-center",
-      "text-sm whitespace-nowrap text-white",
-      "rounded-lg outline-none focus-visible:outline-none",
-      "cursor-pointer active:scale-97 disabled:pointer-events-none disabled:opacity-50",
+      "rounded-lg text-base whitespace-nowrap",
+      "bg-neutral-700 text-white",
+      "outline-none focus-visible:outline-none",
+      "cursor-pointer active:scale-95 disabled:pointer-events-none disabled:opacity-50",
       "transition-all duration-100 ease-in-out",
-      "h-8 min-w-8 p-2 px-3",
+      "min-h-8 min-w-8 p-2 px-3",
       className
     )}
     {...props}
@@ -32,7 +33,6 @@ const TextButton = ({ className, children, ...props }) => (
 TextButton.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node.isRequired,
-  // Spread props are not explicitly defined but can include any valid button attributes.
 };
 
 export default TextButton;

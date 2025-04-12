@@ -18,7 +18,7 @@ import { cn } from "@/lib/utils";
  */
 const TextStoryMakerTool = () => {
   const [options, setOptions] = useState(defaultOptions);
-  const [toolbarVisible, setToolbarVisible] = useState("");
+  const [activeTool, setActiveTool] = useState("");
 
   // Fetch options from local storage on load and merge with default options
   useEffect(() => {
@@ -62,25 +62,27 @@ const TextStoryMakerTool = () => {
 
   return (
     <div
-      className={cn(
-        "relative h-screen w-full bg-black",
-        "flex flex-col items-center justify-center"
-      )}
+      className={cn("relative h-screen w-full bg-neutral-900", "flex flex-col")}
     >
       <Header
         options={options}
         updateOption={updateOption}
-        toolbarVisible={toolbarVisible}
-        setToolbarVisible={setToolbarVisible}
+        activeTool={activeTool}
+        setActiveTool={setActiveTool}
       />
+
       <Footer
         options={options}
         updateOption={updateOption}
-        toolbarVisible={toolbarVisible}
-        setToolbarVisible={setToolbarVisible}
+        activeTool={activeTool}
+        setActiveTool={setActiveTool}
       />
-      <Content options={options} updateOption={updateOption} />
-      <ToolInfo />
+
+      <div className="overflow-hidden rounded-b-4xl">
+        <Content options={options} updateOption={updateOption} />
+      </div>
+
+      {!activeTool && <ToolInfo />}
     </div>
   );
 };

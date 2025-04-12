@@ -19,8 +19,11 @@ export const getRatioClass = (ratio) => {
       return "!aspect-[4/5]";
     case "16/9":
       return "!aspect-[16/9]";
+    case "10/16":
+      return "!aspect-[10/16]";
+    case "full":
     default:
-      return "!aspect-auto";
+      return "!aspect-auto h-screen";
   }
 };
 

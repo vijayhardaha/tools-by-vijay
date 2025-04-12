@@ -36,6 +36,6 @@ export const defaultOptions = {
   bgColor: "color3",
 
   // Download
-  downloadSize: "2x",
+  downloadSize: "fhd",
   downloadFormat: "png",
 };

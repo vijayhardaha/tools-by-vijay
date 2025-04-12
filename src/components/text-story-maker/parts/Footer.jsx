@@ -9,15 +9,15 @@ import TextToolBar from "@/components/text-story-maker/toolbars/TextToolBar";
  * @param {Object} props - Component props.
  * @param {Object} props.options - Configuration options for the footer.
  * @param {Function} props.updateOption - Callback function to update options.
- * @param {string} props.toolbarVisible - Determines which toolbar to display.
+ * @param {string} props.activeTool - Determines which toolbar to display.
  * @returns {JSX.Element} The rendered footer component.
  */
-const Footer = ({ options, updateOption, toolbarVisible }) => (
+const Footer = ({ options, updateOption, activeTool }) => (
   <>
-    {toolbarVisible === "text" && (
+    {activeTool === "text" && (
       <TextToolBar options={options} updateOption={updateOption} />
     )}
-    {toolbarVisible === "background" && (
+    {activeTool === "background" && (
       <BackgroundToolBar options={options} updateOption={updateOption} />
     )}
   </>
@@ -26,7 +26,7 @@ const Footer = ({ options, updateOption, toolbarVisible }) => (
 Footer.propTypes = {
   options: PropTypes.object.isRequired,
   updateOption: PropTypes.func.isRequired,
-  toolbarVisible: PropTypes.string.isRequired,
+  activeTool: PropTypes.string.isRequired,
 };
 
 export default Footer;
