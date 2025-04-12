@@ -187,10 +187,10 @@ const TextToolBar = ({ options, updateOption }) => {
                       type="button"
                       className={cn(
                         "relative whitespace-nowrap",
-                        "flex w-full items-center justify-center rounded-lg shadow-xs shadow-neutral-400",
+                        "flex w-full items-center justify-center rounded-lg shadow-xs shadow-neutral-300",
                         "cursor-pointer outline-none focus-visible:outline-none",
                         "transition-colors duration-300 ease-in-out active:scale-97",
-                        "p-2 px-4 text-sm font-semibold",
+                        "p-4 py-3 text-xs font-semibold",
                         "bg-neutral-900 text-neutral-100",
                         {
                           "bg-accent-foreground text-neutral-900":
