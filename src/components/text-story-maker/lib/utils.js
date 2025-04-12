@@ -87,10 +87,12 @@ export function getEffectStyles(effect = "") {
   const lightBg = {
     backgroundColor: "rgba(255, 255, 255, 0.15)",
     padding: "calc(var(--spacing) * 6)",
+    overflow: "hidden",
   };
   const darkBg = {
     backgroundColor: "rgba(0, 0, 0, 0.15)",
     padding: "calc(var(--spacing) * 6)",
+    overflow: "hidden",
   };
 
   const br = (size) => ({

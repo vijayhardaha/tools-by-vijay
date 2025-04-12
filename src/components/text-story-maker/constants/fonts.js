@@ -1,6 +1,5 @@
 import { Comfortaa as ComfortaaFont } from "next/font/google";
 import { Montserrat_Alternates as MontserratAlternatesFont } from "next/font/google";
-import { Pragati_Narrow as PragatiNarrowFont } from "next/font/google";
 import { Hind as HindFont } from "next/font/google";
 import { Kalam as KalamFont } from "next/font/google";
 import { Mukta as MuktaFont } from "next/font/google";
@@ -18,7 +17,6 @@ import { Crimson_Text as CrimsonTextFont } from "next/font/google";
 import { Roboto as RobotoFont } from "next/font/google";
 import { PT_Mono as PTMonoFont } from "next/font/google";
 import { Noto_Sans as NotoSansFont } from "next/font/google";
-import { Oswald as OswaldFont } from "next/font/google";
 import { Bebas_Neue as BebasNeueFont } from "next/font/google";
 import { Roboto_Condensed as RobotoCondensedFont } from "next/font/google";
 import { Montserrat as MontserratFont } from "next/font/google";
@@ -46,11 +44,6 @@ const Hind = HindFont({
   weight: ["400", "700"],
 });
 const Kalam = KalamFont({
-  subsets: ["latin", "devanagari"],
-  display: "swap",
-  weight: ["400", "700"],
-});
-const Pragati_Narrow = PragatiNarrowFont({
   subsets: ["latin", "devanagari"],
   display: "swap",
   weight: ["400", "700"],
@@ -125,11 +118,6 @@ const Noto_Sans = NotoSansFont({
   display: "swap",
   weight: ["400", "700"],
 });
-const Oswald = OswaldFont({
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["400", "700"],
-});
 const Bebas_Neue = BebasNeueFont({
   subsets: ["latin"],
   display: "swap",
@@ -192,7 +180,6 @@ export const fonts = {
     label: "Montserrat Alternates",
     class: Montserrat_Alternates.className,
   },
-  pragati_narrow: { label: "Pragati Narrow", class: Pragati_Narrow.className },
   hind: { label: "Hind", class: Hind.className },
   kalam: { label: "Kalam", class: Kalam.className },
   mukta: { label: "Mukta", class: Mukta.className },
@@ -210,7 +197,6 @@ export const fonts = {
   roboto: { label: "Roboto", class: Roboto.className },
   pt_mono: { label: "PT Mono", class: PT_Mono.className },
   noto_sans: { label: "Noto Sans", class: Noto_Sans.className },
-  oswald: { label: "Oswald", class: Oswald.className },
   bebas_neue: { label: "Bebas Neue", class: Bebas_Neue.className },
   roboto_condensed: {
     label: "Roboto Condensed",
