@@ -46,8 +46,12 @@ const TextToolBar = ({ options, updateOption }) => {
     "",
     "white-stroke",
     "black-stroke",
+    "white-glow",
+    "black-glow",
     "white-bg",
     "black-bg",
+    "white-outline",
+    "black-outline",
     "light-bg",
     "dark-bg",
   ];

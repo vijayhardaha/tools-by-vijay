@@ -22,7 +22,6 @@ const TextStoryMakerTool = () => {
   // Fetch options from local storage on load and merge with default options
   useEffect(() => {
     const savedOptions = localStorage.getItem("textStoryMakerOptions");
-    console.log("Saved options from local storage:", savedOptions);
     if (savedOptions) {
       try {
         const parsedOptions = JSON.parse(savedOptions);
@@ -52,8 +51,7 @@ const TextStoryMakerTool = () => {
         localStorage.setItem(
           "textStoryMakerOptions",
           JSON.stringify(updatedOptions)
-        ); // Save to local storage
-        console.log("Options saved to local storage:", updatedOptions);
+        );
       } catch (error) {
         console.error("Failed to save options to local storage:", error);
       }

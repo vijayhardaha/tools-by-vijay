@@ -12,15 +12,15 @@ import {
 export const getRatioClass = (ratio) => {
   switch (ratio) {
     case "9/16":
-      return "aspect-[9/16]";
+      return "!aspect-[9/16]";
     case "1/1":
-      return "aspect-square";
+      return "!aspect-square";
     case "4/5":
-      return "aspect-[4/5]";
+      return "!aspect-[4/5]";
     case "16/9":
-      return "aspect-[16/9]";
+      return "!aspect-[16/9]";
     default:
-      return "aspect-auto";
+      return "!aspect-auto";
   }
 };
 
@@ -32,12 +32,12 @@ export const getRatioClass = (ratio) => {
 export const getAlignmentClass = (alignment) => {
   switch (alignment) {
     case "left":
-      return "text-left items-start w-full";
+      return "!text-left !items-start w-full";
     case "right":
-      return "text-right items-end w-full";
+      return "!text-right !items-end w-full";
     case "center":
     default:
-      return "text-center items-center";
+      return "!text-center !items-center";
   }
 };
 
@@ -77,4 +77,72 @@ export function getBgColorClass(type, value) {
   }
 
   return "";
+}
+
+export function getEffectStyles(effect = "") {
+  if (!effect) return {};
+
+  switch (effect) {
+    case "white-stroke":
+      return {
+        WebkitTextStroke: "0.125em #ffffff",
+        paintOrder: "stroke fill",
+        letterSpacing: "0.0625em",
+      };
+    case "black-stroke":
+      return {
+        WebkitTextStroke: "0.125em #000000",
+        paintOrder: "stroke fill",
+        letterSpacing: "0.0625em",
+      };
+    case "white-glow":
+      return {
+        textShadow: "0 0 0.1vh #ffffff,0 0 0.1vh #ffffff,0 0 1vh #ffffff",
+        letterSpacing: "0.0625em",
+      };
+    case "black-glow":
+      return {
+        textShadow: "0 0 0.1vh #000000,0 0 0.1vh #000000,0 0 1vh #000000",
+        letterSpacing: "0.0625em",
+      };
+    case "white-outline":
+      return {
+        WebkitTextStroke: "0.0625em #ffffff",
+        paintOrder: "stroke fill",
+        letterSpacing: "0.0625em",
+      };
+    case "black-outline":
+      return {
+        WebkitTextStroke: "0.0625em #000000",
+        paintOrder: "stroke fill",
+        letterSpacing: "0.0625em",
+      };
+    case "white-bg":
+      return {
+        outline: "rgba(255,255,255,.6) solid 4px",
+        outlineOffset: ".2em",
+        borderRadius: ".2em",
+      };
+    default:
+      return {};
+  }
+}
+
+export function getContentStyles(options) {
+  let styles = {};
+
+  if (parseFloat(options.textSize) > 0) {
+    styles.fontSize = `${parseFloat(options.textSize)}rem`;
+  }
+
+  if (parseFloat(options.textLineHeight) > 0) {
+    styles.lineHeight = `${options.textLineHeight}`;
+    styles.gap = `calc(var(--spacing) * ${parseFloat(options.textLineHeight) * 3})`;
+  }
+
+  if (options.textEffect) {
+    styles = { ...styles, ...getEffectStyles(options.textEffect) };
+  }
+
+  return styles;
 }
