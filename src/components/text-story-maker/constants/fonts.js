@@ -9,7 +9,6 @@ import { Khand as KhandFont } from "next/font/google";
 import { Teko as TekoFont } from "next/font/google";
 import { Josefin_Slab as JosefinSlabFont } from "next/font/google";
 import { Jost as JostFont } from "next/font/google";
-import { Parkinsans as ParkinsansFont } from "next/font/google";
 import { Poppins as PoppinsFont } from "next/font/google";
 import { Anonymous_Pro as AnonymousProFont } from "next/font/google";
 import { Josefin_Sans as JosefinSansFont } from "next/font/google";
@@ -77,11 +76,6 @@ const Josefin_Slab = JosefinSlabFont({
   weight: ["400", "700"],
 });
 const Jost = JostFont({
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["400", "700"],
-});
-const Parkinsans = ParkinsansFont({
   subsets: ["latin"],
   display: "swap",
   weight: ["400", "700"],
@@ -207,7 +201,6 @@ export const fonts = {
   teko: { label: "Teko", class: Teko.className },
   josefin_slab: { label: "Josefin Slab", class: Josefin_Slab.className },
   jost: { label: "Jost", class: Jost.className },
-  parkinsans: { label: "Parkinsans", class: Parkinsans.className },
   poppins: { label: "Poppins", class: Poppins.className },
   anonymous_pro: { label: "Anonymous Pro", class: Anonymous_Pro.className },
   josefin_sans: { label: "Josefin Sans", class: Josefin_Sans.className },
