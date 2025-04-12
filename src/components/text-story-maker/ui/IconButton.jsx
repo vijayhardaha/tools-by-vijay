@@ -25,7 +25,7 @@ const IconButton = ({
     type="button"
     className={cn(
       "inline-flex shrink-0 items-center justify-center",
-      "text-sm font-semibold whitespace-nowrap",
+      "text-sm font-semibold whitespace-nowrap shadow-sm",
       "rounded-lg outline-none focus-visible:outline-none",
       "cursor-pointer active:scale-94 disabled:pointer-events-none disabled:opacity-50",
       "transition-all duration-100 ease-in-out",

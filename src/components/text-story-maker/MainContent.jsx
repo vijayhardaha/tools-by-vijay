@@ -26,7 +26,7 @@ const MainContent = ({ options, updateOption }) => {
     >
       <div
         className={cn(
-          "absolute top-0 left-0 h-full w-full p-10",
+          "absolute top-0 left-0 h-full w-full overflow-hidden p-10",
           "flex flex-col items-center justify-center",
           getBgColorClass(options.bgType, options.bgColor)
         )}
@@ -36,7 +36,7 @@ const MainContent = ({ options, updateOption }) => {
           tagName="div"
           html={options.text
             .split("\n")
-            .map((line) => `<p class="min-w-1">${line}</p>`)
+            .map((line) => `<p>${line}</p>`)
             .join("")} // Convert text to multiple <p> elements
           onBlur={(e) => {
             if (e.relatedTarget && e.relatedTarget.id === "editable-content") {
@@ -64,8 +64,8 @@ const MainContent = ({ options, updateOption }) => {
           tabIndex={0} // Make the element focusable
           className={cn(
             "inline-flex flex-col items-start justify-center gap-3",
-            "min-h-10 min-w-1",
-            "overflow-hidden outline-none",
+            "min-h-10 min-w-1 [&>.child]:min-w-1",
+            "outline-none",
             getAlignmentClass(options.textAlign),
             getFontClass(options.textFont),
             getTextColorClass(options.textColor),

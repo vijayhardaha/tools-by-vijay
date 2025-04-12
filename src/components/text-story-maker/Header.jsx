@@ -15,6 +15,8 @@ import Dropdown, {
 import IconButton from "@/components/text-story-maker/ui/IconButton";
 import { cn } from "@/lib/utils";
 
+import { getFontClass } from "./lib/fonts";
+
 /**
  * Button component that wraps the IconButton with predefined styles.
  *
@@ -26,7 +28,10 @@ import { cn } from "@/lib/utils";
 const Button = ({ icon, className, ...props }) => (
   <IconButton
     icon={icon}
-    className={cn("rounded-full bg-white text-black", className)}
+    className={cn(
+      "hover:bg-accent-foreground bg-neutral-100 text-neutral-800 hover:text-neutral-800",
+      className
+    )}
     {...props}
   />
 );
@@ -88,10 +93,25 @@ const Header = ({
   };
 
   return (
-    <header className="absolute top-0 left-0 z-20 h-auto w-full bg-white/20 p-2.5 px-4 text-white backdrop-blur-sm">
+    <header className="absolute top-0 left-0 z-20 h-auto w-full bg-neutral-800 p-2 px-4 text-neutral-100 backdrop-blur-sm">
       <div className="flex items-center justify-between gap-2">
-        <div className="flex items-center">
-          <h1 className="text-lg font-semibold text-white">Text Story Maker</h1>
+        <div className="inline-flex flex-col items-start">
+          <h1
+            className={cn(
+              "mb-0 text-lg leading-normal font-semibold tracking-wide text-neutral-100",
+              getFontClass("bebas_neue")
+            )}
+          >
+            Text Story Maker
+          </h1>
+          <p
+            className={cn(
+              "-mt-2 text-xs leading-normal",
+              getFontClass("caveat")
+            )}
+          >
+            A tool by Vijay Hardaha
+          </p>
         </div>
         <div className="flex items-center justify-end gap-1.5">
           <div className="relative">
