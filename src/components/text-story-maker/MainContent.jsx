@@ -40,7 +40,7 @@ const renderHtml = (text) =>
   text
     .split("\n")
     .map((line) => `${line}`)
-    .join("<br><br>"); // Convert text to multiple <p> elements
+    .join("<br>"); // Convert text to multiple <p> elements
 
 /**
  * MainContent component for rendering editable text content with various styles and options.

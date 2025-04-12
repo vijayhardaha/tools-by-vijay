@@ -82,46 +82,97 @@ export function getBgColorClass(type, value) {
 export function getEffectStyles(effect = "") {
   if (!effect) return {};
 
+  const letterSpacing = { letterSpacing: "0.031em" };
+  const paintOrder = { paintOrder: "stroke fill" };
+  const lightBg = {
+    backgroundColor: "rgba(255, 255, 255, 0.15)",
+    padding: "calc(var(--spacing) * 6)",
+  };
+  const darkBg = {
+    backgroundColor: "rgba(0, 0, 0, 0.15)",
+    padding: "calc(var(--spacing) * 6)",
+  };
+
+  const br = (size) => ({
+    borderRadius: `calc(var(--spacing) * ${size})`,
+  });
+
   switch (effect) {
     case "white-stroke":
       return {
-        WebkitTextStroke: "0.125em #ffffff",
-        paintOrder: "stroke fill",
-        letterSpacing: "0.0625em",
+        ...letterSpacing,
+        ...paintOrder,
+        ...{
+          WebkitTextStroke: "0.125em #ffffff",
+        },
       };
     case "black-stroke":
       return {
-        WebkitTextStroke: "0.125em #000000",
-        paintOrder: "stroke fill",
-        letterSpacing: "0.0625em",
+        ...letterSpacing,
+        ...paintOrder,
+        ...{
+          WebkitTextStroke: "0.125em #000000",
+        },
       };
     case "white-glow":
       return {
-        textShadow: "0 0 0.1vh #ffffff,0 0 0.1vh #ffffff,0 0 1vh #ffffff",
-        letterSpacing: "0.0625em",
+        ...letterSpacing,
+        ...{
+          textShadow: "0 0 0.1vh #ffffff,0 0 0.1vh #ffffff,0 0 1vh #ffffff",
+        },
       };
     case "black-glow":
       return {
-        textShadow: "0 0 0.1vh #000000,0 0 0.1vh #000000,0 0 1vh #000000",
-        letterSpacing: "0.0625em",
+        ...letterSpacing,
+        ...{
+          textShadow: "0 0 0.1vh #000000,0 0 0.1vh #000000,0 0 1vh #000000",
+        },
       };
     case "white-outline":
       return {
-        WebkitTextStroke: "0.0625em #ffffff",
-        paintOrder: "stroke fill",
-        letterSpacing: "0.0625em",
+        ...letterSpacing,
+        ...paintOrder,
+        ...{
+          WebkitTextStroke: "0.0625em #ffffff",
+        },
       };
     case "black-outline":
       return {
-        WebkitTextStroke: "0.0625em #000000",
-        paintOrder: "stroke fill",
-        letterSpacing: "0.0625em",
+        ...letterSpacing,
+        ...paintOrder,
+        ...{
+          WebkitTextStroke: "0.0625em #000000",
+        },
       };
-    case "white-bg":
+    case "light-bg":
       return {
-        outline: "rgba(255,255,255,.6) solid 4px",
-        outlineOffset: ".2em",
-        borderRadius: ".2em",
+        ...lightBg,
+        ...br(0),
+      };
+    case "dark-bg":
+      return {
+        ...darkBg,
+        ...br(0),
+      };
+    case "light-bg-rounded":
+      return {
+        ...lightBg,
+        ...br(4),
+      };
+    case "dark-bg-rounded":
+      return {
+        ...darkBg,
+        ...br(4),
+      };
+    case "light-bg-rounded-lg":
+      return {
+        ...lightBg,
+        ...br(6),
+      };
+    case "dark-bg-rounded-lg":
+      return {
+        ...darkBg,
+        ...br(6),
       };
     default:
       return {};

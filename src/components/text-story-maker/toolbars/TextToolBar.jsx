@@ -48,12 +48,14 @@ const TextToolBar = ({ options, updateOption }) => {
     "black-stroke",
     "white-glow",
     "black-glow",
-    "white-bg",
-    "black-bg",
     "white-outline",
     "black-outline",
     "light-bg",
     "dark-bg",
+    "light-bg-rounded",
+    "dark-bg-rounded",
+    "light-bg-rounded-lg",
+    "dark-bg-rounded-lg",
   ];
 
   const textAlignments = ["center", "left", "right"];
