@@ -5,6 +5,8 @@ import { PiTextAlignCenter as AlignCenterIcon } from "react-icons/pi";
 import { PiTextAlignLeft as AlignLeftIcon } from "react-icons/pi";
 import { PiTextAlignRight as AlignRightIcon } from "react-icons/pi";
 import { PiMagicWand as TextBgIcon } from "react-icons/pi";
+import { PiTextBBold as TextBoldIcon } from "react-icons/pi";
+import { PiTextItalic as TextItalicIcon } from "react-icons/pi";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 
@@ -100,6 +102,22 @@ const TextToolBar = ({ options, updateOption }) => {
           : "center";
 
     updateOption("textAlign", newAlignment);
+  };
+
+  /**
+   * Toggles the bold text option.
+   */
+  const handleBoldToggle = () => {
+    const newBoldStatus = !options.textBold;
+    updateOption("textBold", newBoldStatus);
+  };
+
+  /**
+   * Toggles the italic text option.
+   */
+  const handleItalicToggle = () => {
+    const newItalicStatus = !options.textItalic;
+    updateOption("textItalic", newItalicStatus);
   };
 
   /**
@@ -232,6 +250,22 @@ const TextToolBar = ({ options, updateOption }) => {
               handleAlignmentChange();
             }}
             srText="Text Alignment Tool"
+          />
+          <ToolBarButton
+            icon={TextBoldIcon}
+            onClick={handleBoldToggle}
+            className={cn("h-9 w-9", {
+              "bg-white text-black": options.textBold,
+            })}
+            srText="Bold Text Tool"
+          />
+          <ToolBarButton
+            icon={TextItalicIcon}
+            onClick={handleItalicToggle}
+            className={cn("h-9 w-9", {
+              "bg-white text-black": options.textItalic,
+            })}
+            srText="Italic Text Tool"
           />
           <ToolBarButton
             icon={TextBgIcon}

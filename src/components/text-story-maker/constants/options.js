@@ -20,6 +20,8 @@ export const defaultOptions = {
   textLineHeight: 1.375,
   textColor: "color1",
   textAlign: "center",
+  textBold: false,
+  textItalic: false,
 
   // Content
   text: "",

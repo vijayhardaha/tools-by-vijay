@@ -33,7 +33,11 @@ const MainContent = ({ options, updateOption }) => {
             "p-10",
             getAlignmentClass(options.textAlign),
             getFontClass(options.textFont),
-            getTextColorClass(options.textColor)
+            getTextColorClass(options.textColor),
+            {
+              "!font-bold": options.textBold,
+              "!italic": options.textItalic,
+            }
           )}
           style={{
             fontSize: `${options.textSize}rem`,
