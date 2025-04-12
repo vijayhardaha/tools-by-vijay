@@ -10,15 +10,14 @@ import { PiPaintBucket as BgFillIcon } from "react-icons/pi";
 import { PiCheckCircleFill as CheckFillIcon } from "react-icons/pi";
 import { PiDownloadSimple as DownloadIcon } from "react-icons/pi";
 
-import { cardRatios } from "@/components/text-story-maker/constants/cardRatios";
+import { cardRatios } from "@/components/text-story-maker/constants";
+import { getFontClass } from "@/components/text-story-maker/lib/utils";
 import Dropdown, {
   DropdownTrigger,
   DropdownContent,
 } from "@/components/text-story-maker/ui/Dropdown";
 import IconButton from "@/components/text-story-maker/ui/IconButton";
 import { cn } from "@/lib/utils";
-
-import { getFontClass } from "./lib/fonts";
 
 /**
  * Button component that wraps the IconButton with predefined styles.

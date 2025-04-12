@@ -4,7 +4,7 @@ import { useKeenSlider } from "keen-slider/react";
 import PropTypes from "prop-types";
 import "keen-slider/keen-slider.min.css";
 
-import { bgColors } from "@/components/text-story-maker/constants/bgColors";
+import { bgColors } from "@/components/text-story-maker/constants";
 import {
   ToolBarWrapper,
   ToolBarButton,

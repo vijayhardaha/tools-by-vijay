@@ -4,12 +4,14 @@ import PropTypes from "prop-types";
 import ContentEditable from "react-contenteditable"; // Import the package
 import sanitizeHtml from "sanitize-html"; // Import sanitizeHtml
 
+import {
+  getAlignmentClass,
+  getBgColorClass,
+  getFontClass,
+  getRatioClass,
+  getTextColorClass,
+} from "@/components/text-story-maker/lib/utils";
 import { cn } from "@/lib/utils";
-
-import { getBgColorClass } from "./lib/bgColors";
-import { getFontClass } from "./lib/fonts";
-import { getTextColorClass } from "./lib/textColors";
-import { getAlignmentClass, getRatioClass } from "./lib/utils";
 
 const santize = (html) =>
   sanitizeHtml(html, {

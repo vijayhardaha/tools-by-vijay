@@ -1,3 +1,9 @@
+import {
+  bgColors,
+  fonts,
+  textColors,
+} from "@/components/text-story-maker/constants";
+
 /**
  * Returns the CSS class for a given aspect ratio.
  * @param {string} ratio - The aspect ratio in the format "width/height" (e.g., "9/16").
@@ -34,3 +40,41 @@ export const getAlignmentClass = (alignment) => {
       return "text-center items-center";
   }
 };
+
+/**
+ * Retrieves the CSS class for a given text color value and key.
+ *
+ * @param {string} value - The key representing the text color in the `textColors` object.
+ * @param {string} [key="text"] - The specific property to retrieve from the text color object (default is "text").
+ * @returns {string} - The CSS class for the specified text color and key, or an empty string if not found.
+ */
+export function getTextColorClass(value, key = "text") {
+  if (textColors[value] && textColors[value][key]) {
+    return textColors[value][key];
+  }
+
+  return "";
+}
+
+/**
+ * Retrieves the font class name by its key.
+ * @param {string} key - The key of the font.
+ * @returns {string|null} The class name of the font, or null if not found.
+ */
+export const getFontClass = (key) => {
+  return fonts[key]?.class || null;
+};
+
+/**
+ * Utility function to get color class based on type and value.
+ * @param {string} type - The type of color (e.g., 'solid', 'gradient', 'mesh').
+ * @param {string} value - The specific color key (e.g., 'color1', 'color2').
+ * @returns {string} - The corresponding color class or an empty string if not found.
+ */
+export function getBgColorClass(type, value) {
+  if (bgColors[type] && bgColors[type][value]) {
+    return bgColors[type][value];
+  }
+
+  return "";
+}

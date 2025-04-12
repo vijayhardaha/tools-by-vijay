@@ -10,12 +10,12 @@ import { PiTextAa as AaIcon } from "react-icons/pi";
 import { PiTextAlignCenter as AlignCenterIcon } from "react-icons/pi";
 import { PiTextAlignLeft as AlignLeftIcon } from "react-icons/pi";
 import { PiTextAlignRight as AlignRightIcon } from "react-icons/pi";
-import { RiFontSizeAi as TextBgIcon } from "react-icons/ri";
+import { RiFontSizeAi as TextEffectIcon } from "react-icons/ri";
 import { RiLineHeight as LineHeightIcon } from "react-icons/ri";
 import "keen-slider/keen-slider.min.css";
 
-import { fonts } from "@/components/text-story-maker/constants/fonts";
-import { textColors } from "@/components/text-story-maker/constants/textColors";
+import { fonts, textColors } from "@/components/text-story-maker/constants";
+import { getFontClass } from "@/components/text-story-maker/lib/utils";
 import {
   ToolBarWrapper,
   ToolBarButton,
@@ -23,8 +23,6 @@ import {
 } from "@/components/text-story-maker/toolbars/ToolBarBase";
 import RangeSlider from "@/components/text-story-maker/ui/RangeSlider";
 import { cn } from "@/lib/utils";
-
-import { getFontClass } from "../lib/fonts";
 
 /**
  * TextToolBar component provides a toolbar for text customization, including font size, line height, text alignment, and other text-related options.
@@ -43,6 +41,18 @@ const TextToolBar = ({ options, updateOption }) => {
   const [lineHeight, setLineHeight] = useState(options.textLineHeight);
   const [showLineHeightSlider, setShowLineHeightSlider] = useState(false);
   const [showFontSizeSlider, setShowFontSizeSlider] = useState(false);
+
+  const textEffects = [
+    "",
+    "white-stroke",
+    "black-stroke",
+    "white-bg",
+    "black-bg",
+    "light-bg",
+    "dark-bg",
+  ];
+
+  const textAlignments = ["center", "left", "right"];
 
   const [fontSliderRef] = useKeenSlider({
     loop: false,
@@ -100,17 +110,13 @@ const TextToolBar = ({ options, updateOption }) => {
   };
 
   /**
-   * Toggles the text alignment between "left", "center", and "right".
+   * Toggles the text alignment option in sequence.
    */
   const handleAlignmentChange = () => {
-    const newAlignment =
-      options.textAlign === "center"
-        ? "left"
-        : options.textAlign === "left"
-          ? "right"
-          : "center";
-
-    updateOption("textAlign", newAlignment);
+    const currentAlignment = options.textAlign || "left";
+    const currentIndex = textAlignments.indexOf(currentAlignment);
+    const nextIndex = (currentIndex + 1) % textAlignments.length;
+    updateOption("textAlign", textAlignments[nextIndex]);
   };
 
   /**
@@ -135,6 +141,16 @@ const TextToolBar = ({ options, updateOption }) => {
   const handleUppercaseToggle = () => {
     const newUppercaseStatus = !options.textUppercase;
     updateOption("textUppercase", newUppercaseStatus);
+  };
+
+  /**
+   * Toggles the text effect option in sequence.
+   */
+  const handleTextEffectToggle = () => {
+    const currentEffect = options.textEffect || "";
+    const currentIndex = textEffects.indexOf(currentEffect);
+    const nextIndex = (currentIndex + 1) % textEffects.length;
+    updateOption("textEffect", textEffects[nextIndex]);
   };
 
   /**
@@ -303,11 +319,13 @@ const TextToolBar = ({ options, updateOption }) => {
             })}
             srText="Uppercase Text Tool"
           />
-
           <ToolBarButton
-            icon={TextBgIcon}
-            className="size-8 bg-white text-black"
-            srText="Text Background Tool"
+            icon={TextEffectIcon}
+            onClick={handleTextEffectToggle}
+            className={cn("size-8", {
+              "bg-white text-black": options.textEffect,
+            })}
+            srText="Text Effect Tool"
           />
           <ToolBarButton
             icon={FontSizeIcon}

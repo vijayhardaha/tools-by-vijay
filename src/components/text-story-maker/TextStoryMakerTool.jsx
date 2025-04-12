@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 
-import { defaultOptions } from "@/components/text-story-maker/constants/options";
+import { defaultOptions } from "@/components/text-story-maker/constants";
 import Footer from "@/components/text-story-maker/Footer";
 import Header from "@/components/text-story-maker/Header";
 import MainContent from "@/components/text-story-maker/MainContent";
