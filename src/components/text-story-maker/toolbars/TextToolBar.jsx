@@ -1,14 +1,12 @@
-import { useState, useRef } from "react";
-
+import { useState } from "react";
 import PropTypes from "prop-types";
 import { PiTextAa as AaIcon } from "react-icons/pi";
 import { PiTextAlignCenter as AlignCenterIcon } from "react-icons/pi";
 import { PiTextAlignLeft as AlignLeftIcon } from "react-icons/pi";
 import { PiTextAlignRight as AlignRightIcon } from "react-icons/pi";
 import { PiMagicWand as TextBgIcon } from "react-icons/pi";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import { useKeenSlider } from "keen-slider/react";
+import "keen-slider/keen-slider.min.css";
 
 import { fonts } from "@/components/text-story-maker/constants/fonts";
 import { textColors } from "@/components/text-story-maker/constants/textColors";
@@ -31,10 +29,41 @@ import { cn } from "@/lib/utils";
  * @returns {JSX.Element} The rendered TextToolBar component.
  */
 const TextToolBar = ({ options, updateOption }) => {
-  const sliderRef = useRef(null);
   const [activeTool, setActiveTool] = useState("font-family");
   const [textSize, setTextSize] = useState(options.textSize);
   const [lineHeight, setLineHeight] = useState(options.textLineHeight);
+
+  console.log(Object.keys(fonts).indexOf(options.textFont));
+  const [fontSliderRef, fontSlider] = useKeenSlider({
+    loop: false,
+    mode: "free-snap",
+    initial: Object.keys(fonts).indexOf(options.textFont) + 1,
+    slides: {
+      origin: "center",
+      perView: 3,
+      spacing: 0,
+    },
+    slideChanged(s) {
+      const font = Object.keys(fonts)[s.track.details.abs];
+      updateOption("textFont", font);
+    },
+  });
+
+  const [colorSliderRef, colorSlider] = useKeenSlider({
+    loop: false,
+    mode: "free-snap",
+    initial: Object.keys(textColors).indexOf(options.textColor) + 1,
+    slides: {
+      origin: "center",
+      perView: 9,
+      spacing: 0,
+    },
+    slideChanged(s) {
+      const idx = s.track.details.abs;
+      const colorKey = Object.keys(textColors)[idx];
+      updateOption("textColor", colorKey);
+    },
+  });
 
   /**
    * Handles changes to the right slider (line height).
@@ -112,94 +141,70 @@ const TextToolBar = ({ options, updateOption }) => {
 
       <div className="absolute bottom-0 left-0 z-20 flex h-auto w-full flex-col items-center justify-center gap-4 p-4 py-6">
         {activeTool === "font-family" && (
-          <div className="slider-container w-full">
-            <Slider
-              ref={sliderRef}
-              dots={false}
-              infinite={false}
-              arrows={false}
-              speed={100}
-              slidesToShow={1}
-              slidesToScroll={1}
-              variableWidth={true}
-              swipeToSlide={true}
-              focusOnSelect={true}
-              centerMode={true}
-              initialSlide={Object.keys(fonts).indexOf(options.textFont)}
-              afterChange={(current) => {
-                const font = Object.keys(fonts)[current];
-                updateOption("textFont", font);
-              }}
-            >
+          <div className="relative w-full overflow-hidden">
+            <div className="keen-slider" ref={fontSliderRef}>
               {Object.keys(fonts).map((font) => (
-                <div key={font} className="!inline-flex p-1">
-                  <button
-                    type="button"
-                    className={cn(
-                      "relative whitespace-nowrap",
-                      "inline-flex items-center justify-center",
-                      "rounded-md shadow-sm",
-                      "cursor-pointer outline-none focus-visible:outline-none",
-                      "transition-colors duration-300 ease-in-out",
-                      "active:scale-94",
-                      "p-1.5 px-4",
-                      "border border-white/50 bg-transparent text-white",
-                      "w-auto text-sm",
-                      "backdrop-blur-xs backdrop-opacity-75",
-                      "bg-white/20",
-                      { "bg-white text-black": options.textFont === font }
-                    )}
-                    onClick={() => {
-                      updateOption("textFont", font);
-                    }}
-                  >
-                    {fonts[font].label}
-                  </button>
+                <div key={font} className="keen-slider__slide">
+                  <div className="p-1">
+                    <button
+                      type="button"
+                      className={cn(
+                        "relative whitespace-nowrap",
+                        "flex items-center justify-center",
+                        "w-full rounded-md shadow-sm",
+                        "cursor-pointer outline-none focus-visible:outline-none",
+                        "transition-colors duration-300 ease-in-out",
+                        "active:scale-94",
+                        "p-1.5 px-3",
+                        "border border-white/50 bg-transparent text-white",
+                        "text-xs",
+                        "backdrop-blur-xs backdrop-opacity-75",
+                        "bg-white/20",
+                        { "bg-white text-black": options.textFont === font }
+                      )}
+                      onClick={() => {
+                        updateOption("textFont", font);
+                      }}
+                    >
+                      {fonts[font].label}
+                    </button>
+                  </div>
                 </div>
               ))}
-            </Slider>
+            </div>
           </div>
         )}
 
         {activeTool === "text-color" && (
-          <div className="slider-container w-full">
-            <Slider
-              ref={sliderRef}
-              dots={false}
-              infinite={false}
-              arrows={false}
-              speed={100}
-              slidesToShow={1}
-              slidesToScroll={1}
-              variableWidth={true}
-              centerMode={true}
-              swipeToSlide={true}
-              focusOnSelect={true}
-              initialSlide={Object.keys(textColors).indexOf(options.textColor)}
-            >
+          <div className="relative w-full">
+            <div className="keen-slider" ref={colorSliderRef}>
               {Object.keys(textColors).map((colorKey) => (
-                <div key={colorKey} className="!inline-flex p-1">
-                  <button
-                    type="button"
-                    className={cn(
-                      "relative h-10 w-10 rounded-lg shadow-sm shadow-black/30",
-                      "cursor-pointer outline-none focus-visible:outline-none",
-                      "transition-transform duration-300 ease-in-out",
-                      "active:scale-94",
-                      "ring-1 ring-white/85",
-                      textColors[colorKey].bg,
-                      {
-                        "ring-white ring-offset-2":
-                          options.textColor === colorKey,
-                      }
-                    )}
-                    onClick={() => {
-                      updateOption("textColor", colorKey);
-                    }}
-                  ></button>
+                <div key={colorKey} className="keen-slider__slide">
+                  <div className="flex items-center justify-center p-1">
+                    <button
+                      type="button"
+                      className={cn(
+                        "flex items-center justify-center",
+                        "relative h-10 w-10 rounded-lg",
+                        "shadow-sm shadow-black/30",
+                        "cursor-pointer outline-none focus-visible:outline-none",
+                        "transition-transform duration-300 ease-in-out",
+                        "active:scale-94",
+                        "ring-1 ring-white/85",
+                        textColors[colorKey].bg,
+                        {
+                          "ring-white ring-offset-2":
+                            options.textColor === colorKey,
+                        }
+                      )}
+                      onClick={() => {
+                        updateOption("textColor", colorKey);
+                      }}
+                    ></button>
+                  </div>
                 </div>
               ))}
-            </Slider>
+            </div>
           </div>
         )}
 
