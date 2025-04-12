@@ -23,6 +23,7 @@ export const defaultOptions = {
   textBold: false,
   textItalic: false,
   textUppercase: false,
+  textEffect: "",
 
   // Content
   text: "",
