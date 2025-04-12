@@ -17,44 +17,46 @@ import { cn } from "@/lib/utils";
  */
 const VerticalRangeSlider = ({ min, max, step, values, onChange }) => {
   return (
-    <Range
-      step={step}
-      min={min}
-      max={max}
-      values={values}
-      onChange={onChange}
-      direction={Direction.Up}
-      renderTrack={({ props: trackProps, children }) => (
-        <div className="relative flex h-full w-2 items-center justify-center">
-          <div
-            {...trackProps}
-            ref={trackProps.ref}
-            className="relative z-10 h-full w-1"
-          >
-            {children}
+    <div className="h-full rounded-md bg-neutral-300 p-3">
+      <Range
+        step={step}
+        min={min}
+        max={max}
+        values={values}
+        onChange={onChange}
+        direction={Direction.Up}
+        renderTrack={({ props: trackProps, children }) => (
+          <div className="relative flex h-full w-2 items-center justify-center">
+            <div
+              {...trackProps}
+              ref={trackProps.ref}
+              className="relative z-10 h-full w-1"
+            >
+              {children}
+            </div>
+            <div className="pointer-events-none absolute top-0 h-full w-full rounded-md bg-neutral-100 [clip-path:polygon(0%_0%,_100%_0%,_50%_100%)]" />
           </div>
-          <div className="pointer-events-none absolute top-0 h-full w-full bg-white/50 [clip-path:polygon(0%_0%,_100%_0%,_50%_100%)]" />
-        </div>
-      )}
-      renderThumb={({ props: thumbProps, isDragged }) => {
-        const { key, ...thumbPropsWithoutKey } = thumbProps;
+        )}
+        renderThumb={({ props: thumbProps, isDragged }) => {
+          const { key, ...thumbPropsWithoutKey } = thumbProps;
 
-        return (
-          <div
-            {...thumbPropsWithoutKey}
-            key={key}
-            role="slider"
-            aria-valuemin={min}
-            aria-valuemax={max}
-            aria-valuenow={values[0]}
-            className={cn(
-              "flex h-4 w-4 transform items-center justify-center rounded-full bg-white outline-hidden",
-              isDragged ? "ring-4 ring-white/30" : ""
-            )}
-          ></div>
-        );
-      }}
-    />
+          return (
+            <div
+              {...thumbPropsWithoutKey}
+              key={key}
+              role="slider"
+              aria-valuemin={min}
+              aria-valuemax={max}
+              aria-valuenow={values[0]}
+              className={cn(
+                "flex h-4 w-4 transform items-center justify-center rounded-full bg-neutral-400 outline-hidden",
+                isDragged ? "ring-4 ring-neutral-200" : ""
+              )}
+            ></div>
+          );
+        }}
+      />
+    </div>
   );
 };
 

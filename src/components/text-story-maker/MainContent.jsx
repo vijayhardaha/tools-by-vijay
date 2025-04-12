@@ -1,7 +1,8 @@
+import { useState } from "react"; // Import useState
+
 import PropTypes from "prop-types";
 import ContentEditable from "react-contenteditable"; // Import the package
 import sanitizeHtml from "sanitize-html"; // Import sanitizeHtml
-import { useState } from "react"; // Import useState
 
 import { cn } from "@/lib/utils";
 

@@ -1,5 +1,9 @@
 import { useState } from "react";
+
+import { useKeenSlider } from "keen-slider/react";
 import PropTypes from "prop-types";
+import { AiOutlineFontSize as FontSizeIcon } from "react-icons/ai";
+import { AiOutlineLineHeight as LineHeightIcon } from "react-icons/ai";
 import { PiTextAa as AaIcon } from "react-icons/pi";
 import { PiTextAlignCenter as AlignCenterIcon } from "react-icons/pi";
 import { PiTextAlignLeft as AlignLeftIcon } from "react-icons/pi";
@@ -7,9 +11,6 @@ import { PiTextAlignRight as AlignRightIcon } from "react-icons/pi";
 import { PiMagicWand as TextBgIcon } from "react-icons/pi";
 import { PiTextBBold as TextBoldIcon } from "react-icons/pi";
 import { PiTextItalic as TextItalicIcon } from "react-icons/pi";
-import { AiOutlineFontSize as FontSizeIcon } from "react-icons/ai";
-import { AiOutlineLineHeight as LineHeightIcon } from "react-icons/ai";
-import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 
 import { fonts } from "@/components/text-story-maker/constants/fonts";
@@ -39,7 +40,7 @@ const TextToolBar = ({ options, updateOption }) => {
   const [showLineHeightSlider, setShowLineHeightSlider] = useState(false);
   const [showFontSizeSlider, setShowFontSizeSlider] = useState(false);
 
-  const [fontSliderRef, fontSlider] = useKeenSlider({
+  const [fontSliderRef] = useKeenSlider({
     loop: false,
     mode: "free-snap",
     renderMode: "performance",
@@ -55,7 +56,7 @@ const TextToolBar = ({ options, updateOption }) => {
     },
   });
 
-  const [colorSliderRef, colorSlider] = useKeenSlider({
+  const [colorSliderRef] = useKeenSlider({
     loop: false,
     mode: "free-snap",
     renderMode: "performance",

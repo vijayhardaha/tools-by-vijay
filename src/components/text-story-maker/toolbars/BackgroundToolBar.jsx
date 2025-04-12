@@ -1,6 +1,7 @@
-import { useState, useEffect, useRef } from "react";
-import PropTypes from "prop-types";
+import { useState } from "react";
+
 import { useKeenSlider } from "keen-slider/react";
+import PropTypes from "prop-types";
 import "keen-slider/keen-slider.min.css";
 
 import { bgColors } from "@/components/text-story-maker/constants/bgColors";
@@ -9,6 +10,27 @@ import {
   ToolBarButton,
 } from "@/components/text-story-maker/toolbars/ToolBarBase";
 import { cn } from "@/lib/utils";
+
+// Custom hook to create a slider
+const useSlider = (tool, options, updateOption) => {
+  const [sliderRef, slider] = useKeenSlider({
+    loop: false,
+    mode: "free-snap",
+    renderMode: "performance",
+    initial: Object.keys(bgColors[tool]).indexOf(options.bgColor) + 1,
+    slides: {
+      origin: "center",
+      perView: 9,
+      spacing: 0,
+    },
+    slideChanged(s) {
+      const colorKey = Object.keys(bgColors[tool])[s.track.details.abs];
+      updateOption("bgColor", colorKey);
+      updateOption("bgType", tool);
+    },
+  });
+  return { sliderRef, slider };
+};
 
 /**
  * BackgroundToolBar component provides a toolbar for selecting background types.
@@ -23,30 +45,10 @@ import { cn } from "@/lib/utils";
 const BackgroundToolBar = ({ options, updateOption }) => {
   const [activeTool, setActiveTool] = useState(options.bgType);
 
-  const createSlider = (tool) => {
-    const [sliderRef, slider] = useKeenSlider({
-      loop: false,
-      mode: "free-snap",
-      renderMode: "performance",
-      initial: Object.keys(bgColors[tool]).indexOf(options.bgColor) + 1,
-      slides: {
-        origin: "center",
-        perView: 9,
-        spacing: 0,
-      },
-      slideChanged(s) {
-        const colorKey = Object.keys(bgColors[tool])[s.track.details.abs];
-        updateOption("bgColor", colorKey);
-        updateOption("bgType", tool);
-      },
-    });
-    return { sliderRef, slider };
-  };
-
   const sliders = {
-    solid: createSlider("solid"),
-    gradient: createSlider("gradient"),
-    mesh: createSlider("mesh"),
+    solid: useSlider("solid", options, updateOption),
+    gradient: useSlider("gradient", options, updateOption),
+    mesh: useSlider("mesh", options, updateOption),
   };
 
   const handleToolChange = (tool) => {
