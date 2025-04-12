@@ -7,8 +7,8 @@
  */
 export const textColors = {
   // Grayscale
-  color1: { text: "text-black", bg: "bg-black" },
-  color2: { text: "text-white", bg: "bg-white" },
+  color1: { text: "text-white", bg: "bg-white" },
+  color2: { text: "text-black", bg: "bg-black" },
 
   // Grayscale (200 variants)
   color3: { text: "text-slate-200", bg: "bg-slate-200" },

@@ -278,7 +278,10 @@ const TextToolBar = ({ options, updateOption }) => {
           />
           <ToolBarButton
             icon={FontSizeIcon}
-            onClick={() => setShowFontSizeSlider((prev) => !prev)}
+            onClick={() => {
+              setShowFontSizeSlider((prev) => !prev);
+              setShowLineHeightSlider(false);
+            }}
             className={cn("h-9 w-9", {
               "bg-white text-black": showFontSizeSlider,
             })}
@@ -286,7 +289,10 @@ const TextToolBar = ({ options, updateOption }) => {
           />
           <ToolBarButton
             icon={LineHeightIcon}
-            onClick={() => setShowLineHeightSlider((prev) => !prev)}
+            onClick={() => {
+              setShowLineHeightSlider((prev) => !prev);
+              setShowFontSizeSlider(false);
+            }}
             className={cn("h-9 w-9", {
               "bg-white text-black": showLineHeightSlider,
             })}
