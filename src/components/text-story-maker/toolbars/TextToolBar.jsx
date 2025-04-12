@@ -7,6 +7,8 @@ import { PiTextAlignRight as AlignRightIcon } from "react-icons/pi";
 import { PiMagicWand as TextBgIcon } from "react-icons/pi";
 import { PiTextBBold as TextBoldIcon } from "react-icons/pi";
 import { PiTextItalic as TextItalicIcon } from "react-icons/pi";
+import { AiOutlineFontSize as FontSizeIcon } from "react-icons/ai";
+import { AiOutlineLineHeight as LineHeightIcon } from "react-icons/ai";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 
@@ -34,6 +36,8 @@ const TextToolBar = ({ options, updateOption }) => {
   const [activeTool, setActiveTool] = useState("font-family");
   const [textSize, setTextSize] = useState(options.textSize);
   const [lineHeight, setLineHeight] = useState(options.textLineHeight);
+  const [showLineHeightSlider, setShowLineHeightSlider] = useState(false);
+  const [showFontSizeSlider, setShowFontSizeSlider] = useState(false);
 
   const [fontSliderRef, fontSlider] = useKeenSlider({
     loop: false,
@@ -138,7 +142,12 @@ const TextToolBar = ({ options, updateOption }) => {
 
   return (
     <>
-      <div className="absolute top-1/2 left-4 z-20 h-1/3 -translate-y-1/2 transform">
+      <div
+        className={cn(
+          "absolute top-1/2 left-4 z-20 h-1/3 -translate-y-1/2 transform",
+          { hidden: !showFontSizeSlider }
+        )}
+      >
         <VerticalRangeSlider
           step={0.0625}
           min={0.5}
@@ -148,7 +157,12 @@ const TextToolBar = ({ options, updateOption }) => {
         />
       </div>
 
-      <div className="absolute top-1/2 right-4 z-20 h-1/3 -translate-y-1/2 transform">
+      <div
+        className={cn(
+          "absolute top-1/2 right-4 z-20 h-1/3 -translate-y-1/2 transform",
+          { hidden: !showLineHeightSlider }
+        )}
+      >
         <VerticalRangeSlider
           step={0.125}
           min={1}
@@ -172,14 +186,11 @@ const TextToolBar = ({ options, updateOption }) => {
                         "flex items-center justify-center",
                         "w-full rounded-md shadow-sm",
                         "cursor-pointer outline-none focus-visible:outline-none",
-                        "transition-colors duration-300 ease-in-out",
-                        "active:scale-94",
+                        "transition-colors duration-300 ease-in-out active:scale-94",
                         "p-1.5 px-3",
-                        "border border-white/50 bg-transparent text-white",
+                        "bg-black/60 text-white",
                         "text-xs",
-                        "backdrop-blur-xs backdrop-opacity-75",
-                        "bg-white/20",
-                        { "bg-white text-black": options.textFont === font }
+                        { "bg-black text-white": options.textFont === font }
                       )}
                       onClick={() => {
                         updateOption("textFont", font);
@@ -205,11 +216,9 @@ const TextToolBar = ({ options, updateOption }) => {
                       className={cn(
                         "flex items-center justify-center",
                         "relative h-10 w-10 rounded-lg",
-                        "shadow-sm shadow-black/30",
+                        "shadow-sm ring-1 shadow-black/30 ring-white/85",
                         "cursor-pointer outline-none focus-visible:outline-none",
-                        "transition-transform duration-300 ease-in-out",
-                        "active:scale-94",
-                        "ring-1 ring-white/85",
+                        "transition-transform duration-300 ease-in-out active:scale-94",
                         textColors[colorKey].bg,
                         {
                           "ring-white ring-offset-2":
@@ -266,6 +275,22 @@ const TextToolBar = ({ options, updateOption }) => {
               "bg-white text-black": options.textItalic,
             })}
             srText="Italic Text Tool"
+          />
+          <ToolBarButton
+            icon={FontSizeIcon}
+            onClick={() => setShowFontSizeSlider((prev) => !prev)}
+            className={cn("h-9 w-9", {
+              "bg-white text-black": showFontSizeSlider,
+            })}
+            srText="Font Size Tool"
+          />
+          <ToolBarButton
+            icon={LineHeightIcon}
+            onClick={() => setShowLineHeightSlider((prev) => !prev)}
+            className={cn("h-9 w-9", {
+              "bg-white text-black": showLineHeightSlider,
+            })}
+            srText="Line Height Tool"
           />
           <ToolBarButton
             icon={TextBgIcon}

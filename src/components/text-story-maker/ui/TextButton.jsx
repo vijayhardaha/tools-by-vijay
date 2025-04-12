@@ -15,15 +15,12 @@ const TextButton = ({ className, children, ...props }) => (
   <button
     type="button"
     className={cn(
-      "inline-flex shrink-0 items-center justify-center whitespace-nowrap",
-      "text-sm",
-      "rounded-lg outline-none",
-      "cursor-pointer disabled:pointer-events-none disabled:opacity-50",
-      "outline-none focus-visible:outline-none",
+      "inline-flex shrink-0 items-center justify-center",
+      "text-sm whitespace-nowrap text-white",
+      "rounded-lg outline-none focus-visible:outline-none",
+      "cursor-pointer active:scale-94 disabled:pointer-events-none disabled:opacity-50",
       "transition-all duration-100 ease-in-out",
-      "active:scale-94",
       "h-10 min-w-10 p-2 px-3",
-      "text-white",
       className
     )}
     {...props}

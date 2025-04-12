@@ -72,11 +72,9 @@ const BackgroundToolBar = ({ options, updateOption }) => {
                       className={cn(
                         "flex items-center justify-center",
                         "relative h-10 w-10 rounded-lg",
-                        "shadow-sm shadow-black/30",
+                        "shadow-sm ring-1 shadow-black/30 ring-white/85",
                         "cursor-pointer outline-none focus-visible:outline-none",
-                        "transition-transform duration-300 ease-in-out",
-                        "active:scale-94",
-                        "ring-1 ring-white/85",
+                        "transition-transform duration-300 ease-in-out active:scale-94",
                         bgColors[activeTool][colorKey],
                         {
                           "ring-white ring-offset-2":
