@@ -40,6 +40,14 @@ const TextOptionsPanel = ({ options, updateOption }) => {
 
   const textAlignments = ["center", "left", "right"];
 
+  /**
+   * Generates slider parameters for the Keen Slider.
+   *
+   * @param {Object} items - The items to display in the slider.
+   * @param {string} initialKey - The initial key to set as active.
+   * @param {string} updateKey - The key to update when the slider changes.
+   * @returns {Object} The slider parameters.
+   */
   const getSliderParams = (items, initialKey, updateKey) => {
     const initialSlideIndex = Object.keys(items).indexOf(initialKey);
 
@@ -64,6 +72,11 @@ const TextOptionsPanel = ({ options, updateOption }) => {
     getSliderParams(textColors, options.textColor, "textColor")
   );
 
+  /**
+   * Handles changes to the active tool.
+   *
+   * @param {string} tool - The tool to activate.
+   */
   const handleActiveToolChange = (tool) => {
     setActiveTool(tool);
     setShowSettingsDropdown(false);
@@ -265,7 +278,7 @@ const TextOptionsPanel = ({ options, updateOption }) => {
                 </BoxButton>
               </div>
 
-              <div className="mb-2 grid grid-cols-1 gap-4">
+              <div className="mb-4 grid grid-cols-1 gap-4">
                 <BoxSlider
                   label="Text Size"
                   min={0.5}
@@ -307,7 +320,7 @@ const TextOptionsPanel = ({ options, updateOption }) => {
                 onChangeHandler={updateOption}
               />
 
-              <div className="mb-6 grid grid-cols-2 gap-4">
+              <div className="mb-4 grid grid-cols-2 gap-4">
                 <BoxSlider
                   label="Outer Spacing"
                   min={2}
@@ -355,7 +368,7 @@ const TextOptionsPanel = ({ options, updateOption }) => {
                 <>
                   <BoxToggleGroup
                     label="Glossy Background"
-                    options={{ Disable: "", Enable: "enabled" }}
+                    options={{ Disabled: "", Enabled: "enabled" }}
                     className="mb-2"
                     selected={options.boxGlossy}
                     onChangeKey="boxGlossy"
@@ -363,7 +376,7 @@ const TextOptionsPanel = ({ options, updateOption }) => {
                   />
 
                   {options.boxGlossy && (
-                    <div className="mb-6 grid grid-cols-2 gap-4">
+                    <div className="mb-4 grid grid-cols-2 gap-4">
                       <BoxSlider
                         label="Glossy Blur"
                         min={1}
@@ -400,15 +413,17 @@ const TextOptionsPanel = ({ options, updateOption }) => {
               />
 
               {options.textStroke && (
-                <BoxSlider
-                  label="Text Stroke Size"
-                  min={0}
-                  max={10}
-                  step={0.25}
-                  value={options.textStrokeSize}
-                  onChangeKey="textStrokeSize"
-                  onChangeHandler={handleSliderChange}
-                />
+                <div className="mb-4 grid grid-cols-1 gap-4">
+                  <BoxSlider
+                    label="Text Stroke Size"
+                    min={0}
+                    max={10}
+                    step={0.25}
+                    value={options.textStrokeSize}
+                    onChangeKey="textStrokeSize"
+                    onChangeHandler={handleSliderChange}
+                  />
+                </div>
               )}
 
               <BoxToggleGroup
@@ -420,15 +435,17 @@ const TextOptionsPanel = ({ options, updateOption }) => {
               />
 
               {options.textGlow && (
-                <BoxSlider
-                  label="Text Glow Size"
-                  min={0}
-                  max={2}
-                  step={0.05}
-                  value={options.textGlowSize}
-                  onChangeKey="textGlowSize"
-                  onChangeHandler={handleSliderChange}
-                />
+                <div className="mb-4 grid grid-cols-1 gap-4">
+                  <BoxSlider
+                    label="Text Glow Size"
+                    min={0}
+                    max={2}
+                    step={0.05}
+                    value={options.textGlowSize}
+                    onChangeKey="textGlowSize"
+                    onChangeHandler={handleSliderChange}
+                  />
+                </div>
               )}
             </div>
           )}
@@ -474,7 +491,29 @@ const TextOptionsPanel = ({ options, updateOption }) => {
 };
 
 TextOptionsPanel.propTypes = {
-  options: PropTypes.object.isRequired,
+  options: PropTypes.shape({
+    textSize: PropTypes.number.isRequired,
+    textLineHeight: PropTypes.number.isRequired,
+    textAlign: PropTypes.oneOf(["left", "center", "right"]).isRequired,
+    textFont: PropTypes.string.isRequired,
+    textColor: PropTypes.string.isRequired,
+    textBold: PropTypes.bool,
+    textItalic: PropTypes.bool,
+    textUppercase: PropTypes.bool,
+    textLetterSpacing: PropTypes.number,
+    boxBackground: PropTypes.oneOf(["", "white", "black"]),
+    boxOuterPadding: PropTypes.number,
+    boxBorderRadius: PropTypes.number,
+    boxInnerPadding: PropTypes.number,
+    boxBackgroundOpacity: PropTypes.number,
+    boxGlossy: PropTypes.oneOf(["", "enabled"]),
+    boxGlossyBlur: PropTypes.number,
+    boxGlossyShadow: PropTypes.number,
+    textStroke: PropTypes.oneOf(["", "white", "black"]),
+    textStrokeSize: PropTypes.number,
+    textGlow: PropTypes.oneOf(["", "white", "black"]),
+    textGlowSize: PropTypes.number,
+  }).isRequired,
   updateOption: PropTypes.func.isRequired,
 };
 
