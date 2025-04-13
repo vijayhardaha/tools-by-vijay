@@ -41,6 +41,9 @@ export const defaultOptions = {
   boxBackground: 0,
   boxBackgroundOpacity: 0.15,
   boxBorderRadius: 0,
+  boxGlossy: "",
+  boxGlossyBlur: 4,
+  boxGlossyShadow: 4,
 
   // Layout
   cardRatio: "9/16",

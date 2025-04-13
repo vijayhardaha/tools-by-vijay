@@ -131,7 +131,7 @@ const TextOptionsPanel = ({ options, updateOption }) => {
   };
 
   const toggleColors = {
-    None: "",
+    Disabled: "",
     White: "white",
     Black: "black",
   };
@@ -154,7 +154,7 @@ const TextOptionsPanel = ({ options, updateOption }) => {
                     type="button"
                     className={cn(
                       btnBaseStyles.join(" "),
-                      "p-6 py-4 leading-none font-medium",
+                      "p-6 py-3 leading-relaxed font-medium",
                       "bg-neutral-800 text-white",
                       {
                         "bg-white text-neutral-900": options.textFont === font,
@@ -300,14 +300,14 @@ const TextOptionsPanel = ({ options, updateOption }) => {
           {activeSettingsTab === "box" && (
             <div className="w-full space-y-4">
               <BoxToggleGroup
-                label="Background Color"
+                label="Background"
                 options={toggleColors}
                 selected={options.boxBackground}
                 onChangeKey="boxBackground"
                 onChangeHandler={updateOption}
               />
 
-              <div className="mb-2 grid grid-cols-1 gap-4">
+              <div className="mb-6 grid grid-cols-2 gap-4">
                 <BoxSlider
                   label="Outer Spacing"
                   min={2}
@@ -350,6 +350,42 @@ const TextOptionsPanel = ({ options, updateOption }) => {
                   </>
                 )}
               </div>
+
+              {options.boxBackground && (
+                <>
+                  <BoxToggleGroup
+                    label="Glossy Background"
+                    options={{ Disable: "", Enable: "enabled" }}
+                    className="mb-2"
+                    selected={options.boxGlossy}
+                    onChangeKey="boxGlossy"
+                    onChangeHandler={updateOption}
+                  />
+
+                  {options.boxGlossy && (
+                    <div className="mb-6 grid grid-cols-2 gap-4">
+                      <BoxSlider
+                        label="Glossy Blur"
+                        min={1}
+                        max={100}
+                        step={1}
+                        value={options.boxGlossyBlur}
+                        onChangeKey="boxGlossyBlur"
+                        onChangeHandler={handleSliderChange}
+                      />
+                      <BoxSlider
+                        label="Glossy Shadow"
+                        min={0}
+                        max={6}
+                        step={1}
+                        value={options.boxGlossyShadow}
+                        onChangeKey="boxGlossyShadow"
+                        onChangeHandler={handleSliderChange}
+                      />
+                    </div>
+                  )}
+                </>
+              )}
             </div>
           )}
 

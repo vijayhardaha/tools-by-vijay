@@ -82,29 +82,18 @@ export function getBgColorClass(type, value) {
   return "";
 }
 
-export function getEffectStyles(effect = "") {
-  if (!effect) return {};
+export function getShadowProperty(value) {
+  const shadows = [
+    "var(--shadow-2xs)",
+    "var(--shadow-xs)",
+    "var(--shadow-sm)",
+    "var(--shadow-md)",
+    "var(--shadow-lg)",
+    "var(--shadow-xl)",
+    "var(--shadow-2xl)",
+  ];
 
-  const letterSpacing = { letterSpacing: "0.031em" };
-
-  switch (effect) {
-    case "white-glow":
-      return {
-        ...letterSpacing,
-        ...{
-          textShadow: "0 0 0.1vh #ffffff,0 0 0.1vh #ffffff,0 0 1vh #ffffff",
-        },
-      };
-    case "black-glow":
-      return {
-        ...letterSpacing,
-        ...{
-          textShadow: "0 0 0.1vh #000000,0 0 0.1vh #000000,0 0 1vh #000000",
-        },
-      };
-    default:
-      return {};
-  }
+  return shadows[value] || "";
 }
 
 export function getContentStyles(options) {
@@ -117,10 +106,6 @@ export function getContentStyles(options) {
   if (parseFloat(options.textLineHeight) > 0) {
     styles.lineHeight = `${options.textLineHeight}`;
     styles.gap = `calc(var(--spacing) * ${parseFloat(options.textLineHeight) * 3})`;
-  }
-
-  if (options.textEffect) {
-    //styles = { ...styles, ...getEffectStyles(options.textEffect) };
   }
 
   if (options.boxBackground) {
@@ -139,6 +124,11 @@ export function getContentStyles(options) {
 
     if (options.boxBorderRadius) {
       styles.borderRadius = `calc(var(--spacing) * ${options.boxBorderRadius})`;
+    }
+
+    if (options.boxGlossy) {
+      styles.boxShadow = getShadowProperty(options.boxGlossyShadow);
+      styles.backdropFilter = `blur(${options.boxGlossyBlur}px)`;
     }
   }
 
