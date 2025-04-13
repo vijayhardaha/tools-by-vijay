@@ -75,10 +75,10 @@ const BgOptionsPanel = ({ options, updateOption }) => {
                     className={cn(
                       btnBaseStyles.join(" "),
                       "size-14 shadow",
-                      "ring-3 ring-transparent ring-offset-2 ring-offset-neutral-900",
+                      "ring-1 ring-white",
                       bgColors[activeTool][colorKey],
                       {
-                        "ring-white": options.bgColor === colorKey,
+                        "ring-4": options.bgColor === colorKey,
                       }
                     )}
                     onClick={() => {
