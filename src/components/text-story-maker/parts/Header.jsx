@@ -27,7 +27,7 @@ const Header = ({ options, updateOption, activeTool, setActiveTool }) => {
   const router = useRouter();
 
   return (
-    <header className="absolute top-0 right-0 z-40 w-full p-2 px-4">
+    <header className="xs:p-4 absolute top-0 right-0 z-40 w-full p-2">
       {activeTool ? (
         <div className="flex items-center justify-end">
           {/**
@@ -46,7 +46,7 @@ const Header = ({ options, updateOption, activeTool, setActiveTool }) => {
         </div>
       ) : (
         <>
-          <div className="flex items-center justify-between gap-4">
+          <div className="flex items-center justify-between gap-2">
             {/**
              * Button component for navigating to the previous page.
              */}
@@ -55,7 +55,7 @@ const Header = ({ options, updateOption, activeTool, setActiveTool }) => {
               screenReaderText="Go to Previous Page"
               onClick={() => router.push("/")}
             />
-            <div className="ml-auto flex items-center gap-2">
+            <div className="ml-auto flex items-center gap-1.5">
               {/**
                * TextOptionsTool component for managing text options.
                *

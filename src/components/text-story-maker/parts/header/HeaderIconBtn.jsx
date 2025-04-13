@@ -21,7 +21,10 @@ const HeaderIconBtn = ({ icon, className, ...props }) => (
     /**
      * Combines default and additional class names for styling.
      */
-    className={cn("size-14 rounded-full bg-neutral-900 text-white", className)}
+    className={cn(
+      "xs:size-13 size-12 rounded-full bg-neutral-900 text-white",
+      className
+    )}
     /**
      * Class name for the icon inside the button.
      */
