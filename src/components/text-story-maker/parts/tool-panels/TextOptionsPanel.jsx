@@ -21,6 +21,45 @@ import { cn } from "@/lib/utils";
 
 import "keen-slider/keen-slider.min.css";
 
+const OptionSlider = ({
+  label,
+  min = 0,
+  max = 20,
+  step = 0.125,
+  value,
+  onChangeKey,
+  onChangeHandler,
+}) => {
+  const handleChange = (values) => {
+    onChangeHandler(onChangeKey, values);
+  };
+
+  return (
+    <div className="space-y-1.5">
+      <p className="text-sm font-medium">{label}</p>
+      <div className="px-2">
+        <RangeSlider
+          step={step}
+          min={min}
+          max={max}
+          values={[value]}
+          onChange={handleChange}
+        />
+      </div>
+    </div>
+  );
+};
+
+OptionSlider.PropTypes = {
+  label: PropTypes.string.isRequired,
+  min: PropTypes.number,
+  max: PropTypes.number,
+  step: PropTypes.number,
+  value: PropTypes.number.isRequired,
+  onChangeKey: PropTypes.string.isRequired,
+  onChangeHandler: PropTypes.func.isRequired,
+};
+
 /**
  * TextOptionsPanel component provides a toolbar for text customization, including font size, line height, text alignment, and other text-related options.
  *
@@ -265,48 +304,33 @@ const TextOptionsPanel = ({ options, updateOption }) => {
               </div>
 
               <div className="mb-2 grid grid-cols-1 gap-4">
-                <div className="space-y-2">
-                  <p className="text-sm font-semibold">Text Size:</p>
-                  <div className="px-0.5">
-                    <RangeSlider
-                      step={0.0625}
-                      min={0.5}
-                      max={4}
-                      values={[options.textSize]}
-                      onChange={(values) =>
-                        handleSliderChange("textSize", values)
-                      }
-                    />
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <p className="text-sm font-semibold">Line Height:</p>
-                  <div className="px-0.5">
-                    <RangeSlider
-                      step={0.0625}
-                      min={1}
-                      max={2}
-                      values={[options.textLineHeight]}
-                      onChange={(values) =>
-                        handleSliderChange("textLineHeight", values)
-                      }
-                    />
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <p className="text-sm font-semibold">Letter Spacing:</p>
-                  <div className="px-0.5">
-                    <RangeSlider
-                      step={0.25}
-                      min={-3}
-                      max={4}
-                      values={[options.textLetterSpacing]}
-                      onChange={(values) =>
-                        handleSliderChange("textLetterSpacing", values)
-                      }
-                    />
-                  </div>
-                </div>
+                <OptionSlider
+                  label="Text Size"
+                  min={0.5}
+                  max={4}
+                  step={0.0625}
+                  value={options.textSize}
+                  onChangeKey="textSize"
+                  onChangeHandler={handleSliderChange}
+                />
+                <OptionSlider
+                  label="Line Height"
+                  min={1}
+                  max={2}
+                  step={0.0625}
+                  value={options.textLineHeight}
+                  onChangeKey="textLineHeight"
+                  onChangeHandler={handleSliderChange}
+                />
+                <OptionSlider
+                  label="Letter Spacing"
+                  min={-3}
+                  max={4}
+                  step={0.25}
+                  value={options.textLetterSpacing}
+                  onChangeKey="textLetterSpacing"
+                  onChangeHandler={handleSliderChange}
+                />
               </div>
             </div>
           )}
@@ -328,73 +352,52 @@ const TextOptionsPanel = ({ options, updateOption }) => {
                       onClick={() => updateOption("boxBackground", value)}
                       className={cn(tabButtonClass)}
                     >
-                      {label.charAt(0).toUpperCase() + label.slice(1)}
+                      {label}
                     </BoxButton>
                   ))}
                 </div>
               </div>
 
               <div className="mb-2 grid grid-cols-1 gap-4">
-                <div className="space-y-2">
-                  <p className="text-sm font-semibold">Outer Spacing:</p>
-                  <div className="px-0.5">
-                    <RangeSlider
-                      step={0.125}
-                      min={0}
-                      max={20}
-                      values={[options.boxOuterPadding]}
-                      onChange={(values) =>
-                        handleSliderChange("boxOuterPadding", values)
-                      }
-                    />
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <p className="text-sm font-semibold">Border Radius:</p>
-                  <div className="px-0.5">
-                    <RangeSlider
-                      step={0.125}
-                      min={0}
-                      max={20}
-                      values={[options.boxBorderRadius]}
-                      onChange={(values) =>
-                        handleSliderChange("boxBorderRadius", values)
-                      }
-                    />
-                  </div>
-                </div>
+                <OptionSlider
+                  label="Outer Spacing"
+                  min={0}
+                  max={20}
+                  step={0.125}
+                  value={options.boxOuterPadding}
+                  onChangeKey="boxOuterPadding"
+                  onChangeHandler={handleSliderChange}
+                />
+
                 {options.boxBackground && (
                   <>
-                    <div className="space-y-2">
-                      <p className="text-sm font-semibold">Inner Spacing:</p>
-                      <div className="px-0.5">
-                        <RangeSlider
-                          step={0.125}
-                          min={0}
-                          max={20}
-                          values={[options.boxInnerPadding]}
-                          onChange={(values) =>
-                            handleSliderChange("boxInnerPadding", values)
-                          }
-                        />
-                      </div>
-                    </div>
-                    <div className="mb space-y-2">
-                      <p className="text-sm font-semibold">
-                        Background Opacity:
-                      </p>
-                      <div className="px-0.5">
-                        <RangeSlider
-                          step={0.01}
-                          min={0}
-                          max={1}
-                          values={[options.boxBackgroundOpacity]}
-                          onChange={(values) =>
-                            handleSliderChange("boxBackgroundOpacity", values)
-                          }
-                        />
-                      </div>
-                    </div>
+                    <OptionSlider
+                      label="Border Radius"
+                      min={0}
+                      max={20}
+                      step={0.125}
+                      value={options.boxBorderRadius}
+                      onChangeKey="boxBorderRadius"
+                      onChangeHandler={handleSliderChange}
+                    />
+                    <OptionSlider
+                      label="Inner Spacing"
+                      min={0}
+                      max={20}
+                      step={0.125}
+                      value={options.boxInnerPadding}
+                      onChangeKey="boxInnerPadding"
+                      onChangeHandler={handleSliderChange}
+                    />
+                    <OptionSlider
+                      label="Background Opacity"
+                      min={0}
+                      max={1}
+                      step={0.01}
+                      value={options.boxBackgroundOpacity}
+                      onChangeKey="boxBackgroundOpacity"
+                      onChangeHandler={handleSliderChange}
+                    />
                   </>
                 )}
               </div>
@@ -418,30 +421,56 @@ const TextOptionsPanel = ({ options, updateOption }) => {
                       onClick={() => updateOption("textStroke", value)}
                       className={cn(tabButtonClass)}
                     >
-                      {label.charAt(0).toUpperCase() + label.slice(1)}
+                      {label}
                     </BoxButton>
                   ))}
                 </div>
               </div>
 
-              <div className="mb-2 grid grid-cols-1 gap-4">
-                {options.textStroke && (
-                  <div className="space-y-2">
-                    <p className="text-sm font-semibold">Text Stroke Size:</p>
-                    <div className="px-0.5">
-                      <RangeSlider
-                        step={0.25}
-                        min={0}
-                        max={10}
-                        values={[options.textStrokeSize]}
-                        onChange={(values) =>
-                          handleSliderChange("textStrokeSize", values)
-                        }
-                      />
-                    </div>
-                  </div>
-                )}
+              {options.textStroke && (
+                <OptionSlider
+                  label="Text Stroke Size"
+                  min={0}
+                  max={10}
+                  step={0.25}
+                  value={options.textStrokeSize}
+                  onChangeKey="textStrokeSize"
+                  onChangeHandler={handleSliderChange}
+                />
+              )}
+
+              <div className="space-y-2">
+                <p className="text-sm font-semibold">Text Glow:</p>
+                <div className="flex gap-2">
+                  {Object.entries({
+                    None: "",
+                    White: "white",
+                    Black: "black",
+                  }).map(([label, value]) => (
+                    <BoxButton
+                      type="text"
+                      key={value}
+                      active={options.textGlow === value}
+                      onClick={() => updateOption("textGlow", value)}
+                      className={cn(tabButtonClass)}
+                    >
+                      {label}
+                    </BoxButton>
+                  ))}
+                </div>
               </div>
+
+              {options.textGlow && (
+                <OptionSlider
+                  label="Text Glow Size"
+                  min={0}
+                  max={2}
+                  step={0.05}
+                  value={options.textGlowSize}
+                  onChangeKey="textGlowSize"
+                  onChangeHandler={handleSliderChange}
+                />
+              )}
             </div>
           )}
         </BoxContainer>

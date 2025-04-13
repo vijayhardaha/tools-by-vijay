@@ -86,25 +86,8 @@ export function getEffectStyles(effect = "") {
   if (!effect) return {};
 
   const letterSpacing = { letterSpacing: "0.031em" };
-  const paintOrder = { paintOrder: "stroke fill" };
 
   switch (effect) {
-    case "white-stroke":
-      return {
-        ...letterSpacing,
-        ...paintOrder,
-        ...{
-          WebkitTextStroke: "0.125em #ffffff",
-        },
-      };
-    case "black-stroke":
-      return {
-        ...letterSpacing,
-        ...paintOrder,
-        ...{
-          WebkitTextStroke: "0.125em #000000",
-        },
-      };
     case "white-glow":
       return {
         ...letterSpacing,
@@ -119,23 +102,6 @@ export function getEffectStyles(effect = "") {
           textShadow: "0 0 0.1vh #000000,0 0 0.1vh #000000,0 0 1vh #000000",
         },
       };
-    case "white-outline":
-      return {
-        ...letterSpacing,
-        ...paintOrder,
-        ...{
-          WebkitTextStroke: "0.0625em #ffffff",
-        },
-      };
-    case "black-outline":
-      return {
-        ...letterSpacing,
-        ...paintOrder,
-        ...{
-          WebkitTextStroke: "0.0625em #000000",
-        },
-      };
-
     default:
       return {};
   }
@@ -184,6 +150,16 @@ export function getContentStyles(options) {
 
     if (options.textStroke === "white") {
       styles.WebkitTextStroke = `${options.textStrokeSize}px #ffffff`;
+    }
+  }
+
+  if (options.textGlow) {
+    if (options.textGlow === "black") {
+      styles.textShadow = `0 0 ${options.textGlowSize}vh #000000,0 0 ${options.textGlowSize}vh #000000,0 0 1vh #000000`;
+    }
+
+    if (options.textGlow === "white") {
+      styles.textShadow = `0 0 ${options.textGlowSize}vh #ffffff,0 0 ${options.textGlowSize}vh #ffffff,0 0 1vh #ffffff`;
     }
   }
 

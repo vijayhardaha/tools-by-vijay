@@ -29,6 +29,8 @@ export const defaultOptions = {
   // Text Effect
   textStroke: "",
   textStrokeSize: 1,
+  textGlow: "",
+  textGlowSize: 0.1,
 
   // Content
   text: "",
