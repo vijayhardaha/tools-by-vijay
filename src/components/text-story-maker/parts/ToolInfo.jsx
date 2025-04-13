@@ -15,7 +15,7 @@ const ToolInfo = () => {
       id="tool-info"
       className="absolute right-4 bottom-4 z-50 bg-neutral-900/75 p-3 px-7 text-white"
       style={{
-        borderRadius: "2% 6% 5% 4% / 1% 1% 2% 4%",
+        borderRadius: "10% 90% 10% 90% / 90% 10% 90% 10%",
       }}
     >
       <div className="flex flex-col items-start">

@@ -1,5 +1,6 @@
 import { Comfortaa as ComfortaaFont } from "next/font/google";
 import { Montserrat_Alternates as MontserratAlternatesFont } from "next/font/google";
+import { Nerko_One as NerkoOneFont } from "next/font/google";
 import { Hind as HindFont } from "next/font/google";
 import { Teko as TekoFont } from "next/font/google";
 import { Kalam as KalamFont } from "next/font/google";
@@ -17,7 +18,7 @@ import { Caveat as CaveatFont } from "next/font/google";
 import { Sacramento as SacramentoFont } from "next/font/google";
 import { Dancing_Script as DancingScriptFont } from "next/font/google";
 import { Clicker_Script as ClickerScriptFont } from "next/font/google";
-
+import { Fresca as FrescaFont } from "next/font/google";
 const Comfortaa = ComfortaaFont({
   subsets: ["latin"],
   display: "swap",
@@ -27,6 +28,11 @@ const Montserrat_Alternates = MontserratAlternatesFont({
   subsets: ["latin"],
   display: "swap",
   weight: ["400", "700"],
+});
+const Nerko_One = NerkoOneFont({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400"],
 });
 const Hind = HindFont({
   subsets: ["latin", "devanagari"],
@@ -113,10 +119,16 @@ const Clicker_Script = ClickerScriptFont({
   display: "swap",
   weight: ["400"],
 });
+const Fresca = FrescaFont({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400"],
+});
 // prettier-ignore
 export const fonts = [
   { key: "comfortaa", label: "Comfortaa", class: Comfortaa.className },
   { key: "montserrat_alternates", label: "Montserrat (Alt)", class: Montserrat_Alternates.className},
+  { key: "nerko_one", label: "Nerko", class: Nerko_One.className },
   { key: "hind", label: "हिन्द", class: Hind.className },
   { key: "teko", label: "टेको", class: Teko.className },
   { key: "kalam", label: "कलम", class: Kalam.className },
@@ -134,4 +146,5 @@ export const fonts = [
   { key: "sacramento", label: "Sacramento", class: Sacramento.className },
   { key: "dancing_script", label: "Dancing", class: Dancing_Script.className },
   { key: "clicker_script", label: "Clicker", class: Clicker_Script.className },
+  { key: "fresca", label: "Fresca", class: Fresca.className },
 ];
