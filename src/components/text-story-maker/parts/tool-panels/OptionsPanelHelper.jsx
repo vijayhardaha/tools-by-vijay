@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 
 import { IconButton, TextButton } from "@/components/text-story-maker/ui";
+import { RangeSlider } from "@/components/text-story-maker/ui";
 import { cn } from "@/lib/utils";
 
 /**
@@ -96,4 +97,102 @@ BoxButton.propTypes = {
   props: PropTypes.object,
 };
 
-export { PanelContainer, BoxContainer, BoxButton };
+/**
+ * A slider component for adjusting numeric values within a specified range.
+ *
+ * @param {Object} props - The component props.
+ * @param {string} props.label - The label displayed above the slider.
+ * @param {number} [props.min=0] - The minimum value of the slider.
+ * @param {number} [props.max=20] - The maximum value of the slider.
+ * @param {number} [props.step=0.125] - The step size for the slider.
+ * @param {number} props.value - The current value of the slider.
+ * @param {string} props.onChangeKey - A key to identify the slider in the change handler.
+ * @param {Function} props.onChangeHandler - The function to call when the slider value changes.
+ * @returns {JSX.Element} The styled slider component.
+ */
+const BoxSlider = ({
+  label,
+  min = 0,
+  max = 20,
+  step = 0.125,
+  value,
+  onChangeKey,
+  onChangeHandler,
+}) => {
+  const handleChange = (values) => {
+    onChangeHandler(onChangeKey, values);
+  };
+
+  return (
+    <div className="space-y-1.25">
+      <p className="text-sm font-medium">{label}</p>
+      <div className="px-2">
+        <RangeSlider
+          step={step}
+          min={min}
+          max={max}
+          values={[value]}
+          onChange={handleChange}
+        />
+      </div>
+    </div>
+  );
+};
+
+BoxSlider.propTypes = {
+  label: PropTypes.string.isRequired,
+  min: PropTypes.number,
+  max: PropTypes.number,
+  step: PropTypes.number,
+  value: PropTypes.number.isRequired,
+  onChangeKey: PropTypes.string.isRequired,
+  onChangeHandler: PropTypes.func.isRequired,
+};
+
+const BoxToggleGroup = ({
+  label,
+  options = {},
+  selected,
+  onChangeKey,
+  onChangeHandler,
+  buttonClass,
+}) => {
+  const handleClick = (value) => {
+    onChangeHandler(onChangeKey, value);
+  };
+
+  if (!options) return;
+
+  return (
+    <div className="space-y-0.75">
+      <p className="text-sm font-medium">{label}</p>
+      <div className="flex gap-1.5">
+        {Object.entries(options).map(([text, value]) => (
+          <BoxButton
+            type="text"
+            key={value}
+            active={selected === value}
+            onClick={() => handleClick(value)}
+            className={cn(
+              "rounded-lg bg-neutral-800 py-2 text-xs font-semibold shadow",
+              buttonClass
+            )}
+          >
+            {text}
+          </BoxButton>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+BoxToggleGroup.propTypes = {
+  label: PropTypes.string.isRequired,
+  options: PropTypes.object,
+  selected: PropTypes.string.isRequired,
+  onChangeKey: PropTypes.string.isRequired,
+  onChangeHandler: PropTypes.func.isRequired,
+  buttonClass: PropTypes.string,
+};
+
+export { PanelContainer, BoxContainer, BoxButton, BoxSlider, BoxToggleGroup };

@@ -15,50 +15,12 @@ import {
   PanelContainer,
   BoxContainer,
   BoxButton,
+  BoxSlider,
+  BoxToggleGroup,
 } from "@/components/text-story-maker/parts/tool-panels/OptionsPanelHelper";
-import { RangeSlider } from "@/components/text-story-maker/ui";
 import { cn } from "@/lib/utils";
 
 import "keen-slider/keen-slider.min.css";
-
-const OptionSlider = ({
-  label,
-  min = 0,
-  max = 20,
-  step = 0.125,
-  value,
-  onChangeKey,
-  onChangeHandler,
-}) => {
-  const handleChange = (values) => {
-    onChangeHandler(onChangeKey, values);
-  };
-
-  return (
-    <div className="space-y-1.5">
-      <p className="text-sm font-medium">{label}</p>
-      <div className="px-2">
-        <RangeSlider
-          step={step}
-          min={min}
-          max={max}
-          values={[value]}
-          onChange={handleChange}
-        />
-      </div>
-    </div>
-  );
-};
-
-OptionSlider.PropTypes = {
-  label: PropTypes.string.isRequired,
-  min: PropTypes.number,
-  max: PropTypes.number,
-  step: PropTypes.number,
-  value: PropTypes.number.isRequired,
-  onChangeKey: PropTypes.string.isRequired,
-  onChangeHandler: PropTypes.func.isRequired,
-};
 
 /**
  * TextOptionsPanel component provides a toolbar for text customization, including font size, line height, text alignment, and other text-related options.
@@ -77,12 +39,6 @@ const TextOptionsPanel = ({ options, updateOption }) => {
   const [activeSettingsTab, setActiveSettingsTab] = useState("text");
 
   const textAlignments = ["center", "left", "right"];
-
-  const tabs = [
-    { key: "text", label: "Text Settings" },
-    { key: "box", label: "Box Settings" },
-    { key: "effects", label: "Effects Settings" },
-  ];
 
   const getSliderParams = (items, initialKey, updateKey) => {
     const initialSlideIndex = Object.keys(items).indexOf(initialKey);
@@ -172,6 +128,12 @@ const TextOptionsPanel = ({ options, updateOption }) => {
       default:
         return AlignCenterIcon;
     }
+  };
+
+  const toggleColors = {
+    None: "",
+    White: "white",
+    Black: "black",
   };
 
   // Define the class names for the tab buttons
@@ -304,7 +266,7 @@ const TextOptionsPanel = ({ options, updateOption }) => {
               </div>
 
               <div className="mb-2 grid grid-cols-1 gap-4">
-                <OptionSlider
+                <BoxSlider
                   label="Text Size"
                   min={0.5}
                   max={4}
@@ -313,7 +275,7 @@ const TextOptionsPanel = ({ options, updateOption }) => {
                   onChangeKey="textSize"
                   onChangeHandler={handleSliderChange}
                 />
-                <OptionSlider
+                <BoxSlider
                   label="Line Height"
                   min={1}
                   max={2}
@@ -322,7 +284,7 @@ const TextOptionsPanel = ({ options, updateOption }) => {
                   onChangeKey="textLineHeight"
                   onChangeHandler={handleSliderChange}
                 />
-                <OptionSlider
+                <BoxSlider
                   label="Letter Spacing"
                   min={-3}
                   max={4}
@@ -337,31 +299,18 @@ const TextOptionsPanel = ({ options, updateOption }) => {
 
           {activeSettingsTab === "box" && (
             <div className="w-full space-y-4">
-              <div className="space-y-2">
-                <p className="text-sm font-semibold">Box Background:</p>
-                <div className="flex gap-2">
-                  {Object.entries({
-                    None: "",
-                    White: "white",
-                    Black: "black",
-                  }).map(([label, value]) => (
-                    <BoxButton
-                      type="text"
-                      key={value}
-                      active={options.boxBackground === value}
-                      onClick={() => updateOption("boxBackground", value)}
-                      className={cn(tabButtonClass)}
-                    >
-                      {label}
-                    </BoxButton>
-                  ))}
-                </div>
-              </div>
+              <BoxToggleGroup
+                label="Background Color"
+                options={toggleColors}
+                selected={options.boxBackground}
+                onChangeKey="boxBackground"
+                onChangeHandler={updateOption}
+              />
 
               <div className="mb-2 grid grid-cols-1 gap-4">
-                <OptionSlider
+                <BoxSlider
                   label="Outer Spacing"
-                  min={0}
+                  min={2}
                   max={20}
                   step={0.125}
                   value={options.boxOuterPadding}
@@ -371,7 +320,7 @@ const TextOptionsPanel = ({ options, updateOption }) => {
 
                 {options.boxBackground && (
                   <>
-                    <OptionSlider
+                    <BoxSlider
                       label="Border Radius"
                       min={0}
                       max={20}
@@ -380,7 +329,7 @@ const TextOptionsPanel = ({ options, updateOption }) => {
                       onChangeKey="boxBorderRadius"
                       onChangeHandler={handleSliderChange}
                     />
-                    <OptionSlider
+                    <BoxSlider
                       label="Inner Spacing"
                       min={0}
                       max={20}
@@ -389,7 +338,7 @@ const TextOptionsPanel = ({ options, updateOption }) => {
                       onChangeKey="boxInnerPadding"
                       onChangeHandler={handleSliderChange}
                     />
-                    <OptionSlider
+                    <BoxSlider
                       label="Background Opacity"
                       min={0}
                       max={1}
@@ -406,29 +355,16 @@ const TextOptionsPanel = ({ options, updateOption }) => {
 
           {activeSettingsTab === "effects" && (
             <div className="w-full space-y-4">
-              <div className="space-y-2">
-                <p className="text-sm font-semibold">Text Stroke:</p>
-                <div className="flex gap-2">
-                  {Object.entries({
-                    None: "",
-                    White: "white",
-                    Black: "black",
-                  }).map(([label, value]) => (
-                    <BoxButton
-                      type="text"
-                      key={value}
-                      active={options.textStroke === value}
-                      onClick={() => updateOption("textStroke", value)}
-                      className={cn(tabButtonClass)}
-                    >
-                      {label}
-                    </BoxButton>
-                  ))}
-                </div>
-              </div>
+              <BoxToggleGroup
+                label="Text Stroke"
+                options={toggleColors}
+                selected={options.textStroke}
+                onChangeKey="textStroke"
+                onChangeHandler={updateOption}
+              />
 
               {options.textStroke && (
-                <OptionSlider
+                <BoxSlider
                   label="Text Stroke Size"
                   min={0}
                   max={10}
@@ -439,29 +375,16 @@ const TextOptionsPanel = ({ options, updateOption }) => {
                 />
               )}
 
-              <div className="space-y-2">
-                <p className="text-sm font-semibold">Text Glow:</p>
-                <div className="flex gap-2">
-                  {Object.entries({
-                    None: "",
-                    White: "white",
-                    Black: "black",
-                  }).map(([label, value]) => (
-                    <BoxButton
-                      type="text"
-                      key={value}
-                      active={options.textGlow === value}
-                      onClick={() => updateOption("textGlow", value)}
-                      className={cn(tabButtonClass)}
-                    >
-                      {label}
-                    </BoxButton>
-                  ))}
-                </div>
-              </div>
+              <BoxToggleGroup
+                label="Text Glow"
+                options={toggleColors}
+                selected={options.textGlow}
+                onChangeKey="textGlow"
+                onChangeHandler={updateOption}
+              />
 
               {options.textGlow && (
-                <OptionSlider
+                <BoxSlider
                   label="Text Glow Size"
                   min={0}
                   max={2}
