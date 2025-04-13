@@ -37,8 +37,8 @@ const sanitize = (html) => {
 const renderHtml = (text) =>
   text
     .trim()
-    .replace(/(?:\r\n||\n)/g, "<br>")
-    .replace(/(?:\r|)/g, "");
+    .replace(/(?:\r\n|\n)/g, "<br>")
+    .replace(/(?:\r)/g, "");
 
 /**
  * Content component for rendering editable text content with various styles and options.
