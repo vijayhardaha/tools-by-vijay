@@ -28,7 +28,6 @@ const Footer = ({ options, updateOption, activeTool }) => (
 Footer.propTypes = {
   options: PropTypes.object.isRequired,
   updateOption: PropTypes.func.isRequired,
-  updateOption: PropTypes.func.isRequired,
   activeTool: PropTypes.string.isRequired,
 };
 

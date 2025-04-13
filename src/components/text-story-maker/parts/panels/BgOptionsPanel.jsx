@@ -1,17 +1,13 @@
-import { useState } from "react"; // Removed useRef
+import { useState } from "react";
 
-import { useKeenSlider } from "keen-slider/react"; // Import keen-slider
 import PropTypes from "prop-types";
-import "keen-slider/keen-slider.min.css"; // Import keen-slider styles
 
-import { bgColors } from "@/components/text-story-maker/constants";
-import { btnBaseStyles } from "@/components/text-story-maker/lib/ui";
 import {
   PanelContainer,
   BoxContainer,
   BoxButton,
 } from "@/components/text-story-maker/parts/panels/OptionsPanelHelper";
-import { cn } from "@/lib/utils";
+import BgColorSlider from "@/components/text-story-maker/ui/BgColorSlider";
 
 /**
  * BgOptionsPanel component provides a toolbar for selecting background types.
@@ -26,30 +22,11 @@ import { cn } from "@/lib/utils";
 const BgOptionsPanel = ({ options, updateOption }) => {
   const [activeTool, setActiveTool] = useState(options.bgType);
 
-  /**
-   * Generates configuration parameters for the Keen Slider based on the selected tool.
-   *
-   * @param {string} tool - The background tool type (e.g., "solid", "gradient", "mesh").
-   * @returns {Object} The configuration object for the Keen Slider.
-   */
-  const getSliderParams = (tool) => {
-    return {
-      mode: "free-snap",
-      renderMode: "performance",
-      initial: parseInt(options.bgColor, 10) || 1,
-      slides: { perView: "auto", spacing: 0, origin: "center" },
-      loop: false,
-      slideChanged: (slider) => {
-        const currentIndex = slider.track.details.rel;
-        updateOption("bgType", tool);
-        updateOption("bgColor", currentIndex);
-      },
-    };
-  };
-
-  const [sliderRef] = useKeenSlider(
-    activeTool ? getSliderParams(activeTool) : null
-  );
+  const tools = [
+    { name: "solid", label: "Solid" },
+    { name: "gradient", label: "Gradient" },
+    { name: "mesh", label: "Mesh" },
+  ];
 
   /**
    * Handles the change of the active background tool.
@@ -61,43 +38,24 @@ const BgOptionsPanel = ({ options, updateOption }) => {
     setActiveTool(tool);
     updateOption("bgType", tool);
     if (options.bgType !== tool) {
-      updateOption("bgColor", 1);
+      updateOption("bgColor", 0);
     }
   };
 
   return (
     <PanelContainer>
-      {activeTool && (
-        <div className="relative w-full overflow-hidden">
-          <div ref={sliderRef} className="keen-slider">
-            {bgColors[activeTool].map((bgColor, colorKey) => (
-              <div
-                key={colorKey}
-                className="keen-slider__slide relative block h-full !w-fit shrink-0"
-              >
-                <div className="flex items-center justify-center p-2">
-                  <button
-                    type="button"
-                    className={cn(
-                      btnBaseStyles.join(" "),
-                      "size-16 shadow",
-                      "ring-1 ring-white",
-                      bgColor,
-                      {
-                        "ring-4": options.bgColor === colorKey,
-                      }
-                    )}
-                    onClick={() => {
-                      updateOption("bgType", activeTool);
-                      updateOption("bgColor", colorKey);
-                    }}
-                  ></button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+      {tools.map(
+        ({ name }) =>
+          activeTool === name && (
+            <BgColorSlider
+              key={name}
+              tool={name}
+              options={options}
+              updateOption={updateOption}
+            />
+          )
       )}
+
       <BoxContainer>
         <BoxButton
           onClick={(e) => {
@@ -108,27 +66,16 @@ const BgOptionsPanel = ({ options, updateOption }) => {
         >
           <div className="size-13 rounded-xl bg-[conic-gradient(from_0deg,_red,_yellow,_lime,_cyan,_blue,_magenta,_red)] shadow-lg"></div>
         </BoxButton>
-        <BoxButton
-          type="text"
-          active={activeTool === "solid"}
-          onClick={() => handleToolChange("solid")}
-        >
-          Solid
-        </BoxButton>
-        <BoxButton
-          type="text"
-          active={activeTool === "gradient"}
-          onClick={() => handleToolChange("gradient")}
-        >
-          Gradient
-        </BoxButton>
-        <BoxButton
-          type="text"
-          active={activeTool === "mesh"}
-          onClick={() => handleToolChange("mesh")}
-        >
-          Mesh
-        </BoxButton>
+        {tools.map(({ name, label }) => (
+          <BoxButton
+            key={name}
+            type="text"
+            active={activeTool === name}
+            onClick={() => handleToolChange(name)}
+          >
+            {label}
+          </BoxButton>
+        ))}
       </BoxContainer>
     </PanelContainer>
   );

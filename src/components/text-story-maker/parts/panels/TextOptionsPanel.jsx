@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-import { useKeenSlider } from "keen-slider/react";
 import PropTypes from "prop-types";
 import { PiTextAa as AaIcon } from "react-icons/pi";
 import { PiTextAlignCenter as AlignCenterIcon } from "react-icons/pi";
@@ -8,9 +7,7 @@ import { PiTextAlignLeft as AlignLeftIcon } from "react-icons/pi";
 import { PiTextAlignRight as AlignRightIcon } from "react-icons/pi";
 import { TiThLargeOutline as TextSettingsIcon } from "react-icons/ti";
 
-import { fonts, textColors } from "@/components/text-story-maker/constants";
 import { btnBaseStyles } from "@/components/text-story-maker/lib/ui";
-import { getFontClass } from "@/components/text-story-maker/lib/utils";
 import {
   PanelContainer,
   BoxContainer,
@@ -18,12 +15,12 @@ import {
   BoxSlider,
   BoxToggleGroup,
 } from "@/components/text-story-maker/parts/panels/OptionsPanelHelper";
+import FontSlider from "@/components/text-story-maker/ui/FontSlider";
+import TextColorSlider from "@/components/text-story-maker/ui/TextColorSlider";
 import { cn } from "@/lib/utils";
 
-import "keen-slider/keen-slider.min.css";
-
 /**
- * TextOptionsPanel component provides a toolbar for text customization, including font size, line height, text alignment, and other text-related options.
+ * TextOptionsPanel component for managing text-related options.
  *
  * @param {Object} props - Component props.
  * @param {Object} props.options - Current text options.
@@ -36,35 +33,6 @@ const TextOptionsPanel = ({ options, updateOption }) => {
   const [activeSettingsTab, setActiveSettingsTab] = useState("text");
 
   const textAlignments = ["center", "left", "right"];
-
-  /**
-   * Generates slider parameters for the Keen Slider.
-   *
-   * @param {string} initialKey - The initial key to set as active.
-   * @param {string} updateKey - The key to update when the slider changes.
-   * @returns {Object} The slider parameters.
-   */
-  const getSliderParams = (initialKey, updateKey) => {
-    return {
-      mode: "free-snap",
-      renderMode: "performance",
-      initial: parseInt(initialKey, 10) || 0,
-      slides: { perView: "auto", spacing: 0, origin: "center" },
-      loop: false,
-      slideChanged: (slider) => {
-        const currentIndex = slider.track.details.rel;
-        updateOption(updateKey, currentIndex);
-      },
-    };
-  };
-
-  const [fontSliderRef] = useKeenSlider(
-    getSliderParams(options.textFont, "textFont")
-  );
-
-  const [colorSliderRef] = useKeenSlider(
-    getSliderParams(options.textColor, "textColor")
-  );
 
   /**
    * Handles changes to the active tool.
@@ -149,68 +117,11 @@ const TextOptionsPanel = ({ options, updateOption }) => {
   return (
     <PanelContainer>
       {activeTool === "font-family" && (
-        <div className="relative w-full overflow-hidden">
-          <div ref={fontSliderRef} className="keen-slider">
-            {fonts.map(({ label }, font) => (
-              <div
-                key={font}
-                className="keen-slider__slide relative block h-full !w-fit shrink-0"
-              >
-                <div className="flex items-center justify-center p-1">
-                  <button
-                    type="button"
-                    className={cn(
-                      btnBaseStyles.join(" "),
-                      "p-6 py-3 leading-relaxed font-medium",
-                      "bg-neutral-800 text-white",
-                      {
-                        "bg-white text-neutral-900": options.textFont === font,
-                      },
-                      getFontClass(font)
-                    )}
-                    onClick={() => {
-                      updateOption("textFont", font);
-                    }}
-                  >
-                    <span className="truncate overflow-hidden whitespace-nowrap">
-                      {label}
-                    </span>
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+        <FontSlider options={options} updateOption={updateOption} />
       )}
 
       {activeTool === "text-color" && (
-        <div className="relative w-full overflow-hidden">
-          <div ref={colorSliderRef} className="keen-slider">
-            {textColors.map(({ bg }, colorKey) => (
-              <div
-                key={colorKey}
-                className="keen-slider__slide relative block h-full !w-fit shrink-0"
-              >
-                <div className="flex items-center justify-center p-2">
-                  <button
-                    type="button"
-                    className={cn(
-                      btnBaseStyles.join(" "),
-                      "size-16 shadow ring-1 ring-white",
-                      bg,
-                      {
-                        "ring-4": options.textColor === colorKey,
-                      }
-                    )}
-                    onClick={() => {
-                      updateOption("textColor", colorKey);
-                    }}
-                  ></button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+        <TextColorSlider options={options} updateOption={updateOption} />
       )}
 
       {activeTool === "text-settings" && showSettingsDropdown && (

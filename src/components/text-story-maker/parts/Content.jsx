@@ -169,6 +169,7 @@ Content.propTypes = {
     bgType: PropTypes.string.isRequired, // The background type.
     bgColor: PropTypes.string.isRequired, // The background color.
     cardRatio: PropTypes.string.isRequired, // The aspect ratio of the card.
+    boxOuterPadding: PropTypes.number.isRequired, // The outer padding of the box.
   }).isRequired,
   updateOption: PropTypes.func.isRequired, // Function to update the options.
 };
