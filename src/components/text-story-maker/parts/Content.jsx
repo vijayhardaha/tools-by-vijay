@@ -20,13 +20,13 @@ import { cn } from "@/lib/utils";
  * @returns {string} - The sanitized HTML string.
  */
 const sanitize = (html) => {
-  return sanitizeHtml(html, {
+  return sanitizeHtml(html.trim(), {
     allowedTags: ["br"], // Allow only specific tags
     allowedAttributes: {}, // No attributes allowed
     transformTags: {
       div: "br",
     },
-  }).replace(/<\/?div[^>]*>/g, "");
+  });
 };
 
 /**
@@ -34,7 +34,7 @@ const sanitize = (html) => {
  * @param {string} text - The plain text to convert.
  * @returns {string} - The HTML string with <br><br> tags.
  */
-const renderHtml = (text) => text.replace(/\r?\n/g, "<br>");
+const renderHtml = (text) => text.trim().replace(/(?:\r\n|\r|\n)/g, "<br>");
 
 /**
  * Content component for rendering editable text content with various styles and options.
@@ -109,7 +109,7 @@ const Content = ({ options, updateOption }) => {
               e.clipboardData.getData("text/html") ||
               e.clipboardData.getData("text/plain");
 
-            const cleanHtml = renderHtml(sanitize(pastedText));
+            const cleanHtml = renderHtml(sanitize(pastedText).trim());
 
             const selection = window.getSelection();
             if (!selection.rangeCount) return;
