@@ -35,11 +35,7 @@ const sanitize = (html) => {
  * @param {string} text - The plain text to convert.
  * @returns {string} - The HTML string with <br><br> tags.
  */
-const renderHtml = (text) =>
-  text
-    .split("\n")
-    .map((line) => `${line}`)
-    .join("<br>"); // Convert text to multiple <p> elements
+const renderHtml = (text) => text.replace(/(?:\r\n|\r|\n)/g, "<br>");
 
 /**
  * Content component for rendering editable text content with various styles and options.
@@ -92,44 +88,59 @@ const Content = ({ options, updateOption }) => {
           spellCheck="false"
           html={renderHtml(options.text)}
           /**
-           * Handles the blur event to sanitize and update the text content.
+           * Handles content changes inside the editable element.
+           * Updates the "text" option with sanitized plain text value.
            */
           onChange={(e) => {
             updateOption("text", sanitize(e.target.value));
           }}
+          /**
+           * Handles the blur event when the user leaves the editable area.
+           * Sets the focused state to false and updates the "text" option
+           * with sanitized and trimmed HTML content.
+           */
           onBlur={(e) => {
-            setFocused(false); // Set focused to false on blur
+            setFocused(false);
             updateOption("text", sanitize(e.target.innerHTML).trim());
           }}
           /**
-           * Handles the focus event to set the focused state.
+           * Handles the focus event when the editable element is selected.
+           * Sets the focused state to true.
            */
-          onFocus={() => setFocused(true)} // Set focused to true on focus
+          onFocus={() => setFocused(true)}
           /**
            * Handles the paste event to sanitize and insert pasted content.
            */
           onPaste={(e) => {
-            e.preventDefault();
+            e.preventDefault(); // Prevent default paste behavior to control content insertion
+
+            // Get pasted content as HTML (preferred) or plain text
             const pastedText =
               e.clipboardData.getData("text/html") ||
               e.clipboardData.getData("text/plain");
+
+            // Sanitize and convert the pasted content to clean HTML
             const cleanHtml = renderHtml(sanitize(pastedText));
 
             const selection = window.getSelection();
             if (!selection.rangeCount) return;
 
+            // Get the current cursor position (range) and clear any selected content
             const range = selection.getRangeAt(0);
             range.deleteContents();
 
+            // Create a temporary container to parse the clean HTML string
             const tempDiv = document.createElement("div");
             tempDiv.innerHTML = cleanHtml;
 
+            // Move parsed nodes into a DocumentFragment for efficient insertion
             const fragment = document.createDocumentFragment();
             let node;
             while ((node = tempDiv.firstChild)) {
               fragment.appendChild(node);
             }
 
+            // Insert the sanitized content at the current cursor position
             range.insertNode(fragment);
 
             // Move the cursor to the end of the inserted content
