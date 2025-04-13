@@ -24,11 +24,11 @@ export const IconButton = ({
 }) => (
   <button
     type="button"
-    className={cn(btnBaseStyles.join(" "), "size-12 p-1", className)}
+    className={cn(btnBaseStyles.join(" "), "size-13 p-1", className)}
     aria-label={screenReaderText}
     {...props}
   >
-    <IconComponent className={cn("size-6", iconClassName)} />
+    <IconComponent className={cn("size-7", iconClassName)} />
     {screenReaderText && <span className="sr-only">{screenReaderText}</span>}
     {children}
   </button>

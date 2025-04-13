@@ -1,7 +1,7 @@
-import cn from "classnames";
 import PropTypes from "prop-types";
 
 import { IconButton, TextButton } from "@/components/text-story-maker/ui";
+import { cn } from "@/lib/utils";
 
 /**
  * A container component for positioning tools at the bottom of the screen.
@@ -27,11 +27,17 @@ PanelContainer.propTypes = {
  *
  * @param {Object} props - The component props.
  * @param {React.ReactNode} props.children - The child elements to render inside the wrapper.
+ * @param {React.ReactNode} props.className - Additional CSS classes to apply to the wrapper.
  * @returns {JSX.Element} The styled wrapper component for toolbars.
  */
-const BoxContainer = ({ children }) => {
+const BoxContainer = ({ children, className }) => {
   return (
-    <div className="mx-auto inline-flex items-center gap-1 rounded-xl bg-neutral-800 p-1 text-white shadow-sm">
+    <div
+      className={cn(
+        "mx-auto inline-flex items-center gap-2 rounded-xl bg-neutral-800 p-1 text-white shadow",
+        className
+      )}
+    >
       {children}
     </div>
   );
@@ -39,6 +45,7 @@ const BoxContainer = ({ children }) => {
 
 BoxContainer.propTypes = {
   children: PropTypes.node.isRequired,
+  className: PropTypes.string,
 };
 
 /**
@@ -68,7 +75,7 @@ const BoxButton = ({
   return (
     <Component
       className={cn("bg-transparent text-white", className, {
-        "bg-accent-foreground text-neutral-900": active,
+        "bg-white text-neutral-900": active,
       })}
       icon={icon}
       aria-label={screenReaderText}

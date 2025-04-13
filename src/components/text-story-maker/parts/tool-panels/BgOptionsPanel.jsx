@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useRef } from "react"; // Import useRef
 
-import { useKeenSlider } from "keen-slider/react";
 import PropTypes from "prop-types";
-import "keen-slider/keen-slider.min.css";
+import { FreeMode } from "swiper/modules"; // Import freeMode plugin
+import { Swiper, SwiperSlide } from "swiper/react"; // Import Swiper and SwiperSlide
+import "swiper/css";
 
 import { bgColors } from "@/components/text-story-maker/constants";
 import { btnBaseStyles } from "@/components/text-story-maker/lib/ui";
@@ -12,27 +13,6 @@ import {
   BoxButton,
 } from "@/components/text-story-maker/parts/tool-panels/OptionsPanelHelper";
 import { cn } from "@/lib/utils";
-
-// Custom hook to create a slider
-const useSlider = (tool, options, updateOption) => {
-  const [sliderRef, slider] = useKeenSlider({
-    loop: false,
-    mode: "free-snap",
-    renderMode: "performance",
-    initial: Object.keys(bgColors[tool]).indexOf(options.bgColor) + 1,
-    slides: {
-      origin: "center",
-      perView: 7,
-      spacing: 0,
-    },
-    slideChanged(s) {
-      const colorKey = Object.keys(bgColors[tool])[s.track.details.abs];
-      updateOption("bgColor", colorKey);
-      updateOption("bgType", tool);
-    },
-  });
-  return { sliderRef, slider };
-};
 
 /**
  * BgOptionsPanel component provides a toolbar for selecting background types.
@@ -46,19 +26,44 @@ const useSlider = (tool, options, updateOption) => {
  */
 const BgOptionsPanel = ({ options, updateOption }) => {
   const [activeTool, setActiveTool] = useState(options.bgType);
+  const swiperRef = useRef(null);
 
-  const sliders = {
-    solid: useSlider("solid", options, updateOption),
-    gradient: useSlider("gradient", options, updateOption),
-    mesh: useSlider("mesh", options, updateOption),
+  const getSliderParams = (tool) => {
+    const initialSlideIndex = Object.keys(bgColors[tool]).indexOf(
+      options.bgColor
+    );
+
+    return {
+      centeredSlides: true,
+      slidesPerView: "auto",
+      freeMode: true,
+      loop: false,
+      initialSlide: initialSlideIndex >= 0 ? initialSlideIndex : 0, // Set initial slide
+      modules: [FreeMode],
+      onSwiper: (swiper) => {
+        swiperRef.current = swiper; // Store the Swiper instance
+      },
+      onSlideChange: (swiper) => {
+        console.log(swiper.activeIndex);
+        const colorKey = Object.keys(bgColors[tool])[swiper.activeIndex];
+        updateOption("bgType", tool);
+        updateOption("bgColor", colorKey);
+      },
+    };
   };
 
   const handleToolChange = (tool) => {
     if (activeTool === tool) return;
+    console.log(tool);
     setActiveTool(tool);
     updateOption("bgType", tool);
     if (options.bgType !== tool) {
       updateOption("bgColor", "color1");
+      if (swiperRef.current) {
+        setTimeout(() => {
+          swiperRef.current.slideTo(0);
+        }, 100);
+      }
     }
   };
 
@@ -66,15 +71,15 @@ const BgOptionsPanel = ({ options, updateOption }) => {
     <PanelContainer>
       {activeTool && (
         <div className="relative w-full overflow-hidden">
-          <div className="keen-slider" ref={sliders[activeTool].sliderRef}>
+          <Swiper {...getSliderParams(activeTool)}>
             {Object.keys(bgColors[activeTool]).map((colorKey) => (
-              <div key={colorKey} className="keen-slider__slide">
+              <SwiperSlide key={colorKey} className="!w-fit">
                 <div className="flex items-center justify-center p-2">
                   <button
                     type="button"
                     className={cn(
                       btnBaseStyles.join(" "),
-                      "size-14 shadow",
+                      "size-16 shadow",
                       "ring-1 ring-white",
                       bgColors[activeTool][colorKey],
                       {
@@ -87,9 +92,9 @@ const BgOptionsPanel = ({ options, updateOption }) => {
                     }}
                   ></button>
                 </div>
-              </div>
+              </SwiperSlide>
             ))}
-          </div>
+          </Swiper>
         </div>
       )}
       <BoxContainer>
