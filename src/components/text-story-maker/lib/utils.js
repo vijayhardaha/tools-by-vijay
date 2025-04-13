@@ -87,20 +87,6 @@ export function getEffectStyles(effect = "") {
 
   const letterSpacing = { letterSpacing: "0.031em" };
   const paintOrder = { paintOrder: "stroke fill" };
-  const lightBg = {
-    backgroundColor: "rgba(255, 255, 255, 0.15)",
-    padding: "calc(var(--spacing) * 6)",
-    overflow: "hidden",
-  };
-  const darkBg = {
-    backgroundColor: "rgba(0, 0, 0, 0.15)",
-    padding: "calc(var(--spacing) * 6)",
-    overflow: "hidden",
-  };
-
-  const br = (size) => ({
-    borderRadius: `calc(var(--spacing) * ${size})`,
-  });
 
   switch (effect) {
     case "white-stroke":
@@ -149,36 +135,7 @@ export function getEffectStyles(effect = "") {
           WebkitTextStroke: "0.0625em #000000",
         },
       };
-    case "light-bg":
-      return {
-        ...lightBg,
-        ...br(0),
-      };
-    case "dark-bg":
-      return {
-        ...darkBg,
-        ...br(0),
-      };
-    case "light-bg-rounded":
-      return {
-        ...lightBg,
-        ...br(4),
-      };
-    case "dark-bg-rounded":
-      return {
-        ...darkBg,
-        ...br(4),
-      };
-    case "light-bg-rounded-lg":
-      return {
-        ...lightBg,
-        ...br(6),
-      };
-    case "dark-bg-rounded-lg":
-      return {
-        ...darkBg,
-        ...br(6),
-      };
+
     default:
       return {};
   }
@@ -198,6 +155,36 @@ export function getContentStyles(options) {
 
   if (options.textEffect) {
     //styles = { ...styles, ...getEffectStyles(options.textEffect) };
+  }
+
+  if (options.boxBackground) {
+    styles.overflow = "hidden";
+    if (options.boxBackground === "black") {
+      styles.backgroundColor = `rgba(0, 0, 0, ${options.boxBackgroundOpacity})`;
+    }
+
+    if (options.boxBackground === "white") {
+      styles.backgroundColor = `rgba(255, 255, 255, ${options.boxBackgroundOpacity})`;
+    }
+
+    if (options.boxInnerPadding) {
+      styles.padding = `calc(var(--spacing) * ${options.boxInnerPadding})`;
+    }
+
+    if (options.boxBorderRadius) {
+      styles.borderRadius = `calc(var(--spacing) * ${options.boxBorderRadius})`;
+    }
+  }
+
+  if (options.textStroke) {
+    styles.paintOrder = "stroke fill";
+    if (options.textStroke === "black") {
+      styles.WebkitTextStroke = `${options.textStrokeSize}px #000000`;
+    }
+
+    if (options.textStroke === "white") {
+      styles.WebkitTextStroke = `${options.textStrokeSize}px #ffffff`;
+    }
   }
 
   styles.letterSpacing = `${parseFloat(options.textLetterSpacing)}px`;

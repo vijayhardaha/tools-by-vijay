@@ -26,8 +26,19 @@ export const defaultOptions = {
   textUppercase: false,
   textEffect: "",
 
+  // Text Effect
+  textStroke: "",
+  textStrokeSize: 1,
+
   // Content
   text: "",
+
+  // Box
+  boxOuterPadding: 10,
+  boxInnerPadding: 0,
+  boxBackground: 0,
+  boxBackgroundOpacity: 0.15,
+  boxBorderRadius: 0,
 
   // Layout
   cardRatio: "9/16",

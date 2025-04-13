@@ -37,23 +37,6 @@ const TextOptionsPanel = ({ options, updateOption }) => {
   const [showSettingsDropdown, setShowSettingsDropdown] = useState(false);
   const [activeSettingsTab, setActiveSettingsTab] = useState("text");
 
-  // eslint-disable-next-line no-unused-vars
-  const textEffects = [
-    "",
-    "white-stroke",
-    "black-stroke",
-    "white-glow",
-    "black-glow",
-    "white-outline",
-    "black-outline",
-    "light-bg",
-    "dark-bg",
-    "light-bg-rounded",
-    "dark-bg-rounded",
-    "light-bg-rounded-lg",
-    "dark-bg-rounded-lg",
-  ];
-
   const textAlignments = ["center", "left", "right"];
 
   const tabs = [
@@ -81,6 +64,7 @@ const TextOptionsPanel = ({ options, updateOption }) => {
   const [fontSliderRef] = useKeenSlider(
     getSliderParams(fonts, options.textFont, "textFont")
   );
+
   const [colorSliderRef] = useKeenSlider(
     getSliderParams(textColors, options.textColor, "textColor")
   );
@@ -152,7 +136,7 @@ const TextOptionsPanel = ({ options, updateOption }) => {
   };
 
   // Define the class names for the tab buttons
-  const tabButtonClass = "bg-neutral-950 text-sm shadow-none font-normal py-2";
+  const tabButtonClass = "bg-neutral-800 text-sm shadow-none font-normal py-2";
 
   return (
     <PanelContainer>
@@ -224,25 +208,29 @@ const TextOptionsPanel = ({ options, updateOption }) => {
 
       {activeTool === "text-settings" && showSettingsDropdown && (
         <BoxContainer
-          className="flex min-h-48 w-full flex-col items-start gap-4 rounded-xl p-4 text-left"
+          className="flex min-h-48 w-full flex-col items-start gap-4 rounded-xl bg-neutral-800/85 p-4 text-left"
           aria-label="Text Settings"
         >
           <div className="flex w-full items-center justify-evenly rounded-xl bg-neutral-700 p-1">
-            {tabs.map((tab) => (
+            {Object.entries({
+              "Text Settings": "text",
+              "Box Settings": "box",
+              "Effects Settings": "effects",
+            }).map(([label, tab]) => (
               <button
-                key={tab.key}
+                key={tab}
                 type="button"
                 className={cn(
                   btnBaseStyles.join(" "),
                   "flex-1 rounded-xl px-4 py-2 shadow-none",
                   "text-sm font-medium",
                   {
-                    "bg-neutral-800 text-white": activeSettingsTab === tab.key,
+                    "bg-neutral-800 text-white": activeSettingsTab === tab,
                   }
                 )}
-                onClick={() => setActiveSettingsTab(tab.key)}
+                onClick={() => setActiveSettingsTab(tab)}
               >
-                {tab.label}
+                {label}
               </button>
             ))}
           </div>
@@ -276,7 +264,7 @@ const TextOptionsPanel = ({ options, updateOption }) => {
                 </BoxButton>
               </div>
 
-              <div className="mb-2 grid grid-cols-3 gap-6">
+              <div className="mb-2 grid grid-cols-1 gap-4">
                 <div className="space-y-2">
                   <p className="text-sm font-semibold">Text Size:</p>
                   <div className="px-0.5">
@@ -309,7 +297,7 @@ const TextOptionsPanel = ({ options, updateOption }) => {
                   <p className="text-sm font-semibold">Letter Spacing:</p>
                   <div className="px-0.5">
                     <RangeSlider
-                      step={0.5}
+                      step={0.25}
                       min={-3}
                       max={4}
                       values={[options.textLetterSpacing]}
@@ -324,11 +312,137 @@ const TextOptionsPanel = ({ options, updateOption }) => {
           )}
 
           {activeSettingsTab === "box" && (
-            <div className="text-neutral-500">Box tools will go here.</div>
+            <div className="w-full space-y-4">
+              <div className="space-y-2">
+                <p className="text-sm font-semibold">Box Background:</p>
+                <div className="flex gap-2">
+                  {Object.entries({
+                    None: "",
+                    White: "white",
+                    Black: "black",
+                  }).map(([label, value]) => (
+                    <BoxButton
+                      type="text"
+                      key={value}
+                      active={options.boxBackground === value}
+                      onClick={() => updateOption("boxBackground", value)}
+                      className={cn(tabButtonClass)}
+                    >
+                      {label.charAt(0).toUpperCase() + label.slice(1)}
+                    </BoxButton>
+                  ))}
+                </div>
+              </div>
+
+              <div className="mb-2 grid grid-cols-1 gap-4">
+                <div className="space-y-2">
+                  <p className="text-sm font-semibold">Outer Spacing:</p>
+                  <div className="px-0.5">
+                    <RangeSlider
+                      step={0.125}
+                      min={0}
+                      max={20}
+                      values={[options.boxOuterPadding]}
+                      onChange={(values) =>
+                        handleSliderChange("boxOuterPadding", values)
+                      }
+                    />
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <p className="text-sm font-semibold">Border Radius:</p>
+                  <div className="px-0.5">
+                    <RangeSlider
+                      step={0.125}
+                      min={0}
+                      max={20}
+                      values={[options.boxBorderRadius]}
+                      onChange={(values) =>
+                        handleSliderChange("boxBorderRadius", values)
+                      }
+                    />
+                  </div>
+                </div>
+                {options.boxBackground && (
+                  <>
+                    <div className="space-y-2">
+                      <p className="text-sm font-semibold">Inner Spacing:</p>
+                      <div className="px-0.5">
+                        <RangeSlider
+                          step={0.125}
+                          min={0}
+                          max={20}
+                          values={[options.boxInnerPadding]}
+                          onChange={(values) =>
+                            handleSliderChange("boxInnerPadding", values)
+                          }
+                        />
+                      </div>
+                    </div>
+                    <div className="mb space-y-2">
+                      <p className="text-sm font-semibold">
+                        Background Opacity:
+                      </p>
+                      <div className="px-0.5">
+                        <RangeSlider
+                          step={0.01}
+                          min={0}
+                          max={1}
+                          values={[options.boxBackgroundOpacity]}
+                          onChange={(values) =>
+                            handleSliderChange("boxBackgroundOpacity", values)
+                          }
+                        />
+                      </div>
+                    </div>
+                  </>
+                )}
+              </div>
+            </div>
           )}
 
           {activeSettingsTab === "effects" && (
-            <div className="text-neutral-500">Effects tools will go here.</div>
+            <div className="w-full space-y-4">
+              <div className="space-y-2">
+                <p className="text-sm font-semibold">Text Stroke:</p>
+                <div className="flex gap-2">
+                  {Object.entries({
+                    None: "",
+                    White: "white",
+                    Black: "black",
+                  }).map(([label, value]) => (
+                    <BoxButton
+                      type="text"
+                      key={value}
+                      active={options.textStroke === value}
+                      onClick={() => updateOption("textStroke", value)}
+                      className={cn(tabButtonClass)}
+                    >
+                      {label.charAt(0).toUpperCase() + label.slice(1)}
+                    </BoxButton>
+                  ))}
+                </div>
+              </div>
+
+              <div className="mb-2 grid grid-cols-1 gap-4">
+                {options.textStroke && (
+                  <div className="space-y-2">
+                    <p className="text-sm font-semibold">Text Stroke Size:</p>
+                    <div className="px-0.5">
+                      <RangeSlider
+                        step={0.25}
+                        min={0}
+                        max={10}
+                        values={[options.textStrokeSize]}
+                        onChange={(values) =>
+                          handleSliderChange("textStrokeSize", values)
+                        }
+                      />
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
           )}
         </BoxContainer>
       )}

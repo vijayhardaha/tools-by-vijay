@@ -81,6 +81,9 @@ const Content = ({ options, updateOption }) => {
           getBgColorClass(options.bgType, options.bgColor),
           getRatioClass(options.cardRatio)
         )}
+        style={{
+          padding: `calc(var(--spacing) * ${options.boxOuterPadding})`,
+        }}
       >
         <ContentEditable
           id="editable-content"

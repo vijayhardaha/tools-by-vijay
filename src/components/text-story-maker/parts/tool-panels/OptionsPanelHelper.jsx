@@ -12,7 +12,7 @@ import { cn } from "@/lib/utils";
  */
 const PanelContainer = ({ children }) => {
   return (
-    <div className="absolute bottom-0 left-0 z-40 w-full space-y-4 p-4 py-6 text-center">
+    <div className="user-select-none absolute bottom-0 left-0 z-40 w-full space-y-4 p-4 py-6 text-center">
       {children}
     </div>
   );

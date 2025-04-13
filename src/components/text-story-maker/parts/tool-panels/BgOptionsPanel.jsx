@@ -99,7 +99,7 @@ const BgOptionsPanel = ({ options, updateOption }) => {
           screenReaderText="Text Color Tool"
           className="pointer-events-none p-0"
         >
-          <div className="size-10 rounded-full bg-[conic-gradient(from_0deg,_red,_yellow,_lime,_cyan,_blue,_magenta,_red)] shadow-lg"></div>
+          <div className="size-13 rounded-xl bg-[conic-gradient(from_0deg,_red,_yellow,_lime,_cyan,_blue,_magenta,_red)] shadow-lg"></div>
         </BoxButton>
         <BoxButton
           type="text"
