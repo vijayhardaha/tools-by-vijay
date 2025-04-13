@@ -20,13 +20,39 @@ import { cn } from "@/lib/utils";
  * @returns {string} - The sanitized HTML string.
  */
 const sanitize = (html) => {
-  return sanitizeHtml(html.trim(), {
-    allowedTags: ["br"], // Allow only specific tags
+  return sanitizeHtml(textToHtmlLines(html.trim()), {
+    allowedTags: ["br", "div", "p", "span"], // Allow only specific tags
     allowedAttributes: {}, // No attributes allowed
-    transformTags: {
-      div: "br",
-    },
   });
+};
+
+/**
+ * Converts plain text with newlines into HTML with <div> tags.
+ * This function is used to ensure that the text is properly formatted for HTML rendering.
+ * It replaces newlines with <div> tags and handles empty lines.
+ * If the line looks like an HTML tag, it won't be wrapped in a <div>.
+ * @param {string} text - The plain text to convert.
+ * @returns {string} - The HTML string with <div> tags.
+ */
+const textToHtmlLines = (text) => {
+  if (typeof text !== "string") return "";
+
+  return text
+    .split(/(?:\r\n|\r|\n)/)
+    .map((line) => {
+      const trimmedLine = line.trim();
+      if (trimmedLine === "") {
+        return "<div><br/></div>";
+      }
+
+      // If the line looks like an HTML tag, don't wrap it
+      if (/^<[^>]+>.*<\/[^>]+>$/.test(trimmedLine)) {
+        return line;
+      }
+
+      return `<div>${line}</div>`;
+    })
+    .join("");
 };
 
 /**
@@ -34,11 +60,7 @@ const sanitize = (html) => {
  * @param {string} text - The plain text to convert.
  * @returns {string} - The HTML string with <br><br> tags.
  */
-const renderHtml = (text) =>
-  text
-    .trim()
-    .replace(/(?:\r\n|\n)/g, "<br>")
-    .replace(/(?:\r)/g, "");
+const renderHtml = (text) => text.trim();
 
 /**
  * Content component for rendering editable text content with various styles and options.
