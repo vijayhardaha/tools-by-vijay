@@ -1,4 +1,4 @@
-import { SEO } from "@/constants/seo";
+import { baseMetadata, SEO } from "@/constants/seo";
 
 /**
  * Retrieves the base URL based on the environment variables.
@@ -56,21 +56,22 @@ export const generateMetadata = ({
   slug = "",
 }) => {
   return {
+    ...baseMetadata,
     title: generateSeoTitle(title),
     description: description,
     alternates: {
       canonical: getCanonicalUrl(slug),
     },
     openGraph: {
+      ...baseMetadata.openGraph,
       title: generateSeoTitle(title),
       description: description,
       url: getCanonicalUrl(slug),
-      type: "website",
     },
     twitter: {
+      ...baseMetadata.twitter,
       title: generateSeoTitle(title),
       description: description,
-      card: "summary_large_image",
     },
   };
 };
