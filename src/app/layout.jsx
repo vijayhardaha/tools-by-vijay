@@ -24,7 +24,7 @@ const geistMono = Geist_Mono({
   variable: "--font-app-mono",
 });
 
-import { baseMetadata, SEO } from "@/constants/seo";
+import { baseMetadata } from "@/constants/seo";
 import "../styles/globals.css";
 
 /**
