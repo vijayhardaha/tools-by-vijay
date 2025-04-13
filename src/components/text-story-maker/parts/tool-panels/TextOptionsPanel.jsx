@@ -5,11 +5,9 @@ import { PiTextAa as AaIcon } from "react-icons/pi";
 import { PiTextAlignCenter as AlignCenterIcon } from "react-icons/pi";
 import { PiTextAlignLeft as AlignLeftIcon } from "react-icons/pi";
 import { PiTextAlignRight as AlignRightIcon } from "react-icons/pi";
-import { RiFontSizeAi as TextEffectIcon } from "react-icons/ri";
+import { TiThLargeOutline as TextSettingsIcon } from "react-icons/ti";
 import { FreeMode } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-
-import { TiThLargeOutline as TextSettingsIcon } from "react-icons/ti";
 
 import { fonts, textColors } from "@/components/text-story-maker/constants";
 import { btnBaseStyles } from "@/components/text-story-maker/lib/ui";
@@ -43,6 +41,7 @@ const TextOptionsPanel = ({ options, updateOption }) => {
   const fontSliderRef = useRef(null);
   const colorSliderRef = useRef(null);
 
+  // eslint-disable-next-line no-unused-vars
   const textEffects = [
     "",
     "white-stroke",
