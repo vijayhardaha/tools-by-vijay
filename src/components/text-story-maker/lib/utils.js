@@ -6,6 +6,12 @@ import {
 
 import sanitizeHtml from "sanitize-html";
 
+/**
+ * Checks if the provided text is empty after sanitization.
+ *
+ * @param {string} text - The text to check.
+ * @returns {boolean} True if the text is empty, false otherwise.
+ */
 export const isEmptyText = (text) => {
   return !sanitizeHtml(text, {
     allowedTags: [],
@@ -15,6 +21,7 @@ export const isEmptyText = (text) => {
 
 /**
  * Returns the CSS class for a given aspect ratio.
+ *
  * @param {string} ratio - The aspect ratio in the format "width/height" (e.g., "9/16").
  * @returns {string} The corresponding CSS class for the aspect ratio.
  */
@@ -38,6 +45,7 @@ export const getRatioClass = (ratio) => {
 
 /**
  * Returns the CSS class for a given alignment value.
+ *
  * @param {string} alignment - The alignment value ("left", "center", "right").
  * @returns {string} The corresponding CSS class for the alignment.
  */
@@ -58,7 +66,7 @@ export const getAlignmentClass = (alignment) => {
  *
  * @param {string} value - The key representing the text color in the `textColors` object.
  * @param {string} [key="text"] - The specific property to retrieve from the text color object (default is "text").
- * @returns {string} - The CSS class for the specified text color and key, or an empty string if not found.
+ * @returns {string} The CSS class for the specified text color and key, or an empty string if not found.
  */
 export function getTextColorClass(value, key = "text") {
   if (textColors[value] && textColors[value][key]) {
@@ -70,6 +78,7 @@ export function getTextColorClass(value, key = "text") {
 
 /**
  * Retrieves the font class name by its key.
+ *
  * @param {string} key - The key of the font.
  * @returns {string|null} The class name of the font, or null if not found.
  */
@@ -79,9 +88,10 @@ export const getFontClass = (key) => {
 
 /**
  * Utility function to get color class based on type and value.
+ *
  * @param {string} type - The type of color (e.g., 'solid', 'gradient', 'mesh').
  * @param {string} value - The specific color key (e.g., 'color1', 'color2').
- * @returns {string} - The corresponding color class or an empty string if not found.
+ * @returns {string} The corresponding color class or an empty string if not found.
  */
 export function getBgColorClass(type, value) {
   if (bgColors[type] && bgColors[type][value]) {
@@ -91,6 +101,12 @@ export function getBgColorClass(type, value) {
   return "";
 }
 
+/**
+ * Retrieves the shadow property based on the given value.
+ *
+ * @param {number} value - The index of the shadow property.
+ * @returns {string} The corresponding shadow property or an empty string if not found.
+ */
 export function getShadowProperty(value) {
   const shadows = [
     "var(--shadow-2xs)",
@@ -105,6 +121,27 @@ export function getShadowProperty(value) {
   return shadows[value] || "";
 }
 
+/**
+ * Generates the content styles based on the provided options.
+ *
+ * @param {Object} options - The options object containing style properties.
+ * @param {string} options.text - The text content.
+ * @param {number} options.textSize - The font size of the text.
+ * @param {number} options.textLineHeight - The line height of the text.
+ * @param {number} options.textLetterSpacing - The letter spacing of the text.
+ * @param {string} options.boxBackground - The background color of the box ("white", "black", or empty).
+ * @param {number} options.boxBackgroundOpacity - The opacity of the box background.
+ * @param {number} options.boxInnerPadding - The inner padding of the box.
+ * @param {number} options.boxBorderRadius - The border radius of the box.
+ * @param {string} options.boxGlossy - Whether the box has a glossy effect ("enabled" or empty).
+ * @param {number} options.boxGlossyBlur - The blur value for the glossy effect.
+ * @param {number} options.boxGlossyShadow - The shadow value for the glossy effect.
+ * @param {string} options.textStroke - The stroke color of the text ("white", "black", or empty).
+ * @param {number} options.textStrokeSize - The size of the text stroke.
+ * @param {string} options.textGlow - The glow color of the text ("white", "black", or empty).
+ * @param {number} options.textGlowSize - The size of the text glow.
+ * @returns {Object} The generated styles object.
+ */
 export function getContentStyles(options) {
   let styles = {};
 

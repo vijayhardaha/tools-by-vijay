@@ -19,7 +19,7 @@ export const defaultOptions = {
   textSize: 1.25,
   textLineHeight: 1.375,
   textLetterSpacing: 0,
-  textColor: "color1",
+  textColor: 0,
   textAlign: "center",
   textBold: false,
   textItalic: false,

@@ -26,6 +26,12 @@ import { cn } from "@/lib/utils";
 const BgOptionsPanel = ({ options, updateOption }) => {
   const [activeTool, setActiveTool] = useState(options.bgType);
 
+  /**
+   * Generates configuration parameters for the Keen Slider based on the selected tool.
+   *
+   * @param {string} tool - The background tool type (e.g., "solid", "gradient", "mesh").
+   * @returns {Object} The configuration object for the Keen Slider.
+   */
   const getSliderParams = (tool) => {
     const initialSlideIndex = Object.keys(bgColors[tool]).indexOf(
       options.bgColor
@@ -49,6 +55,11 @@ const BgOptionsPanel = ({ options, updateOption }) => {
     activeTool ? getSliderParams(activeTool) : null
   );
 
+  /**
+   * Handles the change of the active background tool.
+   *
+   * @param {string} tool - The selected background tool type.
+   */
   const handleToolChange = (tool) => {
     if (activeTool === tool) return;
     setActiveTool(tool);

@@ -27,9 +27,6 @@ import "keen-slider/keen-slider.min.css";
  *
  * @param {Object} props - Component props.
  * @param {Object} props.options - Current text options.
- * @param {number} props.options.textSize - Current text size.
- * @param {number} props.options.textLineHeight - Current line height.
- * @param {string} props.options.textAlign - Current text alignment ("left", "center", or "right").
  * @param {Function} props.updateOption - Function to update a specific text option.
  * @returns {JSX.Element} The rendered TextOptionsPanel component.
  */
@@ -43,13 +40,16 @@ const TextOptionsPanel = ({ options, updateOption }) => {
   /**
    * Generates slider parameters for the Keen Slider.
    *
-   * @param {Object} items - The items to display in the slider.
+   * @param {Object|Array} items - The items to display in the slider.
    * @param {string} initialKey - The initial key to set as active.
    * @param {string} updateKey - The key to update when the slider changes.
    * @returns {Object} The slider parameters.
    */
   const getSliderParams = (items, initialKey, updateKey) => {
-    const initialSlideIndex = Object.keys(items).indexOf(initialKey);
+    const isArray = Array.isArray(items);
+    const initialSlideIndex = isArray
+      ? parseInt(initialKey, 10)
+      : Object.keys(items).indexOf(initialKey);
 
     return {
       mode: "free-snap",
@@ -58,7 +58,8 @@ const TextOptionsPanel = ({ options, updateOption }) => {
       slides: { perView: "auto", spacing: 0, origin: "center" },
       loop: false,
       slideChanged: (slider) => {
-        const key = Object.keys(items)[slider.track.details.rel];
+        const rel = slider.track.details.rel;
+        const key = isArray ? rel : Object.keys(items)[rel];
         updateOption(updateKey, key);
       },
     };
@@ -192,7 +193,7 @@ const TextOptionsPanel = ({ options, updateOption }) => {
       {activeTool === "text-color" && (
         <div className="relative w-full overflow-hidden">
           <div ref={colorSliderRef} className="keen-slider">
-            {Object.keys(textColors).map((colorKey) => (
+            {textColors.map(({ bg }, colorKey) => (
               <div
                 key={colorKey}
                 className="keen-slider__slide relative block h-full !w-fit shrink-0"
@@ -202,9 +203,8 @@ const TextOptionsPanel = ({ options, updateOption }) => {
                     type="button"
                     className={cn(
                       btnBaseStyles.join(" "),
-                      "size-16 shadow",
-                      "ring-1 ring-white",
-                      textColors[colorKey].bg,
+                      "size-16 shadow ring-1 ring-white",
+                      bg,
                       {
                         "ring-4": options.textColor === colorKey,
                       }

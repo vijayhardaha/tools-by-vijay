@@ -1,3 +1,9 @@
+/**
+ * Base styles for buttons used across the application.
+ *
+ * These styles include layout, typography, interaction states, and transitions.
+ * They can be extended or combined with additional styles as needed.
+ */
 export const btnBaseStyles = [
   "inline-flex shrink-0 items-center justify-center",
   "relative rounded-xl shadow p-2",

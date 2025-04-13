@@ -149,6 +149,18 @@ BoxSlider.propTypes = {
   onChangeHandler: PropTypes.func.isRequired,
 };
 
+/**
+ * A toggle group component for selecting one option from a set of predefined options.
+ *
+ * @param {Object} props - The component props.
+ * @param {string} props.label - The label displayed above the toggle group.
+ * @param {Object} [props.options={}] - The options to display as toggle buttons, where keys are labels and values are identifiers.
+ * @param {string} props.selected - The currently selected option's identifier.
+ * @param {string} props.onChangeKey - A key to identify the toggle group in the change handler.
+ * @param {Function} props.onChangeHandler - The function to call when the selected option changes.
+ * @param {string} [props.buttonClass] - Additional CSS classes to apply to the toggle buttons.
+ * @returns {JSX.Element} The styled toggle group component.
+ */
 const BoxToggleGroup = ({
   label,
   options = {},
