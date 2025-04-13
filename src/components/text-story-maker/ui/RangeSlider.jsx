@@ -29,7 +29,7 @@ export const RangeSlider = ({ min, max, step, values, onChange }) => {
           <div
             {...trackProps}
             ref={trackProps.ref}
-            className="relative z-10 h-0.5 w-full bg-white"
+            className="relative z-10 h-0.5 w-full rounded-full bg-white"
           >
             {children}
           </div>
@@ -47,8 +47,8 @@ export const RangeSlider = ({ min, max, step, values, onChange }) => {
             aria-valuemax={max}
             aria-valuenow={values[0]}
             className={cn(
-              "bg-accent-foreground flex size-4 transform items-center justify-center rounded-full outline-hidden",
-              isDragged ? "ring-accent-foreground/30 ring-4" : ""
+              "flex size-4 transform items-center justify-center rounded-full bg-white outline-hidden",
+              isDragged ? "ring-4 ring-white/30" : ""
             )}
           ></div>
         );
