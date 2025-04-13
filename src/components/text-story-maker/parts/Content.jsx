@@ -34,7 +34,7 @@ const sanitize = (html) => {
  * @param {string} text - The plain text to convert.
  * @returns {string} - The HTML string with <br><br> tags.
  */
-const renderHtml = (text) => text.replace(/(?:\r\n|\r|\n)/g, "<br>");
+const renderHtml = (text) => text.replace(/\r?\n/g, "<br>");
 
 /**
  * Content component for rendering editable text content with various styles and options.
