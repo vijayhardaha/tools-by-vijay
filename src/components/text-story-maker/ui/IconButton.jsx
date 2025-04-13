@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 
+import { btnBaseStyles } from "@/components/text-story-maker/lib/ui";
 import { cn } from "@/lib/utils";
 
 /**
@@ -23,15 +24,7 @@ export const IconButton = ({
 }) => (
   <button
     type="button"
-    className={cn(
-      "inline-flex shrink-0 items-center justify-center",
-      "text-sm font-semibold whitespace-nowrap shadow",
-      "rounded-lg outline-none focus-visible:outline-none",
-      "cursor-pointer active:scale-95 disabled:pointer-events-none disabled:opacity-50",
-      "transition-all duration-200 ease-in-out",
-      "size-12 p-1",
-      className
-    )}
+    className={cn(btnBaseStyles.join(" "), "size-12 p-1", className)}
     aria-label={screenReaderText}
     {...props}
   >

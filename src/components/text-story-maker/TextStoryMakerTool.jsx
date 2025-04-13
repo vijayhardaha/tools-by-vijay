@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { defaultOptions } from "@/components/text-story-maker/constants";
 import Content from "@/components/text-story-maker/parts/Content";
 import Footer from "@/components/text-story-maker/parts/Footer";
-import Header from "@/components/text-story-maker/parts/header/Header";
+import Header from "@/components/text-story-maker/parts/Header";
 import ToolInfo from "@/components/text-story-maker/parts/ToolInfo";
 import { cn } from "@/lib/utils";
 

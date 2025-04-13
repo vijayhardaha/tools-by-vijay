@@ -5,11 +5,12 @@ import PropTypes from "prop-types";
 import "keen-slider/keen-slider.min.css";
 
 import { bgColors } from "@/components/text-story-maker/constants";
+import { btnBaseStyles } from "@/components/text-story-maker/lib/ui";
 import {
-  ToolBarWrapper,
-  ToolBarButton,
-  ToolsBox,
-} from "@/components/text-story-maker/toolbars/ToolBarBase";
+  PanelContainer,
+  BoxContainer,
+  BoxButton,
+} from "@/components/text-story-maker/parts/tool-panels/OptionsPanelHelper";
 import { cn } from "@/lib/utils";
 
 // Custom hook to create a slider
@@ -21,7 +22,7 @@ const useSlider = (tool, options, updateOption) => {
     initial: Object.keys(bgColors[tool]).indexOf(options.bgColor) + 1,
     slides: {
       origin: "center",
-      perView: 9,
+      perView: 7,
       spacing: 0,
     },
     slideChanged(s) {
@@ -34,16 +35,16 @@ const useSlider = (tool, options, updateOption) => {
 };
 
 /**
- * BackgroundToolBar component provides a toolbar for selecting background types.
+ * BgOptionsPanel component provides a toolbar for selecting background types.
  *
  * @param {Object} props - Component props.
  * @param {Object} props.options - Options object containing the current background settings.
  * @param {string} props.options.bgType - The current background type (e.g., "solid", "gradient", "mesh").
  * @param {string} props.options.bgColor - The current background color key.
  * @param {Function} props.updateOption - Function to update the selected background option.
- * @returns {JSX.Element} The rendered BackgroundToolBar component.
+ * @returns {JSX.Element} The rendered BgOptionsPanel component.
  */
-const BackgroundToolBar = ({ options, updateOption }) => {
+const BgOptionsPanel = ({ options, updateOption }) => {
   const [activeTool, setActiveTool] = useState(options.bgType);
 
   const sliders = {
@@ -62,25 +63,22 @@ const BackgroundToolBar = ({ options, updateOption }) => {
   };
 
   return (
-    <ToolsBox>
+    <PanelContainer>
       {activeTool && (
         <div className="relative w-full overflow-hidden">
           <div className="keen-slider" ref={sliders[activeTool].sliderRef}>
             {Object.keys(bgColors[activeTool]).map((colorKey) => (
               <div key={colorKey} className="keen-slider__slide">
-                <div className="flex items-center justify-center p-1">
+                <div className="flex items-center justify-center p-2">
                   <button
                     type="button"
                     className={cn(
-                      "flex items-center justify-center",
-                      "relative h-10 w-10 rounded-lg",
-                      "shadow-sm ring-1 shadow-black/30 ring-white/85",
-                      "cursor-pointer outline-none focus-visible:outline-none",
-                      "transition-transform duration-300 ease-in-out active:scale-97",
+                      btnBaseStyles.join(" "),
+                      "size-14 shadow",
+                      "ring-3 ring-transparent ring-offset-2 ring-offset-neutral-900",
                       bgColors[activeTool][colorKey],
                       {
-                        "ring-white ring-offset-2":
-                          options.bgColor === colorKey,
+                        "ring-white": options.bgColor === colorKey,
                       }
                     )}
                     onClick={() => {
@@ -94,34 +92,34 @@ const BackgroundToolBar = ({ options, updateOption }) => {
           </div>
         </div>
       )}
-      <ToolBarWrapper>
-        <ToolBarButton
+      <BoxContainer>
+        <BoxButton
           type="text"
           active={activeTool === "solid"}
           onClick={() => handleToolChange("solid")}
         >
           Solid
-        </ToolBarButton>
-        <ToolBarButton
+        </BoxButton>
+        <BoxButton
           type="text"
           active={activeTool === "gradient"}
           onClick={() => handleToolChange("gradient")}
         >
           Gradient
-        </ToolBarButton>
-        <ToolBarButton
+        </BoxButton>
+        <BoxButton
           type="text"
           active={activeTool === "mesh"}
           onClick={() => handleToolChange("mesh")}
         >
           Mesh
-        </ToolBarButton>
-      </ToolBarWrapper>
-    </ToolsBox>
+        </BoxButton>
+      </BoxContainer>
+    </PanelContainer>
   );
 };
 
-BackgroundToolBar.propTypes = {
+BgOptionsPanel.propTypes = {
   options: PropTypes.shape({
     bgType: PropTypes.string.isRequired,
     bgColor: PropTypes.string.isRequired,
@@ -129,4 +127,4 @@ BackgroundToolBar.propTypes = {
   updateOption: PropTypes.func.isRequired,
 };
 
-export default BackgroundToolBar;
+export default BgOptionsPanel;

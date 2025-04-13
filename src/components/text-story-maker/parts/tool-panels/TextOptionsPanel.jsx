@@ -17,15 +17,15 @@ import "keen-slider/keen-slider.min.css";
 import { fonts, textColors } from "@/components/text-story-maker/constants";
 import { getFontClass } from "@/components/text-story-maker/lib/utils";
 import {
-  ToolBarWrapper,
-  ToolBarButton,
-  ToolsBox,
-} from "@/components/text-story-maker/toolbars/ToolBarBase";
+  PanelContainer,
+  BoxContainer,
+  BoxButton,
+} from "@/components/text-story-maker/parts/tool-panels/OptionsPanelHelper";
 import { RangeSlider } from "@/components/text-story-maker/ui";
 import { cn } from "@/lib/utils";
 
 /**
- * TextToolBar component provides a toolbar for text customization, including font size, line height, text alignment, and other text-related options.
+ * TextOptionsPanel component provides a toolbar for text customization, including font size, line height, text alignment, and other text-related options.
  *
  * @param {Object} props - Component props.
  * @param {Object} props.options - Current text options.
@@ -33,9 +33,9 @@ import { cn } from "@/lib/utils";
  * @param {number} props.options.textLineHeight - Current line height.
  * @param {string} props.options.textAlign - Current text alignment ("left", "center", or "right").
  * @param {Function} props.updateOption - Function to update a specific text option.
- * @returns {JSX.Element} The rendered TextToolBar component.
+ * @returns {JSX.Element} The rendered TextOptionsPanel component.
  */
-const TextToolBar = ({ options, updateOption }) => {
+const TextOptionsPanel = ({ options, updateOption }) => {
   const [activeTool, setActiveTool] = useState("font-family");
   const [textSize, setTextSize] = useState(options.textSize);
   const [lineHeight, setLineHeight] = useState(options.textLineHeight);
@@ -207,7 +207,7 @@ const TextToolBar = ({ options, updateOption }) => {
         />
       </div>
 
-      <ToolsBox>
+      <PanelContainer>
         {activeTool === "font-family" && (
           <div className="relative w-full overflow-hidden">
             <div className="keen-slider" ref={fontSliderRef}>
@@ -275,15 +275,15 @@ const TextToolBar = ({ options, updateOption }) => {
           </div>
         )}
 
-        <ToolBarWrapper>
-          <ToolBarButton
+        <BoxContainer>
+          <BoxButton
             icon={AaIcon}
             active={activeTool === "font-family"}
             onClick={() => setActiveTool("font-family")}
             screenReaderText="Font Family Tool"
             className="size-8"
           />
-          <ToolBarButton
+          <BoxButton
             type="text"
             active={activeTool === "text-color"}
             onClick={() => setActiveTool("text-color")}
@@ -291,8 +291,8 @@ const TextToolBar = ({ options, updateOption }) => {
             className="size-8 p-0"
           >
             <div className="size-5 rounded-full bg-[conic-gradient(from_0deg,_red,_yellow,_lime,_cyan,_blue,_magenta,_red)] shadow-lg"></div>
-          </ToolBarButton>
-          <ToolBarButton
+          </BoxButton>
+          <BoxButton
             icon={getAlignmentIcon()}
             iconClassName="size-8"
             className="size-8 p-0"
@@ -301,7 +301,7 @@ const TextToolBar = ({ options, updateOption }) => {
             }}
             screenReaderText="Text Alignment Tool"
           />
-          <ToolBarButton
+          <BoxButton
             icon={TextBoldIcon}
             onClick={handleBoldToggle}
             className={cn("size-8", {
@@ -309,7 +309,7 @@ const TextToolBar = ({ options, updateOption }) => {
             })}
             screenReaderText="Bold Text Tool"
           />
-          <ToolBarButton
+          <BoxButton
             icon={TextItalicIcon}
             onClick={handleItalicToggle}
             className={cn("size-8", {
@@ -317,7 +317,7 @@ const TextToolBar = ({ options, updateOption }) => {
             })}
             screenReaderText="Italic Text Tool"
           />
-          <ToolBarButton
+          <BoxButton
             icon={TextUppercaseIcon}
             onClick={handleUppercaseToggle}
             className={cn("size-8", {
@@ -325,7 +325,7 @@ const TextToolBar = ({ options, updateOption }) => {
             })}
             screenReaderText="Uppercase Text Tool"
           />
-          <ToolBarButton
+          <BoxButton
             icon={TextEffectIcon}
             onClick={handleTextEffectToggle}
             className={cn("size-8", {
@@ -333,7 +333,7 @@ const TextToolBar = ({ options, updateOption }) => {
             })}
             screenReaderText="Text Effect Tool"
           />
-          <ToolBarButton
+          <BoxButton
             icon={FontSizeIcon}
             onClick={() => {
               setShowFontSizeSlider((prev) => !prev);
@@ -344,7 +344,7 @@ const TextToolBar = ({ options, updateOption }) => {
             })}
             screenReaderText="Font Size Tool"
           />
-          <ToolBarButton
+          <BoxButton
             icon={LineHeightIcon}
             onClick={() => {
               setShowLineHeightSlider((prev) => !prev);
@@ -355,15 +355,15 @@ const TextToolBar = ({ options, updateOption }) => {
             })}
             screenReaderText="Line Height Tool"
           />
-        </ToolBarWrapper>
-      </ToolsBox>
+        </BoxContainer>
+      </PanelContainer>
     </>
   );
 };
 
-TextToolBar.propTypes = {
+TextOptionsPanel.propTypes = {
   options: PropTypes.object.isRequired,
   updateOption: PropTypes.func.isRequired,
 };
 
-export default TextToolBar;
+export default TextOptionsPanel;

@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 
+import { btnBaseStyles } from "@/components/text-story-maker/lib/ui";
 import { cn } from "@/lib/utils";
 
 /**
@@ -15,13 +16,9 @@ export const TextButton = ({ className, children, ...props }) => (
   <button
     type="button"
     className={cn(
-      "inline-flex shrink-0 items-center justify-center",
-      "rounded-lg text-base whitespace-nowrap",
+      btnBaseStyles.join(" "),
       "bg-neutral-700 text-white",
-      "outline-none focus-visible:outline-none",
-      "cursor-pointer active:scale-95 disabled:pointer-events-none disabled:opacity-50",
-      "transition-all duration-100 ease-in-out",
-      "min-h-8 min-w-8 p-2 px-3",
+      "p-3 px-5",
       className
     )}
     {...props}

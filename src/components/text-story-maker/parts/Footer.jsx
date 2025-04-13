@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 
-import BackgroundToolBar from "@/components/text-story-maker/toolbars/BackgroundToolBar";
-import TextToolBar from "@/components/text-story-maker/toolbars/TextToolBar";
+import BgOptionsPanel from "@/components/text-story-maker/parts/tool-panels/BgOptionsPanel";
+import TextOptionsPanel from "@/components/text-story-maker/parts/tool-panels/TextOptionsPanel";
 
 /**
  * Footer component for the text story maker.
@@ -15,10 +15,10 @@ import TextToolBar from "@/components/text-story-maker/toolbars/TextToolBar";
 const Footer = ({ options, updateOption, activeTool }) => (
   <>
     {activeTool === "text" && (
-      <TextToolBar options={options} updateOption={updateOption} />
+      <TextOptionsPanel options={options} updateOption={updateOption} />
     )}
     {activeTool === "background" && (
-      <BackgroundToolBar options={options} updateOption={updateOption} />
+      <BgOptionsPanel options={options} updateOption={updateOption} />
     )}
   </>
 );
