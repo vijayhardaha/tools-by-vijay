@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
  * @param {React.ReactNode} props.children - The child elements to render inside the container.
  * @returns {JSX.Element} The styled container component for tools.
  */
-const PanelContainer = ({ children }) => {
+const ControlPanel = ({ children }) => {
   return (
     <div className="user-select-none absolute bottom-0 left-0 z-40 w-full space-y-4 p-4 py-6 text-center">
       {children}
@@ -19,7 +19,7 @@ const PanelContainer = ({ children }) => {
   );
 };
 
-PanelContainer.propTypes = {
+ControlPanel.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
@@ -31,7 +31,7 @@ PanelContainer.propTypes = {
  * @param {React.ReactNode} props.className - Additional CSS classes to apply to the wrapper.
  * @returns {JSX.Element} The styled wrapper component for toolbars.
  */
-const BoxContainer = ({ children, className }) => {
+const ControlBox = ({ children, className }) => {
   return (
     <div
       className={cn(
@@ -44,7 +44,7 @@ const BoxContainer = ({ children, className }) => {
   );
 };
 
-BoxContainer.propTypes = {
+ControlBox.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
 };
@@ -62,7 +62,7 @@ BoxContainer.propTypes = {
  * @param {Object} [props] - Additional props to pass to the button component.
  * @returns {JSX.Element} The styled button component for toolbars.
  */
-const BoxButton = ({
+const ControlBtn = ({
   type = "icon",
   icon,
   className,
@@ -87,7 +87,7 @@ const BoxButton = ({
   );
 };
 
-BoxButton.propTypes = {
+ControlBtn.propTypes = {
   type: PropTypes.oneOf(["icon", "text"]),
   icon: PropTypes.elementType,
   className: PropTypes.string,
@@ -110,7 +110,7 @@ BoxButton.propTypes = {
  * @param {Function} props.onChangeHandler - The function to call when the slider value changes.
  * @returns {JSX.Element} The styled slider component.
  */
-const BoxSlider = ({
+const ControlSlider = ({
   label,
   min = 0,
   max = 20,
@@ -125,7 +125,7 @@ const BoxSlider = ({
 
   return (
     <div className="space-y-1.25">
-      <p className="text-sm font-medium">{label}</p>
+      {label && <p className="text-sm font-medium">{label}</p>}
       <div className="px-0.5">
         <RangeSlider
           step={step}
@@ -139,7 +139,7 @@ const BoxSlider = ({
   );
 };
 
-BoxSlider.propTypes = {
+ControlSlider.propTypes = {
   label: PropTypes.string.isRequired,
   min: PropTypes.number,
   max: PropTypes.number,
@@ -161,7 +161,7 @@ BoxSlider.propTypes = {
  * @param {string} [props.buttonClass] - Additional CSS classes to apply to the toggle buttons.
  * @returns {JSX.Element} The styled toggle group component.
  */
-const BoxToggleGroup = ({
+const ToggleOptions = ({
   label,
   options = {},
   selected,
@@ -176,11 +176,11 @@ const BoxToggleGroup = ({
   if (!options) return;
 
   return (
-    <div className="space-y-0.75">
+    <div className="flex items-center justify-between gap-2">
       <p className="text-sm font-medium">{label}</p>
       <div className="flex gap-1.5">
         {Object.entries(options).map(([text, value]) => (
-          <BoxButton
+          <ControlBtn
             type="text"
             key={value}
             active={selected === value}
@@ -191,14 +191,14 @@ const BoxToggleGroup = ({
             )}
           >
             {text}
-          </BoxButton>
+          </ControlBtn>
         ))}
       </div>
     </div>
   );
 };
 
-BoxToggleGroup.propTypes = {
+ToggleOptions.propTypes = {
   label: PropTypes.string.isRequired,
   options: PropTypes.object,
   selected: PropTypes.string.isRequired,
@@ -207,4 +207,74 @@ BoxToggleGroup.propTypes = {
   buttonClass: PropTypes.string,
 };
 
-export { PanelContainer, BoxContainer, BoxButton, BoxSlider, BoxToggleGroup };
+/**
+ * A toggle group component for selecting one option from a set of predefined options.
+ *
+ * @param {Object} props - The component props.
+ * @param {string} props.label - The label displayed above the toggle group.
+ * @param {string} props.selected - The currently selected option's identifier.
+ * @param {string} props.onChangeKey - A key to identify the toggle group in the change handler.
+ * @param {Function} props.onChangeHandler - The function to call when the selected option changes.
+ * @param {string} [props.buttonClass] - Additional CSS classes to apply to the toggle buttons.
+ * @returns {JSX.Element} The styled toggle group component.
+ */
+const ToggleColors = ({
+  label,
+  selected,
+  onChangeKey,
+  onChangeHandler,
+  buttonClass,
+}) => {
+  const handleClick = (value) => {
+    onChangeHandler(onChangeKey, value);
+  };
+
+  const options = {
+    Transparent: "",
+    White: "white",
+    Black: "black",
+  };
+
+  return (
+    <div className="flex items-center justify-between gap-2">
+      <p className="text-sm font-medium">{label}</p>
+      <div className="flex gap-1">
+        {Object.entries(options).map(([text, value]) => (
+          <ControlBtn
+            type="text"
+            key={value}
+            onClick={() => handleClick(value)}
+            className={cn(
+              "size-7 rounded-lg p-0 shadow",
+              buttonClass,
+              value === "white" && "bg-white text-neutral-900",
+              value === "black" && "bg-black text-white",
+              value === "" && "bg-transparent-checker text-white",
+              selected === value && "relative z-10 ring-2 ring-amber-400"
+            )}
+          >
+            <span className="sr-only">{text}</span>
+          </ControlBtn>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+ToggleColors.propTypes = {
+  label: PropTypes.string.isRequired,
+  options: PropTypes.object,
+  selected: PropTypes.string.isRequired,
+  onChangeKey: PropTypes.string.isRequired,
+  onChangeHandler: PropTypes.func.isRequired,
+  buttonClass: PropTypes.string,
+};
+
+export {
+  ControlPanel,
+  ControlBox,
+  ControlBtn,
+  ControlSlider,
+  ToggleOptions,
+  ToggleColors,
+};

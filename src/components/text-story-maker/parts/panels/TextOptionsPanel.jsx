@@ -9,11 +9,12 @@ import { TiThLargeOutline as TextSettingsIcon } from "react-icons/ti";
 
 import { btnBaseStyles } from "@/components/text-story-maker/lib/ui";
 import {
-  PanelContainer,
-  BoxContainer,
-  BoxButton,
-  BoxSlider,
-  BoxToggleGroup,
+  ControlPanel,
+  ControlBox,
+  ControlBtn,
+  ControlSlider,
+  ToggleOptions,
+  ToggleColors,
 } from "@/components/text-story-maker/parts/panels/OptionsPanelHelper";
 import FontSlider from "@/components/text-story-maker/ui/FontSlider";
 import TextColorSlider from "@/components/text-story-maker/ui/TextColorSlider";
@@ -105,17 +106,11 @@ const TextOptionsPanel = ({ options, updateOption }) => {
     }
   };
 
-  const toggleColors = {
-    Disabled: "",
-    White: "white",
-    Black: "black",
-  };
-
   // Define the class names for the tab buttons
   const tabButtonClass = "bg-neutral-800 text-sm shadow-none font-normal py-2";
 
   return (
-    <PanelContainer>
+    <ControlPanel>
       {activeTool === "font-family" && (
         <FontSlider options={options} updateOption={updateOption} />
       )}
@@ -125,7 +120,7 @@ const TextOptionsPanel = ({ options, updateOption }) => {
       )}
 
       {activeTool === "text-settings" && showSettingsDropdown && (
-        <BoxContainer
+        <ControlBox
           className="flex min-h-48 w-full flex-col items-start gap-4 rounded-xl bg-neutral-800/85 p-4 text-left"
           aria-label="Text Settings"
         >
@@ -158,34 +153,34 @@ const TextOptionsPanel = ({ options, updateOption }) => {
           {activeSettingsTab === "text" && (
             <div className="w-full space-y-4">
               <div className="flex flex-wrap gap-2">
-                <BoxButton
+                <ControlBtn
                   type="text"
                   active={options.textBold}
                   onClick={handleBoldToggle}
                   className={cn(tabButtonClass, "font-extrabold")}
                 >
                   Bold
-                </BoxButton>
-                <BoxButton
+                </ControlBtn>
+                <ControlBtn
                   type="text"
                   active={options.textItalic}
                   onClick={handleItalicToggle}
                   className={cn(tabButtonClass, "italic")}
                 >
                   Italic
-                </BoxButton>
-                <BoxButton
+                </ControlBtn>
+                <ControlBtn
                   type="text"
                   active={options.textUppercase}
                   onClick={handleUppercaseToggle}
                   className={cn(tabButtonClass, "uppercase")}
                 >
                   Uppercase
-                </BoxButton>
+                </ControlBtn>
               </div>
 
               <div className="mb-2 grid grid-cols-1 gap-4">
-                <BoxSlider
+                <ControlSlider
                   label="Text Size"
                   min={0.5}
                   max={3}
@@ -194,7 +189,7 @@ const TextOptionsPanel = ({ options, updateOption }) => {
                   onChangeKey="textSize"
                   onChangeHandler={handleSliderChange}
                 />
-                <BoxSlider
+                <ControlSlider
                   label="Line Height"
                   min={1}
                   max={2}
@@ -203,7 +198,7 @@ const TextOptionsPanel = ({ options, updateOption }) => {
                   onChangeKey="textLineHeight"
                   onChangeHandler={handleSliderChange}
                 />
-                <BoxSlider
+                <ControlSlider
                   label="Letter Spacing"
                   min={-3}
                   max={4}
@@ -219,16 +214,15 @@ const TextOptionsPanel = ({ options, updateOption }) => {
           {/* Box Settings Tab Content */}
           {activeSettingsTab === "box" && (
             <div className="w-full space-y-4">
-              <BoxToggleGroup
+              <ToggleColors
                 label="Background"
-                options={toggleColors}
                 selected={options.boxBackground}
                 onChangeKey="boxBackground"
                 onChangeHandler={updateOption}
               />
 
               <div className="mb-4 grid grid-cols-2 gap-4">
-                <BoxSlider
+                <ControlSlider
                   label="Outer Gap"
                   min={0}
                   max={20}
@@ -240,7 +234,7 @@ const TextOptionsPanel = ({ options, updateOption }) => {
 
                 {options.boxBackground && (
                   <>
-                    <BoxSlider
+                    <ControlSlider
                       label="Inner Gap"
                       min={0}
                       max={20}
@@ -249,7 +243,7 @@ const TextOptionsPanel = ({ options, updateOption }) => {
                       onChangeKey="boxInnerPadding"
                       onChangeHandler={handleSliderChange}
                     />
-                    <BoxSlider
+                    <ControlSlider
                       label="Box Corner"
                       min={0}
                       max={20}
@@ -258,7 +252,7 @@ const TextOptionsPanel = ({ options, updateOption }) => {
                       onChangeKey="boxBorderRadius"
                       onChangeHandler={handleSliderChange}
                     />
-                    <BoxSlider
+                    <ControlSlider
                       label="Background Visibility"
                       min={0}
                       max={1}
@@ -273,7 +267,7 @@ const TextOptionsPanel = ({ options, updateOption }) => {
 
               {options.boxBackground && (
                 <>
-                  <BoxToggleGroup
+                  <ToggleOptions
                     label="Glossy Background"
                     options={{ Disabled: "", Enabled: "enabled" }}
                     className="mb-2"
@@ -284,7 +278,7 @@ const TextOptionsPanel = ({ options, updateOption }) => {
 
                   {options.boxGlossy && (
                     <div className="mb-2 grid grid-cols-2 gap-4">
-                      <BoxSlider
+                      <ControlSlider
                         label="Glossy Blur"
                         min={1}
                         max={100}
@@ -293,7 +287,7 @@ const TextOptionsPanel = ({ options, updateOption }) => {
                         onChangeKey="boxGlossyBlur"
                         onChangeHandler={handleSliderChange}
                       />
-                      <BoxSlider
+                      <ControlSlider
                         label="Glossy Shadow"
                         min={0}
                         max={6}
@@ -312,70 +306,66 @@ const TextOptionsPanel = ({ options, updateOption }) => {
           {/* Effects Settings Tab Content */}
           {activeSettingsTab === "effects" && (
             <div className="w-full space-y-4">
-              <BoxToggleGroup
-                label="Text Stroke"
-                options={toggleColors}
-                selected={options.textStroke}
-                onChangeKey="textStroke"
-                onChangeHandler={updateOption}
-              />
-
-              {options.textStroke && (
-                <div className="mb-4 grid grid-cols-1 gap-4">
-                  <BoxSlider
-                    label="Text Stroke Size"
-                    min={0}
-                    max={10}
-                    step={0.25}
-                    value={options.textStrokeSize}
-                    onChangeKey="textStrokeSize"
-                    onChangeHandler={handleSliderChange}
+              <div className="mb-4 grid grid-cols-2 gap-4">
+                <div className="space-y-4">
+                  <ToggleColors
+                    label="Text Stroke"
+                    selected={options.textStroke}
+                    onChangeKey="textStroke"
+                    onChangeHandler={updateOption}
                   />
+                  {options.textStroke && (
+                    <ControlSlider
+                      min={0}
+                      max={10}
+                      step={0.25}
+                      value={options.textStrokeSize}
+                      onChangeKey="textStrokeSize"
+                      onChangeHandler={handleSliderChange}
+                    />
+                  )}
                 </div>
-              )}
-
-              <BoxToggleGroup
-                label="Text Glow"
-                options={toggleColors}
-                selected={options.textGlow}
-                onChangeKey="textGlow"
-                onChangeHandler={updateOption}
-              />
-
-              {options.textGlow && (
-                <div className="mb-4 grid grid-cols-1 gap-4">
-                  <BoxSlider
-                    label="Text Glow Size"
-                    min={0}
-                    max={2}
-                    step={0.05}
-                    value={options.textGlowSize}
-                    onChangeKey="textGlowSize"
-                    onChangeHandler={handleSliderChange}
+                <div className="space-y-4">
+                  <ToggleColors
+                    label="Text Shadow"
+                    selected={options.textShadow}
+                    onChangeKey="textShadow"
+                    onChangeHandler={updateOption}
                   />
+
+                  {options.textShadow && (
+                    <ControlSlider
+                      min={0}
+                      max={2}
+                      step={0.05}
+                      value={options.textShadowSize}
+                      onChangeKey="textShadowSize"
+                      onChangeHandler={handleSliderChange}
+                    />
+                  )}
                 </div>
-              )}
+              </div>
             </div>
           )}
-        </BoxContainer>
+        </ControlBox>
       )}
 
-      <BoxContainer>
-        <BoxButton
+      <ControlBox>
+        <ControlBtn
           icon={AaIcon}
           active={activeTool === "font-family"}
           onClick={() => handleActiveToolChange("font-family")}
           screenReaderText="Font Family Tool"
         />
-        <BoxButton
+        <ControlBtn
           active={activeTool === "text-color"}
           onClick={() => handleActiveToolChange("text-color")}
           screenReaderText="Text Color Tool"
           className="p-0"
         >
           <div className="size-10 rounded-full bg-[conic-gradient(from_0deg,_red,_yellow,_lime,_cyan,_blue,_magenta,_red)] shadow-lg"></div>
-        </BoxButton>
-        <BoxButton
+        </ControlBtn>
+        <ControlBtn
           icon={getAlignmentIcon()}
           iconClassName="size-12"
           className="p-0"
@@ -384,7 +374,7 @@ const TextOptionsPanel = ({ options, updateOption }) => {
           }}
           screenReaderText="Text Alignment Tool"
         />
-        <BoxButton
+        <ControlBtn
           icon={TextSettingsIcon}
           active={activeTool === "text-settings"}
           onClick={() => {
@@ -393,8 +383,8 @@ const TextOptionsPanel = ({ options, updateOption }) => {
           }}
           screenReaderText="Text Settings Tool"
         />
-      </BoxContainer>
-    </PanelContainer>
+      </ControlBox>
+    </ControlPanel>
   );
 };
 
@@ -419,8 +409,8 @@ TextOptionsPanel.propTypes = {
     boxGlossyShadow: PropTypes.number,
     textStroke: PropTypes.oneOf(["", "white", "black"]),
     textStrokeSize: PropTypes.number,
-    textGlow: PropTypes.oneOf(["", "white", "black"]),
-    textGlowSize: PropTypes.number,
+    textShadow: PropTypes.oneOf(["", "white", "black"]),
+    textShadowSize: PropTypes.number,
   }).isRequired,
   updateOption: PropTypes.func.isRequired,
 };

@@ -3,9 +3,9 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 
 import {
-  PanelContainer,
-  BoxContainer,
-  BoxButton,
+  ControlPanel,
+  ControlBox,
+  ControlBtn,
 } from "@/components/text-story-maker/parts/panels/OptionsPanelHelper";
 import BgColorSlider from "@/components/text-story-maker/ui/BgColorSlider";
 
@@ -43,7 +43,7 @@ const BgOptionsPanel = ({ options, updateOption }) => {
   };
 
   return (
-    <PanelContainer>
+    <ControlPanel>
       {tools.map(
         ({ name }) =>
           activeTool === name && (
@@ -56,8 +56,8 @@ const BgOptionsPanel = ({ options, updateOption }) => {
           )
       )}
 
-      <BoxContainer>
-        <BoxButton
+      <ControlBox>
+        <ControlBtn
           onClick={(e) => {
             e.preventDefault();
           }}
@@ -65,19 +65,19 @@ const BgOptionsPanel = ({ options, updateOption }) => {
           className="pointer-events-none p-0"
         >
           <div className="size-13 rounded-xl bg-[conic-gradient(from_0deg,_red,_yellow,_lime,_cyan,_blue,_magenta,_red)] shadow-lg"></div>
-        </BoxButton>
+        </ControlBtn>
         {tools.map(({ name, label }) => (
-          <BoxButton
+          <ControlBtn
             key={name}
             type="text"
             active={activeTool === name}
             onClick={() => handleToolChange(name)}
           >
             {label}
-          </BoxButton>
+          </ControlBtn>
         ))}
-      </BoxContainer>
-    </PanelContainer>
+      </ControlBox>
+    </ControlPanel>
   );
 };
 

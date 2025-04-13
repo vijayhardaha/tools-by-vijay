@@ -152,8 +152,8 @@ export function getShadowProperty(value) {
  * @param {number} options.boxGlossyShadow - The shadow value for the glossy effect.
  * @param {string} options.textStroke - The stroke color of the text ("white", "black", or empty).
  * @param {number} options.textStrokeSize - The size of the text stroke.
- * @param {string} options.textGlow - The glow color of the text ("white", "black", or empty).
- * @param {number} options.textGlowSize - The size of the text glow.
+ * @param {string} options.textShadow - The Shadow color of the text ("white", "black", or empty).
+ * @param {number} options.textShadowSize - The size of the text Shadow.
  * @returns {Object} The generated styles object.
  */
 export function getContentStyles(options) {
@@ -205,13 +205,13 @@ export function getContentStyles(options) {
     }
   }
 
-  if (options.textGlow) {
-    if (options.textGlow === "black") {
-      styles.textShadow = `0 0 ${options.textGlowSize}vh #000000,0 0 ${options.textGlowSize}vh #000000, 0 0 2vh rgba(0, 0, 0, 0.15)`;
+  if (options.textShadow) {
+    if (options.textShadow === "black") {
+      styles.textShadow = `0 0 ${options.textShadowSize}vh #000000,0 0 ${options.textShadowSize}vh #000000, 0 0 2vh rgba(0, 0, 0, 0.15)`;
     }
 
-    if (options.textGlow === "white") {
-      styles.textShadow = `0 0 ${options.textGlowSize}vh #ffffff,0 0 ${options.textGlowSize}vh #ffffff, 0 0 2vh rgba(255, 255, 255, 0.15)`;
+    if (options.textShadow === "white") {
+      styles.textShadow = `0 0 ${options.textShadowSize}vh #ffffff,0 0 ${options.textShadowSize}vh #ffffff, 0 0 2vh rgba(255, 255, 255, 0.15)`;
     }
   }
 
