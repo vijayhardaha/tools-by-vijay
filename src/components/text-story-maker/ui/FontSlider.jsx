@@ -43,7 +43,8 @@ const FontSlider = ({ options, updateOption }) => {
                 type="button"
                 className={cn(
                   btnBaseStyles.join(" "),
-                  "p-6 py-3 leading-relaxed font-medium",
+                  "rounded-md p-1.5 px-3",
+                  "text-sm leading-relaxed font-medium",
                   "bg-neutral-800 text-white",
                   {
                     "bg-white text-neutral-900": options.textFont === font,
