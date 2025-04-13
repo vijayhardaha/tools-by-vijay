@@ -1,13 +1,12 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 
+import { useKeenSlider } from "keen-slider/react";
 import PropTypes from "prop-types";
 import { PiTextAa as AaIcon } from "react-icons/pi";
 import { PiTextAlignCenter as AlignCenterIcon } from "react-icons/pi";
 import { PiTextAlignLeft as AlignLeftIcon } from "react-icons/pi";
 import { PiTextAlignRight as AlignRightIcon } from "react-icons/pi";
 import { TiThLargeOutline as TextSettingsIcon } from "react-icons/ti";
-import { FreeMode } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
 
 import { fonts, textColors } from "@/components/text-story-maker/constants";
 import { btnBaseStyles } from "@/components/text-story-maker/lib/ui";
@@ -20,7 +19,7 @@ import {
 import { RangeSlider } from "@/components/text-story-maker/ui";
 import { cn } from "@/lib/utils";
 
-import "swiper/css";
+import "keen-slider/keen-slider.min.css";
 
 /**
  * TextOptionsPanel component provides a toolbar for text customization, including font size, line height, text alignment, and other text-related options.
@@ -37,9 +36,6 @@ const TextOptionsPanel = ({ options, updateOption }) => {
   const [activeTool, setActiveTool] = useState("font-family");
   const [showSettingsDropdown, setShowSettingsDropdown] = useState(false);
   const [activeSettingsTab, setActiveSettingsTab] = useState("text");
-
-  const fontSliderRef = useRef(null);
-  const colorSliderRef = useRef(null);
 
   // eslint-disable-next-line no-unused-vars
   const textEffects = [
@@ -70,23 +66,24 @@ const TextOptionsPanel = ({ options, updateOption }) => {
     const initialSlideIndex = Object.keys(items).indexOf(initialKey);
 
     return {
-      centeredSlides: true,
-      slidesPerView: "auto",
-      slidesPerGroup: "auto",
-      freeMode: true,
+      mode: "free-snap",
+      renderMode: "performance",
+      initial: initialSlideIndex >= 0 ? initialSlideIndex : 0,
+      slides: { perView: "auto", spacing: 0, origin: "center" },
       loop: false,
-      initialSlide: initialSlideIndex >= 0 ? initialSlideIndex : 0,
-      modules: [FreeMode],
-      onSwiper: (swiper) => {
-        if (updateKey === "textFont") fontSliderRef.current = swiper;
-        if (updateKey === "textColor") colorSliderRef.current = swiper;
-      },
-      onSlideChange: (swiper) => {
-        const key = Object.keys(items)[swiper.activeIndex];
+      slideChanged: (slider) => {
+        const key = Object.keys(items)[slider.track.details.rel];
         updateOption(updateKey, key);
       },
     };
   };
+
+  const [fontSliderRef] = useKeenSlider(
+    getSliderParams(fonts, options.textFont, "textFont")
+  );
+  const [colorSliderRef] = useKeenSlider(
+    getSliderParams(textColors, options.textColor, "textColor")
+  );
 
   const handleActiveToolChange = (tool) => {
     setActiveTool(tool);
@@ -161,9 +158,12 @@ const TextOptionsPanel = ({ options, updateOption }) => {
     <PanelContainer>
       {activeTool === "font-family" && (
         <div className="relative w-full overflow-hidden">
-          <Swiper {...getSliderParams(fonts, options.textFont, "textFont")}>
+          <div ref={fontSliderRef} className="keen-slider">
             {Object.keys(fonts).map((font) => (
-              <SwiperSlide key={font} className="!w-fit">
+              <div
+                key={font}
+                className="keen-slider__slide relative block h-full !w-fit shrink-0"
+              >
                 <div className="flex items-center justify-center p-1">
                   <button
                     type="button"
@@ -185,19 +185,20 @@ const TextOptionsPanel = ({ options, updateOption }) => {
                     </span>
                   </button>
                 </div>
-              </SwiperSlide>
+              </div>
             ))}
-          </Swiper>
+          </div>
         </div>
       )}
 
       {activeTool === "text-color" && (
         <div className="relative w-full overflow-hidden">
-          <Swiper
-            {...getSliderParams(textColors, options.textColor, "textColor")}
-          >
+          <div ref={colorSliderRef} className="keen-slider">
             {Object.keys(textColors).map((colorKey) => (
-              <SwiperSlide key={colorKey} className="!w-fit">
+              <div
+                key={colorKey}
+                className="keen-slider__slide relative block h-full !w-fit shrink-0"
+              >
                 <div className="flex items-center justify-center p-2">
                   <button
                     type="button"
@@ -215,9 +216,9 @@ const TextOptionsPanel = ({ options, updateOption }) => {
                     }}
                   ></button>
                 </div>
-              </SwiperSlide>
+              </div>
             ))}
-          </Swiper>
+          </div>
         </div>
       )}
 

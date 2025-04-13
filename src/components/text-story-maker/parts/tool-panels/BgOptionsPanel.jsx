@@ -1,9 +1,8 @@
-import { useState, useRef } from "react"; // Import useRef
+import { useState } from "react"; // Removed useRef
 
+import { useKeenSlider } from "keen-slider/react"; // Import keen-slider
 import PropTypes from "prop-types";
-import { FreeMode } from "swiper/modules"; // Import freeMode plugin
-import { Swiper, SwiperSlide } from "swiper/react"; // Import Swiper and SwiperSlide
-import "swiper/css";
+import "keen-slider/keen-slider.min.css"; // Import keen-slider styles
 
 import { bgColors } from "@/components/text-story-maker/constants";
 import { btnBaseStyles } from "@/components/text-story-maker/lib/ui";
@@ -26,7 +25,6 @@ import { cn } from "@/lib/utils";
  */
 const BgOptionsPanel = ({ options, updateOption }) => {
   const [activeTool, setActiveTool] = useState(options.bgType);
-  const swiperRef = useRef(null);
 
   const getSliderParams = (tool) => {
     const initialSlideIndex = Object.keys(bgColors[tool]).indexOf(
@@ -34,37 +32,29 @@ const BgOptionsPanel = ({ options, updateOption }) => {
     );
 
     return {
-      centeredSlides: true,
-      slidesPerView: "auto",
-      slidesPerGroup: "auto",
-      freeMode: true,
+      mode: "free-snap",
+      renderMode: "performance",
+      initial: initialSlideIndex > 0 ? initialSlideIndex : 1,
+      slides: { perView: "auto", spacing: 0, origin: "center" },
       loop: false,
-      initialSlide: initialSlideIndex >= 0 ? initialSlideIndex : 0, // Set initial slide
-      modules: [FreeMode],
-      onSwiper: (swiper) => {
-        swiperRef.current = swiper; // Store the Swiper instance
-      },
-      onSlideChange: (swiper) => {
-        console.log(swiper.activeIndex);
-        const colorKey = Object.keys(bgColors[tool])[swiper.activeIndex];
+      slideChanged: (slider) => {
+        const colorKey = Object.keys(bgColors[tool])[slider.track.details.rel];
         updateOption("bgType", tool);
         updateOption("bgColor", colorKey);
       },
     };
   };
 
+  const [sliderRef] = useKeenSlider(
+    activeTool ? getSliderParams(activeTool) : null
+  );
+
   const handleToolChange = (tool) => {
     if (activeTool === tool) return;
-    console.log(tool);
     setActiveTool(tool);
     updateOption("bgType", tool);
     if (options.bgType !== tool) {
       updateOption("bgColor", "color1");
-      if (swiperRef.current) {
-        setTimeout(() => {
-          swiperRef.current.slideTo(0);
-        }, 100);
-      }
     }
   };
 
@@ -72,9 +62,12 @@ const BgOptionsPanel = ({ options, updateOption }) => {
     <PanelContainer>
       {activeTool && (
         <div className="relative w-full overflow-hidden">
-          <Swiper {...getSliderParams(activeTool)}>
+          <div ref={sliderRef} className="keen-slider">
             {Object.keys(bgColors[activeTool]).map((colorKey) => (
-              <SwiperSlide key={colorKey} className="!w-fit">
+              <div
+                key={colorKey}
+                className="keen-slider__slide relative block h-full !w-fit shrink-0"
+              >
                 <div className="flex items-center justify-center p-2">
                   <button
                     type="button"
@@ -93,9 +86,9 @@ const BgOptionsPanel = ({ options, updateOption }) => {
                     }}
                   ></button>
                 </div>
-              </SwiperSlide>
+              </div>
             ))}
-          </Swiper>
+          </div>
         </div>
       )}
       <BoxContainer>
