@@ -58,10 +58,24 @@ export const RangeSlider = ({ min, max, step, values, onChange }) => {
 };
 
 RangeSlider.propTypes = {
+  /**
+   * Minimum value for the slider.
+   */
   min: PropTypes.number.isRequired,
+  /**
+   * Maximum value for the slider.
+   */
   max: PropTypes.number.isRequired,
+  /**
+   * Step value for the slider.
+   */
   step: PropTypes.number.isRequired,
-
+  /**
+   * Current value(s) of the slider.
+   */
   values: PropTypes.arrayOf(PropTypes.number).isRequired,
+  /**
+   * Callback function triggered when the slider value changes.
+   */
   onChange: PropTypes.func.isRequired,
 };

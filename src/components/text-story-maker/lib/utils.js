@@ -4,6 +4,15 @@ import {
   textColors,
 } from "@/components/text-story-maker/constants";
 
+import sanitizeHtml from "sanitize-html";
+
+export const isEmptyText = (text) => {
+  return !sanitizeHtml(text, {
+    allowedTags: [],
+    allowedAttributes: {},
+  });
+};
+
 /**
  * Returns the CSS class for a given aspect ratio.
  * @param {string} ratio - The aspect ratio in the format "width/height" (e.g., "9/16").
@@ -99,6 +108,8 @@ export function getShadowProperty(value) {
 export function getContentStyles(options) {
   let styles = {};
 
+  const isNotEmpty = !isEmptyText(options.text);
+
   if (parseFloat(options.textSize) > 0) {
     styles.fontSize = `${parseFloat(options.textSize)}rem`;
   }
@@ -108,7 +119,7 @@ export function getContentStyles(options) {
     styles.gap = `calc(var(--spacing) * ${parseFloat(options.textLineHeight) * 3})`;
   }
 
-  if (options.boxBackground) {
+  if (isNotEmpty && options.boxBackground) {
     styles.overflow = "hidden";
     if (options.boxBackground === "black") {
       styles.backgroundColor = `rgba(0, 0, 0, ${options.boxBackgroundOpacity})`;

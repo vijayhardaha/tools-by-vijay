@@ -1,8 +1,8 @@
-import { useState } from "react"; // Import useState
+import { useState } from "react";
 
 import PropTypes from "prop-types";
-import ContentEditable from "react-contenteditable"; // Import the package
-import sanitizeHtml from "sanitize-html"; // Import sanitizeHtml
+import ContentEditable from "react-contenteditable";
+import sanitizeHtml from "sanitize-html";
 
 import {
   getAlignmentClass,
@@ -11,6 +11,7 @@ import {
   getFontClass,
   getRatioClass,
   getTextColorClass,
+  isEmptyText,
 } from "@/components/text-story-maker/lib/utils";
 import { cn } from "@/lib/utils";
 
@@ -19,16 +20,14 @@ import { cn } from "@/lib/utils";
  * @param {string} html - The HTML string to sanitize.
  * @returns {string} - The sanitized HTML string.
  */
-const santize = (html) => {
+const sanitize = (html) => {
   return sanitizeHtml(html, {
     allowedTags: ["strong", "b", "em", "i", "br", "span"], // Allow only specific tags
-    allowedAttributes: { span: ["style"] }, // No attributes allowed
+    allowedAttributes: {}, // No attributes allowed
     transformTags: {
       div: "br",
     },
-  })
-    .replace(/<\/?div[^>]*>/g, "")
-    .trim();
+  }).replace(/<\/?div[^>]*>/g, "");
 };
 
 /**
@@ -88,35 +87,54 @@ const Content = ({ options, updateOption }) => {
         <ContentEditable
           id="editable-content"
           tagName="div"
+          tabIndex={0} // Make the element focusable
+          autoComplete="off"
+          spellCheck="false"
           html={renderHtml(options.text)}
-          onBlur={(e) => {
-            if (e.relatedTarget && e.relatedTarget.id === "editable-content") {
-              return; // Prevent blur if focus is still within the editable content
-            }
-            if (
-              e.target.innerHTML.trim() === "" &&
-              e.target.id === "editable-content"
-            ) {
-              e.target.focus(); // Refocus if the content is empty and id is "editable-content"
-              return;
-            }
-            setFocused(false); // Set focused to false on blur
-
-            updateOption("text", santize(e.target.innerHTML));
+          /**
+           * Handles the blur event to sanitize and update the text content.
+           */
+          onChange={(e) => {
+            updateOption("text", sanitize(e.target.value));
           }}
+          onBlur={(e) => {
+            setFocused(false); // Set focused to false on blur
+            updateOption("text", sanitize(e.target.innerHTML).trim());
+          }}
+          /**
+           * Handles the focus event to set the focused state.
+           */
           onFocus={() => setFocused(true)} // Set focused to true on focus
+          /**
+           * Handles the paste event to sanitize and insert pasted content.
+           */
           onPaste={(e) => {
-            e.preventDefault(); // Prevent default paste behavior
+            e.preventDefault();
             const pastedText =
               e.clipboardData.getData("text/html") ||
               e.clipboardData.getData("text/plain");
-            document.execCommand(
-              "insertHTML",
-              false,
-              renderHtml(santize(pastedText))
-            ); // Insert sanitized HTML
+            const cleanHtml = renderHtml(sanitize(pastedText));
+
+            const selection = window.getSelection();
+            if (!selection.rangeCount) return;
+
+            const range = selection.getRangeAt(0);
+            range.deleteContents();
+
+            const tempDiv = document.createElement("div");
+            tempDiv.innerHTML = cleanHtml;
+
+            const fragment = document.createDocumentFragment();
+            let node;
+            while ((node = tempDiv.firstChild)) {
+              fragment.appendChild(node);
+            }
+
+            range.insertNode(fragment);
+
+            // Move the cursor to the end of the inserted content
+            selection.collapseToEnd();
           }}
-          tabIndex={0} // Make the element focusable
           className={cn(
             "min-h-10 min-w-1 [&>*]:min-w-1",
             "outline-none",
@@ -126,10 +144,7 @@ const Content = ({ options, updateOption }) => {
               "![&>*]:uppercase !uppercase": options.textUppercase,
               "user-select-none": !focused,
               "inline-flex h-full w-full flex-col items-start justify-center":
-                !sanitizeHtml(options.text, {
-                  allowedTags: [],
-                  allowedAttributes: {},
-                }) && !focused,
+                isEmptyText(options.text) && !focused,
             },
             getAlignmentClass(options.textAlign),
             getFontClass(options.textFont),
@@ -143,8 +158,19 @@ const Content = ({ options, updateOption }) => {
 };
 
 Content.propTypes = {
-  options: PropTypes.object.isRequired,
-  updateOption: PropTypes.func.isRequired,
+  options: PropTypes.shape({
+    text: PropTypes.string.isRequired, // The text content to display.
+    textBold: PropTypes.bool.isRequired, // Whether the text should be bold.
+    textItalic: PropTypes.bool.isRequired, // Whether the text should be italicized.
+    textUppercase: PropTypes.bool.isRequired, // Whether the text should be uppercase.
+    textAlign: PropTypes.string.isRequired, // The alignment of the text.
+    textFont: PropTypes.string.isRequired, // The font of the text.
+    textColor: PropTypes.string.isRequired, // The color of the text.
+    bgType: PropTypes.string.isRequired, // The background type.
+    bgColor: PropTypes.string.isRequired, // The background color.
+    cardRatio: PropTypes.string.isRequired, // The aspect ratio of the card.
+  }).isRequired,
+  updateOption: PropTypes.func.isRequired, // Function to update the options.
 };
 
 export default Content;

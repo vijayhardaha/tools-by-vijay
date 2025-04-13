@@ -14,16 +14,25 @@ import { cn } from "@/lib/utils";
  */
 const HeaderIconBtn = ({ icon, className, ...props }) => (
   <IconButton
+    /**
+     * The icon to render inside the button.
+     */
     icon={icon}
+    /**
+     * Combines default and additional class names for styling.
+     */
     className={cn("size-14 rounded-full bg-neutral-900 text-white", className)}
+    /**
+     * Class name for the icon inside the button.
+     */
     iconClassName="size-7"
     {...props}
   />
 );
 
 HeaderIconBtn.propTypes = {
-  icon: PropTypes.elementType.isRequired,
-  className: PropTypes.string,
+  icon: PropTypes.elementType.isRequired, // The icon component to render.
+  className: PropTypes.string, // Additional class names for the button.
 };
 
 export default HeaderIconBtn;

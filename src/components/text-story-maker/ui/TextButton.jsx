@@ -17,8 +17,7 @@ export const TextButton = ({ className, children, ...props }) => (
     type="button"
     className={cn(
       btnBaseStyles.join(" "),
-      "bg-neutral-700 text-white",
-      "p-3 px-5",
+      "bg-neutral-700 p-3 px-5 text-white",
       className
     )}
     {...props}
@@ -28,6 +27,16 @@ export const TextButton = ({ className, children, ...props }) => (
 );
 
 TextButton.propTypes = {
+  /**
+   * Additional CSS classes to apply to the button.
+   */
   className: PropTypes.string,
+  /**
+   * The content to render inside the button.
+   */
   children: PropTypes.node.isRequired,
+  /**
+   * Additional props to spread onto the button element.
+   */
+  props: PropTypes.object,
 };

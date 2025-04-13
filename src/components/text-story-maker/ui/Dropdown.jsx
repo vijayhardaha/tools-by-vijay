@@ -13,11 +13,19 @@ export const Dropdown = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
 
+  /**
+   * Toggles the dropdown open or closed.
+   */
   const toggleDropdown = () => {
     setIsOpen((prev) => !prev);
   };
 
   useEffect(() => {
+    /**
+     * Handles clicks outside the dropdown to close it.
+     *
+     * @param {MouseEvent} event - The mouse event triggered by clicking outside.
+     */
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setIsOpen(false);

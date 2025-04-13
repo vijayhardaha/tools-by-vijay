@@ -21,6 +21,15 @@ import { cn } from "@/lib/utils";
  * @returns {JSX.Element} The rendered FrameSizeTool component.
  */
 const FrameSizeTool = ({ options, updateOption }) => {
+  /**
+   * Handles the selection of a card ratio.
+   *
+   * @param {string} value - The selected card ratio value.
+   */
+  const handleCardRatioChange = (value) => {
+    updateOption("cardRatio", value);
+  };
+
   return (
     <Dropdown>
       {({ isOpen, toggleDropdown }) => (
@@ -33,7 +42,7 @@ const FrameSizeTool = ({ options, updateOption }) => {
               <button
                 key={value}
                 type="button"
-                onClick={() => updateOption("cardRatio", value)}
+                onClick={() => handleCardRatioChange(value)}
                 className={cn(
                   "inline-flex shrink-0 items-center justify-start",
                   "w-full py-2 text-base whitespace-nowrap",
@@ -56,9 +65,9 @@ const FrameSizeTool = ({ options, updateOption }) => {
 
 FrameSizeTool.propTypes = {
   options: PropTypes.shape({
-    cardRatio: PropTypes.string.isRequired,
+    cardRatio: PropTypes.string.isRequired, // The currently selected card ratio.
   }).isRequired,
-  updateOption: PropTypes.func.isRequired,
+  updateOption: PropTypes.func.isRequired, // Function to update the selected option.
 };
 
 export default FrameSizeTool;

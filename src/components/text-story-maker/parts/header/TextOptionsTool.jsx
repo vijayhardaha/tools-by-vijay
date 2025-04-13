@@ -13,21 +13,36 @@ import { cn } from "@/lib/utils";
  * @returns {JSX.Element} The rendered button component.
  */
 const TextOptionsTool = ({ activeTool, setActiveTool }) => {
+  /**
+   * Handles the button click to toggle the "text" tool.
+   */
   return (
     <Button
+      /**
+       * Icon to display on the button.
+       */
       icon={TextToolIcon}
+      /**
+       * Screen reader text for accessibility.
+       */
       screenReaderText="Text Options"
+      /**
+       * Dynamic className based on the active tool.
+       */
       className={cn({
         "bg-accent-foreground text-neutral-900": activeTool === "text",
       })}
+      /**
+       * Click handler to toggle the active tool.
+       */
       onClick={() => setActiveTool((prev) => (prev !== "text" ? "text" : ""))}
     />
   );
 };
 
 TextOptionsTool.propTypes = {
-  activeTool: PropTypes.string.isRequired,
-  setActiveTool: PropTypes.func.isRequired,
+  activeTool: PropTypes.string.isRequired, // The currently active tool.
+  setActiveTool: PropTypes.func.isRequired, // Function to set the active tool.
 };
 
 export default TextOptionsTool;

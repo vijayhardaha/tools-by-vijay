@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 
-import { getFontClass } from "../lib/utils";
+import { getFontClass } from "@/components/text-story-maker/lib/utils";
 
 /**
  * ToolInfo Component
@@ -22,16 +22,18 @@ const ToolInfo = () => {
       <div className="flex flex-col items-start">
         <h1
           className={cn(
+            // Combines multiple class names for styling
             "mb-0 text-2xl leading-normal font-semibold tracking-wide",
-            getFontClass("bebas_neue")
+            getFontClass("bebas_neue") // Retrieves the font class for "bebas_neue"
           )}
         >
           Text Story Maker
         </h1>
         <p
           className={cn(
+            // Combines multiple class names for styling
             "text-accent-foreground -mt-2 text-lg leading-normal",
-            getFontClass("caveat")
+            getFontClass("caveat") // Retrieves the font class for "caveat"
           )}
         >
           A tool by Vijay Hardaha

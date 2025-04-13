@@ -35,9 +35,24 @@ export const IconButton = ({
 );
 
 IconButton.propTypes = {
+  /**
+   * The icon component to render inside the button.
+   */
   icon: PropTypes.elementType.isRequired,
+  /**
+   * Additional classes for the button element.
+   */
   className: PropTypes.string,
+  /**
+   * Additional classes for the icon element.
+   */
   iconClassName: PropTypes.string,
+  /**
+   * Screen reader text for accessibility.
+   */
   screenReaderText: PropTypes.string,
+  /**
+   * Optional children for accessibility text or additional content.
+   */
   children: PropTypes.node,
 };

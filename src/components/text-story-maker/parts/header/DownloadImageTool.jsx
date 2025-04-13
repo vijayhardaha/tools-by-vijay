@@ -19,8 +19,8 @@ import { cn } from "@/lib/utils";
  *
  * @param {Object} props - Component props.
  * @param {Object} props.options - Options for the download tool.
- * @param {string} props.options.downloadSize - Selected download size.
- * @param {string} props.options.downloadFormat - Selected download format.
+ * @param {string} props.options.downloadSize - Selected download size (e.g., "hd", "fhd").
+ * @param {string} props.options.downloadFormat - Selected download format (e.g., "jpeg", "png").
  * @param {Function} props.updateOption - Function to update the selected options.
  * @returns {JSX.Element} The rendered component.
  */
@@ -57,22 +57,15 @@ const DownloadImageTool = ({ options, updateOption }) => {
    */
   const handleDownload = (format, size, toggleDropdown) => {
     const node = document.querySelector("#main-content");
-    // Check if the node exists
     if (!node) return;
 
-    // Update the options for download size and format
     updateOption("downloadFormat", format);
 
-    // Function to get the width of the selected size
     const getSizeWidth = (size) => parseInt(sizes[size].width, 10) || 1080;
 
-    // Get the bounding rectangle of the node and calculate the scale
     const rect = node.getBoundingClientRect();
-
-    // Calculate the scale based on the selected size
     const scale = getSizeWidth(size) / rect.width;
 
-    // Set the options for dom-to-image
     const options = {
       quality: 1,
       width: rect.width * scale,
@@ -82,17 +75,14 @@ const DownloadImageTool = ({ options, updateOption }) => {
       },
     };
 
-    // Set the downloading state and reset any previous errors
     setIsDownloading(true);
     setDownloadError("");
 
-    // Use dom-to-image to convert the node to an image
     const downloadFn =
       format === "jpeg"
         ? domToImage.toJpeg(node, options)
         : domToImage.toPng(node, options);
 
-    // Download the image using the selected format
     downloadFn
       .then((dataUrl) => {
         saveAs(dataUrl, `text-story.${format}`);
@@ -197,8 +187,11 @@ const DownloadImageTool = ({ options, updateOption }) => {
 };
 
 DownloadImageTool.propTypes = {
-  options: PropTypes.object.isRequired,
-  updateOption: PropTypes.func.isRequired,
+  options: PropTypes.shape({
+    downloadSize: PropTypes.string.isRequired, // Selected download size (e.g., "hd", "fhd").
+    downloadFormat: PropTypes.string.isRequired, // Selected download format (e.g., "jpeg", "png").
+  }).isRequired,
+  updateOption: PropTypes.func.isRequired, // Function to update the selected options.
 };
 
 export default DownloadImageTool;

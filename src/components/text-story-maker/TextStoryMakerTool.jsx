@@ -64,6 +64,15 @@ const TextStoryMakerTool = () => {
     <div
       className={cn("relative h-screen w-full bg-neutral-900", "flex flex-col")}
     >
+      {/**
+       * Header component displays the header section of the tool.
+       *
+       * @param {Object} props - Component props.
+       * @param {Object} props.options - Current options state.
+       * @param {Function} props.updateOption - Function to update options.
+       * @param {string} props.activeTool - Currently active tool.
+       * @param {Function} props.setActiveTool - Function to set the active tool.
+       */}
       <Header
         options={options}
         updateOption={updateOption}
@@ -71,6 +80,15 @@ const TextStoryMakerTool = () => {
         setActiveTool={setActiveTool}
       />
 
+      {/**
+       * Footer component displays the footer section of the tool.
+       *
+       * @param {Object} props - Component props.
+       * @param {Object} props.options - Current options state.
+       * @param {Function} props.updateOption - Function to update options.
+       * @param {string} props.activeTool - Currently active tool.
+       * @param {Function} props.setActiveTool - Function to set the active tool.
+       */}
       <Footer
         options={options}
         updateOption={updateOption}
@@ -78,6 +96,13 @@ const TextStoryMakerTool = () => {
         setActiveTool={setActiveTool}
       />
 
+      {/**
+       * Content component displays the main content area of the tool.
+       *
+       * @param {Object} props - Component props.
+       * @param {Object} props.options - Current options state.
+       * @param {Function} props.updateOption - Function to update options.
+       */}
       <Content options={options} updateOption={updateOption} />
 
       {!activeTool && <ToolInfo />}
