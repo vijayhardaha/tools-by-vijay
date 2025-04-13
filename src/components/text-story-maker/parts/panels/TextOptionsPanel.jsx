@@ -129,6 +129,7 @@ const TextOptionsPanel = ({ options, updateOption }) => {
           className="flex min-h-48 w-full flex-col items-start gap-4 rounded-xl bg-neutral-800/85 p-4 text-left"
           aria-label="Text Settings"
         >
+          {/* Tabs */}
           <div className="flex w-full items-center justify-evenly rounded-xl bg-neutral-700 p-1">
             {Object.entries({
               "Text Settings": "text",
@@ -153,6 +154,7 @@ const TextOptionsPanel = ({ options, updateOption }) => {
             ))}
           </div>
 
+          {/* Text Settings Tab Content */}
           {activeSettingsTab === "text" && (
             <div className="w-full space-y-4">
               <div className="flex flex-wrap gap-2">
@@ -214,6 +216,7 @@ const TextOptionsPanel = ({ options, updateOption }) => {
             </div>
           )}
 
+          {/* Box Settings Tab Content */}
           {activeSettingsTab === "box" && (
             <div className="w-full space-y-4">
               <BoxToggleGroup
@@ -226,8 +229,8 @@ const TextOptionsPanel = ({ options, updateOption }) => {
 
               <div className="mb-4 grid grid-cols-2 gap-4">
                 <BoxSlider
-                  label="Outer Spacing"
-                  min={2}
+                  label="Outer Gap"
+                  min={0}
                   max={20}
                   step={0.5}
                   value={options.boxOuterPadding}
@@ -238,16 +241,7 @@ const TextOptionsPanel = ({ options, updateOption }) => {
                 {options.boxBackground && (
                   <>
                     <BoxSlider
-                      label="Border Radius"
-                      min={0}
-                      max={20}
-                      step={0.25}
-                      value={options.boxBorderRadius}
-                      onChangeKey="boxBorderRadius"
-                      onChangeHandler={handleSliderChange}
-                    />
-                    <BoxSlider
-                      label="Inner Spacing"
+                      label="Inner Gap"
                       min={0}
                       max={20}
                       step={0.5}
@@ -256,7 +250,16 @@ const TextOptionsPanel = ({ options, updateOption }) => {
                       onChangeHandler={handleSliderChange}
                     />
                     <BoxSlider
-                      label="Background Opacity"
+                      label="Box Corner"
+                      min={0}
+                      max={20}
+                      step={0.25}
+                      value={options.boxBorderRadius}
+                      onChangeKey="boxBorderRadius"
+                      onChangeHandler={handleSliderChange}
+                    />
+                    <BoxSlider
+                      label="Background Visibility"
                       min={0}
                       max={1}
                       step={0.01}
@@ -306,6 +309,7 @@ const TextOptionsPanel = ({ options, updateOption }) => {
             </div>
           )}
 
+          {/* Effects Settings Tab Content */}
           {activeSettingsTab === "effects" && (
             <div className="w-full space-y-4">
               <BoxToggleGroup
