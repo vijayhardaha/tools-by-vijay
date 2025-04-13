@@ -1,16 +1,11 @@
 import { useState, useRef } from "react";
 
 import PropTypes from "prop-types";
-import { BiFontSize as FontSizeIcon } from "react-icons/bi";
-import { CgFormatUppercase as TextUppercaseIcon } from "react-icons/cg";
-import { MdFormatBold as TextBoldIcon } from "react-icons/md";
-import { MdFormatItalic as TextItalicIcon } from "react-icons/md";
 import { PiTextAa as AaIcon } from "react-icons/pi";
 import { PiTextAlignCenter as AlignCenterIcon } from "react-icons/pi";
 import { PiTextAlignLeft as AlignLeftIcon } from "react-icons/pi";
 import { PiTextAlignRight as AlignRightIcon } from "react-icons/pi";
 import { RiFontSizeAi as TextEffectIcon } from "react-icons/ri";
-import { RiLineHeight as LineHeightIcon } from "react-icons/ri";
 import { FreeMode } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -42,10 +37,6 @@ import "swiper/css";
  */
 const TextOptionsPanel = ({ options, updateOption }) => {
   const [activeTool, setActiveTool] = useState("font-family");
-  const [textSize, setTextSize] = useState(options.textSize);
-  const [lineHeight, setLineHeight] = useState(options.textLineHeight);
-  const [showLineHeightSlider, setShowLineHeightSlider] = useState(false);
-  const [showFontSizeSlider, setShowFontSizeSlider] = useState(false);
   const [showSettingsDropdown, setShowSettingsDropdown] = useState(false);
   const [activeSettingsTab, setActiveSettingsTab] = useState("text");
 
@@ -71,9 +62,9 @@ const TextOptionsPanel = ({ options, updateOption }) => {
   const textAlignments = ["center", "left", "right"];
 
   const tabs = [
-    { key: "text", label: "Text" },
-    { key: "box", label: "Box" },
-    { key: "effects", label: "Effects" },
+    { key: "text", label: "Text Settings" },
+    { key: "box", label: "Box Settings" },
+    { key: "effects", label: "Effects Settings" },
   ];
 
   const getSliderParams = (items, initialKey, updateKey) => {
@@ -82,6 +73,7 @@ const TextOptionsPanel = ({ options, updateOption }) => {
     return {
       centeredSlides: true,
       slidesPerView: "auto",
+      slidesPerGroup: "auto",
       freeMode: true,
       loop: false,
       initialSlide: initialSlideIndex >= 0 ? initialSlideIndex : 0,
@@ -97,27 +89,19 @@ const TextOptionsPanel = ({ options, updateOption }) => {
     };
   };
 
-  /**
-   * Handles changes to the right slider (line height).
-   *
-   * @param {Array<number>} values - Array containing the new line height value.
-   */
-  const handleLineHeightChange = (values) => {
-    const value = parseFloat(values[0]);
-    setLineHeight(value);
-    updateOption("textLineHeight", value);
+  const handleActiveToolChange = (tool) => {
+    setActiveTool(tool);
+    setShowSettingsDropdown(false);
   };
 
   /**
-   * Handles changes to the left slider (text size).
+   * Handles changes to the slider.
    *
-   * @param {Array<number>} values - Array containing the new text size value.
+   * @param {string} key - The option key to update.
+   * @param {Array<number>} values - Array containing the value.
    */
-  const handleTextSizeChange = (values) => {
-    const value = parseFloat(values[0]);
-    setTextSize(value);
-    updateOption("textSize", value);
-  };
+  const handleSliderChange = (key, values) =>
+    updateOption(key, parseFloat(values[0]));
 
   /**
    * Toggles the text alignment option in sequence.
@@ -126,6 +110,8 @@ const TextOptionsPanel = ({ options, updateOption }) => {
     const currentAlignment = options.textAlign || "left";
     const currentIndex = textAlignments.indexOf(currentAlignment);
     const nextIndex = (currentIndex + 1) % textAlignments.length;
+    handleActiveToolChange("");
+    setShowSettingsDropdown(false);
     updateOption("textAlign", textAlignments[nextIndex]);
   };
 
@@ -154,16 +140,6 @@ const TextOptionsPanel = ({ options, updateOption }) => {
   };
 
   /**
-   * Toggles the text effect option in sequence.
-   */
-  const handleTextEffectToggle = () => {
-    const currentEffect = options.textEffect || "";
-    const currentIndex = textEffects.indexOf(currentEffect);
-    const nextIndex = (currentIndex + 1) % textEffects.length;
-    updateOption("textEffect", textEffects[nextIndex]);
-  };
-
-  /**
    * Gets the appropriate icon for the current text alignment.
    *
    * @returns {React.Component} The icon component for the current alignment.
@@ -179,236 +155,219 @@ const TextOptionsPanel = ({ options, updateOption }) => {
     }
   };
 
+  // Define the class names for the tab buttons
+  const tabButtonClass = "bg-neutral-950 text-sm shadow-none font-normal py-2";
+
   return (
-    <>
-      <div
-        className={cn(
-          "absolute top-1/2 left-4 z-20 h-1/3 -translate-y-1/2 transform",
-          { hidden: !showFontSizeSlider }
-        )}
-      >
-        <RangeSlider
-          step={0.0625}
-          min={0.5}
-          max={4}
-          values={[textSize]}
-          onChange={handleTextSizeChange}
-        />
-      </div>
+    <PanelContainer>
+      {activeTool === "font-family" && (
+        <div className="relative w-full overflow-hidden">
+          <Swiper {...getSliderParams(fonts, options.textFont, "textFont")}>
+            {Object.keys(fonts).map((font) => (
+              <SwiperSlide key={font} className="!w-fit">
+                <div className="flex items-center justify-center p-1">
+                  <button
+                    type="button"
+                    className={cn(
+                      btnBaseStyles.join(" "),
+                      "p-6 py-4 leading-none font-medium",
+                      "bg-neutral-800 text-white",
+                      {
+                        "bg-white text-neutral-900": options.textFont === font,
+                      },
+                      getFontClass(font)
+                    )}
+                    onClick={() => {
+                      updateOption("textFont", font);
+                    }}
+                  >
+                    <span className="truncate overflow-hidden whitespace-nowrap">
+                      {fonts[font].label}
+                    </span>
+                  </button>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+      )}
 
-      <div
-        className={cn(
-          "absolute top-1/2 right-4 z-20 h-1/3 -translate-y-1/2 transform",
-          { hidden: !showLineHeightSlider }
-        )}
-      >
-        <RangeSlider
-          step={0.0625}
-          min={1}
-          max={2}
-          values={[lineHeight]}
-          onChange={handleLineHeightChange}
-        />
-      </div>
-
-      <PanelContainer>
-        {activeTool === "font-family" && (
-          <div className="relative w-full overflow-hidden">
-            <Swiper {...getSliderParams(fonts, options.textFont, "textFont")}>
-              {Object.keys(fonts).map((font) => (
-                <SwiperSlide key={font} className="!w-fit">
-                  <div className="flex items-center justify-center p-1">
-                    <button
-                      type="button"
-                      className={cn(
-                        btnBaseStyles.join(" "),
-                        "p-6 py-4 leading-none font-medium",
-                        "bg-neutral-700 text-neutral-100",
-                        {
-                          "bg-white text-neutral-900":
-                            options.textFont === font,
-                        },
-                        getFontClass(font)
-                      )}
-                      onClick={() => {
-                        updateOption("textFont", font);
-                      }}
-                    >
-                      <span className="truncate overflow-hidden whitespace-nowrap">
-                        {fonts[font].label}
-                      </span>
-                    </button>
-                  </div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </div>
-        )}
-
-        {activeTool === "text-color" && (
-          <div className="relative w-full overflow-hidden">
-            <Swiper
-              {...getSliderParams(textColors, options.textColor, "textColor")}
-            >
-              {Object.keys(textColors).map((colorKey) => (
-                <SwiperSlide key={colorKey} className="!w-fit">
-                  <div className="flex items-center justify-center p-2">
-                    <button
-                      type="button"
-                      className={cn(
-                        btnBaseStyles.join(" "),
-                        "size-16 shadow",
-                        "ring-1 ring-white",
-                        textColors[colorKey].bg,
-                        {
-                          "ring-4": options.textColor === colorKey,
-                        }
-                      )}
-                      onClick={() => {
-                        updateOption("textColor", colorKey);
-                      }}
-                    ></button>
-                  </div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </div>
-        )}
-
-        {activeTool === "text-settings" && showSettingsDropdown && (
-          <BoxContainer
-            className="flex w-full flex-col rounded-2xl p-2"
-            aria-label="Text Settings"
+      {activeTool === "text-color" && (
+        <div className="relative w-full overflow-hidden">
+          <Swiper
+            {...getSliderParams(textColors, options.textColor, "textColor")}
           >
-            <div className="mb-4 flex w-full items-center justify-evenly gap-2 rounded-xl bg-neutral-700 p-1">
-              {tabs.map((tab) => (
-                <button
-                  key={tab.key}
-                  type="button"
-                  className={cn(
-                    btnBaseStyles.join(" "),
-                    "flex-1 rounded-xl px-4 py-2 shadow-none",
-                    "text-sm font-medium",
-                    {
-                      "bg-neutral-800 text-white":
-                        activeSettingsTab === tab.key,
-                    }
-                  )}
-                  onClick={() => setActiveSettingsTab(tab.key)}
-                >
-                  {tab.label}
-                </button>
-              ))}
-            </div>
+            {Object.keys(textColors).map((colorKey) => (
+              <SwiperSlide key={colorKey} className="!w-fit">
+                <div className="flex items-center justify-center p-2">
+                  <button
+                    type="button"
+                    className={cn(
+                      btnBaseStyles.join(" "),
+                      "size-16 shadow",
+                      "ring-1 ring-white",
+                      textColors[colorKey].bg,
+                      {
+                        "ring-4": options.textColor === colorKey,
+                      }
+                    )}
+                    onClick={() => {
+                      updateOption("textColor", colorKey);
+                    }}
+                  ></button>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+      )}
 
-            {activeSettingsTab === "text" && (
+      {activeTool === "text-settings" && showSettingsDropdown && (
+        <BoxContainer
+          className="flex min-h-48 w-full flex-col items-start gap-4 rounded-xl p-4 text-left"
+          aria-label="Text Settings"
+        >
+          <div className="flex w-full items-center justify-evenly rounded-xl bg-neutral-700 p-1">
+            {tabs.map((tab) => (
+              <button
+                key={tab.key}
+                type="button"
+                className={cn(
+                  btnBaseStyles.join(" "),
+                  "flex-1 rounded-xl px-4 py-2 shadow-none",
+                  "text-sm font-medium",
+                  {
+                    "bg-neutral-800 text-white": activeSettingsTab === tab.key,
+                  }
+                )}
+                onClick={() => setActiveSettingsTab(tab.key)}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+
+          {activeSettingsTab === "text" && (
+            <div className="w-full space-y-4">
               <div className="flex flex-wrap gap-2">
                 <BoxButton
-                  icon={TextBoldIcon}
+                  type="text"
+                  active={options.textBold}
                   onClick={handleBoldToggle}
-                  className={cn({
-                    "bg-white text-black": options.textBold,
-                  })}
-                  screenReaderText="Bold Text Tool"
-                />
+                  className={cn(tabButtonClass, "font-extrabold")}
+                >
+                  Bold
+                </BoxButton>
                 <BoxButton
-                  icon={TextItalicIcon}
+                  type="text"
+                  active={options.textItalic}
                   onClick={handleItalicToggle}
-                  className={cn({
-                    "bg-white text-black": options.textItalic,
-                  })}
-                  screenReaderText="Italic Text Tool"
-                />
+                  className={cn(tabButtonClass, "italic")}
+                >
+                  Italic
+                </BoxButton>
                 <BoxButton
-                  icon={TextUppercaseIcon}
+                  type="text"
+                  active={options.textUppercase}
                   onClick={handleUppercaseToggle}
-                  className={cn({
-                    "bg-white text-black": options.textUppercase,
-                  })}
-                  screenReaderText="Uppercase Text Tool"
-                />
-                <BoxButton
-                  icon={TextEffectIcon}
-                  onClick={handleTextEffectToggle}
-                  className={cn({
-                    "bg-white text-black": options.textEffect,
-                  })}
-                  screenReaderText="Text Effect Tool"
-                />
-                <BoxButton
-                  icon={FontSizeIcon}
-                  onClick={() => {
-                    setShowFontSizeSlider((prev) => !prev);
-                    setShowLineHeightSlider(false);
-                  }}
-                  className={cn({
-                    "bg-white text-black": showFontSizeSlider,
-                  })}
-                  screenReaderText="Font Size Tool"
-                />
-                <BoxButton
-                  icon={LineHeightIcon}
-                  onClick={() => {
-                    setShowLineHeightSlider((prev) => !prev);
-                    setShowFontSizeSlider(false);
-                  }}
-                  className={cn({
-                    "bg-white text-black": showLineHeightSlider,
-                  })}
-                  screenReaderText="Line Height Tool"
-                />
+                  className={cn(tabButtonClass, "uppercase")}
+                >
+                  Uppercase
+                </BoxButton>
               </div>
-            )}
 
-            {activeSettingsTab === "box" && (
-              <div className="text-neutral-500">Box tools will go here.</div>
-            )}
-
-            {activeSettingsTab === "effects" && (
-              <div className="text-neutral-500">
-                Effects tools will go here.
+              <div className="mb-2 grid grid-cols-3 gap-6">
+                <div className="space-y-2">
+                  <p className="text-sm font-semibold">Text Size:</p>
+                  <div className="px-0.5">
+                    <RangeSlider
+                      step={0.0625}
+                      min={0.5}
+                      max={4}
+                      values={[options.textSize]}
+                      onChange={(values) =>
+                        handleSliderChange("textSize", values)
+                      }
+                    />
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <p className="text-sm font-semibold">Line Height:</p>
+                  <div className="px-0.5">
+                    <RangeSlider
+                      step={0.0625}
+                      min={1}
+                      max={2}
+                      values={[options.textLineHeight]}
+                      onChange={(values) =>
+                        handleSliderChange("textLineHeight", values)
+                      }
+                    />
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <p className="text-sm font-semibold">Letter Spacing:</p>
+                  <div className="px-0.5">
+                    <RangeSlider
+                      step={0.5}
+                      min={-3}
+                      max={4}
+                      values={[options.textLetterSpacing]}
+                      onChange={(values) =>
+                        handleSliderChange("textLetterSpacing", values)
+                      }
+                    />
+                  </div>
+                </div>
               </div>
-            )}
-          </BoxContainer>
-        )}
+            </div>
+          )}
 
-        <BoxContainer>
-          <BoxButton
-            icon={AaIcon}
-            active={activeTool === "font-family"}
-            onClick={() => setActiveTool("font-family")}
-            screenReaderText="Font Family Tool"
-          />
-          <BoxButton
-            type="text"
-            active={activeTool === "text-color"}
-            onClick={() => setActiveTool("text-color")}
-            screenReaderText="Text Color Tool"
-            className="p-0"
-          >
-            <div className="size-10 rounded-full bg-[conic-gradient(from_0deg,_red,_yellow,_lime,_cyan,_blue,_magenta,_red)] shadow-lg"></div>
-          </BoxButton>
-          <BoxButton
-            icon={getAlignmentIcon()}
-            iconClassName="size-12"
-            className="p-0"
-            onClick={() => {
-              handleAlignmentChange();
-            }}
-            screenReaderText="Text Alignment Tool"
-          />
-          <BoxButton
-            icon={TextSettingsIcon}
-            active={activeTool === "text-settings"}
-            onClick={() => {
-              setActiveTool("text-settings");
-              setShowSettingsDropdown((prev) => !prev);
-            }}
-            screenReaderText="Text Settings Tool"
-          />
+          {activeSettingsTab === "box" && (
+            <div className="text-neutral-500">Box tools will go here.</div>
+          )}
+
+          {activeSettingsTab === "effects" && (
+            <div className="text-neutral-500">Effects tools will go here.</div>
+          )}
         </BoxContainer>
-      </PanelContainer>
-    </>
+      )}
+
+      <BoxContainer>
+        <BoxButton
+          icon={AaIcon}
+          active={activeTool === "font-family"}
+          onClick={() => handleActiveToolChange("font-family")}
+          screenReaderText="Font Family Tool"
+        />
+        <BoxButton
+          active={activeTool === "text-color"}
+          onClick={() => handleActiveToolChange("text-color")}
+          screenReaderText="Text Color Tool"
+          className="p-0"
+        >
+          <div className="size-10 rounded-full bg-[conic-gradient(from_0deg,_red,_yellow,_lime,_cyan,_blue,_magenta,_red)] shadow-lg"></div>
+        </BoxButton>
+        <BoxButton
+          icon={getAlignmentIcon()}
+          iconClassName="size-12"
+          className="p-0"
+          onClick={() => {
+            handleAlignmentChange();
+          }}
+          screenReaderText="Text Alignment Tool"
+        />
+        <BoxButton
+          icon={TextSettingsIcon}
+          active={activeTool === "text-settings"}
+          onClick={() => {
+            setActiveTool("text-settings");
+            setShowSettingsDropdown((prev) => !prev);
+          }}
+          screenReaderText="Text Settings Tool"
+        />
+      </BoxContainer>
+    </PanelContainer>
   );
 };
 

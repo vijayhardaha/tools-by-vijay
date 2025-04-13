@@ -21,8 +21,8 @@ import { cn } from "@/lib/utils";
  */
 const santize = (html) => {
   return sanitizeHtml(html, {
-    allowedTags: ["strong", "b", "em", "i", "br"], // Allow only specific tags
-    allowedAttributes: {}, // No attributes allowed
+    allowedTags: ["strong", "b", "em", "i", "br", "span"], // Allow only specific tags
+    allowedAttributes: { span: ["style"] }, // No attributes allowed
     transformTags: {
       div: "br",
     },
@@ -121,6 +121,7 @@ const Content = ({ options, updateOption }) => {
               "![&>*]:font-bold !font-bold": options.textBold,
               "![&>*]:italic !italic": options.textItalic,
               "![&>*]:uppercase !uppercase": options.textUppercase,
+              "user-select-none": !focused,
               "inline-flex h-full w-full flex-col items-start justify-center":
                 !sanitizeHtml(options.text, {
                   allowedTags: [],

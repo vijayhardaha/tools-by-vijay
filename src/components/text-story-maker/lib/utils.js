@@ -197,8 +197,10 @@ export function getContentStyles(options) {
   }
 
   if (options.textEffect) {
-    styles = { ...styles, ...getEffectStyles(options.textEffect) };
+    //styles = { ...styles, ...getEffectStyles(options.textEffect) };
   }
+
+  styles.letterSpacing = `${parseFloat(options.textLetterSpacing)}px`;
 
   return styles;
 }

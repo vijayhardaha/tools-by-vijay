@@ -28,7 +28,7 @@ export const IconButton = ({
     aria-label={screenReaderText}
     {...props}
   >
-    <IconComponent className={cn("size-7", iconClassName)} />
+    {IconComponent && <IconComponent className={cn("size-7", iconClassName)} />}
     {screenReaderText && <span className="sr-only">{screenReaderText}</span>}
     {children}
   </button>

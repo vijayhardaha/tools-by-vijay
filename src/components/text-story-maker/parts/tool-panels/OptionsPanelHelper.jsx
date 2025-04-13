@@ -34,7 +34,7 @@ const BoxContainer = ({ children, className }) => {
   return (
     <div
       className={cn(
-        "mx-auto inline-flex items-center gap-2 rounded-xl bg-neutral-800 p-1 text-white shadow",
+        "mx-auto inline-flex items-center gap-3 rounded-xl bg-neutral-800 p-1 text-white shadow",
         className
       )}
     >

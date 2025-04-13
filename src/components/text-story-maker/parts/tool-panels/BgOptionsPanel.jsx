@@ -36,6 +36,7 @@ const BgOptionsPanel = ({ options, updateOption }) => {
     return {
       centeredSlides: true,
       slidesPerView: "auto",
+      slidesPerGroup: "auto",
       freeMode: true,
       loop: false,
       initialSlide: initialSlideIndex >= 0 ? initialSlideIndex : 0, // Set initial slide
@@ -98,6 +99,15 @@ const BgOptionsPanel = ({ options, updateOption }) => {
         </div>
       )}
       <BoxContainer>
+        <BoxButton
+          onClick={(e) => {
+            e.preventDefault();
+          }}
+          screenReaderText="Text Color Tool"
+          className="pointer-events-none p-0"
+        >
+          <div className="size-10 rounded-full bg-[conic-gradient(from_0deg,_red,_yellow,_lime,_cyan,_blue,_magenta,_red)] shadow-lg"></div>
+        </BoxButton>
         <BoxButton
           type="text"
           active={activeTool === "solid"}
