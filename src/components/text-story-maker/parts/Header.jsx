@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import PropTypes from "prop-types";
 import { CgArrowLongLeft as ArrowLeftIcon } from "react-icons/cg";
 import { LuCheck as CheckIcon } from "react-icons/lu";
+import { MdHideSource as PreviewIcon } from "react-icons/md";
 
 import BackgroundFillOptions from "@/components/text-story-maker/parts/header/BackgroundFillOptions";
 import DownloadImageTool from "@/components/text-story-maker/parts/header/DownloadImageTool";
@@ -54,6 +55,11 @@ const Header = ({ options, updateOption, activeTool, setActiveTool }) => {
               <DownloadImageTool
                 options={options}
                 updateOption={updateOption}
+              />
+              <Button
+                icon={PreviewIcon}
+                screenReaderText="Show Preview"
+                onClick={() => setActiveTool("preview")}
               />
             </div>
           </div>
