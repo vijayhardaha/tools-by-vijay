@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 
-import BgOptionsPanel from "@/components/text-story-maker/parts/tool-panels/BgOptionsPanel"; // Panel for background options
-import TextOptionsPanel from "@/components/text-story-maker/parts/tool-panels/TextOptionsPanel"; // Panel for text options
+import BgOptionsPanel from "@/components/text-story-maker/parts/panels/BgOptionsPanel"; // Panel for background options
+import TextOptionsPanel from "@/components/text-story-maker/parts/panels/TextOptionsPanel"; // Panel for text options
 
 /**
  * Footer component for the text story maker.

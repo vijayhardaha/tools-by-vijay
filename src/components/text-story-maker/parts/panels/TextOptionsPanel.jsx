@@ -17,7 +17,7 @@ import {
   BoxButton,
   BoxSlider,
   BoxToggleGroup,
-} from "@/components/text-story-maker/parts/tool-panels/OptionsPanelHelper";
+} from "@/components/text-story-maker/parts/panels/OptionsPanelHelper";
 import { cn } from "@/lib/utils";
 
 import "keen-slider/keen-slider.min.css";
