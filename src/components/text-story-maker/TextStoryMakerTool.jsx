@@ -78,9 +78,7 @@ const TextStoryMakerTool = () => {
         setActiveTool={setActiveTool}
       />
 
-      <div className="overflow-hidden rounded-b-4xl">
-        <Content options={options} updateOption={updateOption} />
-      </div>
+      <Content options={options} updateOption={updateOption} />
 
       {!activeTool && <ToolInfo />}
     </div>

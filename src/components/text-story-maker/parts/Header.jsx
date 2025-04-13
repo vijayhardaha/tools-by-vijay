@@ -2,21 +2,25 @@
 
 import { useState } from "react";
 
+import { useRouter } from "next/navigation";
+
 import domToImage from "dom-to-image";
 import PropTypes from "prop-types";
-import { PiTextAaBold as AaIcon } from "react-icons/pi";
-import { PiResizeBold as SizeIcon } from "react-icons/pi";
-import { PiPaintBucketBold as BgFillIcon } from "react-icons/pi";
+import { CgArrowLongLeft as ArrowLeftIcon } from "react-icons/cg";
+import { LuCheck as CheckIcon } from "react-icons/lu";
+import { PiPaintBrushBroadFill as BgToolIcon } from "react-icons/pi";
 import { PiCheckCircleFill as CheckFillIcon } from "react-icons/pi";
-import { PiDownloadSimpleBold as DownloadIcon } from "react-icons/pi";
+import { TbFrame as FrameToolIcon } from "react-icons/tb";
+import { TbCloudDownload as DownloadToolIcon } from "react-icons/tb";
+import { TbAbc as TextToolIcon } from "react-icons/tb";
 
 import { cardRatios } from "@/components/text-story-maker/constants";
-import Dropdown, {
+import {
+  Dropdown,
   DropdownTrigger,
   DropdownContent,
-} from "@/components/text-story-maker/ui/Dropdown";
-import IconButton from "@/components/text-story-maker/ui/IconButton";
-import TextButton from "@/components/text-story-maker/ui/TextButton";
+  IconButton,
+} from "@/components/text-story-maker/ui";
 import { cn } from "@/lib/utils";
 
 /**
@@ -47,7 +51,7 @@ const FrameComponent = ({ options, updateOption }) => {
       {({ isOpen, toggleDropdown }) => (
         <>
           <DropdownTrigger onClick={toggleDropdown}>
-            <Button icon={SizeIcon} screenReaderText="Size Options" />
+            <Button icon={FrameToolIcon} screenReaderText="Frame Options" />
           </DropdownTrigger>
           <DropdownContent isOpen={isOpen}>
             {cardRatios.map(({ value, label }) => (
@@ -143,7 +147,10 @@ const DownloadComponent = ({ options, updateOption }) => {
         {({ isOpen, toggleDropdown }) => (
           <>
             <DropdownTrigger onClick={toggleDropdown}>
-              <Button icon={DownloadIcon} screenReaderText="Download Image" />
+              <Button
+                icon={DownloadToolIcon}
+                screenReaderText="Download Image"
+              />
             </DropdownTrigger>
             <DropdownContent isOpen={isOpen}>
               <div
@@ -237,29 +244,31 @@ DownloadComponent.propTypes = {
  * @returns {JSX.Element} The rendered Header component.
  */
 const Header = ({ options, updateOption, activeTool, setActiveTool }) => {
+  const router = useRouter();
+
   if (activeTool) {
     return (
-      <header className="absolute top-0 right-0 z-40 p-4">
-        <TextButton
-          className={cn(
-            "bg-neutral-800 text-white",
-            "p-2 px-4",
-            "text-base font-semibold"
-          )}
+      <header className="absolute top-0 right-0 z-40 p-2 px-4">
+        <Button
+          icon={CheckIcon}
+          screenReaderText="Close Active Tool"
           onClick={() => setActiveTool("")}
-        >
-          Done
-        </TextButton>
+        />
       </header>
     );
   }
 
   return (
-    <header className="absolute top-0 left-0 z-40 w-full p-4">
+    <header className="absolute top-0 left-0 z-40 w-full p-2 px-4">
       <div className="flex items-center justify-between gap-4">
+        <Button
+          icon={ArrowLeftIcon}
+          screenReaderText="Go to Previous Page"
+          onClick={() => router.push("/")}
+        />
         <div className="ml-auto flex items-center gap-2">
           <Button
-            icon={AaIcon}
+            icon={TextToolIcon}
             screenReaderText="Text Options"
             className={cn({
               "bg-accent-foreground text-neutral-900": activeTool === "text",
@@ -269,7 +278,7 @@ const Header = ({ options, updateOption, activeTool, setActiveTool }) => {
             }
           />
           <Button
-            icon={BgFillIcon}
+            icon={BgToolIcon}
             screenReaderText="Background Fill Options"
             className={cn({
               "bg-accent-foreground text-neutral-900":

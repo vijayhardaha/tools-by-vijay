@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
  * @param {Object} [props.props] - Additional props to spread onto the button element.
  * @returns {JSX.Element} The rendered button component.
  */
-const TextButton = ({ className, children, ...props }) => (
+export const TextButton = ({ className, children, ...props }) => (
   <button
     type="button"
     className={cn(
@@ -34,5 +34,3 @@ TextButton.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node.isRequired,
 };
-
-export default TextButton;

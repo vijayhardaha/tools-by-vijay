@@ -9,7 +9,7 @@ import PropTypes from "prop-types";
  * @param {React.ReactNode} props.children - The dropdown content, including DropdownTrigger and DropdownContent.
  * @returns {JSX.Element} The rendered Dropdown component.
  */
-const Dropdown = ({ children }) => {
+export const Dropdown = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
 
@@ -86,5 +86,3 @@ DropdownContent.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   children: PropTypes.node.isRequired,
 };
-
-export default Dropdown;

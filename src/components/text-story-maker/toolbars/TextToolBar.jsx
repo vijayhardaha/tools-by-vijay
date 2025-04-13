@@ -21,7 +21,7 @@ import {
   ToolBarButton,
   ToolsBox,
 } from "@/components/text-story-maker/toolbars/ToolBarBase";
-import RangeSlider from "@/components/text-story-maker/ui/RangeSlider";
+import { RangeSlider } from "@/components/text-story-maker/ui";
 import { cn } from "@/lib/utils";
 
 /**

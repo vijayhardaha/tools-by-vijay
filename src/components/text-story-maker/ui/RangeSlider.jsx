@@ -15,7 +15,7 @@ import { cn } from "@/lib/utils";
  * @param {Function} props.onChange - Callback when the slider value changes.
  * @returns {JSX.Element} The rendered RangeSlider component.
  */
-const RangeSlider = ({ min, max, step, values, onChange }) => {
+export const RangeSlider = ({ min, max, step, values, onChange }) => {
   return (
     <div className="h-full rounded-md bg-neutral-800 p-5 px-3 shadow-sm">
       <Range
@@ -68,5 +68,3 @@ RangeSlider.propTypes = {
   values: PropTypes.arrayOf(PropTypes.number).isRequired,
   onChange: PropTypes.func.isRequired,
 };
-
-export default RangeSlider;

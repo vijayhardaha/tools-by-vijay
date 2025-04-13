@@ -13,7 +13,7 @@ import { cn } from "@/lib/utils";
  * @param {React.ReactNode} [props.children] - Optional children for accessibility text.
  * @returns {JSX.Element} The rendered IconButton component.
  */
-const IconButton = ({
+export const IconButton = ({
   icon: IconComponent,
   className,
   iconClassName,
@@ -48,5 +48,3 @@ IconButton.propTypes = {
   screenReaderText: PropTypes.string,
   children: PropTypes.node,
 };
-
-export default IconButton;

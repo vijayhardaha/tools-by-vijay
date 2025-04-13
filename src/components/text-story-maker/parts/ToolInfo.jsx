@@ -14,12 +14,15 @@ const ToolInfo = () => {
   return (
     <div
       id="tool-info"
-      className="absolute right-6 bottom-6 z-50 bg-neutral-900/65 p-2 px-6 text-white"
+      className="absolute right-4 bottom-4 z-50 bg-neutral-900/75 p-3 px-7 text-white"
+      style={{
+        borderRadius: "2% 6% 5% 4% / 1% 1% 2% 4%",
+      }}
     >
       <div className="flex flex-col items-start">
         <h1
           className={cn(
-            "mb-0 text-lg leading-normal font-semibold tracking-wide",
+            "mb-0 text-2xl leading-normal font-semibold tracking-wide",
             getFontClass("bebas_neue")
           )}
         >
@@ -27,7 +30,7 @@ const ToolInfo = () => {
         </h1>
         <p
           className={cn(
-            "text-accent-foreground -mt-2 text-sm leading-normal",
+            "text-accent-foreground -mt-2 text-lg leading-normal",
             getFontClass("caveat")
           )}
         >

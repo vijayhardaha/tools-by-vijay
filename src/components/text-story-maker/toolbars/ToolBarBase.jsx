@@ -1,8 +1,7 @@
 import cn from "classnames";
 import PropTypes from "prop-types";
 
-import IconButton from "@/components/text-story-maker/ui/IconButton";
-import TextButton from "@/components/text-story-maker/ui/TextButton";
+import { IconButton, TextButton } from "@/components/text-story-maker/ui";
 
 /**
  * A container component for tools, positioned at the bottom of the screen.
