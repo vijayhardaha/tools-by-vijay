@@ -1,93 +1,37 @@
-"use client";
-
 import { useState } from "react";
 
-import { useRouter } from "next/navigation";
-
 import domToImage from "dom-to-image";
+import { saveAs } from "file-saver";
 import PropTypes from "prop-types";
-import { CgArrowLongLeft as ArrowLeftIcon } from "react-icons/cg";
-import { LuCheck as CheckIcon } from "react-icons/lu";
-import { PiPaintBrushBroadFill as BgToolIcon } from "react-icons/pi";
-import { PiCheckCircleFill as CheckFillIcon } from "react-icons/pi";
-import { TbFrame as FrameToolIcon } from "react-icons/tb";
 import { TbCloudDownload as DownloadToolIcon } from "react-icons/tb";
-import { TbAbc as TextToolIcon } from "react-icons/tb";
 
-import { cardRatios } from "@/components/text-story-maker/constants";
+import Button from "@/components/text-story-maker/parts/header/HeaderIconBtn";
 import {
   Dropdown,
   DropdownTrigger,
   DropdownContent,
-  IconButton,
 } from "@/components/text-story-maker/ui";
 import { cn } from "@/lib/utils";
 
 /**
- * Button component that wraps the IconButton with predefined styles.
+ * DownloadImageTool component allows users to download the main content as an image
+ * in various formats (JPEG, PNG) and resolutions (HD, FHD, 2K, 4K).
  *
  * @param {Object} props - Component props.
- * @param {React.ElementType} props.icon - The icon to be displayed inside the button.
- * @param {React.ElementType} props.className - Additional classes for the button.
- * @returns {JSX.Element} The rendered Button component.
+ * @param {Object} props.options - Options for the download tool.
+ * @param {string} props.options.downloadSize - Selected download size.
+ * @param {string} props.options.downloadFormat - Selected download format.
+ * @param {Function} props.updateOption - Function to update the selected options.
+ * @returns {JSX.Element} The rendered component.
  */
-const Button = ({ icon, className, ...props }) => (
-  <IconButton
-    icon={icon}
-    className={cn("size-14 rounded-full bg-neutral-900 text-white", className)}
-    iconClassName="size-7"
-    {...props}
-  />
-);
-
-Button.propTypes = {
-  icon: PropTypes.elementType.isRequired,
-  className: PropTypes.string,
-};
-
-const FrameComponent = ({ options, updateOption }) => {
-  return (
-    <Dropdown>
-      {({ isOpen, toggleDropdown }) => (
-        <>
-          <DropdownTrigger onClick={toggleDropdown}>
-            <Button icon={FrameToolIcon} screenReaderText="Frame Options" />
-          </DropdownTrigger>
-          <DropdownContent isOpen={isOpen}>
-            {cardRatios.map(({ value, label }) => (
-              <button
-                key={value}
-                type="button"
-                onClick={() => updateOption("cardRatio", value)}
-                className={cn(
-                  "inline-flex shrink-0 items-center justify-start",
-                  "w-full py-2 text-base whitespace-nowrap",
-                  "cursor-pointer disabled:pointer-events-none disabled:opacity-50",
-                  "outline-none focus-visible:outline-none"
-                )}
-              >
-                {label}
-                {options.cardRatio === value && (
-                  <CheckFillIcon className="text-accent-foreground ml-2 size-6" />
-                )}
-              </button>
-            ))}
-          </DropdownContent>
-        </>
-      )}
-    </Dropdown>
-  );
-};
-
-FrameComponent.propTypes = {
-  options: PropTypes.object.isRequired,
-  updateOption: PropTypes.func.isRequired,
-};
-
-const DownloadComponent = ({ options, updateOption }) => {
+const DownloadImageTool = ({ options, updateOption }) => {
   const [isDownloading, setIsDownloading] = useState(false);
   const [downloadError, setDownloadError] = useState("");
 
+  /**
+   * Available sizes for download.
+   * Each size has a width and a label for display.
+   */
   const sizes = {
     hd: { width: 720, label: "HD" },
     fhd: { width: 1080, label: "FHD" },
@@ -95,20 +39,40 @@ const DownloadComponent = ({ options, updateOption }) => {
     "4k": { width: 2160, label: "4K" },
   };
 
+  /**
+   * Handles the change of the selected size option.
+   *
+   * @param {string} size - The selected size key (e.g., "hd", "fhd").
+   */
   const handleSizeChange = (size) => {
     updateOption("downloadSize", size);
   };
 
-  const handleDownload = (format, size) => {
+  /**
+   * Handles the download of the image in the specified format and size.
+   *
+   * @param {string} format - The image format ("jpeg" or "png").
+   * @param {string} size - The selected size key (e.g., "hd", "fhd").
+   * @param {Function} toggleDropdown - Function to toggle the dropdown visibility.
+   */
+  const handleDownload = (format, size, toggleDropdown) => {
     const node = document.querySelector("#main-content");
+    // Check if the node exists
     if (!node) return;
 
+    // Update the options for download size and format
     updateOption("downloadFormat", format);
 
+    // Function to get the width of the selected size
     const getSizeWidth = (size) => parseInt(sizes[size].width, 10) || 1080;
 
+    // Get the bounding rectangle of the node and calculate the scale
     const rect = node.getBoundingClientRect();
+
+    // Calculate the scale based on the selected size
     const scale = getSizeWidth(size) / rect.width;
+
+    // Set the options for dom-to-image
     const options = {
       quality: 1,
       width: rect.width * scale,
@@ -118,20 +82,21 @@ const DownloadComponent = ({ options, updateOption }) => {
       },
     };
 
+    // Set the downloading state and reset any previous errors
     setIsDownloading(true);
     setDownloadError("");
 
+    // Use dom-to-image to convert the node to an image
     const downloadFn =
       format === "jpeg"
         ? domToImage.toJpeg(node, options)
         : domToImage.toPng(node, options);
 
+    // Download the image using the selected format
     downloadFn
       .then((dataUrl) => {
-        const link = document.createElement("a");
-        link.href = dataUrl;
-        link.download = `text-story.${format}`;
-        link.click();
+        saveAs(dataUrl, `text-story.${format}`);
+        toggleDropdown(false);
       })
       .catch(() => {
         setDownloadError("Download failed");
@@ -200,7 +165,8 @@ const DownloadComponent = ({ options, updateOption }) => {
                         onClick={() =>
                           handleDownload(
                             format.toLowerCase(),
-                            options.downloadSize
+                            options.downloadSize,
+                            toggleDropdown
                           )
                         }
                         disabled={isDownloading}
@@ -230,80 +196,9 @@ const DownloadComponent = ({ options, updateOption }) => {
   );
 };
 
-DownloadComponent.propTypes = {
+DownloadImageTool.propTypes = {
   options: PropTypes.object.isRequired,
   updateOption: PropTypes.func.isRequired,
 };
 
-/**
- * Header component for the text story maker.
- *
- * @param {Object} props - Component props.
- * @param {Object} props.options - Options for the text story maker.
- * @param {Function} props.updateOption - Function to update options.
- * @returns {JSX.Element} The rendered Header component.
- */
-const Header = ({ options, updateOption, activeTool, setActiveTool }) => {
-  const router = useRouter();
-
-  if (activeTool) {
-    return (
-      <header className="absolute top-0 right-0 z-40 p-2 px-4">
-        <Button
-          icon={CheckIcon}
-          screenReaderText="Close Active Tool"
-          onClick={() => setActiveTool("")}
-        />
-      </header>
-    );
-  }
-
-  return (
-    <header className="absolute top-0 left-0 z-40 w-full p-2 px-4">
-      <div className="flex items-center justify-between gap-4">
-        <Button
-          icon={ArrowLeftIcon}
-          screenReaderText="Go to Previous Page"
-          onClick={() => router.push("/")}
-        />
-        <div className="ml-auto flex items-center gap-2">
-          <Button
-            icon={TextToolIcon}
-            screenReaderText="Text Options"
-            className={cn({
-              "bg-accent-foreground text-neutral-900": activeTool === "text",
-            })}
-            onClick={() =>
-              setActiveTool((prev) => (prev !== "text" ? "text" : ""))
-            }
-          />
-          <Button
-            icon={BgToolIcon}
-            screenReaderText="Background Fill Options"
-            className={cn({
-              "bg-accent-foreground text-neutral-900":
-                activeTool === "background",
-            })}
-            onClick={() =>
-              setActiveTool((prev) =>
-                prev !== "background" ? "background" : ""
-              )
-            }
-          />
-
-          <FrameComponent options={options} updateOption={updateOption} />
-          <DownloadComponent options={options} updateOption={updateOption} />
-        </div>
-      </div>
-    </header>
-  );
-};
-
-Header.propTypes = {
-  options: PropTypes.object.isRequired,
-  updateOption: PropTypes.func.isRequired,
-  activeTool: PropTypes.string.isRequired,
-  setActiveTool: PropTypes.func.isRequired,
-};
-
-export default Header;
+export default DownloadImageTool;
