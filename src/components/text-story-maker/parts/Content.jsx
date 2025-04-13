@@ -22,7 +22,7 @@ import { cn } from "@/lib/utils";
  */
 const sanitize = (html) => {
   return sanitizeHtml(html, {
-    allowedTags: ["strong", "b", "em", "i", "br", "span"], // Allow only specific tags
+    allowedTags: ["br"], // Allow only specific tags
     allowedAttributes: {}, // No attributes allowed
     transformTags: {
       div: "br",
@@ -87,13 +87,6 @@ const Content = ({ options, updateOption }) => {
           autoComplete="off"
           spellCheck="false"
           html={renderHtml(options.text)}
-          /**
-           * Handles content changes inside the editable element.
-           * Updates the "text" option with sanitized plain text value.
-           */
-          onChange={(e) => {
-            updateOption("text", sanitize(e.target.value));
-          }}
           /**
            * Handles the blur event when the user leaves the editable area.
            * Sets the focused state to false and updates the "text" option
