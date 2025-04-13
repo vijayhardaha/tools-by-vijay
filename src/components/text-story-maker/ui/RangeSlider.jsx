@@ -16,6 +16,19 @@ import { cn } from "@/lib/utils";
  * @returns {JSX.Element} The rendered RangeSlider component.
  */
 export const RangeSlider = ({ min, max, step, values, onChange }) => {
+  /**
+   * Formats a numeric value to a string with up to three decimal places, avoiding unnecessary trailing zeros.
+   *
+   * @param {number} value - The numeric value to format.
+   * @returns {string} The formatted value as a string.
+   */
+  const formatValue = (value) => {
+    return Number(value).toLocaleString(undefined, {
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 2,
+    });
+  };
+
   return (
     <Range
       step={step}
@@ -47,10 +60,21 @@ export const RangeSlider = ({ min, max, step, values, onChange }) => {
             aria-valuemax={max}
             aria-valuenow={values[0]}
             className={cn(
-              "flex size-4 transform items-center justify-center rounded-full bg-white outline-hidden",
-              isDragged ? "ring-4 ring-white/30" : ""
+              "flex size-3 transform items-center justify-center rounded-full bg-white outline-hidden",
+              isDragged ? "size-6 ring-4 ring-white/30" : ""
             )}
-          ></div>
+          >
+            {/* Tooltip */}
+            <div
+              className={`absolute -top-9 flex items-center justify-center rounded-md bg-white px-3 py-1 text-xs text-neutral-900 outline-hidden ${!isDragged ? "hidden" : ""}`}
+              role="tooltip"
+              aria-live="polite"
+            >
+              {formatValue(values[0])}
+              {/* Tooltip Arrow */}
+              <div className="absolute -bottom-[6px] left-1/2 h-0 w-0 -translate-x-1/2 transform border-t-8 border-r-8 border-l-8 border-t-white border-r-transparent border-l-transparent"></div>
+            </div>
+          </div>
         );
       }}
     />

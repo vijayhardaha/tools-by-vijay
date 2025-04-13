@@ -126,7 +126,7 @@ const BoxSlider = ({
   return (
     <div className="space-y-1.25">
       <p className="text-sm font-medium">{label}</p>
-      <div className="px-2">
+      <div className="px-0.5">
         <RangeSlider
           step={step}
           min={min}

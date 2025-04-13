@@ -182,12 +182,12 @@ const TextOptionsPanel = ({ options, updateOption }) => {
                 </BoxButton>
               </div>
 
-              <div className="mb-4 grid grid-cols-1 gap-4">
+              <div className="mb-2 grid grid-cols-1 gap-4">
                 <BoxSlider
                   label="Text Size"
                   min={0.5}
-                  max={4}
-                  step={0.0625}
+                  max={3}
+                  step={0.05}
                   value={options.textSize}
                   onChangeKey="textSize"
                   onChangeHandler={handleSliderChange}
@@ -196,7 +196,7 @@ const TextOptionsPanel = ({ options, updateOption }) => {
                   label="Line Height"
                   min={1}
                   max={2}
-                  step={0.0625}
+                  step={0.05}
                   value={options.textLineHeight}
                   onChangeKey="textLineHeight"
                   onChangeHandler={handleSliderChange}
@@ -205,7 +205,7 @@ const TextOptionsPanel = ({ options, updateOption }) => {
                   label="Letter Spacing"
                   min={-3}
                   max={4}
-                  step={0.25}
+                  step={0.5}
                   value={options.textLetterSpacing}
                   onChangeKey="textLetterSpacing"
                   onChangeHandler={handleSliderChange}
@@ -229,7 +229,7 @@ const TextOptionsPanel = ({ options, updateOption }) => {
                   label="Outer Spacing"
                   min={2}
                   max={20}
-                  step={0.125}
+                  step={0.5}
                   value={options.boxOuterPadding}
                   onChangeKey="boxOuterPadding"
                   onChangeHandler={handleSliderChange}
@@ -241,7 +241,7 @@ const TextOptionsPanel = ({ options, updateOption }) => {
                       label="Border Radius"
                       min={0}
                       max={20}
-                      step={0.125}
+                      step={0.25}
                       value={options.boxBorderRadius}
                       onChangeKey="boxBorderRadius"
                       onChangeHandler={handleSliderChange}
@@ -250,7 +250,7 @@ const TextOptionsPanel = ({ options, updateOption }) => {
                       label="Inner Spacing"
                       min={0}
                       max={20}
-                      step={0.125}
+                      step={0.5}
                       value={options.boxInnerPadding}
                       onChangeKey="boxInnerPadding"
                       onChangeHandler={handleSliderChange}
@@ -280,7 +280,7 @@ const TextOptionsPanel = ({ options, updateOption }) => {
                   />
 
                   {options.boxGlossy && (
-                    <div className="mb-4 grid grid-cols-2 gap-4">
+                    <div className="mb-2 grid grid-cols-2 gap-4">
                       <BoxSlider
                         label="Glossy Blur"
                         min={1}

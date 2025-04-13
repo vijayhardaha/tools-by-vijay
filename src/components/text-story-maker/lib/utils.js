@@ -207,11 +207,11 @@ export function getContentStyles(options) {
 
   if (options.textGlow) {
     if (options.textGlow === "black") {
-      styles.textShadow = `0 0 ${options.textGlowSize}vh #000000,0 0 ${options.textGlowSize}vh #000000,0 0 1vh #000000`;
+      styles.textShadow = `0 0 ${options.textGlowSize}vh #000000,0 0 ${options.textGlowSize}vh #000000, 0 0 2vh rgba(0, 0, 0, 0.15)`;
     }
 
     if (options.textGlow === "white") {
-      styles.textShadow = `0 0 ${options.textGlowSize}vh #ffffff,0 0 ${options.textGlowSize}vh #ffffff,0 0 1vh #ffffff`;
+      styles.textShadow = `0 0 ${options.textGlowSize}vh #ffffff,0 0 ${options.textGlowSize}vh #ffffff, 0 0 2vh rgba(255, 255, 255, 0.15)`;
     }
   }
 
