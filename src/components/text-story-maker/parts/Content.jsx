@@ -1,7 +1,6 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 import PropTypes from "prop-types";
-import ContentEditable from "react-contenteditable";
 import sanitizeHtml from "sanitize-html";
 
 import {
@@ -56,6 +55,15 @@ const renderHtml = (text) => text.replace(/(?:\r\n|\r|\n)/g, "<br>");
  */
 const Content = ({ options, updateOption }) => {
   const [focused, setFocused] = useState(false); // State to track focus
+  const contentRef = useRef(null);
+  const isFallbackNeeded = false; // Placeholder for determining if fallback is needed
+
+  // Update the HTML content when options.text changes
+  useEffect(() => {
+    if (contentRef.current && !focused) {
+      contentRef.current.innerHTML = renderHtml(options.text);
+    }
+  }, [options.text, focused]);
 
   return (
     <main
@@ -80,63 +88,45 @@ const Content = ({ options, updateOption }) => {
           padding: `calc(var(--spacing) * ${options.boxOuterPadding})`,
         }}
       >
-        <ContentEditable
+        <div
+          ref={contentRef}
+          contentEditable
           id="editable-content"
-          tagName="div"
-          tabIndex={0} // Make the element focusable
-          autoComplete="off"
+          tabIndex={0}
           spellCheck="false"
-          html={renderHtml(options.text)}
-          /**
-           * Handles the blur event when the user leaves the editable area.
-           * Sets the focused state to false and updates the "text" option
-           * with sanitized and trimmed HTML content.
-           */
+          aria-multiline="true"
+          role="textbox"
+          aria-label="Text content editor"
           onBlur={(e) => {
             setFocused(false);
             updateOption("text", sanitize(e.target.innerHTML).trim());
           }}
-          /**
-           * Handles the focus event when the editable element is selected.
-           * Sets the focused state to true.
-           */
           onFocus={() => setFocused(true)}
-          /**
-           * Handles the paste event to sanitize and insert pasted content.
-           */
           onPaste={(e) => {
-            e.preventDefault(); // Prevent default paste behavior to control content insertion
+            e.preventDefault();
 
-            // Get pasted content as HTML (preferred) or plain text
             const pastedText =
               e.clipboardData.getData("text/html") ||
               e.clipboardData.getData("text/plain");
 
-            // Sanitize and convert the pasted content to clean HTML
             const cleanHtml = renderHtml(sanitize(pastedText));
 
             const selection = window.getSelection();
             if (!selection.rangeCount) return;
 
-            // Get the current cursor position (range) and clear any selected content
             const range = selection.getRangeAt(0);
             range.deleteContents();
 
-            // Create a temporary container to parse the clean HTML string
             const tempDiv = document.createElement("div");
             tempDiv.innerHTML = cleanHtml;
 
-            // Move parsed nodes into a DocumentFragment for efficient insertion
             const fragment = document.createDocumentFragment();
             let node;
             while ((node = tempDiv.firstChild)) {
               fragment.appendChild(node);
             }
 
-            // Insert the sanitized content at the current cursor position
             range.insertNode(fragment);
-
-            // Move the cursor to the end of the inserted content
             selection.collapseToEnd();
           }}
           className={cn(
@@ -156,6 +146,14 @@ const Content = ({ options, updateOption }) => {
           )}
           style={getContentStyles(options)}
         />
+        {/* Add a hidden textarea fallback for problematic devices */}
+        {isFallbackNeeded && (
+          <textarea
+            className="sr-only"
+            value={options.text}
+            onChange={(e) => updateOption("text", e.target.value)}
+          />
+        )}
       </div>
     </main>
   );
