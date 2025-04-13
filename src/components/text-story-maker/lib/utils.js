@@ -87,6 +87,20 @@ export const getFontClass = (key) => {
 };
 
 /**
+ * Retrieves the font class name by its key.
+ *
+ * @param {string} key - The key of the font to search for.
+ * @returns {string|null} The class name of the font, or null if not found.
+ */
+export const getFontClassByName = (key) => {
+  const font = fonts.findIndex((font) => font.key === key);
+  if (font === -1) {
+    return null;
+  }
+  return fonts[font].class;
+};
+
+/**
  * Utility function to get color class based on type and value.
  *
  * @param {string} type - The type of color (e.g., 'solid', 'gradient', 'mesh').

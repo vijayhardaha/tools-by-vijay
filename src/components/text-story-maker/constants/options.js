@@ -15,7 +15,7 @@
 /** @type {DefaultOptions} */
 export const defaultOptions = {
   // Typography
-  textFont: "comfortaa",
+  textFont: 0,
   textSize: 1.25,
   textLineHeight: 1.375,
   textLetterSpacing: 0,

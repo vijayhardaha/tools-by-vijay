@@ -40,37 +40,30 @@ const TextOptionsPanel = ({ options, updateOption }) => {
   /**
    * Generates slider parameters for the Keen Slider.
    *
-   * @param {Object|Array} items - The items to display in the slider.
    * @param {string} initialKey - The initial key to set as active.
    * @param {string} updateKey - The key to update when the slider changes.
    * @returns {Object} The slider parameters.
    */
-  const getSliderParams = (items, initialKey, updateKey) => {
-    const isArray = Array.isArray(items);
-    const initialSlideIndex = isArray
-      ? parseInt(initialKey, 10)
-      : Object.keys(items).indexOf(initialKey);
-
+  const getSliderParams = (initialKey, updateKey) => {
     return {
       mode: "free-snap",
       renderMode: "performance",
-      initial: initialSlideIndex >= 0 ? initialSlideIndex : 0,
+      initial: parseInt(initialKey, 10) || 0,
       slides: { perView: "auto", spacing: 0, origin: "center" },
       loop: false,
       slideChanged: (slider) => {
-        const rel = slider.track.details.rel;
-        const key = isArray ? rel : Object.keys(items)[rel];
-        updateOption(updateKey, key);
+        const currentIndex = slider.track.details.rel;
+        updateOption(updateKey, currentIndex);
       },
     };
   };
 
   const [fontSliderRef] = useKeenSlider(
-    getSliderParams(fonts, options.textFont, "textFont")
+    getSliderParams(options.textFont, "textFont")
   );
 
   const [colorSliderRef] = useKeenSlider(
-    getSliderParams(textColors, options.textColor, "textColor")
+    getSliderParams(options.textColor, "textColor")
   );
 
   /**
@@ -158,7 +151,7 @@ const TextOptionsPanel = ({ options, updateOption }) => {
       {activeTool === "font-family" && (
         <div className="relative w-full overflow-hidden">
           <div ref={fontSliderRef} className="keen-slider">
-            {Object.keys(fonts).map((font) => (
+            {fonts.map(({ label }, font) => (
               <div
                 key={font}
                 className="keen-slider__slide relative block h-full !w-fit shrink-0"
@@ -180,7 +173,7 @@ const TextOptionsPanel = ({ options, updateOption }) => {
                     }}
                   >
                     <span className="truncate overflow-hidden whitespace-nowrap">
-                      {fonts[font].label}
+                      {label}
                     </span>
                   </button>
                 </div>
