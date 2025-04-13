@@ -50,7 +50,7 @@ export const defaultOptions = {
 
   // Background
   bgType: "gradient",
-  bgColor: "color3",
+  bgColor: 2,
 
   // Download
   downloadSize: "fhd",

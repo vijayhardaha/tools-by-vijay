@@ -33,20 +33,16 @@ const BgOptionsPanel = ({ options, updateOption }) => {
    * @returns {Object} The configuration object for the Keen Slider.
    */
   const getSliderParams = (tool) => {
-    const initialSlideIndex = Object.keys(bgColors[tool]).indexOf(
-      options.bgColor
-    );
-
     return {
       mode: "free-snap",
       renderMode: "performance",
-      initial: initialSlideIndex > 0 ? initialSlideIndex : 1,
+      initial: parseInt(options.bgColor, 10) || 1,
       slides: { perView: "auto", spacing: 0, origin: "center" },
       loop: false,
       slideChanged: (slider) => {
-        const colorKey = Object.keys(bgColors[tool])[slider.track.details.rel];
+        const currentIndex = slider.track.details.rel;
         updateOption("bgType", tool);
-        updateOption("bgColor", colorKey);
+        updateOption("bgColor", currentIndex);
       },
     };
   };
@@ -65,7 +61,7 @@ const BgOptionsPanel = ({ options, updateOption }) => {
     setActiveTool(tool);
     updateOption("bgType", tool);
     if (options.bgType !== tool) {
-      updateOption("bgColor", "color1");
+      updateOption("bgColor", 1);
     }
   };
 
@@ -74,7 +70,7 @@ const BgOptionsPanel = ({ options, updateOption }) => {
       {activeTool && (
         <div className="relative w-full overflow-hidden">
           <div ref={sliderRef} className="keen-slider">
-            {Object.keys(bgColors[activeTool]).map((colorKey) => (
+            {bgColors[activeTool].map((bgColor, colorKey) => (
               <div
                 key={colorKey}
                 className="keen-slider__slide relative block h-full !w-fit shrink-0"
@@ -86,7 +82,7 @@ const BgOptionsPanel = ({ options, updateOption }) => {
                       btnBaseStyles.join(" "),
                       "size-16 shadow",
                       "ring-1 ring-white",
-                      bgColors[activeTool][colorKey],
+                      bgColor,
                       {
                         "ring-4": options.bgColor === colorKey,
                       }
