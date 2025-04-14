@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 import "keen-slider/keen-slider.min.css";
 
 /**
- * BgColorSlider component renders a slider for selecting background colors.
+ * BgColorsSlider component renders a slider for selecting background colors.
  *
  * @param {Object} props - Component props.
  * @param {string} props.tool - The active background tool type (e.g., "solid", "gradient", "mesh").
@@ -16,9 +16,9 @@ import "keen-slider/keen-slider.min.css";
  * @param {string} props.options.bgType - The current background type.
  * @param {string} props.options.bgColor - The current background color key.
  * @param {Function} props.updateOption - Function to update the selected background option.
- * @returns {JSX.Element} The rendered BgColorSlider component.
+ * @returns {JSX.Element} The rendered BgColorsSlider component.
  */
-const BgColorSlider = ({ tool, options, updateOption }) => {
+const BgColorsSlider = ({ tool, options, updateOption }) => {
   const [sliderRef] = useKeenSlider({
     loop: false,
     mode: "free-snap",
@@ -40,12 +40,12 @@ const BgColorSlider = ({ tool, options, updateOption }) => {
             key={colorKey}
             className="keen-slider__slide relative block h-full !w-fit shrink-0"
           >
-            <div className="flex items-center justify-center p-2">
+            <div className="flex items-center justify-center p-1">
               <button
                 type="button"
                 className={cn(
                   btnBaseStyles.join(" "),
-                  "size-16 shadow",
+                  "size-12 shadow",
                   "ring-1 ring-white",
                   bgColor,
                   {
@@ -65,7 +65,7 @@ const BgColorSlider = ({ tool, options, updateOption }) => {
   );
 };
 
-BgColorSlider.propTypes = {
+BgColorsSlider.propTypes = {
   tool: PropTypes.string.isRequired,
   options: PropTypes.shape({
     bgType: PropTypes.string.isRequired,
@@ -74,4 +74,4 @@ BgColorSlider.propTypes = {
   updateOption: PropTypes.func.isRequired,
 };
 
-export default BgColorSlider;
+export default BgColorsSlider;

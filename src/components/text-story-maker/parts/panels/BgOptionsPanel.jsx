@@ -2,12 +2,12 @@ import { useState } from "react";
 
 import PropTypes from "prop-types";
 
+import BgColorsSlider from "@/components/text-story-maker/parts/panels/BgColorsSlider";
 import {
   ControlPanel,
   ControlBox,
   ControlBtn,
 } from "@/components/text-story-maker/parts/panels/OptionsPanelHelper";
-import BgColorSlider from "@/components/text-story-maker/ui/BgColorSlider";
 
 /**
  * BgOptionsPanel component provides a toolbar for selecting background types.
@@ -47,7 +47,7 @@ const BgOptionsPanel = ({ options, updateOption }) => {
       {tools.map(
         ({ name }) =>
           activeTool === name && (
-            <BgColorSlider
+            <BgColorsSlider
               key={name}
               tool={name}
               options={options}
