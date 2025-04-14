@@ -1,5 +1,5 @@
 import TextStoryMakerContent from "@/components/text-story-maker/TextStoryMakerTool";
-import { generateMetadata as genMeta } from "@/lib/seo";
+import { generateMetadata as genMeta } from "@/utils/seoUtils";
 
 export const metadata = genMeta({
   title: "Text Story Maker",

@@ -10,7 +10,7 @@ import {
 
 import PropTypes from "prop-types";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/classNameUtils";
 
 const TabsContext = createContext({
   selectedTab: "",

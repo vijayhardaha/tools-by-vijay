@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/classNameUtils";
 
 /**
  * Input component for text entry, file uploads, and other input types.

@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import propTypes from "prop-types";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/classNameUtils";
 
 /**
  * Logo component that displays the site logo with next/image

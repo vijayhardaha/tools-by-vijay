@@ -2,7 +2,7 @@ import * as React from "react";
 
 import PropTypes from "prop-types"; // Added for prop type validation
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/classNameUtils";
 
 /**
  * Skeleton component used as a placeholder while content is loading.

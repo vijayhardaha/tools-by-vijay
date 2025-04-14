@@ -10,7 +10,7 @@ import Footer from "@/components/text-story-maker/parts/Footer";
 import Header from "@/components/text-story-maker/parts/Header";
 import Button from "@/components/text-story-maker/parts/header/HeaderIconBtn";
 import ToolInfo from "@/components/text-story-maker/parts/ToolInfo";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/classNameUtils";
 
 /**
  * TextStoryMakerTool component serves as the main container for the text story maker tool.

@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { PiPaintBrushBroadFill as BgToolIcon } from "react-icons/pi";
 
 import Button from "@/components/text-story-maker/parts/header/HeaderIconBtn";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/classNameUtils";
 
 /**
  * A button component for toggling the "Background Fill Options" tool in the text story maker.

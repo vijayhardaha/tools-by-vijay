@@ -3,7 +3,7 @@ import { cloneElement, forwardRef, isValidElement } from "react";
 import { cva } from "class-variance-authority";
 import PropTypes from "prop-types";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/classNameUtils";
 
 /**
  * Custom Slot implementation to replace @radix-ui/react-slot.

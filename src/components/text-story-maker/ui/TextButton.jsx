@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 
 import { btnBaseStyles } from "@/components/text-story-maker/lib/ui";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/classNameUtils";
 
 /**
  * A reusable button component for text-based actions.
@@ -27,7 +27,6 @@ export const TextButton = ({
       className
     )}
     aria-label={ariaLabel || undefined}
-    role="button"
     {...props}
   >
     {children}

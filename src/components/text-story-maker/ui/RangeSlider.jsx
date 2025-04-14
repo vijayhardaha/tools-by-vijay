@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { Direction } from "react-range";
 import { Range } from "react-range";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/classNameUtils";
 
 /**
  * RangeSlider component for rendering a horizontal range slider.

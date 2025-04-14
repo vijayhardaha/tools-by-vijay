@@ -11,7 +11,7 @@ const tools = [
     seoTitle: "Slugify Tool – Generate SEO-Friendly Slugs Online",
     seoDescription:
       "Convert text into SEO-friendly URL slugs instantly. Simple and effective slug generator.",
-    categorySlug: "text-transformation",
+    category: "text-transformation",
   },
   {
     name: "Bulk Slugify",
@@ -22,7 +22,7 @@ const tools = [
     seoTitle: "Bulk Slugify Tool – Convert Multiple Strings into Slugs",
     seoDescription:
       "Quickly generate slugs from multiple strings. Ideal for bulk content operations.",
-    categorySlug: "text-transformation",
+    category: "text-transformation",
   },
   {
     name: "Password Generator",
@@ -33,7 +33,7 @@ const tools = [
     seoTitle: "Password Generator – Create Strong Passwords Online",
     seoDescription:
       "Generate secure, random passwords to protect your accounts. Free and customizable.",
-    categorySlug: "security",
+    category: "security",
   },
   {
     name: "Password Strength Checker",
@@ -44,7 +44,7 @@ const tools = [
     seoTitle: "Password Strength Checker – Test Your Password Security",
     seoDescription:
       "Test your password strength with real-time feedback. Improve your security today.",
-    categorySlug: "security",
+    category: "security",
   },
   {
     name: "HTML Minifier",
@@ -55,7 +55,7 @@ const tools = [
     seoTitle: "HTML Minifier – Optimize Your HTML Code",
     seoDescription:
       "Minify and compress HTML code for better website speed and SEO.",
-    categorySlug: "code-optimization",
+    category: "code-optimization",
   },
   {
     name: "CSS Minifier",
@@ -66,7 +66,7 @@ const tools = [
     seoTitle: "CSS Minifier – Reduce CSS File Size Online",
     seoDescription:
       "Minify your CSS files to enhance website loading speed. Fast and efficient tool.",
-    categorySlug: "code-optimization",
+    category: "code-optimization",
   },
   {
     name: "JS Minifier",
@@ -77,7 +77,7 @@ const tools = [
     seoTitle: "JavaScript Minifier – Compress JS Code Easily",
     seoDescription:
       "Minify JavaScript files for better performance and faster load times.",
-    categorySlug: "code-optimization",
+    category: "code-optimization",
   },
   {
     name: "URL Shortener",
@@ -88,7 +88,7 @@ const tools = [
     seoTitle: "URL Shortener – Bulk Short Link Generator with TinyURL",
     seoDescription:
       "Bulk URL Shortener powered by TinyURL. Quickly generate short links for multiple URLs.",
-    categorySlug: "web-utilities",
+    category: "web-utilities",
   },
   {
     name: "Dropdown to Array",
@@ -99,7 +99,7 @@ const tools = [
     seoTitle: "Dropdown to Array – Convert Select Options to PHP/JS Array",
     seoDescription:
       "Convert dropdown options into arrays for PHP or JavaScript. Fast and easy utility for developers.",
-    categorySlug: "data-conversion",
+    category: "data-conversion",
   },
   {
     name: "Text to Array",
@@ -110,7 +110,7 @@ const tools = [
     seoTitle: "Text to Array – Convert Text into PHP/JS Arrays Instantly",
     seoDescription:
       "Convert plain text into key-value arrays for PHP or JavaScript. Ideal for quick data formatting.",
-    categorySlug: "data-conversion",
+    category: "data-conversion",
   },
   {
     name: "JSON Sorter",
@@ -121,7 +121,7 @@ const tools = [
     seoTitle: "JSON Sorter – Alphabetically Sort JSON Keys Online",
     seoDescription:
       "Sort JSON objects alphabetically by their keys. Make your JSON data more readable and consistent.",
-    categorySlug: "data-formatting",
+    category: "data-formatting",
   },
   {
     name: "Duplicate Line Removal",
@@ -132,7 +132,7 @@ const tools = [
     seoTitle: "Duplicate Line Remover – Clean Text Data Online",
     seoDescription:
       "Remove duplicate lines from your text instantly. Keep your data clean and organized with our simple tool.",
-    categorySlug: "text-transformation",
+    category: "text-transformation",
   },
   {
     name: "Alphabetical Line Sorter",
@@ -143,7 +143,7 @@ const tools = [
     seoTitle: "Text Line Sorter – Sort Text Lines Online",
     seoDescription:
       "Sort your text lines alphabetically or numerically. Simple tool for organizing content quickly.",
-    categorySlug: "text-transformation",
+    category: "text-transformation",
   },
   {
     name: "CSS Inliner",
@@ -154,7 +154,7 @@ const tools = [
     seoTitle: "CSS Inliner – Convert CSS to Inline Styles for HTML",
     seoDescription:
       "Convert external CSS to inline HTML styles. Ideal for email templates and single-file HTML distribution.",
-    categorySlug: "code-optimization",
+    category: "code-optimization",
   },
 ];
 

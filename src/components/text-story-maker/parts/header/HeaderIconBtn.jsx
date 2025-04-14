@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 
 import { IconButton } from "@/components/text-story-maker/ui";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/classNameUtils";
 
 /**
  * HeaderIconBtn is a wrapper around the IconButton component, styled specifically for the header.

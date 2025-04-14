@@ -8,7 +8,7 @@ import {
   LuChevronDown as ChevronDownIcon,
 } from "react-icons/lu";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/classNameUtils";
 
 /**
  * Simplified Select component that handles all dropdown functionality internally

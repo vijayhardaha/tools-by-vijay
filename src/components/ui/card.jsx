@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/classNameUtils";
 
 /**
  * Card component that serves as a container for related content.

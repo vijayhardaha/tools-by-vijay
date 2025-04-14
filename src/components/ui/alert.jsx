@@ -10,7 +10,7 @@ import {
   LuCircleX,
 } from "react-icons/lu";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/classNameUtils";
 
 // Define variants using shadcn-like styling
 const alertVariants = cva(

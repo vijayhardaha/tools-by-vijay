@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import { bgColors } from "@/components/text-story-maker/constants";
 import { btnBaseStyles } from "@/components/text-story-maker/lib/ui";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/classNameUtils";
 
 import "keen-slider/keen-slider.min.css";
 

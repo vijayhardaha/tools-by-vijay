@@ -9,7 +9,7 @@ import {
   LiCircle as CircleIcon,
 } from "react-icons/lu";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/classNameUtils";
 
 // Create context for dropdown state management
 const DropdownMenuContext = React.createContext({

@@ -5,7 +5,7 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 import { LuCheck as CheckIcon } from "react-icons/lu";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/classNameUtils";
 
 /**
  * Checkbox component for selecting options.

@@ -5,7 +5,7 @@ import * as React from "react";
 import PropTypes from "prop-types";
 import { createPortal } from "react-dom";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/classNameUtils";
 
 // Create a context to manage popover state
 const PopoverContext = React.createContext({

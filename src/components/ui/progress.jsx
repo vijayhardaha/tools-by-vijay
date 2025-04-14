@@ -4,7 +4,7 @@ import { forwardRef } from "react";
 
 import PropTypes from "prop-types";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/classNameUtils";
 
 /**
  * Progress component that shows a horizontal progress bar

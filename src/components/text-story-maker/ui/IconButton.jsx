@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 
 import { btnBaseStyles } from "@/components/text-story-maker/lib/ui";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/classNameUtils";
 
 /**
  * IconButton component for rendering a button with an icon.

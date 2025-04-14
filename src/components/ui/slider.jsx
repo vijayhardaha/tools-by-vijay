@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { Range } from "react-range";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/classNameUtils";
 
 /**
  * A simplified slider component that allows users to select a value by moving a handle along a track.

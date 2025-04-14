@@ -5,7 +5,7 @@ import { useId } from "react";
 import PropTypes from "prop-types";
 import { Tooltip as ReactTooltip } from "react-tooltip";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/classNameUtils";
 
 import "react-tooltip/dist/react-tooltip.css";
 

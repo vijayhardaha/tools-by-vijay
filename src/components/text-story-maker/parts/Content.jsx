@@ -12,7 +12,7 @@ import {
   getTextColorClass,
   isEmptyText,
 } from "@/components/text-story-maker/lib/utils";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/classNameUtils";
 
 /**
  * Sanitizes the provided HTML string by allowing only specific tags and removing attributes.

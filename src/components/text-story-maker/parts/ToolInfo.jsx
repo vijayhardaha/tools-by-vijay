@@ -1,5 +1,5 @@
 import { getFontClassByName } from "@/components/text-story-maker/lib/utils";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/classNameUtils";
 
 /**
  * ToolInfo Component

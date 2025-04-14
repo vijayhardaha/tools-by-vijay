@@ -26,10 +26,8 @@ const Sidebar = ({ isOpen, onClose }) => (
     >
       <SidebarHeader />
 
-      <div className="flex h-[calc(100%-var(--header-height))] flex-col">
-        <div className="flex-1 overflow-y-auto">
-          <SidebarBody />
-        </div>
+      <div className="flex flex-1 flex-col">
+        <SidebarBody />
       </div>
       <SidebarFooter />
     </SheetContent>

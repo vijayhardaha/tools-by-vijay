@@ -5,7 +5,7 @@ import { forwardRef } from "react";
 import { cva } from "class-variance-authority";
 import PropTypes from "prop-types";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/classNameUtils";
 
 /**
  * Styling variants for the Label component

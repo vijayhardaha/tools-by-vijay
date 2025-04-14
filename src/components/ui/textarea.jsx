@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/classNameUtils";
 
 /**
  * Textarea component for multi-line text input.

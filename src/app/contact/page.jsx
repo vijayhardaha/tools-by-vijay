@@ -9,7 +9,7 @@ import { TbWorldWww } from "react-icons/tb";
 import PageContent from "@/components/page/PageContent";
 import PageHeader from "@/components/page/PageHeader";
 import PageLayout from "@/components/page/PageLayout";
-import { generateMetadata as genMeta } from "@/lib/seo";
+import { generateMetadata as genMeta } from "@/utils/seoUtils";
 
 /**
  * SEO metadata for the Slugify page

@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { LuCopy as CopyIcon, LuCheck as CheckIcon } from "react-icons/lu";
 
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/classNameUtils";
 
 /**
  * Reusable copy button component with copied state feedback

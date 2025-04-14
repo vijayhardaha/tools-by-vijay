@@ -9,7 +9,7 @@ import {
   DropdownTrigger,
   DropdownContent,
 } from "@/components/text-story-maker/ui";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/classNameUtils";
 
 /**
  * FrameSizeTool provides a dropdown menu to select frame size options.
@@ -55,7 +55,6 @@ const FrameSizeTool = ({ options, updateOption }) => {
                   "outline-none focus-visible:outline-none"
                 )}
                 aria-label={`Select ${label} frame ratio`}
-                aria-selected={options.cardRatio === value}
               >
                 {label}
                 {options.cardRatio === value && (

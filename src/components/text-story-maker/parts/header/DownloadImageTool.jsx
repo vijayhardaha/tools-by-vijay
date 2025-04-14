@@ -11,7 +11,7 @@ import {
   DropdownTrigger,
   DropdownContent,
 } from "@/components/text-story-maker/ui";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/classNameUtils";
 
 /**
  * DownloadImageTool component allows users to download the main content as an image

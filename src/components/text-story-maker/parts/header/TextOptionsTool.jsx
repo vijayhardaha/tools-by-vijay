@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { TbAbc as TextToolIcon } from "react-icons/tb";
 
 import Button from "@/components/text-story-maker/parts/header/HeaderIconBtn";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/classNameUtils";
 
 /**
  * A button component for toggling the "Text Options" tool in the text story maker.

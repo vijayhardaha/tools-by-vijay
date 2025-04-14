@@ -4,9 +4,9 @@ import clsx from "clsx";
 import PropTypes from "prop-types";
 import { CgArrowRight } from "react-icons/cg";
 
-import { getToolBySlug } from "@/lib/getToolBySlug";
-import { getToolIcon } from "@/lib/getToolIcon";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/classNameUtils";
+import { findToolBySlug } from "@/utils/toolUtils";
+import { getIconForTool } from "@/utils/toolUtils";
 
 import { Button } from "../ui/button";
 import {
@@ -34,7 +34,7 @@ const ToolCard = ({
   btnRounded = false,
   btnText = "Get Started",
 }) => {
-  const tool = getToolBySlug(slug);
+  const tool = findToolBySlug(slug);
 
   if (!tool) return null;
 
@@ -57,7 +57,7 @@ const ToolCard = ({
   return (
     <Card className={cn("flex h-full flex-col gap-4", className)}>
       <CardContent>
-        <div className="h-10 w-10 text-5xl">{getToolIcon(tool.slug)}</div>
+        <div className="h-10 w-10 text-5xl">{getIconForTool(tool.slug)}</div>
       </CardContent>
 
       <CardHeader>

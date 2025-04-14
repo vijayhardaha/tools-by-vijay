@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 
 import { IconButton, TextButton } from "@/components/text-story-maker/ui";
 import { RangeSlider } from "@/components/text-story-maker/ui";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/classNameUtils";
 
 /**
  * A container component for positioning tools at the bottom of the screen.

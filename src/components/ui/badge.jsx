@@ -3,7 +3,7 @@ import * as React from "react";
 import { cva } from "class-variance-authority";
 import PropTypes from "prop-types";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/classNameUtils";
 
 const badgeVariants = cva(
   "inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset",

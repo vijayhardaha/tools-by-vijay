@@ -46,7 +46,7 @@ const JsonSorterInfo = () => {
             </ul>
           </li>
           <li>
-            <strong>Sort JSON:</strong> Click the "Sort JSON" button to generate
+            <strong>Sort JSON:</strong> Click the “Sort JSON” button to generate
             alphabetically sorted output.
           </li>
           <li>

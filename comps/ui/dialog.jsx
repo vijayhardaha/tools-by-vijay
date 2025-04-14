@@ -5,7 +5,7 @@ import * as React from "react";
 import PropTypes from "prop-types";
 import { LuX as XIcon } from "react-icons/lu";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/classNameUtils";
 
 // Create Dialog Context
 const DialogContext = React.createContext({

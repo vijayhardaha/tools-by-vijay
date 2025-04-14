@@ -1,4 +1,4 @@
-import { getBaseUrl } from "@/lib/seo";
+import { getBaseUrl } from "@/utils/seoUtils";
 
 /**
  * An object containing SEO-related constants for the application.

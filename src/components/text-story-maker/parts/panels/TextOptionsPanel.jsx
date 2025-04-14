@@ -18,7 +18,7 @@ import {
 } from "@/components/text-story-maker/parts/panels/OptionsPanelHelper";
 import TextColorsPanel from "@/components/text-story-maker/parts/panels/TextColorsPanel";
 import FontSlider from "@/components/text-story-maker/ui/FontSlider";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/classNameUtils";
 
 /**
  * TextOptionsPanel component for managing text-related options.
