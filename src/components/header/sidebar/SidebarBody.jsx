@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
-
 import PropTypes from "prop-types";
 
 import tools from "@/constants/tools";
+import categories from "@/constants/tools-categories";
 
 /**
  * NavLink component for consistent link styling in the sidebar using Shadcn classes
@@ -66,26 +66,47 @@ CategorySection.propTypes = {
  * @returns {JSX.Element} The sidebar body content
  */
 const SidebarBody = () => {
+  // Create a map of categories for easier lookup
+  const categoryMap = categories.reduce((acc, category) => {
+    acc[category.slug] = category;
+    return acc;
+  }, {});
+
   // Group tools by category
   const categorizedTools = tools.reduce((acc, tool) => {
-    const category = tool.category || "Uncategorized";
-    if (!acc[category]) {
-      acc[category] = [];
+    const categorySlug = tool.categorySlug || "uncategorized";
+    if (!acc[categorySlug]) {
+      acc[categorySlug] = [];
     }
-    acc[category].push(tool);
+    acc[categorySlug].push(tool);
     return acc;
   }, {});
 
   return (
     <div className="p-4">
       <nav className="text-muted-foreground text-sm">
-        {Object.entries(categorizedTools).map(([category, categoryTools]) => (
-          <CategorySection
-            key={category}
-            title={category}
-            tools={categoryTools}
-          />
-        ))}
+        {categories.map((category) => {
+          const categoryTools = categorizedTools[category.slug] || [];
+          if (categoryTools.length === 0) return null;
+
+          return (
+            <CategorySection
+              key={category.slug}
+              title={category.label}
+              tools={categoryTools}
+            />
+          );
+        })}
+
+        {/* Handle any uncategorized tools */}
+        {categorizedTools["uncategorized"] &&
+          categorizedTools["uncategorized"].length > 0 && (
+            <CategorySection
+              title="Other Tools"
+              tools={categorizedTools["uncategorized"]}
+            />
+          )}
+
         <div className="border-border border-t pt-4">
           <ul className="space-y-3">
             <li>
