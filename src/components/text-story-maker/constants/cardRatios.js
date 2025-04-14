@@ -9,6 +9,5 @@ export const cardRatios = [
   { value: "1/1", label: "Instagram Post (Square)" },
   { value: "4/5", label: "Instagram Post (4:5)" },
   { value: "10/16", label: "Experimental (10:16)" },
-  { value: "full", label: "Full Screen" },
-  { value: "16/9", label: "YouTube Ad (16:9)" },
+  { value: "full", label: "Full Height" },
 ];
