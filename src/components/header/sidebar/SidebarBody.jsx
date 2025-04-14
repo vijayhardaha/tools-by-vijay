@@ -7,9 +7,8 @@ import Link from "next/link";
 import PropTypes from "prop-types";
 import { Scrollbars } from "react-custom-scrollbars-4";
 
-import tools from "@/constants/tools";
 import categories from "@/constants/tools-categories";
-import { groupToolsByCategory } from "@/utils/categoryUtils";
+import { getToolsByCategories } from "@/utils/toolUtils";
 
 /**
  * NavLink component for consistent link styling in the sidebar using Shadcn classes
@@ -72,7 +71,7 @@ CategorySection.propTypes = {
  */
 const SidebarBody = () => {
   // Group tools by category
-  const categorizedTools = groupToolsByCategory(tools);
+  const categorizedTools = getToolsByCategories();
   const scrollbarsRef = useRef(null);
 
   useEffect(() => {
@@ -119,13 +118,13 @@ const SidebarBody = () => {
           <div className="border-border border-t pt-4">
             <ul className="space-y-3">
               <li>
+                <NavLink href="/text-story-maker">Text Story Maker</NavLink>
+              </li>
+              <li>
                 <NavLink href="/about">About</NavLink>
               </li>
               <li>
                 <NavLink href="/contact">Contact</NavLink>
-              </li>
-              <li>
-                <NavLink href="/text-story-maker">Text Story Maker</NavLink>
               </li>
             </ul>
           </div>
