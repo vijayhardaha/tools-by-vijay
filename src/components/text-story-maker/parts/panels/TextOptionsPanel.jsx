@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 import PropTypes from "prop-types";
+import { Scrollbars } from "react-custom-scrollbars-4";
 import { PiTextAa as AaIcon } from "react-icons/pi";
 import { PiTextAlignCenter as AlignCenterIcon } from "react-icons/pi";
 import { PiTextAlignLeft as AlignLeftIcon } from "react-icons/pi";
@@ -17,8 +18,9 @@ import {
   ToggleColors,
 } from "@/components/text-story-maker/parts/panels/OptionsPanelHelper";
 import FontSlider from "@/components/text-story-maker/ui/FontSlider";
-import TextColorSlider from "@/components/text-story-maker/ui/TextColorSlider";
 import { cn } from "@/lib/utils";
+
+import { textColors } from "../../constants";
 
 /**
  * TextOptionsPanel component for managing text-related options.
@@ -35,6 +37,7 @@ const TextOptionsPanel = ({ options, updateOption }) => {
 
   const textAlignments = ["center", "left", "right"];
 
+  const scrollbars = useRef();
   /**
    * Handles changes to the active tool.
    *
@@ -116,7 +119,41 @@ const TextOptionsPanel = ({ options, updateOption }) => {
       )}
 
       {activeTool === "text-color" && (
-        <TextColorSlider options={options} updateOption={updateOption} />
+        <>
+          {/* <TextColorSlider options={options} updateOption={updateOption} /> */}
+          <ControlBox className="flex h-52 w-full rounded-xl bg-neutral-800/85 p-2 text-left">
+            <Scrollbars
+              universal
+              className="scrollbar"
+              style={{ width: "100%" }}
+              ref={scrollbars}
+            >
+              <div className="grid grid-cols-8">
+                {textColors.map(({ bg }, colorKey) => (
+                  <div
+                    key={colorKey}
+                    className="flex items-center justify-center p-2"
+                  >
+                    <button
+                      type="button"
+                      className={cn(
+                        btnBaseStyles.join(" "),
+                        "size-12 rounded-lg shadow ring-1 ring-white",
+                        bg,
+                        {
+                          "ring-4": options.textColor === colorKey,
+                        }
+                      )}
+                      onClick={() => {
+                        updateOption("textColor", colorKey);
+                      }}
+                    ></button>
+                  </div>
+                ))}
+              </div>
+            </Scrollbars>
+          </ControlBox>
+        </>
       )}
 
       {activeTool === "text-settings" && showSettingsDropdown && (
