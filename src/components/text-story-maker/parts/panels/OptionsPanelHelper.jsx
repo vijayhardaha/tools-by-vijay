@@ -111,7 +111,7 @@ ControlBtn.propTypes = {
  * @returns {JSX.Element} The styled slider component.
  */
 const ControlSlider = ({
-  label,
+  label = "",
   min = 0,
   max = 20,
   step = 0.125,
@@ -125,7 +125,7 @@ const ControlSlider = ({
 
   return (
     <div className="space-y-1.25">
-      {label && <p className="text-sm font-medium">{label}</p>}
+      {label.length > 0 && <p className="text-sm font-medium">{label}</p>}
       <div className="px-0.5">
         <RangeSlider
           step={step}

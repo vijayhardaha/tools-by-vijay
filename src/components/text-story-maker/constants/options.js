@@ -36,11 +36,11 @@ export const defaultOptions = {
   text: "",
 
   // Box
+  boxBackground: "",
   boxOuterPadding: 10,
   boxInnerPadding: 0,
-  boxBackground: 0,
-  boxBackgroundOpacity: 0.15,
   boxBorderRadius: 0,
+  boxBackgroundOpacity: 0.15,
   boxGlossy: "",
   boxGlossyBlur: 4,
   boxGlossyShadow: 4,
@@ -50,9 +50,9 @@ export const defaultOptions = {
 
   // Background
   bgType: "gradient",
-  bgColor: 2,
+  bgColor: 0,
 
   // Download
-  downloadSize: "fhd",
+  downloadSize: "2k",
   downloadFormat: "png",
 };

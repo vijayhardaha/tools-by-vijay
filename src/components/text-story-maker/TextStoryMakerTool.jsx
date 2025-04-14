@@ -2,10 +2,13 @@
 
 import { useState, useEffect } from "react";
 
+import { PiNotePencilBold as EditIcon } from "react-icons/pi";
+
 import { defaultOptions } from "@/components/text-story-maker/constants";
 import Content from "@/components/text-story-maker/parts/Content";
 import Footer from "@/components/text-story-maker/parts/Footer";
 import Header from "@/components/text-story-maker/parts/Header";
+import Button from "@/components/text-story-maker/parts/header/HeaderIconBtn";
 import ToolInfo from "@/components/text-story-maker/parts/ToolInfo";
 import { cn } from "@/lib/utils";
 
@@ -19,6 +22,7 @@ import { cn } from "@/lib/utils";
 const TextStoryMakerTool = () => {
   const [options, setOptions] = useState(defaultOptions);
   const [activeTool, setActiveTool] = useState("");
+  const [showConfirm, setShowConfirm] = useState(false);
 
   // Fetch options from local storage on load and merge with default options
   useEffect(() => {
@@ -104,6 +108,48 @@ const TextStoryMakerTool = () => {
        * @param {Function} props.updateOption - Function to update options.
        */}
       <Content options={options} updateOption={updateOption} />
+
+      {!activeTool && (
+        <div className="absolute bottom-4 left-4 z-20">
+          <Button
+            icon={EditIcon}
+            screenReaderText="Create New Story"
+            onClick={() => setShowConfirm(true)}
+            className="bg-neutral-700"
+          />
+        </div>
+      )}
+
+      {/* Custom Tailwind Confirm Dialog */}
+      {showConfirm && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+          <div className="mx-4 max-w-md rounded-3xl bg-neutral-800 p-6 shadow-lg">
+            <h3 className="mb-3 text-lg font-semibold text-white">Confirm</h3>
+            <p className="mb-4 text-neutral-300">
+              Are you sure you want to create a new story? This will reset all
+              current changes.
+            </p>
+            <div className="flex justify-end space-x-3">
+              <button
+                onClick={() => setShowConfirm(false)}
+                className="cursor-pointer rounded-xl bg-neutral-700 px-4 py-2 text-white transition-colors hover:bg-neutral-600"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={() => {
+                  setOptions(defaultOptions);
+                  updateOption("text", "");
+                  setShowConfirm(false);
+                }}
+                className="cursor-pointer rounded-xl bg-red-600 px-4 py-2 text-white transition-colors hover:bg-red-500"
+              >
+                Confirm
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {!activeTool && <ToolInfo />}
     </div>
