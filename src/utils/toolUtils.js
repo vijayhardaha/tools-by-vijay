@@ -18,11 +18,11 @@ export const findToolBySlug = (slug) => {
 
 /**
  * Get all tools that belong to a specific category
- * @param {string} categorySlug - The category slug to filter by
+ * @param {string} category - The category slug to filter by
  * @returns {Array} Array of tool objects in the category
  */
-export const getToolsByCategory = (categorySlug) => {
-  return tools.filter((tool) => tool.categorySlug === categorySlug);
+export const getToolsByCategory = (category) => {
+  return tools.filter((tool) => tool.category === category);
 };
 
 /**
@@ -30,7 +30,7 @@ export const getToolsByCategory = (categorySlug) => {
  * @returns {Array} Array of unique category slugs
  */
 export const getUniqueCategories = () => {
-  const categories = new Set(tools.map((tool) => tool.categorySlug));
+  const categories = new Set(tools.map((tool) => tool.category));
   return [...categories];
 };
 
@@ -46,8 +46,7 @@ export const getRelatedTools = (toolSlug, limit = 3) => {
 
   return tools
     .filter(
-      (tool) =>
-        tool.categorySlug === currentTool.categorySlug && tool.slug !== toolSlug
+      (tool) => tool.category === currentTool.category && tool.slug !== toolSlug
     )
     .slice(0, limit);
 };
@@ -76,10 +75,10 @@ export const searchTools = (query) => {
  */
 export const getToolsByCategories = () => {
   return tools.reduce((grouped, tool) => {
-    if (!grouped[tool.categorySlug]) {
-      grouped[tool.categorySlug] = [];
+    if (!grouped[tool.category]) {
+      grouped[tool.category] = [];
     }
-    grouped[tool.categorySlug].push(tool);
+    grouped[tool.category].push(tool);
     return grouped;
   }, {});
 };

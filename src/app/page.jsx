@@ -1,66 +1,53 @@
 import ToolCard from "@/components/home/ToolCard";
 import PageLayout from "@/components/page/PageLayout";
+import { getCategoryBySlug } from "@/utils/categoryUtils";
+import { getToolsByCategories } from "@/utils/toolUtils";
 
 /**
- * Home component that renders a grid layout of tool cards.
+ * Home component that renders tool cards organized by categories.
  *
- * Each `ToolCard` represents a specific tool with its unique configuration,
- * such as slug, size, and additional styling options.
+ * Each category section displays a title, description, and a grid of tools
+ * that belong to that category.
  *
- * @returns {JSX.Element} The rendered Home component with a grid of tools.
+ * @returns {JSX.Element} The rendered Home component with categorized tools.
  */
 const Home = () => {
+  // Get all tools and group them by category
+  const toolsByCategory = getToolsByCategories();
+
   return (
     <PageLayout>
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-6">
-        <ToolCard slug="slugify" iconButton={true} btnText="Generate Slug" />
+      {Object.entries(toolsByCategory).map(([categorySlug, categoryTools]) => {
+        const category = getCategoryBySlug(categorySlug);
 
-        <ToolCard
-          slug="bulk-slugify"
-          btnText="Bulk Convert"
-          iconButton={true}
-          btnRounded={true}
-        />
+        if (!category) return null;
 
-        <ToolCard slug="password-generator" btnText="Create Password" />
+        return (
+          <section key={categorySlug} className="mb-10">
+            <div className="mb-6">
+              <h2 className="text-foreground mb-1 text-2xl font-bold">
+                {category.label}
+              </h2>
+              <p className="text-muted-foreground">{category.description}</p>
+            </div>
 
-        <ToolCard
-          slug="password-strength-checker"
-          btnText="Check Strength"
-          iconButton={true}
-          btnRounded={true}
-        />
-
-        <ToolCard slug="html-minifier" btnText="Minify HTML" />
-
-        <ToolCard
-          slug="css-minifier"
-          btnText="Compress CSS"
-          iconButton={true}
-        />
-
-        <ToolCard slug="js-minifier" btnText="Optimize JS" />
-
-        <ToolCard
-          slug="url-shortener"
-          btnText="Shorten URL"
-          iconButton={true}
-        />
-
-        <ToolCard
-          slug="dropdown-to-array"
-          btnText="Convert Dropdown"
-          iconButton={true}
-          btnRounded={true}
-        />
-
-        <ToolCard
-          slug="text-to-array"
-          btnText="Transform Text"
-          iconButton={true}
-          btnRounded={true}
-        />
-      </div>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-6">
+              {categoryTools.map((tool) => (
+                <ToolCard
+                  key={tool.slug}
+                  slug={tool.slug}
+                  btnText={`Go to ${tool.name} Tool`}
+                  iconButton={true}
+                  btnRounded={
+                    tool.category === "security" ||
+                    tool.category === "data-conversion"
+                  }
+                />
+              ))}
+            </div>
+          </section>
+        );
+      })}
     </PageLayout>
   );
 };
