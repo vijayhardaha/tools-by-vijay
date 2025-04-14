@@ -9,6 +9,10 @@ import {
   PiLink,
   PiBracketsCurly,
   PiTextAa,
+  PiSortAscending,
+  PiListBullets,
+  PiTextAlignLeft,
+  PiCodeSimple,
 } from "react-icons/pi";
 
 export const toolIcons = {
@@ -22,4 +26,8 @@ export const toolIcons = {
   "url-shortener": <PiLink />,
   "dropdown-to-array": <PiBracketsCurly />,
   "text-to-array": <PiTextAa />,
+  "json-sorter": <PiSortAscending />,
+  "duplicate-line-removal": <PiListBullets />,
+  "alphabetical-line-sorter": <PiTextAlignLeft />,
+  "css-inliner": <PiCodeSimple />,
 };

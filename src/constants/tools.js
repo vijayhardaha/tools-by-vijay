@@ -112,6 +112,50 @@ const tools = [
       "Convert plain text into key-value arrays for PHP or JavaScript. Ideal for quick data formatting.",
     category: "Data Conversion",
   },
+  {
+    name: "JSON Sorter",
+    slug: "json-sorter",
+    shortDescription: "Sort JSON objects alphabetically by key.",
+    pageDescription:
+      "Organize your JSON data by sorting keys alphabetically for better readability and consistency.",
+    seoTitle: "JSON Sorter – Alphabetically Sort JSON Keys Online",
+    seoDescription:
+      "Sort JSON objects alphabetically by their keys. Make your JSON data more readable and consistent.",
+    category: "Data Formatting",
+  },
+  {
+    name: "Duplicate Line Removal",
+    slug: "duplicate-line-removal",
+    shortDescription: "Remove duplicate lines from text.",
+    pageDescription:
+      "Clean up your text by automatically removing duplicate lines while preserving the original order.",
+    seoTitle: "Duplicate Line Remover – Clean Text Data Online",
+    seoDescription:
+      "Remove duplicate lines from your text instantly. Keep your data clean and organized with our simple tool.",
+    category: "Text Transformation",
+  },
+  {
+    name: "Alphabetical Line Sorter",
+    slug: "alphabetical-line-sorter",
+    shortDescription: "Sort text lines alphabetically or numerically.",
+    pageDescription:
+      "Organize your text by sorting lines in alphabetical, reverse alphabetical, or numerical order.",
+    seoTitle: "Text Line Sorter – Sort Text Lines Online",
+    seoDescription:
+      "Sort your text lines alphabetically or numerically. Simple tool for organizing content quickly.",
+    category: "Text Transformation",
+  },
+  {
+    name: "CSS Inliner",
+    slug: "css-inliner",
+    shortDescription: "Convert CSS to inline styles for HTML.",
+    pageDescription:
+      "Transform external CSS into inline styles for HTML elements, perfect for email templates and simpler distribution.",
+    seoTitle: "CSS Inliner – Convert CSS to Inline Styles for HTML",
+    seoDescription:
+      "Convert external CSS to inline HTML styles. Ideal for email templates and single-file HTML distribution.",
+    category: "Code Optimization",
+  },
 ];
 
 export default tools;
