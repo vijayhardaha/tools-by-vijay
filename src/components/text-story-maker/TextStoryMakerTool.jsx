@@ -106,8 +106,15 @@ const TextStoryMakerTool = () => {
        * @param {Object} props - Component props.
        * @param {Object} props.options - Current options state.
        * @param {Function} props.updateOption - Function to update options.
+       * @param {string} props.activeTool - Currently active tool.
+       * @param {Function} props.setActiveTool - Function to set the active tool.
        */}
-      <Content options={options} updateOption={updateOption} />
+      <Content
+        options={options}
+        updateOption={updateOption}
+        activeTool={activeTool}
+        setActiveTool={setActiveTool}
+      />
 
       {!activeTool && (
         <div className="absolute bottom-4 left-4 z-20">

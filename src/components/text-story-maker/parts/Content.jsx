@@ -77,9 +77,11 @@ const renderHtml = (text) => text.trim();
  * @param {string} props.options.bgColor - The background color.
  * @param {string} props.options.cardRatio - The aspect ratio of the card.
  * @param {Function} props.updateOption - Function to update the options.
+ * @param {Function} props.activeTool - The currently active tool.
+ * @param {Function} props.setActiveTool - Function to set the active tool.
  * @returns {JSX.Element} - The rendered Content component.
  */
-const Content = ({ options, updateOption }) => {
+const Content = ({ options, updateOption, activeTool, setActiveTool }) => {
   const [focused, setFocused] = useState(false); // State to track focus
   const contentRef = useRef(null);
   const isFallbackNeeded = false; // Placeholder for determining if fallback is needed
@@ -128,8 +130,14 @@ const Content = ({ options, updateOption }) => {
           onBlur={(e) => {
             setFocused(false);
             updateOption("text", sanitize(e.target.innerHTML).trim());
+            if (activeTool === "text-editing") {
+              setActiveTool("");
+            }
           }}
-          onFocus={() => setFocused(true)}
+          onFocus={() => {
+            setFocused(true);
+            setActiveTool("text-editing");
+          }}
           onPaste={(e) => {
             e.preventDefault();
 
@@ -207,6 +215,8 @@ Content.propTypes = {
     boxOuterPadding: PropTypes.number.isRequired, // The outer padding of the box.
   }).isRequired,
   updateOption: PropTypes.func.isRequired, // Function to update the options.
+  activeTool: PropTypes.string.isRequired, // The currently active tool.
+  setActiveTool: PropTypes.func.isRequired, // Function to set the active tool.
 };
 
 export default Content;
