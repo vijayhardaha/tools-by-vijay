@@ -9,10 +9,16 @@ import { cn } from "@/lib/utils";
  * @param {Object} props - The component props.
  * @param {string} [props.className] - Additional CSS classes to apply to the button.
  * @param {React.ReactNode} props.children - The content to render inside the button.
+ * @param {string} [props.aria-label] - Accessible label for screen readers.
  * @param {Object} [props.props] - Additional props to spread onto the button element.
  * @returns {JSX.Element} The rendered button component.
  */
-export const TextButton = ({ className, children, ...props }) => (
+export const TextButton = ({
+  className,
+  children,
+  "aria-label": ariaLabel,
+  ...props
+}) => (
   <button
     type="button"
     className={cn(
@@ -20,6 +26,8 @@ export const TextButton = ({ className, children, ...props }) => (
       "bg-neutral-700 p-3 px-5 text-white",
       className
     )}
+    aria-label={ariaLabel || undefined}
+    role="button"
     {...props}
   >
     {children}
@@ -35,6 +43,11 @@ TextButton.propTypes = {
    * The content to render inside the button.
    */
   children: PropTypes.node.isRequired,
+  /**
+   * Accessible label for screen readers. Use this when button text alone
+   * is not sufficient to describe the action to screen reader users.
+   */
+  "aria-label": PropTypes.string,
   /**
    * Additional props to spread onto the button element.
    */

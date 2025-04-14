@@ -93,7 +93,7 @@ const Content = ({ options, updateOption }) => {
 
   return (
     <main
-      aria-label="Main content"
+      aria-label="Story content area"
       id="main-content"
       role="main"
       className={cn(
@@ -113,6 +113,7 @@ const Content = ({ options, updateOption }) => {
         style={{
           padding: `calc(var(--spacing) * ${options.boxOuterPadding})`,
         }}
+        aria-label={`Story canvas with ${options.cardRatio} aspect ratio`}
       >
         <div
           ref={contentRef}
@@ -122,7 +123,8 @@ const Content = ({ options, updateOption }) => {
           spellCheck="false"
           aria-multiline="true"
           role="textbox"
-          aria-label="Text content editor"
+          aria-label="Edit story text content"
+          aria-describedby="content-description"
           onBlur={(e) => {
             setFocused(false);
             updateOption("text", sanitize(e.target.innerHTML).trim());
@@ -172,12 +174,17 @@ const Content = ({ options, updateOption }) => {
           )}
           style={getContentStyles(options)}
         />
+        <span id="content-description" className="sr-only">
+          Type or paste your story text here. Use the toolbar to format the
+          text.
+        </span>
         {/* Add a hidden textarea fallback for problematic devices */}
         {isFallbackNeeded && (
           <textarea
             className="sr-only"
             value={options.text}
             onChange={(e) => updateOption("text", e.target.value)}
+            aria-label="Fallback text input for story content"
           />
         )}
       </div>

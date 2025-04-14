@@ -355,15 +355,18 @@ const TextOptionsPanel = ({ options, updateOption }) => {
           icon={AaIcon}
           active={activeTool === "font-family"}
           onClick={() => handleActiveToolChange("font-family")}
-          screenReaderText="Font Family Tool"
+          screenReaderText="Change Font Family"
         />
         <ControlBtn
           active={activeTool === "text-color"}
           onClick={() => handleActiveToolChange("text-color")}
-          screenReaderText="Text Color Tool"
+          screenReaderText="Change Text Color"
           className="p-0"
         >
-          <div className="size-10 rounded-full bg-[conic-gradient(from_0deg,_red,_yellow,_lime,_cyan,_blue,_magenta,_red)] shadow-lg"></div>
+          <div
+            className="size-10 rounded-full bg-[conic-gradient(from_0deg,_red,_yellow,_lime,_cyan,_blue,_magenta,_red)] shadow-lg"
+            aria-hidden="true"
+          ></div>
         </ControlBtn>
         <ControlBtn
           icon={getAlignmentIcon()}
@@ -372,7 +375,8 @@ const TextOptionsPanel = ({ options, updateOption }) => {
           onClick={() => {
             handleAlignmentChange();
           }}
-          screenReaderText="Text Alignment Tool"
+          screenReaderText={`Change Text Alignment (Current: ${options.textAlign})`}
+          aria-label={`Change Text Alignment (Current: ${options.textAlign})`}
         />
         <ControlBtn
           icon={TextSettingsIcon}
@@ -381,7 +385,9 @@ const TextOptionsPanel = ({ options, updateOption }) => {
             setActiveTool("text-settings");
             setShowSettingsDropdown((prev) => !prev);
           }}
-          screenReaderText="Text Settings Tool"
+          screenReaderText="Text and Style Settings"
+          aria-expanded={showSettingsDropdown}
+          aria-haspopup="dialog"
         />
       </ControlBox>
     </ControlPanel>

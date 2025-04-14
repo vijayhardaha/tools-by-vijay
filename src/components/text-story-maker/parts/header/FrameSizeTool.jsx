@@ -35,7 +35,12 @@ const FrameSizeTool = ({ options, updateOption }) => {
       {({ isOpen, toggleDropdown }) => (
         <>
           <DropdownTrigger onClick={toggleDropdown}>
-            <Button icon={FrameToolIcon} screenReaderText="Frame Options" />
+            <Button
+              icon={FrameToolIcon}
+              screenReaderText="Frame Size Options"
+              aria-expanded={isOpen}
+              aria-haspopup="true"
+            />
           </DropdownTrigger>
           <DropdownContent isOpen={isOpen}>
             {cardRatios.map(({ value, label }) => (
@@ -49,10 +54,15 @@ const FrameSizeTool = ({ options, updateOption }) => {
                   "cursor-pointer disabled:pointer-events-none disabled:opacity-50",
                   "outline-none focus-visible:outline-none"
                 )}
+                aria-label={`Select ${label} frame ratio`}
+                aria-selected={options.cardRatio === value}
               >
                 {label}
                 {options.cardRatio === value && (
-                  <CheckFillIcon className="text-accent-foreground ml-2 size-6" />
+                  <CheckFillIcon
+                    className="text-accent-foreground ml-2 size-6"
+                    aria-hidden="true"
+                  />
                 )}
               </button>
             ))}

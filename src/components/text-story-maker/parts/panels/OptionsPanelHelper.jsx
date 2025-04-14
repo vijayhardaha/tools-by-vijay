@@ -123,9 +123,15 @@ const ControlSlider = ({
     onChangeHandler(onChangeKey, values);
   };
 
+  const sliderId = `slider-${onChangeKey}`;
+
   return (
     <div className="space-y-1.25">
-      {label.length > 0 && <p className="text-sm font-medium">{label}</p>}
+      {label.length > 0 && (
+        <p id={sliderId} className="text-sm font-medium">
+          {label}
+        </p>
+      )}
       <div className="px-0.5">
         <RangeSlider
           step={step}
@@ -133,6 +139,11 @@ const ControlSlider = ({
           max={max}
           values={[value]}
           onChange={handleChange}
+          aria-labelledby={sliderId}
+          aria-valuemin={min}
+          aria-valuemax={max}
+          aria-valuenow={value}
+          aria-valuetext={`${label}: ${value}`}
         />
       </div>
     </div>
@@ -175,10 +186,14 @@ const ToggleOptions = ({
 
   if (!options) return;
 
+  const groupId = `toggle-${onChangeKey}`;
+
   return (
     <div className="flex items-center justify-between gap-2">
-      <p className="text-sm font-medium">{label}</p>
-      <div className="flex gap-1.5">
+      <p className="text-sm font-medium" id={groupId}>
+        {label}
+      </p>
+      <div className="flex gap-1.5" role="radiogroup" aria-labelledby={groupId}>
         {Object.entries(options).map(([text, value]) => (
           <ControlBtn
             type="text"
@@ -189,6 +204,9 @@ const ToggleOptions = ({
               "rounded-lg bg-neutral-800 py-2 text-xs font-semibold shadow",
               buttonClass
             )}
+            role="radio"
+            aria-checked={selected === value}
+            aria-label={`${text} option for ${label}`}
           >
             {text}
           </ControlBtn>
@@ -235,10 +253,14 @@ const ToggleColors = ({
     Black: "black",
   };
 
+  const groupId = `toggle-colors-${onChangeKey}`;
+
   return (
     <div className="flex items-center justify-between gap-2">
-      <p className="text-sm font-medium">{label}</p>
-      <div className="flex gap-1">
+      <p className="text-sm font-medium" id={groupId}>
+        {label}
+      </p>
+      <div className="flex gap-1" role="radiogroup" aria-labelledby={groupId}>
         {Object.entries(options).map(([text, value]) => (
           <ControlBtn
             type="text"
@@ -252,6 +274,9 @@ const ToggleColors = ({
               value === "" && "bg-transparent-checker text-white",
               selected === value && "relative z-10 ring-2 ring-amber-400"
             )}
+            role="radio"
+            aria-checked={selected === value}
+            aria-label={`${text} ${label}`}
           >
             <span className="sr-only">{text}</span>
           </ControlBtn>

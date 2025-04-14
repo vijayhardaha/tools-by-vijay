@@ -34,7 +34,12 @@ const BgColorsSlider = ({ tool, options, updateOption }) => {
 
   return (
     <div className="relative w-full overflow-hidden">
-      <div ref={sliderRef} className="keen-slider">
+      <div
+        ref={sliderRef}
+        className="keen-slider"
+        role="radiogroup"
+        aria-label={`${tool} background color options`}
+      >
         {bgColors[tool].map((bgColor, colorKey) => (
           <div
             key={colorKey}
@@ -56,6 +61,9 @@ const BgColorsSlider = ({ tool, options, updateOption }) => {
                   updateOption("bgType", tool);
                   updateOption("bgColor", colorKey);
                 }}
+                role="radio"
+                aria-checked={options.bgColor === colorKey}
+                aria-label={`${tool} background color option ${colorKey + 1}`}
               ></button>
             </div>
           </div>

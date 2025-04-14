@@ -17,6 +17,8 @@ const ToolInfo = () => {
       style={{
         borderRadius: "10% 90% 10% 90% / 90% 10% 90% 10%",
       }}
+      aria-label="About this tool"
+      role="complementary"
     >
       <div className="flex flex-col items-start">
         <h1

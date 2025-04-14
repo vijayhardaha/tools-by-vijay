@@ -21,14 +21,21 @@ const TextColorsPanel = ({ options, updateOption }) => {
   const scrollbars = useRef();
 
   return (
-    <ControlBox className="flex h-52 w-full rounded-xl bg-neutral-800/85 p-2 text-left">
+    <ControlBox
+      className="flex h-52 w-full rounded-xl bg-neutral-800/85 p-2 text-left"
+      aria-label="Text Color Options"
+    >
       <Scrollbars
         universal
         className="scrollbar"
         style={{ width: "100%" }}
         ref={scrollbars}
       >
-        <div className="grid grid-cols-8">
+        <div
+          className="grid grid-cols-8"
+          role="radiogroup"
+          aria-label="Select text color"
+        >
           {textColors.map(({ bg }, colorKey) => (
             <div
               key={colorKey}
@@ -47,6 +54,9 @@ const TextColorsPanel = ({ options, updateOption }) => {
                 onClick={() => {
                   updateOption("textColor", colorKey);
                 }}
+                aria-label={`Color option ${colorKey + 1}`}
+                role="radio"
+                aria-checked={options.textColor === colorKey}
               ></button>
             </div>
           ))}

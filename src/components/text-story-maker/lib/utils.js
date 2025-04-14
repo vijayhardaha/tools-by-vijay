@@ -93,11 +93,8 @@ export const getFontClass = (key) => {
  * @returns {string|null} The class name of the font, or null if not found.
  */
 export const getFontClassByName = (key) => {
-  const font = fonts.findIndex((font) => font.key === key);
-  if (font === -1) {
-    return null;
-  }
-  return fonts[font].class;
+  const font = Object.values(fonts).find((font) => font.key === key);
+  return font ? font.class : null;
 };
 
 /**

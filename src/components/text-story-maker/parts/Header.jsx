@@ -27,7 +27,10 @@ const Header = ({ options, updateOption, activeTool, setActiveTool }) => {
   const router = useRouter();
 
   return (
-    <header className="xs:p-4 absolute top-0 right-0 z-40 w-full p-2">
+    <header
+      className="xs:p-4 absolute top-0 right-0 z-40 w-full p-2"
+      aria-label="Story maker toolbar"
+    >
       {activeTool ? (
         <div className="flex items-center justify-end">
           {/**
@@ -40,7 +43,7 @@ const Header = ({ options, updateOption, activeTool, setActiveTool }) => {
            */}
           <Button
             icon={CheckIcon}
-            screenReaderText="Close Active Tool"
+            screenReaderText="Save changes and close active tool panel"
             onClick={() => setActiveTool("")}
           />
         </div>
@@ -52,10 +55,13 @@ const Header = ({ options, updateOption, activeTool, setActiveTool }) => {
              */}
             <Button
               icon={ArrowLeftIcon}
-              screenReaderText="Go to Previous Page"
+              screenReaderText="Return to main application page"
               onClick={() => router.push("/")}
             />
-            <div className="ml-auto flex items-center gap-1.5">
+            <div
+              className="ml-auto flex items-center gap-1.5"
+              aria-label="Story editing tools"
+            >
               {/**
                * TextOptionsTool component for managing text options.
                *
@@ -94,7 +100,7 @@ const Header = ({ options, updateOption, activeTool, setActiveTool }) => {
                */}
               <Button
                 icon={PreviewIcon}
-                screenReaderText="Show Preview"
+                screenReaderText="Show preview of your story without editing controls"
                 onClick={() => setActiveTool("preview")}
               />
             </div>

@@ -61,21 +61,28 @@ const BgOptionsPanel = ({ options, updateOption }) => {
           onClick={(e) => {
             e.preventDefault();
           }}
-          screenReaderText="Text Color Tool"
+          screenReaderText="Background Color Palette"
           className="pointer-events-none p-0"
+          aria-hidden="true"
         >
           <div className="size-13 rounded-xl bg-[conic-gradient(from_0deg,_red,_yellow,_lime,_cyan,_blue,_magenta,_red)] shadow-lg"></div>
         </ControlBtn>
-        {tools.map(({ name, label }) => (
-          <ControlBtn
-            key={name}
-            type="text"
-            active={activeTool === name}
-            onClick={() => handleToolChange(name)}
-          >
-            {label}
-          </ControlBtn>
-        ))}
+        <div role="radiogroup" aria-label="Background style options">
+          {tools.map(({ name, label }) => (
+            <ControlBtn
+              key={name}
+              type="text"
+              active={activeTool === name}
+              onClick={() => handleToolChange(name)}
+              role="radio"
+              aria-checked={activeTool === name}
+              aria-label={`${label} background style`}
+              screenReaderText={`${label} background style`}
+            >
+              {label}
+            </ControlBtn>
+          ))}
+        </div>
       </ControlBox>
     </ControlPanel>
   );

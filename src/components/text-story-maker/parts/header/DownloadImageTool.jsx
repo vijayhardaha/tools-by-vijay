@@ -104,7 +104,9 @@ const DownloadImageTool = ({ options, updateOption }) => {
             <DropdownTrigger onClick={toggleDropdown}>
               <Button
                 icon={DownloadToolIcon}
-                screenReaderText="Download Image"
+                screenReaderText="Download Image Options"
+                aria-expanded={isOpen}
+                aria-haspopup="true"
               />
             </DropdownTrigger>
             <DropdownContent isOpen={isOpen}>
@@ -112,10 +114,21 @@ const DownloadImageTool = ({ options, updateOption }) => {
                 className={cn("pt-1 pb-2 text-white", {
                   "pointer-events-none": isDownloading,
                 })}
+                role="menu"
+                aria-label="Download options"
               >
                 <div className="mb-4">
-                  <p className="mb-1 text-base font-semibold">Size:</p>
-                  <div className="flex gap-2">
+                  <p
+                    className="mb-1 text-base font-semibold"
+                    id="size-selection"
+                  >
+                    Size:
+                  </p>
+                  <div
+                    className="flex gap-2"
+                    role="radiogroup"
+                    aria-labelledby="size-selection"
+                  >
                     {Object.keys(sizes).map((size) => (
                       <button
                         key={size}
@@ -131,6 +144,9 @@ const DownloadImageTool = ({ options, updateOption }) => {
                             ? "bg-accent-foreground text-neutral-900"
                             : "bg-white text-neutral-900 hover:bg-neutral-200"
                         )}
+                        role="radio"
+                        aria-checked={options.downloadSize === size}
+                        aria-label={`${sizes[size].label} resolution`}
                       >
                         {sizes[size].label}
                       </button>
@@ -138,7 +154,12 @@ const DownloadImageTool = ({ options, updateOption }) => {
                   </div>
                 </div>
                 <div>
-                  <p className="mb-1 text-base font-semibold">Download:</p>
+                  <p
+                    className="mb-1 text-base font-semibold"
+                    id="format-selection"
+                  >
+                    Download:
+                  </p>
                   <div className="grid grid-cols-2 gap-2">
                     {["JPEG", "PNG"].map((format) => (
                       <button
@@ -160,6 +181,8 @@ const DownloadImageTool = ({ options, updateOption }) => {
                           )
                         }
                         disabled={isDownloading}
+                        aria-label={`Download as ${format} in ${sizes[options.downloadSize].label} resolution`}
+                        role="menuitem"
                       >
                         {format}
                       </button>
@@ -167,13 +190,20 @@ const DownloadImageTool = ({ options, updateOption }) => {
                   </div>
                 </div>
                 {downloadError && (
-                  <p className="mt-4 text-xs font-medium text-red-500">
+                  <p
+                    className="mt-4 text-xs font-medium text-red-500"
+                    role="alert"
+                  >
                     {downloadError}
                   </p>
                 )}
 
                 {isDownloading && (
-                  <p className="mt-4 text-sm font-medium text-white">
+                  <p
+                    className="mt-4 text-sm font-medium text-white"
+                    aria-live="polite"
+                    role="status"
+                  >
                     Downloading Image...
                   </p>
                 )}
@@ -188,10 +218,10 @@ const DownloadImageTool = ({ options, updateOption }) => {
 
 DownloadImageTool.propTypes = {
   options: PropTypes.shape({
-    downloadSize: PropTypes.string.isRequired, // Selected download size (e.g., "hd", "fhd").
-    downloadFormat: PropTypes.string.isRequired, // Selected download format (e.g., "jpeg", "png").
+    downloadSize: PropTypes.string.isRequired,
+    downloadFormat: PropTypes.string.isRequired,
   }).isRequired,
-  updateOption: PropTypes.func.isRequired, // Function to update the selected options.
+  updateOption: PropTypes.func.isRequired,
 };
 
 export default DownloadImageTool;

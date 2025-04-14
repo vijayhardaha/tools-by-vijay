@@ -13,6 +13,7 @@ import { cn } from "@/lib/utils";
  * @returns {JSX.Element} The rendered button component.
  */
 const TextOptionsTool = ({ activeTool, setActiveTool }) => {
+  const isActive = activeTool === "text";
   /**
    * Handles the button click to toggle the "text" tool.
    */
@@ -25,17 +26,21 @@ const TextOptionsTool = ({ activeTool, setActiveTool }) => {
       /**
        * Screen reader text for accessibility.
        */
-      screenReaderText="Text Options"
+      screenReaderText={`${isActive ? "Hide" : "Show"} Text Formatting Options`}
       /**
        * Dynamic className based on the active tool.
        */
       className={cn({
-        "bg-accent-foreground text-neutral-900": activeTool === "text",
+        "bg-accent-foreground text-neutral-900": isActive,
       })}
       /**
        * Click handler to toggle the active tool.
        */
       onClick={() => setActiveTool((prev) => (prev !== "text" ? "text" : ""))}
+      /**
+       * Aria-pressed attribute to indicate button state
+       */
+      aria-pressed={isActive}
     />
   );
 };

@@ -116,16 +116,28 @@ const TextStoryMakerTool = () => {
             screenReaderText="Create New Story"
             onClick={() => setShowConfirm(true)}
             className="bg-neutral-700"
+            aria-label="Create a new text story"
           />
         </div>
       )}
 
       {/* Custom Tailwind Confirm Dialog */}
       {showConfirm && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="dialog-title"
+          aria-describedby="dialog-description"
+        >
           <div className="mx-4 max-w-md rounded-3xl bg-neutral-800 p-6 shadow-lg">
-            <h3 className="mb-3 text-lg font-semibold text-white">Confirm</h3>
-            <p className="mb-4 text-neutral-300">
+            <h3
+              id="dialog-title"
+              className="mb-3 text-lg font-semibold text-white"
+            >
+              Confirm New Story
+            </h3>
+            <p id="dialog-description" className="mb-4 text-neutral-300">
               Are you sure you want to create a new story? This will reset all
               current changes.
             </p>
@@ -133,6 +145,7 @@ const TextStoryMakerTool = () => {
               <button
                 onClick={() => setShowConfirm(false)}
                 className="cursor-pointer rounded-xl bg-neutral-700 px-4 py-2 text-white transition-colors hover:bg-neutral-600"
+                aria-label="Cancel creating new story"
               >
                 Cancel
               </button>
@@ -143,6 +156,7 @@ const TextStoryMakerTool = () => {
                   setShowConfirm(false);
                 }}
                 className="cursor-pointer rounded-xl bg-red-600 px-4 py-2 text-white transition-colors hover:bg-red-500"
+                aria-label="Confirm creating new story and reset current changes"
               >
                 Confirm
               </button>

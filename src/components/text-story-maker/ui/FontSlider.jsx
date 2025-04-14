@@ -31,12 +31,22 @@ const FontSlider = ({ options, updateOption }) => {
   });
 
   return (
-    <div className="relative w-full overflow-hidden">
-      <div ref={sliderRef} className="keen-slider">
+    <div
+      className="relative w-full overflow-hidden"
+      role="region"
+      aria-label="Font selection slider"
+    >
+      <div
+        ref={sliderRef}
+        className="keen-slider"
+        aria-roledescription="carousel"
+      >
         {fonts.map(({ label }, font) => (
           <div
             key={font}
             className="keen-slider__slide relative block h-full !w-fit shrink-0"
+            role="group"
+            aria-roledescription="slide"
           >
             <div className="flex items-center justify-center p-1">
               <button
@@ -54,15 +64,23 @@ const FontSlider = ({ options, updateOption }) => {
                 onClick={() => {
                   updateOption("textFont", font);
                 }}
+                aria-label={`Select ${label} font`}
+                aria-pressed={options.textFont === font}
               >
                 <span className="truncate overflow-hidden whitespace-nowrap">
                   {label}
                 </span>
+                {options.textFont === font && (
+                  <span className="sr-only">(currently selected)</span>
+                )}
               </button>
             </div>
           </div>
         ))}
       </div>
+      <span className="sr-only">
+        Use left and right arrow keys to navigate between font options
+      </span>
     </div>
   );
 };

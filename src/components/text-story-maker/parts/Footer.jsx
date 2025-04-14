@@ -15,14 +15,22 @@ import TextOptionsPanel from "@/components/text-story-maker/parts/panels/TextOpt
  * @returns {JSX.Element} The rendered footer component.
  */
 const Footer = ({ options, updateOption, activeTool }) => (
-  <>
+  <footer aria-label="Story formatting options" role="region">
     {activeTool === "text" && (
-      <TextOptionsPanel options={options} updateOption={updateOption} />
+      <TextOptionsPanel
+        options={options}
+        updateOption={updateOption}
+        aria-label="Text formatting options panel"
+      />
     )}
     {activeTool === "background" && (
-      <BgOptionsPanel options={options} updateOption={updateOption} />
+      <BgOptionsPanel
+        options={options}
+        updateOption={updateOption}
+        aria-label="Background formatting options panel"
+      />
     )}
-  </>
+  </footer>
 );
 
 Footer.propTypes = {

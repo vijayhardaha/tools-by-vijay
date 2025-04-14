@@ -13,6 +13,7 @@ import { cn } from "@/lib/utils";
  * @returns {JSX.Element} The rendered button component.
  */
 const BackgroundFillOptions = ({ activeTool, setActiveTool }) => {
+  const isActive = activeTool === "background";
   /**
    * Handles the button click to toggle the "background" tool.
    */
@@ -25,12 +26,12 @@ const BackgroundFillOptions = ({ activeTool, setActiveTool }) => {
       /**
        * Screen reader text for accessibility.
        */
-      screenReaderText="Background Fill Options"
+      screenReaderText={`${isActive ? "Hide" : "Show"} Background Fill Options`}
       /**
        * Dynamic className based on the active tool.
        */
       className={cn({
-        "bg-accent-foreground text-neutral-900": activeTool === "background",
+        "bg-accent-foreground text-neutral-900": isActive,
       })}
       /**
        * Click handler to toggle the active tool.
@@ -38,6 +39,10 @@ const BackgroundFillOptions = ({ activeTool, setActiveTool }) => {
       onClick={() =>
         setActiveTool((prev) => (prev !== "background" ? "background" : ""))
       }
+      /**
+       * Aria-pressed attribute to indicate button state
+       */
+      aria-pressed={isActive}
     />
   );
 };
