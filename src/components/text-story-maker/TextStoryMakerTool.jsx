@@ -66,7 +66,7 @@ const TextStoryMakerTool = () => {
 
   return (
     <div
-      className={cn("relative h-screen w-full bg-neutral-900", "flex flex-col")}
+      className={cn("relative h-screen w-full bg-black/85", "flex flex-col")}
     >
       {/**
        * Header component displays the header section of the tool.
@@ -122,7 +122,6 @@ const TextStoryMakerTool = () => {
             icon={EditIcon}
             screenReaderText="Create New Story"
             onClick={() => setShowConfirm(true)}
-            className="bg-neutral-700"
             aria-label="Create a new text story"
           />
         </div>

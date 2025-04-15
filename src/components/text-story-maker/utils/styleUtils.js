@@ -164,7 +164,6 @@ export function getContentStyles(options) {
 
   if (parseFloat(options.textLineHeight) > 0) {
     styles.lineHeight = `${options.textLineHeight}`;
-    styles.gap = `calc(var(--spacing) * ${parseFloat(options.textLineHeight) * 3})`;
   }
 
   if (isNotEmpty && options.boxBackground) {

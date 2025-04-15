@@ -97,7 +97,6 @@ const Content = ({ options, updateOption, activeTool, setActiveTool }) => {
   // Add this effect to prevent unwanted focus
   useEffect(() => {
     const handleWindowClick = (e) => {
-      console.log(e.target);
       // Only allow focus if user clicked directly on the content area
       if (contentRef.current && !contentRef.current.contains(e.target)) {
         userInitiatedFocus.current = false;
@@ -116,117 +115,124 @@ const Content = ({ options, updateOption, activeTool, setActiveTool }) => {
   }, []);
 
   return (
-    <main
-      aria-label="Story content area"
-      id="main-content"
-      role="main"
-      className={cn(
-        "relative z-10",
-        "h-auto w-full",
-        "origin-top-left transform"
-      )}
+    <div
+      className={cn({
+        "flex h-full flex-col justify-center":
+          options.cardRatio === "1/1" || options.cardRatio === "4/5",
+      })}
     >
-      <div
-        aria-label={`Story canvas with ${options.cardRatio} aspect ratio`}
+      <main
+        aria-label="Story content area"
+        id="main-content"
+        role="main"
         className={cn(
           "relative z-10",
-          "w-full overflow-hidden p-10",
-          "flex flex-col items-center justify-center",
-          getBgColorClass(options.bgType, options.bgColor),
-          getRatioClass(options.cardRatio)
+          "h-auto w-full",
+          "origin-top-left transform"
         )}
-        style={{
-          padding: `calc(var(--spacing) * ${options.boxOuterPadding})`,
-        }}
       >
         <div
-          ref={contentRef}
-          id="editable-content"
-          role="textbox"
-          contentEditable
-          tabIndex={0}
-          spellCheck="false"
-          aria-multiline="true"
-          aria-label="Edit story text content"
-          aria-describedby="content-description"
-          onFocus={(e) => {
-            // Only set focus if it was user-initiated
-            if (userInitiatedFocus.current) {
-              setFocused(true);
-              setActiveTool("text-editing");
-            } else {
-              // Programmatically blur to prevent unwanted focus
-              e.target.blur();
-            }
-          }}
-          onBlur={(e) => {
-            if (focused) {
-              console.log("blurred");
-              setFocused(false);
-              updateOption("text", sanitize(e.target.innerHTML).trim());
-              if (activeTool === "text-editing") {
-                setActiveTool("");
-              }
-            }
-          }}
-          onPaste={(e) => {
-            e.preventDefault();
-
-            const pastedText =
-              e.clipboardData.getData("text/html") ||
-              e.clipboardData.getData("text/plain");
-
-            const cleanHtml = renderHtml(sanitize(pastedText).trim());
-
-            const selection = window.getSelection();
-            if (!selection.rangeCount) return;
-
-            const range = selection.getRangeAt(0);
-            range.deleteContents();
-
-            const tempDiv = document.createElement("div");
-            tempDiv.innerHTML = cleanHtml;
-
-            const fragment = document.createDocumentFragment();
-            let node;
-            while ((node = tempDiv.firstChild)) {
-              fragment.appendChild(node);
-            }
-
-            range.insertNode(fragment);
-            selection.collapseToEnd();
-          }}
+          aria-label={`Story canvas with ${options.cardRatio} aspect ratio`}
           className={cn(
-            "min-h-10 w-full min-w-1 [&>*]:min-w-1",
-            "flex flex-col items-center justify-center outline-none",
-            {
-              "![&>*]:font-bold !font-bold": options.textBold,
-              "![&>*]:italic !italic": options.textItalic,
-              "![&>*]:uppercase !uppercase": options.textUppercase,
-              "user-select-none": !focused,
-              "h-full": isEmptyText(options.text) && !focused,
-            },
-            getAlignmentClass(options.textAlign),
-            getFontClass(options.textFont),
-            getTextColorClass(options.textColor)
+            "relative z-10",
+            "w-full overflow-hidden p-10",
+            "flex flex-col items-center justify-center",
+            getBgColorClass(options.bgType, options.bgColor),
+            getRatioClass(options.cardRatio)
           )}
-          style={getContentStyles(options)}
-        />
-        <span id="content-description" className="sr-only">
-          Type or paste your story text here. Use the toolbar to format the
-          text.
-        </span>
-        {/* Add a hidden textarea fallback for problematic devices */}
-        {isFallbackNeeded && (
-          <textarea
-            className="sr-only"
-            value={options.text}
-            onChange={(e) => updateOption("text", e.target.value)}
-            aria-label="Fallback text input for story content"
+          style={{
+            padding: `calc(var(--spacing) * ${options.boxOuterPadding})`,
+          }}
+        >
+          <div
+            ref={contentRef}
+            id="editable-content"
+            role="textbox"
+            contentEditable
+            tabIndex={0}
+            spellCheck="false"
+            aria-multiline="true"
+            aria-label="Edit story text content"
+            aria-describedby="content-description"
+            onFocus={(e) => {
+              // Only set focus if it was user-initiated
+              if (userInitiatedFocus.current) {
+                setFocused(true);
+                setActiveTool("text-editing");
+              } else {
+                // Programmatically blur to prevent unwanted focus
+                e.target.blur();
+              }
+            }}
+            onBlur={(e) => {
+              if (focused) {
+                console.log("blurred");
+                setFocused(false);
+                updateOption("text", sanitize(e.target.innerHTML).trim());
+                if (activeTool === "text-editing") {
+                  setActiveTool("");
+                }
+              }
+            }}
+            onPaste={(e) => {
+              e.preventDefault();
+
+              const pastedText =
+                e.clipboardData.getData("text/html") ||
+                e.clipboardData.getData("text/plain");
+
+              const cleanHtml = renderHtml(sanitize(pastedText).trim());
+
+              const selection = window.getSelection();
+              if (!selection.rangeCount) return;
+
+              const range = selection.getRangeAt(0);
+              range.deleteContents();
+
+              const tempDiv = document.createElement("div");
+              tempDiv.innerHTML = cleanHtml;
+
+              const fragment = document.createDocumentFragment();
+              let node;
+              while ((node = tempDiv.firstChild)) {
+                fragment.appendChild(node);
+              }
+
+              range.insertNode(fragment);
+              selection.collapseToEnd();
+            }}
+            className={cn(
+              "min-h-10 w-full min-w-1 [&>*]:min-w-1",
+              "flex flex-col items-center justify-center outline-none",
+              {
+                "![&>*]:font-bold !font-bold": options.textBold,
+                "![&>*]:italic !italic": options.textItalic,
+                "![&>*]:uppercase !uppercase": options.textUppercase,
+                "user-select-none": !focused,
+                "h-full": isEmptyText(options.text) && !focused,
+              },
+              getAlignmentClass(options.textAlign),
+              getFontClass(options.textFont),
+              getTextColorClass(options.textColor)
+            )}
+            style={getContentStyles(options)}
           />
-        )}
-      </div>
-    </main>
+          <span id="content-description" className="sr-only">
+            Type or paste your story text here. Use the toolbar to format the
+            text.
+          </span>
+          {/* Add a hidden textarea fallback for problematic devices */}
+          {isFallbackNeeded && (
+            <textarea
+              className="sr-only"
+              value={options.text}
+              onChange={(e) => updateOption("text", e.target.value)}
+              aria-label="Fallback text input for story content"
+            />
+          )}
+        </div>
+      </main>
+    </div>
   );
 };
 
