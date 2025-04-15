@@ -35,7 +35,7 @@ const ControlBox = ({ children, className }) => {
   return (
     <div
       className={cn(
-        "mx-auto inline-flex items-center gap-3 rounded-xl bg-neutral-800 p-1 text-white shadow",
+        "mx-auto inline-flex items-center gap-3 rounded-xl bg-neutral-900 p-1 text-white shadow",
         className
       )}
     >
@@ -132,7 +132,7 @@ const ControlSlider = ({
           {label}
         </p>
       )}
-      <div className="px-0.5">
+      <div className="px-0">
         <RangeSlider
           step={step}
           min={min}
@@ -193,7 +193,7 @@ const ToggleOptions = ({
       <p className="text-sm font-medium" id={groupId}>
         {label}
       </p>
-      <div className="flex gap-1.5" role="radiogroup" aria-labelledby={groupId}>
+      <div className="flex gap-2" role="radiogroup" aria-labelledby={groupId}>
         {Object.entries(options).map(([text, value]) => (
           <ControlBtn
             type="text"
@@ -260,7 +260,7 @@ const ToggleColors = ({
       <p className="text-sm font-medium" id={groupId}>
         {label}
       </p>
-      <div className="flex gap-1" role="radiogroup" aria-labelledby={groupId}>
+      <div className="flex gap-2" role="radiogroup" aria-labelledby={groupId}>
         {Object.entries(options).map(([text, value]) => (
           <ControlBtn
             type="text"

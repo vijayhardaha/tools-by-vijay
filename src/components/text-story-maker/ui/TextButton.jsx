@@ -23,7 +23,7 @@ export const TextButton = ({
     type="button"
     className={cn(
       btnBaseStyles.join(" "),
-      "bg-neutral-700 p-3 px-5 text-white",
+      "bg-neutral-800 p-3 px-5 text-white",
       className
     )}
     aria-label={ariaLabel || undefined}

@@ -7,7 +7,7 @@ import { textColors } from "@/components/text-story-maker/constants";
 import { btnBaseStyles } from "@/components/text-story-maker/constants/btnBaseStyles";
 import { cn } from "@/utils/classNameUtils";
 
-import { ControlBox } from "./OptionsPanelHelper";
+import { ControlBox } from "./PanelHelper";
 
 /**
  * TextColorsPanel component for selecting text color.
@@ -22,7 +22,7 @@ const TextColorsPanel = ({ options, updateOption }) => {
 
   return (
     <ControlBox
-      className="flex h-52 w-full rounded-xl bg-neutral-800/85 p-2 text-left"
+      className="flex h-52 w-full rounded-xl bg-neutral-900/85 p-2 text-left"
       aria-label="Text Color Options"
     >
       <Scrollbars

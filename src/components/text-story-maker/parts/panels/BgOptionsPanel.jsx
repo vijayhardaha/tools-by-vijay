@@ -7,7 +7,7 @@ import {
   ControlPanel,
   ControlBox,
   ControlBtn,
-} from "@/components/text-story-maker/parts/panels/OptionsPanelHelper";
+} from "@/components/text-story-maker/parts/panels/PanelHelper";
 
 /**
  * BgOptionsPanel component provides a toolbar for selecting background types.

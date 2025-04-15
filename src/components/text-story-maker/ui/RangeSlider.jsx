@@ -41,17 +41,18 @@ export const RangeSlider = ({
     });
   };
 
+  const labelID = `slider-label-${label.replace(/\s+/g, "-").toLowerCase()}`;
+
   return (
     <div className="slider-container">
       {label && (
-        <label
-          id={`slider-label-${label.replace(/\s+/g, "-").toLowerCase()}`}
-          className="sr-only"
-        >
+        <label id={labelID} className="sr-only">
           {label}
         </label>
       )}
       <Range
+        label={label}
+        labelledBy={labelID}
         step={step}
         min={min}
         max={max}
@@ -90,8 +91,8 @@ export const RangeSlider = ({
                   : undefined
               }
               className={cn(
-                "flex size-3 transform items-center justify-center rounded-full bg-white outline-hidden",
-                isDragged ? "size-6 ring-4 ring-white/30" : ""
+                "flex size-5 transform items-center justify-center rounded-full bg-white outline-hidden",
+                isDragged ? "size-6 ring-4 ring-white/20" : ""
               )}
             >
               {/* Tooltip */}

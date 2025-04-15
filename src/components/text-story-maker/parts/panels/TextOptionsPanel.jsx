@@ -15,7 +15,7 @@ import {
   ControlSlider,
   ToggleOptions,
   ToggleColors,
-} from "@/components/text-story-maker/parts/panels/OptionsPanelHelper";
+} from "@/components/text-story-maker/parts/panels/PanelHelper";
 import TextColorsPanel from "@/components/text-story-maker/parts/panels/TextColorsPanel";
 import FontSlider from "@/components/text-story-maker/ui/FontSlider";
 import { cn } from "@/utils/classNameUtils";
@@ -107,7 +107,7 @@ const TextOptionsPanel = ({ options, updateOption }) => {
   };
 
   // Define the class names for the tab buttons
-  const tabButtonClass = "bg-neutral-800 text-sm shadow-none font-normal py-2";
+  const tabButtonClass = "bg-neutral-900 text-sm shadow-none font-normal py-2";
 
   return (
     <ControlPanel>
@@ -121,15 +121,15 @@ const TextOptionsPanel = ({ options, updateOption }) => {
 
       {activeTool === "text-settings" && showSettingsDropdown && (
         <ControlBox
-          className="flex min-h-48 w-full flex-col items-start gap-4 rounded-xl bg-neutral-800/85 p-4 text-left"
+          className="flex w-full flex-col items-start gap-4 rounded-xl bg-neutral-900/85 p-4 text-left"
           aria-label="Text Settings"
         >
           {/* Tabs */}
-          <div className="flex w-full items-center justify-evenly rounded-xl bg-neutral-700 p-1">
+          <div className="flex w-full items-center justify-evenly rounded-xl bg-neutral-900 p-1">
             {Object.entries({
-              "Text Settings": "text",
-              "Box Settings": "box",
-              "Effects Settings": "effects",
+              "Text Controls": "text",
+              "Box Controls": "box",
+              "Effects Controls": "effects",
             }).map(([label, tab]) => (
               <button
                 key={tab}
@@ -139,7 +139,7 @@ const TextOptionsPanel = ({ options, updateOption }) => {
                   "flex-1 rounded-xl px-4 py-2 shadow-none",
                   "text-sm font-medium",
                   {
-                    "bg-neutral-800 text-white": activeSettingsTab === tab,
+                    "bg-white text-neutral-900": activeSettingsTab === tab,
                   }
                 )}
                 onClick={() => setActiveSettingsTab(tab)}
@@ -221,7 +221,7 @@ const TextOptionsPanel = ({ options, updateOption }) => {
                 onChangeHandler={updateOption}
               />
 
-              <div className="mb-4 grid grid-cols-2 gap-4">
+              <div className="mb-2 grid grid-cols-2 gap-4">
                 <ControlSlider
                   label="Outer Gap"
                   min={0}
@@ -306,7 +306,7 @@ const TextOptionsPanel = ({ options, updateOption }) => {
           {/* Effects Settings Tab Content */}
           {activeSettingsTab === "effects" && (
             <div className="w-full space-y-4">
-              <div className="mb-4 grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-4">
                   <ToggleColors
                     label="Text Stroke"
@@ -315,14 +315,16 @@ const TextOptionsPanel = ({ options, updateOption }) => {
                     onChangeHandler={updateOption}
                   />
                   {options.textStroke && (
-                    <ControlSlider
-                      min={0}
-                      max={10}
-                      step={0.25}
-                      value={options.textStrokeSize}
-                      onChangeKey="textStrokeSize"
-                      onChangeHandler={handleSliderChange}
-                    />
+                    <div className="mb-2">
+                      <ControlSlider
+                        min={0}
+                        max={10}
+                        step={0.25}
+                        value={options.textStrokeSize}
+                        onChangeKey="textStrokeSize"
+                        onChangeHandler={handleSliderChange}
+                      />
+                    </div>
                   )}
                 </div>
                 <div className="space-y-4">
@@ -334,14 +336,16 @@ const TextOptionsPanel = ({ options, updateOption }) => {
                   />
 
                   {options.textShadow && (
-                    <ControlSlider
-                      min={0}
-                      max={2}
-                      step={0.05}
-                      value={options.textShadowSize}
-                      onChangeKey="textShadowSize"
-                      onChangeHandler={handleSliderChange}
-                    />
+                    <div className="mb-2">
+                      <ControlSlider
+                        min={0}
+                        max={2}
+                        step={0.05}
+                        value={options.textShadowSize}
+                        onChangeKey="textShadowSize"
+                        onChangeHandler={handleSliderChange}
+                      />
+                    </div>
                   )}
                 </div>
               </div>
