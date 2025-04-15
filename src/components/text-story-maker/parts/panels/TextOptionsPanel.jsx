@@ -7,7 +7,7 @@ import { PiTextAlignLeft as AlignLeftIcon } from "react-icons/pi";
 import { PiTextAlignRight as AlignRightIcon } from "react-icons/pi";
 import { TiThLargeOutline as TextSettingsIcon } from "react-icons/ti";
 
-import { btnBaseStyles } from "@/components/text-story-maker/lib/ui";
+import { btnBaseStyles } from "@/components/text-story-maker/constants/btnBaseStyles";
 import {
   ControlPanel,
   ControlBox,

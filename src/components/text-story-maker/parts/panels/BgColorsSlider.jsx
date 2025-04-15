@@ -2,7 +2,7 @@ import { useKeenSlider } from "keen-slider/react";
 import PropTypes from "prop-types";
 
 import { bgColors } from "@/components/text-story-maker/constants";
-import { btnBaseStyles } from "@/components/text-story-maker/lib/ui";
+import { btnBaseStyles } from "@/components/text-story-maker/constants/btnBaseStyles";
 import { cn } from "@/utils/classNameUtils";
 
 import "keen-slider/keen-slider.min.css";

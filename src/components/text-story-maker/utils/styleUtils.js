@@ -52,9 +52,9 @@ export const getRatioClass = (ratio) => {
 export const getAlignmentClass = (alignment) => {
   switch (alignment) {
     case "left":
-      return "!text-left !items-start w-full";
+      return "!text-left !items-start";
     case "right":
-      return "!text-right !items-end w-full";
+      return "!text-right !items-end";
     case "center":
     default:
       return "!text-center !items-center";

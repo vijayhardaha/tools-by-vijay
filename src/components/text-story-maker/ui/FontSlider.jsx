@@ -2,10 +2,10 @@ import { useKeenSlider } from "keen-slider/react";
 import PropTypes from "prop-types";
 
 import { fonts } from "@/components/text-story-maker/constants";
-import { btnBaseStyles } from "@/components/text-story-maker/lib/ui";
+import { btnBaseStyles } from "@/components/text-story-maker/constants/btnBaseStyles";
 import { cn } from "@/utils/classNameUtils";
 
-import { getFontClass } from "../lib/utils";
+import { getFontClass } from "../utils/styleUtils";
 
 import "keen-slider/keen-slider.min.css";
 

@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-import { btnBaseStyles } from "@/components/text-story-maker/lib/ui";
+import { btnBaseStyles } from "@/components/text-story-maker/constants/btnBaseStyles";
 import { cn } from "@/utils/classNameUtils";
 
 /**

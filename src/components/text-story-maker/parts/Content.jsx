@@ -11,7 +11,7 @@ import {
   getRatioClass,
   getTextColorClass,
   isEmptyText,
-} from "@/components/text-story-maker/lib/utils";
+} from "@/components/text-story-maker/utils/styleUtils";
 import { cn } from "@/utils/classNameUtils";
 
 /**
@@ -85,6 +85,7 @@ const Content = ({ options, updateOption, activeTool, setActiveTool }) => {
   const [focused, setFocused] = useState(false); // State to track focus
   const contentRef = useRef(null);
   const isFallbackNeeded = false; // Placeholder for determining if fallback is needed
+  const userInitiatedFocus = useRef(false); // Track if focus was user-initiated
 
   // Update the HTML content when options.text changes
   useEffect(() => {
@@ -92,6 +93,27 @@ const Content = ({ options, updateOption, activeTool, setActiveTool }) => {
       contentRef.current.innerHTML = renderHtml(options.text);
     }
   }, [options.text, focused]);
+
+  // Add this effect to prevent unwanted focus
+  useEffect(() => {
+    const handleWindowClick = (e) => {
+      console.log(e.target);
+      // Only allow focus if user clicked directly on the content area
+      if (contentRef.current && !contentRef.current.contains(e.target)) {
+        userInitiatedFocus.current = false;
+      } else {
+        userInitiatedFocus.current = true;
+      }
+    };
+
+    window.addEventListener("mousedown", handleWindowClick);
+    window.addEventListener("touchstart", handleWindowClick);
+
+    return () => {
+      window.removeEventListener("mousedown", handleWindowClick);
+      window.removeEventListener("touchstart", handleWindowClick);
+    };
+  }, []);
 
   return (
     <main
@@ -105,6 +127,7 @@ const Content = ({ options, updateOption, activeTool, setActiveTool }) => {
       )}
     >
       <div
+        aria-label={`Story canvas with ${options.cardRatio} aspect ratio`}
         className={cn(
           "relative z-10",
           "w-full overflow-hidden p-10",
@@ -115,28 +138,36 @@ const Content = ({ options, updateOption, activeTool, setActiveTool }) => {
         style={{
           padding: `calc(var(--spacing) * ${options.boxOuterPadding})`,
         }}
-        aria-label={`Story canvas with ${options.cardRatio} aspect ratio`}
       >
         <div
           ref={contentRef}
-          contentEditable
           id="editable-content"
+          role="textbox"
+          contentEditable
           tabIndex={0}
           spellCheck="false"
           aria-multiline="true"
-          role="textbox"
           aria-label="Edit story text content"
           aria-describedby="content-description"
-          onBlur={(e) => {
-            setFocused(false);
-            updateOption("text", sanitize(e.target.innerHTML).trim());
-            if (activeTool === "text-editing") {
-              setActiveTool("");
+          onFocus={(e) => {
+            // Only set focus if it was user-initiated
+            if (userInitiatedFocus.current) {
+              setFocused(true);
+              setActiveTool("text-editing");
+            } else {
+              // Programmatically blur to prevent unwanted focus
+              e.target.blur();
             }
           }}
-          onFocus={() => {
-            setFocused(true);
-            setActiveTool("text-editing");
+          onBlur={(e) => {
+            if (focused) {
+              console.log("blurred");
+              setFocused(false);
+              updateOption("text", sanitize(e.target.innerHTML).trim());
+              if (activeTool === "text-editing") {
+                setActiveTool("");
+              }
+            }
           }}
           onPaste={(e) => {
             e.preventDefault();
@@ -166,15 +197,14 @@ const Content = ({ options, updateOption, activeTool, setActiveTool }) => {
             selection.collapseToEnd();
           }}
           className={cn(
-            "min-h-10 min-w-1 [&>*]:min-w-1",
-            "outline-none",
+            "min-h-10 w-full min-w-1 [&>*]:min-w-1",
+            "flex flex-col items-center justify-center outline-none",
             {
               "![&>*]:font-bold !font-bold": options.textBold,
               "![&>*]:italic !italic": options.textItalic,
               "![&>*]:uppercase !uppercase": options.textUppercase,
               "user-select-none": !focused,
-              "inline-flex h-full w-full flex-col items-start justify-center":
-                isEmptyText(options.text) && !focused,
+              "h-full": isEmptyText(options.text) && !focused,
             },
             getAlignmentClass(options.textAlign),
             getFontClass(options.textFont),

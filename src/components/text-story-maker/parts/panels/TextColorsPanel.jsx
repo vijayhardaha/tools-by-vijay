@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { Scrollbars } from "react-custom-scrollbars-4";
 
 import { textColors } from "@/components/text-story-maker/constants";
-import { btnBaseStyles } from "@/components/text-story-maker/lib/ui";
+import { btnBaseStyles } from "@/components/text-story-maker/constants/btnBaseStyles";
 import { cn } from "@/utils/classNameUtils";
 
 import { ControlBox } from "./OptionsPanelHelper";

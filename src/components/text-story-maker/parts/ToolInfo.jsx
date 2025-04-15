@@ -1,4 +1,4 @@
-import { getFontClassByName } from "@/components/text-story-maker/lib/utils";
+import { getFontClassByName } from "@/components/text-story-maker/utils/styleUtils";
 import { cn } from "@/utils/classNameUtils";
 
 /**
