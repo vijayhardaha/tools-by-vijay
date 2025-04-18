@@ -1,6 +1,5 @@
-import { NextResponse } from "next/server";
-
 import CleanCSS from "clean-css";
+import { NextResponse } from "next/server";
 
 /**
  * API route handler for CSS minification

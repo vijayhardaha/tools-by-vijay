@@ -1,6 +1,5 @@
-import { NextResponse } from "next/server";
-
 import { minify } from "@putout/minify";
+import { NextResponse } from "next/server";
 
 /**
  * API route handler for JavaScript minification

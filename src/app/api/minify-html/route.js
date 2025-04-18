@@ -1,6 +1,5 @@
-import { NextResponse } from "next/server";
-
 import { minify } from "html-minifier-terser";
+import { NextResponse } from "next/server";
 
 /**
  * API route handler for HTML minification
