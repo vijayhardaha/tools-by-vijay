@@ -31,17 +31,10 @@
     ]
   },
   "include": [
-    "./**/*.js",
-    "./**/*.mjs",
-    "./**/*.cjs",
-    "./**/*.jsx",
-    "./**/*.ts",
-    "./**/*.tsx",
-    "*.config.mjs",
-    "next.config.mjs",
-    "eslint.config.mjs",
-    "next-env.d.ts",
-    ".next/types/**/*.ts"
+		"**/*.{js,mjs,cjs,jsx,ts,tsx}",
+		"*.config.mjs",
+		"next-env.d.ts",
+		".next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"
