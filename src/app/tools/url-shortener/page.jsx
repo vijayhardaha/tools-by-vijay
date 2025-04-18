@@ -13,7 +13,7 @@ import { getIconForTool } from "@/utils/toolUtils";
 const tool = findToolBySlug("url-shortener");
 
 /**
- * SEO metadata for the Slugify page
+ * SEO metadata for the URL Shortener tool page
  * @type {Object}
  */
 export const metadata = genMeta({
