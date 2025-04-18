@@ -25,6 +25,7 @@ import { Textarea } from "@/components/ui/textarea";
  * @param {Function} props.onMinify - Function called when minify button is clicked
  * @param {Function} props.onClear - Function to clear the input
  * @param {Function} props.onReset - Function to reset all options to defaults
+ * @param {boolean} props.isLoading - Indicates whether the minification process is ongoing
  * @returns {JSX.Element} The HtmlMinifierInput component
  */
 const HtmlMinifierInput = ({
@@ -35,6 +36,7 @@ const HtmlMinifierInput = ({
   onMinify,
   onClear,
   onReset,
+  isLoading, // Added isLoading prop
 }) => {
   /**
    * Handles form submission and triggers HTML minification
@@ -264,13 +266,27 @@ const HtmlMinifierInput = ({
           </div>
 
           <div className="mt-4 flex flex-wrap gap-2">
-            <Button type="submit" variant="default" disabled={!input}>
-              Minify
+            <Button
+              type="submit"
+              variant="default"
+              disabled={!input || isLoading} // Disable button when loading
+            >
+              {isLoading ? "Minifying..." : "Minify"}
             </Button>
-            <Button type="button" variant="outline" onClick={onClear}>
+            <Button
+              type="button"
+              variant="outline"
+              onClick={onClear}
+              disabled={isLoading} // Disable button when loading
+            >
               Clear
             </Button>
-            <Button type="reset" variant="destructive" onClick={onReset}>
+            <Button
+              type="reset"
+              variant="destructive"
+              onClick={onReset}
+              disabled={isLoading} // Disable button when loading
+            >
               Reset
             </Button>
           </div>
@@ -288,6 +304,7 @@ HtmlMinifierInput.propTypes = {
   onMinify: PropTypes.func.isRequired,
   onClear: PropTypes.func.isRequired,
   onReset: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired, // Added isLoading prop type
 };
 
 export default HtmlMinifierInput;
