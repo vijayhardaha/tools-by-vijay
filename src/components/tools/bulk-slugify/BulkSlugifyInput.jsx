@@ -87,7 +87,7 @@ const BulkSlugifyInput = ({
             value={input}
             rows={5}
             onChange={handleInputChange}
-            className="font-mono text-xs"
+            className="font-mono text-sm"
           />
 
           <div className="flex flex-col gap-2">

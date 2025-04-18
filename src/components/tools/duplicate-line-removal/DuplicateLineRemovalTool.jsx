@@ -44,6 +44,10 @@ const DuplicateLineRemovalTool = () => {
     setOutput("");
   };
 
+  const handleClear = () => {
+    setTextInput("");
+  };
+
   return (
     <div className="grid grid-cols-1 gap-6">
       <DuplicateLineRemovalInput
@@ -55,6 +59,7 @@ const DuplicateLineRemovalTool = () => {
         setReverseSort={setReverseSort}
         onProcess={handleProcess}
         onReset={handleReset}
+        onClear={handleClear}
       />
       <DuplicateLineRemovalOutput output={output} />
     </div>

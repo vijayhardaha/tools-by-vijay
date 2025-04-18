@@ -70,7 +70,7 @@ const UrlShortenerInput = ({
             value={input}
             rows={5}
             onChange={handleInputChange}
-            className="font-mono text-xs"
+            className="font-mono text-sm"
           />
 
           {error && <Alert variant="danger" text={error} />}

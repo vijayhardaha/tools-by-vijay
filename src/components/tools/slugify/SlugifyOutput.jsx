@@ -53,7 +53,7 @@ const SlugifyOutput = ({ output }) => {
             value={output}
             readOnly
             data-output
-            className="font-mono text-xs"
+            className="font-mono text-sm"
           />
           <CopyButton
             copied={copied}

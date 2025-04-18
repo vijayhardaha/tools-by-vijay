@@ -69,7 +69,7 @@ const JsonSorterOutput = ({ output }) => {
           value={output}
           readOnly
           data-output
-          className="min-h-100 font-mono text-xs"
+          className="min-h-52 font-mono text-sm"
         />
       </CardContent>
     </Card>

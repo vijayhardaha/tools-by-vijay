@@ -88,7 +88,7 @@ const TextToArrayInput = ({
             <Textarea
               id="text-input"
               placeholder={`Item 1\nItem 2\nItem 3`}
-              className="min-h-28 font-mono text-xs"
+              className="min-h-28 font-mono text-sm"
               value={textInput}
               onChange={(e) => setTextInput(e.target.value)}
             />

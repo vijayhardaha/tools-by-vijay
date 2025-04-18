@@ -81,7 +81,7 @@ const DropdownToArrayInput = ({
             <Textarea
               id="html-input"
               placeholder={`<select>\n<option value='option1'>Option 1</option>\n<option value='option2'>Option 2</option>\n</select>`}
-              className="h-40 font-mono text-xs"
+              className="h-40 font-mono text-sm"
               value={htmlInput}
               onChange={(e) => setHtmlInput(e.target.value)}
             />

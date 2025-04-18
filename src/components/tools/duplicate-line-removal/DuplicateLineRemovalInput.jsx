@@ -32,6 +32,7 @@ const DuplicateLineRemovalInput = ({
   setReverseSort,
   onProcess,
   onReset,
+  onClear,
 }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -55,13 +56,13 @@ const DuplicateLineRemovalInput = ({
               placeholder="Enter text with duplicate lines..."
               value={textInput}
               onChange={(e) => setTextInput(e.target.value)}
-              className="min-h-100 font-mono text-xs"
+              className="min-h-52 font-mono text-sm"
             />
           </div>
 
           <div>
             <Label className="text-base font-bold">
-              Type of Sorting (Optional)
+              Type of Sorting
             </Label>
             <div className="mt-2 flex gap-4">
               <RadioBox
@@ -104,6 +105,11 @@ const DuplicateLineRemovalInput = ({
             <Button type="submit" variant="default">
               Process
             </Button>
+
+            <Button type="button" variant="outline" onClick={onClear}>
+              Clear
+            </Button>
+
             <Button type="button" variant="destructive" onClick={onReset}>
               Reset
             </Button>
@@ -123,6 +129,7 @@ DuplicateLineRemovalInput.propTypes = {
   setReverseSort: PropTypes.func.isRequired,
   onProcess: PropTypes.func.isRequired,
   onReset: PropTypes.func.isRequired,
+  onClear: PropTypes.func.isRequired,
 };
 
 export default DuplicateLineRemovalInput;

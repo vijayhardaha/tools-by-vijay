@@ -69,7 +69,7 @@ const PasswordStrengthCheckerInput = ({
                 placeholder="Enter your password to check"
                 value={password}
                 onChange={handleChange}
-                className="pr-10 font-mono text-xs"
+                className="pr-10 font-mono text-sm"
               />
               <div className="absolute inset-y-0 right-0 flex items-center justify-center">
                 <Tooltip

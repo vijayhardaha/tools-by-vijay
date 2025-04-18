@@ -104,7 +104,7 @@ const JsMinifierOutput = ({ output, input }) => {
             value={output}
             readOnly
             data-output
-            className="min-h-28 font-mono text-xs"
+            className="min-h-28 font-mono text-sm"
           />
         </div>
       </CardContent>

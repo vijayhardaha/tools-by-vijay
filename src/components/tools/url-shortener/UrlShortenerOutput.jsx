@@ -95,7 +95,7 @@ const UrlShortenerOutput = ({ results }) => {
                       >
                         {result.isValid ? "Valid" : "Invalid URL"}
                       </Badge>
-                      <span className="text-muted-foreground max-w-[250px] truncate font-mono text-xs">
+                      <span className="text-muted-foreground max-w-[250px] truncate font-mono text-sm">
                         {result.originalUrl}
                       </span>
                     </div>

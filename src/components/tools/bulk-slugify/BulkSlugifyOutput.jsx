@@ -81,7 +81,7 @@ const BulkSlugifyOutput = ({ output }) => {
             readOnly
             data-output
             rows={unfilteredLinesLength || 1}
-            className="font-mono text-xs"
+            className="font-mono text-sm"
           />
 
           <div className="flex flex-col gap-2">
@@ -95,7 +95,7 @@ const BulkSlugifyOutput = ({ output }) => {
                   value={line}
                   readOnly
                   data-output
-                  className="font-mono text-xs"
+                  className="font-mono text-sm"
                 />
                 <CopyButton
                   copied={copiedIndex === index}
