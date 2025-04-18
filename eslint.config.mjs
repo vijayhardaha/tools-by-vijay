@@ -21,20 +21,7 @@ const compat = new FlatCompat({
 });
 
 export default defineConfig([
-  globalIgnores([
-    "**/node_modules/",
-    "**/build/",
-    "**/dist/",
-    "**/coverage/",
-    "**/.env",
-    "**/.env.local",
-    "**/*.log",
-    "**/bower_components/",
-    "**/*.tsbuildinfo",
-    "test/**/*.js",
-    "spec/**/*.js",
-    "**/*.generated.js",
-  ]),
+  globalIgnores(["**/.next/", "**/node_modules/", "**/build/", "**/dist/", "**/.env*"]),
   { files: ["**/*.{js,jsx,ts,tsx}"] },
   {
     extends: compat.extends(
