@@ -3,12 +3,12 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
 	"[css]": {
+		"editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
   },
-  "editor.formatOnSave": true,
   "eslint.validate": ["javascript", "typescript"],
   "files.associations": {
     "*.css": "tailwindcss"
