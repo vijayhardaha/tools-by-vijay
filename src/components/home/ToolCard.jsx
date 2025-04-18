@@ -30,16 +30,18 @@ const ToolCard = ({ slug, className = "" }) => {
           className
         )}
       >
-        <div className="absolute -top-[1px] -right-[1px] z-10">
-          <div className="text-foreground bg-accent-foreground ml-auto flex size-10 shrink-0 items-center justify-center rounded-tr-xl rounded-bl-xl text-xl">
-            {getIconForTool(tool.slug)}
+        <CardHeader className="flex gap-4">
+          <div className="absolute -top-0 left-0 h-full">
+            <div className="text-foreground bg-accent-foreground ml-auto flex h-full min-w-22 shrink-0 items-center justify-center rounded-tl-lg rounded-bl-lg text-4xl">
+              {getIconForTool(tool.slug)}
+            </div>
           </div>
-        </div>
-        <CardHeader>
-          <CardTitle component="h3" className="pr-10">
-            {tool.name}
-          </CardTitle>
-          <CardDescription>{tool.pageDescription}</CardDescription>
+          <div className="pl-22">
+            <CardTitle component="h3" className="mb-2 pr-10">
+              {tool.name}
+            </CardTitle>
+            <CardDescription>{tool.shortDescription}</CardDescription>
+          </div>
         </CardHeader>
       </Card>
     </Link>
