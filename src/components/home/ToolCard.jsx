@@ -1,13 +1,7 @@
 import Link from "next/link";
-
 import PropTypes from "prop-types";
 
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-} from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { cn } from "@/utils/classNameUtils";
 import { findToolBySlug, getIconForTool } from "@/utils/toolUtils";
 

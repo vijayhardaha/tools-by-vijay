@@ -35,6 +35,7 @@ export default defineConfig([
     "spec/**/*.js",
     "**/*.generated.js",
   ]),
+  { files: ["**/*.{js,jsx,ts,tsx}"] },
   {
     extends: compat.extends(
       "next",

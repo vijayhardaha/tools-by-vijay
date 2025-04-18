@@ -119,10 +119,7 @@ const buttonVariants = cva(
         ghost: [
           "border-transparent hover:bg-accent hover:border-transparent hover:text-accent-foreground",
         ].join(" "),
-        link: [
-          "border-transparent text-primary underline-offset-4",
-          "hover:underline",
-        ].join(" "),
+        link: ["border-transparent text-primary underline-offset-4", "hover:underline"].join(" "),
       },
       size: {
         default: "h-10 px-6 rounded-lg py-2 text-sm has-[>svg]:px-5",
@@ -149,18 +146,10 @@ const buttonVariants = cva(
  * @param {any} props.children - Button content
  * @returns {JSX.Element} Button component
  */
-function Button({
-  className,
-  variant,
-  size,
-  asChild = false,
-  children,
-  ...props
-}) {
+function Button({ className, variant, size, asChild = false, children, ...props }) {
   const Comp = asChild ? Slot : "button";
 
-  // Explicitly exclude `asChild` from props passed to the DOM
-  // eslint-disable-next-line no-unused-vars
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { asChild: _, ...componentProps } = props;
 
   return (

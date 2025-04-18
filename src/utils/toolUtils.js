@@ -45,9 +45,7 @@ export const getRelatedTools = (toolSlug, limit = 3) => {
   if (!currentTool) return [];
 
   return tools
-    .filter(
-      (tool) => tool.category === currentTool.category && tool.slug !== toolSlug
-    )
+    .filter((tool) => tool.category === currentTool.category && tool.slug !== toolSlug)
     .slice(0, limit);
 };
 

@@ -13,19 +13,10 @@ import { cn } from "@/utils/classNameUtils";
  * @param {Object} [props.props] - Additional props to spread onto the button element.
  * @returns {JSX.Element} The rendered button component.
  */
-export const TextButton = ({
-  className,
-  children,
-  "aria-label": ariaLabel,
-  ...props
-}) => (
+export const TextButton = ({ className, children, "aria-label": ariaLabel, ...props }) => (
   <button
     type="button"
-    className={cn(
-      btnBaseStyles.join(" "),
-      "bg-neutral-800 p-3 px-5 text-white",
-      className
-    )}
+    className={cn(btnBaseStyles.join(" "), "bg-neutral-800 p-3 px-5 text-white", className)}
     aria-label={ariaLabel || undefined}
     {...props}
   >

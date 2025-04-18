@@ -25,9 +25,7 @@ const Home = () => {
         return (
           <section key={categorySlug} className="mb-10">
             <div className="mb-6">
-              <h2 className="text-foreground mb-1 text-2xl font-bold">
-                {category.label}
-              </h2>
+              <h2 className="text-foreground mb-1 text-2xl font-bold">{category.label}</h2>
               <p className="text-muted-foreground">{category.description}</p>
             </div>
 
@@ -38,10 +36,7 @@ const Home = () => {
                   slug={tool.slug}
                   btnText={`Go to ${tool.name} Tool`}
                   iconButton={true}
-                  btnRounded={
-                    tool.category === "security" ||
-                    tool.category === "data-conversion"
-                  }
+                  btnRounded={tool.category === "security" || tool.category === "data-conversion"}
                 />
               ))}
             </div>

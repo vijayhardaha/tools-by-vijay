@@ -31,12 +31,7 @@ export const IconButton = ({
     aria-hidden={!screenReaderText && !ariaLabel && !children}
     {...props}
   >
-    {IconComponent && (
-      <IconComponent
-        className={cn("size-6", iconClassName)}
-        aria-hidden="true"
-      />
-    )}
+    {IconComponent && <IconComponent className={cn("size-6", iconClassName)} aria-hidden="true" />}
     {screenReaderText && <span className="sr-only">{screenReaderText}</span>}
     {children}
   </button>

@@ -53,10 +53,7 @@ const TextStoryMakerTool = () => {
         [key]: value,
       };
       try {
-        localStorage.setItem(
-          "textStoryMakerOptions",
-          JSON.stringify(updatedOptions)
-        );
+        localStorage.setItem("textStoryMakerOptions", JSON.stringify(updatedOptions));
       } catch (error) {
         console.error("Failed to save options to local storage:", error);
       }
@@ -65,9 +62,7 @@ const TextStoryMakerTool = () => {
   };
 
   return (
-    <div
-      className={cn("relative h-screen w-full bg-black/85", "flex flex-col")}
-    >
+    <div className={cn("relative h-screen w-full bg-black/85", "flex flex-col")}>
       {/**
        * Header component displays the header section of the tool.
        *
@@ -137,15 +132,11 @@ const TextStoryMakerTool = () => {
           aria-describedby="dialog-description"
         >
           <div className="mx-4 max-w-md rounded-3xl bg-neutral-800 p-6 shadow-lg">
-            <h3
-              id="dialog-title"
-              className="mb-3 text-lg font-semibold text-white"
-            >
+            <h3 id="dialog-title" className="mb-3 text-lg font-semibold text-white">
               Confirm New Story
             </h3>
             <p id="dialog-description" className="mb-4 text-neutral-300">
-              Are you sure you want to create a new story? This will reset all
-              current changes.
+              Are you sure you want to create a new story? This will reset all current changes.
             </p>
             <div className="flex justify-end space-x-3">
               <button

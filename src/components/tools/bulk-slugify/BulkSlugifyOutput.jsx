@@ -4,13 +4,7 @@ import { useState } from "react";
 
 import PropTypes from "prop-types";
 
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
-  CardDescription,
-} from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import CopyButton from "@/components/ui/copy-button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -86,10 +80,7 @@ const BulkSlugifyOutput = ({ output }) => {
 
           <div className="flex flex-col gap-2">
             {lines.map((line, index) => (
-              <div
-                key={index}
-                className="flex flex-col gap-2 sm:flex-row sm:items-center"
-              >
+              <div key={index} className="flex flex-col gap-2 sm:flex-row sm:items-center">
                 <Input
                   type="text"
                   value={line}

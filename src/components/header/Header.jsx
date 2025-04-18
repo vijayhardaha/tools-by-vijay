@@ -23,13 +23,7 @@ const Header = () => {
     <>
       <header className="border-border sticky top-0 z-50 border-b bg-white">
         <div className="relative z-20 mx-auto max-w-5xl px-4">
-          <Box
-            component="header"
-            flex={true}
-            align="center"
-            justify="between"
-            py="4"
-          >
+          <Box component="header" flex={true} align="center" justify="between" py="4">
             <Logo />
             <MenuButton onClick={toggleDrawer} />
           </Box>

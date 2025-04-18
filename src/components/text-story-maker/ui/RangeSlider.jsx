@@ -86,9 +86,7 @@ export const RangeSlider = ({
               aria-valuetext={valueText}
               aria-label={ariaLabel || label || "Slider"}
               aria-labelledby={
-                label
-                  ? `slider-label-${label.replace(/\s+/g, "-").toLowerCase()}`
-                  : undefined
+                label ? `slider-label-${label.replace(/\s+/g, "-").toLowerCase()}` : undefined
               }
               className={cn(
                 "flex size-5 transform items-center justify-center rounded-full bg-white outline-hidden",

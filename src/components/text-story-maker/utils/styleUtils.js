@@ -1,10 +1,6 @@
 import sanitizeHtml from "sanitize-html";
 
-import {
-  bgColors,
-  fonts,
-  textColors,
-} from "@/components/text-story-maker/constants";
+import { bgColors, fonts, textColors } from "@/components/text-story-maker/constants";
 
 /**
  * Checks if the provided text is empty after sanitization.

@@ -27,13 +27,7 @@ export const baseMetadata = {
   alternates: {
     canonical: getBaseUrl(),
   },
-  keywords: [
-    "tools",
-    "utilities",
-    "web tools",
-    "online tools",
-    "developer tools",
-  ],
+  keywords: ["tools", "utilities", "web tools", "online tools", "developer tools"],
   author: "Vijay",
   robots: "index, follow",
   icons: {

@@ -3,13 +3,7 @@
 import PropTypes from "prop-types";
 
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
-  CardDescription,
-} from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -80,9 +74,7 @@ const JsMinifierInput = ({
                 <Checkbox
                   id="removeComments"
                   checked={options.removeComments}
-                  onCheckedChange={(checked) =>
-                    updateOption("removeComments", checked)
-                  }
+                  onCheckedChange={(checked) => updateOption("removeComments", checked)}
                 />
                 <Label htmlFor="removeComments">Remove comments</Label>
               </div>
@@ -90,9 +82,7 @@ const JsMinifierInput = ({
                 <Checkbox
                   id="removeConsole"
                   checked={options.removeConsole}
-                  onCheckedChange={(checked) =>
-                    updateOption("removeConsole", checked)
-                  }
+                  onCheckedChange={(checked) => updateOption("removeConsole", checked)}
                 />
                 <Label htmlFor="removeConsole">Remove console statements</Label>
               </div>
@@ -100,39 +90,21 @@ const JsMinifierInput = ({
                 <Checkbox
                   id="removeDebugger"
                   checked={options.removeDebugger}
-                  onCheckedChange={(checked) =>
-                    updateOption("removeDebugger", checked)
-                  }
+                  onCheckedChange={(checked) => updateOption("removeDebugger", checked)}
                 />
-                <Label htmlFor="removeDebugger">
-                  Remove debugger statements
-                </Label>
+                <Label htmlFor="removeDebugger">Remove debugger statements</Label>
               </div>
             </div>
           </div>
 
           <div className="mt-4 flex flex-wrap gap-2">
-            <Button
-              type="submit"
-              variant="default"
-              disabled={!input || isLoading}
-            >
+            <Button type="submit" variant="default" disabled={!input || isLoading}>
               {isLoading ? "Minifying..." : "Minify"}
             </Button>
-            <Button
-              type="button"
-              variant="outline"
-              onClick={onClear}
-              disabled={isLoading}
-            >
+            <Button type="button" variant="outline" onClick={onClear} disabled={isLoading}>
               Clear
             </Button>
-            <Button
-              type="reset"
-              variant="destructive"
-              onClick={onReset}
-              disabled={isLoading}
-            >
+            <Button type="reset" variant="destructive" onClick={onReset} disabled={isLoading}>
               Reset
             </Button>
           </div>

@@ -1,7 +1,6 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-
 import PropTypes from "prop-types";
 import { CgArrowLongLeft as ArrowLeftIcon } from "react-icons/cg";
 import { LuCheck as CheckIcon } from "react-icons/lu";
@@ -58,10 +57,7 @@ const Header = ({ options, updateOption, activeTool, setActiveTool }) => {
               screenReaderText="Return to main application page"
               onClick={() => router.push("/")}
             />
-            <div
-              className="ml-auto flex items-center gap-1.5"
-              aria-label="Story editing tools"
-            >
+            <div className="ml-auto flex items-center gap-1.5" aria-label="Story editing tools">
               {/**
                * TextOptionsTool component for managing text options.
                *
@@ -69,17 +65,11 @@ const Header = ({ options, updateOption, activeTool, setActiveTool }) => {
                * @param {string} props.activeTool - Currently active tool.
                * @param {Function} props.setActiveTool - Function to set the active tool.
                */}
-              <TextOptionsTool
-                activeTool={activeTool}
-                setActiveTool={setActiveTool}
-              />
+              <TextOptionsTool activeTool={activeTool} setActiveTool={setActiveTool} />
               {/**
                * BackgroundFillOptions component for managing background fill options.
                */}
-              <BackgroundFillOptions
-                activeTool={activeTool}
-                setActiveTool={setActiveTool}
-              />
+              <BackgroundFillOptions activeTool={activeTool} setActiveTool={setActiveTool} />
               {/**
                * FrameSizeTool component for managing frame size options.
                *
@@ -91,10 +81,7 @@ const Header = ({ options, updateOption, activeTool, setActiveTool }) => {
               {/**
                * DownloadImageTool component for managing image download options.
                */}
-              <DownloadImageTool
-                options={options}
-                updateOption={updateOption}
-              />
+              <DownloadImageTool options={options} updateOption={updateOption} />
               {/**
                * Button component for showing the preview.
                */}

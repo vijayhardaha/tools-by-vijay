@@ -5,13 +5,7 @@ import { FiInfo } from "react-icons/fi";
 
 import { Alert } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
-  CardDescription,
-} from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { Select } from "@/components/ui/select";
@@ -65,8 +59,7 @@ const DropdownToArrayInput = ({
       <CardHeader>
         <CardTitle>Dropdown HTML</CardTitle>
         <CardDescription>
-          Paste HTML select/dropdown content and convert to various array
-          formats
+          Paste HTML select/dropdown content and convert to various array formats
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -130,11 +123,7 @@ const DropdownToArrayInput = ({
           </div>
 
           <div className="flex items-center space-x-2">
-            <Checkbox
-              id="use-slug-keys"
-              checked={useSlugKeys}
-              onCheckedChange={setUseSlugKeys}
-            />
+            <Checkbox id="use-slug-keys" checked={useSlugKeys} onCheckedChange={setUseSlugKeys} />
             <Label
               htmlFor="use-slug-keys"
               className="cursor-pointer text-sm leading-none font-medium"

@@ -50,11 +50,7 @@ export const generateSeoTitle = (title = "") => {
  * @param {string} [params.slug=""] - The slug for generating canonical and social media URLs.
  * @returns {Object} A metadata object with title, description, canonical URL, and social media metadata.
  */
-export const generateMetadata = ({
-  title = "",
-  description = "",
-  slug = "",
-}) => {
+export const generateMetadata = ({ title = "", description = "", slug = "" }) => {
   return {
     ...baseMetadata,
     title: generateSeoTitle(title),

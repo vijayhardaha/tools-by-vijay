@@ -32,9 +32,7 @@ function RadioBox({
   name,
   ...props
 }) {
-  const [internalChecked, setInternalChecked] = useState(
-    controlledChecked || false
-  );
+  const [internalChecked, setInternalChecked] = useState(controlledChecked || false);
 
   const isControlled = controlledChecked !== undefined;
   const isChecked = isControlled ? controlledChecked : internalChecked;
@@ -88,9 +86,7 @@ function RadioBox({
         data-slot="radiobox-indicator"
         className={cn(
           "flex h-4 w-4 items-center justify-center rounded-full border",
-          isChecked
-            ? "bg-primary border-primary text-primary-foreground"
-            : "border-input"
+          isChecked ? "bg-primary border-primary text-primary-foreground" : "border-input"
         )}
       >
         {isChecked && <CheckIcon className="h-3 w-3" />}

@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 
+import DuplicateLineRemovalInfo from "./DuplicateLineRemovalInfo";
 import DuplicateLineRemovalInput from "./DuplicateLineRemovalInput";
 import DuplicateLineRemovalOutput from "./DuplicateLineRemovalOutput";
-import DuplicateLineRemovalInfo from "./DuplicateLineRemovalInfo";
 
 /**
  * Main component for the Duplicate Line Removal tool.
@@ -20,9 +20,7 @@ const DuplicateLineRemovalTool = () => {
   const [output, setOutput] = useState("");
 
   const handleProcess = () => {
-    const lines = textInput
-      .split("\n")
-      .filter((line, index, self) => self.indexOf(line) === index);
+    const lines = textInput.split("\n").filter((line, index, self) => self.indexOf(line) === index);
     let sortedLines = lines;
 
     if (sortType === "alphabetical") {
@@ -52,21 +50,21 @@ const DuplicateLineRemovalTool = () => {
   return (
     <>
       <div className="grid grid-cols-1 gap-6">
-      <DuplicateLineRemovalInput
-        textInput={textInput}
-        setTextInput={setTextInput}
-        sortType={sortType}
-        setSortType={setSortType}
-        reverseSort={reverseSort}
-        setReverseSort={setReverseSort}
-        onProcess={handleProcess}
-        onReset={handleReset}
-        onClear={handleClear}
-      />
-      <DuplicateLineRemovalOutput output={output} />
-    </div>
+        <DuplicateLineRemovalInput
+          textInput={textInput}
+          setTextInput={setTextInput}
+          sortType={sortType}
+          setSortType={setSortType}
+          reverseSort={reverseSort}
+          setReverseSort={setReverseSort}
+          onProcess={handleProcess}
+          onReset={handleReset}
+          onClear={handleClear}
+        />
+        <DuplicateLineRemovalOutput output={output} />
+      </div>
 
-    <div className="mt-16">
+      <div className="mt-16">
         <DuplicateLineRemovalInfo />
       </div>
     </>

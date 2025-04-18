@@ -12,10 +12,7 @@ export async function POST(request) {
     const { js, options = {} } = await request.json();
 
     if (!js || typeof js !== "string") {
-      return NextResponse.json(
-        { error: "Invalid JavaScript input" },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: "Invalid JavaScript input" }, { status: 400 });
     }
 
     // Minify the JavaScript using Putout Minify

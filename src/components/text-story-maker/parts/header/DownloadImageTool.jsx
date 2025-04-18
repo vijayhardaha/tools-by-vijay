@@ -6,11 +6,7 @@ import PropTypes from "prop-types";
 import { TbCloudDownload as DownloadToolIcon } from "react-icons/tb";
 
 import Button from "@/components/text-story-maker/parts/header/HeaderIconBtn";
-import {
-  Dropdown,
-  DropdownTrigger,
-  DropdownContent,
-} from "@/components/text-story-maker/ui";
+import { Dropdown, DropdownTrigger, DropdownContent } from "@/components/text-story-maker/ui";
 import { cn } from "@/utils/classNameUtils";
 
 /**
@@ -111,10 +107,7 @@ const DownloadImageTool = ({ options, updateOption }) => {
                 aria-label="Download options"
               >
                 <div className="mb-4">
-                  <p
-                    className="mb-1 text-base font-semibold"
-                    id="size-selection"
-                  >
+                  <p className="mb-1 text-base font-semibold" id="size-selection">
                     Size:
                   </p>
                   <div
@@ -157,9 +150,7 @@ const DownloadImageTool = ({ options, updateOption }) => {
                       "bg-white text-neutral-900",
                       "hover:bg-accent-foreground hover:text-neutral-900"
                     )}
-                    onClick={() =>
-                      handleDownload(options.downloadSize, toggleDropdown)
-                    }
+                    onClick={() => handleDownload(options.downloadSize, toggleDropdown)}
                     disabled={isDownloading}
                     aria-label={`Download in ${sizes[options.downloadSize].label} resolution`}
                     role="menuitem"
@@ -168,10 +159,7 @@ const DownloadImageTool = ({ options, updateOption }) => {
                   </button>
                 </div>
                 {downloadError && (
-                  <p
-                    className="mt-4 text-xs font-medium text-red-500"
-                    role="alert"
-                  >
+                  <p className="mt-4 text-xs font-medium text-red-500" role="alert">
                     {downloadError}
                   </p>
                 )}

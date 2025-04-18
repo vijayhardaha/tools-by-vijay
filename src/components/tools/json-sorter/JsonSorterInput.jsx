@@ -5,13 +5,7 @@ import { FiInfo } from "react-icons/fi";
 
 import { Alert } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
-  CardDescription,
-} from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -56,9 +50,7 @@ const JsonSorterInput = ({
     <Card>
       <CardHeader>
         <CardTitle>JSON Input</CardTitle>
-        <CardDescription>
-          Paste your JSON and sort keys alphabetically
-        </CardDescription>
+        <CardDescription>Paste your JSON and sort keys alphabetically</CardDescription>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
@@ -80,11 +72,7 @@ const JsonSorterInput = ({
 
           <div className="flex flex-col gap-4">
             <div className="flex items-center space-x-2">
-              <Checkbox
-                id="spare-arrays"
-                checked={spareArrays}
-                onCheckedChange={setSpareArrays}
-              />
+              <Checkbox id="spare-arrays" checked={spareArrays} onCheckedChange={setSpareArrays} />
               <Label
                 htmlFor="spare-arrays"
                 className="cursor-pointer text-sm leading-none font-medium"

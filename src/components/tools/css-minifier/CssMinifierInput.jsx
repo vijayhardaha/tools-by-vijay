@@ -3,13 +3,7 @@
 import PropTypes from "prop-types";
 
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
-  CardDescription,
-} from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { Select } from "@/components/ui/select";
@@ -55,9 +49,7 @@ const CssMinifierInput = ({
     <Card>
       <CardHeader>
         <CardTitle>CSS Input</CardTitle>
-        <CardDescription>
-          Paste your CSS code and customize minification options
-        </CardDescription>
+        <CardDescription>Paste your CSS code and customize minification options</CardDescription>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
@@ -74,9 +66,7 @@ const CssMinifierInput = ({
               <div className="flex items-center space-x-2">
                 <Select
                   value={options.level.toString()}
-                  onValueChange={(value) =>
-                    updateOption("level", parseInt(value, 10))
-                  }
+                  onValueChange={(value) => updateOption("level", parseInt(value, 10))}
                   options={[
                     { value: "0", label: "Level 0 - Basic compression" },
                     {
@@ -93,9 +83,7 @@ const CssMinifierInput = ({
                 <Checkbox
                   id="compress"
                   checked={options.compress}
-                  onCheckedChange={(checked) =>
-                    updateOption("compress", checked)
-                  }
+                  onCheckedChange={(checked) => updateOption("compress", checked)}
                 />
                 <Label htmlFor="compress">Enable compression</Label>
               </div>
@@ -107,9 +95,7 @@ const CssMinifierInput = ({
                 <Checkbox
                   id="beforeBlockBegins"
                   checked={options.format.spaces.beforeBlockBegins}
-                  onCheckedChange={(checked) =>
-                    updateSpacesOption("beforeBlockBegins", checked)
-                  }
+                  onCheckedChange={(checked) => updateSpacesOption("beforeBlockBegins", checked)}
                 />
                 <Label htmlFor="beforeBlockBegins">Space before blocks</Label>
               </div>
@@ -117,9 +103,7 @@ const CssMinifierInput = ({
                 <Checkbox
                   id="beforeValue"
                   checked={options.format.spaces.beforeValue}
-                  onCheckedChange={(checked) =>
-                    updateSpacesOption("beforeValue", checked)
-                  }
+                  onCheckedChange={(checked) => updateSpacesOption("beforeValue", checked)}
                 />
                 <Label htmlFor="beforeValue">Space before values</Label>
               </div>
@@ -131,35 +115,19 @@ const CssMinifierInput = ({
                     updateSpacesOption("aroundSelectorRelation", checked)
                   }
                 />
-                <Label htmlFor="aroundSelectorRelation">
-                  Space around selector relations
-                </Label>
+                <Label htmlFor="aroundSelectorRelation">Space around selector relations</Label>
               </div>
             </div>
           </div>
 
           <div className="mt-4 flex flex-wrap gap-2">
-            <Button
-              type="submit"
-              variant="default"
-              disabled={!input || isLoading}
-            >
+            <Button type="submit" variant="default" disabled={!input || isLoading}>
               {isLoading ? "Minifying..." : "Minify"}
             </Button>
-            <Button
-              type="button"
-              variant="outline"
-              onClick={onClear}
-              disabled={isLoading}
-            >
+            <Button type="button" variant="outline" onClick={onClear} disabled={isLoading}>
               Clear
             </Button>
-            <Button
-              type="reset"
-              variant="destructive"
-              onClick={onReset}
-              disabled={isLoading}
-            >
+            <Button type="reset" variant="destructive" onClick={onReset} disabled={isLoading}>
               Reset
             </Button>
           </div>

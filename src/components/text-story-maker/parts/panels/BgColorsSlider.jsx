@@ -5,6 +5,7 @@ import { bgColors } from "@/components/text-story-maker/constants";
 import { btnBaseStyles } from "@/components/text-story-maker/constants/btnBaseStyles";
 import { cn } from "@/utils/classNameUtils";
 
+// eslint-disable-next-line importPlugin/order
 import "keen-slider/keen-slider.min.css";
 
 /**
@@ -41,10 +42,7 @@ const BgColorsSlider = ({ tool, options, updateOption }) => {
         aria-label={`${tool} background color options`}
       >
         {bgColors[tool].map((bgColor, colorKey) => (
-          <div
-            key={colorKey}
-            className="keen-slider__slide relative block h-full !w-fit shrink-0"
-          >
+          <div key={colorKey} className="keen-slider__slide relative block h-full !w-fit shrink-0">
             <div className="flex items-center justify-center p-1">
               <button
                 type="button"

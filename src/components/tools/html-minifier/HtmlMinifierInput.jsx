@@ -3,13 +3,7 @@
 import PropTypes from "prop-types";
 
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
-  CardDescription,
-} from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -52,9 +46,7 @@ const HtmlMinifierInput = ({
     <Card>
       <CardHeader>
         <CardTitle>HTML Input</CardTitle>
-        <CardDescription>
-          Paste your HTML code and customize minification options
-        </CardDescription>
+        <CardDescription>Paste your HTML code and customize minification options</CardDescription>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
@@ -72,9 +64,7 @@ const HtmlMinifierInput = ({
                 <Checkbox
                   id="removeComments"
                   checked={options.removeComments}
-                  onCheckedChange={(checked) =>
-                    updateOption("removeComments", checked)
-                  }
+                  onCheckedChange={(checked) => updateOption("removeComments", checked)}
                 />
                 <Label htmlFor="removeComments">Remove comments</Label>
               </div>
@@ -82,9 +72,7 @@ const HtmlMinifierInput = ({
                 <Checkbox
                   id="collapseWhitespace"
                   checked={options.collapseWhitespace}
-                  onCheckedChange={(checked) =>
-                    updateOption("collapseWhitespace", checked)
-                  }
+                  onCheckedChange={(checked) => updateOption("collapseWhitespace", checked)}
                 />
                 <Label htmlFor="collapseWhitespace">Collapse whitespace</Label>
               </div>
@@ -92,21 +80,15 @@ const HtmlMinifierInput = ({
                 <Checkbox
                   id="conservativeCollapse"
                   checked={options.conservativeCollapse}
-                  onCheckedChange={(checked) =>
-                    updateOption("conservativeCollapse", checked)
-                  }
+                  onCheckedChange={(checked) => updateOption("conservativeCollapse", checked)}
                 />
-                <Label htmlFor="conservativeCollapse">
-                  Conservative whitespace collapse
-                </Label>
+                <Label htmlFor="conservativeCollapse">Conservative whitespace collapse</Label>
               </div>
               <div className="flex items-center space-x-2">
                 <Checkbox
                   id="minifyCSS"
                   checked={options.minifyCSS}
-                  onCheckedChange={(checked) =>
-                    updateOption("minifyCSS", checked)
-                  }
+                  onCheckedChange={(checked) => updateOption("minifyCSS", checked)}
                 />
                 <Label htmlFor="minifyCSS">Minify CSS</Label>
               </div>
@@ -114,9 +96,7 @@ const HtmlMinifierInput = ({
                 <Checkbox
                   id="minifyJS"
                   checked={options.minifyJS}
-                  onCheckedChange={(checked) =>
-                    updateOption("minifyJS", checked)
-                  }
+                  onCheckedChange={(checked) => updateOption("minifyJS", checked)}
                 />
                 <Label htmlFor="minifyJS">Minify JavaScript</Label>
               </div>
@@ -124,9 +104,7 @@ const HtmlMinifierInput = ({
                 <Checkbox
                   id="minifyURLs"
                   checked={options.minifyURLs}
-                  onCheckedChange={(checked) =>
-                    updateOption("minifyURLs", checked)
-                  }
+                  onCheckedChange={(checked) => updateOption("minifyURLs", checked)}
                 />
                 <Label htmlFor="minifyURLs">Minify URLs</Label>
               </div>
@@ -138,61 +116,41 @@ const HtmlMinifierInput = ({
                 <Checkbox
                   id="removeEmptyElements"
                   checked={options.removeEmptyElements}
-                  onCheckedChange={(checked) =>
-                    updateOption("removeEmptyElements", checked)
-                  }
+                  onCheckedChange={(checked) => updateOption("removeEmptyElements", checked)}
                 />
-                <Label htmlFor="removeEmptyElements">
-                  Remove empty elements
-                </Label>
+                <Label htmlFor="removeEmptyElements">Remove empty elements</Label>
               </div>
               <div className="flex items-center space-x-2">
                 <Checkbox
                   id="removeEmptyAttributes"
                   checked={options.removeEmptyAttributes}
-                  onCheckedChange={(checked) =>
-                    updateOption("removeEmptyAttributes", checked)
-                  }
+                  onCheckedChange={(checked) => updateOption("removeEmptyAttributes", checked)}
                 />
-                <Label htmlFor="removeEmptyAttributes">
-                  Remove empty attributes
-                </Label>
+                <Label htmlFor="removeEmptyAttributes">Remove empty attributes</Label>
               </div>
               <div className="flex items-center space-x-2">
                 <Checkbox
                   id="collapseBooleanAttributes"
                   checked={options.collapseBooleanAttributes}
-                  onCheckedChange={(checked) =>
-                    updateOption("collapseBooleanAttributes", checked)
-                  }
+                  onCheckedChange={(checked) => updateOption("collapseBooleanAttributes", checked)}
                 />
-                <Label htmlFor="collapseBooleanAttributes">
-                  Collapse boolean attributes
-                </Label>
+                <Label htmlFor="collapseBooleanAttributes">Collapse boolean attributes</Label>
               </div>
               <div className="flex items-center space-x-2">
                 <Checkbox
                   id="removeAttributeQuotes"
                   checked={options.removeAttributeQuotes}
-                  onCheckedChange={(checked) =>
-                    updateOption("removeAttributeQuotes", checked)
-                  }
+                  onCheckedChange={(checked) => updateOption("removeAttributeQuotes", checked)}
                 />
-                <Label htmlFor="removeAttributeQuotes">
-                  Remove attribute quotes
-                </Label>
+                <Label htmlFor="removeAttributeQuotes">Remove attribute quotes</Label>
               </div>
               <div className="flex items-center space-x-2">
                 <Checkbox
                   id="removeRedundantAttributes"
                   checked={options.removeRedundantAttributes}
-                  onCheckedChange={(checked) =>
-                    updateOption("removeRedundantAttributes", checked)
-                  }
+                  onCheckedChange={(checked) => updateOption("removeRedundantAttributes", checked)}
                 />
-                <Label htmlFor="removeRedundantAttributes">
-                  Remove redundant attributes
-                </Label>
+                <Label htmlFor="removeRedundantAttributes">Remove redundant attributes</Label>
               </div>
             </div>
 
@@ -202,13 +160,9 @@ const HtmlMinifierInput = ({
                 <Checkbox
                   id="removeScriptTypeAttributes"
                   checked={options.removeScriptTypeAttributes}
-                  onCheckedChange={(checked) =>
-                    updateOption("removeScriptTypeAttributes", checked)
-                  }
+                  onCheckedChange={(checked) => updateOption("removeScriptTypeAttributes", checked)}
                 />
-                <Label htmlFor="removeScriptTypeAttributes">
-                  Remove script type attributes
-                </Label>
+                <Label htmlFor="removeScriptTypeAttributes">Remove script type attributes</Label>
               </div>
               <div className="flex items-center space-x-2">
                 <Checkbox
@@ -226,9 +180,7 @@ const HtmlMinifierInput = ({
                 <Checkbox
                   id="sortAttributes"
                   checked={options.sortAttributes}
-                  onCheckedChange={(checked) =>
-                    updateOption("sortAttributes", checked)
-                  }
+                  onCheckedChange={(checked) => updateOption("sortAttributes", checked)}
                 />
                 <Label htmlFor="sortAttributes">Sort attributes</Label>
               </div>
@@ -236,9 +188,7 @@ const HtmlMinifierInput = ({
                 <Checkbox
                   id="sortClassName"
                   checked={options.sortClassName}
-                  onCheckedChange={(checked) =>
-                    updateOption("sortClassName", checked)
-                  }
+                  onCheckedChange={(checked) => updateOption("sortClassName", checked)}
                 />
                 <Label htmlFor="sortClassName">Sort class names</Label>
               </div>
@@ -246,9 +196,7 @@ const HtmlMinifierInput = ({
                 <Checkbox
                   id="decodeEntities"
                   checked={options.decodeEntities}
-                  onCheckedChange={(checked) =>
-                    updateOption("decodeEntities", checked)
-                  }
+                  onCheckedChange={(checked) => updateOption("decodeEntities", checked)}
                 />
                 <Label htmlFor="decodeEntities">Decode entities</Label>
               </div>
@@ -256,9 +204,7 @@ const HtmlMinifierInput = ({
                 <Checkbox
                   id="useShortDoctype"
                   checked={options.useShortDoctype}
-                  onCheckedChange={(checked) =>
-                    updateOption("useShortDoctype", checked)
-                  }
+                  onCheckedChange={(checked) => updateOption("useShortDoctype", checked)}
                 />
                 <Label htmlFor="useShortDoctype">Use short doctype</Label>
               </div>

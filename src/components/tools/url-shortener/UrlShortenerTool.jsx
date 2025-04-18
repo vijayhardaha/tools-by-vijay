@@ -74,9 +74,7 @@ const UrlShortenerTool = () => {
 
           return {
             originalUrl: trimmedUrl,
-            shortenedUrl: isValid
-              ? await shortenUrl(trimmedUrl)
-              : "Invalid URL",
+            shortenedUrl: isValid ? await shortenUrl(trimmedUrl) : "Invalid URL",
             isValid: isValid,
           };
         })

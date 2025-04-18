@@ -4,13 +4,7 @@ import { useState } from "react";
 
 import PropTypes from "prop-types";
 
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
-  CardDescription,
-} from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import CopyButton from "@/components/ui/copy-button";
 import { Input } from "@/components/ui/input";
 
@@ -48,18 +42,8 @@ const SlugifyOutput = ({ output }) => {
       </CardHeader>
       <CardContent>
         <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
-          <Input
-            type="text"
-            value={output}
-            readOnly
-            data-output
-            className="font-mono text-sm"
-          />
-          <CopyButton
-            copied={copied}
-            disabled={!output}
-            onClick={copyToClipboard}
-          />
+          <Input type="text" value={output} readOnly data-output className="font-mono text-sm" />
+          <CopyButton copied={copied} disabled={!output} onClick={copyToClipboard} />
         </div>
       </CardContent>
     </Card>

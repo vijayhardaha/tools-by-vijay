@@ -6,13 +6,7 @@ import PropTypes from "prop-types";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
-  CardDescription,
-} from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tooltip } from "@/components/ui/tooltip";
@@ -27,11 +21,7 @@ import { Tooltip } from "@/components/ui/tooltip";
  * @param {Function} props.onClear - Callback function to clear the password
  * @returns {JSX.Element} Password input with visibility toggle and clear button
  */
-const PasswordStrengthCheckerInput = ({
-  password,
-  onPasswordChange,
-  onClear,
-}) => {
+const PasswordStrengthCheckerInput = ({ password, onPasswordChange, onClear }) => {
   const [showPassword, setShowPassword] = useState(false);
 
   /**
@@ -54,9 +44,7 @@ const PasswordStrengthCheckerInput = ({
     <Card>
       <CardHeader>
         <CardTitle>Check Password Strength</CardTitle>
-        <CardDescription>
-          Enter a password to check its strength
-        </CardDescription>
+        <CardDescription>Enter a password to check its strength</CardDescription>
       </CardHeader>
       <CardContent>
         <form className="flex flex-col gap-4">
@@ -72,9 +60,7 @@ const PasswordStrengthCheckerInput = ({
                 className="pr-10 font-mono text-sm"
               />
               <div className="absolute inset-y-0 right-0 flex items-center justify-center">
-                <Tooltip
-                  text={showPassword ? "Hide password" : "Show password"}
-                >
+                <Tooltip text={showPassword ? "Hide password" : "Show password"}>
                   <button
                     type="button"
                     className="flex h-10 w-10 items-center justify-center p-0 text-gray-400 hover:text-gray-600"
@@ -83,11 +69,7 @@ const PasswordStrengthCheckerInput = ({
                     <span className="sr-only">
                       {showPassword ? "Hide password" : "Show password"}
                     </span>
-                    {showPassword ? (
-                      <FiEyeOff size={18} />
-                    ) : (
-                      <FiEye size={18} />
-                    )}
+                    {showPassword ? <FiEyeOff size={18} /> : <FiEye size={18} />}
                   </button>
                 </Tooltip>
               </div>

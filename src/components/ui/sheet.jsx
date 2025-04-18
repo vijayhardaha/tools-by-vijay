@@ -1,13 +1,6 @@
 "use client";
 
-import {
-  useState,
-  useEffect,
-  useContext,
-  createContext,
-  useCallback,
-  useRef,
-} from "react";
+import { useState, useEffect, useContext, createContext, useCallback, useRef } from "react";
 
 import PropTypes from "prop-types";
 import { createPortal } from "react-dom";
@@ -265,10 +258,7 @@ function SheetHeader({ className, children, ...props }) {
   return (
     <div
       data-slot="sheet-header"
-      className={cn(
-        "flex flex-row items-center justify-between gap-4",
-        className
-      )}
+      className={cn("flex flex-row items-center justify-between gap-4", className)}
       {...props}
     >
       <div className="flex flex-col gap-1.5">{children}</div>
@@ -296,10 +286,7 @@ function SheetFooter({ className, ...props }) {
   return (
     <div
       data-slot="sheet-footer"
-      className={cn(
-        "border-border mt-auto flex flex-col gap-2 border-t p-4",
-        className
-      )}
+      className={cn("border-border mt-auto flex flex-col gap-2 border-t p-4", className)}
       {...props}
     />
   );

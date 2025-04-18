@@ -1,9 +1,4 @@
-import {
-  FaFacebookF,
-  FaXTwitter,
-  FaGithub,
-  FaInstagram,
-} from "react-icons/fa6";
+import { FaFacebookF, FaXTwitter, FaGithub, FaInstagram } from "react-icons/fa6";
 import { TbWorldWww } from "react-icons/tb";
 
 /**

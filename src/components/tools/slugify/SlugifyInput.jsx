@@ -3,13 +3,7 @@
 import PropTypes from "prop-types";
 
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
-  CardDescription,
-} from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -63,9 +57,7 @@ const SlugifyInput = ({
     <Card>
       <CardHeader>
         <CardTitle>Input String</CardTitle>
-        <CardDescription>
-          (Article title, tutorial title or any web page title)
-        </CardDescription>
+        <CardDescription>(Article title, tutorial title or any web page title)</CardDescription>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
@@ -80,9 +72,7 @@ const SlugifyInput = ({
           <div className="flex flex-col gap-2">
             <p className="text-muted-foreground text-sm">
               Currently separating with:{" "}
-              <span className="font-bold">
-                {useUnderscore ? "Underscore (_)" : "Dash (-)"}
-              </span>
+              <span className="font-bold">{useUnderscore ? "Underscore (_)" : "Dash (-)"}</span>
             </p>
             <div className="mb-2 flex gap-2">
               <Button
@@ -126,11 +116,7 @@ const SlugifyInput = ({
             </div>
 
             <div className="flex items-center space-x-1">
-              <Checkbox
-                id="use-latinize"
-                checked={useLitinize}
-                onCheckedChange={setUseLitinize}
-              />
+              <Checkbox id="use-latinize" checked={useLitinize} onCheckedChange={setUseLitinize} />
               <Label htmlFor="use-latinize">Use latinize</Label>
             </div>
           </div>

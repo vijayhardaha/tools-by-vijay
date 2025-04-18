@@ -125,11 +125,7 @@ const Content = ({ options, updateOption, activeTool, setActiveTool }) => {
         aria-label="Story content area"
         id="main-content"
         role="main"
-        className={cn(
-          "relative z-10",
-          "h-auto w-full",
-          "origin-top-left transform"
-        )}
+        className={cn("relative z-10", "h-auto w-full", "origin-top-left transform")}
       >
         <div
           aria-label={`Story canvas with ${options.cardRatio} aspect ratio`}
@@ -178,8 +174,7 @@ const Content = ({ options, updateOption, activeTool, setActiveTool }) => {
               e.preventDefault();
 
               const pastedText =
-                e.clipboardData.getData("text/html") ||
-                e.clipboardData.getData("text/plain");
+                e.clipboardData.getData("text/html") || e.clipboardData.getData("text/plain");
 
               const cleanHtml = renderHtml(sanitize(pastedText).trim());
 
@@ -218,8 +213,7 @@ const Content = ({ options, updateOption, activeTool, setActiveTool }) => {
             style={getContentStyles(options)}
           />
           <span id="content-description" className="sr-only">
-            Type or paste your story text here. Use the toolbar to format the
-            text.
+            Type or paste your story text here. Use the toolbar to format the text.
           </span>
           {/* Add a hidden textarea fallback for problematic devices */}
           {isFallbackNeeded && (

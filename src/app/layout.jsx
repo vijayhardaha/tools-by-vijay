@@ -1,5 +1,4 @@
 import { Work_Sans, Geist_Mono } from "next/font/google";
-
 import PropTypes from "prop-types";
 
 /**
@@ -25,6 +24,7 @@ const geistMono = Geist_Mono({
 });
 
 import { baseMetadata } from "@/constants/seo";
+
 import "../styles/globals.css";
 
 /**
@@ -39,10 +39,7 @@ export const metadata = baseMetadata;
  */
 const RootLayout = ({ children }) => {
   return (
-    <html
-      lang="en"
-      className={`${leagueSpartan.variable} ${geistMono.variable}`}
-    >
+    <html lang="en" className={`${leagueSpartan.variable} ${geistMono.variable}`}>
       <body>{children}</body>
     </html>
   );

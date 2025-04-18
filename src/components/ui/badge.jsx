@@ -43,14 +43,7 @@ function Badge({ className, variant, children, ...props }) {
 
 Badge.propTypes = {
   className: PropTypes.string,
-  variant: PropTypes.oneOf([
-    "default",
-    "secondary",
-    "success",
-    "warning",
-    "danger",
-    "info",
-  ]),
+  variant: PropTypes.oneOf(["default", "secondary", "success", "warning", "danger", "info"]),
   children: PropTypes.node.isRequired,
 };
 

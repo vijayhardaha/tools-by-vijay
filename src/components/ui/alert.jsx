@@ -2,13 +2,7 @@ import * as React from "react";
 
 import { cva } from "class-variance-authority";
 import PropTypes from "prop-types";
-import {
-  LuCircleAlert,
-  LuInfo,
-  LuTriangleAlert,
-  LuCircleCheck,
-  LuCircleX,
-} from "react-icons/lu";
+import { LuCircleAlert, LuInfo, LuTriangleAlert, LuCircleCheck, LuCircleX } from "react-icons/lu";
 
 import { cn } from "@/utils/classNameUtils";
 
@@ -32,10 +26,8 @@ const alertVariants = cva(
       variant: {
         default: "bg-neutral-50 text-neutral-700 border-neutral-200",
         info: "text-blue-500 bg-blue-50 border-blue-200 [&>svg]:text-current",
-        warning:
-          "text-amber-500 bg-amber-50 border-amber-200 [&>svg]:text-current",
-        success:
-          "text-green-500 bg-green-50 border-green-200 [&>svg]:text-current",
+        warning: "text-amber-500 bg-amber-50 border-amber-200 [&>svg]:text-current",
+        success: "text-green-500 bg-green-50 border-green-200 [&>svg]:text-current",
         danger: "text-red-500 bg-red-50 border-red-200 [&>svg]:text-current",
       },
     },

@@ -47,12 +47,7 @@ const BgOptionsPanel = ({ options, updateOption }) => {
       {tools.map(
         ({ name }) =>
           activeTool === name && (
-            <BgColorsSlider
-              key={name}
-              tool={name}
-              options={options}
-              updateOption={updateOption}
-            />
+            <BgColorsSlider key={name} tool={name} options={options} updateOption={updateOption} />
           )
       )}
 

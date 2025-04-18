@@ -4,13 +4,7 @@ import { useState } from "react";
 
 import PropTypes from "prop-types";
 
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
-  CardDescription,
-} from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import CopyButton from "@/components/ui/copy-button";
 import { Textarea } from "@/components/ui/textarea";
 
@@ -60,9 +54,7 @@ const JsMinifierOutput = ({ output, input }) => {
       const originalSize = new Blob([input]).size;
       if (originalSize > 0) {
         const savedBytes = originalSize - outputSize;
-        const compressionPercent = ((savedBytes / originalSize) * 100).toFixed(
-          2
-        );
+        const compressionPercent = ((savedBytes / originalSize) * 100).toFixed(2);
 
         if (savedBytes > 0) {
           compressionInfo.stats = `${compressionPercent}% compression, saving ${(savedBytes / 1024).toFixed(2)} kb`;
@@ -90,22 +82,13 @@ const JsMinifierOutput = ({ output, input }) => {
             </CardDescription>
           </div>
           <div className="inline-flex">
-            <CopyButton
-              copied={copied}
-              disabled={!output}
-              onClick={copyToClipboard}
-            />
+            <CopyButton copied={copied} disabled={!output} onClick={copyToClipboard} />
           </div>
         </div>
       </CardHeader>
       <CardContent>
         <div className="flex flex-col gap-2">
-          <Textarea
-            value={output}
-            readOnly
-            data-output
-            className="min-h-28 font-mono text-sm"
-          />
+          <Textarea value={output} readOnly data-output className="min-h-28 font-mono text-sm" />
         </div>
       </CardContent>
     </Card>

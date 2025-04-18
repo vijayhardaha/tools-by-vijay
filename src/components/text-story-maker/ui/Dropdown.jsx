@@ -13,9 +13,7 @@ import PropTypes from "prop-types";
 export const Dropdown = ({ children, label = "Menu" }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
-  const menuId = useRef(
-    `dropdown-menu-${Math.random().toString(36).slice(2, 9)}`
-  ).current;
+  const menuId = useRef(`dropdown-menu-${Math.random().toString(36).slice(2, 9)}`).current;
 
   /**
    * Toggles the dropdown open or closed.
@@ -59,12 +57,7 @@ export const Dropdown = ({ children, label = "Menu" }) => {
   }, [isOpen]);
 
   return (
-    <div
-      className="relative"
-      ref={dropdownRef}
-      role="navigation"
-      aria-label={label}
-    >
+    <div className="relative" ref={dropdownRef} role="navigation" aria-label={label}>
       {children({ isOpen, toggleDropdown, menuId })}
     </div>
   );

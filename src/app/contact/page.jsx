@@ -1,9 +1,4 @@
-import {
-  FaFacebookF,
-  FaXTwitter,
-  FaGithub,
-  FaInstagram,
-} from "react-icons/fa6";
+import { FaFacebookF, FaXTwitter, FaGithub, FaInstagram } from "react-icons/fa6";
 import { TbWorldWww } from "react-icons/tb";
 
 import PageContent from "@/components/page/PageContent";
@@ -37,15 +32,15 @@ const Contact = () => {
       <PageContent>
         <div className="space-y-4 text-base leading-relaxed">
           <p>
-            I’m based in India and work remotely with clients around the world.
-            If you find any of the tools on this site useful, feel free to
-            connect, give feedback, or share ideas for improvement.
+            I’m based in India and work remotely with clients around the world. If you find any of
+            the tools on this site useful, feel free to connect, give feedback, or share ideas for
+            improvement.
           </p>
 
           <p>
-            The entire code for this website is open-source and available on
-            GitHub. If you’re interested in learning how it works, want to
-            contribute, or spot a bug, you can check out the repo here:
+            The entire code for this website is open-source and available on GitHub. If you’re
+            interested in learning how it works, want to contribute, or spot a bug, you can check
+            out the repo here:
           </p>
 
           <p>
@@ -60,9 +55,9 @@ const Contact = () => {
           </p>
 
           <p>
-            I also work as a freelance developer — mostly with WordPress and
-            WooCommerce. Occasionally, I build small apps using Next.js. If
-            you’re looking to hire, you can reach me on PeoplePerHour:
+            I also work as a freelance developer — mostly with WordPress and WooCommerce.
+            Occasionally, I build small apps using Next.js. If you’re looking to hire, you can reach
+            me on PeoplePerHour:
           </p>
 
           <p>
@@ -126,10 +121,7 @@ const Contact = () => {
             </a>
           </div>
 
-          <p>
-            Thanks for stopping by. I hope these tools make your workflow a bit
-            easier.
-          </p>
+          <p>Thanks for stopping by. I hope these tools make your workflow a bit easier.</p>
         </div>
       </PageContent>
     </PageLayout>

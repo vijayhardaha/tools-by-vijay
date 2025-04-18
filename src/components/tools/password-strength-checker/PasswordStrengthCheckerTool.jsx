@@ -173,10 +173,7 @@ const PasswordStrengthCheckerTool = () => {
           onPasswordChange={handlePasswordChange}
           onClear={handleClear}
         />
-        <PasswordStrengthCheckerOutput
-          strength={strength}
-          password={password}
-        />
+        <PasswordStrengthCheckerOutput strength={strength} password={password} />
       </div>
 
       <div className="mt-16">

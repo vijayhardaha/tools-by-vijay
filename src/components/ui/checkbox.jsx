@@ -30,9 +30,7 @@ function Checkbox({
   id,
   ...props
 }) {
-  const [internalChecked, setInternalChecked] = useState(
-    controlledChecked || false
-  );
+  const [internalChecked, setInternalChecked] = useState(controlledChecked || false);
 
   const isControlled = controlledChecked !== undefined;
   const isChecked = isControlled ? controlledChecked : internalChecked;

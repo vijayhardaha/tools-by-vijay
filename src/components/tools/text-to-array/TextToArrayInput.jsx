@@ -5,13 +5,7 @@ import { FiInfo } from "react-icons/fi";
 
 import { Alert } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
-  CardDescription,
-} from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { Select } from "@/components/ui/select";
@@ -72,9 +66,7 @@ const TextToArrayInput = ({
     <Card>
       <CardHeader>
         <CardTitle>Text Input</CardTitle>
-        <CardDescription>
-          Paste multiline text and convert to various array formats
-        </CardDescription>
+        <CardDescription>Paste multiline text and convert to various array formats</CardDescription>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
@@ -138,11 +130,7 @@ const TextToArrayInput = ({
 
           <div className="flex flex-col gap-4">
             <div className="flex items-center space-x-2">
-              <Checkbox
-                id="trim-lines"
-                checked={trimLines}
-                onCheckedChange={setTrimLines}
-              />
+              <Checkbox id="trim-lines" checked={trimLines} onCheckedChange={setTrimLines} />
               <Label
                 htmlFor="trim-lines"
                 className="cursor-pointer text-sm leading-none font-medium"
@@ -172,11 +160,7 @@ const TextToArrayInput = ({
             </div>
 
             <div className="flex items-center space-x-2">
-              <Checkbox
-                id="use-slug-keys"
-                checked={useSlugKeys}
-                onCheckedChange={setUseSlugKeys}
-              />
+              <Checkbox id="use-slug-keys" checked={useSlugKeys} onCheckedChange={setUseSlugKeys} />
               <Label
                 htmlFor="use-slug-keys"
                 className="cursor-pointer text-sm leading-none font-medium"

@@ -44,13 +44,7 @@ const SidebarFooter = () => (
   <SheetFooter>
     <div className="flex justify-center space-x-2">
       {socialMediaLinks.map(({ key, icon, url, name, color }) => (
-        <SocialButton
-          key={key}
-          icon={icon}
-          href={url}
-          label={name}
-          color={color}
-        />
+        <SocialButton key={key} icon={icon} href={url} label={name} color={color} />
       ))}
     </div>
   </SheetFooter>

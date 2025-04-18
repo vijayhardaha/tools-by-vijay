@@ -3,10 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import PropTypes from "prop-types";
-import {
-  LuCheck as CheckIcon,
-  LuChevronDown as ChevronDownIcon,
-} from "react-icons/lu";
+import { LuCheck as CheckIcon, LuChevronDown as ChevronDownIcon } from "react-icons/lu";
 
 import { cn } from "@/utils/classNameUtils";
 
@@ -35,15 +32,12 @@ function Select({
   size = "default",
   ...props
 }) {
-  const [selectedValue, setSelectedValue] = useState(
-    defaultValue || value || ""
-  );
+  const [selectedValue, setSelectedValue] = useState(defaultValue || value || "");
   const [open, setOpen] = useState(false);
   const selectRef = useRef(null);
 
   // Get the label of the selected option
-  const selectedLabel =
-    options.find((opt) => opt.value === selectedValue)?.label || "";
+  const selectedLabel = options.find((opt) => opt.value === selectedValue)?.label || "";
 
   useEffect(() => {
     if (value !== undefined && value !== selectedValue) {
@@ -126,9 +120,7 @@ function Select({
           className
         )}
       >
-        <span data-slot="select-value">
-          {selectedValue ? selectedLabel : placeholder}
-        </span>
+        <span data-slot="select-value">{selectedValue ? selectedLabel : placeholder}</span>
         <span className="pointer-events-none">
           <ChevronDownIcon className="size-4 opacity-50" />
         </span>
@@ -162,9 +154,7 @@ function Select({
                     "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
                     "[&_svg:not([class*='text-'])]:text-muted-foreground",
                     isSelected && "bg-muted",
-                    isDisabled
-                      ? "cursor-not-allowed opacity-50"
-                      : "cursor-pointer"
+                    isDisabled ? "cursor-not-allowed opacity-50" : "cursor-pointer"
                   )}
                   onClick={(e) => {
                     e.preventDefault();
@@ -189,9 +179,7 @@ function Select({
             })}
 
             {options.length === 0 && (
-              <div className="text-muted-foreground px-2 py-1.5 text-xs">
-                No options available
-              </div>
+              <div className="text-muted-foreground px-2 py-1.5 text-xs">No options available</div>
             )}
           </div>
         </div>

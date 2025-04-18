@@ -4,13 +4,7 @@ import PropTypes from "prop-types";
 import { FiInfo } from "react-icons/fi";
 
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
-  CardDescription,
-} from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
@@ -74,9 +68,7 @@ const PasswordGeneratorInput = ({
           <div className="space-y-2">
             <div className="flex items-center justify-between">
               <Label htmlFor="password-length">Password Length:</Label>
-              <span className="text-muted-foreground text-sm">
-                {length} characters
-              </span>
+              <span className="text-muted-foreground text-sm">{length} characters</span>
             </div>
             <Slider
               id="password-length"
@@ -111,20 +103,12 @@ const PasswordGeneratorInput = ({
               </div>
 
               <div className="flex items-center space-x-2">
-                <Checkbox
-                  id="useNumbers"
-                  checked={useNumbers}
-                  onCheckedChange={setUseNumbers}
-                />
+                <Checkbox id="useNumbers" checked={useNumbers} onCheckedChange={setUseNumbers} />
                 <Label htmlFor="useNumbers">Include Numbers (0-9)</Label>
               </div>
 
               <div className="flex items-center space-x-2">
-                <Checkbox
-                  id="useSymbols"
-                  checked={useSymbols}
-                  onCheckedChange={setUseSymbols}
-                />
+                <Checkbox id="useSymbols" checked={useSymbols} onCheckedChange={setUseSymbols} />
                 <Label htmlFor="useSymbols">Include Symbols (!@#$...)</Label>
               </div>
             </div>

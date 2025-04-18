@@ -6,13 +6,7 @@ import PropTypes from "prop-types";
 
 import { Alert } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
-  CardDescription,
-} from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import CopyButton from "@/components/ui/copy-button";
 
 /**
@@ -65,9 +59,7 @@ const UrlShortenerOutput = ({ results }) => {
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex flex-col gap-1.5">
             <CardTitle>Shortened URLs</CardTitle>
-            <CardDescription>
-              Results from URL shortening process
-            </CardDescription>
+            <CardDescription>Results from URL shortening process</CardDescription>
           </div>
           {results.length > 0 && (
             <div className="inline-flex">
@@ -128,9 +120,7 @@ const UrlShortenerOutput = ({ results }) => {
                   <div>
                     <CopyButton
                       copied={copiedIndex === index}
-                      onClick={() =>
-                        copyToClipboard(result.shortenedUrl, index)
-                      }
+                      onClick={() => copyToClipboard(result.shortenedUrl, index)}
                     />
                   </div>
                 )}

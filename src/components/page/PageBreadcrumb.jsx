@@ -1,7 +1,6 @@
 import React from "react";
 
 import Link from "next/link";
-
 import PropTypes from "prop-types";
 
 /**
@@ -18,10 +17,7 @@ const PageBreadcrumb = ({ pageName }) => {
           </Link>
           <span className="mx-1 text-gray-500">/</span>
         </li>
-        <li
-          className="text-accent-foreground flex items-center font-medium"
-          aria-current="page"
-        >
+        <li className="text-accent-foreground flex items-center font-medium" aria-current="page">
           {pageName}
         </li>
       </ol>

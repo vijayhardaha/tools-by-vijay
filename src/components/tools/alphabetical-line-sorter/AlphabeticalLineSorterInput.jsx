@@ -10,20 +10,22 @@ import { RadioBox } from "@/components/ui/radiobox";
 import { Textarea } from "@/components/ui/textarea";
 
 /**
- * Input component for the Duplicate Line Removal tool.
- * Provides a form for text input, sorting options, and reverse sorting.
+ * Input component for the Alphabetical Line Sorter tool.
+ * Provides a form for text input, sorting type, reverse sorting option, and duplicate removal.
  *
  * @component
  * @param {Object} props - Component props
  * @returns {JSX.Element} The rendered input form
  */
-const DuplicateLineRemovalInput = ({
+const AlphabeticalLineSorterInput = ({
   textInput,
   setTextInput,
-  sortType,
-  setSortType,
   reverseSort,
   setReverseSort,
+  removeDuplicates,
+  setRemoveDuplicates,
+  sortType,
+  setSortType,
   onProcess,
   onReset,
   onClear,
@@ -36,9 +38,9 @@ const DuplicateLineRemovalInput = ({
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Duplicate Line Removal Input</CardTitle>
+        <CardTitle>Alphabetical Line Sorter Input</CardTitle>
         <CardDescription>
-          Enter your text and configure options to remove duplicate lines and sort them.
+          Enter your text and configure options to sort lines alphabetically.
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -46,7 +48,7 @@ const DuplicateLineRemovalInput = ({
           <div>
             <Textarea
               id="text-input"
-              placeholder="Enter text with duplicate lines..."
+              placeholder="Enter text to sort alphabetically..."
               value={textInput}
               onChange={(e) => setTextInput(e.target.value)}
               className="min-h-52 font-mono text-sm"
@@ -54,23 +56,15 @@ const DuplicateLineRemovalInput = ({
           </div>
 
           <div>
-            <Label className="text-base font-bold">Type of Sorting</Label>
+            <Label className="text-base font-bold">Sorting Type</Label>
             <div className="mt-2 flex gap-4">
               <RadioBox
-                id="sort-none"
+                id="sort-standard"
                 name="sortType"
-                checked={sortType === "none"}
-                onCheckedChange={() => setSortType("none")}
+                checked={sortType === "standard"}
+                onCheckedChange={() => setSortType("standard")}
               >
-                Don’t Sort Results
-              </RadioBox>
-              <RadioBox
-                id="sort-alphabetical"
-                name="sortType"
-                checked={sortType === "alphabetical"}
-                onCheckedChange={() => setSortType("alphabetical")}
-              >
-                Alphabetical Sort
+                Standard Alphabetical Order
               </RadioBox>
               <RadioBox
                 id="sort-ascii"
@@ -78,14 +72,23 @@ const DuplicateLineRemovalInput = ({
                 checked={sortType === "ascii"}
                 onCheckedChange={() => setSortType("ascii")}
               >
-                ASCII Sort
+                ASCII Sorting
               </RadioBox>
             </div>
           </div>
 
           <div className="flex items-center space-x-2">
             <Checkbox id="reverse-sort" checked={reverseSort} onCheckedChange={setReverseSort} />
-            <Label htmlFor="reverse-sort">Reverse Sorting (Z-A or 9-0)</Label>
+            <Label htmlFor="reverse-sort">Reverse Sorting (Z-A)</Label>
+          </div>
+
+          <div className="flex items-center space-x-2">
+            <Checkbox
+              id="remove-duplicates"
+              checked={removeDuplicates}
+              onCheckedChange={setRemoveDuplicates}
+            />
+            <Label htmlFor="remove-duplicates">Remove Duplicate Lines</Label>
           </div>
 
           <div className="flex gap-2">
@@ -107,16 +110,18 @@ const DuplicateLineRemovalInput = ({
   );
 };
 
-DuplicateLineRemovalInput.propTypes = {
+AlphabeticalLineSorterInput.propTypes = {
   textInput: PropTypes.string.isRequired,
   setTextInput: PropTypes.func.isRequired,
-  sortType: PropTypes.string.isRequired,
-  setSortType: PropTypes.func.isRequired,
   reverseSort: PropTypes.bool.isRequired,
   setReverseSort: PropTypes.func.isRequired,
+  removeDuplicates: PropTypes.bool.isRequired,
+  setRemoveDuplicates: PropTypes.func.isRequired,
+  sortType: PropTypes.string.isRequired,
+  setSortType: PropTypes.func.isRequired,
   onProcess: PropTypes.func.isRequired,
   onReset: PropTypes.func.isRequired,
   onClear: PropTypes.func.isRequired,
 };
 
-export default DuplicateLineRemovalInput;
+export default AlphabeticalLineSorterInput;

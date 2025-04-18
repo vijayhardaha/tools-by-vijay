@@ -7,6 +7,7 @@ import { Tooltip as ReactTooltip } from "react-tooltip";
 
 import { cn } from "@/utils/classNameUtils";
 
+// eslint-disable-next-line importPlugin/order
 import "react-tooltip/dist/react-tooltip.css";
 
 /**
@@ -20,14 +21,7 @@ import "react-tooltip/dist/react-tooltip.css";
  * @param {number} [props.delayDuration=300] - The delay in milliseconds before showing the tooltip.
  * @returns {JSX.Element} The rendered Tooltip component.
  */
-function Tooltip({
-  text,
-  children,
-  className,
-  sideOffset = 4,
-  delayDuration = 300,
-  ...props
-}) {
+function Tooltip({ text, children, className, sideOffset = 4, delayDuration = 300, ...props }) {
   const tooltipId = useId();
 
   return (

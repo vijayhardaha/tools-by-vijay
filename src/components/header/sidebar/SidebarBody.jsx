@@ -3,7 +3,6 @@
 import { useRef, useEffect } from "react";
 
 import Link from "next/link";
-
 import PropTypes from "prop-types";
 import { Scrollbars } from "react-custom-scrollbars-4";
 
@@ -42,9 +41,7 @@ NavLink.propTypes = {
  */
 const CategorySection = ({ title, tools }) => (
   <div className="mb-6">
-    <h3 className="text-foreground mb-3 text-sm font-bold uppercase">
-      {title}
-    </h3>
+    <h3 className="text-foreground mb-3 text-sm font-bold uppercase">{title}</h3>
     <ul className="space-y-3">
       {tools.map((tool) => (
         <li key={tool.slug}>
@@ -98,22 +95,14 @@ const SidebarBody = () => {
             if (categoryTools.length === 0) return null;
 
             return (
-              <CategorySection
-                key={category.slug}
-                title={category.label}
-                tools={categoryTools}
-              />
+              <CategorySection key={category.slug} title={category.label} tools={categoryTools} />
             );
           })}
 
           {/* Handle any uncategorized tools */}
-          {categorizedTools["uncategorized"] &&
-            categorizedTools["uncategorized"].length > 0 && (
-              <CategorySection
-                title="Other Tools"
-                tools={categorizedTools["uncategorized"]}
-              />
-            )}
+          {categorizedTools["uncategorized"] && categorizedTools["uncategorized"].length > 0 && (
+            <CategorySection title="Other Tools" tools={categorizedTools["uncategorized"]} />
+          )}
 
           <div className="border-border border-t pt-4">
             <ul className="space-y-3">

@@ -4,11 +4,7 @@ import { TbFrame as FrameToolIcon } from "react-icons/tb";
 
 import { cardRatios } from "@/components/text-story-maker/constants";
 import Button from "@/components/text-story-maker/parts/header/HeaderIconBtn";
-import {
-  Dropdown,
-  DropdownTrigger,
-  DropdownContent,
-} from "@/components/text-story-maker/ui";
+import { Dropdown, DropdownTrigger, DropdownContent } from "@/components/text-story-maker/ui";
 import { cn } from "@/utils/classNameUtils";
 
 /**

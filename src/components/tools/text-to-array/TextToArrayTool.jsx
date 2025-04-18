@@ -193,9 +193,7 @@ const TextToArrayTool = () => {
   const formatJsArrayOutput = (lines) => {
     try {
       if (arrayType === "simple") {
-        const simpleArray = lines.map(
-          (line) => `  "${line.replace(/"/g, '\\"')}"`
-        );
+        const simpleArray = lines.map((line) => `  "${line.replace(/"/g, '\\"')}"`);
         return `const textArray = [\n${simpleArray.join(",\n")}\n];`;
       } else if (arrayType === "numeric") {
         const numericArray = lines.map(
@@ -256,9 +254,7 @@ const TextToArrayTool = () => {
   const formatPhpOutput = (lines) => {
     try {
       if (arrayType === "simple") {
-        const arrayItems = lines.map(
-          (line) => `  '${line.replace(/'/g, "\\'")}'`
-        );
+        const arrayItems = lines.map((line) => `  '${line.replace(/'/g, "\\'")}'`);
         return `<?php\n$data = array(\n${arrayItems.join(",\n")}\n);`;
       } else if (arrayType === "numeric") {
         const arrayItems = lines.map(
@@ -293,8 +289,7 @@ const TextToArrayTool = () => {
         return `<?php\n$data = array(\n${arrayItems.join(",\n")}\n);`;
       } else if (arrayType === "numeric") {
         const arrayItems = lines.map(
-          (line, index) =>
-            `  ${index + 1} => __( '${line.replace(/'/g, "\\'")}', 'text-domain' )`
+          (line, index) => `  ${index + 1} => __( '${line.replace(/'/g, "\\'")}', 'text-domain' )`
         );
         return `<?php\n$data = array(\n${arrayItems.join(",\n")}\n);`;
       } else {

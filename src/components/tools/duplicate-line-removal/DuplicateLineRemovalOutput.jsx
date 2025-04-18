@@ -4,13 +4,7 @@ import { useState } from "react";
 
 import PropTypes from "prop-types";
 
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
-  CardDescription,
-} from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import CopyButton from "@/components/ui/copy-button";
 import { Textarea } from "@/components/ui/textarea";
 
@@ -41,25 +35,16 @@ const DuplicateLineRemovalOutput = ({ output }) => {
           <div className="flex flex-col gap-1.5">
             <CardTitle>Output</CardTitle>
             <CardDescription>
-              The text after removing duplicate lines and applying sorting
-              options.
+              The text after removing duplicate lines and applying sorting options.
             </CardDescription>
           </div>
           <div className="inline-flex">
-            <CopyButton
-              copied={copied}
-              disabled={!output}
-              onClick={copyToClipboard}
-            />
+            <CopyButton copied={copied} disabled={!output} onClick={copyToClipboard} />
           </div>
         </div>
       </CardHeader>
       <CardContent>
-        <Textarea
-          value={output}
-          readOnly
-          className="min-h-52 font-mono text-sm"
-        />
+        <Textarea value={output} readOnly className="min-h-52 font-mono text-sm" />
       </CardContent>
     </Card>
   );

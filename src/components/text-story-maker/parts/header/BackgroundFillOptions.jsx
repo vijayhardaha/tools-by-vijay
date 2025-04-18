@@ -36,9 +36,7 @@ const BackgroundFillOptions = ({ activeTool, setActiveTool }) => {
       /**
        * Click handler to toggle the active tool.
        */
-      onClick={() =>
-        setActiveTool((prev) => (prev !== "background" ? "background" : ""))
-      }
+      onClick={() => setActiveTool((prev) => (prev !== "background" ? "background" : ""))}
       /**
        * Aria-pressed attribute to indicate button state
        */

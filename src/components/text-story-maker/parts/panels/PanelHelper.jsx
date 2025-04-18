@@ -236,13 +236,7 @@ ToggleOptions.propTypes = {
  * @param {string} [props.buttonClass] - Additional CSS classes to apply to the toggle buttons.
  * @returns {JSX.Element} The styled toggle group component.
  */
-const ToggleColors = ({
-  label,
-  selected,
-  onChangeKey,
-  onChangeHandler,
-  buttonClass,
-}) => {
+const ToggleColors = ({ label, selected, onChangeKey, onChangeHandler, buttonClass }) => {
   const handleClick = (value) => {
     onChangeHandler(onChangeKey, value);
   };
@@ -295,11 +289,4 @@ ToggleColors.propTypes = {
   buttonClass: PropTypes.string,
 };
 
-export {
-  ControlPanel,
-  ControlBox,
-  ControlBtn,
-  ControlSlider,
-  ToggleOptions,
-  ToggleColors,
-};
+export { ControlPanel, ControlBox, ControlBtn, ControlSlider, ToggleOptions, ToggleColors };

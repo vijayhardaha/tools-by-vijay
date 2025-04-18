@@ -137,10 +137,7 @@ function CardAction({ className, children, component, ...props }) {
   return (
     <Tag
       data-slot="card-action"
-      className={cn(
-        "col-start-2 row-span-2 row-start-1 self-start justify-self-end",
-        className
-      )}
+      className={cn("col-start-2 row-span-2 row-start-1 self-start justify-self-end", className)}
       {...props}
     >
       {children}
@@ -166,11 +163,7 @@ CardAction.propTypes = {
 function CardContent({ className, children, component, ...props }) {
   const Tag = component || "div";
   return (
-    <Tag
-      data-slot="card-content"
-      className={cn("px-4 md:px-6", className)}
-      {...props}
-    >
+    <Tag data-slot="card-content" className={cn("px-4 md:px-6", className)} {...props}>
       {children}
     </Tag>
   );
@@ -213,12 +206,4 @@ CardFooter.propTypes = {
   component: PropTypes.elementType,
 };
 
-export {
-  Card,
-  CardHeader,
-  CardFooter,
-  CardTitle,
-  CardAction,
-  CardDescription,
-  CardContent,
-};
+export { Card, CardHeader, CardFooter, CardTitle, CardAction, CardDescription, CardContent };

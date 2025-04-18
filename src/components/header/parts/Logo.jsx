@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-
 import propTypes from "prop-types";
 
 import { cn } from "@/utils/classNameUtils";

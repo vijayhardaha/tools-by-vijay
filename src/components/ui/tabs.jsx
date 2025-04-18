@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  useCallback,
-  useContext,
-  createContext,
-  useState,
-  useEffect,
-} from "react";
+import { useCallback, useContext, createContext, useState, useEffect } from "react";
 
 import PropTypes from "prop-types";
 
@@ -28,14 +22,7 @@ const TabsContext = createContext({
  * @param {React.ReactNode} props.children - Tab elements
  * @returns {JSX.Element} Tabs component
  */
-function Tabs({
-  className,
-  defaultValue,
-  value,
-  onValueChange,
-  children,
-  ...props
-}) {
+function Tabs({ className, defaultValue, value, onValueChange, children, ...props }) {
   const [selectedTab, setSelectedTab] = useState(value || defaultValue || "");
 
   useEffect(() => {
@@ -61,9 +48,7 @@ function Tabs({
       role="tablist"
       {...props}
     >
-      <TabsContext.Provider
-        value={{ selectedTab, setSelectedTab: handleTabChange }}
-      >
+      <TabsContext.Provider value={{ selectedTab, setSelectedTab: handleTabChange }}>
         {children}
       </TabsContext.Provider>
     </div>

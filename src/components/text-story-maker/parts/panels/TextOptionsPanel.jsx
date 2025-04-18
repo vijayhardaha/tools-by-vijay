@@ -51,8 +51,7 @@ const TextOptionsPanel = ({ options, updateOption }) => {
    * @param {string} key - The option key to update.
    * @param {Array<number>} values - Array containing the value.
    */
-  const handleSliderChange = (key, values) =>
-    updateOption(key, parseFloat(values[0]));
+  const handleSliderChange = (key, values) => updateOption(key, parseFloat(values[0]));
 
   /**
    * Toggles the text alignment option in sequence.
@@ -111,9 +110,7 @@ const TextOptionsPanel = ({ options, updateOption }) => {
 
   return (
     <ControlPanel>
-      {activeTool === "font-family" && (
-        <FontSlider options={options} updateOption={updateOption} />
-      )}
+      {activeTool === "font-family" && <FontSlider options={options} updateOption={updateOption} />}
 
       {activeTool === "text-color" && (
         <TextColorsPanel options={options} updateOption={updateOption} />

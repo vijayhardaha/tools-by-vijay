@@ -196,9 +196,7 @@ const DropdownToArrayTool = () => {
   const formatJsArrayOutput = (options) => {
     try {
       if (arrayType === "simple") {
-        const simpleArray = options.map(
-          (option) => `  "${option.text.replace(/"/g, '\\"')}"`
-        );
+        const simpleArray = options.map((option) => `  "${option.text.replace(/"/g, '\\"')}"`);
         return `const dropdownArray = [\n${simpleArray.join(",\n")}\n];`;
       } else if (arrayType === "numeric") {
         const numericArray = options.map(
@@ -229,14 +227,12 @@ const DropdownToArrayTool = () => {
     try {
       if (arrayType === "simple") {
         const objectItems = options.map(
-          (option, index) =>
-            `  "${index + 1}": "${option.text.replace(/"/g, '\\"')}"`
+          (option, index) => `  "${index + 1}": "${option.text.replace(/"/g, '\\"')}"`
         );
         return `const dropdownObject = {\n${objectItems.join(",\n")}\n};`;
       } else if (arrayType === "numeric") {
         const objectItems = options.map(
-          (option, index) =>
-            `  "${index + 1}": "${option.text.replace(/"/g, '\\"')}"`
+          (option, index) => `  "${index + 1}": "${option.text.replace(/"/g, '\\"')}"`
         );
         return `const dropdownObject = {\n${objectItems.join(",\n")}\n};`;
       } else {
@@ -261,14 +257,11 @@ const DropdownToArrayTool = () => {
   const formatPhpOutput = (options) => {
     try {
       if (arrayType === "simple") {
-        const arrayItems = options.map(
-          (option) => `  '${option.text.replace(/'/g, "\\'")}'`
-        );
+        const arrayItems = options.map((option) => `  '${option.text.replace(/'/g, "\\'")}'`);
         return `<?php\n$data = array(\n${arrayItems.join(",\n")}\n);`;
       } else if (arrayType === "numeric") {
         const arrayItems = options.map(
-          (option, index) =>
-            `  '${index + 1}' => '${option.text.replace(/'/g, "\\'")}'`
+          (option, index) => `  '${index + 1}' => '${option.text.replace(/'/g, "\\'")}'`
         );
         return `<?php\n$data = array(\n${arrayItems.join(",\n")}\n);`;
       } else {
@@ -294,8 +287,7 @@ const DropdownToArrayTool = () => {
     try {
       if (arrayType === "simple") {
         const arrayItems = options.map(
-          (option) =>
-            `  __( '${option.text.replace(/'/g, "\\'")}', 'text-domain' )`
+          (option) => `  __( '${option.text.replace(/'/g, "\\'")}', 'text-domain' )`
         );
         return `<?php\n$data = array(\n${arrayItems.join(",\n")}\n);`;
       } else if (arrayType === "numeric") {

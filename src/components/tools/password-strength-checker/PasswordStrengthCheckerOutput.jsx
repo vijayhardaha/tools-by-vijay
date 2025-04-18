@@ -3,13 +3,7 @@
 import PropTypes from "prop-types";
 import { LuCheck as CheckIcon, LuX as XIcon } from "react-icons/lu";
 
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
-  CardDescription,
-} from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { cn } from "@/utils/classNameUtils";
 
@@ -67,12 +61,7 @@ const PasswordStrengthCheckerOutput = ({ strength, password }) => {
           <div className="space-y-2">
             <div className="flex items-center justify-between">
               <span className="text-sm font-medium">Strength</span>
-              <span
-                className={cn(
-                  "text-sm font-bold",
-                  strengthTextColors[strength.score]
-                )}
-              >
+              <span className={cn("text-sm font-bold", strengthTextColors[strength.score])}>
                 {strengthLevels[strength.score]}
               </span>
             </div>

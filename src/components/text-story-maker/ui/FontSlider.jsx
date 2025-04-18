@@ -7,6 +7,7 @@ import { cn } from "@/utils/classNameUtils";
 
 import { getFontClass } from "../utils/styleUtils";
 
+// eslint-disable-next-line importPlugin/order
 import "keen-slider/keen-slider.min.css";
 
 /**
@@ -36,11 +37,7 @@ const FontSlider = ({ options, updateOption }) => {
       role="region"
       aria-label="Font selection slider"
     >
-      <div
-        ref={sliderRef}
-        className="keen-slider"
-        aria-roledescription="carousel"
-      >
+      <div ref={sliderRef} className="keen-slider" aria-roledescription="carousel">
         {fonts.map(({ label }, font) => (
           <div
             key={font}
@@ -67,12 +64,8 @@ const FontSlider = ({ options, updateOption }) => {
                 aria-label={`Select ${label} font`}
                 aria-pressed={options.textFont === font}
               >
-                <span className="truncate overflow-hidden whitespace-nowrap">
-                  {label}
-                </span>
-                {options.textFont === font && (
-                  <span className="sr-only">(currently selected)</span>
-                )}
+                <span className="truncate overflow-hidden whitespace-nowrap">{label}</span>
+                {options.textFont === font && <span className="sr-only">(currently selected)</span>}
               </button>
             </div>
           </div>

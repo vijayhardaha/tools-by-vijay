@@ -6,8 +6,7 @@ const tools = [
     name: "Slugify",
     slug: "slugify",
     shortDescription: "Convert text into URL-friendly slugs.",
-    pageDescription:
-      "Use the Slugify tool to convert any string into a clean, readable URL slug.",
+    pageDescription: "Use the Slugify tool to convert any string into a clean, readable URL slug.",
     seoTitle: "Slugify Tool – Generate SEO-Friendly Slugs Online",
     seoDescription:
       "Convert text into SEO-friendly URL slugs instantly. Simple and effective slug generator.",
@@ -50,11 +49,9 @@ const tools = [
     name: "HTML Minifier",
     slug: "html-minifier",
     shortDescription: "Minify your HTML code easily.",
-    pageDescription:
-      "Reduce file size and optimize performance by minifying your HTML code.",
+    pageDescription: "Reduce file size and optimize performance by minifying your HTML code.",
     seoTitle: "HTML Minifier – Optimize Your HTML Code",
-    seoDescription:
-      "Minify and compress HTML code for better website speed and SEO.",
+    seoDescription: "Minify and compress HTML code for better website speed and SEO.",
     category: "code-optimization",
   },
   {
@@ -72,11 +69,9 @@ const tools = [
     name: "JS Minifier",
     slug: "js-minifier",
     shortDescription: "Minify JavaScript code.",
-    pageDescription:
-      "Speed up your website by compressing and optimizing JavaScript files.",
+    pageDescription: "Speed up your website by compressing and optimizing JavaScript files.",
     seoTitle: "JavaScript Minifier – Compress JS Code Easily",
-    seoDescription:
-      "Minify JavaScript files for better performance and faster load times.",
+    seoDescription: "Minify JavaScript files for better performance and faster load times.",
     category: "code-optimization",
   },
   {

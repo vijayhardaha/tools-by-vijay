@@ -39,21 +39,14 @@ const FooterAbout = () => {
         </div>
 
         <p className="text-foreground text-sm">
-          A collection of free online tools built to make developer’s lives
-          easier. From code optimization to text transformation, find the tools
-          you need for your projects.
+          A collection of free online tools built to make developer’s lives easier. From code
+          optimization to text transformation, find the tools you need for your projects.
         </p>
       </div>
 
       <div className="flex space-x-2">
         {socialMediaLinks.map(({ key, icon, url, name, color }) => (
-          <SocialButton
-            key={key}
-            icon={icon}
-            href={url}
-            label={name}
-            color={color}
-          />
+          <SocialButton key={key} icon={icon} href={url} label={name} color={color} />
         ))}
       </div>
     </div>

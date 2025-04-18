@@ -4,13 +4,7 @@ import PropTypes from "prop-types";
 
 import { Alert } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
-  CardDescription,
-} from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 
 /**
@@ -76,19 +70,10 @@ const UrlShortenerInput = ({
           {error && <Alert variant="danger" text={error} />}
 
           <div className="flex flex-wrap gap-2">
-            <Button
-              type="submit"
-              variant="default"
-              disabled={!input.trim() || isLoading}
-            >
+            <Button type="submit" variant="default" disabled={!input.trim() || isLoading}>
               {isLoading ? "Shortening..." : "Shorten URLs"}
             </Button>
-            <Button
-              type="button"
-              variant="outline"
-              onClick={onClear}
-              disabled={isLoading}
-            >
+            <Button type="button" variant="outline" onClick={onClear} disabled={isLoading}>
               Clear
             </Button>
           </div>
