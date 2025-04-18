@@ -14,10 +14,10 @@ trim_trailing_whitespace = true # Remove trailing whitespace
 [*.txt]
 trim_trailing_whitespace = false
 
-# Override for Markdown, JSON, and YAML files
+# Override for Markdown, YAML files
 [*.{md,yml}]
-indent_style = space  # Use spaces for indentation
-indent_size = 2       # Set indentation size to 2 spaces
+indent_style = space
+indent_size = 2
 
 # Override for JSON files (use tabs but keep indent size as 2)
 [*.json]
@@ -26,5 +26,10 @@ indent_size = 2
 
 # Override for JavaScript, TypeScript, and JSX/TSX files
 [*.{js,mjs,cjs,jsx,ts,tsx}]
+indent_style = space
+indent_size = 2
+
+# Override for CSS, SCSS, and LESS files
+[*.{css,scss,less}]
 indent_style = space
 indent_size = 2
