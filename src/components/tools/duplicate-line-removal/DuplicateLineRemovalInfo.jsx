@@ -66,7 +66,7 @@ const DuplicateLineRemovalInfo = () => {
         <div className="space-y-4">
           <div>
             <h4 className="mb-2 font-medium">Input Example:</h4>
-            <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-xs">
+            <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-sm">
               {`apple
 banana
 apple
@@ -79,7 +79,7 @@ banana`}
             <h4 className="mb-2 font-medium">
               Output Example (Alphabetical Sort):
             </h4>
-            <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-xs">
+            <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-sm">
               {`apple
 banana
 orange`}

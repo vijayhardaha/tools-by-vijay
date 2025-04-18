@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import DuplicateLineRemovalInput from "./DuplicateLineRemovalInput";
 import DuplicateLineRemovalOutput from "./DuplicateLineRemovalOutput";
+import DuplicateLineRemovalInfo from "./DuplicateLineRemovalInfo";
 
 /**
  * Main component for the Duplicate Line Removal tool.
@@ -49,7 +50,8 @@ const DuplicateLineRemovalTool = () => {
   };
 
   return (
-    <div className="grid grid-cols-1 gap-6">
+    <>
+      <div className="grid grid-cols-1 gap-6">
       <DuplicateLineRemovalInput
         textInput={textInput}
         setTextInput={setTextInput}
@@ -63,6 +65,11 @@ const DuplicateLineRemovalTool = () => {
       />
       <DuplicateLineRemovalOutput output={output} />
     </div>
+
+    <div className="mt-16">
+        <DuplicateLineRemovalInfo />
+      </div>
+    </>
   );
 };
 

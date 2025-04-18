@@ -82,7 +82,7 @@ const DropdownToArrayInfo = () => {
         <div className="space-y-4">
           <div>
             <h4 className="mb-2 font-medium">Input Example:</h4>
-            <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-xs">
+            <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-sm">
               {`<select name="country">
   <option value="us">United States</option>
   <option value="ca">Canada</option>
@@ -99,7 +99,7 @@ const DropdownToArrayInfo = () => {
                 <h5 className="text-sm font-medium">
                   JSON Associative Output:
                 </h5>
-                <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-xs">
+                <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-sm">
                   {`[
   {
     "key": "us",
@@ -125,7 +125,7 @@ const DropdownToArrayInfo = () => {
                 <h5 className="text-sm font-medium">
                   JavaScript Array (Associative with Slugified Keys):
                 </h5>
-                <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-xs">
+                <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-sm">
                   {`const dropdownArray = [
   {
     "key": "us",
@@ -149,7 +149,7 @@ const DropdownToArrayInfo = () => {
 
               <div>
                 <h5 className="text-sm font-medium">PHP Array (Simple):</h5>
-                <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-xs">
+                <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-sm">
                   {`<?php
 $data = array(
   'United States',
@@ -164,7 +164,7 @@ $data = array(
                 <h5 className="text-sm font-medium">
                   WordPress Select Options (Associative):
                 </h5>
-                <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-xs">
+                <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-sm">
                   {`<?php
 $data = array(
   'us' => __( 'United States', 'text-domain' ),

@@ -61,7 +61,7 @@ const JsonSorterInfo = () => {
         <div className="space-y-4">
           <div>
             <h4 className="mb-2 font-medium">Input Example:</h4>
-            <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-xs">
+            <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-sm">
               {`{
   "zebra": 1,
   "apple": 2,
@@ -76,7 +76,7 @@ const JsonSorterInfo = () => {
 
           <div>
             <h4 className="mb-2 font-medium">Output Example:</h4>
-            <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-xs">
+            <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-sm">
               {`{
   "apple": 2,
   "banana": {
