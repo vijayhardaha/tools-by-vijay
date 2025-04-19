@@ -20,9 +20,7 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "./src/*"
-      ]
+      "@/*": ["./src/*"]
     },
     "plugins": [
       {
@@ -31,10 +29,10 @@
     ]
   },
   "include": [
-		"**/*.{js,mjs,cjs,jsx,ts,tsx}",
-		"*.config.mjs",
-		"next-env.d.ts",
-		".next/types/**/*.ts"
+    "./**/*.{js,jsx,ts,tsx,mjs,cjs}",
+    "*.config.mjs",
+    "next-env.d.ts",
+    ".next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"
