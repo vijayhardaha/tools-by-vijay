@@ -50,23 +50,14 @@ function Checkbox({
   };
 
   return (
-    <div
+    <label
       data-slot="checkbox"
       className={cn(
         // Layout & base appearance
-        "relative size-4 shrink-0 rounded-[4px] border",
+        "inline-flex items-center",
 
         // Colors & background
-        "border-input",
-        "data-[checked=true]:bg-primary data-[checked=true]:text-primary-foreground",
-        "data-[checked=true]:border-primary",
-
-        // Accessibility & validation
-        "aria-invalid:border-destructive",
-        "aria-invalid:ring-destructive/20",
-
-        // Focus styles
-        "focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]",
+        "text-foreground",
 
         // Disabled state
         "disabled:cursor-not-allowed disabled:opacity-50",
@@ -74,8 +65,6 @@ function Checkbox({
         // Transition & outline
         "transition-shadow outline-none",
 
-        // Peer-related styling
-        "peer",
         className
       )}
       data-checked={isChecked}
@@ -84,22 +73,27 @@ function Checkbox({
       <input
         type="checkbox"
         id={id}
-        className="absolute size-4 cursor-pointer opacity-0"
+        className="hidden cursor-pointer"
         checked={isChecked}
         onChange={handleChange}
         disabled={disabled}
         required={required}
       />
-      {isChecked && (
-        <div
-          data-slot="checkbox-indicator"
-          className="flex size-4 items-center justify-center text-current transition-none"
-        >
-          <CheckIcon className="size-3" />
-        </div>
+      <div
+        data-slot="checkbox-indicator"
+        className={cn(
+          "flex h-4 w-4 cursor-pointer items-center justify-center rounded border",
+          isChecked ? "bg-primary border-primary text-primary-foreground" : "border-input"
+        )}
+      >
+        {isChecked && <CheckIcon className="h-3 w-3" />}
+      </div>
+      {children && (
+        <span className="ml-2 text-sm leading-none font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+          {children}
+        </span>
       )}
-      {children}
-    </div>
+    </label>
   );
 }
 
