@@ -51,15 +51,6 @@ const BulkSlugifyInput = ({
   setKeepEmptyLines,
 }) => {
   /**
-   * Handles changes to the input textarea
-   *
-   * @param {Object} e - Event object
-   */
-  const handleInputChange = (e) => {
-    setInput(e.target.value);
-  };
-
-  /**
    * Handles form submission to generate slugs
    *
    * @param {Object} e - Event object
@@ -78,10 +69,11 @@ const BulkSlugifyInput = ({
       <CardContent>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <Textarea
+            id="text-input"
             placeholder="Enter multiple lines of text to slugify"
+            rows={8}
             value={input}
-            rows={5}
-            onChange={handleInputChange}
+            onChange={(e) => setInput(e.target.value)}
           />
 
           <div className="flex flex-col gap-2">
@@ -113,7 +105,7 @@ const BulkSlugifyInput = ({
           </div>
 
           <div className="flex flex-wrap gap-4">
-            <Checkbox id="useLowercase" checked={useLowercase} onCheckedChange={setUseLowercase}>
+            <Checkbox id="use-lowercase" checked={useLowercase} onCheckedChange={setUseLowercase}>
               Convert to lowercase
             </Checkbox>
 
@@ -142,9 +134,11 @@ const BulkSlugifyInput = ({
             <Button type="submit" variant="default" disabled={!input}>
               Generate
             </Button>
+
             <Button type="button" variant="outline" onClick={onClear}>
               Clear
             </Button>
+
             <Button type="button" variant="destructive" onClick={onReset}>
               Reset
             </Button>
