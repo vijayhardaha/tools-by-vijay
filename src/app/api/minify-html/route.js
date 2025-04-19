@@ -2,10 +2,10 @@ import { minify } from "html-minifier-terser";
 import { NextResponse } from "next/server";
 
 /**
- * API route handler for HTML minification
+ * API route handler for HTML minification.
  *
- * @param {Request} request - The incoming request object
- * @returns {Promise<Response>} JSON response with minified HTML or error
+ * @param {Request} request - The incoming request object.
+ * @returns {Promise<Response>} JSON response with minified HTML or an error message.
  */
 export async function POST(request) {
   try {

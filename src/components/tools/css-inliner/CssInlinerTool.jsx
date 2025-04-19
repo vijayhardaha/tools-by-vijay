@@ -12,12 +12,28 @@ const CssInlinerTool = () => {
   const [output, setOutput] = useState("");
 
   /**
-   * Handles the inlining of CSS into HTML.
+   * Handles the inlining of CSS into HTML via API.
    */
-  const handleInlineCss = () => {
-    // Example logic for inlining CSS (replace with actual implementation)
-    const inlinedHtml = `<style>${cssInput}</style>\n${htmlInput}`;
-    setOutput(inlinedHtml);
+  const handleInlineCss = async () => {
+    try {
+      const response = await fetch("/api/inline-css", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ html: htmlInput, css: cssInput }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to inline CSS");
+      }
+
+      const data = await response.json();
+      setOutput(data.formattedHtml);
+    } catch (error) {
+      console.error("Error inlining CSS:", error);
+      setOutput("Error inlining CSS. Please check your input.");
+    }
   };
 
   /**

@@ -43,6 +43,7 @@ const CssInlinerInput = ({
               placeholder="Enter HTML here..."
               value={htmlInput}
               onChange={(e) => setHtmlInput(e.target.value)}
+              className="min-h-28"
             />
           </div>
           <div className="flex flex-col gap-2">
@@ -51,6 +52,7 @@ const CssInlinerInput = ({
               placeholder="Enter CSS here..."
               value={cssInput}
               onChange={(e) => setCssInput(e.target.value)}
+              className="min-h-28"
             />
           </div>
           <div className="mt-2 flex gap-2">
