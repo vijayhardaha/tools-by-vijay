@@ -21,9 +21,11 @@ const AlphabeticalLineSorterOutput = ({ output }) => {
   const [copied, setCopied] = useState(false);
 
   /**
-   * Handles the copy to clipboard action.
-   * Copies the sorted text to the clipboard and sets a temporary copied state.
-   * Resets the copied state after 1 second.
+   * Copies the output text to the clipboard and shows a temporary confirmation.
+   *
+   * @async
+   * @function
+   * @returns {Promise<void>}
    */
   const copyToClipboard = async () => {
     await navigator.clipboard.writeText(output);
