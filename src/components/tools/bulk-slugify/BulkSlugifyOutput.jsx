@@ -45,9 +45,6 @@ const BulkSlugifyOutput = ({ output }) => {
   // Split the output into individual lines and filter out empty lines
   const lines = output.split("\n").filter((line) => line.trim() !== "");
 
-  // Get the total number of lines including empty ones for textarea rows
-  const unfilteredLinesLength = output.split("\n").length;
-
   return (
     <Card>
       <CardHeader>
@@ -68,7 +65,7 @@ const BulkSlugifyOutput = ({ output }) => {
       </CardHeader>
       <CardContent>
         <div className="flex flex-col gap-2">
-          <Textarea value={output} rows={unfilteredLinesLength || 1} readOnly data-output />
+          <Textarea value={output} className="min-he-52" readOnly data-output />
 
           <div className="flex flex-col gap-2">
             {lines.map((line, index) => (
@@ -76,7 +73,6 @@ const BulkSlugifyOutput = ({ output }) => {
                 <Input type="text" value={line} readOnly data-output />
                 <CopyButton
                   copied={copiedIndex === index}
-                  disabled={!line}
                   onClick={() => copyToClipboard(line, index)}
                 />
               </div>

@@ -25,6 +25,7 @@ const BulkSlugifyTool = () => {
   const [removeNumbers, setRemoveNumbers] = useState(false);
   const [useLowercase, setUseLowercase] = useState(true);
   const [useLitinize, setUseLitinize] = useState(true);
+  const [keepEmptyLines, setKeepEmptyLines] = useState(false);
 
   /**
    * Generates slugs from the input text based on configuration options
@@ -35,6 +36,7 @@ const BulkSlugifyTool = () => {
   const generateSlugs = (text) => {
     return text
       .split("\n")
+      .filter((line) => keepEmptyLines || line.trim() !== "")
       .map((line) => {
         let processedText = line;
 
@@ -82,6 +84,7 @@ const BulkSlugifyTool = () => {
     setRemoveNumbers(false);
     setUseLowercase(true);
     setUseLitinize(true);
+    setKeepEmptyLines(false);
   };
 
   return (
@@ -98,6 +101,8 @@ const BulkSlugifyTool = () => {
           setUseLowercase={setUseLowercase}
           useLitinize={useLitinize}
           setUseLitinize={setUseLitinize}
+          keepEmptyLines={keepEmptyLines}
+          setKeepEmptyLines={setKeepEmptyLines}
           onSubmit={handleSubmit}
           onClear={handleClear}
           onReset={handleReset}

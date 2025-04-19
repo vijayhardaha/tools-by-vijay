@@ -29,6 +29,8 @@ import { cn } from "@/utils/classNameUtils";
  * @param {Function} props.onSubmit - Function to handle slug generation
  * @param {Function} props.onClear - Function to clear the input
  * @param {Function} props.onReset - Function to reset all options to defaults
+ * @param {Function} props.setKeepEmptyLines - Function to toggle keeping empty lines
+ * @param {boolean} props.keepEmptyLines - Whether to keep empty lines in the output
  * @returns {JSX.Element} Input form with configuration options
  */
 const BulkSlugifyInput = ({
@@ -45,6 +47,8 @@ const BulkSlugifyInput = ({
   onSubmit,
   onClear,
   onReset,
+  keepEmptyLines = false,
+  setKeepEmptyLines,
 }) => {
   /**
    * Handles changes to the input textarea
@@ -124,6 +128,14 @@ const BulkSlugifyInput = ({
             <Checkbox id="use-latinize" checked={useLitinize} onCheckedChange={setUseLitinize}>
               Use latinize
             </Checkbox>
+
+            <Checkbox
+              id="keep-empty-lines"
+              checked={keepEmptyLines}
+              onCheckedChange={setKeepEmptyLines}
+            >
+              Keep empty lines
+            </Checkbox>
           </div>
 
           <div className="flex flex-wrap gap-2">
@@ -157,6 +169,8 @@ BulkSlugifyInput.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   onClear: PropTypes.func.isRequired,
   onReset: PropTypes.func.isRequired,
+  keepEmptyLines: PropTypes.bool.isRequired,
+  setKeepEmptyLines: PropTypes.func.isRequired,
 };
 
 export default BulkSlugifyInput;
