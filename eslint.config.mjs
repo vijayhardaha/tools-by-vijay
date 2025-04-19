@@ -22,9 +22,7 @@ const compat = new FlatCompat({
 
 export default defineConfig([
   globalIgnores(["**/.next/", "**/node_modules/", "**/build/", "**/dist/", "**/.env*"]),
-  {
-    files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"],
-  },
+  { files: ["**/*.{js,jsx,ts,tsx,mjs,cjs}"] },
   {
     extends: compat.extends(
       "next",
@@ -59,6 +57,7 @@ export default defineConfig([
           jsx: true,
         },
         project: "./tsconfig.json",
+        tsconfigRootDir: __dirname,
       },
     },
 
