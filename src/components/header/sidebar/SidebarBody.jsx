@@ -107,9 +107,6 @@ const SidebarBody = () => {
           <div className="border-border border-t pt-4">
             <ul className="space-y-3">
               <li>
-                <NavLink href="/text-story-maker">Text Story Maker</NavLink>
-              </li>
-              <li>
                 <NavLink href="/about">About</NavLink>
               </li>
               <li>
