@@ -13,6 +13,7 @@ import {
   PiListBulletsBold,
   PiTextAlignLeftBold,
   PiCodeSimpleBold,
+  PiQuotesFill,
 } from "react-icons/pi";
 
 export const toolIcons = {
@@ -30,4 +31,5 @@ export const toolIcons = {
   "duplicate-line-removal": <PiListBulletsBold />,
   "alphabetical-line-sorter": <PiTextAlignLeftBold />,
   "css-inliner": <PiCodeSimpleBold />,
+  "replace-quotes": <PiQuotesFill />,
 };
