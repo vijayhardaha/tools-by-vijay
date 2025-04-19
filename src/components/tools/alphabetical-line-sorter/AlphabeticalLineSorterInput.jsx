@@ -47,9 +47,9 @@ const AlphabeticalLineSorterInput = ({
           <Textarea
             id="text-input"
             placeholder="Enter text to sort alphabetically..."
+            rows={8}
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            className="min-h-52"
           />
 
           <div className="flex flex-wrap gap-4">
