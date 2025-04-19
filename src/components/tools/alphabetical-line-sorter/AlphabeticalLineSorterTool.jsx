@@ -14,14 +14,14 @@ import AlphabeticalLineSorterOutput from "./AlphabeticalLineSorterOutput";
  * @returns {JSX.Element} The complete Alphabetical Line Sorter tool with input options, output display, and functionality
  */
 const AlphabeticalLineSorterTool = () => {
-  const [textInput, setTextInput] = useState("");
+  const [input, setInput] = useState("");
+  const [output, setOutput] = useState("");
   const [reverseSort, setReverseSort] = useState(false);
   const [removeDuplicates, setRemoveDuplicates] = useState(false);
   const [sortType, setSortType] = useState("standard");
-  const [output, setOutput] = useState("");
 
-  const handleProcess = () => {
-    let lines = textInput.split("\n");
+  const handleSubmit = () => {
+    let lines = input.split("\n");
 
     if (removeDuplicates) {
       lines = [...new Set(lines)];
@@ -42,34 +42,36 @@ const AlphabeticalLineSorterTool = () => {
   };
 
   const handleReset = () => {
-    setTextInput("");
+    setInput("");
+    setOutput("");
     setReverseSort(false);
     setRemoveDuplicates(false);
     setSortType("standard");
-    setOutput("");
   };
 
   const handleClear = () => {
-    setTextInput("");
+    setInput("");
+    setOutput("");
   };
 
   return (
     <>
       <div className="grid grid-cols-1 gap-6">
         <AlphabeticalLineSorterInput
-          textInput={textInput}
-          setTextInput={setTextInput}
+          input={input}
+          setInput={setInput}
           reverseSort={reverseSort}
           setReverseSort={setReverseSort}
           removeDuplicates={removeDuplicates}
           setRemoveDuplicates={setRemoveDuplicates}
           sortType={sortType}
           setSortType={setSortType}
-          onProcess={handleProcess}
+          onSubmit={handleSubmit}
           onReset={handleReset}
           onClear={handleClear}
         />
-        <AlphabeticalLineSorterOutput output={output} />
+
+        {output && <AlphabeticalLineSorterOutput output={output} />}
       </div>
 
       <div className="mt-16">

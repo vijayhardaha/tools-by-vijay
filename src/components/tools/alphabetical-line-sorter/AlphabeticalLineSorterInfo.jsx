@@ -1,5 +1,3 @@
-"use client";
-
 /**
  * Provides information about the Alphabetical Line Sorter tool, including its purpose,
  * usage instructions, and examples.
@@ -54,18 +52,14 @@ const AlphabeticalLineSorterInfo = () => {
           <div>
             <h4 className="mb-2 font-medium">Input Example:</h4>
             <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-sm">
-              {`banana
-apple
-orange`}
+              {`banana\napple\norange`}
             </pre>
           </div>
 
           <div>
             <h4 className="mb-2 font-medium">Output Example (Alphabetical Sort):</h4>
             <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-sm">
-              {`apple
-banana
-orange`}
+              {`apple\nbanana\norange`}
             </pre>
           </div>
         </div>

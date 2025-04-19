@@ -20,13 +20,16 @@ import { Textarea } from "@/components/ui/textarea";
 const AlphabeticalLineSorterOutput = ({ output }) => {
   const [copied, setCopied] = useState(false);
 
+  /**
+   * Handles the copy to clipboard action.
+   * Copies the sorted text to the clipboard and sets a temporary copied state.
+   * Resets the copied state after 1 second.
+   */
   const copyToClipboard = async () => {
     await navigator.clipboard.writeText(output);
     setCopied(true);
     setTimeout(() => setCopied(false), 1000);
   };
-
-  if (!output) return null;
 
   return (
     <Card>
@@ -37,12 +40,12 @@ const AlphabeticalLineSorterOutput = ({ output }) => {
             <CardDescription>The text after sorting lines alphabetically.</CardDescription>
           </div>
           <div className="inline-flex">
-            <CopyButton copied={copied} disabled={!output} onClick={copyToClipboard} />
+            <CopyButton copied={copied} onClick={copyToClipboard} />
           </div>
         </div>
       </CardHeader>
       <CardContent>
-        <Textarea value={output} readOnly className="min-h-52" />
+        <Textarea value={output} className="min-h-52" readOnly data-output />
       </CardContent>
     </Card>
   );

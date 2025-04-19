@@ -5,7 +5,6 @@ import PropTypes from "prop-types";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Label } from "@/components/ui/label";
 import { RadioBox } from "@/components/ui/radiobox";
 import { Textarea } from "@/components/ui/textarea";
 
@@ -18,21 +17,21 @@ import { Textarea } from "@/components/ui/textarea";
  * @returns {JSX.Element} The rendered input form
  */
 const AlphabeticalLineSorterInput = ({
-  textInput,
-  setTextInput,
+  input,
+  setInput,
   reverseSort,
   setReverseSort,
   removeDuplicates,
   setRemoveDuplicates,
   sortType,
   setSortType,
-  onProcess,
+  onSubmit,
   onReset,
   onClear,
 }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
-    onProcess();
+    onSubmit();
   };
 
   return (
@@ -44,54 +43,49 @@ const AlphabeticalLineSorterInput = ({
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <Textarea
-              id="text-input"
-              placeholder="Enter text to sort alphabetically..."
-              value={textInput}
-              onChange={(e) => setTextInput(e.target.value)}
-              className="min-h-52"
-            />
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+          <Textarea
+            id="text-input"
+            placeholder="Enter text to sort alphabetically..."
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            className="min-h-52"
+          />
+
+          <div className="flex flex-wrap gap-4">
+            <RadioBox
+              id="sort-standard"
+              name="sortType"
+              checked={sortType === "standard"}
+              onCheckedChange={() => setSortType("standard")}
+            >
+              Standard Alphabetical Order
+            </RadioBox>
+            <RadioBox
+              id="sort-ascii"
+              name="sortType"
+              checked={sortType === "ascii"}
+              onCheckedChange={() => setSortType("ascii")}
+            >
+              ASCII Sorting
+            </RadioBox>
           </div>
 
-          <div>
-            <Label className="text-base font-bold">Sorting Type</Label>
-            <div className="mt-2 flex gap-4">
-              <RadioBox
-                id="sort-standard"
-                name="sortType"
-                checked={sortType === "standard"}
-                onCheckedChange={() => setSortType("standard")}
-              >
-                Standard Alphabetical Order
-              </RadioBox>
-              <RadioBox
-                id="sort-ascii"
-                name="sortType"
-                checked={sortType === "ascii"}
-                onCheckedChange={() => setSortType("ascii")}
-              >
-                ASCII Sorting
-              </RadioBox>
-            </div>
-          </div>
+          <div className="flex flex-wrap gap-4">
+            <Checkbox id="reverse-sort" checked={reverseSort} onCheckedChange={setReverseSort}>
+              Reverse Sorting (Z-A)
+            </Checkbox>
 
-          <div className="flex items-center space-x-2">
-            <Checkbox id="reverse-sort" checked={reverseSort} onCheckedChange={setReverseSort} />
-            <Label htmlFor="reverse-sort">Reverse Sorting (Z-A)</Label>
-          </div>
-
-          <div className="flex items-center space-x-2">
             <Checkbox
               id="remove-duplicates"
               checked={removeDuplicates}
               onCheckedChange={setRemoveDuplicates}
-            />
-            <Label htmlFor="remove-duplicates">Remove Duplicate Lines</Label>
+            >
+              Remove Duplicate Lines
+            </Checkbox>
           </div>
 
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2">
             <Button type="submit" variant="default">
               Process
             </Button>
@@ -111,15 +105,15 @@ const AlphabeticalLineSorterInput = ({
 };
 
 AlphabeticalLineSorterInput.propTypes = {
-  textInput: PropTypes.string.isRequired,
-  setTextInput: PropTypes.func.isRequired,
+  input: PropTypes.string.isRequired,
+  setInput: PropTypes.func.isRequired,
   reverseSort: PropTypes.bool.isRequired,
   setReverseSort: PropTypes.func.isRequired,
   removeDuplicates: PropTypes.bool.isRequired,
   setRemoveDuplicates: PropTypes.func.isRequired,
   sortType: PropTypes.string.isRequired,
   setSortType: PropTypes.func.isRequired,
-  onProcess: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
   onReset: PropTypes.func.isRequired,
   onClear: PropTypes.func.isRequired,
 };
