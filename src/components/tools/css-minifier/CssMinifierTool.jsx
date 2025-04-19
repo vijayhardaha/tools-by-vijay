@@ -14,7 +14,7 @@ import CssMinifierOutput from "./CssMinifierOutput";
  */
 const CssMinifierTool = () => {
   const [input, setInput] = useState("");
-  const [minifiedOutput, setMinifiedOutput] = useState("");
+  const [output, setOutput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [options, setOptions] = useState({
     level: 1,
@@ -38,10 +38,11 @@ const CssMinifierTool = () => {
    * @async
    * @function
    */
-  const handleMinify = async () => {
+  const handleSubmit = async () => {
     if (!input.trim()) return;
 
     setIsLoading(true);
+
     try {
       // Call the API endpoint for minification
       const response = await fetch("/api/minify-css", {
@@ -61,10 +62,10 @@ const CssMinifierTool = () => {
         throw new Error(data.error || "Failed to minify CSS");
       }
 
-      setMinifiedOutput(data.minifiedCss);
+      setOutput(data.minifiedCss);
     } catch (error) {
       console.error("CSS minification error:", error);
-      setMinifiedOutput(`Error: ${error.message}`);
+      setOutput(`Error: ${error.message}`);
     } finally {
       setIsLoading(false);
     }
@@ -77,7 +78,7 @@ const CssMinifierTool = () => {
    */
   const handleClear = () => {
     setInput("");
-    setMinifiedOutput("");
+    setOutput("");
   };
 
   /**
@@ -87,7 +88,7 @@ const CssMinifierTool = () => {
    */
   const handleReset = () => {
     setInput("");
-    setMinifiedOutput("");
+    setOutput("");
     setOptions({
       level: 1,
       compress: true,
@@ -147,12 +148,13 @@ const CssMinifierTool = () => {
           options={options}
           updateOption={updateOption}
           updateSpacesOption={updateSpacesOption}
-          onMinify={handleMinify}
+          onSubmit={handleSubmit}
           onClear={handleClear}
           onReset={handleReset}
           isLoading={isLoading}
         />
-        <CssMinifierOutput output={minifiedOutput} />
+
+        {output && <CssMinifierOutput output={output} input={input} />}
       </div>
 
       <div className="mt-16">
