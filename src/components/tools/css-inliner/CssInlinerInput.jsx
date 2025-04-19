@@ -15,18 +15,21 @@ import { Textarea } from "@/components/ui/textarea";
  * @param {Function} props.setHtmlInput - Function to update HTML input
  * @param {string} props.cssInput - The CSS input
  * @param {Function} props.setCssInput - Function to update CSS input
- * @param {Function} props.onInlineCss - Function to inline CSS
+ * @param {Function} props.onSubmit - Function to inline CSS
  * @param {Function} props.onClear - Function to clear inputs
  * @returns {JSX.Element} The CssInlinerInput component
  */
-const CssInlinerInput = ({
-  htmlInput,
-  setHtmlInput,
-  cssInput,
-  setCssInput,
-  onInlineCss,
-  onClear,
-}) => {
+const CssInlinerInput = ({ htmlInput, setHtmlInput, cssInput, setCssInput, onSubmit, onClear }) => {
+  /**
+   * Handles form submission to inline CSS.
+   *
+   * @param {Object} e - Event object
+   */
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSubmit();
+  };
+
   return (
     <Card>
       <CardHeader>
@@ -36,39 +39,35 @@ const CssInlinerInput = ({
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="flex flex-col gap-6">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <div className="flex flex-col gap-2">
             <Label htmlFor="html-input">HTML Input</Label>
             <Textarea
               placeholder="Enter HTML here..."
+              rows={5}
               value={htmlInput}
               onChange={(e) => setHtmlInput(e.target.value)}
-              className="min-h-28"
             />
           </div>
           <div className="flex flex-col gap-2">
             <Label htmlFor="css-input">CSS Input</Label>
             <Textarea
               placeholder="Enter CSS here..."
+              rows={5}
               value={cssInput}
               onChange={(e) => setCssInput(e.target.value)}
-              className="min-h-28"
             />
           </div>
           <div className="mt-2 flex gap-2">
-            <Button
-              type="button"
-              variant="default"
-              onClick={onInlineCss}
-              disabled={!htmlInput || !cssInput}
-            >
+            <Button type="submit" variant="default" disabled={!htmlInput || !cssInput}>
               Inline CSS
             </Button>
+
             <Button type="button" variant="outline" onClick={onClear}>
               Clear
             </Button>
           </div>
-        </div>
+        </form>
       </CardContent>
     </Card>
   );
@@ -79,7 +78,7 @@ CssInlinerInput.propTypes = {
   setHtmlInput: PropTypes.func.isRequired,
   cssInput: PropTypes.string.isRequired,
   setCssInput: PropTypes.func.isRequired,
-  onInlineCss: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
   onClear: PropTypes.func.isRequired,
 };
 

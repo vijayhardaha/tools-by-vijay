@@ -18,6 +18,13 @@ import { Textarea } from "@/components/ui/textarea";
 const CssInlinerOutput = ({ output }) => {
   const [copied, setCopied] = useState(false);
 
+  /**
+   * Copies the output text to the clipboard and shows a temporary confirmation.
+   *
+   * @async
+   * @function
+   * @returns {Promise<void>}
+   */
   const copyToClipboard = async () => {
     await navigator.clipboard.writeText(output);
     setCopied(true);
@@ -40,7 +47,7 @@ const CssInlinerOutput = ({ output }) => {
         </div>
       </CardHeader>
       <CardContent>
-        <Textarea value={output} readOnly className="min-h-52" />
+        <Textarea value={output} rows={5} readOnly data-output />
       </CardContent>
     </Card>
   );
