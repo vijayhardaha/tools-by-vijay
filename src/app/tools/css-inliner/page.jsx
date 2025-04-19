@@ -1,11 +1,10 @@
 import PageContent from "@/components/page/PageContent";
 import PageHeader from "@/components/page/PageHeader";
 import PageLayout from "@/components/page/PageLayout";
+import CssInlinerTool from "@/components/tools/css-inliner/CssInlinerTool";
 import { generateMetadata as genMeta } from "@/utils/seoUtils";
 import { findToolBySlug } from "@/utils/toolUtils";
 import { getIconForTool } from "@/utils/toolUtils";
-
-import CssInlinerTool from "@/components/tools/css-inliner/CssInlinerTool";
 
 /**
  * Retrieves tool data for the Css Inliner tool.
