@@ -6,7 +6,7 @@ import Link from "next/link";
 import PropTypes from "prop-types";
 import { Scrollbars } from "react-custom-scrollbars-4";
 
-import categories from "@/constants/tools-categories";
+import { getAllCategories } from "@/utils/categoryUtils";
 import { getToolsByCategories } from "@/utils/toolUtils";
 
 /**
@@ -90,7 +90,7 @@ const SidebarBody = () => {
     >
       <div className="px-4">
         <nav className="text-muted-foreground text-sm">
-          {categories.map((category) => {
+          {getAllCategories().map((category) => {
             const categoryTools = categorizedTools[category.slug] || [];
             if (categoryTools.length === 0) return null;
 
