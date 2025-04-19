@@ -21,8 +21,8 @@ import { Button } from "../../ui/button";
  * @category Navigation
  */
 const MenuButton = ({ onClick }) => (
-  <Button onClick={onClick} variant="primary">
-    Menu
+  <Button onClick={onClick} variant="primary" className="w-12 md:w-auto">
+    <span className="hidden md:inline-flex">Menu</span>
     <RiMenu3Fill />
   </Button>
 );

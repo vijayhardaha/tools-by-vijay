@@ -2,10 +2,15 @@
 
 import { useState } from "react";
 
+import Link from "next/link";
+import { PiTextAa as AaIcon } from "react-icons/pi";
+
 import Logo from "@/components/header/parts/Logo";
 import MenuButton from "@/components/header/parts/MenuButton";
 import Sidebar from "@/components/header/sidebar/Sidebar";
 import Box from "@/components/ui/box";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/utils/classNameUtils";
 
 /**
  * Header component that displays the app logo and menu button
@@ -25,7 +30,26 @@ const Header = () => {
         <div className="relative z-20 mx-auto max-w-5xl px-4">
           <Box component="header" flex={true} align="center" justify="between" py="4">
             <Logo />
-            <MenuButton onClick={toggleDrawer} />
+            <div className="flex items-center gap-2">
+              <Button
+                asChild
+                variant="default"
+                className={cn(
+                  "w-12 border-none md:w-auto md:px-6",
+                  "bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-white md:inline-flex",
+                  "hover:from-pink-500 hover:via-red-500 hover:to-yellow-500"
+                )}
+              >
+                <Link href="/text-story-maker">
+                  <span className="inline-flex md:hidden">
+                    <span className="sr-only">Text Story Maker</span>
+                    <AaIcon className="size-5" />
+                  </span>
+                  <span className="hidden md:inline-flex"> Text Story Maker</span>
+                </Link>
+              </Button>
+              <MenuButton onClick={toggleDrawer} />
+            </div>
           </Box>
         </div>
       </header>
