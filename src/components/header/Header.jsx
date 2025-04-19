@@ -36,8 +36,8 @@ const Header = () => {
                 variant="default"
                 className={cn(
                   "w-12 border-none md:w-auto md:px-6",
-                  "bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-white md:inline-flex",
-                  "hover:from-pink-500 hover:via-red-500 hover:to-yellow-500"
+                  "to-line-500 bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500 text-white md:inline-flex",
+                  "hover:from-pink-500 hover:via-red-500 hover:to-purple-500"
                 )}
               >
                 <Link href="/text-story-maker">
