@@ -1,6 +1,14 @@
 import categories from "@/constants/toolsCategories";
 
 /**
+ * Get all categores
+ * @returns {Object[]} Array of all categories
+ */
+export const getAllCategories = () => {
+  return categories;
+};
+
+/**
  * Get a category by its slug
  * @param {string} slug - The slug of the category to find
  * @returns {Object|null} The category object or null if not found
