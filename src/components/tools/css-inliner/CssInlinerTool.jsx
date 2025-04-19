@@ -14,7 +14,7 @@ const CssInlinerTool = () => {
   /**
    * Handles the inlining of CSS into HTML via API.
    */
-  const handleInlineCss = async () => {
+  const handleSubmit = async () => {
     try {
       const response = await fetch("/api/inline-css", {
         method: "POST",
@@ -53,9 +53,10 @@ const CssInlinerTool = () => {
           setHtmlInput={setHtmlInput}
           cssInput={cssInput}
           setCssInput={setCssInput}
-          onInlineCss={handleInlineCss}
+          onSubmit={handleSubmit}
           onClear={handleClear}
         />
+
         {output && <CssInlinerOutput output={output} />}
       </div>
 
