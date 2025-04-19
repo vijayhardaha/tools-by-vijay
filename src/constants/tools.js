@@ -151,6 +151,17 @@ const tools = [
       "Convert external CSS to inline HTML styles. Ideal for email templates and single-file HTML distribution.",
     category: "code-optimization",
   },
+  {
+    name: "Replace Quotes",
+    slug: "replace-quotes",
+    shortDescription: "Convert between straight and curly quotes.",
+    pageDescription:
+      "Easily convert straight quotes (' and \") to curly quotes (‘, ’, “, and ”) and vice versa in your text.",
+    seoTitle: "Replace Quotes – Convert Between Straight and Curly Quotes",
+    seoDescription:
+      "Replace straight quotes (' and \") with curly quotes (‘, ’, “, and ”) or curly quotes with straight quotes. Simplify your text formatting.",
+    category: "text-transformation",
+  },
 ];
 
 export default tools;
