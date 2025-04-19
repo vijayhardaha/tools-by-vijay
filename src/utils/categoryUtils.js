@@ -1,4 +1,4 @@
-import categories from "../constants/tools-categories";
+import categories from "@/constants/toolsCategories";
 
 /**
  * Get a category by its slug
