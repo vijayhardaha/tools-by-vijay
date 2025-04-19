@@ -56,7 +56,7 @@ function RadioBox({
       data-slot="radiobox"
       className={cn(
         // Layout & base appearance
-        "inline-flex cursor-pointer items-center",
+        "inline-flex items-center",
 
         // Colors & background
         "text-foreground",
@@ -76,7 +76,7 @@ function RadioBox({
         type="radio"
         id={id}
         name={name}
-        className="hidden"
+        className="hidden cursor-pointer"
         checked={isChecked}
         onChange={handleChange}
         disabled={disabled}
@@ -85,13 +85,17 @@ function RadioBox({
       <div
         data-slot="radiobox-indicator"
         className={cn(
-          "flex h-4 w-4 items-center justify-center rounded-full border",
+          "flex h-4 w-4 cursor-pointer items-center justify-center rounded-full border",
           isChecked ? "bg-primary border-primary text-primary-foreground" : "border-input"
         )}
       >
         {isChecked && <CheckIcon className="h-3 w-3" />}
       </div>
-      {children && <span className="ml-2">{children}</span>}
+      {children && (
+        <span className="ml-2 text-sm leading-none font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+          {children}
+        </span>
+      )}
     </label>
   );
 }
