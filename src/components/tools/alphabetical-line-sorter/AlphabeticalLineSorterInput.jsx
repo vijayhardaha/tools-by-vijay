@@ -29,6 +29,10 @@ const AlphabeticalLineSorterInput = ({
   onReset,
   onClear,
 }) => {
+  /**
+   * Handles form submission to sort lines alphabetically
+   * @param {*} e - Event object
+   */
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit();
