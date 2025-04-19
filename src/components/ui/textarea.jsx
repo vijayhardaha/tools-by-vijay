@@ -18,8 +18,11 @@ function Textarea({ className, ...props }) {
         // Layout & spacing
         "flex h-auto min-h-16 w-full rounded-lg px-3 py-2",
 
+        // Font and text
+        "font-mono text-sm",
+
         // Typography
-        "placeholder:text-muted-foreground/50 text-sm",
+        "placeholder:text-muted-foreground/50",
 
         // Background & border
         "border-input border bg-transparent",

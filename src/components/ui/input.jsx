@@ -19,8 +19,11 @@ function Input({ className, type, ...props }) {
         // Core layout and sizing
         "flex h-10 w-full min-w-0 rounded-lg px-3 py-1",
 
+        // Font and text
+        "font-mono text-sm file:text-sm file:font-medium",
+
         // Typography
-        "placeholder:text-muted-foreground/50 file:text-foreground text-sm file:text-sm file:font-medium",
+        "placeholder:text-muted-foreground/50 file:text-foreground",
 
         // Colors and borders
         "border-input text-foreground border bg-transparent",

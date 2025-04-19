@@ -56,7 +56,7 @@ const JsMinifierInput = ({
             placeholder="Paste JavaScript code here..."
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            className="min-h-28 font-mono text-sm"
+            className="min-h-28"
           />
 
           <div className="space-y-4">

@@ -51,7 +51,7 @@ const AlphabeticalLineSorterInput = ({
               placeholder="Enter text to sort alphabetically..."
               value={textInput}
               onChange={(e) => setTextInput(e.target.value)}
-              className="min-h-52 font-mono text-sm"
+              className="min-h-52"
             />
           </div>
 

@@ -88,7 +88,7 @@ const JsMinifierOutput = ({ output, input }) => {
       </CardHeader>
       <CardContent>
         <div className="flex flex-col gap-2">
-          <Textarea value={output} readOnly data-output className="min-h-28 font-mono text-sm" />
+          <Textarea value={output} readOnly data-output className="min-h-28" />
         </div>
       </CardContent>
     </Card>

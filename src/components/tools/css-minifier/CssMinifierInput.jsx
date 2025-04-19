@@ -57,7 +57,7 @@ const CssMinifierInput = ({
             placeholder="Paste CSS code here..."
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            className="min-h-28 font-mono text-sm"
+            className="min-h-28"
           />
 
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">

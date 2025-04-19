@@ -4,8 +4,8 @@ import { useState } from "react";
 
 import PropTypes from "prop-types";
 
+import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
-import CopyButton from "@/components/ui/copy-button";
 import { Textarea } from "@/components/ui/textarea";
 
 /**
@@ -48,12 +48,14 @@ const JsonSorterOutput = ({ output }) => {
             <CardDescription>The alphabetically sorted JSON output</CardDescription>
           </div>
           <div className="inline-flex">
-            <CopyButton copied={copied} disabled={!output} onClick={copyToClipboard} />
+            <Button type="button" variant="default" onClick={copyToClipboard} disabled={!output}>
+              {copied ? "Copied!" : "Copy"}
+            </Button>
           </div>
         </div>
       </CardHeader>
       <CardContent>
-        <Textarea value={output} readOnly data-output className="min-h-52 font-mono text-sm" />
+        <Textarea value={output} readOnly data-output className="min-h-52" />
       </CardContent>
     </Card>
   );

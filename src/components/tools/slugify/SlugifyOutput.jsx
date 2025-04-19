@@ -42,7 +42,7 @@ const SlugifyOutput = ({ output }) => {
       </CardHeader>
       <CardContent>
         <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
-          <Input type="text" value={output} readOnly data-output className="font-mono text-sm" />
+          <Input type="text" value={output} readOnly data-output />
           <CopyButton copied={copied} disabled={!output} onClick={copyToClipboard} />
         </div>
       </CardContent>

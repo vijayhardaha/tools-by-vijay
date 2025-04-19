@@ -47,7 +47,7 @@ const PasswordGeneratorOutput = ({ password }) => {
       </CardHeader>
       <CardContent>
         <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
-          <Input type="text" value={password} readOnly data-output className="font-mono text-sm" />
+          <Input type="text" value={password} readOnly data-output />
           <CopyButton copied={copied} disabled={!password} onClick={copyToClipboard} />
         </div>
       </CardContent>

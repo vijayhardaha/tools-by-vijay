@@ -66,7 +66,6 @@ const SlugifyInput = ({
             placeholder="Enter text to slugify"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            className="font-mono text-sm"
           />
 
           <div className="flex flex-col gap-2">

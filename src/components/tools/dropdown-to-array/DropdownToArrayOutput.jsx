@@ -54,7 +54,7 @@ const DropdownToArrayOutput = ({ output }) => {
         </div>
       </CardHeader>
       <CardContent>
-        <Textarea value={output} readOnly data-output className="min-h-28 font-mono text-sm" />
+        <Textarea value={output} readOnly data-output className="min-h-28" />
       </CardContent>
     </Card>
   );

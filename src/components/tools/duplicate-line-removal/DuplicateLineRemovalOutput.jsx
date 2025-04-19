@@ -44,7 +44,7 @@ const DuplicateLineRemovalOutput = ({ output }) => {
         </div>
       </CardHeader>
       <CardContent>
-        <Textarea value={output} readOnly className="min-h-52 font-mono text-sm" />
+        <Textarea value={output} readOnly className="min-h-52" />
       </CardContent>
     </Card>
   );

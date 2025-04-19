@@ -70,24 +70,12 @@ const BulkSlugifyOutput = ({ output }) => {
       </CardHeader>
       <CardContent>
         <div className="flex flex-col gap-2">
-          <Textarea
-            value={output}
-            readOnly
-            data-output
-            rows={unfilteredLinesLength || 1}
-            className="font-mono text-sm"
-          />
+          <Textarea value={output} readOnly data-output rows={unfilteredLinesLength || 1} />
 
           <div className="flex flex-col gap-2">
             {lines.map((line, index) => (
               <div key={index} className="flex flex-col gap-2 sm:flex-row sm:items-center">
-                <Input
-                  type="text"
-                  value={line}
-                  readOnly
-                  data-output
-                  className="font-mono text-sm"
-                />
+                <Input type="text" value={line} readOnly data-output />
                 <CopyButton
                   copied={copiedIndex === index}
                   disabled={!line}
