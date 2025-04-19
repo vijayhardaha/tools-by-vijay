@@ -5,7 +5,6 @@ import PropTypes from "prop-types";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/utils/classNameUtils";
 
@@ -27,7 +26,7 @@ import { cn } from "@/utils/classNameUtils";
  * @param {Function} props.setRemoveNumbers - Function to toggle number removal
  * @param {Function} props.setUseLowercase - Function to toggle lowercase conversion
  * @param {Function} props.setUseLitinize - Function to toggle latinize usage
- * @param {Function} props.onGenerate - Function to handle slug generation
+ * @param {Function} props.onSubmit - Function to handle slug generation
  * @param {Function} props.onClear - Function to clear the input
  * @param {Function} props.onReset - Function to reset all options to defaults
  * @returns {JSX.Element} Input form with configuration options
@@ -43,7 +42,7 @@ const BulkSlugifyInput = ({
   setRemoveNumbers,
   setUseLowercase,
   setUseLitinize,
-  onGenerate,
+  onSubmit,
   onClear,
   onReset,
 }) => {
@@ -63,7 +62,7 @@ const BulkSlugifyInput = ({
    */
   const handleSubmit = (e) => {
     e.preventDefault();
-    onGenerate();
+    onSubmit();
   };
 
   return (
@@ -86,6 +85,7 @@ const BulkSlugifyInput = ({
               Currently separating with:{" "}
               <span className="font-bold">{useUnderscore ? "Underscore (_)" : "Dash (-)"}</span>
             </p>
+
             <div className="mb-2 flex gap-2">
               <Button
                 size="sm"
@@ -108,32 +108,25 @@ const BulkSlugifyInput = ({
             </div>
           </div>
 
-          <div className="flex flex-wrap gap-4 gap-x-6">
-            <div className="flex items-center space-x-1">
-              <Checkbox
-                id="useLowercase"
-                checked={useLowercase}
-                onCheckedChange={setUseLowercase}
-              />
-              <Label htmlFor="useLowercase">Convert to lowercase</Label>
-            </div>
+          <div className="flex flex-wrap gap-4">
+            <Checkbox id="useLowercase" checked={useLowercase} onCheckedChange={setUseLowercase}>
+              Convert to lowercase
+            </Checkbox>
 
-            <div className="flex items-center space-x-1">
-              <Checkbox
-                id="remove-numbers"
-                checked={removeNumbers}
-                onCheckedChange={setRemoveNumbers}
-              />
-              <Label htmlFor="remove-numbers">Remove numbers</Label>
-            </div>
+            <Checkbox
+              id="remove-numbers"
+              checked={removeNumbers}
+              onCheckedChange={setRemoveNumbers}
+            >
+              Remove numbers
+            </Checkbox>
 
-            <div className="flex items-center space-x-1">
-              <Checkbox id="use-latinize" checked={useLitinize} onCheckedChange={setUseLitinize} />
-              <Label htmlFor="use-latinize">Use latinize</Label>
-            </div>
+            <Checkbox id="use-latinize" checked={useLitinize} onCheckedChange={setUseLitinize}>
+              Use latinize
+            </Checkbox>
           </div>
 
-          <div className="mt-4 flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2">
             <Button type="submit" variant="default" disabled={!input}>
               Generate
             </Button>
@@ -161,7 +154,7 @@ BulkSlugifyInput.propTypes = {
   setUseLowercase: PropTypes.func.isRequired,
   useLitinize: PropTypes.bool.isRequired,
   setUseLitinize: PropTypes.func.isRequired,
-  onGenerate: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
   onClear: PropTypes.func.isRequired,
   onReset: PropTypes.func.isRequired,
 };

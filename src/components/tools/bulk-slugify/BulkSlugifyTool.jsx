@@ -20,11 +20,11 @@ import BulkSlugifyOutput from "./BulkSlugifyOutput";
  */
 const BulkSlugifyTool = () => {
   const [input, setInput] = useState("");
+  const [output, setOutput] = useState("");
   const [useUnderscore, setUseUnderscore] = useState(false);
   const [removeNumbers, setRemoveNumbers] = useState(false);
   const [useLowercase, setUseLowercase] = useState(true);
   const [useLitinize, setUseLitinize] = useState(true);
-  const [generatedOutput, setGeneratedOutput] = useState("");
 
   /**
    * Generates slugs from the input text based on configuration options
@@ -59,9 +59,9 @@ const BulkSlugifyTool = () => {
   /**
    * Handles the generation of slugs when the user clicks the generate button
    */
-  const handleGenerate = () => {
+  const handleSubmit = () => {
     const slugs = generateSlugs(input);
-    setGeneratedOutput(slugs);
+    setOutput(slugs);
   };
 
   /**
@@ -69,7 +69,7 @@ const BulkSlugifyTool = () => {
    */
   const handleClear = () => {
     setInput("");
-    setGeneratedOutput("");
+    setOutput("");
   };
 
   /**
@@ -77,7 +77,7 @@ const BulkSlugifyTool = () => {
    */
   const handleReset = () => {
     setInput("");
-    setGeneratedOutput("");
+    setOutput("");
     setUseUnderscore(false);
     setRemoveNumbers(false);
     setUseLowercase(true);
@@ -98,11 +98,12 @@ const BulkSlugifyTool = () => {
           setUseLowercase={setUseLowercase}
           useLitinize={useLitinize}
           setUseLitinize={setUseLitinize}
-          onGenerate={handleGenerate}
+          onSubmit={handleSubmit}
           onClear={handleClear}
           onReset={handleReset}
         />
-        <BulkSlugifyOutput output={generatedOutput} />
+
+        {output && <BulkSlugifyOutput output={output} />}
       </div>
 
       <div className="mt-16">
