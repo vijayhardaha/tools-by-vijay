@@ -17,52 +17,13 @@ import TextToArrayOutput from "./TextToArrayOutput";
  * @returns {JSX.Element} The complete text to array tool with input options, output display, and information
  */
 const TextToArrayTool = () => {
-  /**
-   * The multiline text input
-   * @type {[string, function]} State and setter for text input
-   */
-  const [textInput, setTextInput] = useState("");
-
-  /**
-   * The output format type (json, jsArray, jsObject, php, wordpress)
-   * @type {[string, function]} State and setter for output format
-   */
+  const [input, setInput] = useState("");
+  const [output, setOutput] = useState("");
   const [outputFormat, setOutputFormat] = useState("json");
-
-  /**
-   * The array structure type (simple, numeric, associative)
-   * @type {[string, function]} State and setter for array structure
-   */
   const [arrayType, setArrayType] = useState("associative");
-
-  /**
-   * Whether to trim whitespace from each line
-   * @type {[boolean, function]} State and setter for trim option
-   */
   const [trimLines, setTrimLines] = useState(true);
-
-  /**
-   * Whether to remove empty lines
-   * @type {[boolean, function]} State and setter for remove empty lines option
-   */
   const [removeEmptyLines, setRemoveEmptyLines] = useState(true);
-
-  /**
-   * Whether to use slugified keys for associative arrays
-   * @type {[boolean, function]} State and setter for slug keys option
-   */
   const [useSlugKeys, setUseSlugKeys] = useState(true);
-
-  /**
-   * The converted output result
-   * @type {[string, function]} State and setter for the converted output
-   */
-  const [convertedOutput, setConvertedOutput] = useState("");
-
-  /**
-   * Any error message from the conversion process
-   * @type {[string, function]} State and setter for error messages
-   */
   const [error, setError] = useState("");
 
   /**
@@ -89,6 +50,7 @@ const TextToArrayTool = () => {
     if (useSlugKeys) {
       return generateSlug(value);
     }
+
     return value;
   };
 
@@ -101,13 +63,13 @@ const TextToArrayTool = () => {
       setError("");
 
       // If input is empty, return error
-      if (!textInput.trim()) {
+      if (!input.trim()) {
         setError("Please enter the valid text content");
         return null;
       }
 
       // Split the input by newlines
-      let lines = textInput.split("\n");
+      let lines = input.split("\n");
 
       // Apply processing options
       if (trimLines) {
@@ -309,45 +271,43 @@ const TextToArrayTool = () => {
   /**
    * Handles the conversion process when user submits the form
    */
-  const handleConvert = () => {
+  const handleSubmit = () => {
     const parsedLines = parseTextInput();
     if (parsedLines) {
       const formatted = formatOutput(parsedLines);
-      setConvertedOutput(formatted);
+      setOutput(formatted);
     } else {
-      setConvertedOutput("");
+      setOutput("");
     }
-  };
-
-  /**
-   * Resets all input fields and output
-   */
-  const handleReset = () => {
-    setTextInput("");
-    setOutputFormat("json");
-    setArrayType("associative");
-    setTrimLines(true);
-    setRemoveEmptyLines(true);
-    setUseSlugKeys(true);
-    setConvertedOutput("");
-    setError("");
   };
 
   /**
    * Clears only the text input field
    */
   const handleClear = () => {
-    setTextInput("");
-    setConvertedOutput("");
+    setInput("");
+    setOutput("");
     setError("");
+  };
+
+  /**
+   * Resets all input fields and output
+   */
+  const handleReset = () => {
+    handleClear();
+    setOutputFormat("json");
+    setArrayType("associative");
+    setTrimLines(true);
+    setRemoveEmptyLines(true);
+    setUseSlugKeys(true);
   };
 
   return (
     <>
       <div className="grid grid-cols-1 gap-6">
         <TextToArrayInput
-          textInput={textInput}
-          setTextInput={setTextInput}
+          input={input}
+          setInput={setInput}
           outputFormat={outputFormat}
           setOutputFormat={setOutputFormat}
           arrayType={arrayType}
@@ -358,12 +318,13 @@ const TextToArrayTool = () => {
           setRemoveEmptyLines={setRemoveEmptyLines}
           useSlugKeys={useSlugKeys}
           setUseSlugKeys={setUseSlugKeys}
-          onConvert={handleConvert}
+          onSubmit={handleSubmit}
           onClear={handleClear}
           onReset={handleReset}
           error={error}
         />
-        <TextToArrayOutput output={convertedOutput} />
+
+        {output && <TextToArrayOutput output={output} />}
       </div>
 
       <div className="mt-16">
