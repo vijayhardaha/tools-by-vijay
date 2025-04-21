@@ -62,8 +62,8 @@ export const FlexBox = ({
   ...rest
 }) => {
   const classes = clsx(className, {
-    flex: flex && inline,
-    "inline-flex": inline,
+    flex: flex && !inline,
+    "inline-flex": flex && inline,
     "flex-col": col,
     "flex-row": row,
     [`items-${align}`]: align,
