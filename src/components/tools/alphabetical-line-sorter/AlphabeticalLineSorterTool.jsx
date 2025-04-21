@@ -34,6 +34,11 @@ const AlphabeticalLineSorterTool = () => {
       lines = [...new Set(lines)];
     }
 
+    lines = lines
+      .map((line) => line.trim())
+      .filter((line) => line !== "")
+      .filter((line) => line.length > 0);
+
     let sortedLines;
     if (sortType === "ascii") {
       sortedLines = [...lines].sort();
