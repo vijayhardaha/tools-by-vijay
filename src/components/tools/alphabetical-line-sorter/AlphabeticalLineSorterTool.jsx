@@ -20,6 +20,13 @@ const AlphabeticalLineSorterTool = () => {
   const [removeDuplicates, setRemoveDuplicates] = useState(false);
   const [sortType, setSortType] = useState("standard");
 
+  /**
+   * Handles the submission of the input text for sorting.
+   * Processes the input based on the selected options (reverse sort, remove duplicates, sort type).
+   * Updates the output state with the sorted lines.
+   * @function
+   * @returns {void}
+   */
   const handleSubmit = () => {
     let lines = input.split("\n");
 
@@ -41,17 +48,28 @@ const AlphabeticalLineSorterTool = () => {
     setOutput(sortedLines.join("\n"));
   };
 
-  const handleReset = () => {
-    setInput("");
-    setOutput("");
-    setReverseSort(false);
-    setRemoveDuplicates(false);
-    setSortType("standard");
-  };
-
+  /**
+   * Handles the clearing of the input and output states.
+   * Resets the input and output to empty strings.
+   * @function
+   * @returns {void}
+   */
   const handleClear = () => {
     setInput("");
     setOutput("");
+  };
+
+  /**
+   * Handles the reset of the input and output states.
+   * Resets all options to their default values.
+   * @function
+   * @returns {void}
+   */
+  const handleReset = () => {
+    handleClear();
+    setReverseSort(false);
+    setRemoveDuplicates(false);
+    setSortType("standard");
   };
 
   return (
