@@ -1,5 +1,3 @@
-"use client";
-
 /**
  * Provides information about the Text to Array Converter tool, including its purpose,
  * usage instructions, and examples.
@@ -72,10 +70,7 @@ const TextToArrayInfo = () => {
           <div>
             <h4 className="mb-2 font-medium">Input Example:</h4>
             <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-sm">
-              {`United States
-Canada
-United Kingdom
-Australia`}
+              {`United States\nCanada\nUnited Kingdom\nAustralia`}
             </pre>
           </div>
 
@@ -85,12 +80,7 @@ Australia`}
               <div>
                 <h5 className="text-sm font-medium">JSON (Simple):</h5>
                 <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-sm">
-                  {`[
-  "United States",
-  "Canada",
-  "United Kingdom",
-  "Australia"
-]`}
+                  {`[\n\t"United States",\n\t"Canada",\n\t"United Kingdom",\n\t"Australia"\n]`}
                 </pre>
               </div>
 
@@ -99,37 +89,14 @@ Australia`}
                   JavaScript Array (Associative with Slugified Keys):
                 </h5>
                 <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-sm">
-                  {`const textArray = [
-  {
-    "key": "united_states",
-    "value": "United States"
-  },
-  {
-    "key": "canada",
-    "value": "Canada"
-  },
-  {
-    "key": "united_kingdom",
-    "value": "United Kingdom"
-  },
-  {
-    "key": "australia",
-    "value": "Australia"
-  }
-];`}
+                  {`const textArray = [\n\t{\n\t\t"key": "united_states",\n\t\t"value": "United States"\n\t},\n\t{\n\t\t"key": "canada",\n\t\t"value": "Canada"\n\t},\n\t{\n\t\t"key": "united_kingdom",\n\t\t"value": "United Kingdom"\n\t},\n\t{\n\t\t"key": "australia",\n\t\t"value": "Australia"\n\t}\n];`}
                 </pre>
               </div>
 
               <div>
                 <h5 className="text-sm font-medium">PHP Array (Numeric):</h5>
                 <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-sm">
-                  {`<?php
-$data = array(
-  1 => 'United States',
-  2 => 'Canada',
-  3 => 'United Kingdom',
-  4 => 'Australia'
-);`}
+                  {`<?php\n$data = array(\n\t1 => 'United States',\n\t2 => 'Canada',\n\t3 => 'United Kingdom',\n\t4 => 'Australia'\n);`}
                 </pre>
               </div>
             </div>
