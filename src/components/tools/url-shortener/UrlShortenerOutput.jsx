@@ -1,7 +1,3 @@
-"use client";
-
-import { useState } from "react";
-
 import PropTypes from "prop-types";
 
 import { Alert } from "@/components/ui/alert";
@@ -20,27 +16,6 @@ import { CopyButton } from "@/components/ui/copy-button";
  * @returns {JSX.Element} Output display with copy functionality
  */
 const UrlShortenerOutput = ({ results }) => {
-  const [copiedIndex, setCopiedIndex] = useState(null);
-  const [copiedAll, setCopiedAll] = useState(false);
-
-  /**
-   * Copies the provided text to clipboard and manages the copy state indicators
-   *
-   * @param {string} text - The text to copy to clipboard
-   * @param {number|null} index - Index of the copied item (null for copy all)
-   * @returns {Promise<void>}
-   */
-  const copyToClipboard = async (text, index = null) => {
-    await navigator.clipboard.writeText(text);
-    if (index === null) {
-      setCopiedAll(true);
-      setTimeout(() => setCopiedAll(false), 1000);
-    } else {
-      setCopiedIndex(index);
-      setTimeout(() => setCopiedIndex(null), 1000);
-    }
-  };
-
   /**
    * Creates a text string containing all shortened URLs
    *
@@ -64,8 +39,7 @@ const UrlShortenerOutput = ({ results }) => {
           {results.length > 0 && (
             <div className="inline-flex">
               <CopyButton
-                copied={copiedAll}
-                onClick={() => copyToClipboard(getAllShortenedUrls())}
+                text={getAllShortenedUrls()}
                 copyText="Copy All Valid URLs"
                 copiedText="Copied All!"
               />
@@ -118,10 +92,7 @@ const UrlShortenerOutput = ({ results }) => {
                 </div>
                 {result.isValid && (
                   <div>
-                    <CopyButton
-                      copied={copiedIndex === index}
-                      onClick={() => copyToClipboard(result.shortenedUrl, index)}
-                    />
+                    <CopyButton text={result.shortenedUrl} />
                   </div>
                 )}
               </div>
