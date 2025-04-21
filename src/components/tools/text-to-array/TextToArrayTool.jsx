@@ -28,6 +28,7 @@ const TextToArrayTool = () => {
 
   /**
    * Generates a slug from the given text.
+   *
    * @param {string} text - The input text to be slugified.
    * @returns {string} The generated slug.
    */
@@ -42,8 +43,8 @@ const TextToArrayTool = () => {
   /**
    * Generates a key for the associative array based on the input value.
    * If useSlugKeys is true, it generates a slug; otherwise, it returns the value.
+   *
    * @param {string} value - The input value to generate a key from.
-
    * @returns {string} The key to use
    */
   const getKey = (value) => {
@@ -94,6 +95,7 @@ const TextToArrayTool = () => {
 
   /**
    * Formats the parsed lines into the selected output format
+   *
    * @param {Array} lines - Parsed lines of text
    * @returns {string} Formatted output based on selected options
    */
@@ -120,6 +122,7 @@ const TextToArrayTool = () => {
 
   /**
    * Formats lines as JSON
+   *
    * @param {Array} lines - Parsed lines of text
    * @returns {string} JSON formatted output
    */
@@ -179,6 +182,7 @@ const TextToArrayTool = () => {
 
   /**
    * Formats lines as JavaScript object
+   *
    * @param {Array} lines - Parsed lines of text
    * @returns {string} JavaScript object formatted output
    */
@@ -210,6 +214,7 @@ const TextToArrayTool = () => {
 
   /**
    * Formats lines as PHP array
+   *
    * @param {Array} lines - Parsed lines of text
    * @returns {string} PHP formatted output
    */
@@ -239,6 +244,7 @@ const TextToArrayTool = () => {
 
   /**
    * Formats lines as WordPress array
+   *
    * @param {Array} lines - Parsed lines of text
    * @returns {string} WordPress formatted output
    */
@@ -270,6 +276,9 @@ const TextToArrayTool = () => {
 
   /**
    * Handles the conversion process when user submits the form
+   *
+   * @function
+   * @returns {void}
    */
   const handleSubmit = () => {
     const parsedLines = parseTextInput();
@@ -283,6 +292,9 @@ const TextToArrayTool = () => {
 
   /**
    * Clears only the text input field
+   *
+   * @function
+   * @returns {void}
    */
   const handleClear = () => {
     setInput("");
@@ -292,6 +304,9 @@ const TextToArrayTool = () => {
 
   /**
    * Resets all input fields and output
+   *
+   * @function
+   * @returns {void}
    */
   const handleReset = () => {
     handleClear();
