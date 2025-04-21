@@ -19,7 +19,7 @@ import { cn } from "@/utils/classNameUtils";
  * @param {string} [props.className] - Additional CSS classes
  * @returns {JSX.Element} The CopyButton component
  */
-const CopyButton = ({
+export const CopyButton = ({
   copied,
   disabled,
   onClick,
@@ -48,5 +48,3 @@ CopyButton.propTypes = {
   copiedText: PropTypes.string,
   className: PropTypes.string,
 };
-
-export default CopyButton;
