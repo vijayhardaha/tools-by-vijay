@@ -16,7 +16,7 @@ import { Textarea } from "@/components/ui/textarea";
  * @param {Object} props - Component props
  * @param {string} props.input - The current input text with URLs
  * @param {Function} props.setInput - Function to update the input text
- * @param {Function} props.onShortenUrls - Function to process and shorten the URLs
+ * @param {Function} props.onSubmit - Function to process and shorten the URLs
  * @param {Function} props.onClear - Function to clear the input and results
  * @param {boolean} props.isLoading - Whether the shortening process is in progress
  * @param {string} props.error - Error message to display, if any
@@ -25,20 +25,11 @@ import { Textarea } from "@/components/ui/textarea";
 const UrlShortenerInput = ({
   input = "",
   setInput,
-  onShortenUrls,
+  onSubmit,
   onClear,
   isLoading = false,
   error = "",
 }) => {
-  /**
-   * Handles changes to the input textarea
-   *
-   * @param {Object} e - Event object
-   */
-  const handleInputChange = (e) => {
-    setInput(e.target.value);
-  };
-
   /**
    * Handles form submission to shorten URLs
    *
@@ -46,7 +37,7 @@ const UrlShortenerInput = ({
    */
   const handleSubmit = (e) => {
     e.preventDefault();
-    onShortenUrls();
+    onSubmit();
   };
 
   return (
@@ -60,10 +51,11 @@ const UrlShortenerInput = ({
       <CardContent>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <Textarea
+            id="url-input"
             placeholder={`https://example.com/very-long-url\nhttps://another-example.com/with/multiple/path/segments`}
-            value={input}
             rows={5}
-            onChange={handleInputChange}
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
           />
 
           {error && <Alert variant="danger" text={error} />}
@@ -72,6 +64,7 @@ const UrlShortenerInput = ({
             <Button type="submit" variant="default" disabled={!input.trim() || isLoading}>
               {isLoading ? "Shortening..." : "Shorten URLs"}
             </Button>
+
             <Button type="button" variant="outline" onClick={onClear} disabled={isLoading}>
               Clear
             </Button>
@@ -85,7 +78,7 @@ const UrlShortenerInput = ({
 UrlShortenerInput.propTypes = {
   input: PropTypes.string.isRequired,
   setInput: PropTypes.func.isRequired,
-  onShortenUrls: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
   onClear: PropTypes.func.isRequired,
   isLoading: PropTypes.bool,
   error: PropTypes.string,
