@@ -32,8 +32,6 @@ const SlugifyOutput = ({ output }) => {
     setTimeout(() => setCopied(false), 1000);
   };
 
-  if (!output) return;
-
   return (
     <Card>
       <CardHeader>
@@ -43,7 +41,7 @@ const SlugifyOutput = ({ output }) => {
       <CardContent>
         <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
           <Input type="text" value={output} readOnly data-output />
-          <CopyButton copied={copied} disabled={!output} onClick={copyToClipboard} />
+          <CopyButton copied={copied} onClick={copyToClipboard} />
         </div>
       </CardContent>
     </Card>
