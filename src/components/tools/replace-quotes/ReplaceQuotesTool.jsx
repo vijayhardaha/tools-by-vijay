@@ -14,7 +14,7 @@ import ReplaceQuotesOutput from "./ReplaceQuotesOutput";
  * @returns {JSX.Element} The complete Replace Quotes tool with input options, output display, and information
  */
 const ReplaceQuotesTool = () => {
-  const [textInput, setTextInput] = useState("");
+  const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   const [error, setError] = useState("");
   const [replaceType, setReplaceType] = useState("simple-to-curly");
@@ -24,17 +24,17 @@ const ReplaceQuotesTool = () => {
   /**
    * Handles the quote replacement process
    */
-  const handleReplace = () => {
+  const handleSubmit = () => {
     try {
       setError("");
 
-      if (!textInput.trim()) {
+      if (!input.trim()) {
         setError("Please enter valid text content");
         setOutput("");
         return;
       }
 
-      let replacedText = textInput;
+      let replacedText = input;
 
       switch (replaceType) {
         case "simple-to-curly":
@@ -77,44 +77,43 @@ const ReplaceQuotesTool = () => {
   };
 
   /**
-   * Resets all input fields, output, and options
-   */
-  const handleReset = () => {
-    setTextInput("");
-    setOutput("");
-    setError("");
-    setReplaceType("simple-to-curly");
-    setReplaceApostrophes(true);
-    setReplaceStandaloneQuotes(false);
-  };
-
-  /**
    * Clears the output while keeping the input and other states intact
    */
   const handleClear = () => {
-    setTextInput("");
+    setInput("");
     setOutput("");
     setError("");
+  };
+
+  /**
+   * Resets all input fields, output, and options
+   */
+  const handleReset = () => {
+    handleClear();
+    setReplaceType("simple-to-curly");
+    setReplaceApostrophes(true);
+    setReplaceStandaloneQuotes(false);
   };
 
   return (
     <>
       <div className="grid grid-cols-1 gap-6">
         <ReplaceQuotesInput
-          textInput={textInput}
-          setTextInput={setTextInput}
+          input={input}
+          setInput={setInput}
           replaceType={replaceType}
           setReplaceType={setReplaceType}
-          onReplace={handleReplace}
-          onReset={handleReset}
-          onClear={handleClear}
-          error={error}
           replaceApostrophes={replaceApostrophes}
           setReplaceApostrophes={setReplaceApostrophes}
           replaceStandaloneQuotes={replaceStandaloneQuotes}
           setReplaceStandaloneQuotes={setReplaceStandaloneQuotes}
+          onSubmit={handleSubmit}
+          onReset={handleReset}
+          onClear={handleClear}
+          error={error}
         />
-        <ReplaceQuotesOutput output={output} />
+
+        {output && <ReplaceQuotesOutput output={output} />}
       </div>
 
       <div className="mt-16">
