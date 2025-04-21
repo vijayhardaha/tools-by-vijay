@@ -312,6 +312,9 @@ const DropdownToArrayTool = () => {
 
   /**
    * Handles the conversion process when user submits the form
+   *
+   * @function
+   * @returns {void}
    */
   const handleSubmit = () => {
     const parsedOptions = parseHtmlInput();
@@ -325,6 +328,9 @@ const DropdownToArrayTool = () => {
 
   /**
    * Clears only the input field while keeping other settings intact
+   *
+   * @function
+   * @returns {void}
    */
   const handleClear = () => {
     setInput("");
@@ -334,14 +340,18 @@ const DropdownToArrayTool = () => {
 
   /**
    * Resets all input fields and output
+   *
+   * This function resets the input, output, and all settings to their default values.
+   * It is called when the user clicks the "Reset" button.
+   *
+   * @function
+   * @returns {void}
    */
   const handleReset = () => {
-    setInput("");
+    handleClear();
     setOutputFormat("json");
     setArrayType("associative");
     setUseSlugKeys(true);
-    setOutput("");
-    setError("");
   };
 
   return (
