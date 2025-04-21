@@ -1,5 +1,3 @@
-"use client";
-
 /**
  * Info component for the Replace Quotes tool.
  * Provides additional information or instructions for the tool.
