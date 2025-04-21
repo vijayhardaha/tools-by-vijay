@@ -8,6 +8,24 @@ import { Progress } from "@/components/ui/progress";
 import { cn } from "@/utils/classNameUtils";
 
 /**
+ * Helper function to render criteria with icons
+ *
+ * @param {boolean} isMet - Indicates if the criteria is met
+ * @param {string} label - The label for the criteria
+ * @returns {JSX.Element} - A div containing the icon and label
+ */
+const renderCriteria = (isMet, label) => (
+  <div className="flex items-center gap-2">
+    {isMet ? (
+      <CheckIcon className="h-4 w-4 text-green-500" />
+    ) : (
+      <XIcon className="h-4 w-4 text-red-500" />
+    )}
+    <span className="text-sm">{label}</span>
+  </div>
+);
+
+/**
  * Component to display password strength analysis results
  *
  * @component
@@ -89,46 +107,11 @@ const PasswordStrengthCheckerOutput = ({ strength }) => {
           <div className="space-y-2">
             <h3 className="text-sm font-bold">Password criteria:</h3>
             <div className="space-y-1 pl-2">
-              <div className="flex items-center gap-2">
-                {strength.criteria.length ? (
-                  <CheckIcon className="h-4 w-4 text-green-500" />
-                ) : (
-                  <XIcon className="h-4 w-4 text-red-500" />
-                )}
-                <span className="text-sm">At least 8 characters</span>
-              </div>
-              <div className="flex items-center gap-2">
-                {strength.criteria.hasUppercase ? (
-                  <CheckIcon className="h-4 w-4 text-green-500" />
-                ) : (
-                  <XIcon className="h-4 w-4 text-red-500" />
-                )}
-                <span className="text-sm">Contains uppercase letters</span>
-              </div>
-              <div className="flex items-center gap-2">
-                {strength.criteria.hasLowercase ? (
-                  <CheckIcon className="h-4 w-4 text-green-500" />
-                ) : (
-                  <XIcon className="h-4 w-4 text-red-500" />
-                )}
-                <span className="text-sm">Contains lowercase letters</span>
-              </div>
-              <div className="flex items-center gap-2">
-                {strength.criteria.hasDigit ? (
-                  <CheckIcon className="h-4 w-4 text-green-500" />
-                ) : (
-                  <XIcon className="h-4 w-4 text-red-500" />
-                )}
-                <span className="text-sm">Contains numbers</span>
-              </div>
-              <div className="flex items-center gap-2">
-                {strength.criteria.hasSpecialChar ? (
-                  <CheckIcon className="h-4 w-4 text-green-500" />
-                ) : (
-                  <XIcon className="h-4 w-4 text-red-500" />
-                )}
-                <span className="text-sm">Contains special characters</span>
-              </div>
+              {renderCriteria(strength.criteria.length, "At least 8 characters")}
+              {renderCriteria(strength.criteria.hasUppercase, "Contains uppercase letters")}
+              {renderCriteria(strength.criteria.hasLowercase, "Contains lowercase letters")}
+              {renderCriteria(strength.criteria.hasDigit, "Contains numbers")}
+              {renderCriteria(strength.criteria.hasSpecialChar, "Contains special characters")}
             </div>
           </div>
         </>
