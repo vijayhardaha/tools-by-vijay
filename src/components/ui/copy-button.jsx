@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+
 import PropTypes from "prop-types";
 import { LuCopy as CopyIcon, LuCheck as CheckIcon } from "react-icons/lu";
 
@@ -11,27 +13,34 @@ import { cn } from "@/utils/classNameUtils";
  *
  * @component
  * @param {Object} props - The component props
- * @param {boolean} props.copied - Whether content has been copied
- * @param {boolean} props.disabled - Whether the button should be disabled
- * @param {Function} props.onClick - Function to call when button is clicked
+ * @param {string} props.text - The text to copy to the clipboard
  * @param {string} props.copyText - Text to show when not copied
  * @param {string} props.copiedText - Text to show when copied
  * @param {string} [props.className] - Additional CSS classes
  * @returns {JSX.Element} The CopyButton component
  */
-export const CopyButton = ({
-  copied,
-  disabled,
-  onClick,
-  copyText = "Copy",
-  copiedText = "Copied!",
-  className,
-}) => {
+export const CopyButton = ({ text, copyText = "Copy", copiedText = "Copied!", className }) => {
+  const [copied, setCopied] = useState(false);
+
+  /**
+   * Copies the text to the clipboard and updates the copied state.
+   *
+   * @async
+   * @function
+   * @returns {Promise<void>}
+   */
+  const handleCopy = async () => {
+    if (text) {
+      await navigator.clipboard.writeText(text);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1000);
+    }
+  };
+
   return (
     <Button
       variant={copied ? "success" : "secondary"}
-      disabled={disabled}
-      onClick={onClick}
+      onClick={handleCopy}
       className={cn("min-w-30", className)}
     >
       {copied ? <CheckIcon className="h-4 w-4" /> : <CopyIcon className="h-4 w-4" />}
@@ -41,9 +50,7 @@ export const CopyButton = ({
 };
 
 CopyButton.propTypes = {
-  copied: PropTypes.bool.isRequired,
-  disabled: PropTypes.bool,
-  onClick: PropTypes.func.isRequired,
+  text: PropTypes.string.isRequired,
   copyText: PropTypes.string,
   copiedText: PropTypes.string,
   className: PropTypes.string,
