@@ -16,94 +16,74 @@ import JsonSorterOutput from "./JsonSorterOutput";
  * @returns {JSX.Element} The complete JSON sorter tool with input options, output display, and information
  */
 const JsonSorterTool = () => {
-  /**
-   * The JSON input string
-   * @type {[string, function]} State and setter for JSON input
-   */
-  const [jsonInput, setJsonInput] = useState("");
-
-  /**
-   * Whether to spare (preserve) arrays
-   * @type {[boolean, function]} State and setter for spare arrays option
-   */
+  const [input, setInput] = useState("");
+  const [output, setOutput] = useState("");
   const [spareArrays, setSpareArrays] = useState(true);
-
-  /**
-   * The sorted JSON output
-   * @type {[string, function]} State and setter for the sorted output
-   */
-  const [sortedOutput, setSortedOutput] = useState("");
-
-  /**
-   * Any error message from the sorting process
-   * @type {[string, function]} State and setter for error messages
-   */
   const [error, setError] = useState("");
 
   /**
    * Handles the sorting process when user submits the form
    */
-  const handleSort = () => {
+  const handleSubmit = () => {
     try {
       setError("");
 
-      if (!jsonInput.trim()) {
+      if (!input.trim()) {
         setError("Please enter valid JSON content");
-        setSortedOutput("");
+        setOutput("");
         return;
       }
 
       // Parse the JSON to validate it
       try {
-        JSON.parse(jsonInput);
+        JSON.parse(input);
       } catch (err) {
         setError(`Invalid JSON: ${err.message}`);
-        setSortedOutput("");
+        setOutput("");
         return;
       }
 
       // Sort the JSON using jsonabc
-      const output = jsonabc.sort(jsonInput, spareArrays);
-      setSortedOutput(output);
+      const output = jsonabc.sort(input, spareArrays);
+      setOutput(output);
     } catch (err) {
       setError(`Error sorting JSON: ${err.message}`);
-      setSortedOutput("");
+      setOutput("");
     }
-  };
-
-  /**
-   * Resets all input fields and output
-   */
-  const handleReset = () => {
-    setJsonInput("");
-    setSpareArrays(true);
-    setSortedOutput("");
-    setError("");
   };
 
   /**
    * Clears only the JSON input field
    */
   const handleClear = () => {
-    setJsonInput("");
-    setSortedOutput("");
+    setInput("");
+    setOutput("");
     setError("");
+  };
+
+  /**
+   * Resets all input fields and output
+   */
+  const handleReset = () => {
+    handleClear();
+    setSpareArrays(true);
   };
 
   return (
     <>
       <div className="grid grid-cols-1 gap-6">
         <JsonSorterInput
-          jsonInput={jsonInput}
-          setJsonInput={setJsonInput}
+          input={input}
+          setInput={setInput}
           spareArrays={spareArrays}
           setSpareArrays={setSpareArrays}
-          onSort={handleSort}
+          onSubmit={handleSubmit}
           onClear={handleClear}
           onReset={handleReset}
           error={error}
         />
-        <JsonSorterOutput output={sortedOutput} />
+
+        {output && <JsonSorterOutput output={output} />}
       </div>
 
       <div className="mt-16">
