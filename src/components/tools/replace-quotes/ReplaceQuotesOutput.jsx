@@ -18,10 +18,6 @@ import { Textarea } from "@/components/ui/textarea";
  * @returns {JSX.Element} The rendered card with output display and copy functionality
  */
 const ReplaceQuotesOutput = ({ output }) => {
-  /**
-   * State to track whether the output has been copied to clipboard
-   * @type {[boolean, function]} - State and setter for copied status
-   */
   const [copied, setCopied] = useState(false);
 
   /**
@@ -36,8 +32,6 @@ const ReplaceQuotesOutput = ({ output }) => {
     setTimeout(() => setCopied(false), 1000);
   };
 
-  if (!output) return null;
-
   return (
     <Card>
       <CardHeader>
@@ -47,18 +41,12 @@ const ReplaceQuotesOutput = ({ output }) => {
             <CardDescription>The text after replacing quotes</CardDescription>
           </div>
           <div className="inline-flex">
-            <CopyButton copied={copied} disabled={!output} onClick={copyToClipboard} />
+            <CopyButton copied={copied} onClick={copyToClipboard} />
           </div>
         </div>
       </CardHeader>
       <CardContent>
-        <Textarea
-          value={output}
-          readOnly
-          data-output
-          className="min-h-52"
-          placeholder="Processed text will appear here..."
-        />
+        <Textarea value={output} rows={8} readOnly data-output />
       </CardContent>
     </Card>
   );
