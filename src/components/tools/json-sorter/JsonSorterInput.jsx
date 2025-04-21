@@ -55,43 +55,40 @@ const JsonSorterInput = ({
       <CardContent>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <div className="space-y-2">
-            <Label htmlFor="json-input" className="flex items-center">
-              JSON Content
+            <div className="flex items-center gap-1">
+              <Label htmlFor="json-input">JSON Content</Label>
               <Tooltip text="Enter or paste valid JSON that you want to sort alphabetically by keys.">
-                <FiInfo className="text-muted-foreground ml-1.5 h-4 w-4 cursor-help" />
+                <FiInfo className="text-muted-foreground h-4 w-4 cursor-help" />
               </Tooltip>
-            </Label>
+            </div>
+
             <Textarea
               id="json-input"
-              placeholder={`{\n  "zebra": 1,\n  "apple": 2,\n  "banana": 3\n}`}
+              placeholder={`{\n\t"zebra": 1,\n\t"apple": 2,\n\t"banana": 3\n}`}
               className="min-h-52"
               value={jsonInput}
               onChange={(e) => setJsonInput(e.target.value)}
             />
           </div>
 
-          <div className="flex flex-col gap-4">
-            <div className="flex items-center space-x-2">
-              <Checkbox id="spare-arrays" checked={spareArrays} onCheckedChange={setSpareArrays} />
-              <Label
-                htmlFor="spare-arrays"
-                className="cursor-pointer text-sm leading-none font-medium"
-              >
-                Spare plain arrays
-              </Label>
-              <Tooltip text="Preserve the original order of simple arrays (don't sort array elements)">
-                <FiInfo className="text-muted-foreground h-4 w-4 cursor-help" />
-              </Tooltip>
-            </div>
+          <div className="flex items-center gap-1">
+            <Checkbox id="spare-arrays" checked={spareArrays} onCheckedChange={setSpareArrays}>
+              Spare plain arrays
+            </Checkbox>
+            <Tooltip text="Preserve the original order of simple arrays (don't sort array elements)">
+              <FiInfo className="text-muted-foreground h-4 w-4 cursor-help" />
+            </Tooltip>
           </div>
 
-          <div className="mt-4 flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2">
             <Button type="submit" variant="default" disabled={!jsonInput}>
               Sort JSON
             </Button>
+
             <Button type="button" variant="outline" onClick={onClear}>
               Clear
             </Button>
+
             <Button type="button" variant="destructive" onClick={onReset}>
               Reset
             </Button>
