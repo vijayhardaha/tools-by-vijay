@@ -78,8 +78,7 @@ const BulkSlugifyTool = () => {
    * Resets all form fields and options to their default values
    */
   const handleReset = () => {
-    setInput("");
-    setOutput("");
+    handleClear();
     setUseUnderscore(false);
     setRemoveNumbers(false);
     setUseLowercase(true);
