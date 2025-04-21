@@ -23,6 +23,9 @@ const JsonSorterTool = () => {
 
   /**
    * Handles the sorting process when user submits the form
+   *
+   * @function
+   * @returns {void}
    */
   const handleSubmit = () => {
     try {
@@ -54,6 +57,9 @@ const JsonSorterTool = () => {
 
   /**
    * Clears only the JSON input field
+   *
+   * @function
+   * @returns {void}
    */
   const handleClear = () => {
     setInput("");
@@ -63,6 +69,9 @@ const JsonSorterTool = () => {
 
   /**
    * Resets all input fields and output
+   *
+   * @function
+   * @returns {void}
    */
   const handleReset = () => {
     handleClear();
