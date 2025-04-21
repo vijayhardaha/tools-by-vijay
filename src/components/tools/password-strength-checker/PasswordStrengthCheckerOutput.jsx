@@ -23,10 +23,9 @@ import { cn } from "@/utils/classNameUtils";
  * @param {boolean} props.strength.criteria.hasLowercase - If password contains lowercase letters
  * @param {boolean} props.strength.criteria.hasDigit - If password contains numbers
  * @param {boolean} props.strength.criteria.hasSpecialChar - If password contains special characters
- * @param {string} props.password - The password being evaluated
  * @returns {JSX.Element} The rendered password strength analysis
  */
-const PasswordStrengthCheckerOutput = ({ strength, password }) => {
+const PasswordStrengthCheckerOutput = ({ strength }) => {
   // Strength level names
   const strengthLevels = ["Very Weak", "Weak", "Fair", "Good", "Strong"];
 
@@ -47,8 +46,6 @@ const PasswordStrengthCheckerOutput = ({ strength, password }) => {
     "text-green-400", // Good
     "text-green-600", // Strong
   ];
-
-  if (!password) return;
 
   return (
     <Card>
@@ -155,7 +152,6 @@ PasswordStrengthCheckerOutput.propTypes = {
       hasSpecialChar: PropTypes.bool.isRequired,
     }).isRequired,
   }).isRequired,
-  password: PropTypes.string.isRequired,
 };
 
 export default PasswordStrengthCheckerOutput;
