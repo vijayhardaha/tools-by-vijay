@@ -14,47 +14,13 @@ import PasswordGeneratorOutput from "./PasswordGeneratorOutput";
  * @returns {JSX.Element} The complete password generator tool with input options, output display, and information
  */
 const PasswordGeneratorTool = () => {
-  /**
-   * The length of the password to generate
-   * @type {[number, function]} State and setter for password length
-   */
   const [length, setLength] = useState([12]);
-
-  /**
-   * Whether to include uppercase letters in the password
-   * @type {[boolean, function]} State and setter for uppercase option
-   */
   const [useUppercase, setUseUppercase] = useState(true);
-
-  /**
-   * Whether to include lowercase letters in the password
-   * @type {[boolean, function]} State and setter for lowercase option
-   */
   const [useLowercase, setUseLowercase] = useState(true);
-
-  /**
-   * Whether to include numbers in the password
-   * @type {[boolean, function]} State and setter for numbers option
-   */
   const [useNumbers, setUseNumbers] = useState(true);
-
-  /**
-   * Whether to include symbols in the password
-   * @type {[boolean, function]} State and setter for symbols option
-   */
   const [useSymbols, setUseSymbols] = useState(true);
-
-  /**
-   * Whether to exclude similar-looking characters from the password
-   * @type {[boolean, function]} State and setter for excluding similar characters
-   */
   const [excludeSimilar, setExcludeSimilar] = useState(false);
-
-  /**
-   * The currently generated password
-   * @type {[string, function]} State and setter for the generated password
-   */
-  const [generatedPassword, setGeneratedPassword] = useState("");
+  const [password, setPassword] = useState("");
 
   /**
    * Generates a password based on the current settings
@@ -104,9 +70,9 @@ const PasswordGeneratorTool = () => {
    * Handles the password generation action and updates state
    * @function
    */
-  const handleGenerate = () => {
+  const handleSubmit = () => {
     const password = generatePassword();
-    setGeneratedPassword(password);
+    setPassword(password);
   };
 
   /**
@@ -120,7 +86,7 @@ const PasswordGeneratorTool = () => {
     setUseNumbers(true);
     setUseSymbols(true);
     setExcludeSimilar(false);
-    setGeneratedPassword("");
+    setPassword("");
   };
 
   return (
@@ -139,10 +105,11 @@ const PasswordGeneratorTool = () => {
           setUseSymbols={setUseSymbols}
           excludeSimilar={excludeSimilar}
           setExcludeSimilar={setExcludeSimilar}
-          onGenerate={handleGenerate}
+          onSubmit={handleSubmit}
           onReset={handleReset}
         />
-        <PasswordGeneratorOutput password={generatedPassword} />
+
+        {password && <PasswordGeneratorOutput password={password} />}
       </div>
 
       <div className="mt-16">
