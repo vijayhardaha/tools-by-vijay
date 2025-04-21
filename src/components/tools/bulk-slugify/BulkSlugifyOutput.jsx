@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
-import { CopyButton } from "@/components/ui/copy-button";
+import { CopyButton } from "@/components/ui/copyButton";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
