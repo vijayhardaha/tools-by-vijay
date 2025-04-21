@@ -7,6 +7,35 @@ import PasswordStrengthCheckerInput from "./PasswordStrengthCheckerInput";
 import PasswordStrengthCheckerOutput from "./PasswordStrengthCheckerOutput";
 
 /**
+ * Default strength options for the password strength checker
+ * @type {Object}
+ * @property {number} score - Initial score of the password strength
+ * @property {Object} feedback - Feedback object containing warning and suggestions
+ * @property {string} feedback.warning - Warning message for weak passwords
+ * @property {string[]} feedback.suggestions - Array of suggestions for improvement
+ * @property {Object} criteria - Criteria object containing boolean values for each strength criterion
+ * @property {boolean} criteria.length - Whether password meets minimum length requirement
+ * @property {boolean} criteria.hasUppercase - Whether password contains uppercase letters
+ * @property {boolean} criteria.hasLowercase - Whether password contains lowercase letters
+ * @property {boolean} criteria.hasDigit - Whether password contains numbers
+ * @property {boolean} criteria.hasSpecialChar - Whether password contains special characters
+ */
+const defaultStengthOptions = {
+  score: 0,
+  feedback: {
+    warning: "",
+    suggestions: [],
+  },
+  criteria: {
+    length: false,
+    hasUppercase: false,
+    hasLowercase: false,
+    hasDigit: false,
+    hasSpecialChar: false,
+  },
+};
+
+/**
  * Password Strength Checker Tool Component
  *
  * Main component that handles password strength checking logic and renders
@@ -17,37 +46,7 @@ import PasswordStrengthCheckerOutput from "./PasswordStrengthCheckerOutput";
  */
 const PasswordStrengthCheckerTool = () => {
   const [password, setPassword] = useState("");
-  /**
-   * @typedef {Object} StrengthCriteria
-   * @property {boolean} length - Whether password meets minimum length requirement
-   * @property {boolean} hasUppercase - Whether password contains uppercase letters
-   * @property {boolean} hasLowercase - Whether password contains lowercase letters
-   * @property {boolean} hasDigit - Whether password contains numbers
-   * @property {boolean} hasSpecialChar - Whether password contains special characters
-   *
-   * @typedef {Object} Feedback
-   * @property {string} warning - Warning message for weak passwords
-   * @property {string[]} suggestions - Array of improvement suggestions
-   *
-   * @typedef {Object} PasswordStrength
-   * @property {number} score - Password strength score (0-4)
-   * @property {Feedback} feedback - User feedback about password strength
-   * @property {StrengthCriteria} criteria - Specific criteria met by the password
-   */
-  const [strength, setStrength] = useState({
-    score: 0,
-    feedback: {
-      warning: "",
-      suggestions: [],
-    },
-    criteria: {
-      length: false,
-      hasUppercase: false,
-      hasLowercase: false,
-      hasDigit: false,
-      hasSpecialChar: false,
-    },
-  });
+  const [strength, setStrength] = useState(defaultStengthOptions);
 
   /**
    * Evaluates password strength based on various criteria
@@ -121,26 +120,13 @@ const PasswordStrengthCheckerTool = () => {
    *
    * @param {string} newPassword - The new password value
    */
-  const handlePasswordChange = (newPassword) => {
+  const handleSubmit = (newPassword) => {
     setPassword(newPassword);
     if (newPassword) {
       const result = checkPasswordStrength(newPassword);
       setStrength(result);
     } else {
-      setStrength({
-        score: 0,
-        feedback: {
-          warning: "",
-          suggestions: [],
-        },
-        criteria: {
-          length: false,
-          hasUppercase: false,
-          hasLowercase: false,
-          hasDigit: false,
-          hasSpecialChar: false,
-        },
-      });
+      setStrength(defaultStengthOptions);
     }
   };
 
@@ -149,20 +135,7 @@ const PasswordStrengthCheckerTool = () => {
    */
   const handleClear = () => {
     setPassword("");
-    setStrength({
-      score: 0,
-      feedback: {
-        warning: "",
-        suggestions: [],
-      },
-      criteria: {
-        length: false,
-        hasUppercase: false,
-        hasLowercase: false,
-        hasDigit: false,
-        hasSpecialChar: false,
-      },
-    });
+    setStrength(defaultStengthOptions);
   };
 
   return (
@@ -170,10 +143,11 @@ const PasswordStrengthCheckerTool = () => {
       <div className="grid grid-cols-1 gap-6">
         <PasswordStrengthCheckerInput
           password={password}
-          onPasswordChange={handlePasswordChange}
+          onSubmit={handleSubmit}
           onClear={handleClear}
         />
-        <PasswordStrengthCheckerOutput strength={strength} password={password} />
+
+        {password && <PasswordStrengthCheckerOutput strength={strength} password={password} />}
       </div>
 
       <div className="mt-16">
