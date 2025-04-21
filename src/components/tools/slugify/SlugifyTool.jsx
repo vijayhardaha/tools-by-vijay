@@ -11,11 +11,11 @@ import SlugifyOutput from "./SlugifyOutput";
 
 const SlugifyTool = () => {
   const [input, setInput] = useState("");
+  const [output, setOutput] = useState("");
   const [useUnderscore, setUseUnderscore] = useState(false);
   const [removeNumbers, setRemoveNumbers] = useState(false);
   const [useLowercase, setUseLowercase] = useState(true);
   const [useLitinize, setUseLitinize] = useState(true);
-  const [generatedOutput, setGeneratedOutput] = useState("");
 
   /**
    * Generates a slug from the given text based on the current settings.
@@ -50,9 +50,9 @@ const SlugifyTool = () => {
    * Handles the generation of the slug and updates the output state.
    * This function is triggered when the "Generate" button is clicked.
    */
-  const handleGenerate = () => {
+  const handleSubmit = () => {
     const slug = generateSlug(input);
-    setGeneratedOutput(slug);
+    setOutput(slug);
   };
 
   /**
@@ -61,7 +61,7 @@ const SlugifyTool = () => {
    */
   const handleClear = () => {
     setInput("");
-    setGeneratedOutput("");
+    setOutput("");
   };
 
   /**
@@ -69,8 +69,7 @@ const SlugifyTool = () => {
    * This function is triggered when the "Reset" button is clicked.
    */
   const handleReset = () => {
-    setInput("");
-    setGeneratedOutput("");
+    handleClear();
     setUseUnderscore(false);
     setRemoveNumbers(false);
     setUseLowercase(true);
@@ -91,11 +90,12 @@ const SlugifyTool = () => {
           setUseLowercase={setUseLowercase}
           useLitinize={useLitinize}
           setUseLitinize={setUseLitinize}
-          onGenerate={handleGenerate}
+          onSubmit={handleSubmit}
           onClear={handleClear}
           onReset={handleReset}
         />
-        <SlugifyOutput output={generatedOutput} />
+
+        {output && <SlugifyOutput output={output} />}
       </div>
 
       <div className="mt-16">
