@@ -8,8 +8,8 @@ import { PiTextAa as AaIcon } from "react-icons/pi";
 import Logo from "@/components/header/parts/Logo";
 import MenuButton from "@/components/header/parts/MenuButton";
 import Sidebar from "@/components/header/sidebar/Sidebar";
-import Box from "@/components/ui/box";
 import { Button } from "@/components/ui/button";
+import { FlexBox } from "@/components/ui/flexbox";
 import { cn } from "@/utils/classNameUtils";
 
 /**
@@ -28,7 +28,7 @@ const Header = () => {
     <>
       <header className="border-border sticky top-0 z-50 border-b bg-white">
         <div className="relative z-20 mx-auto max-w-5xl px-4">
-          <Box component="header" flex={true} align="center" justify="between" py="4">
+          <FlexBox component="header" flex={true} align="center" justify="between" py="4">
             <Logo />
             <div className="flex items-center gap-2">
               <Button
@@ -50,7 +50,7 @@ const Header = () => {
               </Button>
               <MenuButton onClick={toggleDrawer} />
             </div>
-          </Box>
+          </FlexBox>
         </div>
       </header>
       <Sidebar isOpen={isOpen} onClose={closeDrawer} />

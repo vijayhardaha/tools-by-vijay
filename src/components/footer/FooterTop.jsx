@@ -1,8 +1,7 @@
 import FooterAbout from "@/components/footer/FooterAbout";
 import FooterWidget from "@/components/footer/FooterWidget";
+import { FlexBox } from "@/components/ui/flexbox";
 import footerLinks from "@/constants/footerLinks";
-
-import Box from "../ui/box";
 
 /**
  * Top section of the footer containing about information and navigation widgets
@@ -11,7 +10,7 @@ import Box from "../ui/box";
  */
 const FooterTop = () => {
   return (
-    <Box flex={true} col={true} className="mb-6 space-y-6">
+    <FlexBox flex={true} col={true} className="mb-6 space-y-6">
       {/* About section - takes 2 columns on large screens */}
       <FooterAbout />
 
@@ -22,7 +21,7 @@ const FooterTop = () => {
         <FooterWidget title="Text Tools" links={footerLinks.textTools} />
         <FooterWidget title="Web Tools" links={footerLinks.webTools} />
       </div>
-    </Box>
+    </FlexBox>
   );
 };
 
