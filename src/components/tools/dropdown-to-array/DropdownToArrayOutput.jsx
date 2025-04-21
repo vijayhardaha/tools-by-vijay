@@ -1,7 +1,3 @@
-"use client";
-
-import { useState } from "react";
-
 import PropTypes from "prop-types";
 
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
@@ -20,24 +16,6 @@ import { Textarea } from "@/components/ui/textarea";
  * @returns {JSX.Element} The rendered card with output display and copy functionality
  */
 const DropdownToArrayOutput = ({ output }) => {
-  /**
-   * State to track whether the output has been copied to clipboard
-   * @type {[boolean, function]} - State and setter for copied status
-   */
-  const [copied, setCopied] = useState(false);
-
-  /**
-   * Copies the current output to the clipboard and provides visual feedback
-   * @async
-   * @function
-   * @returns {Promise<void>}
-   */
-  const copyToClipboard = async () => {
-    await navigator.clipboard.writeText(output);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 1000);
-  };
-
   return (
     <Card>
       <CardHeader>
@@ -47,7 +25,7 @@ const DropdownToArrayOutput = ({ output }) => {
             <CardDescription>Copy the generated array for use in your code</CardDescription>
           </div>
           <div className="inline-flex">
-            <CopyButton copied={copied} onClick={copyToClipboard} />
+            <CopyButton text={output} />
           </div>
         </div>
       </CardHeader>
