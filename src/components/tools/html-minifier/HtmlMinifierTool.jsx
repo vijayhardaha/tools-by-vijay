@@ -49,6 +49,7 @@ const HtmlMinifierTool = () => {
    *
    * @async
    * @function
+   * @returns {void}
    */
   const handleSubmit = async () => {
     if (!input.trim()) return;
@@ -87,6 +88,7 @@ const HtmlMinifierTool = () => {
    * Clears the input and output fields
    *
    * @function
+   * @returns {void}
    */
   const handleClear = () => {
     setInput("");
@@ -97,10 +99,10 @@ const HtmlMinifierTool = () => {
    * Resets all options to their default values
    *
    * @function
+   * @returns {void}
    */
   const handleReset = () => {
-    setInput("");
-    setOutput("");
+    handleClear();
     setOptions(defaultOptions);
   };
 
