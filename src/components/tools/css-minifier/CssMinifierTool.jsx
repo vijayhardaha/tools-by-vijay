@@ -7,6 +7,24 @@ import CssMinifierInput from "./CssMinifierInput";
 import CssMinifierOutput from "./CssMinifierOutput";
 
 /**
+ * Default options for the CSS Minifier
+ */
+const defaultOptions = {
+  level: 1,
+  compress: true,
+  format: {
+    indentBy: 0,
+    indentWith: "space",
+    spaces: {
+      aroundSelectorRelation: false,
+      beforeBlockBegins: false,
+      beforeValue: false,
+    },
+    wrapAt: false,
+  },
+};
+
+/**
  * Main component for the CSS Minifier tool
  * Handles state management and minification logic
  *
@@ -16,20 +34,7 @@ const CssMinifierTool = () => {
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [options, setOptions] = useState({
-    level: 1,
-    compress: true,
-    format: {
-      indentBy: 0,
-      indentWith: "space",
-      spaces: {
-        aroundSelectorRelation: false,
-        beforeBlockBegins: false,
-        beforeValue: false,
-      },
-      wrapAt: false,
-    },
-  });
+  const [options, setOptions] = useState(defaultOptions);
 
   /**
    * Handles the minification process when the "Minify" button is clicked
@@ -74,7 +79,12 @@ const CssMinifierTool = () => {
   /**
    * Clears the input and output fields
    *
+   * This function resets the input and output states to empty strings.
+   * It is called when the user clicks the "Clear" button.
+   * It does not affect the options state.
+   *
    * @function
+   * @returns {void}
    */
   const handleClear = () => {
     setInput("");
@@ -84,25 +94,15 @@ const CssMinifierTool = () => {
   /**
    * Resets all options to their default values
    *
+   * This function resets the options state to its initial values.
+   * It is called when the user clicks the "Reset" button.
+   *
    * @function
+   * @returns {void}
    */
   const handleReset = () => {
-    setInput("");
-    setOutput("");
-    setOptions({
-      level: 1,
-      compress: true,
-      format: {
-        indentBy: 0,
-        indentWith: "space",
-        spaces: {
-          aroundSelectorRelation: false,
-          beforeBlockBegins: false,
-          beforeValue: false,
-        },
-        wrapAt: false,
-      },
-    });
+    handleClear();
+    setOptions(defaultOptions);
   };
 
   /**
