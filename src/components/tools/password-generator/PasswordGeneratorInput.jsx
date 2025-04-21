@@ -28,7 +28,7 @@ import { Tooltip } from "@/components/ui/tooltip";
  * @param {Function} props.setUseSymbols - Function to toggle symbols
  * @param {boolean} props.excludeSimilar - Whether to exclude similar characters
  * @param {Function} props.setExcludeSimilar - Function to toggle exclusion of similar characters
- * @param {Function} props.onGenerate - Function to generate a password with current settings
+ * @param {Function} props.onSubmit - Function to generate a password with current settings
  * @param {Function} props.onReset - Function to reset all settings to defaults
  * @returns {JSX.Element} The rendered form with password generation options
  */
@@ -45,7 +45,7 @@ const PasswordGeneratorInput = ({
   setUseSymbols,
   excludeSimilar,
   setExcludeSimilar,
-  onGenerate,
+  onSubmit,
   onReset,
 }) => {
   /**
@@ -54,7 +54,7 @@ const PasswordGeneratorInput = ({
    */
   const handleSubmit = (e) => {
     e.preventDefault();
-    onGenerate();
+    onSubmit();
   };
 
   return (
@@ -67,9 +67,12 @@ const PasswordGeneratorInput = ({
         <form onSubmit={handleSubmit} className="flex flex-col gap-6">
           <div className="space-y-2">
             <div className="flex items-center justify-between">
-              <Label htmlFor="password-length">Password Length:</Label>
-              <span className="text-muted-foreground text-sm">{length} characters</span>
+              <Label htmlFor="password-length">
+                Password Length:{" "}
+                <span className="text-muted-foreground text-sm">{length} characters</span>
+              </Label>
             </div>
+
             <Slider
               id="password-length"
               min={8}
@@ -84,45 +87,33 @@ const PasswordGeneratorInput = ({
             <p className="font-medium">Character Types</p>
 
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <div className="flex items-center space-x-2">
-                <Checkbox
-                  id="useUppercase"
-                  checked={useUppercase}
-                  onCheckedChange={setUseUppercase}
-                />
-                <Label htmlFor="useUppercase">Include Uppercase (A-Z)</Label>
-              </div>
+              <Checkbox id="useUppercase" checked={useUppercase} onCheckedChange={setUseUppercase}>
+                Include Uppercase (A-Z)
+              </Checkbox>
 
-              <div className="flex items-center space-x-2">
-                <Checkbox
-                  id="useLowercase"
-                  checked={useLowercase}
-                  onCheckedChange={setUseLowercase}
-                />
-                <Label htmlFor="useLowercase">Include Lowercase (a-z)</Label>
-              </div>
+              <Checkbox id="useLowercase" checked={useLowercase} onCheckedChange={setUseLowercase}>
+                Include Lowercase (a-z)
+              </Checkbox>
 
-              <div className="flex items-center space-x-2">
-                <Checkbox id="useNumbers" checked={useNumbers} onCheckedChange={setUseNumbers} />
-                <Label htmlFor="useNumbers">Include Numbers (0-9)</Label>
-              </div>
+              <Checkbox id="useNumbers" checked={useNumbers} onCheckedChange={setUseNumbers}>
+                Include Numbers (0-9)
+              </Checkbox>
 
-              <div className="flex items-center space-x-2">
-                <Checkbox id="useSymbols" checked={useSymbols} onCheckedChange={setUseSymbols} />
-                <Label htmlFor="useSymbols">Include Symbols (!@#$...)</Label>
-              </div>
+              <Checkbox id="useSymbols" checked={useSymbols} onCheckedChange={setUseSymbols}>
+                Include Symbols (!@#$...)
+              </Checkbox>
             </div>
           </div>
 
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center gap-2">
             <Checkbox
               id="excludeSimilar"
               checked={excludeSimilar}
               onCheckedChange={setExcludeSimilar}
-            />
-            <Label htmlFor="excludeSimilar" className="flex items-center">
+            >
               Exclude similar characters (i, l, 1, L, o, 0, O)
-            </Label>
+            </Checkbox>
+
             <Tooltip
               className="!w-80"
               text="This option removes characters that look alike (such as the letter 'O' and number '0'). Use this to create passwords that are less confusing to read and type, especially when sharing passwords verbally or in print."
@@ -135,6 +126,7 @@ const PasswordGeneratorInput = ({
             <Button type="submit" variant="default">
               Generate Password
             </Button>
+
             <Button type="button" variant="destructive" onClick={onReset}>
               Reset
             </Button>
@@ -158,7 +150,7 @@ PasswordGeneratorInput.propTypes = {
   setUseSymbols: PropTypes.func.isRequired,
   excludeSimilar: PropTypes.bool.isRequired,
   setExcludeSimilar: PropTypes.func.isRequired,
-  onGenerate: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
   onReset: PropTypes.func.isRequired,
 };
 
