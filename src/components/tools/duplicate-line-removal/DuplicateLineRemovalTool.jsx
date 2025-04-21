@@ -27,7 +27,13 @@ const DuplicateLineRemovalTool = () => {
    * @returns {void}
    */
   const handleSubmit = () => {
-    const lines = input.split("\n").filter((line, index, self) => self.indexOf(line) === index);
+    const lines = input
+      .split("\n")
+      .map((line) => line.trim())
+      .filter((line) => line !== "")
+      .filter((line) => line.length > 0)
+      .filter((line, index, self) => self.indexOf(line) === index);
+
     let sortedLines = lines;
 
     if (sortType === "alphabetical") {
