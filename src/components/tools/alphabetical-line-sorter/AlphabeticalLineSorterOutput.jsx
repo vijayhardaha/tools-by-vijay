@@ -1,7 +1,5 @@
 "use client";
 
-import { useState } from "react";
-
 import PropTypes from "prop-types";
 
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
@@ -18,21 +16,6 @@ import { Textarea } from "@/components/ui/textarea";
  * @returns {JSX.Element} The rendered output display
  */
 const AlphabeticalLineSorterOutput = ({ output }) => {
-  const [copied, setCopied] = useState(false);
-
-  /**
-   * Copies the output text to the clipboard and shows a temporary confirmation.
-   *
-   * @async
-   * @function
-   * @returns {Promise<void>}
-   */
-  const copyToClipboard = async () => {
-    await navigator.clipboard.writeText(output);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 1000);
-  };
-
   return (
     <Card>
       <CardHeader>
@@ -42,7 +25,7 @@ const AlphabeticalLineSorterOutput = ({ output }) => {
             <CardDescription>The text after sorting lines alphabetically.</CardDescription>
           </div>
           <div className="inline-flex">
-            <CopyButton copied={copied} onClick={copyToClipboard} />
+            <CopyButton text={output} />
           </div>
         </div>
       </CardHeader>
