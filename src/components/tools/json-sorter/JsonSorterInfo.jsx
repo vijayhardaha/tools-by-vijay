@@ -1,5 +1,3 @@
-"use client";
-
 /**
  * Provides information about the JSON Sorter tool, including its purpose,
  * usage instructions, and examples.
@@ -55,30 +53,14 @@ const JsonSorterInfo = () => {
           <div>
             <h4 className="mb-2 font-medium">Input Example:</h4>
             <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-sm">
-              {`{
-  "zebra": 1,
-  "apple": 2,
-  "colors": ["red", "green", "blue"],
-  "banana": {
-    "yellow": true,
-    "ripe": false
-  }
-}`}
+              {`{\n\t"zebra": 1,\n\t"apple": 2,\n\t"colors": ["red", "green", "blue"],\n\t"banana": {\n\t\t"yellow": true,\n\t\t"ripe": false\n\t}\n}`}
             </pre>
           </div>
 
           <div>
             <h4 className="mb-2 font-medium">Output Example:</h4>
             <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-sm">
-              {`{
-  "apple": 2,
-  "banana": {
-    "ripe": false,
-    "yellow": true
-  },
-  "colors": ["red", "green", "blue"],
-  "zebra": 1
-}`}
+              {`{\n\t"apple": 2,\n\t"banana": {\n\t\t"ripe": false,\n\t\t"yellow": true\n\t},\n\t"colors": ["red", "green", "blue"],\n\t"zebra": 1\n}`}
             </pre>
           </div>
         </div>
