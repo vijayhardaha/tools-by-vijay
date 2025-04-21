@@ -19,10 +19,6 @@ import { Input } from "@/components/ui/input";
  * @returns {JSX.Element} The rendered card with password display and copy functionality
  */
 const PasswordGeneratorOutput = ({ password }) => {
-  /**
-   * State to track whether the password has been copied to clipboard
-   * @type {[boolean, function]} - State and setter for copied status
-   */
   const [copied, setCopied] = useState(false);
 
   /**
@@ -37,8 +33,6 @@ const PasswordGeneratorOutput = ({ password }) => {
     setTimeout(() => setCopied(false), 1000);
   };
 
-  if (!password) return;
-
   return (
     <Card>
       <CardHeader>
@@ -48,7 +42,7 @@ const PasswordGeneratorOutput = ({ password }) => {
       <CardContent>
         <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
           <Input type="text" value={password} readOnly data-output />
-          <CopyButton copied={copied} disabled={!password} onClick={copyToClipboard} />
+          <CopyButton copied={copied} onClick={copyToClipboard} />
         </div>
       </CardContent>
     </Card>
