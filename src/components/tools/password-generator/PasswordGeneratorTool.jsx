@@ -24,6 +24,7 @@ const PasswordGeneratorTool = () => {
 
   /**
    * Generates a password based on the current settings
+   *
    * @function
    * @returns {string} The generated password or an error message
    */
@@ -68,7 +69,9 @@ const PasswordGeneratorTool = () => {
 
   /**
    * Handles the password generation action and updates state
+   *
    * @function
+   * @returns {void}
    */
   const handleSubmit = () => {
     const password = generatePassword();
@@ -77,7 +80,9 @@ const PasswordGeneratorTool = () => {
 
   /**
    * Resets all password generation options to their default values
+   *
    * @function
+   * @returns {void}
    */
   const handleReset = () => {
     setLength(12);
