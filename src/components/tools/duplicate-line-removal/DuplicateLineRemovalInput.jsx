@@ -18,19 +18,23 @@ import { Textarea } from "@/components/ui/textarea";
  * @returns {JSX.Element} The rendered input form
  */
 const DuplicateLineRemovalInput = ({
-  textInput,
-  setTextInput,
+  input,
+  setInput,
   sortType,
   setSortType,
   reverseSort,
   setReverseSort,
-  onProcess,
+  onSubmit,
   onReset,
   onClear,
 }) => {
+  /**
+   * Handles form submission by preventing default behavior and triggering conversion
+   * @param {FormEvent} e - Form event object
+   */
   const handleSubmit = (e) => {
     e.preventDefault();
-    onProcess();
+    onSubmit();
   };
 
   return (
@@ -47,15 +51,15 @@ const DuplicateLineRemovalInput = ({
             <Textarea
               id="text-input"
               placeholder="Enter text with duplicate lines..."
-              value={textInput}
-              onChange={(e) => setTextInput(e.target.value)}
-              className="min-h-52"
+              rows={8}
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
             />
           </div>
 
-          <div>
+          <div className="space-y-2">
             <Label className="text-base font-bold">Type of Sorting</Label>
-            <div className="mt-2 flex gap-4">
+            <div className="flex gap-4">
               <RadioBox
                 id="sort-none"
                 name="sortType"
@@ -84,8 +88,9 @@ const DuplicateLineRemovalInput = ({
           </div>
 
           <div className="flex items-center space-x-2">
-            <Checkbox id="reverse-sort" checked={reverseSort} onCheckedChange={setReverseSort} />
-            <Label htmlFor="reverse-sort">Reverse Sorting (Z-A or 9-0)</Label>
+            <Checkbox id="reverse-sort" checked={reverseSort} onCheckedChange={setReverseSort}>
+              Reverse Sorting (Z-A or 9-0)
+            </Checkbox>
           </div>
 
           <div className="flex gap-2">
@@ -108,13 +113,13 @@ const DuplicateLineRemovalInput = ({
 };
 
 DuplicateLineRemovalInput.propTypes = {
-  textInput: PropTypes.string.isRequired,
-  setTextInput: PropTypes.func.isRequired,
+  input: PropTypes.string.isRequired,
+  setInput: PropTypes.func.isRequired,
   sortType: PropTypes.string.isRequired,
   setSortType: PropTypes.func.isRequired,
   reverseSort: PropTypes.bool.isRequired,
   setReverseSort: PropTypes.func.isRequired,
-  onProcess: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
   onReset: PropTypes.func.isRequired,
   onClear: PropTypes.func.isRequired,
 };

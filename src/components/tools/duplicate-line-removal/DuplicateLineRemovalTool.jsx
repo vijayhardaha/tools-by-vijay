@@ -14,13 +14,17 @@ import DuplicateLineRemovalOutput from "./DuplicateLineRemovalOutput";
  * @returns {JSX.Element} The complete Duplicate Line Removal tool with input options, output display, and functionality
  */
 const DuplicateLineRemovalTool = () => {
-  const [textInput, setTextInput] = useState("");
+  const [input, setInput] = useState("");
+  const [output, setOutput] = useState("");
   const [sortType, setSortType] = useState("none");
   const [reverseSort, setReverseSort] = useState(false);
-  const [output, setOutput] = useState("");
 
-  const handleProcess = () => {
-    const lines = textInput.split("\n").filter((line, index, self) => self.indexOf(line) === index);
+  /**
+   * Processes the input to remove duplicate lines, sort them based on the selected sort type,
+   * and optionally reverse the order.
+   */
+  const handleSubmit = () => {
+    const lines = input.split("\n").filter((line, index, self) => self.indexOf(line) === index);
     let sortedLines = lines;
 
     if (sortType === "alphabetical") {
@@ -36,32 +40,40 @@ const DuplicateLineRemovalTool = () => {
     setOutput(sortedLines.join("\n"));
   };
 
+  /**
+   * Resets all states to their initial values.
+   */
   const handleReset = () => {
-    setTextInput("");
+    setInput("");
+    setOutput("");
     setSortType("none");
     setReverseSort(false);
-    setOutput("");
   };
 
+  /**
+   * Clears the input and output fields.
+   */
   const handleClear = () => {
-    setTextInput("");
+    setInput("");
+    setOutput("");
   };
 
   return (
     <>
       <div className="grid grid-cols-1 gap-6">
         <DuplicateLineRemovalInput
-          textInput={textInput}
-          setTextInput={setTextInput}
+          input={input}
+          setInput={setInput}
           sortType={sortType}
           setSortType={setSortType}
           reverseSort={reverseSort}
           setReverseSort={setReverseSort}
-          onProcess={handleProcess}
+          onSubmit={handleSubmit}
           onReset={handleReset}
           onClear={handleClear}
         />
-        <DuplicateLineRemovalOutput output={output} />
+
+        {output && <DuplicateLineRemovalOutput output={output} />}
       </div>
 
       <div className="mt-16">

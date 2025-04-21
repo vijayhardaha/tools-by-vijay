@@ -26,8 +26,6 @@ const DuplicateLineRemovalOutput = ({ output }) => {
     setTimeout(() => setCopied(false), 1000);
   };
 
-  if (!output) return null;
-
   return (
     <Card>
       <CardHeader>
@@ -39,12 +37,12 @@ const DuplicateLineRemovalOutput = ({ output }) => {
             </CardDescription>
           </div>
           <div className="inline-flex">
-            <CopyButton copied={copied} disabled={!output} onClick={copyToClipboard} />
+            <CopyButton copied={copied} onClick={copyToClipboard} />
           </div>
         </div>
       </CardHeader>
       <CardContent>
-        <Textarea value={output} readOnly className="min-h-52" />
+        <Textarea value={output} rows={8} readOnly data-output />
       </CardContent>
     </Card>
   );

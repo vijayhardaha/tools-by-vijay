@@ -1,5 +1,3 @@
-"use client";
-
 /**
  * Provides information about the Duplicate Line Removal tool, including its purpose,
  * usage instructions, and examples.
@@ -59,20 +57,14 @@ const DuplicateLineRemovalInfo = () => {
           <div>
             <h4 className="mb-2 font-medium">Input Example:</h4>
             <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-sm">
-              {`apple
-banana
-apple
-orange
-banana`}
+              {`apple\nbanana\napple\norange\nbanana`}
             </pre>
           </div>
 
           <div>
             <h4 className="mb-2 font-medium">Output Example (Alphabetical Sort):</h4>
             <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-sm">
-              {`apple
-banana
-orange`}
+              {`apple\nbanana\norange`}
             </pre>
           </div>
         </div>
