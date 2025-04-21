@@ -1,7 +1,3 @@
-"use client";
-
-import { useState } from "react";
-
 import PropTypes from "prop-types";
 
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
@@ -19,20 +15,6 @@ import { Input } from "@/components/ui/input";
  * @returns {JSX.Element} The rendered card with password display and copy functionality
  */
 const PasswordGeneratorOutput = ({ password }) => {
-  const [copied, setCopied] = useState(false);
-
-  /**
-   * Copies the current password to the clipboard and provides visual feedback
-   * @async
-   * @function
-   * @returns {Promise<void>}
-   */
-  const copyToClipboard = async () => {
-    await navigator.clipboard.writeText(password);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 1000);
-  };
-
   return (
     <Card>
       <CardHeader>
@@ -42,7 +24,7 @@ const PasswordGeneratorOutput = ({ password }) => {
       <CardContent>
         <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
           <Input type="text" value={password} readOnly data-output />
-          <CopyButton copied={copied} onClick={copyToClipboard} />
+          <CopyButton text={password} />
         </div>
       </CardContent>
     </Card>
