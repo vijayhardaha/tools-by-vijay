@@ -14,21 +14,33 @@ import { Textarea } from "@/components/ui/textarea";
  *
  * @component
  * @param {Object} props - Component props
- * @returns {JSX.Element} The input component for the Replace Quotes tool
+ * @param {string} props.input - The input text to process.
+ * @param {function} props.setInput - Function to update the input text.
+ * @param {"simple-to-curly"|"curly-to-simple"} props.replaceType - The type of quote replacement.
+ * @param {function} props.setReplaceType - Function to update the replace type.
+ * @param {boolean} props.replaceApostrophes - Whether to replace apostrophes.
+ * @param {function} props.setReplaceApostrophes - Function to toggle replacing apostrophes.
+ * @param {boolean} props.replaceStandaloneQuotes - Whether to replace standalone quotes.
+ * @param {function} props.setReplaceStandaloneQuotes - Function to toggle replacing standalone quotes.
+ * @param {string} [props.error] - Error message to display, if any.
+ * @param {function} props.onSubmit - Function to handle form submission.
+ * @param {function} props.onClear - Function to clear the input.
+ * @param {function} props.onReset - Function to reset the form.
+ * @returns {JSX.Element} The input component for the Replace Quotes tool.
  */
 const ReplaceQuotesInput = ({
-  textInput,
-  setTextInput,
+  input,
+  setInput,
   replaceType,
   setReplaceType,
-  onReplace,
-  onReset,
-  error,
   replaceApostrophes,
   setReplaceApostrophes,
   replaceStandaloneQuotes,
   setReplaceStandaloneQuotes,
-  onClear, // Add onClear prop
+  error,
+  onSubmit,
+  onClear,
+  onReset,
 }) => {
   /**
    * Handles form submission by preventing default behavior and triggering the replace action.
@@ -36,7 +48,7 @@ const ReplaceQuotesInput = ({
    */
   const handleSubmit = (e) => {
     e.preventDefault();
-    onReplace();
+    onSubmit();
   };
 
   return (
@@ -51,15 +63,16 @@ const ReplaceQuotesInput = ({
             <Textarea
               id="text-input"
               placeholder="Enter your text here..."
-              className="min-h-52"
-              value={textInput}
-              onChange={(e) => setTextInput(e.target.value)}
+              rows={8}
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
             />
           </div>
 
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             <div className="space-y-2">
               <h3 className="text-base font-bold">Replace Type</h3>
+
               <div className="flex flex-col gap-2">
                 <RadioBox
                   id="simple-to-curly"
@@ -82,6 +95,7 @@ const ReplaceQuotesInput = ({
 
             <div className="space-y-2">
               <h3 className="text-base font-bold">Additional Options</h3>
+
               <div className="flex flex-col gap-2">
                 <Checkbox
                   id="replace-apostrophes"
@@ -102,12 +116,14 @@ const ReplaceQuotesInput = ({
           </div>
 
           <div className="mt-4 flex flex-wrap gap-2">
-            <Button type="submit" variant="default" disabled={!textInput}>
+            <Button type="submit" variant="default" disabled={!input}>
               Replace Quotes
             </Button>
+
             <Button type="button" variant="outline" onClick={onClear}>
               Clear
             </Button>
+
             <Button type="button" variant="destructive" onClick={onReset}>
               Reset
             </Button>
@@ -121,18 +137,18 @@ const ReplaceQuotesInput = ({
 };
 
 ReplaceQuotesInput.propTypes = {
-  textInput: PropTypes.string.isRequired,
-  setTextInput: PropTypes.func.isRequired,
+  input: PropTypes.string.isRequired,
+  setInput: PropTypes.func.isRequired,
   replaceType: PropTypes.oneOf(["simple-to-curly", "curly-to-simple"]).isRequired,
   setReplaceType: PropTypes.func.isRequired,
-  onReplace: PropTypes.func.isRequired,
-  onReset: PropTypes.func.isRequired,
-  error: PropTypes.string,
   replaceApostrophes: PropTypes.bool.isRequired,
   setReplaceApostrophes: PropTypes.func.isRequired,
   replaceStandaloneQuotes: PropTypes.bool.isRequired,
   setReplaceStandaloneQuotes: PropTypes.func.isRequired,
+  error: PropTypes.string,
+  onSubmit: PropTypes.func.isRequired,
   onClear: PropTypes.func.isRequired,
+  onReset: PropTypes.func.isRequired,
 };
 
 export default ReplaceQuotesInput;
