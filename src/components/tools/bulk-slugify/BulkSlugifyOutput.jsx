@@ -1,7 +1,3 @@
-"use client";
-
-import { useState } from "react";
-
 import PropTypes from "prop-types";
 
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
@@ -21,27 +17,6 @@ import { Textarea } from "@/components/ui/textarea";
  * @returns {JSX.Element} Output display with copy functionality
  */
 const BulkSlugifyOutput = ({ output }) => {
-  const [copiedIndex, setCopiedIndex] = useState(null);
-  const [copiedAll, setCopiedAll] = useState(false);
-
-  /**
-   * Copies the provided text to clipboard and manages the copy state indicators
-   *
-   * @param {string} text - The text to copy to clipboard
-   * @param {number|null} index - Index of the copied line (null for copy all)
-   * @returns {Promise<void>}
-   */
-  const copyToClipboard = async (text, index = null) => {
-    await navigator.clipboard.writeText(text);
-    if (index === null) {
-      setCopiedAll(true);
-      setTimeout(() => setCopiedAll(false), 1000);
-    } else {
-      setCopiedIndex(index);
-      setTimeout(() => setCopiedIndex(null), 1000);
-    }
-  };
-
   // Split the output into individual lines and filter out empty lines
   const lines = output.split("\n").filter((line) => line.trim() !== "");
 
@@ -54,12 +29,7 @@ const BulkSlugifyOutput = ({ output }) => {
             <CardDescription>Cleaned and formatted slugs</CardDescription>
           </div>
           <div className="inline-flex">
-            <CopyButton
-              copied={copiedAll}
-              onClick={() => copyToClipboard(output)}
-              copyText="Copy All"
-              copiedText="Copied All!"
-            />
+            <CopyButton text={output} copyText="Copy All" copiedText="Copied All!" />
           </div>
         </div>
       </CardHeader>
@@ -71,10 +41,7 @@ const BulkSlugifyOutput = ({ output }) => {
             {lines.map((line, index) => (
               <div key={index} className="flex flex-col gap-2 sm:flex-row sm:items-center">
                 <Input type="text" value={line} readOnly data-output />
-                <CopyButton
-                  copied={copiedIndex === index}
-                  onClick={() => copyToClipboard(line, index)}
-                />
+                <CopyButton text={line} />
               </div>
             ))}
           </div>
