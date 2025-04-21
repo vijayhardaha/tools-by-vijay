@@ -17,19 +17,12 @@ import { Tooltip } from "@/components/ui/tooltip";
  * @component
  * @param {Object} props - Component props
  * @param {string} props.password - The current password value
- * @param {Function} props.onPasswordChange - Callback function when password changes
+ * @param {Function} props.onSubmit - Callback function when password changes
  * @param {Function} props.onClear - Callback function to clear the password
  * @returns {JSX.Element} Password input with visibility toggle and clear button
  */
-const PasswordStrengthCheckerInput = ({ password, onPasswordChange, onClear }) => {
+const PasswordStrengthCheckerInput = ({ password, onSubmit, onClear }) => {
   const [showPassword, setShowPassword] = useState(false);
-
-  /**
-   * Toggles password visibility between plain text and hidden
-   */
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
 
   /**
    * Handles password input changes
@@ -37,7 +30,8 @@ const PasswordStrengthCheckerInput = ({ password, onPasswordChange, onClear }) =
    * @param {ChangeEvent<HTMLInputElement>} e - Input change event
    */
   const handleChange = (e) => {
-    onPasswordChange(e.target.value);
+    e.preventDefault();
+    onSubmit(e.target.value);
   };
 
   return (
@@ -64,7 +58,7 @@ const PasswordStrengthCheckerInput = ({ password, onPasswordChange, onClear }) =
                   <button
                     type="button"
                     className="flex h-10 w-10 items-center justify-center p-0 text-gray-400 hover:text-gray-600"
-                    onClick={togglePasswordVisibility}
+                    onClick={() => setShowPassword(!showPassword)}
                   >
                     <span className="sr-only">
                       {showPassword ? "Hide password" : "Show password"}
@@ -89,7 +83,7 @@ const PasswordStrengthCheckerInput = ({ password, onPasswordChange, onClear }) =
 
 PasswordStrengthCheckerInput.propTypes = {
   password: PropTypes.string.isRequired,
-  onPasswordChange: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
   onClear: PropTypes.func.isRequired,
 };
 
