@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 import { Alert } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
-import CopyButton from "@/components/ui/copy-button";
+import { CopyButton } from "@/components/ui/copy-button";
 
 /**
  * Component that displays the shortened URLs and provides copy functionality
