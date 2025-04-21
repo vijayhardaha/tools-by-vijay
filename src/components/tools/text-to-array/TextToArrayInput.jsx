@@ -18,8 +18,8 @@ import { Tooltip } from "@/components/ui/tooltip";
  *
  * @component
  * @param {Object} props - Component props
- * @param {string} props.textInput - Current text input
- * @param {Function} props.setTextInput - Function to update text input
+ * @param {string} props.input - Current text input
+ * @param {Function} props.setInput - Function to update text input
  * @param {string} props.outputFormat - Selected output format
  * @param {Function} props.setOutputFormat - Function to update output format
  * @param {string} props.arrayType - Selected array structure type
@@ -30,14 +30,14 @@ import { Tooltip } from "@/components/ui/tooltip";
  * @param {Function} props.setRemoveEmptyLines - Function to update remove empty lines setting
  * @param {boolean} props.useSlugKeys - Whether to use slugified keys
  * @param {Function} props.setUseSlugKeys - Function to update slug keys setting
- * @param {Function} props.onConvert - Function to convert text to array
+ * @param {Function} props.onSubmit - Function to convert text to array
  * @param {Function} props.onClear - Function to clear text input only
  * @param {Function} props.onReset - Function to reset all settings to defaults
  * @returns {JSX.Element} The rendered form with conversion options
  */
 const TextToArrayInput = ({
-  textInput,
-  setTextInput,
+  input,
+  setInput,
   outputFormat,
   setOutputFormat,
   arrayType,
@@ -48,7 +48,7 @@ const TextToArrayInput = ({
   setRemoveEmptyLines,
   useSlugKeys,
   setUseSlugKeys,
-  onConvert,
+  onSubmit,
   onClear,
   onReset,
   error,
@@ -59,7 +59,7 @@ const TextToArrayInput = ({
    */
   const handleSubmit = (e) => {
     e.preventDefault();
-    onConvert();
+    onSubmit();
   };
 
   return (
@@ -71,29 +71,30 @@ const TextToArrayInput = ({
       <CardContent>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <div className="space-y-2">
-            <Label htmlFor="text-input" className="flex items-center">
-              Multiline Text
+            <div className="flex items-center gap-2">
+              <Label htmlFor="text-input">Multiline Text</Label>
               <Tooltip text="Enter or paste text with one item per line. Each line will become an element in the resulting array.">
-                <FiInfo className="text-muted-foreground ml-1.5 h-4 w-4 cursor-help" />
+                <FiInfo className="text-muted-foreground h-4 w-4 cursor-help" />
               </Tooltip>
-            </Label>
+            </div>
             <Textarea
               id="text-input"
               placeholder={`Item 1\nItem 2\nItem 3`}
-              className="min-h-28"
-              value={textInput}
-              onChange={(e) => setTextInput(e.target.value)}
+              rows={5}
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
             />
           </div>
 
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div className="space-y-2">
-              <Label htmlFor="output-format" className="flex items-center">
-                Output Format
+              <div className="flex items-center gap-2">
+                <Label htmlFor="output-format">Output Format</Label>
                 <Tooltip text="Select the programming language and format for the output array or object">
                   <FiInfo className="text-muted-foreground ml-1.5 h-4 w-4 cursor-help" />
                 </Tooltip>
-              </Label>
+              </div>
+
               <Select
                 id="output-format"
                 value={outputFormat}
@@ -109,12 +110,12 @@ const TextToArrayInput = ({
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="array-type" className="flex items-center">
-                Array Structure
+              <div className="flex items-center gap-2">
+                <Label htmlFor="array-type">Array Structure</Label>
                 <Tooltip text="Simple: Just values. Numeric: Indexed entries with ID/position and values. Associative: Key-value pairs.">
                   <FiInfo className="text-muted-foreground ml-1.5 h-4 w-4 cursor-help" />
                 </Tooltip>
-              </Label>
+              </div>
               <Select
                 id="array-type"
                 value={arrayType}
@@ -129,57 +130,32 @@ const TextToArrayInput = ({
           </div>
 
           <div className="flex flex-col gap-4">
-            <div className="flex items-center space-x-2">
-              <Checkbox id="trim-lines" checked={trimLines} onCheckedChange={setTrimLines} />
-              <Label
-                htmlFor="trim-lines"
-                className="cursor-pointer text-sm leading-none font-medium"
-              >
-                Trim whitespace from each line
-              </Label>
-              <Tooltip text="Remove leading and trailing whitespace from each line">
-                <FiInfo className="text-muted-foreground h-4 w-4 cursor-help" />
-              </Tooltip>
-            </div>
+            <Checkbox id="trim-lines" checked={trimLines} onCheckedChange={setTrimLines}>
+              Trim whitespace from each line
+            </Checkbox>
 
-            <div className="flex items-center space-x-2">
-              <Checkbox
-                id="remove-empty-lines"
-                checked={removeEmptyLines}
-                onCheckedChange={setRemoveEmptyLines}
-              />
-              <Label
-                htmlFor="remove-empty-lines"
-                className="cursor-pointer text-sm leading-none font-medium"
-              >
-                Remove empty lines
-              </Label>{" "}
-              <Tooltip text="Skip blank lines in the input text">
-                <FiInfo className="text-muted-foreground h-4 w-4 cursor-help" />
-              </Tooltip>
-            </div>
+            <Checkbox
+              id="remove-empty-lines"
+              checked={removeEmptyLines}
+              onCheckedChange={setRemoveEmptyLines}
+            >
+              Remove empty lines
+            </Checkbox>
 
-            <div className="flex items-center space-x-2">
-              <Checkbox id="use-slug-keys" checked={useSlugKeys} onCheckedChange={setUseSlugKeys} />
-              <Label
-                htmlFor="use-slug-keys"
-                className="cursor-pointer text-sm leading-none font-medium"
-              >
-                Use slugified keys
-              </Label>
-              <Tooltip text="Generate slugified keys from the text instead of using generic item_N keys">
-                <FiInfo className="text-muted-foreground h-4 w-4 cursor-help" />
-              </Tooltip>
-            </div>
+            <Checkbox id="use-slug-keys" checked={useSlugKeys} onCheckedChange={setUseSlugKeys}>
+              Use slugified keys
+            </Checkbox>
           </div>
 
-          <div className="mt-4 flex flex-wrap gap-2">
-            <Button type="submit" variant="default" disabled={!textInput}>
+          <div className="flex flex-wrap gap-2">
+            <Button type="submit" variant="default" disabled={!input}>
               Convert
             </Button>
+
             <Button type="button" variant="outline" onClick={onClear}>
               Clear
             </Button>
+
             <Button type="button" variant="destructive" onClick={onReset}>
               Reset
             </Button>
@@ -193,8 +169,8 @@ const TextToArrayInput = ({
 };
 
 TextToArrayInput.propTypes = {
-  textInput: PropTypes.string.isRequired,
-  setTextInput: PropTypes.func.isRequired,
+  input: PropTypes.string.isRequired,
+  setInput: PropTypes.func.isRequired,
   outputFormat: PropTypes.string.isRequired,
   setOutputFormat: PropTypes.func.isRequired,
   arrayType: PropTypes.string.isRequired,
@@ -205,7 +181,7 @@ TextToArrayInput.propTypes = {
   setRemoveEmptyLines: PropTypes.func.isRequired,
   useSlugKeys: PropTypes.bool.isRequired,
   setUseSlugKeys: PropTypes.func.isRequired,
-  onConvert: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
   onClear: PropTypes.func.isRequired,
   onReset: PropTypes.func.isRequired,
   error: PropTypes.string,
