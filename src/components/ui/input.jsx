@@ -14,6 +14,9 @@ function Input({ className, type, ...props }) {
   return (
     <input
       type={type}
+      autoComplete="off"
+      autoCorrect="off"
+      spellCheck="false"
       data-slot="input"
       className={cn(
         // Core layout and sizing
