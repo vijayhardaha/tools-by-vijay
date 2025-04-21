@@ -1,5 +1,3 @@
-import React from "react";
-
 /**
  * Provides information about the Password Generator tool, including its purpose,
  * importance of strong passwords, security tips, and credits.
