@@ -5,7 +5,6 @@ import PropTypes from "prop-types";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 
 /**
@@ -16,7 +15,7 @@ import { Textarea } from "@/components/ui/textarea";
  * @param {Function} props.setInput - Function to update input state
  * @param {Object} props.options - Minification options
  * @param {Function} props.updateOption - Function to update an option
- * @param {Function} props.onMinify - Function called when minify button is clicked
+ * @param {Function} props.onSubmit - Function called when minify button is clicked
  * @param {Function} props.onClear - Function to clear the input
  * @param {Function} props.onReset - Function to reset all options to defaults
  * @param {boolean} props.isLoading - Whether minification is in progress
@@ -27,7 +26,7 @@ const JsMinifierInput = ({
   setInput,
   options,
   updateOption,
-  onMinify,
+  onSubmit,
   onClear,
   onReset,
   isLoading,
@@ -39,7 +38,7 @@ const JsMinifierInput = ({
    */
   const handleSubmit = (e) => {
     e.preventDefault();
-    onMinify();
+    onSubmit();
   };
 
   return (
@@ -53,57 +52,60 @@ const JsMinifierInput = ({
       <CardContent>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <Textarea
+            id="js-input"
             placeholder="Paste JavaScript code here..."
+            rows={5}
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            className="min-h-28"
           />
 
-          <div className="space-y-4">
+          <div className="space-y-2">
             <h3 className="text-base font-semibold">Minification Options</h3>
-            <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-              <div className="flex items-center space-x-2">
-                <Checkbox
-                  id="mangle"
-                  checked={options.mangle}
-                  onCheckedChange={(checked) => updateOption("mangle", checked)}
-                />
-                <Label htmlFor="mangle">Mangle variable names</Label>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Checkbox
-                  id="removeComments"
-                  checked={options.removeComments}
-                  onCheckedChange={(checked) => updateOption("removeComments", checked)}
-                />
-                <Label htmlFor="removeComments">Remove comments</Label>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Checkbox
-                  id="removeConsole"
-                  checked={options.removeConsole}
-                  onCheckedChange={(checked) => updateOption("removeConsole", checked)}
-                />
-                <Label htmlFor="removeConsole">Remove console statements</Label>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Checkbox
-                  id="removeDebugger"
-                  checked={options.removeDebugger}
-                  onCheckedChange={(checked) => updateOption("removeDebugger", checked)}
-                />
-                <Label htmlFor="removeDebugger">Remove debugger statements</Label>
-              </div>
+
+            <div className="flex flex-wrap gap-4">
+              <Checkbox
+                id="mangle"
+                checked={options.mangle}
+                onCheckedChange={(checked) => updateOption("mangle", checked)}
+              >
+                Mangle variable names
+              </Checkbox>
+
+              <Checkbox
+                id="removeComments"
+                checked={options.removeComments}
+                onCheckedChange={(checked) => updateOption("removeComments", checked)}
+              >
+                Remove comments
+              </Checkbox>
+
+              <Checkbox
+                id="removeConsole"
+                checked={options.removeConsole}
+                onCheckedChange={(checked) => updateOption("removeConsole", checked)}
+              >
+                Remove console statements
+              </Checkbox>
+
+              <Checkbox
+                id="removeDebugger"
+                checked={options.removeDebugger}
+                onCheckedChange={(checked) => updateOption("removeDebugger", checked)}
+              >
+                Remove debugger statements
+              </Checkbox>
             </div>
           </div>
 
-          <div className="mt-4 flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2">
             <Button type="submit" variant="default" disabled={!input || isLoading}>
               {isLoading ? "Minifying..." : "Minify"}
             </Button>
+
             <Button type="button" variant="outline" onClick={onClear} disabled={isLoading}>
               Clear
             </Button>
+
             <Button type="reset" variant="destructive" onClick={onReset} disabled={isLoading}>
               Reset
             </Button>
@@ -119,7 +121,7 @@ JsMinifierInput.propTypes = {
   setInput: PropTypes.func.isRequired,
   options: PropTypes.object.isRequired,
   updateOption: PropTypes.func.isRequired,
-  onMinify: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
   onClear: PropTypes.func.isRequired,
   onReset: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,

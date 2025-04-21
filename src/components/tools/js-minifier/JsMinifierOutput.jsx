@@ -5,6 +5,7 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
+import { CompressionInfo } from "@/components/ui/compression-info";
 import CopyButton from "@/components/ui/copy-button";
 import { Textarea } from "@/components/ui/textarea";
 
@@ -33,42 +34,6 @@ const JsMinifierOutput = ({ output, input }) => {
     setTimeout(() => setCopied(false), 1000);
   };
 
-  /**
-   * Calculates the size information if there is output
-   *
-   * @function
-   * @returns {Object|null} The size information or null if no output
-   */
-  const getSizeInfo = () => {
-    if (!output) return null;
-
-    // Get the byte lengths
-    const outputSize = new Blob([output]).size;
-
-    if (outputSize === 0) return { size: "0 bytes" };
-
-    // Calculate compression stats
-    let compressionInfo = { size: `${outputSize} bytes` };
-
-    if (input) {
-      const originalSize = new Blob([input]).size;
-      if (originalSize > 0) {
-        const savedBytes = originalSize - outputSize;
-        const compressionPercent = ((savedBytes / originalSize) * 100).toFixed(2);
-
-        if (savedBytes > 0) {
-          compressionInfo.stats = `${compressionPercent}% compression, saving ${(savedBytes / 1024).toFixed(2)} kb`;
-        }
-      }
-    }
-
-    return compressionInfo;
-  };
-
-  const sizeInfo = getSizeInfo();
-
-  if (!output) return;
-
   return (
     <Card>
       <CardHeader>
@@ -76,9 +41,7 @@ const JsMinifierOutput = ({ output, input }) => {
           <div className="flex flex-col gap-1.5">
             <CardTitle>Minified Output</CardTitle>
             <CardDescription>
-              {output
-                ? `Size: ${sizeInfo.size}${sizeInfo.stats ? ` • ${sizeInfo.stats}` : ""}`
-                : "Minified JavaScript will appear here"}
+              <CompressionInfo input={input} output={output} />
             </CardDescription>
           </div>
           <div className="inline-flex">
@@ -88,7 +51,7 @@ const JsMinifierOutput = ({ output, input }) => {
       </CardHeader>
       <CardContent>
         <div className="flex flex-col gap-2">
-          <Textarea value={output} readOnly data-output className="min-h-28" />
+          <Textarea value={output} rows={5} readOnly data-output />
         </div>
       </CardContent>
     </Card>
@@ -97,7 +60,7 @@ const JsMinifierOutput = ({ output, input }) => {
 
 JsMinifierOutput.propTypes = {
   output: PropTypes.string.isRequired,
-  input: PropTypes.string,
+  input: PropTypes.string.isRequired,
 };
 
 export default JsMinifierOutput;

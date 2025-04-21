@@ -7,6 +7,16 @@ import JsMinifierInput from "./JsMinifierInput";
 import JsMinifierOutput from "./JsMinifierOutput";
 
 /**
+ * Putout Minify options
+ */
+const defaultOptions = {
+  mangle: true,
+  removeConsole: false,
+  removeDebugger: true,
+  removeComments: true,
+};
+
+/**
  * Main component for the JavaScript Minifier tool
  * Handles state management and minification logic
  * Uses @putout/minify for JavaScript minification
@@ -15,15 +25,9 @@ import JsMinifierOutput from "./JsMinifierOutput";
  */
 const JsMinifierTool = () => {
   const [input, setInput] = useState("");
-  const [minifiedOutput, setMinifiedOutput] = useState("");
+  const [output, setOutput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [options, setOptions] = useState({
-    // Putout Minify options
-    mangle: true,
-    removeConsole: false,
-    removeDebugger: true,
-    removeComments: true,
-  });
+  const [options, setOptions] = useState(defaultOptions);
 
   /**
    * Handles the minification process when the "Minify" button is clicked
@@ -56,10 +60,10 @@ const JsMinifierTool = () => {
         throw new Error(data.error || "Failed to minify JavaScript");
       }
 
-      setMinifiedOutput(data.minifiedJs);
+      setOutput(data.minifiedJs);
     } catch (error) {
       console.error("JavaScript minification error:", error);
-      setMinifiedOutput(`Error: ${error.message}`);
+      setOutput(`Error: ${error.message}`);
     } finally {
       setIsLoading(false);
     }
@@ -72,7 +76,7 @@ const JsMinifierTool = () => {
    */
   const handleClear = () => {
     setInput("");
-    setMinifiedOutput("");
+    setOutput("");
   };
 
   /**
@@ -82,13 +86,8 @@ const JsMinifierTool = () => {
    */
   const handleReset = () => {
     setInput("");
-    setMinifiedOutput("");
-    setOptions({
-      mangle: true,
-      removeConsole: false,
-      removeDebugger: true,
-      removeComments: true,
-    });
+    setOutput("");
+    setOptions(defaultOptions);
   };
 
   /**
@@ -118,7 +117,8 @@ const JsMinifierTool = () => {
           onReset={handleReset}
           isLoading={isLoading}
         />
-        <JsMinifierOutput output={minifiedOutput} input={input} />
+
+        {output && <JsMinifierOutput output={output} input={input} />}
       </div>
 
       <div className="mt-16">
