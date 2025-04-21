@@ -4,9 +4,9 @@ import clsx from "clsx";
 import PropTypes from "prop-types";
 
 /**
- * A flexible and customizable Box component based on Tailwind CSS.
+ * A flexible and customizable FlexBox component based on Tailwind CSS.
  *
- * @param {Object} props - The properties for the Box component.
+ * @param {Object} props - The properties for the FlexBox component.
  * @param {string} [props.component='div'] - The HTML tag type to render (e.g., `div`, `section`, `header`).
  * @param {boolean} [props.flex=false] - Whether to apply `flex` display.
  * @param {boolean} [props.inline=false] - Whether to apply `inline-flex` display.
@@ -30,13 +30,13 @@ import PropTypes from "prop-types";
  * @param {string} [props.mr=null] - Tailwind right margin class (e.g., `mr-4`).
  * @param {string} [props.mt=null] - Tailwind top margin class (e.g., `mt-4`).
  * @param {string} [props.mb=null] - Tailwind bottom margin class (e.g., `mb-4`).
- * @param {any} props.children - The content to render inside the Box.
+ * @param {any} props.children - The content to render inside the FlexBox.
  * @param {Object} [props.rest] - Additional props passed to the rendered component.
- * @returns {JSX.Element} The rendered Box component.
+ * @returns {JSX.Element} The rendered FlexBox component.
  */
-const Box = ({
-  component: Component = "div", // Added component prop
-  flex = false,
+export const FlexBox = ({
+  component: Component = "div",
+  flex = true,
   inline = false,
   align = "flex-start",
   justify = "flex-start",
@@ -62,7 +62,7 @@ const Box = ({
   ...rest
 }) => {
   const classes = clsx(className, {
-    flex: flex,
+    flex: flex && inline,
     "inline-flex": inline,
     "flex-col": col,
     "flex-row": row,
@@ -87,15 +87,13 @@ const Box = ({
 
   return (
     <Component className={classes} {...rest}>
-      {" "}
-      {/* Use Component instead of hardcoded div */}
       {children}
     </Component>
   );
 };
 
-Box.propTypes = {
-  component: PropTypes.string, // Added prop type for component
+FlexBox.propTypes = {
+  component: PropTypes.string,
   flex: PropTypes.bool,
   inline: PropTypes.bool,
   align: PropTypes.string,
@@ -119,7 +117,5 @@ Box.propTypes = {
   mt: PropTypes.string,
   mb: PropTypes.string,
   children: PropTypes.node,
-  rest: PropTypes.object, // Added prop type for rest
+  rest: PropTypes.object,
 };
-
-export default Box;
