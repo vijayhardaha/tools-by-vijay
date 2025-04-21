@@ -38,8 +38,6 @@ const DropdownToArrayOutput = ({ output }) => {
     setTimeout(() => setCopied(false), 1000);
   };
 
-  if (!output) return;
-
   return (
     <Card>
       <CardHeader>
@@ -49,12 +47,12 @@ const DropdownToArrayOutput = ({ output }) => {
             <CardDescription>Copy the generated array for use in your code</CardDescription>
           </div>
           <div className="inline-flex">
-            <CopyButton copied={copied} disabled={!output} onClick={copyToClipboard} />
+            <CopyButton copied={copied} onClick={copyToClipboard} />
           </div>
         </div>
       </CardHeader>
       <CardContent>
-        <Textarea value={output} readOnly data-output className="min-h-28" />
+        <Textarea value={output} rows={5} readOnly data-output />
       </CardContent>
     </Card>
   );

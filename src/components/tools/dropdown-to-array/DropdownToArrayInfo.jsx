@@ -1,5 +1,3 @@
-"use client";
-
 /**
  * Provides information about the Dropdown to Array Converter tool, including its purpose,
  * usage instructions, and examples.
@@ -69,12 +67,7 @@ const DropdownToArrayInfo = () => {
           <div>
             <h4 className="mb-2 font-medium">Input Example:</h4>
             <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-sm">
-              {`<select name="country">
-  <option value="us">United States</option>
-  <option value="ca">Canada</option>
-  <option value="uk">United Kingdom</option>
-  <option value="au">Australia</option>
-</select>`}
+              {`<select name="country">\n<option value="us">United States</option>\n<option value="ca">Canada</option>\n<option value="uk">United Kingdom</option>\n<option value="au">Australia</option>\nselect>`}
             </pre>
           </div>
 
@@ -84,24 +77,7 @@ const DropdownToArrayInfo = () => {
               <div>
                 <h5 className="text-sm font-medium">JSON Associative Output:</h5>
                 <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-sm">
-                  {`[
-  {
-    "key": "us",
-    "value": "United States"
-  },
-  {
-    "key": "ca",
-    "value": "Canada"
-  },
-  {
-    "key": "uk",
-    "value": "United Kingdom"
-  },
-  {
-    "key": "au",
-    "value": "Australia"
-  }
-]`}
+                  {`[\n\t{\n\t\t"key": "us",\n\t\t"value": "United States"\n\t},\n\t{\n\t\t"key": "ca",\n\t\t"value": "Canada"\n\t},\n\t{\n\t\t"key": "uk",\n\t\t"value": "United Kingdom"\n\t},\n\t{\n\t\t"key": "au",\n\t\t"value": "Australia"\n\t}\n]`}
                 </pre>
               </div>
 
@@ -110,50 +86,21 @@ const DropdownToArrayInfo = () => {
                   JavaScript Array (Associative with Slugified Keys):
                 </h5>
                 <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-sm">
-                  {`const dropdownArray = [
-  {
-    "key": "us",
-    "value": "United States"
-  },
-  {
-    "key": "ca",
-    "value": "Canada"
-  },
-  {
-    "key": "uk",
-    "value": "United Kingdom"
-  },
-  {
-    "key": "au",
-    "value": "Australia"
-  }
-];`}
+                  {`const dropdownArray = [\n\t{\n\t\t"key": "us",\n\t\t"value": "United States"\n\t},\n\t{\n\t\t"key": "ca",\n\t\t"value": "Canada"\n\t},\n\t{\n\t\t"key": "uk",\n\t\t"value": "United Kingdom"\n\t},\n\t{\n\t\t"key": "au",\n\t\t"value": "Australia"\n\t}\n];`}
                 </pre>
               </div>
 
               <div>
                 <h5 className="text-sm font-medium">PHP Array (Simple):</h5>
                 <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-sm">
-                  {`<?php
-$data = array(
-  'United States',
-  'Canada',
-  'United Kingdom',
-  'Australia'
-);`}
+                  {`<?php\n$data = array(\n\t'United States',\n\t'Canada',\n\t'United Kingdom',\n\t'Australia'\n);`}
                 </pre>
               </div>
 
               <div>
                 <h5 className="text-sm font-medium">WordPress Select Options (Associative):</h5>
                 <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-sm">
-                  {`<?php
-$data = array(
-  'us' => __( 'United States', 'text-domain' ),
-  'ca' => __( 'Canada', 'text-domain' ),
-  'uk' => __( 'United Kingdom', 'text-domain' ),
-  'au' => __( 'Australia', 'text-domain' )
-);`}
+                  {`<?php\n$data = array(\n\t'us' => __( 'United States', 'text-domain' ),\n\t'ca' => __( 'Canada', 'text-domain' ),\n\t'uk' => __( 'United Kingdom', 'text-domain' ),\n\t'au' => __( 'Australia', 'text-domain' )\n);`}
                 </pre>
               </div>
             </div>

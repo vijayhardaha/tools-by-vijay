@@ -21,7 +21,7 @@ const DropdownToArrayTool = () => {
    * The HTML select/dropdown input
    * @type {[string, function]} State and setter for HTML input
    */
-  const [htmlInput, setHtmlInput] = useState("");
+  const [input, setInput] = useState("");
 
   /**
    * The output format type (json, jsArray, jsObject, php, wordpress)
@@ -45,7 +45,7 @@ const DropdownToArrayTool = () => {
    * The converted output result
    * @type {[string, function]} State and setter for the converted output
    */
-  const [convertedOutput, setConvertedOutput] = useState("");
+  const [output, setOutput] = useState("");
 
   /**
    * Any error message from the conversion process
@@ -87,14 +87,14 @@ const DropdownToArrayTool = () => {
       setError("");
 
       // If input is empty, return error
-      if (!htmlInput.trim()) {
+      if (!input.trim()) {
         setError("Please enter HTML select/dropdown content");
         return null;
       }
 
       // Create a temporary DOM element to parse the HTML
       const tempDiv = document.createElement("div");
-      tempDiv.innerHTML = htmlInput.trim();
+      tempDiv.innerHTML = input.trim();
 
       // Find all select elements
       const selectElements = tempDiv.querySelectorAll("select");
@@ -313,13 +313,13 @@ const DropdownToArrayTool = () => {
   /**
    * Handles the conversion process when user submits the form
    */
-  const handleConvert = () => {
+  const handleSubmit = () => {
     const parsedOptions = parseHtmlInput();
     if (parsedOptions) {
       const formatted = formatOutput(parsedOptions);
-      setConvertedOutput(formatted);
+      setOutput(formatted);
     } else {
-      setConvertedOutput("");
+      setOutput("");
     }
   };
 
@@ -327,20 +327,20 @@ const DropdownToArrayTool = () => {
    * Clears only the input field while keeping other settings intact
    */
   const handleClear = () => {
-    setHtmlInput("");
+    setInput("");
     setError("");
-    setConvertedOutput("");
+    setOutput("");
   };
 
   /**
    * Resets all input fields and output
    */
   const handleReset = () => {
-    setHtmlInput("");
+    setInput("");
     setOutputFormat("json");
     setArrayType("associative");
     setUseSlugKeys(true);
-    setConvertedOutput("");
+    setOutput("");
     setError("");
   };
 
@@ -348,20 +348,21 @@ const DropdownToArrayTool = () => {
     <>
       <div className="grid grid-cols-1 gap-6">
         <DropdownToArrayInput
-          htmlInput={htmlInput}
-          setHtmlInput={setHtmlInput}
+          input={input}
+          setInput={setInput}
           outputFormat={outputFormat}
           setOutputFormat={setOutputFormat}
           arrayType={arrayType}
           setArrayType={setArrayType}
           useSlugKeys={useSlugKeys}
           setUseSlugKeys={setUseSlugKeys}
-          onConvert={handleConvert}
+          onSubmit={handleSubmit}
           onClear={handleClear}
           onReset={handleReset}
           error={error}
         />
-        <DropdownToArrayOutput output={convertedOutput} />
+
+        {output && <DropdownToArrayOutput output={output} />}
       </div>
 
       <div className="mt-16">

@@ -18,29 +18,29 @@ import { Tooltip } from "@/components/ui/tooltip";
  *
  * @component
  * @param {Object} props - Component props
- * @param {string} props.htmlInput - Current HTML input
- * @param {Function} props.setHtmlInput - Function to update HTML input
+ * @param {string} props.input - Current HTML input
+ * @param {Function} props.setInput - Function to update HTML input
  * @param {string} props.outputFormat - Selected output format
  * @param {Function} props.setOutputFormat - Function to update output format
  * @param {string} props.arrayType - Selected array structure type
  * @param {Function} props.setArrayType - Function to update array structure type
  * @param {boolean} props.useSlugKeys - Whether to use slugified keys
  * @param {Function} props.setUseSlugKeys - Function to update slug keys setting
- * @param {Function} props.onConvert - Function to convert HTML to array
+ * @param {Function} props.onSubmit - Function to convert HTML to array
  * @param {Function} props.onClear - Function to clear only the input field
  * @param {Function} props.onReset - Function to reset all settings to defaults
  * @returns {JSX.Element} The rendered form with conversion options
  */
 const DropdownToArrayInput = ({
-  htmlInput,
-  setHtmlInput,
+  input,
+  setInput,
   outputFormat,
   setOutputFormat,
   arrayType,
   setArrayType,
   useSlugKeys,
   setUseSlugKeys,
-  onConvert,
+  onSubmit,
   onClear,
   onReset,
   error,
@@ -51,7 +51,7 @@ const DropdownToArrayInput = ({
    */
   const handleSubmit = (e) => {
     e.preventDefault();
-    onConvert();
+    onSubmit();
   };
 
   return (
@@ -65,29 +65,29 @@ const DropdownToArrayInput = ({
       <CardContent>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <div className="space-y-2">
-            <Label htmlFor="html-input" className="flex items-center">
-              HTML Select/Dropdown Code
+            <div className="flex items-center gap-1">
+              <Label htmlFor="html-input">HTML Select/Dropdown Code</Label>
               <Tooltip text="Paste your HTML <select> element with <option> tags. You can also paste just the <option> tags.">
                 <FiInfo className="text-muted-foreground ml-1.5 h-4 w-4 cursor-help" />
               </Tooltip>
-            </Label>
+            </div>
             <Textarea
               id="html-input"
               placeholder={`<select>\n<option value='option1'>Option 1</option>\n<option value='option2'>Option 2</option>\n</select>`}
               className="min-h-28"
-              value={htmlInput}
-              onChange={(e) => setHtmlInput(e.target.value)}
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
             />
           </div>
 
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div className="space-y-2">
-              <Label htmlFor="output-format" className="flex items-center">
-                Output Format
+              <div className="flex items-center gap-1">
+                <Label htmlFor="output-format">Output Format</Label>
                 <Tooltip text="Select the programming language and format for the output array or object">
                   <FiInfo className="text-muted-foreground ml-1.5 h-4 w-4 cursor-help" />
                 </Tooltip>
-              </Label>
+              </div>
               <Select
                 id="output-format"
                 value={outputFormat}
@@ -103,12 +103,12 @@ const DropdownToArrayInput = ({
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="array-type" className="flex items-center">
-                Array Structure
+              <div className="flex items-center gap-1">
+                <Label htmlFor="array-type">Array Structure</Label>
                 <Tooltip text="Simple: Just values. Numeric: Indexed entries with ID/position and values. Associative: Key-value pairs using option values as keys.">
                   <FiInfo className="text-muted-foreground ml-1.5 h-4 w-4 cursor-help" />
                 </Tooltip>
-              </Label>
+              </div>
               <Select
                 id="array-type"
                 value={arrayType}
@@ -122,26 +122,21 @@ const DropdownToArrayInput = ({
             </div>
           </div>
 
-          <div className="flex items-center space-x-2">
-            <Checkbox id="use-slug-keys" checked={useSlugKeys} onCheckedChange={setUseSlugKeys} />
-            <Label
-              htmlFor="use-slug-keys"
-              className="cursor-pointer text-sm leading-none font-medium"
-            >
+          <div className="flex flex-wrap items-center">
+            <Checkbox id="use-slug-keys" checked={useSlugKeys} onCheckedChange={setUseSlugKeys}>
               Use slugified keys
-              <Tooltip text="Generate slugified keys from option text instead of using original values">
-                <FiInfo className="text-muted-foreground ml-1.5 inline-block h-4 w-4 cursor-help" />
-              </Tooltip>
-            </Label>
+            </Checkbox>
           </div>
 
-          <div className="mt-4 flex flex-wrap gap-2">
-            <Button type="submit" variant="default" disabled={!htmlInput}>
+          <div className="flex flex-wrap gap-2">
+            <Button type="submit" variant="default" disabled={!input}>
               Convert
             </Button>
+
             <Button type="button" variant="outline" onClick={onClear}>
               Clear
             </Button>
+
             <Button type="button" variant="destructive" onClick={onReset}>
               Reset
             </Button>
@@ -155,15 +150,15 @@ const DropdownToArrayInput = ({
 };
 
 DropdownToArrayInput.propTypes = {
-  htmlInput: PropTypes.string.isRequired,
-  setHtmlInput: PropTypes.func.isRequired,
+  input: PropTypes.string.isRequired,
+  setInput: PropTypes.func.isRequired,
   outputFormat: PropTypes.string.isRequired,
   setOutputFormat: PropTypes.func.isRequired,
   arrayType: PropTypes.string.isRequired,
   setArrayType: PropTypes.func.isRequired,
   useSlugKeys: PropTypes.bool.isRequired,
   setUseSlugKeys: PropTypes.func.isRequired,
-  onConvert: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
   onClear: PropTypes.func.isRequired,
   onReset: PropTypes.func.isRequired,
   error: PropTypes.string,
