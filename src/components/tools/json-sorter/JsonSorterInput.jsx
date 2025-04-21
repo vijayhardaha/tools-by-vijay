@@ -18,7 +18,7 @@ import { Tooltip } from "@/components/ui/tooltip";
  * @component
  * @param {Object} props - Component props
  * @param {string} props.input - Current JSON input
- * @param {Function} props.setJsonInput - Function to update JSON input
+ * @param {Function} props.setInput - Function to update JSON input
  * @param {boolean} props.spareArrays - Whether to preserve arrays without sorting
  * @param {Function} props.setSpareArrays - Function to update spare arrays setting
  * @param {Function} props.onSubmit - Function to sort the JSON
@@ -29,7 +29,7 @@ import { Tooltip } from "@/components/ui/tooltip";
  */
 const JsonSorterInput = ({
   input,
-  setJsonInput,
+  setInput,
   spareArrays,
   setSpareArrays,
   onSubmit,
@@ -67,7 +67,7 @@ const JsonSorterInput = ({
               placeholder={`{\n\t"zebra": 1,\n\t"apple": 2,\n\t"banana": 3\n}`}
               rows={8}
               value={input}
-              onChange={(e) => setJsonInput(e.target.value)}
+              onChange={(e) => setInput(e.target.value)}
             />
           </div>
 
@@ -103,7 +103,7 @@ const JsonSorterInput = ({
 
 JsonSorterInput.propTypes = {
   input: PropTypes.string.isRequired,
-  setJsonInput: PropTypes.func.isRequired,
+  setInput: PropTypes.func.isRequired,
   spareArrays: PropTypes.bool.isRequired,
   setSpareArrays: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
