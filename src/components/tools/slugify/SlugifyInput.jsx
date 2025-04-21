@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { cn } from "@/utils/classNameUtils";
 
 /**
@@ -62,6 +61,7 @@ const SlugifyInput = ({
       <CardContent>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <Input
+            id="text-input"
             type="text"
             placeholder="Enter text to slugify"
             value={input}
@@ -73,6 +73,7 @@ const SlugifyInput = ({
               Currently separating with:{" "}
               <span className="font-bold">{useUnderscore ? "Underscore (_)" : "Dash (-)"}</span>
             </p>
+
             <div className="mb-2 flex gap-2">
               <Button
                 size="sm"
@@ -83,6 +84,7 @@ const SlugifyInput = ({
               >
                 <span className="text-xs">With dash (-)</span>
               </Button>
+
               <Button
                 size="sm"
                 variant={useUnderscore ? "default" : "outline"}
@@ -95,38 +97,33 @@ const SlugifyInput = ({
             </div>
           </div>
 
-          <div className="flex flex-wrap gap-4 gap-x-6">
-            <div className="flex items-center space-x-1">
-              <Checkbox
-                id="useLowercase"
-                checked={useLowercase}
-                onCheckedChange={setUseLowercase}
-              />
-              <Label htmlFor="useLowercase">Convert to lowercase</Label>
-            </div>
+          <div className="flex flex-wrap gap-4">
+            <Checkbox id="useLowercase" checked={useLowercase} onCheckedChange={setUseLowercase}>
+              Convert to lowercase
+            </Checkbox>
 
-            <div className="flex items-center space-x-1">
-              <Checkbox
-                id="remove-numbers"
-                checked={removeNumbers}
-                onCheckedChange={setRemoveNumbers}
-              />
-              <Label htmlFor="remove-numbers">Remove numbers</Label>
-            </div>
+            <Checkbox
+              id="remove-numbers"
+              checked={removeNumbers}
+              onCheckedChange={setRemoveNumbers}
+            >
+              Remove numbers
+            </Checkbox>
 
-            <div className="flex items-center space-x-1">
-              <Checkbox id="use-latinize" checked={useLitinize} onCheckedChange={setUseLitinize} />
-              <Label htmlFor="use-latinize">Use latinize</Label>
-            </div>
+            <Checkbox id="use-latinize" checked={useLitinize} onCheckedChange={setUseLitinize}>
+              Use latinize
+            </Checkbox>
           </div>
 
-          <div className="mt-4 flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2">
             <Button type="submit" variant="default" disabled={!input}>
               Generate
             </Button>
+
             <Button type="button" variant="outline" onClick={onClear}>
               Clear
             </Button>
+
             <Button type="reset" variant="destructive" onClick={onReset}>
               Reset
             </Button>
