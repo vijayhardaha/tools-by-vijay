@@ -23,6 +23,9 @@ const ReplaceQuotesTool = () => {
 
   /**
    * Handles the quote replacement process
+   *
+   * @function
+   * @returns {void}
    */
   const handleSubmit = () => {
     try {
@@ -78,6 +81,9 @@ const ReplaceQuotesTool = () => {
 
   /**
    * Clears the output while keeping the input and other states intact
+   *
+   * @function
+   * @returns {void}
    */
   const handleClear = () => {
     setInput("");
@@ -87,6 +93,9 @@ const ReplaceQuotesTool = () => {
 
   /**
    * Resets all input fields, output, and options
+   *
+   * @function
+   * @returns {void}
    */
   const handleReset = () => {
     handleClear();
