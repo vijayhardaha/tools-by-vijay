@@ -9,6 +9,29 @@ import HtmlMinifierInput from "./HtmlMinifierInput";
 import HtmlMinifierOutput from "./HtmlMinifierOutput";
 
 /**
+ * Default options for the HTML Minifier
+ */
+const defaultOptions = {
+  removeComments: true,
+  collapseWhitespace: true,
+  conservativeCollapse: false,
+  collapseBooleanAttributes: false,
+  removeAttributeQuotes: false,
+  removeEmptyAttributes: true,
+  removeEmptyElements: true,
+  removeRedundantAttributes: true,
+  removeScriptTypeAttributes: false,
+  removeStyleLinkTypeAttributes: false,
+  sortAttributes: true,
+  sortClassName: true,
+  minifyCSS: true,
+  minifyJS: true,
+  minifyURLs: true,
+  decodeEntities: false,
+  useShortDoctype: false,
+};
+
+/**
  * Main component for the HTML Minifier tool
  * Handles state management and minification logic
  *
@@ -16,27 +39,9 @@ import HtmlMinifierOutput from "./HtmlMinifierOutput";
  */
 const HtmlMinifierTool = () => {
   const [input, setInput] = useState("");
-  const [minifiedOutput, setMinifiedOutput] = useState("");
+  const [output, setOutput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [options, setOptions] = useState({
-    removeComments: true,
-    collapseWhitespace: true,
-    conservativeCollapse: false,
-    collapseBooleanAttributes: false,
-    removeAttributeQuotes: false,
-    removeEmptyAttributes: true,
-    removeEmptyElements: true,
-    removeRedundantAttributes: true,
-    removeScriptTypeAttributes: false,
-    removeStyleLinkTypeAttributes: false,
-    sortAttributes: true,
-    sortClassName: true,
-    minifyCSS: true,
-    minifyJS: true,
-    minifyURLs: true,
-    decodeEntities: false,
-    useShortDoctype: false,
-  });
+  const [options, setOptions] = useState(defaultOptions);
 
   /**
    * Handles the minification process when the "Minify" button is clicked
@@ -45,10 +50,11 @@ const HtmlMinifierTool = () => {
    * @async
    * @function
    */
-  const handleMinify = async () => {
+  const handleSubmit = async () => {
     if (!input.trim()) return;
 
     setIsLoading(true);
+
     try {
       // Call the API endpoint for minification
       const response = await fetch("/api/minify-html", {
@@ -68,10 +74,10 @@ const HtmlMinifierTool = () => {
         throw new Error(data.error || "Failed to minify HTML");
       }
 
-      setMinifiedOutput(data.minifiedHtml);
+      setOutput(data.minifiedHtml);
     } catch (error) {
       console.error("HTML minification error:", error);
-      setMinifiedOutput(`Error: ${error.message}`);
+      setOutput(`Error: ${error.message}`);
     } finally {
       setIsLoading(false);
     }
@@ -84,7 +90,7 @@ const HtmlMinifierTool = () => {
    */
   const handleClear = () => {
     setInput("");
-    setMinifiedOutput("");
+    setOutput("");
   };
 
   /**
@@ -94,26 +100,8 @@ const HtmlMinifierTool = () => {
    */
   const handleReset = () => {
     setInput("");
-    setMinifiedOutput("");
-    setOptions({
-      removeComments: true,
-      collapseWhitespace: true,
-      conservativeCollapse: false,
-      collapseBooleanAttributes: true,
-      removeAttributeQuotes: true,
-      removeEmptyAttributes: true,
-      removeEmptyElements: false,
-      removeRedundantAttributes: true,
-      removeScriptTypeAttributes: true,
-      removeStyleLinkTypeAttributes: true,
-      sortAttributes: false,
-      sortClassName: false,
-      minifyCSS: false,
-      minifyJS: false,
-      minifyURLs: false,
-      decodeEntities: false,
-      useShortDoctype: false,
-    });
+    setOutput("");
+    setOptions(defaultOptions);
   };
 
   /**
@@ -138,12 +126,13 @@ const HtmlMinifierTool = () => {
           setInput={setInput}
           options={options}
           updateOption={updateOption}
-          onMinify={handleMinify}
+          onSubmit={handleSubmit}
           onClear={handleClear}
           onReset={handleReset}
           isLoading={isLoading}
         />
-        <HtmlMinifierOutput output={minifiedOutput} />
+
+        {output && <HtmlMinifierOutput output={output} input={input} />}
       </div>
 
       <div className="mt-16">

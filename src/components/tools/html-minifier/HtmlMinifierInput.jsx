@@ -5,7 +5,6 @@ import PropTypes from "prop-types";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 
 /**
@@ -16,7 +15,7 @@ import { Textarea } from "@/components/ui/textarea";
  * @param {Function} props.setInput - Function to update input state
  * @param {Object} props.options - Minification options
  * @param {Function} props.updateOption - Function to update a specific option
- * @param {Function} props.onMinify - Function called when minify button is clicked
+ * @param {Function} props.onSubmit - Function called when minify button is clicked
  * @param {Function} props.onClear - Function to clear the input
  * @param {Function} props.onReset - Function to reset all options to defaults
  * @param {boolean} props.isLoading - Indicates whether the minification process is ongoing
@@ -27,10 +26,10 @@ const HtmlMinifierInput = ({
   setInput,
   options,
   updateOption,
-  onMinify,
+  onSubmit,
   onClear,
   onReset,
-  isLoading, // Added isLoading prop
+  isLoading,
 }) => {
   /**
    * Handles form submission and triggers HTML minification
@@ -39,7 +38,7 @@ const HtmlMinifierInput = ({
    */
   const handleSubmit = (e) => {
     e.preventDefault();
-    onMinify();
+    onSubmit();
   };
 
   return (
@@ -51,188 +50,181 @@ const HtmlMinifierInput = ({
       <CardContent>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <Textarea
+            id="html-input"
             placeholder="Paste HTML code here..."
+            rows={5}
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            className="min-h-28"
           />
 
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             <div className="space-y-4">
               <h3 className="text-base font-bold">Content Options</h3>
-              <div className="flex items-center space-x-2">
+
+              <div className="flex flex-col gap-2">
                 <Checkbox
-                  id="removeComments"
+                  id="remove-comments"
                   checked={options.removeComments}
                   onCheckedChange={(checked) => updateOption("removeComments", checked)}
-                />
-                <Label htmlFor="removeComments">Remove comments</Label>
-              </div>
-              <div className="flex items-center space-x-2">
+                >
+                  Remove comments
+                </Checkbox>
+
                 <Checkbox
-                  id="collapseWhitespace"
+                  id="collapse-whitespace"
                   checked={options.collapseWhitespace}
                   onCheckedChange={(checked) => updateOption("collapseWhitespace", checked)}
-                />
-                <Label htmlFor="collapseWhitespace">Collapse whitespace</Label>
-              </div>
-              <div className="flex items-center space-x-2">
+                >
+                  Collapse whitespace
+                </Checkbox>
+
                 <Checkbox
-                  id="conservativeCollapse"
+                  id="conservative-collapse"
                   checked={options.conservativeCollapse}
                   onCheckedChange={(checked) => updateOption("conservativeCollapse", checked)}
-                />
-                <Label htmlFor="conservativeCollapse">Conservative whitespace collapse</Label>
-              </div>
-              <div className="flex items-center space-x-2">
+                >
+                  Conservative whitespace collapse
+                </Checkbox>
+
                 <Checkbox
-                  id="minifyCSS"
+                  id="minify-css"
                   checked={options.minifyCSS}
                   onCheckedChange={(checked) => updateOption("minifyCSS", checked)}
-                />
-                <Label htmlFor="minifyCSS">Minify CSS</Label>
-              </div>
-              <div className="flex items-center space-x-2">
+                >
+                  Minify CSS
+                </Checkbox>
+
                 <Checkbox
-                  id="minifyJS"
+                  id="minify-js"
                   checked={options.minifyJS}
                   onCheckedChange={(checked) => updateOption("minifyJS", checked)}
-                />
-                <Label htmlFor="minifyJS">Minify JavaScript</Label>
-              </div>
-              <div className="flex items-center space-x-2">
+                >
+                  Minify JavaScript
+                </Checkbox>
+
                 <Checkbox
-                  id="minifyURLs"
+                  id="minify-urls"
                   checked={options.minifyURLs}
                   onCheckedChange={(checked) => updateOption("minifyURLs", checked)}
-                />
-                <Label htmlFor="minifyURLs">Minify URLs</Label>
+                >
+                  Minify URLs
+                </Checkbox>
               </div>
             </div>
 
             <div className="space-y-4">
               <h3 className="text-base font-bold">Element Options</h3>
-              <div className="flex items-center space-x-2">
+
+              <div className="flex flex-col gap-2">
                 <Checkbox
-                  id="removeEmptyElements"
+                  id="remove-empty-elements"
                   checked={options.removeEmptyElements}
                   onCheckedChange={(checked) => updateOption("removeEmptyElements", checked)}
-                />
-                <Label htmlFor="removeEmptyElements">Remove empty elements</Label>
-              </div>
-              <div className="flex items-center space-x-2">
+                >
+                  Remove empty elements
+                </Checkbox>
+
                 <Checkbox
-                  id="removeEmptyAttributes"
+                  id="remove-empty-attributes"
                   checked={options.removeEmptyAttributes}
                   onCheckedChange={(checked) => updateOption("removeEmptyAttributes", checked)}
-                />
-                <Label htmlFor="removeEmptyAttributes">Remove empty attributes</Label>
-              </div>
-              <div className="flex items-center space-x-2">
+                >
+                  Remove empty attributes
+                </Checkbox>
+
                 <Checkbox
-                  id="collapseBooleanAttributes"
+                  id="collapse-boolean-attributes"
                   checked={options.collapseBooleanAttributes}
                   onCheckedChange={(checked) => updateOption("collapseBooleanAttributes", checked)}
-                />
-                <Label htmlFor="collapseBooleanAttributes">Collapse boolean attributes</Label>
-              </div>
-              <div className="flex items-center space-x-2">
+                >
+                  Collapse boolean attributes
+                </Checkbox>
+
                 <Checkbox
-                  id="removeAttributeQuotes"
+                  id="remove-attribute-quotes"
                   checked={options.removeAttributeQuotes}
                   onCheckedChange={(checked) => updateOption("removeAttributeQuotes", checked)}
-                />
-                <Label htmlFor="removeAttributeQuotes">Remove attribute quotes</Label>
-              </div>
-              <div className="flex items-center space-x-2">
+                >
+                  Remove attribute quotes
+                </Checkbox>
+
                 <Checkbox
-                  id="removeRedundantAttributes"
+                  id="remove-redundant-attributes"
                   checked={options.removeRedundantAttributes}
                   onCheckedChange={(checked) => updateOption("removeRedundantAttributes", checked)}
-                />
-                <Label htmlFor="removeRedundantAttributes">Remove redundant attributes</Label>
+                >
+                  Remove redundant attributes
+                </Checkbox>
               </div>
             </div>
 
             <div className="space-y-4">
               <h3 className="text-base font-bold">Advanced Options</h3>
-              <div className="flex items-center space-x-2">
+
+              <div className="flex flex-col gap-2">
                 <Checkbox
-                  id="removeScriptTypeAttributes"
+                  id="remove-script-type-attributes"
                   checked={options.removeScriptTypeAttributes}
                   onCheckedChange={(checked) => updateOption("removeScriptTypeAttributes", checked)}
-                />
-                <Label htmlFor="removeScriptTypeAttributes">Remove script type attributes</Label>
-              </div>
-              <div className="flex items-center space-x-2">
+                >
+                  Remove script type attributes
+                </Checkbox>
+
                 <Checkbox
-                  id="removeStyleLinkTypeAttributes"
+                  id="remove-style-link-type-attributes"
                   checked={options.removeStyleLinkTypeAttributes}
                   onCheckedChange={(checked) =>
                     updateOption("removeStyleLinkTypeAttributes", checked)
                   }
-                />
-                <Label htmlFor="removeStyleLinkTypeAttributes">
+                >
                   Remove style/link type attributes
-                </Label>
-              </div>
-              <div className="flex items-center space-x-2">
+                </Checkbox>
+
                 <Checkbox
-                  id="sortAttributes"
+                  id="sort-attributes"
                   checked={options.sortAttributes}
                   onCheckedChange={(checked) => updateOption("sortAttributes", checked)}
-                />
-                <Label htmlFor="sortAttributes">Sort attributes</Label>
-              </div>
-              <div className="flex items-center space-x-2">
+                >
+                  Sort attributes
+                </Checkbox>
+
                 <Checkbox
-                  id="sortClassName"
+                  id="sort-class-name"
                   checked={options.sortClassName}
                   onCheckedChange={(checked) => updateOption("sortClassName", checked)}
-                />
-                <Label htmlFor="sortClassName">Sort class names</Label>
-              </div>
-              <div className="flex items-center space-x-2">
+                >
+                  Sort class names
+                </Checkbox>
+
                 <Checkbox
-                  id="decodeEntities"
+                  id="decode-entities"
                   checked={options.decodeEntities}
                   onCheckedChange={(checked) => updateOption("decodeEntities", checked)}
-                />
-                <Label htmlFor="decodeEntities">Decode entities</Label>
-              </div>
-              <div className="flex items-center space-x-2">
+                >
+                  Decode entities
+                </Checkbox>
+
                 <Checkbox
-                  id="useShortDoctype"
+                  id="use-short-doctype"
                   checked={options.useShortDoctype}
                   onCheckedChange={(checked) => updateOption("useShortDoctype", checked)}
-                />
-                <Label htmlFor="useShortDoctype">Use short doctype</Label>
+                >
+                  Use short doctype
+                </Checkbox>
               </div>
             </div>
           </div>
 
-          <div className="mt-4 flex flex-wrap gap-2">
-            <Button
-              type="submit"
-              variant="default"
-              disabled={!input || isLoading} // Disable button when loading
-            >
+          <div className="flex flex-wrap gap-2">
+            <Button type="submit" variant="default" disabled={!input || isLoading}>
               {isLoading ? "Minifying..." : "Minify"}
             </Button>
-            <Button
-              type="button"
-              variant="outline"
-              onClick={onClear}
-              disabled={isLoading} // Disable button when loading
-            >
+
+            <Button type="button" variant="outline" onClick={onClear} disabled={isLoading}>
               Clear
             </Button>
-            <Button
-              type="reset"
-              variant="destructive"
-              onClick={onReset}
-              disabled={isLoading} // Disable button when loading
-            >
+
+            <Button type="reset" variant="destructive" onClick={onReset} disabled={isLoading}>
               Reset
             </Button>
           </div>
@@ -247,10 +239,10 @@ HtmlMinifierInput.propTypes = {
   setInput: PropTypes.func.isRequired,
   options: PropTypes.object.isRequired,
   updateOption: PropTypes.func.isRequired,
-  onMinify: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
   onClear: PropTypes.func.isRequired,
   onReset: PropTypes.func.isRequired,
-  isLoading: PropTypes.bool.isRequired, // Added isLoading prop type
+  isLoading: PropTypes.bool.isRequired,
 };
 
 export default HtmlMinifierInput;

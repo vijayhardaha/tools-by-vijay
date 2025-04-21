@@ -5,6 +5,7 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
+import { CompressionInfo } from "@/components/ui/compression-info";
 import CopyButton from "@/components/ui/copy-button";
 import { Textarea } from "@/components/ui/textarea";
 
@@ -14,9 +15,10 @@ import { Textarea } from "@/components/ui/textarea";
  * @component
  * @param {Object} props - The component props
  * @param {string} props.output - The minified HTML to display
+ * @param {string} props.input - The original HTML code
  * @returns {JSX.Element} The HtmlMinifierOutput component
  */
-const HtmlMinifierOutput = ({ output }) => {
+const HtmlMinifierOutput = ({ output, input }) => {
   const [copied, setCopied] = useState(false);
 
   /**
@@ -32,26 +34,6 @@ const HtmlMinifierOutput = ({ output }) => {
     setTimeout(() => setCopied(false), 1000);
   };
 
-  /**
-   * Calculates the size reduction percentage if there is output
-   *
-   * @function
-   * @returns {string|null} The percentage of size reduction or null if no output
-   */
-  const getSizeReduction = () => {
-    if (!output) return null;
-
-    // Get the byte lengths
-    const originalSize = new Blob([output]).size;
-
-    if (originalSize === 0) return "0%";
-
-    // Format the sizes for display
-    return `${originalSize} bytes`;
-  };
-
-  if (!output) return;
-
   return (
     <Card>
       <CardHeader>
@@ -59,7 +41,7 @@ const HtmlMinifierOutput = ({ output }) => {
           <div className="flex flex-col gap-1.5">
             <CardTitle>Minified Output</CardTitle>
             <CardDescription>
-              {output ? `Size: ${getSizeReduction()}` : "Minified HTML will appear here"}
+              <CompressionInfo input={input} output={output} />
             </CardDescription>
           </div>
           <div className="inline-flex">
@@ -76,6 +58,7 @@ const HtmlMinifierOutput = ({ output }) => {
 
 HtmlMinifierOutput.propTypes = {
   output: PropTypes.string.isRequired,
+  input: PropTypes.string.isRequired,
 };
 
 export default HtmlMinifierOutput;
