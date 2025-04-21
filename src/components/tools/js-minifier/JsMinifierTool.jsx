@@ -35,6 +35,7 @@ const JsMinifierTool = () => {
    *
    * @async
    * @function
+   * @returns {void}
    */
   const handleMinify = async () => {
     if (!input.trim()) return;
@@ -73,6 +74,7 @@ const JsMinifierTool = () => {
    * Clears the input and output fields
    *
    * @function
+   * @returns {void}
    */
   const handleClear = () => {
     setInput("");
@@ -83,10 +85,10 @@ const JsMinifierTool = () => {
    * Resets all options to their default values
    *
    * @function
+   * @returns {void}
    */
   const handleReset = () => {
-    setInput("");
-    setOutput("");
+    handleClear();
     setOptions(defaultOptions);
   };
 
