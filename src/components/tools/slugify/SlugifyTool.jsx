@@ -49,6 +49,9 @@ const SlugifyTool = () => {
   /**
    * Handles the generation of the slug and updates the output state.
    * This function is triggered when the "Generate" button is clicked.
+   *
+   * @function
+   * @returns {void}
    */
   const handleSubmit = () => {
     const slug = generateSlug(input);
@@ -58,6 +61,9 @@ const SlugifyTool = () => {
   /**
    * Clears the input and output fields.
    * This function is triggered when the "Clear" button is clicked.
+   *
+   * @function
+   * @returns {void}
    */
   const handleClear = () => {
     setInput("");
@@ -67,6 +73,9 @@ const SlugifyTool = () => {
   /**
    * Resets all input fields and settings to their default values.
    * This function is triggered when the "Reset" button is clicked.
+   *
+   * @function
+   * @returns {void}
    */
   const handleReset = () => {
     handleClear();
