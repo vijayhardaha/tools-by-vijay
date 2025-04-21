@@ -17,22 +17,22 @@ import { Tooltip } from "@/components/ui/tooltip";
  *
  * @component
  * @param {Object} props - Component props
- * @param {string} props.jsonInput - Current JSON input
+ * @param {string} props.input - Current JSON input
  * @param {Function} props.setJsonInput - Function to update JSON input
  * @param {boolean} props.spareArrays - Whether to preserve arrays without sorting
  * @param {Function} props.setSpareArrays - Function to update spare arrays setting
- * @param {Function} props.onSort - Function to sort the JSON
+ * @param {Function} props.onSubmit - Function to sort the JSON
  * @param {Function} props.onClear - Function to clear JSON input only
  * @param {Function} props.onReset - Function to reset all settings to defaults
  * @param {string} props.error - Error message to display, if any
  * @returns {JSX.Element} The rendered form with sorting options
  */
 const JsonSorterInput = ({
-  jsonInput,
+  input,
   setJsonInput,
   spareArrays,
   setSpareArrays,
-  onSort,
+  onSubmit,
   onClear,
   onReset,
   error,
@@ -43,7 +43,7 @@ const JsonSorterInput = ({
    */
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSort();
+    onSubmit();
   };
 
   return (
@@ -65,8 +65,8 @@ const JsonSorterInput = ({
             <Textarea
               id="json-input"
               placeholder={`{\n\t"zebra": 1,\n\t"apple": 2,\n\t"banana": 3\n}`}
-              className="min-h-52"
-              value={jsonInput}
+              rows={8}
+              value={input}
               onChange={(e) => setJsonInput(e.target.value)}
             />
           </div>
@@ -81,7 +81,7 @@ const JsonSorterInput = ({
           </div>
 
           <div className="flex flex-wrap gap-2">
-            <Button type="submit" variant="default" disabled={!jsonInput}>
+            <Button type="submit" variant="default" disabled={!input}>
               Sort JSON
             </Button>
 
@@ -102,11 +102,11 @@ const JsonSorterInput = ({
 };
 
 JsonSorterInput.propTypes = {
-  jsonInput: PropTypes.string.isRequired,
+  input: PropTypes.string.isRequired,
   setJsonInput: PropTypes.func.isRequired,
   spareArrays: PropTypes.bool.isRequired,
   setSpareArrays: PropTypes.func.isRequired,
-  onSort: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
   onClear: PropTypes.func.isRequired,
   onReset: PropTypes.func.isRequired,
   error: PropTypes.string,
