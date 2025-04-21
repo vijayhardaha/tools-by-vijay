@@ -29,9 +29,7 @@ const UrlShortenerTool = () => {
    * @param {string} url - URL to validate
    * @returns {boolean} Whether the URL is valid
    */
-  const isValidUrl = (url) => {
-    return validUrl.isWebUri(url) !== undefined;
-  };
+  const isValidUrl = (url) => validUrl.isWebUri(url) !== undefined;
 
   /**
    * Shortens a single URL using TinyURL API
@@ -54,7 +52,7 @@ const UrlShortenerTool = () => {
   /**
    * Processes all URLs in the input field
    */
-  const handleShortenUrls = async () => {
+  const handleSubmit = async () => {
     setError("");
     setIsLoading(true);
 
@@ -104,7 +102,7 @@ const UrlShortenerTool = () => {
         <UrlShortenerInput
           input={input}
           setInput={setInput}
-          onShortenUrls={handleShortenUrls}
+          onSubmit={handleSubmit}
           onClear={handleClear}
           isLoading={isLoading}
           error={error}
