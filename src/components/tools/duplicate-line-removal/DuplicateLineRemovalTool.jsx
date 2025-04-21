@@ -22,6 +22,9 @@ const DuplicateLineRemovalTool = () => {
   /**
    * Processes the input to remove duplicate lines, sort them based on the selected sort type,
    * and optionally reverse the order.
+   *
+   * @function
+   * @returns {void}
    */
   const handleSubmit = () => {
     const lines = input.split("\n").filter((line, index, self) => self.indexOf(line) === index);
@@ -41,21 +44,26 @@ const DuplicateLineRemovalTool = () => {
   };
 
   /**
-   * Resets all states to their initial values.
-   */
-  const handleReset = () => {
-    setInput("");
-    setOutput("");
-    setSortType("none");
-    setReverseSort(false);
-  };
-
-  /**
    * Clears the input and output fields.
+   *
+   * @function
+   * @returns {void}
    */
   const handleClear = () => {
     setInput("");
     setOutput("");
+  };
+
+  /**
+   * Resets all states to their initial values.
+   *
+   * @function
+   * @returns {void}
+   */
+  const handleReset = () => {
+    handleClear();
+    setSortType("none");
+    setReverseSort(false);
   };
 
   return (
