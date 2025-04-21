@@ -37,7 +37,7 @@ const JsMinifierTool = () => {
    * @function
    * @returns {void}
    */
-  const handleMinify = async () => {
+  const handleSubmit = async () => {
     if (!input.trim()) return;
 
     setIsLoading(true);
@@ -114,7 +114,7 @@ const JsMinifierTool = () => {
           setInput={setInput}
           options={options}
           updateOption={updateOption}
-          onMinify={handleMinify}
+          onSubmit={handleSubmit}
           onClear={handleClear}
           onReset={handleReset}
           isLoading={isLoading}
