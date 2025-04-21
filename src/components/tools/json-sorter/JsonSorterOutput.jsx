@@ -1,7 +1,3 @@
-"use client";
-
-import { useState } from "react";
-
 import PropTypes from "prop-types";
 
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
@@ -19,20 +15,6 @@ import { Textarea } from "@/components/ui/textarea";
  * @returns {JSX.Element} The rendered card with output display and copy functionality
  */
 const JsonSorterOutput = ({ output }) => {
-  const [copied, setCopied] = useState(false);
-
-  /**
-   * Copies the current output to the clipboard and provides visual feedback
-   * @async
-   * @function
-   * @returns {Promise<void>}
-   */
-  const copyToClipboard = async () => {
-    await navigator.clipboard.writeText(output);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 1000);
-  };
-
   return (
     <Card>
       <CardHeader>
@@ -42,7 +24,7 @@ const JsonSorterOutput = ({ output }) => {
             <CardDescription>The alphabetically sorted JSON output</CardDescription>
           </div>
           <div className="inline-flex">
-            <CopyButton copied={copied} onClick={copyToClipboard} />
+            <CopyButton text={output} />
           </div>
         </div>
       </CardHeader>
