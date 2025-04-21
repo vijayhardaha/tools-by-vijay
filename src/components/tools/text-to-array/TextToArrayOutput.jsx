@@ -20,10 +20,6 @@ import { Textarea } from "@/components/ui/textarea";
  * @returns {JSX.Element} The rendered card with output display and copy functionality
  */
 const TextToArrayOutput = ({ output }) => {
-  /**
-   * State to track whether the output has been copied to clipboard
-   * @type {[boolean, function]} - State and setter for copied status
-   */
   const [copied, setCopied] = useState(false);
 
   /**
@@ -49,12 +45,12 @@ const TextToArrayOutput = ({ output }) => {
             <CardDescription>Copy the generated array for use in your code</CardDescription>
           </div>
           <div className="inline-flex">
-            <CopyButton copied={copied} disabled={!output} onClick={copyToClipboard} />
+            <CopyButton copied={copied} onClick={copyToClipboard} />
           </div>
         </div>
       </CardHeader>
       <CardContent>
-        <Textarea value={output} readOnly data-output className="min-h-28" />
+        <Textarea value={output} rows={5} readOnly data-output />
       </CardContent>
     </Card>
   );
