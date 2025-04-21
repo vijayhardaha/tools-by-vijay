@@ -14,6 +14,9 @@ function Textarea({ className, ...props }) {
   return (
     <textarea
       data-slot="textarea"
+      autoComplete="off"
+      autoCorrect="off"
+      spellCheck="false"
       className={cn(
         // Layout & spacing
         "flex h-auto min-h-16 w-full rounded-lg px-3 py-2",
