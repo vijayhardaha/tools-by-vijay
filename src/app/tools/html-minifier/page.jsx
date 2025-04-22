@@ -1,3 +1,4 @@
+import EntryWithSidebar from "@/components/page/EntryWithSidebar";
 import PageContent from "@/components/page/PageContent";
 import PageHeader from "@/components/page/PageHeader";
 import PageLayout from "@/components/page/PageLayout";
@@ -38,7 +39,9 @@ const HtmlMinifier = () => {
         icon={getIconForTool(tool.slug)}
       />
       <PageContent>
-        <HtmlMinifierTool />
+        <EntryWithSidebar tool={tool}>
+          <HtmlMinifierTool />
+        </EntryWithSidebar>
       </PageContent>
     </PageLayout>
   );

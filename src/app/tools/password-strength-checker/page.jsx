@@ -1,3 +1,4 @@
+import EntryWithSidebar from "@/components/page/EntryWithSidebar";
 import PageContent from "@/components/page/PageContent";
 import PageHeader from "@/components/page/PageHeader";
 import PageLayout from "@/components/page/PageLayout";
@@ -38,7 +39,9 @@ const PasswordStrengthChecker = () => {
         icon={getIconForTool(tool.slug)}
       />
       <PageContent>
-        <PasswordStrengthCheckerTool />
+        <EntryWithSidebar tool={tool}>
+          <PasswordStrengthCheckerTool />
+        </EntryWithSidebar>
       </PageContent>
     </PageLayout>
   );
