@@ -14,6 +14,7 @@ import {
   PiTextAlignLeftBold,
   PiCodeSimpleBold,
   PiQuotesFill,
+  PiShuffleBold,
 } from "react-icons/pi";
 
 export const toolIcons = {
@@ -32,4 +33,5 @@ export const toolIcons = {
   "alphabetical-line-sorter": <PiTextAlignLeftBold />,
   "css-inliner": <PiCodeSimpleBold />,
   "replace-quotes": <PiQuotesFill />,
+  "shuffle-text-lines": <PiShuffleBold />,
 };

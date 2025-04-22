@@ -162,6 +162,17 @@ const tools = [
       "Replace straight quotes (' and \") with curly quotes (‘, ’, “, and ”) or curly quotes with straight quotes. Simplify your text formatting.",
     category: "text-transformation",
   },
+  {
+    name: "Shuffle Text Lines",
+    slug: "shuffle-text-lines",
+    shortDescription: "Randomize the order of text lines.",
+    pageDescription:
+      "Rearrange the lines of your text in random order with the Shuffle Text Lines tool.",
+    seoTitle: "Shuffle Text Lines – Randomize Text Line Order Online",
+    seoDescription:
+      "Randomly shuffle the lines of your text for creative or organizational purposes. Simple and fast tool.",
+    category: "text-transformation",
+  },
 ];
 
 export default tools;
