@@ -32,7 +32,7 @@ SocialButton.propTypes = {
  */
 const FooterAbout = () => {
   return (
-    <div className="flex flex-col gap-2 md:mb-12 md:flex-row md:items-end md:gap-4">
+    <div className="flex flex-col gap-4">
       <div className="space-y-2">
         <div>
           <Logo className="mb-3 h-12" />
