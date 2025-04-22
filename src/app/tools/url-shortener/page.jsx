@@ -23,7 +23,7 @@ export const metadata = genMeta({
 });
 
 /**
- * URL Shortener tool page component
+ * URL Shortener tool page component.
  * Renders the page layout with header and the URL Shortener tool.
  *
  * @component
