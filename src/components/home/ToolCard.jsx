@@ -25,7 +25,7 @@ const ToolCard = ({ slug, className = "" }) => {
         )}
       >
         <CardHeader>
-          <div className="flex flex-col gap-4 lg:relative lg:top-5 lg:-mt-4 lg:flex-row-reverse lg:items-start lg:justify-between">
+          <div className="flex w-full flex-col gap-4 lg:relative lg:top-5 lg:-mt-4 lg:flex-row-reverse lg:items-start lg:justify-between">
             <div className="bg-accent-foreground text-primary inline-flex size-10 items-center justify-center rounded-2xl text-xl">
               {getIconForTool(tool.slug)}
             </div>
