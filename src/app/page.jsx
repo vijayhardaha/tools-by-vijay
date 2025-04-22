@@ -9,6 +9,7 @@ import { getToolsByCategories } from "@/utils/toolUtils";
  * Each category section displays a title, description, and a grid of tools
  * that belong to that category.
  *
+ * @component
  * @returns {JSX.Element} The rendered Home component with categorized tools.
  */
 const Home = () => {
