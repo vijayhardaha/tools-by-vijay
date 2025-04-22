@@ -28,6 +28,7 @@ const JsMinifierTool = () => {
   const [output, setOutput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [options, setOptions] = useState(defaultOptions);
+  const [error, setError] = useState("");
 
   /**
    * Handles the minification process when the "Minify" button is clicked
@@ -41,6 +42,7 @@ const JsMinifierTool = () => {
     if (!input.trim()) return;
 
     setIsLoading(true);
+    setError("");
 
     try {
       // Call the API endpoint for minification
@@ -64,7 +66,7 @@ const JsMinifierTool = () => {
       setOutput(data.minifiedJs);
     } catch (error) {
       console.error("JavaScript minification error:", error);
-      setOutput(`Error: ${error.message}`);
+      setError(error.message);
     } finally {
       setIsLoading(false);
     }
@@ -79,6 +81,7 @@ const JsMinifierTool = () => {
   const handleClear = () => {
     setInput("");
     setOutput("");
+    setError("");
   };
 
   /**
@@ -118,6 +121,7 @@ const JsMinifierTool = () => {
           onClear={handleClear}
           onReset={handleReset}
           isLoading={isLoading}
+          error={error} // Pass error to input component
         />
 
         {output && <JsMinifierOutput output={output} input={input} />}
