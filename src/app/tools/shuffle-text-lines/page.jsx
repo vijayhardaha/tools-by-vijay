@@ -23,7 +23,7 @@ export const metadata = genMeta({
 });
 
 /**
- * ShuffleTextLines page component.
+ * Shuffle Text Lines page component.
  * Renders the page layout with header and the Shuffle Text Lines tool.
  *
  * @component
