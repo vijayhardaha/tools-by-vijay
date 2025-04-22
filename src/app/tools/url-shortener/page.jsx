@@ -8,7 +8,7 @@ import { getIconForTool } from "@/utils/toolUtils";
 
 /**
  * Retrieves tool data for the URL Shortener tool.
- * @constant {Object} tool - The tool object containing metadata and configuration
+ * @constant {Object} tool - The tool object containing metadata and configuration.
  */
 const tool = findToolBySlug("url-shortener");
 
