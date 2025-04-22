@@ -8,12 +8,12 @@ import { getIconForTool } from "@/utils/toolUtils";
 
 /**
  * Retrieves tool data for the CSS Minifier tool.
- * @constant {Object} tool - The tool object containing metadata and configuration
+ * @constant {Object} tool - The tool object containing metadata and configuration.
  */
 const tool = findToolBySlug("css-minifier");
 
 /**
- * SEO metadata for the Slugify page
+ * SEO metadata for the Slugify page.
  * @type {Object}
  */
 export const metadata = genMeta({
@@ -23,8 +23,10 @@ export const metadata = genMeta({
 });
 
 /**
- * CSS Minifier page component
- * Renders the page layout with header and the CSS Minifier tool
+ * CSS Minifier page component.
+ * Renders the page layout with header and the CSS Minifier tool.
+ *
+ * @component
  * @returns {JSX.Element} The rendered CSS Minifier page component.
  */
 const CssMinifier = () => {
