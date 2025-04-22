@@ -7,13 +7,13 @@ import { findToolBySlug } from "@/utils/toolUtils";
 import { getIconForTool } from "@/utils/toolUtils";
 
 /**
- * Retrieves tool data for the Text to Array tool
- * @constant {Object} tool - The tool object containing metadata and configuration
+ * Retrieves tool data for the Text to Array tool.
+ * @constant {Object} tool - The tool object containing metadata and configuration.
  */
 const tool = findToolBySlug("text-to-array");
 
 /**
- * SEO metadata for the Slugify page
+ * SEO metadata for the Slugify page.
  * @type {Object}
  */
 export const metadata = genMeta({
@@ -23,8 +23,10 @@ export const metadata = genMeta({
 });
 
 /**
- * Text to Array tool page component
- * Renders the page layout with header and the Text to Array tool
+ * Text to Array tool page component.
+ * Renders the page layout with header and the Text to Array tool.
+ *
+ * @component
  * @returns {JSX.Element} The rendered Text to Array page component.
  */
 const TextToArray = () => {
