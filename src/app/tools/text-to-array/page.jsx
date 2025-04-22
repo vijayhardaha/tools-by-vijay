@@ -13,7 +13,7 @@ import { getIconForTool } from "@/utils/toolUtils";
 const tool = findToolBySlug("text-to-array");
 
 /**
- * SEO metadata for the Slugify page.
+ * SEO metadata for the Text to Array tool page.
  * @type {Object}
  */
 export const metadata = genMeta({
@@ -27,7 +27,7 @@ export const metadata = genMeta({
  * Renders the page layout with header and the Text to Array tool.
  *
  * @component
- * @returns {JSX.Element} The rendered Text to Array page component.
+ * @returns {JSX.Element} The rendered Text to Array tool page component.
  */
 const TextToArray = () => {
   return (
