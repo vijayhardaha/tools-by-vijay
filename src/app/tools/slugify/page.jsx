@@ -7,13 +7,13 @@ import { findToolBySlug } from "@/utils/toolUtils";
 import { getIconForTool } from "@/utils/toolUtils";
 
 /**
- * Retrieves tool data for the Slugify tool
- * @constant {Object} tool - The tool object containing metadata and configuration
+ * Retrieves tool data for the Slugify tool.
+ * @constant {Object} tool - The tool object containing metadata and configuration.
  */
 const tool = findToolBySlug("slugify");
 
 /**
- * SEO metadata for the Slugify page
+ * SEO metadata for the Slugify page.
  * @type {Object}
  */
 export const metadata = genMeta({
@@ -23,8 +23,10 @@ export const metadata = genMeta({
 });
 
 /**
- * Slugify page component
+ * Slugify page component.
  * Renders the page layout with header and the Slugify tool.
+ *
+ * @component
  * @returns {JSX.Element} The rendered Slugify page component.
  */
 const Slugify = () => {
