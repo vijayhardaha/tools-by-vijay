@@ -7,13 +7,13 @@ import { findToolBySlug } from "@/utils/toolUtils";
 import { getIconForTool } from "@/utils/toolUtils";
 
 /**
- * Retrieves tool data for the URL Shortener tool
+ * Retrieves tool data for the URL Shortener tool.
  * @constant {Object} tool - The tool object containing metadata and configuration
  */
 const tool = findToolBySlug("url-shortener");
 
 /**
- * SEO metadata for the URL Shortener tool page
+ * SEO metadata for the URL Shortener tool page.
  * @type {Object}
  */
 export const metadata = genMeta({
@@ -24,7 +24,9 @@ export const metadata = genMeta({
 
 /**
  * URL Shortener tool page component
- * Renders the page layout with header and the URL Shortener tool
+ * Renders the page layout with header and the URL Shortener tool.
+ *
+ * @component
  * @returns {JSX.Element} The rendered URL Shortener page component.
  */
 const UrlShortener = () => {
