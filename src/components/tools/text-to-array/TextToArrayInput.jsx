@@ -91,7 +91,7 @@ const TextToArrayInput = ({
               <div className="flex items-center gap-2">
                 <Label htmlFor="output-format">Output Format</Label>
                 <Tooltip text="Select the programming language and format for the output array or object">
-                  <FiInfo className="text-muted-foreground ml-1.5 h-4 w-4 cursor-help" />
+                  <FiInfo className="text-muted-foreground h-4 w-4 cursor-help" />
                 </Tooltip>
               </div>
 
@@ -113,7 +113,7 @@ const TextToArrayInput = ({
               <div className="flex items-center gap-2">
                 <Label htmlFor="array-type">Array Structure</Label>
                 <Tooltip text="Simple: Just values. Numeric: Indexed entries with ID/position and values. Associative: Key-value pairs.">
-                  <FiInfo className="text-muted-foreground ml-1.5 h-4 w-4 cursor-help" />
+                  <FiInfo className="text-muted-foreground h-4 w-4 cursor-help" />
                 </Tooltip>
               </div>
               <Select
@@ -129,7 +129,7 @@ const TextToArrayInput = ({
             </div>
           </div>
 
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-wrap gap-4">
             <Checkbox id="trim-lines" checked={trimLines} onCheckedChange={setTrimLines}>
               Trim whitespace from each line
             </Checkbox>
