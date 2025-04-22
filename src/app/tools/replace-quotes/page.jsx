@@ -23,11 +23,11 @@ export const metadata = genMeta({
 });
 
 /**
- * URL Shortener tool page component.
- * Renders the page layout with header and the URL Shortener tool.
+ * Replace Quotes tool page component.
+ * Renders the page layout with header and the Replace Quotes tool.
  *
  * @component
- * @returns {JSX.Element} The rendered URL Shortener page component.
+ * @returns {JSX.Element} The rendered Replace Quotes tool page component.
  */
 const ReplaceQuotes = () => {
   return (
