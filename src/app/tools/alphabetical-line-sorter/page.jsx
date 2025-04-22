@@ -23,11 +23,11 @@ export const metadata = genMeta({
 });
 
 /**
- * URL Shortener tool page component.
- * Renders the page layout with header and the URL Shortener tool.
+ * Alphabetical Line Sorter tool page component.
+ * Renders the page layout with header and the Alphabetical Line Sorter tool.
  *
  * @component
- * @returns {JSX.Element} The rendered URL Shortener page component.
+ * @returns {JSX.Element} The rendered Alphabetical Line Sorter tool page component.
  */
 const AlphabeticalLineSorter = () => {
   return (
