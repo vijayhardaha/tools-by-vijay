@@ -8,12 +8,12 @@ import { getIconForTool } from "@/utils/toolUtils";
 
 /**
  * Retrieves tool data for the Dropdown to Array tool.
- * @constant {Object} tool - The tool object containing metadata and configuration
+ * @constant {Object} tool - The tool object containing metadata and configuration.
  */
 const tool = findToolBySlug("dropdown-to-array");
 
 /**
- * SEO metadata for the Slugify page
+ * SEO metadata for the Slugify page.
  * @type {Object}
  */
 export const metadata = genMeta({
@@ -23,8 +23,10 @@ export const metadata = genMeta({
 });
 
 /**
- * Dropdown to Array tool page component
+ * Dropdown to Array tool page component.
  * Renders the page layout with header and the Dropdown to Array tool.
+ *
+ * @component
  * @returns {JSX.Element} The rendered Dropdown to Array tool page component.
  */
 const DropdownToArray = () => {
