@@ -27,7 +27,7 @@ export const metadata = genMeta({
  * Renders the page layout with header and the URL Shortener tool.
  *
  * @component
- * @returns {JSX.Element} The rendered URL Shortener page component.
+ * @returns {JSX.Element} The rendered URL Shortener tool page component.
  */
 const UrlShortener = () => {
   return (
