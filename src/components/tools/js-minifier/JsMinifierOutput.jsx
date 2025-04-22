@@ -31,9 +31,7 @@ const JsMinifierOutput = ({ output, input }) => {
         </div>
       </CardHeader>
       <CardContent>
-        <div className="flex flex-col gap-2">
-          <Textarea value={output} rows={5} readOnly data-output />
-        </div>
+        <Textarea value={output} rows={10} readOnly data-output />
       </CardContent>
     </Card>
   );

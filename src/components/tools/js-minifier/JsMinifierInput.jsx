@@ -57,7 +57,7 @@ const JsMinifierInput = ({
           <Textarea
             id="js-input"
             placeholder="Paste JavaScript code here..."
-            rows={5}
+            rows={10}
             value={input}
             onChange={(e) => setInput(e.target.value)}
           />
