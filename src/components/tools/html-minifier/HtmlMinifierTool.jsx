@@ -40,7 +40,7 @@ const HtmlMinifierTool = () => {
   const [output, setOutput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [options, setOptions] = useState(defaultOptions);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState("");
 
   /**
    * Handles the minification process when the "Minify" button is clicked
@@ -54,7 +54,7 @@ const HtmlMinifierTool = () => {
     if (!input.trim()) return;
 
     setIsLoading(true);
-    setError(null);
+    setError("");
 
     try {
       // Call the API endpoint for minification
@@ -93,7 +93,7 @@ const HtmlMinifierTool = () => {
   const handleClear = () => {
     setInput("");
     setOutput("");
-    setError(null);
+    setError("");
   };
 
   /**
