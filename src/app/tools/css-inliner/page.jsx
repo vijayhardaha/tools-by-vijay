@@ -8,12 +8,12 @@ import { getIconForTool } from "@/utils/toolUtils";
 
 /**
  * Retrieves tool data for the Css Inliner tool.
- * @constant {Object} tool - The tool object containing metadata and configuration
+ * @constant {Object} tool - The tool object containing metadata and configuration.
  */
 const tool = findToolBySlug("css-inliner");
 
 /**
- * SEO metadata for the Css Inliner page
+ * SEO metadata for the Css Inliner page.
  * @type {Object}
  */
 export const metadata = genMeta({
@@ -23,8 +23,10 @@ export const metadata = genMeta({
 });
 
 /**
- * Bulk Slugify page component
- * Renders the page layout with header and the Bulk Slugify tool
+ * Bulk Slugify page component.
+ * Renders the page layout with header and the Bulk Slugify tool.
+ *
+ * @component
  * @returns {JSX.Element} The rendered CssInliner page component.
  */
 const CssInliner = () => {
