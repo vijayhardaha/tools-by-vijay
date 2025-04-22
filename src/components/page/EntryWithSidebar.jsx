@@ -15,7 +15,7 @@ import ToolsListWidget from "@/components/page/ToolsListWidget";
 const EntryWithSidebar = ({ tool, children }) => {
   return (
     <div className="grid grid-cols-1 gap-4 lg:grid-cols-6">
-      <main className="col-span-4 mb-12 lg:mb-0">{children}</main>
+      <main className="col-span-4 mb-8 lg:mb-0">{children}</main>
 
       <aside className="col-span-2">
         <ToolsListWidget category={tool.category} hideTool={tool.slug}></ToolsListWidget>
