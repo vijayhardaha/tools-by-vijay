@@ -65,10 +65,10 @@ const DropdownToArrayInput = ({
       <CardContent>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <div className="space-y-2">
-            <div className="flex items-center gap-1">
+            <div className="flex items-center gap-2">
               <Label htmlFor="html-input">HTML Select/Dropdown Code</Label>
               <Tooltip text="Paste your HTML <select> element with <option> tags. You can also paste just the <option> tags.">
-                <FiInfo className="text-muted-foreground ml-1.5 h-4 w-4 cursor-help" />
+                <FiInfo className="text-muted-foreground h-4 w-4 cursor-help" />
               </Tooltip>
             </div>
             <Textarea
@@ -82,10 +82,10 @@ const DropdownToArrayInput = ({
 
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div className="space-y-2">
-              <div className="flex items-center gap-1">
+              <div className="flex items-center gap-2">
                 <Label htmlFor="output-format">Output Format</Label>
                 <Tooltip text="Select the programming language and format for the output array or object">
-                  <FiInfo className="text-muted-foreground ml-1.5 h-4 w-4 cursor-help" />
+                  <FiInfo className="text-muted-foreground h-4 w-4 cursor-help" />
                 </Tooltip>
               </div>
               <Select
@@ -103,10 +103,10 @@ const DropdownToArrayInput = ({
             </div>
 
             <div className="space-y-2">
-              <div className="flex items-center gap-1">
+              <div className="flex items-center gap-2">
                 <Label htmlFor="array-type">Array Structure</Label>
                 <Tooltip text="Simple: Just values. Numeric: Indexed entries with ID/position and values. Associative: Key-value pairs using option values as keys.">
-                  <FiInfo className="text-muted-foreground ml-1.5 h-4 w-4 cursor-help" />
+                  <FiInfo className="text-muted-foreground h-4 w-4 cursor-help" />
                 </Tooltip>
               </div>
               <Select
