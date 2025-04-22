@@ -51,7 +51,7 @@ const AlphabeticalLineSorterInput = ({
           <Textarea
             id="text-input"
             placeholder="Enter text to sort alphabetically..."
-            rows={8}
+            rows={10}
             value={input}
             onChange={(e) => setInput(e.target.value)}
           />

@@ -63,7 +63,7 @@ const ReplaceQuotesInput = ({
             <Textarea
               id="text-input"
               placeholder="Enter your text here..."
-              rows={8}
+              rows={10}
               value={input}
               onChange={(e) => setInput(e.target.value)}
             />

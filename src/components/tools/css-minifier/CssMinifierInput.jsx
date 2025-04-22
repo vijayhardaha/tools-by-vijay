@@ -54,7 +54,7 @@ const CssMinifierInput = ({
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <Textarea
             placeholder="Paste CSS code here..."
-            rows={8}
+            rows={10}
             value={input}
             onChange={(e) => setInput(e.target.value)}
           />

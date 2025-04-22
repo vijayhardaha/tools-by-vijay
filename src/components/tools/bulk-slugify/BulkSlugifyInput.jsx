@@ -71,7 +71,7 @@ const BulkSlugifyInput = ({
           <Textarea
             id="text-input"
             placeholder="Enter multiple lines of text to slugify"
-            rows={8}
+            rows={10}
             value={input}
             onChange={(e) => setInput(e.target.value)}
           />

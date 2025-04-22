@@ -65,7 +65,7 @@ const JsonSorterInput = ({
             <Textarea
               id="json-input"
               placeholder={`{\n\t"zebra": 1,\n\t"apple": 2,\n\t"banana": 3\n}`}
-              rows={8}
+              rows={10}
               value={input}
               onChange={(e) => setInput(e.target.value)}
             />

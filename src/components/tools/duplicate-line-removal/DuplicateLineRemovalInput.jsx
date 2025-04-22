@@ -51,7 +51,7 @@ const DuplicateLineRemovalInput = ({
             <Textarea
               id="text-input"
               placeholder="Enter text with duplicate lines..."
-              rows={8}
+              rows={10}
               value={input}
               onChange={(e) => setInput(e.target.value)}
             />

@@ -61,7 +61,7 @@ const ShuffleTextLinesInput = ({
           <Textarea
             id="text-input"
             placeholder="Enter text to shuffle..."
-            rows={8}
+            rows={10}
             value={input}
             onChange={(e) => setInput(e.target.value)}
           />

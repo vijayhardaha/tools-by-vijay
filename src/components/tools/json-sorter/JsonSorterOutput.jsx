@@ -29,7 +29,7 @@ const JsonSorterOutput = ({ output }) => {
         </div>
       </CardHeader>
       <CardContent>
-        <Textarea value={output} rows={8} readOnly data-output />
+        <Textarea value={output} rows={10} readOnly data-output />
       </CardContent>
     </Card>
   );
