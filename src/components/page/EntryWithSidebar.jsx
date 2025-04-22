@@ -14,9 +14,20 @@ import { getAllCategorySlugs } from "@/utils/categoryUtils";
  * @returns {JSX.Element} The rendered component.
  */
 const EntryWithSidebar = ({ tool, children }) => {
-  const categories = getAllCategorySlugs();
-  const randomCategory1 = categories[Math.floor(Math.random() * categories.length)];
-  const randomCategory2 = categories[Math.floor(Math.random() * categories.length)];
+  const categories = getAllCategorySlugs().filter((category) => category !== tool.category);
+
+  const getRandomCategories = (categories, count) => {
+    const selected = [];
+    while (selected.length < count) {
+      const category = categories[Math.floor(Math.random() * categories.length)];
+      if (!selected.includes(category)) {
+        selected.push(category);
+      }
+    }
+    return selected;
+  };
+
+  const [category1, category2] = getRandomCategories(categories, 2);
 
   return (
     <div className="grid grid-cols-1 gap-6 lg:grid-cols-6">
@@ -24,8 +35,8 @@ const EntryWithSidebar = ({ tool, children }) => {
 
       <aside className="col-span-2 flex flex-col gap-6">
         <ToolsListWidget category={tool.category} hideTool={tool.slug}></ToolsListWidget>
-        <ToolsListWidget category={randomCategory1} hideTool={tool.slug}></ToolsListWidget>
-        <ToolsListWidget category={randomCategory2} hideTool={tool.slug}></ToolsListWidget>
+        <ToolsListWidget category={category1} hideTool={tool.slug}></ToolsListWidget>
+        <ToolsListWidget category={category2} hideTool={tool.slug}></ToolsListWidget>
       </aside>
     </div>
   );
