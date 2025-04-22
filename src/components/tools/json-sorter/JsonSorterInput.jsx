@@ -55,7 +55,7 @@ const JsonSorterInput = ({
       <CardContent>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <div className="space-y-2">
-            <div className="flex items-center gap-1">
+            <div className="flex items-center gap-2">
               <Label htmlFor="json-input">JSON Content</Label>
               <Tooltip text="Enter or paste valid JSON that you want to sort alphabetically by keys.">
                 <FiInfo className="text-muted-foreground h-4 w-4 cursor-help" />
@@ -71,7 +71,7 @@ const JsonSorterInput = ({
             />
           </div>
 
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-2">
             <Checkbox id="spare-arrays" checked={spareArrays} onCheckedChange={setSpareArrays}>
               Spare plain arrays
             </Checkbox>
