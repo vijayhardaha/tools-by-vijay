@@ -48,7 +48,7 @@ function CardHeader({ className, children, component, ...props }) {
     <Tag
       data-slot="card-header"
       className={cn(
-        "flex flex-col items-start",
+        "flex w-full flex-col items-start",
         "gap-1.5 px-4 md:px-6 [.border-b]:pb-4 md:[.border-b]:pb-6",
         "has-data-[slot=card-action]:grid-cols-[1fr_auto]",
         className
