@@ -13,7 +13,7 @@ import { getIconForTool } from "@/utils/toolUtils";
 const tool = findToolBySlug("password-generator");
 
 /**
- * SEO metadata for the Slugify page.
+ * SEO metadata for the Password Generator tool page.
  * @type {Object}
  */
 export const metadata = genMeta({
@@ -23,11 +23,11 @@ export const metadata = genMeta({
 });
 
 /**
- * Password Generator page component.
+ * Password Generator tool page component.
  * Renders the page layout with header and the Password Generator tool.
  *
  * @component
- * @returns {ReactElement} The rendered Password Generator page component.
+ * @returns {ReactElement} The rendered Password Generator tool page component.
  */
 const PasswordGenerator = () => {
   return (
