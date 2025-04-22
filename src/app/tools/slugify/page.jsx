@@ -23,11 +23,11 @@ export const metadata = genMeta({
 });
 
 /**
- * Slugify page component.
+ * Slugify tool page component.
  * Renders the page layout with header and the Slugify tool.
  *
  * @component
- * @returns {JSX.Element} The rendered Slugify page component.
+ * @returns {JSX.Element} The rendered Slugify tool page component.
  */
 const Slugify = () => {
   return (
