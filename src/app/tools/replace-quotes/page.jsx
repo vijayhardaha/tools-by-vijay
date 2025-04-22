@@ -7,13 +7,13 @@ import { findToolBySlug } from "@/utils/toolUtils";
 import { getIconForTool } from "@/utils/toolUtils";
 
 /**u
- * Retrieves tool data for the Replace Quotes tool
- * @constant {Object} tool - The tool object containing metadata and configuration
+ * Retrieves tool data for the Replace Quotes tool.
+ * @constant {Object} tool - The tool object containing metadata and configuration.
  */
 const tool = findToolBySlug("replace-quotes");
 
 /**
- * SEO metadata for the Replace Quotes tool page
+ * SEO metadata for the Replace Quotes tool page.
  * @type {Object}
  */
 export const metadata = genMeta({
@@ -23,8 +23,10 @@ export const metadata = genMeta({
 });
 
 /**
- * URL Shortener tool page component
- * Renders the page layout with header and the URL Shortener tool
+ * URL Shortener tool page component.
+ * Renders the page layout with header and the URL Shortener tool.
+ *
+ * @component
  * @returns {JSX.Element} The rendered URL Shortener page component.
  */
 const ReplaceQuotes = () => {
