@@ -22,7 +22,7 @@ import { cn } from "@/utils/classNameUtils";
  * @param {Function} props.setRemoveNumbers - Function to toggle number removal
  * @param {Function} props.setUseLowercase - Function to toggle lowercase conversion
  * @param {Function} props.setUseLitinize - Function to toggle latinize usage
- * @param {Function} props.onGenerate - Function called when generate button is clicked
+ * @param {Function} props.onSubmit - Function called when generate button is clicked
  * @param {Function} props.onClear - Function to clear the input
  * @param {Function} props.onReset - Function to reset all options to defaults
  * @returns {JSX.Element} The SlugifyInput component
@@ -38,7 +38,7 @@ const SlugifyInput = ({
   setRemoveNumbers,
   setUseLowercase,
   setUseLitinize,
-  onGenerate,
+  onSubmit,
   onClear,
   onReset,
 }) => {
@@ -49,7 +49,7 @@ const SlugifyInput = ({
    */
   const handleSubmit = (e) => {
     e.preventDefault();
-    onGenerate();
+    onSubmit();
   };
 
   return (
@@ -145,7 +145,7 @@ SlugifyInput.propTypes = {
   setUseLowercase: PropTypes.func.isRequired,
   useLitinize: PropTypes.bool.isRequired,
   setUseLitinize: PropTypes.func.isRequired,
-  onGenerate: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
   onClear: PropTypes.func.isRequired,
   onReset: PropTypes.func.isRequired,
 };
