@@ -2,6 +2,7 @@
 
 import PropTypes from "prop-types";
 
+import { Alert } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -19,6 +20,7 @@ import { Textarea } from "@/components/ui/textarea";
  * @param {Function} props.onClear - Function to clear the input
  * @param {Function} props.onReset - Function to reset all options to defaults
  * @param {boolean} props.isLoading - Indicates whether the minification process is ongoing
+ * @param {boolean} props.error - Indicates whether there was an error during minification
  * @returns {JSX.Element} The HtmlMinifierInput component
  */
 const HtmlMinifierInput = ({
@@ -30,6 +32,7 @@ const HtmlMinifierInput = ({
   onClear,
   onReset,
   isLoading,
+  error,
 }) => {
   /**
    * Handles form submission and triggers HTML minification
@@ -56,7 +59,6 @@ const HtmlMinifierInput = ({
             value={input}
             onChange={(e) => setInput(e.target.value)}
           />
-
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             <div className="space-y-4">
               <h3 className="text-base font-bold">Content Options</h3>
@@ -214,7 +216,6 @@ const HtmlMinifierInput = ({
               </div>
             </div>
           </div>
-
           <div className="flex flex-wrap gap-2">
             <Button type="submit" variant="default" disabled={!input || isLoading}>
               {isLoading ? "Minifying..." : "Minify"}
@@ -228,6 +229,8 @@ const HtmlMinifierInput = ({
               Reset
             </Button>
           </div>
+
+          {error && <Alert variant="danger" title="Error" text={error} />}
         </form>
       </CardContent>
     </Card>
@@ -243,6 +246,7 @@ HtmlMinifierInput.propTypes = {
   onClear: PropTypes.func.isRequired,
   onReset: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
+  error: PropTypes.string.isRequired,
 };
 
 export default HtmlMinifierInput;

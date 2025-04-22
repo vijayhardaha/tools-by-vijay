@@ -2,8 +2,6 @@
 
 import { useState } from "react";
 
-// Remove the direct import of html-minifier-terser
-
 import HtmlMinifierInfo from "./HtmlMinifierInfo";
 import HtmlMinifierInput from "./HtmlMinifierInput";
 import HtmlMinifierOutput from "./HtmlMinifierOutput";
@@ -42,6 +40,7 @@ const HtmlMinifierTool = () => {
   const [output, setOutput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [options, setOptions] = useState(defaultOptions);
+  const [error, setError] = useState(null);
 
   /**
    * Handles the minification process when the "Minify" button is clicked
@@ -55,6 +54,7 @@ const HtmlMinifierTool = () => {
     if (!input.trim()) return;
 
     setIsLoading(true);
+    setError(null);
 
     try {
       // Call the API endpoint for minification
@@ -78,7 +78,7 @@ const HtmlMinifierTool = () => {
       setOutput(data.minifiedHtml);
     } catch (error) {
       console.error("HTML minification error:", error);
-      setOutput(`Error: ${error.message}`);
+      setError(error.message);
     } finally {
       setIsLoading(false);
     }
@@ -93,6 +93,7 @@ const HtmlMinifierTool = () => {
   const handleClear = () => {
     setInput("");
     setOutput("");
+    setError(null);
   };
 
   /**
@@ -132,6 +133,7 @@ const HtmlMinifierTool = () => {
           onClear={handleClear}
           onReset={handleReset}
           isLoading={isLoading}
+          error={error}
         />
 
         {output && <HtmlMinifierOutput output={output} input={input} />}
