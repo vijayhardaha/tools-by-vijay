@@ -49,23 +49,23 @@
 
 @layer utilities {
   .bg-transparent-checker {
-    --4RaSjg: rgba(255, 255, 255, 1);
-    --eu46bQ: rgba(57, 76, 96, 0.15);
-    background-color: var(--4RaSjg);
+    --color-1: rgba(255, 255, 255, 1);
+    --color-2: rgba(57, 76, 96, 0.15);
+    background-color: var(--color-1);
     background-image:
       linear-gradient(
         -45deg,
-        var(--eu46bQ) 25%,
+        var(--color-2) 25%,
         transparent 25%,
         transparent 75%,
-        var(--eu46bQ) 75%
+        var(--color-2) 75%
       ),
       linear-gradient(
         -45deg,
-        var(--eu46bQ) 25%,
+        var(--color-2) 25%,
         transparent 25%,
         transparent 75%,
-        var(--eu46bQ) 75%
+        var(--color-2) 75%
       );
     background-position:
       0 0,
