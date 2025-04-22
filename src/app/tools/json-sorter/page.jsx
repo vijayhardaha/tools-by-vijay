@@ -7,13 +7,13 @@ import { findToolBySlug } from "@/utils/toolUtils";
 import { getIconForTool } from "@/utils/toolUtils";
 
 /**
- * Retrieves tool data for the JSON Sorter tool
- * @constant {Object} tool - The tool object containing metadata and configuration
+ * Retrieves tool data for the JSON Sorter tool.
+ * @constant {Object} tool - The tool object containing metadata and configuration.
  */
 const tool = findToolBySlug("json-sorter");
 
 /**
- * SEO metadata for the JSON Sorter page
+ * SEO metadata for the JSON Sorter page.
  * @type {Object}
  */
 export const metadata = genMeta({
@@ -23,8 +23,10 @@ export const metadata = genMeta({
 });
 
 /**
- * JSON Sorter tool page component
- * Renders the page layout with header and the JSON Sorter tool
+ * JSON Sorter tool page component.
+ * Renders the page layout with header and the JSON Sorter tool.
+ *
+ * @component
  * @returns {JSX.Element} The rendered JSON Sorter page component.
  */
 const JsonSorter = () => {
