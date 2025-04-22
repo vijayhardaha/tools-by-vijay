@@ -23,11 +23,11 @@ export const metadata = genMeta({
 });
 
 /**
- * URL Shortener tool page component.
- * Renders the page layout with header and the URL Shortener tool.
+ * Duplicate Line Removal tool page component.
+ * Renders the page layout with header and the Duplicate Line Removal tool.
  *
  * @component
- * @returns {JSX.Element} The rendered URL Shortener page component.
+ * @returns {JSX.Element} The rendered Duplicate Line Removal tool page component.
  */
 const DuplicateLineRemoval = () => {
   return (
