@@ -1,20 +1,19 @@
 import PageContent from "@/components/page/PageContent";
 import PageHeader from "@/components/page/PageHeader";
 import PageLayout from "@/components/page/PageLayout";
+import ShuffleTextLinesTool from "@/components/tools/shuffle-text-lines/ShuffleTextLinesTool";
 import { generateMetadata as genMeta } from "@/utils/seoUtils";
 import { findToolBySlug } from "@/utils/toolUtils";
 import { getIconForTool } from "@/utils/toolUtils";
 
-import ShuffleTextLinesTool from "@/components/tools/shuffle-text-lines/ShuffleTextLinesTool";
-
 /**
- * Retrieves tool data for the Shuffle Text Lines tool
- * @constant {Object} tool - The tool object containing metadata and configuration
+ * Retrieves tool data for the Shuffle Text Lines tool.
+ * @constant {Object} tool - The tool object containing metadata and configuration.
  */
 const tool = findToolBySlug("shuffle-text-lines");
 
 /**
- * SEO metadata for the Shuffle Text Lines page
+ * SEO metadata for the Shuffle Text Lines page.
  * @type {Object}
  */
 export const metadata = genMeta({
@@ -24,9 +23,11 @@ export const metadata = genMeta({
 });
 
 /**
- * ShuffleTextLines page component
- * Renders the page layout with header and the ShuffleTextLines tool.
- * @returns {JSX.Element} The rendered ShuffleTextLines page component.
+ * ShuffleTextLines page component.
+ * Renders the page layout with header and the Shuffle Text Lines tool.
+ *
+ * @component
+ * @returns {JSX.Element} The rendered Shuffle Text Lines page component.
  */
 const ShuffleTextLines = () => {
   return (
