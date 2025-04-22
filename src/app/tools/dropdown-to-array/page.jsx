@@ -13,7 +13,7 @@ import { getIconForTool } from "@/utils/toolUtils";
 const tool = findToolBySlug("dropdown-to-array");
 
 /**
- * SEO metadata for the Slugify page.
+ * SEO metadata for the Dropdown to Array tool page.
  * @type {Object}
  */
 export const metadata = genMeta({
