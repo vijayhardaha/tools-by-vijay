@@ -64,14 +64,14 @@ const PasswordGeneratorInput = ({
         <CardDescription>Customize your password settings</CardDescription>
       </CardHeader>
       <CardContent>
-        <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <div className="space-y-2">
-            <div className="flex items-center justify-between">
-              <Label htmlFor="password-length">
-                Password Length:{" "}
-                <span className="text-muted-foreground text-sm">{length} characters</span>
-              </Label>
-            </div>
+            <Label htmlFor="password-length">
+              Password Length:{" "}
+              <span className="text-muted-foreground text-sm">
+                <code className="bg-muted px-1 font-medium text-pink-500">{length}</code> characters
+              </span>
+            </Label>
 
             <Slider
               id="password-length"
@@ -83,26 +83,22 @@ const PasswordGeneratorInput = ({
             />
           </div>
 
-          <div className="space-y-4">
-            <p className="font-medium">Character Types</p>
+          <div className="flex flex-wrap gap-4">
+            <Checkbox id="useUppercase" checked={useUppercase} onCheckedChange={setUseUppercase}>
+              Include Uppercase (A-Z)
+            </Checkbox>
 
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <Checkbox id="useUppercase" checked={useUppercase} onCheckedChange={setUseUppercase}>
-                Include Uppercase (A-Z)
-              </Checkbox>
+            <Checkbox id="useLowercase" checked={useLowercase} onCheckedChange={setUseLowercase}>
+              Include Lowercase (a-z)
+            </Checkbox>
 
-              <Checkbox id="useLowercase" checked={useLowercase} onCheckedChange={setUseLowercase}>
-                Include Lowercase (a-z)
-              </Checkbox>
+            <Checkbox id="useNumbers" checked={useNumbers} onCheckedChange={setUseNumbers}>
+              Include Numbers (0-9)
+            </Checkbox>
 
-              <Checkbox id="useNumbers" checked={useNumbers} onCheckedChange={setUseNumbers}>
-                Include Numbers (0-9)
-              </Checkbox>
-
-              <Checkbox id="useSymbols" checked={useSymbols} onCheckedChange={setUseSymbols}>
-                Include Symbols (!@#$...)
-              </Checkbox>
-            </div>
+            <Checkbox id="useSymbols" checked={useSymbols} onCheckedChange={setUseSymbols}>
+              Include Symbols (!@#$...)
+            </Checkbox>
           </div>
 
           <div className="flex items-center gap-2">
