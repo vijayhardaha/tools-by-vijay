@@ -13,7 +13,7 @@ import { getIconForTool } from "@/utils/toolUtils";
 const tool = findToolBySlug("html-minifier");
 
 /**
- * SEO metadata for the Slugify page.
+ * SEO metadata for the HTML Minifier tool page.
  * @type {Object}
  */
 export const metadata = genMeta({
@@ -23,11 +23,11 @@ export const metadata = genMeta({
 });
 
 /**
- * HTML Minifier page component.
+ * HTML Minifier tool page component.
  * Renders the page layout with header and the HTML Minifier tool.
  *
  * @component
- * @returns {JSX.Element} The rendered HTML Minifier page component.
+ * @returns {JSX.Element} The rendered HTML Minifier tool page component.
  */
 const HtmlMinifier = () => {
   return (
