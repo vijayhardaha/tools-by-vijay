@@ -35,6 +35,7 @@ const CssMinifierTool = () => {
   const [output, setOutput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [options, setOptions] = useState(defaultOptions);
+  const [error, setError] = useState("");
 
   /**
    * Handles the minification process when the "Minify" button is clicked
@@ -47,6 +48,7 @@ const CssMinifierTool = () => {
     if (!input.trim()) return;
 
     setIsLoading(true);
+    setError("");
 
     try {
       // Call the API endpoint for minification
@@ -67,10 +69,14 @@ const CssMinifierTool = () => {
         throw new Error(data.error || "Failed to minify CSS");
       }
 
+      if (!data.minifiedCss) {
+        throw new Error("Minified CSS is empty");
+      }
+
       setOutput(data.minifiedCss);
     } catch (error) {
       console.error("CSS minification error:", error);
-      setOutput(`Error: ${error.message}`);
+      setError(error.message);
     } finally {
       setIsLoading(false);
     }
@@ -89,6 +95,7 @@ const CssMinifierTool = () => {
   const handleClear = () => {
     setInput("");
     setOutput("");
+    setError("");
   };
 
   /**
@@ -152,6 +159,7 @@ const CssMinifierTool = () => {
           onClear={handleClear}
           onReset={handleReset}
           isLoading={isLoading}
+          error={error}
         />
 
         {output && <CssMinifierOutput output={output} input={input} />}

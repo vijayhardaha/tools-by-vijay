@@ -2,6 +2,7 @@
 
 import PropTypes from "prop-types";
 
+import { Alert } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -21,6 +22,7 @@ import { Textarea } from "@/components/ui/textarea";
  * @param {Function} props.onClear - Function to clear the input
  * @param {Function} props.onReset - Function to reset all options to defaults
  * @param {boolean} props.isLoading - Whether minification is in progress
+ * @param {string} props.error - Error message to display
  * @returns {JSX.Element} The CssMinifierInput component
  */
 const CssMinifierInput = ({
@@ -33,6 +35,7 @@ const CssMinifierInput = ({
   onClear,
   onReset,
   isLoading,
+  error,
 }) => {
   /**
    * Handles form submission and triggers CSS minification
@@ -58,7 +61,6 @@ const CssMinifierInput = ({
             value={input}
             onChange={(e) => setInput(e.target.value)}
           />
-
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             <div className="space-y-4">
               <h3 className="text-base font-semibold">Optimization Level</h3>
@@ -125,7 +127,6 @@ const CssMinifierInput = ({
               </div>
             </div>
           </div>
-
           <div className="flex flex-wrap gap-2">
             <Button type="submit" variant="default" disabled={!input || isLoading}>
               {isLoading ? "Minifying..." : "Minify"}
@@ -139,6 +140,8 @@ const CssMinifierInput = ({
               Reset
             </Button>
           </div>
+
+          {error && <Alert variant="danger" title="Error" text={error} />}
         </form>
       </CardContent>
     </Card>
@@ -155,6 +158,7 @@ CssMinifierInput.propTypes = {
   onClear: PropTypes.func.isRequired,
   onReset: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
+  error: PropTypes.string,
 };
 
 export default CssMinifierInput;
