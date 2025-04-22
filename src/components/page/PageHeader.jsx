@@ -19,7 +19,7 @@ const PageHeader = ({ title, description, icon = null }) => {
         backgroundBlendMode: "overlay, hard-light, overlay, normal",
       }}
     >
-      <div className="mx-auto mb-4 max-w-5xl px-6 lg:px-4">
+      <div className="mx-auto mb-4 max-w-6xl px-6 lg:px-4">
         <div className="py-10">
           <h1 className="inline-flex items-center space-x-2 text-2xl font-bold">
             {icon && <span className="mr-2 inline-block">{icon}</span>}

@@ -16,7 +16,7 @@ const PageLayout = ({ children }) => {
     <div>
       <Header />
       <main className="min-h-160 overflow-x-hidden pt-8 pb-12">
-        <div className="mx-auto max-w-5xl px-4">{children}</div>
+        <div className="mx-auto max-w-6xl px-4">{children}</div>
       </main>
       <Footer />
     </div>
