@@ -7,13 +7,13 @@ import { findToolBySlug } from "@/utils/toolUtils";
 import { getIconForTool } from "@/utils/toolUtils";
 
 /**
- * Retrieves tool data for the Password Strength Checker tool
- * @constant {Object} tool - The tool object containing metadata and configuration
+ * Retrieves tool data for the Password Strength Checker tool.
+ * @constant {Object} tool - The tool object containing metadata and configuration.
  */
 const tool = findToolBySlug("password-strength-checker");
 
 /**
- * SEO metadata for the Slugify page
+ * SEO metadata for the Slugify page.
  * @type {Object}
  */
 export const metadata = genMeta({
@@ -23,8 +23,10 @@ export const metadata = genMeta({
 });
 
 /**
- * Password Strength Checker Page Component
- * Renders the page layout with header and the Password Strength Checker tool
+ * Password Strength Checker Page Component.
+ * Renders the page layout with header and the Password Strength Checker tool.
+ *
+ * @component
  * @returns {JSX.Element} The rendered Password Strength Checker page component.
  */
 const PasswordStrengthChecker = () => {
