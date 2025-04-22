@@ -31,7 +31,7 @@ const HtmlMinifierOutput = ({ output, input }) => {
         </div>
       </CardHeader>
       <CardContent>
-        <Textarea value={output} readOnly data-output className="min-h-28" />
+        <Textarea value={output} rows={10} readOnly data-output />
       </CardContent>
     </Card>
   );

@@ -55,7 +55,7 @@ const HtmlMinifierInput = ({
           <Textarea
             id="html-input"
             placeholder="Paste HTML code here..."
-            rows={5}
+            rows={10}
             value={input}
             onChange={(e) => setInput(e.target.value)}
           />
