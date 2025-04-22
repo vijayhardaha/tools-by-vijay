@@ -11,7 +11,7 @@ import { Tooltip } from "@/components/ui/Tooltip";
  * @returns {JSX.Element} The rendered HelpTip component.
  */
 export const HelpTip = ({ text }) => (
-  <Tooltip text={text}>
+  <Tooltip text={text} className="!max-w-80">
     <FiInfo className="text-muted-foreground h-4 w-4 cursor-help" />
   </Tooltip>
 );

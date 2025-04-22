@@ -1,16 +1,15 @@
 "use client";
 
 import PropTypes from "prop-types";
-import { FiInfo } from "react-icons/fi";
 
 import { Alert } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
+import { HelpTip } from "@/components/ui/helptip";
 import { Label } from "@/components/ui/label";
 import { Select } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { Tooltip } from "@/components/ui/tooltip";
 
 /**
  * Component for inputting multiline text and configuring conversion options.
@@ -73,9 +72,7 @@ const TextToArrayInput = ({
           <div className="space-y-2">
             <div className="flex items-center gap-2">
               <Label htmlFor="text-input">Multiline Text</Label>
-              <Tooltip text="Enter or paste text with one item per line. Each line will become an element in the resulting array.">
-                <FiInfo className="text-muted-foreground h-4 w-4 cursor-help" />
-              </Tooltip>
+              <HelpTip text="Enter or paste text with one item per line. Each line will become an element in the resulting array." />
             </div>
             <Textarea
               id="text-input"
@@ -90,9 +87,7 @@ const TextToArrayInput = ({
             <div className="space-y-2">
               <div className="flex items-center gap-2">
                 <Label htmlFor="output-format">Output Format</Label>
-                <Tooltip text="Select the programming language and format for the output array or object">
-                  <FiInfo className="text-muted-foreground h-4 w-4 cursor-help" />
-                </Tooltip>
+                <HelpTip text="Select the programming language and format for the output array or object" />
               </div>
 
               <Select
@@ -112,9 +107,7 @@ const TextToArrayInput = ({
             <div className="space-y-2">
               <div className="flex items-center gap-2">
                 <Label htmlFor="array-type">Array Structure</Label>
-                <Tooltip text="Simple: Just values. Numeric: Indexed entries with ID/position and values. Associative: Key-value pairs.">
-                  <FiInfo className="text-muted-foreground h-4 w-4 cursor-help" />
-                </Tooltip>
+                <HelpTip text="Simple: Just values. Numeric: Indexed entries with ID/position and values. Associative: Key-value pairs." />
               </div>
               <Select
                 id="array-type"

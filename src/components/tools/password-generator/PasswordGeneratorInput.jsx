@@ -1,14 +1,13 @@
 "use client";
 
 import PropTypes from "prop-types";
-import { FiInfo } from "react-icons/fi";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
+import { HelpTip } from "@/components/ui/helptip";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
-import { Tooltip } from "@/components/ui/tooltip";
 
 /**
  * Component for configuring password generation options.
@@ -110,12 +109,7 @@ const PasswordGeneratorInput = ({
               Exclude similar characters (i, l, 1, L, o, 0, O)
             </Checkbox>
 
-            <Tooltip
-              className="!w-80"
-              text="This option removes characters that look alike (such as the letter 'O' and number '0'). Use this to create passwords that are less confusing to read and type, especially when sharing passwords verbally or in print."
-            >
-              <FiInfo className="text-muted-foreground h-4 w-4 cursor-help" />
-            </Tooltip>
+            <HelpTip text="This option removes characters that look alike (such as the letter 'O' and number '0'). Use this to create passwords that are less confusing to read and type, especially when sharing passwords verbally or in print." />
           </div>
 
           <div className="flex flex-wrap gap-2">

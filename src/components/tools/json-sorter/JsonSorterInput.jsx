@@ -1,15 +1,14 @@
 "use client";
 
 import PropTypes from "prop-types";
-import { FiInfo } from "react-icons/fi";
 
 import { Alert } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
+import { HelpTip } from "@/components/ui/helptip";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Tooltip } from "@/components/ui/tooltip";
 
 /**
  * Component for inputting JSON and configuring sorting options.
@@ -57,9 +56,7 @@ const JsonSorterInput = ({
           <div className="space-y-2">
             <div className="flex items-center gap-2">
               <Label htmlFor="json-input">JSON Content</Label>
-              <Tooltip text="Enter or paste valid JSON that you want to sort alphabetically by keys.">
-                <FiInfo className="text-muted-foreground h-4 w-4 cursor-help" />
-              </Tooltip>
+              <HelpTip text="Enter or paste valid JSON that you want to sort alphabetically by keys." />
             </div>
 
             <Textarea
@@ -75,9 +72,7 @@ const JsonSorterInput = ({
             <Checkbox id="spare-arrays" checked={spareArrays} onCheckedChange={setSpareArrays}>
               Spare plain arrays
             </Checkbox>
-            <Tooltip text="Preserve the original order of simple arrays (don't sort array elements)">
-              <FiInfo className="text-muted-foreground h-4 w-4 cursor-help" />
-            </Tooltip>
+            <HelpTip text="Preserve the original order of simple arrays (don't sort array elements)" />
           </div>
 
           <div className="flex flex-wrap gap-2">

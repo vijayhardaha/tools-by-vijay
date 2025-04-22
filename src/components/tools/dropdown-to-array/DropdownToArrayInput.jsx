@@ -1,16 +1,15 @@
 "use client";
 
 import PropTypes from "prop-types";
-import { FiInfo } from "react-icons/fi";
 
 import { Alert } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
+import { HelpTip } from "@/components/ui/helptip";
 import { Label } from "@/components/ui/label";
 import { Select } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { Tooltip } from "@/components/ui/tooltip";
 
 /**
  * Component for inputting HTML dropdown and configuring conversion options.
@@ -67,9 +66,7 @@ const DropdownToArrayInput = ({
           <div className="space-y-2">
             <div className="flex items-center gap-2">
               <Label htmlFor="html-input">HTML Select/Dropdown Code</Label>
-              <Tooltip text="Paste your HTML <select> element with <option> tags. You can also paste just the <option> tags.">
-                <FiInfo className="text-muted-foreground h-4 w-4 cursor-help" />
-              </Tooltip>
+              <HelpTip text="Paste your HTML <select> element with <option> tags. You can also paste just the <option> tags." />
             </div>
             <Textarea
               id="html-input"
@@ -84,9 +81,7 @@ const DropdownToArrayInput = ({
             <div className="space-y-2">
               <div className="flex items-center gap-2">
                 <Label htmlFor="output-format">Output Format</Label>
-                <Tooltip text="Select the programming language and format for the output array or object">
-                  <FiInfo className="text-muted-foreground h-4 w-4 cursor-help" />
-                </Tooltip>
+                <HelpTip text="Select the programming language and format for the output array or object" />
               </div>
               <Select
                 id="output-format"
@@ -105,9 +100,7 @@ const DropdownToArrayInput = ({
             <div className="space-y-2">
               <div className="flex items-center gap-2">
                 <Label htmlFor="array-type">Array Structure</Label>
-                <Tooltip text="Simple: Just values. Numeric: Indexed entries with ID/position and values. Associative: Key-value pairs using option values as keys.">
-                  <FiInfo className="text-muted-foreground h-4 w-4 cursor-help" />
-                </Tooltip>
+                <HelpTip text="Simple: Just values. Numeric: Indexed entries with ID/position and values. Associative: Key-value pairs using option values as keys." />
               </div>
               <Select
                 id="array-type"
