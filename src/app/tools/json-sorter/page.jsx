@@ -27,7 +27,7 @@ export const metadata = genMeta({
  * Renders the page layout with header and the JSON Sorter tool.
  *
  * @component
- * @returns {JSX.Element} The rendered JSON Sorter page component.
+ * @returns {JSX.Element} The rendered JSON Sorter tool page component.
  */
 const JsonSorter = () => {
   return (
