@@ -16,7 +16,6 @@ import ReplaceQuotesOutput from "./ReplaceQuotesOutput";
 const ReplaceQuotesTool = () => {
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
-  const [error, setError] = useState("");
   const [replaceType, setReplaceType] = useState("simple-to-curly");
   const [replaceApostrophes, setReplaceApostrophes] = useState(true);
   const [replaceStandaloneQuotes, setReplaceStandaloneQuotes] = useState(false);
@@ -28,55 +27,42 @@ const ReplaceQuotesTool = () => {
    * @returns {void}
    */
   const handleSubmit = () => {
-    try {
-      setError("");
+    let replacedText = input;
 
-      if (!input.trim()) {
-        setError("Please enter valid text content");
-        setOutput("");
-        return;
-      }
-
-      let replacedText = input;
-
-      switch (replaceType) {
-        case "simple-to-curly":
-          if (replaceApostrophes) {
-            replacedText = replacedText
-              // Replace apostrophes in contractions (e.g., isn't → isn’t)
-              .replace(/\b(\w+)'(\w+)\b/g, "$1’$2");
-          }
-
+    switch (replaceType) {
+      case "simple-to-curly":
+        if (replaceApostrophes) {
           replacedText = replacedText
-            // Replace double quotes used for quoting (e.g., "text" → “text”)
-            .replace(/"([^"]*)"/g, "“$1”")
-            // Replace single quotes used for quoting (e.g., 'text' → ‘text’)
-            .replace(/'([^']*)'/g, "‘$1’");
+            // Replace apostrophes in contractions (e.g., isn't → isn’t)
+            .replace(/\b(\w+)'(\w+)\b/g, "$1’$2");
+        }
 
-          if (replaceStandaloneQuotes) {
-            replacedText = replacedText
-              // Replace remaining standalone double quotes → “
-              .replace(/"/g, "“")
-              // Replace remaining standalone single quotes → ‘
-              .replace(/'/g, "‘");
-          }
-          break;
-        case "curly-to-simple":
+        replacedText = replacedText
+          // Replace double quotes used for quoting (e.g., "text" → “text”)
+          .replace(/"([^"]*)"/g, "“$1”")
+          // Replace single quotes used for quoting (e.g., 'text' → ‘text’)
+          .replace(/'([^']*)'/g, "‘$1’");
+
+        if (replaceStandaloneQuotes) {
           replacedText = replacedText
-            // Replace curly single quotes with straight quotes
-            .replace(/[‘’]/g, "'")
-            // Replace curly double quotes with straight quotes
-            .replace(/[“”]/g, '"');
-          break;
-        default:
-          throw new Error("Invalid replace type");
-      }
-
-      setOutput(replacedText);
-    } catch (err) {
-      setError(`Error processing text: ${err.message}`);
-      setOutput("");
+            // Replace remaining standalone double quotes → “
+            .replace(/"/g, "“")
+            // Replace remaining standalone single quotes → ‘
+            .replace(/'/g, "‘");
+        }
+        break;
+      case "curly-to-simple":
+        replacedText = replacedText
+          // Replace curly single quotes with straight quotes
+          .replace(/[‘’]/g, "'")
+          // Replace curly double quotes with straight quotes
+          .replace(/[“”]/g, '"');
+        break;
+      default:
+        throw new Error("Invalid replace type");
     }
+
+    setOutput(replacedText);
   };
 
   /**
@@ -88,7 +74,6 @@ const ReplaceQuotesTool = () => {
   const handleClear = () => {
     setInput("");
     setOutput("");
-    setError("");
   };
 
   /**
@@ -119,7 +104,6 @@ const ReplaceQuotesTool = () => {
           onSubmit={handleSubmit}
           onReset={handleReset}
           onClear={handleClear}
-          error={error}
         />
 
         {output && <ReplaceQuotesOutput output={output} />}
