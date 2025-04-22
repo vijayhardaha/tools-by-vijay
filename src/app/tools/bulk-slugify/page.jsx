@@ -13,7 +13,7 @@ import { getIconForTool } from "@/utils/toolUtils";
 const tool = findToolBySlug("bulk-slugify");
 
 /**
- * SEO metadata for the Slugify page.
+ * SEO metadata for the Bulk Slugify tool page.
  * @type {Object}
  */
 export const metadata = genMeta({
@@ -23,11 +23,11 @@ export const metadata = genMeta({
 });
 
 /**
- * Bulk Slugify page component.
+ * Bulk Slugify tool page component.
  * Renders the page layout with header and the Bulk Slugify tool.
  *
  * @component
- * @returns {JSX.Element} The rendered BulkSlugify page component.
+ * @returns {JSX.Element} The rendered Bulk Slugify tool page component.
  */
 const BulkSlugify = () => {
   return (
