@@ -74,7 +74,7 @@ const SlugifyInput = ({
               <span className="font-bold">{useUnderscore ? "Underscore (_)" : "Dash (-)"}</span>
             </p>
 
-            <div className="mb-2 flex gap-2">
+            <div className="flex flex-wrap gap-2">
               <Button
                 size="sm"
                 variant={!useUnderscore ? "default" : "outline"}
