@@ -96,7 +96,7 @@ const CssMinifierInput = ({
             <div className="space-y-4">
               <h3 className="text-base font-semibold">Formatting Options</h3>
 
-              <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-2">
                 <Checkbox
                   id="beforeBlockBegins"
                   checked={options.format.spaces.beforeBlockBegins}
