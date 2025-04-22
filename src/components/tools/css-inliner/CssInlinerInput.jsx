@@ -2,6 +2,7 @@
 
 import PropTypes from "prop-types";
 
+import { Alert } from "@/components/ui/alert"; // Import Alert component
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
@@ -17,9 +18,20 @@ import { Textarea } from "@/components/ui/textarea";
  * @param {Function} props.setCssInput - Function to update CSS input
  * @param {Function} props.onSubmit - Function to inline CSS
  * @param {Function} props.onClear - Function to clear inputs
+ * @param {boolean} props.isLoading - Indicates if the API call is in progress
+ * @param {string} props.error - Error message to display
  * @returns {JSX.Element} The CssInlinerInput component
  */
-const CssInlinerInput = ({ htmlInput, setHtmlInput, cssInput, setCssInput, onSubmit, onClear }) => {
+const CssInlinerInput = ({
+  htmlInput,
+  setHtmlInput,
+  cssInput,
+  setCssInput,
+  onSubmit,
+  onClear,
+  isLoading,
+  error,
+}) => {
   /**
    * Handles form submission to inline CSS.
    *
@@ -59,14 +71,16 @@ const CssInlinerInput = ({ htmlInput, setHtmlInput, cssInput, setCssInput, onSub
             />
           </div>
           <div className="mt-2 flex gap-2">
-            <Button type="submit" variant="default" disabled={!htmlInput || !cssInput}>
-              Inline CSS
+            <Button type="submit" variant="default" disabled={!htmlInput || !cssInput || isLoading}>
+              {isLoading ? "Processing..." : "Inline CSS"}
             </Button>
 
-            <Button type="button" variant="outline" onClick={onClear}>
+            <Button type="button" variant="outline" onClick={onClear} disabled={isLoading}>
               Clear
             </Button>
           </div>
+
+          {error && <Alert variant="danger" title="Error" text={error} />}
         </form>
       </CardContent>
     </Card>
@@ -80,6 +94,8 @@ CssInlinerInput.propTypes = {
   setCssInput: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
   onClear: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  error: PropTypes.string,
 };
 
 export default CssInlinerInput;

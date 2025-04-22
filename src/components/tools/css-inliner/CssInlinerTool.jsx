@@ -10,12 +10,17 @@ const CssInlinerTool = () => {
   const [htmlInput, setHtmlInput] = useState("");
   const [cssInput, setCssInput] = useState("");
   const [output, setOutput] = useState("");
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   /**
    * Handles the inlining of CSS into HTML via API.
    */
   const handleSubmit = async () => {
     try {
+      setError("");
+      setIsLoading(true);
+
       const response = await fetch("/api/inline-css", {
         method: "POST",
         headers: {
@@ -32,7 +37,9 @@ const CssInlinerTool = () => {
       setOutput(data.formattedHtml);
     } catch (error) {
       console.error("Error inlining CSS:", error);
-      setOutput("Error inlining CSS. Please check your input.");
+      setError("Error inlining CSS. Please check your input.");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -43,6 +50,7 @@ const CssInlinerTool = () => {
     setHtmlInput("");
     setCssInput("");
     setOutput("");
+    setError("");
   };
 
   return (
@@ -55,6 +63,8 @@ const CssInlinerTool = () => {
           setCssInput={setCssInput}
           onSubmit={handleSubmit}
           onClear={handleClear}
+          isLoading={isLoading}
+          error={error}
         />
 
         {output && <CssInlinerOutput output={output} />}
