@@ -54,24 +54,6 @@ const Slot = forwardRef(({ children, ...props }, ref) => {
   });
 });
 
-Slot.displayName = "Slot";
-
-/**
- * PropTypes for the Slot component
- */
-Slot.propTypes = {
-  /**
-   * The child element to clone and merge props with.
-   * Must be a valid React element.
-   */
-  children: PropTypes.element.isRequired,
-
-  /**
-   * Any additional props to be merged with the child element's props.
-   */
-  // The spread props are implicitly handled and don't need explicit PropTypes
-};
-
 const buttonVariants = cva(
   [
     "inline-flex items-center justify-center gap-2",
@@ -149,7 +131,6 @@ const buttonVariants = cva(
 function Button({ className, variant, size, asChild = false, children, ...props }) {
   const Comp = asChild ? Slot : "button";
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { asChild: _, ...componentProps } = props;
 
   return (
