@@ -1,12 +1,12 @@
 import { JSX, ReactNode } from "react";
 
+import { NextFontWithVariable } from "next/dist/compiled/@next/font/dist/types";
 import { Work_Sans, Geist_Mono } from "next/font/google";
 
 /**
  * Configuration for the League Spartan font.
- * @type {import("next/font/google").GoogleFont}
  */
-const sansFont = Work_Sans({
+const sansFont: NextFontWithVariable = Work_Sans({
   subsets: ["latin"],
   display: "swap",
   weight: ["400", "500", "600", "700"],
@@ -15,23 +15,22 @@ const sansFont = Work_Sans({
 
 /**
  * Configuration for the Geist Mono font.
- * @type {import("next/font/google").GoogleFont}
  */
-const monoFont = Geist_Mono({
+const monoFont: NextFontWithVariable = Geist_Mono({
   subsets: ["latin"],
   display: "swap",
   weight: ["400", "500", "600", "700"],
   variable: "--font-app-mono",
 });
 
-import { baseMetadata } from "@/constants/seo";
+import { baseMetadata, BaseMetadataType } from "@/constants/seo";
 
 import "../styles/globals.css";
 
 /**
  * Metadata for the application.
  */
-export const metadata = baseMetadata;
+export const metadata: BaseMetadataType = baseMetadata;
 
 /**
  * Root layout component for the application.

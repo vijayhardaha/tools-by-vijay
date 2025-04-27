@@ -7,7 +7,7 @@ type SEOType = {
   separator: string;
 };
 
-type BaseMetadataType = {
+export type BaseMetadataType = {
   title: string;
   description: string;
   metadataBase: URL;
