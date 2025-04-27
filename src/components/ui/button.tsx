@@ -1,3 +1,5 @@
+"use client";
+
 import React, { JSX, forwardRef, isValidElement, ReactNode } from "react";
 import { cloneElement } from "react";
 
@@ -9,7 +11,7 @@ import { cn } from "@/utils/classNameUtils";
  * Slot component for polymorphic prop forwarding.
  */
 type SlotProps = {
-  children: React.ReactElement;
+  children: ReactNode; // Allow any valid ReactNode (string, ReactElement, etc.)
 } & React.HTMLAttributes<HTMLElement>;
 
 const Slot = forwardRef<HTMLElement, SlotProps>(({ children, ...props }, ref) => {
@@ -23,23 +25,24 @@ const Slot = forwardRef<HTMLElement, SlotProps>(({ children, ...props }, ref) =>
   return cloneElement(children, {
     ...props,
     ...childProps, // Spread props and ensure children.props is valid
-    ref: ref
-      ? (childRef) => {
-          if (typeof ref === "function") {
-            ref(childRef);
-          } else if (ref) {
-            ref.current = childRef;
-          }
+    ref: (childRef: HTMLElement | null) => {
+      if (typeof ref === "function") {
+        ref(childRef);
+      } else if (ref && childRef) {
+        (ref as React.RefObject<HTMLElement>).current = childRef;
+      }
 
-          const { ref: childOriginalRef } = children;
-          if (typeof childOriginalRef === "function") {
-            childOriginalRef(childRef);
-          } else if (childOriginalRef) {
-            childOriginalRef.current = childRef;
-          }
-        }
-      : children.props.ref,
-  });
+      // Handle the child's original ref separately
+      const { ref: childOriginalRef } = children as React.ReactElement & {
+        ref?: React.Ref<HTMLElement>;
+      };
+      if (typeof childOriginalRef === "function") {
+        childOriginalRef(childRef);
+      } else if (childOriginalRef && childRef) {
+        (childOriginalRef as React.RefObject<HTMLElement>).current = childRef;
+      }
+    },
+  } as any); // Use `as any` to bypass TypeScript's type checking for `ref`
 });
 
 /**
@@ -124,7 +127,7 @@ type ButtonProps = {
     | "link";
   size?: "default" | "sm" | "lg" | "icon";
   asChild?: boolean;
-  children: ReactNode;
+  children: ReactNode; // Allow any valid ReactNode (string, ReactElement, etc.)
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -142,7 +145,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         data-slot="button"
         className={cn(buttonVariants({ variant, size, className }))}
         {...validProps}
-        ref={ref} // Forward ref correctly
+        ref={ref}
       >
         {children}
       </Comp>
