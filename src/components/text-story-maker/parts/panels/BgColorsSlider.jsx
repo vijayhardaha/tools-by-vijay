@@ -5,7 +5,7 @@ import { bgColors } from "@/components/text-story-maker/constants";
 import { btnBaseStyles } from "@/components/text-story-maker/constants/btnBaseStyles";
 import { cn } from "@/utils/classNameUtils";
 
-// eslint-disable-next-line importPlugin/order
+// eslint-disable-next-line import/order
 import "keen-slider/keen-slider.min.css";
 
 /**

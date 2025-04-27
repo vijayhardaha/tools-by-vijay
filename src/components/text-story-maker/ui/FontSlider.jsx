@@ -7,7 +7,7 @@ import { cn } from "@/utils/classNameUtils";
 
 import { getFontClass } from "../utils/styleUtils";
 
-// eslint-disable-next-line importPlugin/order
+// eslint-disable-next-line import/order
 import "keen-slider/keen-slider.min.css";
 
 /**
