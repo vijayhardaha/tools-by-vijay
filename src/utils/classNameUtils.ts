@@ -10,6 +10,8 @@ import { twMerge } from "tailwind-merge";
  * class names and then merged by `twMerge` to resolve Tailwind CSS conflicts.
  * @returns {string} - A single string of combined and merged class names.
  */
-export function cn(...inputs: (string | string[] | { [key: string]: boolean })[]): string {
+export function cn(
+  ...inputs: (string | string[] | boolean | undefined | { [key: string]: boolean })[]
+): string {
   return twMerge(clsx(inputs));
 }

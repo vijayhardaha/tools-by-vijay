@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+import React, { JSX } from "react";
 
 /**
  * Utility function to wrap text in a <code> tag.
@@ -6,22 +6,27 @@ import PropTypes from "prop-types";
  * @param {string} text - The text to wrap.
  * @returns {JSX.Element} The text wrapped in a <code> tag.
  */
-const wrapInCode = (text) => (
-  <code className="bg-muted rounded px-1 py-0.5 text-xs font-medium text-pink-500">{text}</code>
-);
+const wrapInCode = (text: string): JSX.Element => {
+  return (
+    <code className="bg-muted rounded px-1 py-0.5 text-xs font-medium text-pink-500">{text}</code>
+  );
+};
+
+/**
+ * Props for the CompressionInfo component.
+ */
+interface CompressionInfoProps {
+  input: string | null;
+  output: string | null;
+}
 
 /**
  * Displays compression information based on input and output data.
- *
- * @param {Object} props - The component props.
- * @param {string | Blob | null} props.input - The original input data.
- * @param {string | Blob | null} props.output - The compressed output data.
- * @returns {JSX.Element} A JSX element describing the size and compression statistics.
  */
-export const CompressionInfo = ({ input, output }) => {
+export const CompressionInfo = ({ input, output }: CompressionInfoProps): JSX.Element | null => {
   if (!output) return wrapInCode("Output is empty");
 
-  const formatSize = (size) => {
+  const formatSize = (size: number): string => {
     if (size >= 1024 * 1024) {
       return `${(size / (1024 * 1024)).toFixed(2)} MB`;
     } else if (size >= 1024) {
@@ -55,9 +60,4 @@ export const CompressionInfo = ({ input, output }) => {
   }
 
   return stats || <>Compressed size: {wrapInCode(compressedSize)}</>;
-};
-
-CompressionInfo.propTypes = {
-  input: PropTypes.string.isRequired,
-  output: PropTypes.string.isRequired,
 };

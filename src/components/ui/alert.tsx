@@ -1,7 +1,6 @@
-import * as React from "react";
+import React, { JSX } from "react";
 
 import { cva } from "class-variance-authority";
-import PropTypes from "prop-types";
 import { LuCircleAlert, LuInfo, LuTriangleAlert, LuCircleCheck, LuCircleX } from "react-icons/lu";
 
 import { cn } from "@/utils/classNameUtils";
@@ -38,7 +37,7 @@ const alertVariants = cva(
 );
 
 // Default icons for each variant
-const defaultIcons = {
+const defaultIcons: Record<string, JSX.Element> = {
   default: <LuCircleAlert />,
   info: <LuInfo />,
   warning: <LuTriangleAlert />,
@@ -46,20 +45,31 @@ const defaultIcons = {
   danger: <LuCircleX />,
 };
 
+// Define TypeScript types for the Alert component props
+interface AlertProps extends React.HTMLAttributes<HTMLDivElement> {
+  className?: string;
+  variant?: "default" | "info" | "warning" | "success" | "danger";
+  title?: string;
+  text?: string;
+  icon?: React.ReactNode | null;
+  children?: React.ReactNode;
+}
+
 /**
  * Alert component for showing important messages to users.
  *
- * @param {Object} props - The component props
- * @param {string} [props.className] - Additional CSS classes to apply to the alert
- * @param {('default'|'info'|'warning'|'success'|'danger')} [props.variant='default'] - The visual style variant of the alert
- * @param {string} [props.title] - Title text to display in the alert
- * @param {string} [props.text] - Main message text to display in the alert
- * @param {React.ReactNode} [props.icon] - Custom icon to display, defaults to variant-specific icon
- * @param {React.ReactNode} [props.children] - Optional children to render in the alert (used for custom content)
- * @param {Object} [props.rest] - Any additional props will be spread onto the underlying div element
+ * @param {AlertProps} props - The component props
  * @returns {JSX.Element} The rendered Alert component
  */
-function Alert({ className, variant, title, text, icon, children, ...props }) {
+function Alert({
+  className,
+  variant = "default",
+  title = "",
+  text = "",
+  icon,
+  children,
+  ...props
+}: AlertProps): JSX.Element {
   // Use provided icon or default for the variant
   const iconToRender = icon || defaultIcons[variant];
 
@@ -93,21 +103,5 @@ function Alert({ className, variant, title, text, icon, children, ...props }) {
     </div>
   );
 }
-
-Alert.propTypes = {
-  className: PropTypes.string,
-  variant: PropTypes.oneOf(["default", "info", "warning", "success", "danger"]),
-  title: PropTypes.string,
-  text: PropTypes.string,
-  icon: PropTypes.node,
-  children: PropTypes.node,
-};
-
-Alert.defaultProps = {
-  variant: "default",
-  className: "",
-  title: "",
-  text: "",
-};
 
 export { Alert };

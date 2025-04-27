@@ -1,25 +1,33 @@
 "use client";
 
-import { useState } from "react";
+import { JSX, useState } from "react";
 
-import PropTypes from "prop-types";
 import { LuCopy as CopyIcon, LuCheck as CheckIcon } from "react-icons/lu";
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/utils/classNameUtils";
 
+// Define TypeScript types for the component props
+interface CopyButtonProps {
+  text: string;
+  copyText?: string;
+  copiedText?: string;
+  className?: string;
+}
+
 /**
  * Reusable copy button component with copied state feedback
  *
  * @component
- * @param {Object} props - The component props
- * @param {string} props.text - The text to copy to the clipboard
- * @param {string} props.copyText - Text to show when not copied
- * @param {string} props.copiedText - Text to show when copied
- * @param {string} [props.className] - Additional CSS classes
+ * @param {CopyButtonProps} props - The component props
  * @returns {JSX.Element} The CopyButton component
  */
-export const CopyButton = ({ text, copyText = "Copy", copiedText = "Copied!", className }) => {
+export const CopyButton = ({
+  text,
+  copyText = "Copy",
+  copiedText = "Copied!",
+  className = "",
+}: CopyButtonProps): JSX.Element => {
   const [copied, setCopied] = useState(false);
 
   /**
@@ -29,7 +37,7 @@ export const CopyButton = ({ text, copyText = "Copy", copiedText = "Copied!", cl
    * @function
    * @returns {Promise<void>}
    */
-  const handleCopy = async () => {
+  const handleCopy = async (): Promise<void> => {
     if (text) {
       await navigator.clipboard.writeText(text);
       setCopied(true);
@@ -47,11 +55,4 @@ export const CopyButton = ({ text, copyText = "Copy", copiedText = "Copied!", cl
       {copied ? copiedText : copyText}
     </Button>
   );
-};
-
-CopyButton.propTypes = {
-  text: PropTypes.string.isRequired,
-  copyText: PropTypes.string,
-  copiedText: PropTypes.string,
-  className: PropTypes.string,
 };

@@ -1,7 +1,6 @@
-import * as React from "react";
+import React, { JSX } from "react";
 
 import { cva } from "class-variance-authority";
-import PropTypes from "prop-types";
 
 import { cn } from "@/utils/classNameUtils";
 
@@ -24,27 +23,25 @@ const badgeVariants = cva(
   }
 );
 
+// Define TypeScript types for the Badge component props
+interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
+  className?: string;
+  variant?: "default" | "secondary" | "success" | "warning" | "danger" | "info";
+  children: React.ReactNode;
+}
+
 /**
  * Badge component for displaying status, categories, or other small metadata
  *
- * @param {Object} props - Component props
- * @param {string} [props.className] - Additional CSS classes
- * @param {string} [props.variant] - Badge visual style
- * @param {React.ReactNode} props.children - Badge content
+ * @param {BadgeProps} props - Component props
  * @returns {JSX.Element} The rendered Badge component
  */
-function Badge({ className, variant, children, ...props }) {
+function Badge({ className, variant = "default", children, ...props }: BadgeProps): JSX.Element {
   return (
     <span className={cn(badgeVariants({ variant }), className)} {...props}>
       {children}
     </span>
   );
 }
-
-Badge.propTypes = {
-  className: PropTypes.string,
-  variant: PropTypes.oneOf(["default", "secondary", "success", "warning", "danger", "info"]),
-  children: PropTypes.node.isRequired,
-};
 
 export { Badge, badgeVariants };

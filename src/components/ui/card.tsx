@@ -1,17 +1,23 @@
-import PropTypes from "prop-types";
+import { ReactNode, ElementType } from "react";
 
 import { cn } from "@/utils/classNameUtils";
 
 /**
- * Card component that serves as a container for related content.
- *
- * @param {Object} props - Component props
- * @param {string} [props.className] - Additional CSS classes
- * @param {any} props.children - Card content
- * @param {React.ElementType} [props.component] - HTML tag to render
- * @returns {JSX.Element} Card component
+ * Props for the Card component.
  */
-function Card({ className, children, component, ...props }) {
+interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** Additional class names for the card. */
+  className?: string;
+  /** Content to be rendered inside the card. */
+  children: ReactNode;
+  /** Custom component to render as the card root. Defaults to "div". */
+  component?: ElementType;
+}
+
+/**
+ * A flexible card component with customizable styles and structure.
+ */
+function Card({ className, children, component, ...props }: CardProps) {
   const Tag = component || "div";
   return (
     <Tag
@@ -27,22 +33,22 @@ function Card({ className, children, component, ...props }) {
   );
 }
 
-Card.propTypes = {
-  className: PropTypes.string,
-  children: PropTypes.node,
-  component: PropTypes.elementType,
-};
+/**
+ * Props for the CardHeader component.
+ */
+interface CardHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** Additional class names for the card header. */
+  className?: string;
+  /** Content to be rendered inside the card header. */
+  children: ReactNode;
+  /** Custom component to render as the card header root. Defaults to "div". */
+  component?: ElementType;
+}
 
 /**
- * Card header component that typically contains title and description.
- *
- * @param {Object} props - Component props
- * @param {string} [props.className] - Additional CSS classes
- * @param {any} props.children - Header content
- * @param {React.ElementType} [props.component] - HTML tag to render
- * @returns {JSX.Element} CardHeader component
+ * A header section for the card, typically used for titles or actions.
  */
-function CardHeader({ className, children, component, ...props }) {
+function CardHeader({ className, children, component, ...props }: CardHeaderProps) {
   const Tag = component || "div";
   return (
     <Tag
@@ -60,22 +66,22 @@ function CardHeader({ className, children, component, ...props }) {
   );
 }
 
-CardHeader.propTypes = {
-  className: PropTypes.string,
-  children: PropTypes.node,
-  component: PropTypes.elementType,
-};
+/**
+ * Props for the CardTitle component.
+ */
+interface CardTitleProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** Additional class names for the card title. */
+  className?: string;
+  /** Content to be rendered inside the card title. */
+  children: ReactNode;
+  /** Custom component to render as the card title root. Defaults to "h2". */
+  component?: ElementType;
+}
 
 /**
- * Card title component.
- *
- * @param {Object} props - Component props
- * @param {string} [props.className] - Additional CSS classes
- * @param {any} props.children - Title content
- * @param {React.ElementType} [props.component] - HTML tag to render
- * @returns {JSX.Element} CardTitle component
+ * A title section for the card, typically used for headings.
  */
-function CardTitle({ className, children, component, ...props }) {
+function CardTitle({ className, children, component, ...props }: CardTitleProps) {
   const Tag = component || "h2";
   return (
     <Tag
@@ -88,22 +94,22 @@ function CardTitle({ className, children, component, ...props }) {
   );
 }
 
-CardTitle.propTypes = {
-  className: PropTypes.string,
-  children: PropTypes.node,
-  component: PropTypes.elementType,
-};
+/**
+ * Props for the CardDescription component.
+ */
+interface CardDescriptionProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** Additional class names for the card description. */
+  className?: string;
+  /** Content to be rendered inside the card description. */
+  children: ReactNode;
+  /** Custom component to render as the card description root. Defaults to "p". */
+  component?: ElementType;
+}
 
 /**
- * Card description component for additional context.
- *
- * @param {Object} props - Component props
- * @param {string} [props.className] - Additional CSS classes
- * @param {any} props.children - Description content
- * @param {React.ElementType} [props.component] - HTML tag to render
- * @returns {JSX.Element} CardDescription component
+ * A description section for the card, typically used for supplementary text.
  */
-function CardDescription({ className, children, component, ...props }) {
+function CardDescription({ className, children, component, ...props }: CardDescriptionProps) {
   const Tag = component || "p";
   return (
     <Tag
@@ -116,22 +122,22 @@ function CardDescription({ className, children, component, ...props }) {
   );
 }
 
-CardDescription.propTypes = {
-  className: PropTypes.string,
-  children: PropTypes.node,
-  component: PropTypes.elementType,
-};
+/**
+ * Props for the CardAction component.
+ */
+interface CardActionProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** Additional class names for the card action. */
+  className?: string;
+  /** Content to be rendered inside the card action. */
+  children: ReactNode;
+  /** Custom component to render as the card action root. Defaults to "div". */
+  component?: ElementType;
+}
 
 /**
- * Card action component for interactive elements in the header.
- *
- * @param {Object} props - Component props
- * @param {string} [props.className] - Additional CSS classes
- * @param {any} props.children - Action content
- * @param {React.ElementType} [props.component] - HTML tag to render
- * @returns {JSX.Element} CardAction component
+ * An action section for the card, typically used for buttons or links.
  */
-function CardAction({ className, children, component, ...props }) {
+function CardAction({ className, children, component, ...props }: CardActionProps) {
   const Tag = component || "div";
   return (
     <Tag
@@ -144,22 +150,22 @@ function CardAction({ className, children, component, ...props }) {
   );
 }
 
-CardAction.propTypes = {
-  className: PropTypes.string,
-  children: PropTypes.node,
-  component: PropTypes.elementType,
-};
+/**
+ * Props for the CardContent component.
+ */
+interface CardContentProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** Additional class names for the card content. */
+  className?: string;
+  /** Content to be rendered inside the card content. */
+  children: ReactNode;
+  /** Custom component to render as the card content root. Defaults to "div". */
+  component?: ElementType;
+}
 
 /**
- * Card content component for the main body content.
- *
- * @param {Object} props - Component props
- * @param {string} [props.className] - Additional CSS classes
- * @param {any} props.children - Card body content
- * @param {React.ElementType} [props.component] - HTML tag to render
- * @returns {JSX.Element} CardContent component
+ * A content section for the card, typically used for the main body.
  */
-function CardContent({ className, children, component, ...props }) {
+function CardContent({ className, children, component, ...props }: CardContentProps) {
   const Tag = component || "div";
   return (
     <Tag data-slot="card-content" className={cn("px-4 md:px-6", className)} {...props}>
@@ -168,22 +174,22 @@ function CardContent({ className, children, component, ...props }) {
   );
 }
 
-CardContent.propTypes = {
-  className: PropTypes.string,
-  children: PropTypes.node,
-  component: PropTypes.elementType,
-};
+/**
+ * Props for the CardFooter component.
+ */
+interface CardFooterProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** Additional class names for the card footer. */
+  className?: string;
+  /** Content to be rendered inside the card footer. */
+  children: ReactNode;
+  /** Custom component to render as the card footer root. Defaults to "div". */
+  component?: ElementType;
+}
 
 /**
- * Card footer component for actions and supplementary content.
- *
- * @param {Object} props - Component props
- * @param {string} [props.className] - Additional CSS classes
- * @param {any} props.children - Footer content
- * @param {React.ElementType} [props.component] - HTML tag to render
- * @returns {JSX.Element} CardFooter component
+ * A footer section for the card, typically used for additional actions or information.
  */
-function CardFooter({ className, children, component, ...props }) {
+function CardFooter({ className, children, component, ...props }: CardFooterProps) {
   const Tag = component || "div";
   return (
     <Tag
@@ -198,11 +204,5 @@ function CardFooter({ className, children, component, ...props }) {
     </Tag>
   );
 }
-
-CardFooter.propTypes = {
-  className: PropTypes.string,
-  children: PropTypes.node,
-  component: PropTypes.elementType,
-};
 
 export { Card, CardHeader, CardFooter, CardTitle, CardAction, CardDescription, CardContent };

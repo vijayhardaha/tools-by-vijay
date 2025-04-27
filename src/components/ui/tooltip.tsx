@@ -1,8 +1,7 @@
 "use client";
 
-import { useId } from "react";
+import { useId, ReactNode } from "react";
 
-import PropTypes from "prop-types";
 import { Tooltip as ReactTooltip } from "react-tooltip";
 
 import { cn } from "@/utils/classNameUtils";
@@ -11,17 +10,27 @@ import { cn } from "@/utils/classNameUtils";
 import "react-tooltip/dist/react-tooltip.css";
 
 /**
- * Tooltip component to display a tooltip with customizable content and styles.
- *
- * @param {Object} props - The props for the Tooltip component.
- * @param {string} props.text - The text to display inside the tooltip.
- * @param {any} props.children - The child element that triggers the tooltip.
- * @param {string} [props.className] - Additional CSS classes for the tooltip.
- * @param {number} [props.sideOffset=4] - The offset of the tooltip from the trigger element.
- * @param {number} [props.delayDuration=300] - The delay in milliseconds before showing the tooltip.
- * @returns {JSX.Element} The rendered Tooltip component.
+ * Props for the Tooltip component
  */
-function Tooltip({ text, children, className, sideOffset = 4, delayDuration = 300, ...props }) {
+interface TooltipProps extends React.HTMLAttributes<HTMLDivElement> {
+  text: string;
+  children: ReactNode;
+  className?: string;
+  sideOffset?: number;
+  delayDuration?: number;
+}
+
+/**
+ * Tooltip component to display a tooltip with customizable content and styles.
+ */
+function Tooltip({
+  text,
+  children,
+  className,
+  sideOffset = 4,
+  delayDuration = 300,
+  ...props
+}: TooltipProps) {
   const tooltipId = useId();
 
   return (
@@ -49,13 +58,5 @@ function Tooltip({ text, children, className, sideOffset = 4, delayDuration = 30
     </>
   );
 }
-
-Tooltip.propTypes = {
-  text: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired,
-  className: PropTypes.string,
-  sideOffset: PropTypes.number,
-  delayDuration: PropTypes.number,
-};
 
 export { Tooltip };

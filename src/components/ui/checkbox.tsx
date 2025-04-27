@@ -1,27 +1,36 @@
 "use client";
 
-import { useState } from "react";
+import { useState, ChangeEvent, ReactNode } from "react";
 
-import PropTypes from "prop-types";
 import { LuCheck as CheckIcon } from "react-icons/lu";
 
 import { cn } from "@/utils/classNameUtils";
 
 /**
+ * Props for the Checkbox component.
+ */
+interface CheckboxProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
+  /** Additional CSS classes. */
+  className?: string;
+  /** Whether the checkbox is checked. */
+  checked?: boolean;
+  /** Callback when checkbox state changes. */
+  onCheckedChange?: (checked: boolean) => void;
+  /** Whether the checkbox is disabled. */
+  disabled?: boolean;
+  /** Whether the checkbox is required. */
+  required?: boolean;
+  /** ID for the checkbox input element. */
+  id?: string;
+  /** Optional child elements. */
+  children?: ReactNode;
+}
+
+/**
  * Checkbox component for selecting options.
- *
- * @param {Object} props - Component props
- * @param {string} [props.className] - Additional CSS classes
- * @param {boolean} [props.checked] - Whether the checkbox is checked
- * @param {Function} [props.onCheckedChange] - Callback when checkbox state changes
- * @param {boolean} [props.disabled] - Whether the checkbox is disabled
- * @param {boolean} [props.required] - Whether the checkbox is required
- * @param {string} [props.id] - ID for the checkbox input element
- * @param {any} [props.children] - Optional child elements
- * @returns {JSX.Element} Checkbox component
  */
 function Checkbox({
-  className,
+  className = "",
   children,
   checked: controlledChecked,
   onCheckedChange,
@@ -29,18 +38,16 @@ function Checkbox({
   required,
   id,
   ...props
-}) {
+}: CheckboxProps) {
   const [internalChecked, setInternalChecked] = useState(controlledChecked || false);
 
   const isControlled = controlledChecked !== undefined;
   const isChecked = isControlled ? controlledChecked : internalChecked;
 
   /**
-   * Handles the checkbox state change event
-   *
-   * @param {ChangeEvent<HTMLInputElement>} event - The change event
+   * Handles the checkbox state change event.
    */
-  const handleChange = (event) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (!isControlled) {
       setInternalChecked(event.target.checked);
     }
@@ -96,15 +103,5 @@ function Checkbox({
     </label>
   );
 }
-
-Checkbox.propTypes = {
-  className: PropTypes.string,
-  checked: PropTypes.bool,
-  onCheckedChange: PropTypes.func,
-  disabled: PropTypes.bool,
-  required: PropTypes.bool,
-  id: PropTypes.string,
-  children: PropTypes.node,
-};
 
 export { Checkbox };

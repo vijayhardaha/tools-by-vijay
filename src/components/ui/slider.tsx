@@ -2,23 +2,25 @@
 
 import { useEffect, useState } from "react";
 
-import PropTypes from "prop-types";
 import { Range } from "react-range";
 
 import { cn } from "@/utils/classNameUtils";
 
 /**
+ * Props for the Slider component
+ */
+interface SliderProps extends React.HTMLAttributes<HTMLDivElement> {
+  className?: string;
+  min?: number;
+  max?: number;
+  step?: number;
+  value?: number;
+  onValueChange?: (value: number) => void;
+  disabled?: boolean;
+}
+
+/**
  * A simplified slider component that allows users to select a value by moving a handle along a track.
- *
- * @param {Object} props - The component props
- * @param {string} [props.className] - Additional CSS classes to apply to the component
- * @param {number} [props.min=0] - Minimum value of the slider
- * @param {number} [props.max=100] - Maximum value of the slider
- * @param {number} [props.step=1] - Step increment between values
- * @param {number} [props.value=0] - Current value for the slider
- * @param {Function} [props.onValueChange] - Callback function when value changes
- * @param {boolean} [props.disabled=false] - Whether the slider is disabled
- * @returns {JSX.Element} The Slider component
  */
 function Slider({
   className,
@@ -29,16 +31,14 @@ function Slider({
   onValueChange,
   disabled = false,
   ...props
-}) {
+}: SliderProps) {
   const [values, setValues] = useState([value]);
 
-  // Update internal values when controlled value changes
   useEffect(() => {
     setValues([value]);
   }, [value]);
 
-  // Handle value changes
-  const handleChange = (newValues) => {
+  const handleChange = (newValues: number[]) => {
     setValues(newValues);
     onValueChange?.(newValues[0]);
   };
@@ -72,7 +72,6 @@ function Slider({
           </div>
         )}
         renderThumb={({ props: thumbProps, isDragged }) => {
-          // Extract key from thumbProps to avoid React warnings
           const { key, ...thumbPropsWithoutKey } = thumbProps;
 
           return (
@@ -88,7 +87,6 @@ function Slider({
                 isDragged ? "ring-primary/20 ring-4" : ""
               )}
             >
-              {/* Tooltip */}
               <div
                 className={cn(
                   "absolute -top-9 flex items-center justify-center rounded-md bg-slate-900 px-3 py-1 text-xs text-white outline-hidden",
@@ -107,22 +105,5 @@ function Slider({
     </div>
   );
 }
-
-Slider.propTypes = {
-  /** Additional CSS classes to apply to the component */
-  className: PropTypes.string,
-  /** Minimum value of the slider */
-  min: PropTypes.number,
-  /** Maximum value of the slider */
-  max: PropTypes.number,
-  /** Step increment between values */
-  step: PropTypes.number,
-  /** Current value for the slider */
-  value: PropTypes.number,
-  /** Callback function when value changes */
-  onValueChange: PropTypes.func,
-  /** Whether the slider is disabled */
-  disabled: PropTypes.bool,
-};
 
 export { Slider };

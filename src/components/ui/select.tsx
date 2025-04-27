@@ -2,24 +2,35 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 
-import PropTypes from "prop-types";
 import { LuCheck as CheckIcon, LuChevronDown as ChevronDownIcon } from "react-icons/lu";
 
 import { cn } from "@/utils/classNameUtils";
 
 /**
+ * Option type for the Select component
+ */
+interface SelectOption extends React.HTMLAttributes<HTMLDivElement> {
+  value: string;
+  label: string;
+  disabled?: boolean;
+}
+
+/**
+ * Props for the Select component
+ */
+interface SelectProps {
+  value?: string;
+  defaultValue?: string;
+  onValueChange?: (value: string) => void;
+  disabled?: boolean;
+  options: SelectOption[];
+  placeholder?: string;
+  className?: string;
+  size?: "default" | "sm";
+}
+
+/**
  * Simplified Select component that handles all dropdown functionality internally
- *
- * @param {Object} props - Component props
- * @param {string} [props.value] - Controlled value for the select
- * @param {string} [props.defaultValue] - Default value for uncontrolled mode
- * @param {Function} [props.onValueChange] - Callback when value changes
- * @param {boolean} [props.disabled=false] - Whether the select is disabled
- * @param {Array} props.options - Array of options objects with value and label properties
- * @param {string} [props.placeholder='Select an option'] - Placeholder text when no value is selected
- * @param {string} [props.className] - Additional CSS classes for the select trigger
- * @param {string} [props.size='default'] - Size of the trigger button ('default' or 'sm')
- * @returns {JSX.Element} Select component
  */
 function Select({
   value,
@@ -28,13 +39,13 @@ function Select({
   disabled = false,
   options = [],
   placeholder = "Select an option",
-  className,
+  className = "",
   size = "default",
   ...props
-}) {
+}: SelectProps) {
   const [selectedValue, setSelectedValue] = useState(defaultValue || value || "");
   const [open, setOpen] = useState(false);
-  const selectRef = useRef(null);
+  const selectRef = useRef<HTMLDivElement>(null);
 
   // Get the label of the selected option
   const selectedLabel = options.find((opt) => opt.value === selectedValue)?.label || "";
@@ -46,7 +57,7 @@ function Select({
   }, [value, selectedValue]);
 
   const handleValueChange = useCallback(
-    (newValue) => {
+    (newValue: string) => {
       // Always update internal state regardless of controlled/uncontrolled mode
       setSelectedValue(newValue);
 
@@ -59,8 +70,8 @@ function Select({
 
   // Close dropdown when clicking outside
   useEffect(() => {
-    const handleOutsideClick = (event) => {
-      if (selectRef.current && !selectRef.current.contains(event.target)) {
+    const handleOutsideClick = (event: MouseEvent) => {
+      if (selectRef.current && !selectRef.current.contains(event.target as Node)) {
         setOpen(false);
       }
     };
@@ -187,22 +198,5 @@ function Select({
     </div>
   );
 }
-
-Select.propTypes = {
-  value: PropTypes.string,
-  defaultValue: PropTypes.string,
-  onValueChange: PropTypes.func,
-  disabled: PropTypes.bool,
-  options: PropTypes.arrayOf(
-    PropTypes.shape({
-      value: PropTypes.string.isRequired,
-      label: PropTypes.string.isRequired,
-      disabled: PropTypes.bool,
-    })
-  ).isRequired,
-  placeholder: PropTypes.string,
-  className: PropTypes.string,
-  size: PropTypes.oneOf(["default", "sm"]),
-};
 
 export { Select };

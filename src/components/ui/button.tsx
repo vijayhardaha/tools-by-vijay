@@ -1,40 +1,28 @@
-import { cloneElement, forwardRef, isValidElement } from "react";
+import React, { JSX, forwardRef, isValidElement, ReactNode } from "react";
+import { cloneElement } from "react";
 
 import { cva } from "class-variance-authority";
-import PropTypes from "prop-types";
 
 import { cn } from "@/utils/classNameUtils";
 
 /**
- * Custom Slot implementation to replace @radix-ui/react-slot.
- * A utility component that projects its children's props through to a single element.
- * Useful for creating polymorphic components where you want to forward props to a child element.
- *
- * The Slot component essentially becomes transparent in the props hierarchy, merging its own props
- * with the child's props and properly handling ref forwarding to ensure compatibility with React's
- * ref system.
- *
- * @component
- * @param {Object} props - Component props
- * @param {React.ReactElement} props.children - The child element to clone and merge props with
- * @param {React.Ref} [props.ref] - Ref to forward to the child element
- * @returns {React.ReactElement|null} Cloned child element with merged props or null if the child is invalid
- * @example
- * // Basic usage to pass props to a child component
- * <Slot className="text-red-500">
- *   <SomeComponent />
- * </Slot>
- *
- * // The className will be passed to SomeComponent
+ * Slot component for polymorphic prop forwarding.
  */
-const Slot = forwardRef(({ children, ...props }, ref) => {
+type SlotProps = {
+  children: React.ReactElement;
+} & React.HTMLAttributes<HTMLElement>;
+
+const Slot = forwardRef<HTMLElement, SlotProps>(({ children, ...props }, ref) => {
   if (!isValidElement(children)) {
     return null;
   }
 
+  // Ensure children.props is always an object before spreading
+  const childProps = children.props && typeof children.props === "object" ? children.props : {};
+
   return cloneElement(children, {
     ...props,
-    ...children.props,
+    ...childProps, // Spread props and ensure children.props is valid
     ref: ref
       ? (childRef) => {
           if (typeof ref === "function") {
@@ -54,10 +42,13 @@ const Slot = forwardRef(({ children, ...props }, ref) => {
   });
 });
 
+/**
+ * Button component with multiple variants and sizes.
+ */
 const buttonVariants = cva(
   [
     "inline-flex items-center justify-center gap-2",
-    " whitespace-nowrap shrink-0",
+    "whitespace-nowrap shrink-0",
     "text-sm font-semibold",
     "rounded-md outline-none border",
     "cursor-pointer disabled:pointer-events-none disabled:opacity-50",
@@ -119,45 +110,46 @@ const buttonVariants = cva(
 
 /**
  * Button component with various styles and sizes.
- *
- * @param {Object} props - Component props
- * @param {string} [props.className] - Additional CSS classes
- * @param {string} [props.variant="default"] - Visual style variant
- * @param {string} [props.size="default"] - Button size
- * @param {boolean} [props.asChild=false] - Whether to merge props onto the immediate child
- * @param {any} props.children - Button content
- * @returns {JSX.Element} Button component
  */
-function Button({ className, variant, size, asChild = false, children, ...props }) {
-  const Comp = asChild ? Slot : "button";
+type ButtonProps = {
+  className?: string;
+  variant?:
+    | "default"
+    | "primary"
+    | "destructive"
+    | "success"
+    | "outline"
+    | "secondary"
+    | "ghost"
+    | "link";
+  size?: "default" | "sm" | "lg" | "icon";
+  asChild?: boolean;
+  children: ReactNode;
+} & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
-  const { asChild: _, ...componentProps } = props;
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  (
+    { className, variant = "default", size = "default", asChild = false, children, ...props },
+    ref
+  ) => {
+    const Comp = asChild ? Slot : "button";
 
-  return (
-    <Comp
-      data-slot="button"
-      className={cn(buttonVariants({ variant, size, className }))}
-      {...componentProps}
-    >
-      {children}
-    </Comp>
-  );
-}
+    // Ensure props is an object before spreading
+    const validProps = props && typeof props === "object" ? props : {};
 
-Button.propTypes = {
-  className: PropTypes.string,
-  variant: PropTypes.oneOf([
-    "default",
-    "primary",
-    "destructive",
-    "outline",
-    "secondary",
-    "ghost",
-    "link",
-  ]),
-  size: PropTypes.oneOf(["default", "sm", "lg", "icon"]),
-  asChild: PropTypes.bool,
-  children: PropTypes.node,
-};
+    return (
+      <Comp
+        data-slot="button"
+        className={cn(buttonVariants({ variant, size, className }))}
+        {...validProps}
+        ref={ref} // Forward ref correctly
+      >
+        {children}
+      </Comp>
+    );
+  }
+);
+
+Button.displayName = "Button"; // Set the display name for the Button component
 
 export { Button, buttonVariants };

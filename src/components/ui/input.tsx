@@ -1,16 +1,20 @@
-import PropTypes from "prop-types";
+import { JSX } from "react";
 
 import { cn } from "@/utils/classNameUtils";
+
+// Define TypeScript types for the component props
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  className?: string;
+  type?: string;
+}
 
 /**
  * Input component for text entry, file uploads, and other input types.
  *
- * @param {Object} props - Component props
- * @param {string} [props.className] - Additional CSS classes
- * @param {string} [props.type="text"] - Type of input (text, password, email, etc.)
+ * @param {InputProps} props - Component props
  * @returns {JSX.Element} Input component
  */
-function Input({ className, type, ...props }) {
+function Input({ className, type = "text", ...props }: InputProps): JSX.Element {
   return (
     <input
       type={type}
@@ -54,14 +58,5 @@ function Input({ className, type, ...props }) {
     />
   );
 }
-
-Input.propTypes = {
-  className: PropTypes.string,
-  type: PropTypes.string,
-};
-
-Input.defaultProps = {
-  type: "text",
-};
 
 export { Input };
