@@ -1,15 +1,6 @@
 import { toolIcons } from "@/constants/toolIcons";
 import tools from "@/constants/tools";
-
-type Tool = {
-  name: string;
-  slug: string;
-  shortDescription: string;
-  pageDescription: string;
-  seoTitle: string;
-  seoDescription: string;
-  category: string;
-};
+import { Tool } from "@/types";
 
 /**
  * Get all available tools

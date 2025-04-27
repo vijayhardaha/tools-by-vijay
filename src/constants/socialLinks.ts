@@ -1,13 +1,7 @@
 import { FaFacebookF, FaXTwitter, FaGithub, FaInstagram } from "react-icons/fa6";
 import { TbWorldWww } from "react-icons/tb";
 
-type SocialMediaLink = {
-  name: string;
-  key: string;
-  url: string;
-  color: string;
-  icon: React.ComponentType;
-};
+import { SocialMediaLink } from "@/types";
 
 /**
  * A list of social media links with metadata and icons.

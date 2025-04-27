@@ -1,3 +1,5 @@
+import React from "react";
+
 export interface Tool {
   name: string;
   slug: string;
@@ -14,4 +16,12 @@ export interface Category {
   description: string;
   seoTitle: string;
   seoDescription: string;
+}
+
+export interface SocialMediaLink {
+  name: string;
+  key: string;
+  url: string;
+  color: string;
+  icon: React.ComponentType;
 }

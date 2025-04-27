@@ -1,10 +1,4 @@
-type Category = {
-  label: string;
-  slug: string;
-  description: string;
-  seoTitle: string;
-  seoDescription: string;
-};
+import { Category } from "@/types";
 
 /**
  * Array of category objects, each containing information about a tool category.

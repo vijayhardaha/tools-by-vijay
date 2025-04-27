@@ -1,12 +1,5 @@
 import categories from "@/constants/toolsCategories";
-
-type Category = {
-  label: string;
-  slug: string;
-  description: string;
-  seoTitle: string;
-  seoDescription: string;
-};
+import { Category } from "@/types";
 
 /**
  * Get all categores

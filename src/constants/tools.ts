@@ -1,12 +1,4 @@
-type Tool = {
-  name: string;
-  slug: string;
-  shortDescription: string;
-  pageDescription: string;
-  seoTitle: string;
-  seoDescription: string;
-  category: string;
-};
+import { Tool } from "@/types";
 
 /**
  * Array of tool objects, each containing metadata for display and SEO purposes.
