@@ -1,7 +1,18 @@
+type Tool = {
+  name: string;
+  slug: string;
+  shortDescription: string;
+  pageDescription: string;
+  seoTitle: string;
+  seoDescription: string;
+  category: string;
+};
+
 /**
- * Array of tool objects, each containing a name and a link.
+ * Array of tool objects, each containing metadata for display and SEO purposes.
+ * @type {Tool[]}
  */
-const tools = [
+const tools: Tool[] = [
   {
     name: "Slugify",
     slug: "slugify",

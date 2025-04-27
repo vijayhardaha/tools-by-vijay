@@ -1,16 +1,54 @@
 import { getBaseUrl } from "@/utils/seoUtils";
 
+type SEOType = {
+  title: string;
+  description: string;
+  titlePostfix: string;
+  separator: string;
+};
+
+type BaseMetadataType = {
+  title: string;
+  description: string;
+  metadataBase: URL;
+  manifest: string;
+  appleTouchIcon: string;
+  alternates: {
+    canonical: string;
+  };
+  keywords: string[];
+  author: string;
+  robots: string;
+  icons: {
+    icon: string;
+    apple: string;
+  };
+  openGraph: {
+    title: string;
+    description: string;
+    images: {
+      url: string;
+      width: number;
+      height: number;
+    }[];
+    type: string;
+    siteName: string;
+    locale: string;
+    url: string;
+  };
+  twitter: {
+    card: string;
+    title: string;
+    description: string;
+    images: string[];
+    creator: string;
+  };
+};
+
 /**
  * An object containing SEO-related constants for the application.
- *
- * @constant
- * @type {Object}
- * @property {string} title - The full title of the application for SEO purposes.
- * @property {string} description - A brief description of the application for meta tags.
- * @property {string} shortTitle - A shorter version of the application title for compact displays.
- * @property {string} separatot - A separator string used in SEO titles.
  */
-export const SEO = {
+export const SEO: SEOType = {
   title: "Tools by Vijay Hardaha — Useful Web Utilities",
   description:
     "A collection of free online tools built to make developer’s lives easier. From code optimization to text transformation, find the tools you need for your projects.",
@@ -18,7 +56,7 @@ export const SEO = {
   separator: "—",
 };
 
-export const baseMetadata = {
+export const baseMetadata: BaseMetadataType = {
   title: SEO.title,
   description: SEO.description,
   metadataBase: new URL(getBaseUrl()),

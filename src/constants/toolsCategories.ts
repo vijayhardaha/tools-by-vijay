@@ -1,7 +1,15 @@
+type Category = {
+  label: string;
+  slug: string;
+  description: string;
+  seoTitle: string;
+  seoDescription: string;
+};
+
 /**
  * Array of category objects, each containing information about a tool category.
  */
-const categories = [
+const categories: Category[] = [
   {
     label: "Text Transformation",
     slug: "text-transformation",

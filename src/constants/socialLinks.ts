@@ -1,20 +1,19 @@
 import { FaFacebookF, FaXTwitter, FaGithub, FaInstagram } from "react-icons/fa6";
 import { TbWorldWww } from "react-icons/tb";
 
-/**
- * @typedef {Object} SocialMediaLink
- * @property {string} name - The display name of the social media platform.
- * @property {string} key - A unique key identifier for the platform.
- * @property {string} url - The URL to the user's profile on the platform.
- * @property {string} color - The brand color of the platform in hexadecimal format.
- * @property {React.ComponentType} icon - The React component for the platform's icon.
- */
+type SocialMediaLink = {
+  name: string;
+  key: string;
+  url: string;
+  color: string;
+  icon: React.ComponentType;
+};
 
 /**
  * A list of social media links with metadata and icons.
  * @type {SocialMediaLink[]}
  */
-export const socialMediaLinks = [
+export const socialMediaLinks: SocialMediaLink[] = [
   {
     key: "github",
     name: "GitHub",

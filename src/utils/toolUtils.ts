@@ -2,11 +2,13 @@ import { toolIcons } from "@/constants/toolIcons";
 import tools from "@/constants/tools";
 
 type Tool = {
-  slug: string;
   name: string;
-  category: string;
+  slug: string;
   shortDescription: string;
   pageDescription: string;
+  seoTitle: string;
+  seoDescription: string;
+  category: string;
 };
 
 /**

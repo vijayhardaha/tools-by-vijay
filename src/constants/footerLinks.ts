@@ -1,7 +1,12 @@
+type FooterLink = {
+  name: string;
+  href: string;
+};
+
 /**
  * Footer navigation links organized by section
  */
-const footerLinks = {
+const footerLinks: Record<string, FooterLink[]> = {
   quickLinks: [
     { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },
