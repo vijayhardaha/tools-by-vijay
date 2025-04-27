@@ -1,18 +1,27 @@
+import { JSX } from "react";
+
 import Link from "next/link";
-import PropTypes from "prop-types";
 
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Tool } from "@/types";
 import { cn } from "@/utils/classNameUtils";
 import { findToolBySlug, getIconForTool } from "@/utils/toolUtils";
 
 /**
- * ToolCard component that renders a card for a specific tool.
- * @param {Object} props - The component props.
- * @param {string} props.slug - The slug of the tool to display.
- * @returns {JSX.Element} The rendered ToolCard component.
+ * Props for the ToolCard component.
  */
-const ToolCard = ({ slug, className = "" }) => {
-  const tool = findToolBySlug(slug);
+interface ToolCardProps {
+  slug: string;
+  className?: string;
+}
+
+/**
+ * ToolCard component that renders a card for a specific tool.
+ * @param {ToolCardProps} props - The component props.
+ * @returns {JSX.Element | null} The rendered ToolCard component.
+ */
+const ToolCard = ({ slug, className = "" }: ToolCardProps): JSX.Element | null => {
+  const tool: Tool | null = findToolBySlug(slug);
 
   if (!tool) return null;
 
@@ -37,11 +46,6 @@ const ToolCard = ({ slug, className = "" }) => {
       </Card>
     </Link>
   );
-};
-
-ToolCard.propTypes = {
-  slug: PropTypes.string.isRequired,
-  className: PropTypes.string,
 };
 
 export default ToolCard;

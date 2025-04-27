@@ -1,5 +1,8 @@
+import { JSX } from "react";
+
 import ToolCard from "@/components/home/ToolCard";
 import PageLayout from "@/components/page/PageLayout";
+import { Tool, Category } from "@/types";
 import { getCategoryBySlug } from "@/utils/categoryUtils";
 import { getToolsByCategories } from "@/utils/toolUtils";
 
@@ -12,14 +15,14 @@ import { getToolsByCategories } from "@/utils/toolUtils";
  * @component
  * @returns {JSX.Element} The rendered Home component with categorized tools.
  */
-const Home = () => {
+const Home = (): JSX.Element => {
   // Get all tools and group them by category
-  const toolsByCategory = getToolsByCategories();
+  const toolsByCategory: Record<string, Tool[]> = getToolsByCategories();
 
   return (
     <PageLayout>
-      {Object.entries(toolsByCategory).map(([categorySlug, categoryTools]) => {
-        const category = getCategoryBySlug(categorySlug);
+      {Object.entries(toolsByCategory).map(([categorySlug, categoryTools]: [string, Tool[]]) => {
+        const category: Category | null = getCategoryBySlug(categorySlug);
 
         if (!category) return null;
 
@@ -31,14 +34,8 @@ const Home = () => {
             </div>
 
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-6">
-              {categoryTools.map((tool) => (
-                <ToolCard
-                  key={tool.slug}
-                  slug={tool.slug}
-                  btnText={`Go to ${tool.name} Tool`}
-                  iconButton={true}
-                  btnRounded={tool.category === "security" || tool.category === "data-conversion"}
-                />
+              {categoryTools.map((tool: Tool) => (
+                <ToolCard key={tool.slug} slug={tool.slug} />
               ))}
             </div>
           </section>

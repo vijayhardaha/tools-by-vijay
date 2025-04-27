@@ -1,5 +1,6 @@
+import { JSX, ReactNode } from "react";
+
 import { Work_Sans, Geist_Mono } from "next/font/google";
-import PropTypes from "prop-types";
 
 /**
  * Configuration for the League Spartan font.
@@ -39,16 +40,12 @@ export const metadata = baseMetadata;
  * @param {{ children: ReactNode }} props - The props for the RootLayout component.
  * @returns {JSX.Element} The root layout structure.
  */
-const RootLayout = ({ children }) => {
+const RootLayout = ({ children }: { children: ReactNode }): JSX.Element => {
   return (
     <html lang="en" className={`${sansFont.variable} ${monoFont.variable}`}>
       <body>{children}</body>
     </html>
   );
-};
-
-RootLayout.propTypes = {
-  children: PropTypes.node.isRequired,
 };
 
 export default RootLayout;
