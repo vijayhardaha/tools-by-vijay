@@ -4,13 +4,15 @@ import { fileURLToPath } from "node:url";
 import { fixupPluginRules } from "@eslint/compat";
 import { FlatCompat } from "@eslint/eslintrc";
 import js from "@eslint/js";
+import pluginNext from "@next/eslint-plugin-next";
+import tsPlugin from "@typescript-eslint/eslint-plugin";
+import tsParser from "@typescript-eslint/parser";
 import { defineConfig, globalIgnores } from "eslint/config";
 import importPlugin from "eslint-plugin-import";
-import jsxA11Y from "eslint-plugin-jsx-a11y";
+import jsxA11y from "eslint-plugin-jsx-a11y";
 import prettier from "eslint-plugin-prettier";
 import react from "eslint-plugin-react";
 import globals from "globals";
-import tseslint from "typescript-eslint";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -21,38 +23,50 @@ const compat = new FlatCompat({
 });
 
 export default defineConfig([
-  globalIgnores(["**/.next/", "**/node_modules/", "**/build/", "**/dist/", "**/.env*"]),
-  { files: ["**/*.{js,jsx,ts,tsx,mjs,cjs}"] },
+  globalIgnores([
+    "**/.git/",
+    "**/node_modules/",
+    "**/build/",
+    "**/dist/",
+    "**/.env",
+    "**/.env.local",
+    "**/*.log",
+    "**/*.tsbuildinfo",
+  ]),
+  { files: ["**/*.{js,jsx,mjs,cjs,ts,tsx}"] },
   {
-    extends: compat.extends(
+    ...compat.extends(
       "next",
       "next/core-web-vitals",
+      "next/typescript",
       "eslint:recommended",
       "plugin:react/recommended",
       "plugin:jsx-a11y/recommended",
-      "plugin:prettier/recommended",
-      "plugin:@typescript-eslint/recommended"
-    ),
+      "plugin:@typescript-eslint/recommended",
+      "plugin:prettier/recommended"
+    )[0],
 
     plugins: {
-      react,
-      typescript: tseslint.plugin,
-      "jsx-a11y": jsxA11Y,
-      importPlugin: fixupPluginRules(importPlugin),
-      prettier,
+      "@next/next": fixupPluginRules(pluginNext),
+      react: fixupPluginRules(react),
+      "jsx-a11y": fixupPluginRules(jsxA11y),
+      "@typescript-eslint": fixupPluginRules(tsPlugin),
+      import: fixupPluginRules(importPlugin),
+      prettier: fixupPluginRules(prettier),
     },
 
     languageOptions: {
+      ecmaVersion: "latest",
+      sourceType: "module",
       globals: {
         ...globals.browser,
         ...globals.node,
       },
 
-      parser: tseslint.parser,
-      ecmaVersion: "latest",
-      sourceType: "module",
-
+      parser: tsParser,
       parserOptions: {
+        ecmaVersion: "latest",
+        sourceType: "module",
         ecmaFeatures: {
           jsx: true,
         },
@@ -77,16 +91,21 @@ export default defineConfig([
         },
       ],
 
-      "importPlugin/order": [
+      "import/order": [
         "error",
         {
-          groups: ["builtin", "external", "internal", "parent", "sibling", "index"],
+          groups: ["builtin", "external", "internal", "parent", "sibling", "index", "object"],
 
           pathGroups: [
             {
               pattern: "react",
               group: "external",
               position: "before",
+            },
+            {
+              pattern: "@/**",
+              group: "internal",
+              position: "after",
             },
           ],
 
