@@ -1,16 +1,18 @@
+import { JSX } from "react";
+
 import { FaFacebookF, FaXTwitter, FaGithub, FaInstagram } from "react-icons/fa6";
 import { TbWorldWww } from "react-icons/tb";
 
 import PageContent from "@/components/page/PageContent";
 import PageHeader from "@/components/page/PageHeader";
 import PageLayout from "@/components/page/PageLayout";
-import { generateMetadata as genMeta } from "@/utils/seoUtils";
+import { generateMetadata as genMeta, Metadata } from "@/utils/seoUtils";
 
 /**
  * SEO metadata for the Slugify page
  * @type {Object}
  */
-export const metadata = genMeta({
+export const metadata: Metadata = genMeta({
   title: "Contact",
   description:
     "Get in touch with Vijay, explore the open-source code on GitHub, or hire him for freelance WordPress, WooCommerce, or Next.js projects. Based in India, working globally.",
@@ -22,7 +24,7 @@ export const metadata = genMeta({
  * Displays social links and ways to connect or contribute
  * @returns {JSX.Element} The rendered Contact page.
  */
-const Contact = () => {
+const Contact: React.FC = (): JSX.Element => {
   return (
     <PageLayout>
       <PageHeader

@@ -1,7 +1,9 @@
-import TextStoryMakerContent from "@/components/text-story-maker/TextStoryMakerTool";
-import { generateMetadata as genMeta } from "@/utils/seoUtils";
+import { JSX } from "react";
 
-export const metadata = genMeta({
+import TextStoryMakerContent from "@/components/text-story-maker/TextStoryMakerTool";
+import { generateMetadata as genMeta, Metadata } from "@/utils/seoUtils";
+
+export const metadata: Metadata = genMeta({
   title: "Text Story Maker",
   description:
     "Text Story Maker is a powerful tool to create engaging and customized text stories with ease. Crafted by Vijay Hardaha, it lets you personalize fonts, colors, and backgrounds to make your stories truly stand out.",
@@ -14,7 +16,7 @@ export const metadata = genMeta({
  * @component
  * @returns {JSX.Element} The rendered TextStoryMaker page.
  */
-const TextStoryMaker = () => {
+const TextStoryMaker: React.FC = (): JSX.Element => {
   return (
     <div className="mx-auto max-w-[540px]">
       <TextStoryMakerContent />

@@ -1,25 +1,18 @@
+import { JSX } from "react";
+
 import PageContent from "@/components/page/PageContent";
 import PageHeader from "@/components/page/PageHeader";
 import PageLayout from "@/components/page/PageLayout";
-import { generateMetadata as genMeta } from "@/utils/seoUtils";
+import { generateMetadata as genMeta, Metadata } from "@/utils/seoUtils";
 
-/**
- * SEO metadata for the Slugify page
- * @type {Object}
- */
-export const metadata = genMeta({
+export const metadata: Metadata = genMeta({
   title: "About Me",
   description:
     "Learn more about Vijay, the developer behind this platform. Discover the motivation behind these tools and how they’re built for speed, simplicity, and everyday use.",
   slug: "about",
 });
 
-/**
- * About page component
- * Renders the personal introduction and project purpose
- * @returns {JSX.Element} The rendered About page.
- */
-const About = () => {
+const About: React.FC = (): JSX.Element => {
   return (
     <PageLayout>
       <PageHeader title="About Me" description="Why I built this platform and what drives it" />

@@ -1,23 +1,28 @@
+import { JSX } from "react";
+
+import { notFound } from "next/navigation";
+
 import EntryWithSidebar from "@/components/page/EntryWithSidebar";
 import PageContent from "@/components/page/PageContent";
 import PageHeader from "@/components/page/PageHeader";
 import PageLayout from "@/components/page/PageLayout";
 import DropdownToArrayTool from "@/components/tools/dropdown-to-array/DropdownToArrayTool";
-import { generateMetadata as genMeta } from "@/utils/seoUtils";
+import { Tool } from "@/types";
+import { generateMetadata as genMeta, Metadata } from "@/utils/seoUtils";
 import { findToolBySlug } from "@/utils/toolUtils";
 import { getIconForTool } from "@/utils/toolUtils";
 
 /**
  * Retrieves tool data for the Dropdown to Array tool.
- * @constant {Object} tool - The tool object containing metadata and configuration.
+ * @constant {Tool} tool - The tool object containing metadata and configuration.
  */
-const tool = findToolBySlug("dropdown-to-array");
+const tool: Tool = findToolBySlug("dropdown-to-array");
 
 /**
  * SEO metadata for the Dropdown to Array tool page.
  * @type {Object}
  */
-export const metadata = genMeta({
+export const metadata: Metadata = genMeta({
   title: tool?.seoTitle || "",
   description: tool?.seoDescription || "",
   slug: tool?.slug || "",
@@ -30,7 +35,11 @@ export const metadata = genMeta({
  * @component
  * @returns {JSX.Element} The rendered Dropdown to Array tool page component.
  */
-const DropdownToArray = () => {
+const DropdownToArray: React.FC = (): JSX.Element => {
+  if (!tool) {
+    notFound(); // Render a 404 page if the tool is null
+  }
+
   return (
     <PageLayout>
       <PageHeader

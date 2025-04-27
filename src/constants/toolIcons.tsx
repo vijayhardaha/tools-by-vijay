@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import { JSX } from "react";
 
 import {
@@ -20,7 +20,7 @@ import {
   PiShuffleBold,
 } from "react-icons/pi";
 
-export const toolIcons: Record<string, JSX.Element> = {
+export const toolIcons: Record<string, ReactElement> = {
   slugify: <PiFadersHorizontalBold />,
   "bulk-slugify": <PiFadersBold />,
   "password-generator": <PiPasswordBold />,

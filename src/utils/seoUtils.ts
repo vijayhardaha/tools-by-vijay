@@ -1,12 +1,12 @@
 import { baseMetadata, SEO } from "@/constants/seo";
 
-type MetadataParams = {
+export type MetadataParams = {
   title?: string;
   description?: string;
   slug?: string;
 };
 
-type Metadata = {
+export type Metadata = {
   title: string;
   description: string;
   alternates: {

@@ -88,8 +88,8 @@ export const getToolsByCategories = (): Record<string, Tool[]> => {
 /**
  * Get the icon for a specific tool
  * @param {string} slug - The tool slug to get the icon for
- * @returns {React.ReactNode | null} The icon for the tool, or null if not found
+ * @returns {React.ReactElement | null} The icon for the tool, or null if not found
  */
-export const getIconForTool = (slug: string): React.ReactNode | null => {
+export const getIconForTool = (slug: string): React.ReactElement | null => {
   return toolIcons[slug] || null;
 };

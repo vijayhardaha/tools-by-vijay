@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+import { ReactElement } from "react";
 
 /**
  * PageHeader component for displaying page titles and descriptions
@@ -9,7 +9,13 @@ import PropTypes from "prop-types";
  * @param {ReactElement} [props.icon] - Optional icon element to display next to the title
  * @returns {ReactElement} Rendered component
  */
-const PageHeader = ({ title, description, icon = null }) => {
+type PageHeaderProps = {
+  title: string;
+  description?: string;
+  icon?: ReactElement | null;
+};
+
+const PageHeader: React.FC<PageHeaderProps> = ({ title, description, icon = null }) => {
   return (
     <div
       className="relative left-1/2 -mt-8 mb-8 w-screen -translate-x-1/2 text-white"
@@ -30,12 +36,6 @@ const PageHeader = ({ title, description, icon = null }) => {
       </div>
     </div>
   );
-};
-
-PageHeader.propTypes = {
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string,
-  icon: PropTypes.element,
 };
 
 export default PageHeader;

@@ -1,23 +1,28 @@
+import { JSX } from "react";
+
+import { notFound } from "next/navigation";
+
 import EntryWithSidebar from "@/components/page/EntryWithSidebar";
 import PageContent from "@/components/page/PageContent";
 import PageHeader from "@/components/page/PageHeader";
 import PageLayout from "@/components/page/PageLayout";
 import ReplaceQuotesTool from "@/components/tools/replace-quotes/ReplaceQuotesTool";
-import { generateMetadata as genMeta } from "@/utils/seoUtils";
+import { Tool } from "@/types";
+import { generateMetadata as genMeta, Metadata } from "@/utils/seoUtils";
 import { findToolBySlug } from "@/utils/toolUtils";
 import { getIconForTool } from "@/utils/toolUtils";
 
-/**u
+/**
  * Retrieves tool data for the Replace Quotes tool.
- * @constant {Object} tool - The tool object containing metadata and configuration.
+ * @constant {Tool|null} tool - The tool object containing metadata and configuration.
  */
-const tool = findToolBySlug("replace-quotes");
+const tool: Tool | null = findToolBySlug("replace-quotes");
 
 /**
  * SEO metadata for the Replace Quotes tool page.
  * @type {Object}
  */
-export const metadata = genMeta({
+export const metadata: Metadata = genMeta({
   title: tool?.seoTitle || "",
   description: tool?.seoDescription || "",
   slug: tool?.slug || "",
@@ -30,7 +35,11 @@ export const metadata = genMeta({
  * @component
  * @returns {JSX.Element} The rendered Replace Quotes tool page component.
  */
-const ReplaceQuotes = () => {
+const ReplaceQuotes: React.FC = (): JSX.Element => {
+  if (!tool) {
+    notFound(); // Render a 404 page if the tool is null
+  }
+
   return (
     <PageLayout>
       <PageHeader
