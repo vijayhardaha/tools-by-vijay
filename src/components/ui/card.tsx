@@ -6,11 +6,8 @@ import { cn } from "@/utils/classNameUtils";
  * Props for the Card component.
  */
 interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
-  /** Additional class names for the card. */
   className?: string;
-  /** Content to be rendered inside the card. */
   children: ReactNode;
-  /** Custom component to render as the card root. Defaults to "div". */
   component?: ElementType;
 }
 
@@ -37,11 +34,8 @@ function Card({ className, children, component, ...props }: CardProps) {
  * Props for the CardHeader component.
  */
 interface CardHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
-  /** Additional class names for the card header. */
   className?: string;
-  /** Content to be rendered inside the card header. */
   children: ReactNode;
-  /** Custom component to render as the card header root. Defaults to "div". */
   component?: ElementType;
 }
 
@@ -69,13 +63,10 @@ function CardHeader({ className, children, component, ...props }: CardHeaderProp
 /**
  * Props for the CardTitle component.
  */
-interface CardTitleProps extends React.HTMLAttributes<HTMLDivElement> {
-  /** Additional class names for the card title. */
+interface CardTitleProps extends React.HTMLAttributes<HTMLHeadingElement> {
   className?: string;
-  /** Content to be rendered inside the card title. */
   children: ReactNode;
-  /** Custom component to render as the card title root. Defaults to "h2". */
-  component?: ElementType;
+  component?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 }
 
 /**
@@ -97,7 +88,7 @@ function CardTitle({ className, children, component, ...props }: CardTitleProps)
 /**
  * Props for the CardDescription component.
  */
-interface CardDescriptionProps extends React.HTMLAttributes<HTMLDivElement> {
+interface CardDescriptionProps extends React.HTMLAttributes<HTMLParagraphElement> {
   /** Additional class names for the card description. */
   className?: string;
   /** Content to be rendered inside the card description. */
@@ -126,11 +117,8 @@ function CardDescription({ className, children, component, ...props }: CardDescr
  * Props for the CardAction component.
  */
 interface CardActionProps extends React.HTMLAttributes<HTMLDivElement> {
-  /** Additional class names for the card action. */
   className?: string;
-  /** Content to be rendered inside the card action. */
   children: ReactNode;
-  /** Custom component to render as the card action root. Defaults to "div". */
   component?: ElementType;
 }
 
@@ -154,11 +142,8 @@ function CardAction({ className, children, component, ...props }: CardActionProp
  * Props for the CardContent component.
  */
 interface CardContentProps extends React.HTMLAttributes<HTMLDivElement> {
-  /** Additional class names for the card content. */
   className?: string;
-  /** Content to be rendered inside the card content. */
   children: ReactNode;
-  /** Custom component to render as the card content root. Defaults to "div". */
   component?: ElementType;
 }
 
@@ -178,11 +163,8 @@ function CardContent({ className, children, component, ...props }: CardContentPr
  * Props for the CardFooter component.
  */
 interface CardFooterProps extends React.HTMLAttributes<HTMLDivElement> {
-  /** Additional class names for the card footer. */
   className?: string;
-  /** Content to be rendered inside the card footer. */
   children: ReactNode;
-  /** Custom component to render as the card footer root. Defaults to "div". */
   component?: ElementType;
 }
 
