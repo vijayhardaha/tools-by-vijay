@@ -1,11 +1,34 @@
 import { baseMetadata, SEO } from "@/constants/seo";
 
+type MetadataParams = {
+  title?: string;
+  description?: string;
+  slug?: string;
+};
+
+type Metadata = {
+  title: string;
+  description: string;
+  alternates: {
+    canonical: string;
+  };
+  openGraph: {
+    title: string;
+    description: string;
+    url: string;
+  };
+  twitter: {
+    title: string;
+    description: string;
+  };
+};
+
 /**
  * Retrieves the base URL based on the environment variables.
  *
  * @returns {string} The base URL.
  */
-export const getBaseUrl = () => {
+export const getBaseUrl = (): string => {
   const url =
     process.env.VERCEL_PROJECT_PRODUCTION_URL ||
     process.env.VERCEL_BRANCH_URL ||
@@ -23,7 +46,7 @@ export const getBaseUrl = () => {
  * @param {string} slug - The slug for generating the canonical URL.
  * @returns {string} The canonical URL.
  */
-export const getCanonicalUrl = (slug = "") => {
+export const getCanonicalUrl = (slug: string = ""): string => {
   return `${getBaseUrl()}/${slug.replace(/^\//, "")}`;
 };
 
@@ -33,7 +56,7 @@ export const getCanonicalUrl = (slug = "") => {
  * @param {string} title - The main title to be included in the SEO title.
  * @returns {string} The SEO-friendly title in the format: "{title} - Tools by Vijay".
  */
-export const generateSeoTitle = (title = "") => {
+export const generateSeoTitle = (title: string = ""): string => {
   if (!title) {
     return SEO.title;
   }
@@ -44,13 +67,14 @@ export const generateSeoTitle = (title = "") => {
 /**
  * Generates a complete metadata object for SEO, Open Graph, and Twitter cards.
  *
- * @param {Object} params - The parameters object
- * @param {string} [params.title=""] - The SEO title to be used.
- * @param {string} [params.description=""] - The SEO description to be used.
- * @param {string} [params.slug=""] - The slug for generating canonical and social media URLs.
- * @returns {Object} A metadata object with title, description, canonical URL, and social media metadata.
+ * @param {MetadataParams} params - The parameters object
+ * @returns {Metadata} A metadata object with title, description, canonical URL, and social media metadata.
  */
-export const generateMetadata = ({ title = "", description = "", slug = "" }) => {
+export const generateMetadata = ({
+  title = "",
+  description = "",
+  slug = "",
+}: MetadataParams): Metadata => {
   return {
     ...baseMetadata,
     title: generateSeoTitle(title),

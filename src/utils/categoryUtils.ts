@@ -1,10 +1,18 @@
 import categories from "@/constants/toolsCategories";
 
+type Category = {
+  label: string;
+  slug: string;
+  description: string;
+  seoTitle: string;
+  seoDescription: string;
+};
+
 /**
  * Get all categores
- * @returns {Object[]} Array of all categories
+ * @returns {Category[]} Array of all categories
  */
-export const getAllCategories = () => {
+export const getAllCategories = (): Category[] => {
   return categories;
 };
 
@@ -13,7 +21,7 @@ export const getAllCategories = () => {
  * @param {string} slug - The slug of the category to find
  * @returns {Object|null} The category object or null if not found
  */
-export const getCategoryBySlug = (slug) => {
+export const getCategoryBySlug = (slug: string): Category | null => {
   return categories.find((category) => category.slug === slug) || null;
 };
 
@@ -21,7 +29,7 @@ export const getCategoryBySlug = (slug) => {
  * Get all category slugs
  * @returns {string[]} Array of all category slugs
  */
-export const getAllCategorySlugs = () => {
+export const getAllCategorySlugs = (): string[] => {
   return categories.map((category) => category.slug);
 };
 
@@ -30,16 +38,16 @@ export const getAllCategorySlugs = () => {
  * @param {string} slug - The slug to check
  * @returns {boolean} Whether the category exists
  */
-export const categoryExists = (slug) => {
+export const categoryExists = (slug: string): boolean => {
   return categories.some((category) => category.slug === slug);
 };
 
 /**
  * Filter categories by a search term (matches against label or description)
  * @param {string} searchTerm - The term to search for
- * @returns {Object[]} Filtered array of categories
+ * @returns {Category[]} Filtered array of categories
  */
-export const filterCategories = (searchTerm) => {
+export const filterCategories = (searchTerm: string): Category[] => {
   if (!searchTerm) return categories;
 
   const term = searchTerm.toLowerCase();
@@ -52,25 +60,9 @@ export const filterCategories = (searchTerm) => {
 
 /**
  * Sort categories alphabetically by label
- * @param {Object[]} categoriesToSort - Array of categories to sort (defaults to all categories)
- * @returns {Object[]} Sorted array of categories
+ * @param {Category[]} categoriesToSort - Array of categories to sort
+ * @returns {Category[]} Sorted array of categories
  */
-export const sortCategoriesAlphabetically = (categoriesToSort = categories) => {
+export const sortCategoriesAlphabetically = (categoriesToSort: Category[]): Category[] => {
   return [...categoriesToSort].sort((a, b) => a.label.localeCompare(b.label));
-};
-
-/**
- * Group tools by their categories
- * @param {Object[]} tools - Array of tool objects that have a category property
- * @returns {Object} Object with category slugs as keys and arrays of tools as values
- */
-export const groupToolsByCategory = (tools) => {
-  return tools.reduce((grouped, tool) => {
-    const categorySlug = tool.category;
-    if (!grouped[categorySlug]) {
-      grouped[categorySlug] = [];
-    }
-    grouped[categorySlug].push(tool);
-    return grouped;
-  }, {});
 };
