@@ -1,4 +1,4 @@
-import { JSX, ReactNode } from "react";
+import React, { JSX, ReactNode } from "react";
 
 import { NextFontWithVariable } from "next/dist/compiled/@next/font/dist/types";
 import { Work_Sans, Geist_Mono } from "next/font/google";

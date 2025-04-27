@@ -1,4 +1,4 @@
-import { JSX } from "react";
+import React, { JSX } from "react";
 
 import { notFound } from "next/navigation";
 
@@ -14,13 +14,13 @@ import { getIconForTool } from "@/utils/toolUtils";
 
 /**
  * Retrieves tool data for the Css Inliner tool.
- * @constant {Tool} tool - The tool object containing metadata and configuration.
+ * @constant {Tool|null} tool - The tool object containing metadata and configuration.
  */
-const tool: Tool = findToolBySlug("css-inliner");
+const tool: Tool | null = findToolBySlug("css-inliner");
 
 /**
  * SEO metadata for the Css Inliner tool page.
- * @type {Object}
+ * @type {Metadata}
  */
 export const metadata: Metadata = genMeta({
   title: tool?.seoTitle || "",

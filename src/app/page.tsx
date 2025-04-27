@@ -1,4 +1,4 @@
-import { JSX } from "react";
+import React, { JSX } from "react";
 
 import ToolCard from "@/components/home/ToolCard";
 import PageLayout from "@/components/page/PageLayout";

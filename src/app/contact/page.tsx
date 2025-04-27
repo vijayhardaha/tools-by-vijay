@@ -1,4 +1,4 @@
-import { JSX } from "react";
+import React, { JSX } from "react";
 
 import { FaFacebookF, FaXTwitter, FaGithub, FaInstagram } from "react-icons/fa6";
 import { TbWorldWww } from "react-icons/tb";
@@ -9,8 +9,8 @@ import PageLayout from "@/components/page/PageLayout";
 import { generateMetadata as genMeta, Metadata } from "@/utils/seoUtils";
 
 /**
- * SEO metadata for the Slugify page
- * @type {Object}
+ * SEO metadata for the Contact page.
+ * @type {Metadata}
  */
 export const metadata: Metadata = genMeta({
   title: "Contact",

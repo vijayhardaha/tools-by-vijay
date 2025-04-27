@@ -1,4 +1,4 @@
-import { JSX } from "react";
+import React, { JSX } from "react";
 
 import { notFound } from "next/navigation";
 
@@ -20,7 +20,7 @@ const tool: Tool | null = findToolBySlug("shuffle-text-lines");
 
 /**
  * SEO metadata for the Shuffle Text Lines page.
- * @type {Object}
+ * @type {Metadata}
  */
 export const metadata: Metadata = genMeta({
   title: tool?.seoTitle || "",

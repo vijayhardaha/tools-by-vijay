@@ -6,7 +6,7 @@ export type MetadataParams = {
   slug?: string;
 };
 
-export type Metadata = {
+export interface Metadata {
   title: string;
   description: string;
   alternates: {
@@ -21,7 +21,7 @@ export type Metadata = {
     title: string;
     description: string;
   };
-};
+}
 
 /**
  * Retrieves the base URL based on the environment variables.

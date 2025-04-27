@@ -1,8 +1,12 @@
-import { JSX } from "react";
+import React, { JSX } from "react";
 
 import TextStoryMakerContent from "@/components/text-story-maker/TextStoryMakerTool";
 import { generateMetadata as genMeta, Metadata } from "@/utils/seoUtils";
 
+/**
+ * SEO metadata for the Text Story Maker page.
+ * @type {Metadata}
+ */
 export const metadata: Metadata = genMeta({
   title: "Text Story Maker",
   description:

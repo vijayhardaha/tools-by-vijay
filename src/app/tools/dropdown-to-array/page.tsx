@@ -1,4 +1,4 @@
-import { JSX } from "react";
+import React, { JSX } from "react";
 
 import { notFound } from "next/navigation";
 
@@ -14,13 +14,13 @@ import { getIconForTool } from "@/utils/toolUtils";
 
 /**
  * Retrieves tool data for the Dropdown to Array tool.
- * @constant {Tool} tool - The tool object containing metadata and configuration.
+ * @constant {Tool|null} tool - The tool object containing metadata and configuration.
  */
-const tool: Tool = findToolBySlug("dropdown-to-array");
+const tool: Tool | null = findToolBySlug("dropdown-to-array");
 
 /**
  * SEO metadata for the Dropdown to Array tool page.
- * @type {Object}
+ * @type {Metadata}
  */
 export const metadata: Metadata = genMeta({
   title: tool?.seoTitle || "",
