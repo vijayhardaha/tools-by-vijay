@@ -13,12 +13,14 @@ import ReplaceQuotesOutput from "./ReplaceQuotesOutput";
  * @component
  * @returns {JSX.Element} The complete Replace Quotes tool with input options, output display, and information
  */
-const ReplaceQuotesTool = () => {
-  const [input, setInput] = useState("");
-  const [output, setOutput] = useState("");
-  const [replaceType, setReplaceType] = useState("simple-to-curly");
-  const [replaceApostrophes, setReplaceApostrophes] = useState(true);
-  const [replaceStandaloneQuotes, setReplaceStandaloneQuotes] = useState(false);
+const ReplaceQuotesTool: React.FC = (): React.JSX.Element => {
+  const [input, setInput] = useState<string>("");
+  const [output, setOutput] = useState<string>("");
+  const [replaceType, setReplaceType] = useState<"simple-to-curly" | "curly-to-simple">(
+    "simple-to-curly"
+  );
+  const [replaceApostrophes, setReplaceApostrophes] = useState<boolean>(true);
+  const [replaceStandaloneQuotes, setReplaceStandaloneQuotes] = useState<boolean>(false);
 
   /**
    * Handles the quote replacement process
@@ -26,8 +28,8 @@ const ReplaceQuotesTool = () => {
    * @function
    * @returns {void}
    */
-  const handleSubmit = () => {
-    let replacedText = input;
+  const handleSubmit = (): void => {
+    let replacedText: string = input;
 
     switch (replaceType) {
       case "simple-to-curly":
@@ -71,7 +73,7 @@ const ReplaceQuotesTool = () => {
    * @function
    * @returns {void}
    */
-  const handleClear = () => {
+  const handleClear = (): void => {
     setInput("");
     setOutput("");
   };
@@ -82,7 +84,7 @@ const ReplaceQuotesTool = () => {
    * @function
    * @returns {void}
    */
-  const handleReset = () => {
+  const handleReset = (): void => {
     handleClear();
     setReplaceType("simple-to-curly");
     setReplaceApostrophes(true);

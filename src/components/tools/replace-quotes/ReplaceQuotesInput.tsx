@@ -1,33 +1,34 @@
 "use client";
 
-import PropTypes from "prop-types";
-
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { RadioBox } from "@/components/ui/radiobox";
 import { Textarea } from "@/components/ui/textarea";
 
+interface ReplaceQuotesInputProps {
+  input: string;
+  setInput: (value: string) => void;
+  replaceType: "simple-to-curly" | "curly-to-simple";
+  setReplaceType: (value: "simple-to-curly" | "curly-to-simple") => void;
+  replaceApostrophes: boolean;
+  setReplaceApostrophes: (value: boolean) => void;
+  replaceStandaloneQuotes: boolean;
+  setReplaceStandaloneQuotes: (value: boolean) => void;
+  onSubmit: () => void;
+  onClear: () => void;
+  onReset: () => void;
+}
+
 /**
  * Input component for the Replace Quotes tool.
  * Handles user input and actions for replacing quotes.
  *
  * @component
- * @param {Object} props - Component props
- * @param {string} props.input - The input text to process.
- * @param {function} props.setInput - Function to update the input text.
- * @param {"simple-to-curly"|"curly-to-simple"} props.replaceType - The type of quote replacement.
- * @param {function} props.setReplaceType - Function to update the replace type.
- * @param {boolean} props.replaceApostrophes - Whether to replace apostrophes.
- * @param {function} props.setReplaceApostrophes - Function to toggle replacing apostrophes.
- * @param {boolean} props.replaceStandaloneQuotes - Whether to replace standalone quotes.
- * @param {function} props.setReplaceStandaloneQuotes - Function to toggle replacing standalone quotes.
- * @param {function} props.onSubmit - Function to handle form submission.
- * @param {function} props.onClear - Function to clear the input.
- * @param {function} props.onReset - Function to reset the form.
+ * @param {ReplaceQuotesInputProps} props - Component props
  * @returns {JSX.Element} The input component for the Replace Quotes tool.
  */
-const ReplaceQuotesInput = ({
+const ReplaceQuotesInput: React.FC<ReplaceQuotesInputProps> = ({
   input,
   setInput,
   replaceType,
@@ -39,12 +40,12 @@ const ReplaceQuotesInput = ({
   onSubmit,
   onClear,
   onReset,
-}) => {
+}: ReplaceQuotesInputProps): React.JSX.Element => {
   /**
    * Handles form submission by preventing default behavior and triggering the replace action.
-   * @param {FormEvent} e - Form event object
+   * @param {React.FormEvent} e - Form event object
    */
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onSubmit();
   };
@@ -118,20 +119,6 @@ const ReplaceQuotesInput = ({
       </CardContent>
     </Card>
   );
-};
-
-ReplaceQuotesInput.propTypes = {
-  input: PropTypes.string.isRequired,
-  setInput: PropTypes.func.isRequired,
-  replaceType: PropTypes.oneOf(["simple-to-curly", "curly-to-simple"]).isRequired,
-  setReplaceType: PropTypes.func.isRequired,
-  replaceApostrophes: PropTypes.bool.isRequired,
-  setReplaceApostrophes: PropTypes.func.isRequired,
-  replaceStandaloneQuotes: PropTypes.bool.isRequired,
-  setReplaceStandaloneQuotes: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired,
-  onClear: PropTypes.func.isRequired,
-  onReset: PropTypes.func.isRequired,
 };
 
 export default ReplaceQuotesInput;

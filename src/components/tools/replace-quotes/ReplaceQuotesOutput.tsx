@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+"use client";
 
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import { CopyButton } from "@/components/ui/copyButton";
@@ -13,7 +13,13 @@ import { Textarea } from "@/components/ui/textarea";
  * @param {string} props.output - The processed text to display
  * @returns {JSX.Element} The rendered card with output display and copy functionality
  */
-const ReplaceQuotesOutput = ({ output }) => {
+interface ReplaceQuotesOutputProps {
+  output: string;
+}
+
+const ReplaceQuotesOutput: React.FC<ReplaceQuotesOutputProps> = ({
+  output,
+}: ReplaceQuotesOutputProps): React.JSX.Element => {
   return (
     <Card>
       <CardHeader>
@@ -32,10 +38,6 @@ const ReplaceQuotesOutput = ({ output }) => {
       </CardContent>
     </Card>
   );
-};
-
-ReplaceQuotesOutput.propTypes = {
-  output: PropTypes.string.isRequired,
 };
 
 export default ReplaceQuotesOutput;
