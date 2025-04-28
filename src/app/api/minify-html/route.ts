@@ -7,16 +7,22 @@ import { NextResponse } from "next/server";
  * @param {Request} request - The incoming request object.
  * @returns {Promise<Response>} JSON response with minified HTML or an error message.
  */
-export async function POST(request) {
+export async function POST(request: Request): Promise<Response> {
   try {
-    const { html, options } = await request.json();
+    // Define the expected input structure
+    type MinifyHtmlRequest = {
+      html: string;
+      options?: Record<string, unknown>;
+    };
+
+    const { html, options }: MinifyHtmlRequest = await request.json();
 
     if (!html || typeof html !== "string") {
       return NextResponse.json({ error: "Invalid HTML input" }, { status: 400 });
     }
 
     // Minify the HTML with the provided options
-    const minifiedHtml = await minify(html, {
+    const minifiedHtml: string = await minify(html, {
       ...options,
       caseSensitive: false,
       keepClosingSlash: false,

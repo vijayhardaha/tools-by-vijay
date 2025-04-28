@@ -8,19 +8,28 @@ import prettier from "prettier";
  * @param {Request} request - The incoming request object.
  * @returns {Promise<Response>} JSON response with inlined and formatted HTML or an error message.
  */
-export async function POST(request) {
+export async function POST(request: Request): Promise<Response> {
   try {
-    const { html, css } = await request.json();
+    // Define the expected input structure
+    type InlineCssRequest = {
+      html: string;
+      css: string;
+    };
+
+    const { html, css }: InlineCssRequest = await request.json();
 
     if (!html || !css) {
       return NextResponse.json({ error: "HTML and CSS inputs are required" }, { status: 400 });
     }
 
     // Inline CSS into HTML
-    const inlinedHtml = juice.inlineContent(html, css);
+    const inlinedHtml: string = juice.inlineContent(html, css);
 
     // Format the inlined HTML using Prettier
-    let formattedHtml = await prettier.format(inlinedHtml, { parser: "html", singleQuote: true });
+    let formattedHtml: string = await prettier.format(inlinedHtml, {
+      parser: "html",
+      singleQuote: true,
+    });
 
     if (!formattedHtml.trim()) {
       formattedHtml = inlinedHtml; // Fallback to the original inlined HTML if formatting fails

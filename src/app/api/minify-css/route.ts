@@ -7,19 +7,25 @@ import { NextResponse } from "next/server";
  * @param {Request} request - The incoming request object
  * @returns {Promise<Response>} JSON response with minified CSS or error
  */
-export async function POST(request) {
+export async function POST(request: Request): Promise<Response> {
   try {
-    const { css, options } = await request.json();
+    // Define the expected input structure
+    type MinifyCssRequest = {
+      css: string;
+      options?: CleanCSS.Options;
+    };
+
+    const { css, options }: MinifyCssRequest = await request.json();
 
     if (!css || typeof css !== "string") {
       return NextResponse.json({ error: "Invalid CSS input" }, { status: 400 });
     }
 
     // Create a new CleanCSS instance with the provided options
-    const cleanCss = new CleanCSS(options);
+    const cleanCss = new CleanCSS({ ...options, returnPromise: true });
 
     // Minify the CSS
-    const minified = cleanCss.minify(css);
+    const minified = await cleanCss.minify(css);
 
     // Check for errors
     if (minified.errors && minified.errors.length > 0) {
