@@ -6,7 +6,7 @@ import JsMinifierInfo from "./JsMinifierInfo";
 import JsMinifierInput from "./JsMinifierInput";
 import JsMinifierOutput from "./JsMinifierOutput";
 
-interface MinifyOptions {
+export interface MinifyOptions {
   mangle: boolean;
   removeConsole: boolean;
   removeDebugger: boolean;
@@ -61,7 +61,7 @@ const JsMinifierTool: React.FC = (): React.JSX.Element => {
       setOutput(data.minifiedJs);
     } catch (error) {
       console.error("JavaScript minification error:", error);
-      setError(error.message);
+      setError(error instanceof Error ? error.message : "An error occurred");
     } finally {
       setIsLoading(false);
     }
@@ -111,7 +111,7 @@ const JsMinifierTool: React.FC = (): React.JSX.Element => {
           onClear={handleClear}
           onReset={handleReset}
           isLoading={isLoading}
-          error={error} // Pass error to input component
+          error={error}
         />
 
         {output && <JsMinifierOutput output={output} input={input} />}

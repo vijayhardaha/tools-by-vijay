@@ -1,17 +1,14 @@
-import PropTypes from "prop-types";
+import { ReactNode, ElementType, FunctionComponent } from "react";
 
 import { IconButton, TextButton } from "@/components/text-story-maker/ui";
 import { RangeSlider } from "@/components/text-story-maker/ui";
 import { cn } from "@/utils/classNameUtils";
 
-/**
- * A container component for positioning tools at the bottom of the screen.
- *
- * @param {Object} props - The component props.
- * @param {React.ReactNode} props.children - The child elements to render inside the container.
- * @returns {JSX.Element} The styled container component for tools.
- */
-const ControlPanel = ({ children }) => {
+interface ControlPanelProps {
+  children: ReactNode;
+}
+
+const ControlPanel: FunctionComponent<ControlPanelProps> = ({ children }) => {
   return (
     <div className="user-select-none absolute bottom-0 left-0 z-40 w-full space-y-4 p-4 py-6 text-center">
       {children}
@@ -19,19 +16,12 @@ const ControlPanel = ({ children }) => {
   );
 };
 
-ControlPanel.propTypes = {
-  children: PropTypes.node.isRequired,
-};
+interface ControlBoxProps {
+  children: ReactNode;
+  className?: string;
+}
 
-/**
- * A wrapper component for grouping toolbar elements with consistent styling.
- *
- * @param {Object} props - The component props.
- * @param {React.ReactNode} props.children - The child elements to render inside the wrapper.
- * @param {React.ReactNode} props.className - Additional CSS classes to apply to the wrapper.
- * @returns {JSX.Element} The styled wrapper component for toolbars.
- */
-const ControlBox = ({ children, className }) => {
+const ControlBox: FunctionComponent<ControlBoxProps> = ({ children, className }) => {
   return (
     <div
       className={cn(
@@ -44,25 +34,17 @@ const ControlBox = ({ children, className }) => {
   );
 };
 
-ControlBox.propTypes = {
-  children: PropTypes.node.isRequired,
-  className: PropTypes.string,
-};
+interface ControlBtnProps {
+  type?: "icon" | "text";
+  icon?: ElementType;
+  className?: string;
+  children?: ReactNode;
+  active?: boolean;
+  screenReaderText?: string;
+  [key: string]: any;
+}
 
-/**
- * A versatile button component for toolbars, supporting both icon and text types.
- *
- * @param {Object} props - The component props.
- * @param {"icon"|"text"} [props.type="icon"] - Specifies the button type, either "icon" or "text".
- * @param {React.ElementType} [props.icon] - The icon component to render (used when type is "icon").
- * @param {string} [props.className] - Additional CSS classes to apply to the button.
- * @param {React.ReactNode} [props.children] - The child elements to render inside the button.
- * @param {boolean} [props.active] - Indicates whether the button is in an active state.
- * @param {string} [props.screenReaderText] - Text for screen readers to improve accessibility.
- * @param {Object} [props] - Additional props to pass to the button component.
- * @returns {JSX.Element} The styled button component for toolbars.
- */
-const ControlBtn = ({
+const ControlBtn: FunctionComponent<ControlBtnProps> = ({
   type = "icon",
   icon,
   className,
@@ -76,9 +58,9 @@ const ControlBtn = ({
   return (
     <Component
       className={cn("bg-transparent text-white", className, {
-        "bg-white text-neutral-900": active,
+        "bg-white text-neutral-900": active as boolean,
       })}
-      icon={icon}
+      icon={icon || (() => null)}
       aria-label={screenReaderText}
       {...props}
     >
@@ -87,30 +69,17 @@ const ControlBtn = ({
   );
 };
 
-ControlBtn.propTypes = {
-  type: PropTypes.oneOf(["icon", "text"]),
-  icon: PropTypes.elementType,
-  className: PropTypes.string,
-  children: PropTypes.node,
-  active: PropTypes.bool,
-  screenReaderText: PropTypes.string,
-  props: PropTypes.object,
-};
+interface ControlSliderProps {
+  label?: string;
+  min?: number;
+  max?: number;
+  step?: number;
+  value: number;
+  onChangeKey: string;
+  onChangeHandler: (key: string, value: number[]) => void;
+}
 
-/**
- * A slider component for adjusting numeric values within a specified range.
- *
- * @param {Object} props - The component props.
- * @param {string} props.label - The label displayed above the slider.
- * @param {number} [props.min=0] - The minimum value of the slider.
- * @param {number} [props.max=20] - The maximum value of the slider.
- * @param {number} [props.step=0.125] - The step size for the slider.
- * @param {number} props.value - The current value of the slider.
- * @param {string} props.onChangeKey - A key to identify the slider in the change handler.
- * @param {Function} props.onChangeHandler - The function to call when the slider value changes.
- * @returns {JSX.Element} The styled slider component.
- */
-const ControlSlider = ({
+const ControlSlider: FunctionComponent<ControlSliderProps> = ({
   label = "",
   min = 0,
   max = 20,
@@ -119,7 +88,7 @@ const ControlSlider = ({
   onChangeKey,
   onChangeHandler,
 }) => {
-  const handleChange = (values) => {
+  const handleChange = (values: number[]) => {
     onChangeHandler(onChangeKey, values);
   };
 
@@ -139,6 +108,7 @@ const ControlSlider = ({
           max={max}
           values={[value]}
           onChange={handleChange}
+          ariaLabel={label}
           aria-labelledby={sliderId}
           aria-valuemin={min}
           aria-valuemax={max}
@@ -150,29 +120,16 @@ const ControlSlider = ({
   );
 };
 
-ControlSlider.propTypes = {
-  label: PropTypes.string.isRequired,
-  min: PropTypes.number,
-  max: PropTypes.number,
-  step: PropTypes.number,
-  value: PropTypes.number.isRequired,
-  onChangeKey: PropTypes.string.isRequired,
-  onChangeHandler: PropTypes.func.isRequired,
-};
+interface ToggleOptionsProps {
+  label: string;
+  options?: Record<string, string>;
+  selected: string;
+  onChangeKey: string;
+  onChangeHandler: (key: any, value: any) => void;
+  buttonClass?: string;
+}
 
-/**
- * A toggle group component for selecting one option from a set of predefined options.
- *
- * @param {Object} props - The component props.
- * @param {string} props.label - The label displayed above the toggle group.
- * @param {Object} [props.options={}] - The options to display as toggle buttons, where keys are labels and values are identifiers.
- * @param {string} props.selected - The currently selected option's identifier.
- * @param {string} props.onChangeKey - A key to identify the toggle group in the change handler.
- * @param {Function} props.onChangeHandler - The function to call when the selected option changes.
- * @param {string} [props.buttonClass] - Additional CSS classes to apply to the toggle buttons.
- * @returns {JSX.Element} The styled toggle group component.
- */
-const ToggleOptions = ({
+const ToggleOptions: FunctionComponent<ToggleOptionsProps> = ({
   label,
   options = {},
   selected,
@@ -180,11 +137,11 @@ const ToggleOptions = ({
   onChangeHandler,
   buttonClass,
 }) => {
-  const handleClick = (value) => {
+  const handleClick = (value: string) => {
     onChangeHandler(onChangeKey, value);
   };
 
-  if (!options) return;
+  if (!options) return null;
 
   const groupId = `toggle-${onChangeKey}`;
 
@@ -216,28 +173,22 @@ const ToggleOptions = ({
   );
 };
 
-ToggleOptions.propTypes = {
-  label: PropTypes.string.isRequired,
-  options: PropTypes.object,
-  selected: PropTypes.string.isRequired,
-  onChangeKey: PropTypes.string.isRequired,
-  onChangeHandler: PropTypes.func.isRequired,
-  buttonClass: PropTypes.string,
-};
+interface ToggleColorsProps {
+  label: string;
+  selected: string;
+  onChangeKey: string;
+  onChangeHandler: (key: any, value: any) => void;
+  buttonClass?: string;
+}
 
-/**
- * A toggle group component for selecting one option from a set of predefined options.
- *
- * @param {Object} props - The component props.
- * @param {string} props.label - The label displayed above the toggle group.
- * @param {string} props.selected - The currently selected option's identifier.
- * @param {string} props.onChangeKey - A key to identify the toggle group in the change handler.
- * @param {Function} props.onChangeHandler - The function to call when the selected option changes.
- * @param {string} [props.buttonClass] - Additional CSS classes to apply to the toggle buttons.
- * @returns {JSX.Element} The styled toggle group component.
- */
-const ToggleColors = ({ label, selected, onChangeKey, onChangeHandler, buttonClass }) => {
-  const handleClick = (value) => {
+const ToggleColors: FunctionComponent<ToggleColorsProps> = ({
+  label,
+  selected,
+  onChangeKey,
+  onChangeHandler,
+  buttonClass,
+}) => {
+  const handleClick = (value: string) => {
     onChangeHandler(onChangeKey, value);
   };
 
@@ -278,15 +229,6 @@ const ToggleColors = ({ label, selected, onChangeKey, onChangeHandler, buttonCla
       </div>
     </div>
   );
-};
-
-ToggleColors.propTypes = {
-  label: PropTypes.string.isRequired,
-  options: PropTypes.object,
-  selected: PropTypes.string.isRequired,
-  onChangeKey: PropTypes.string.isRequired,
-  onChangeHandler: PropTypes.func.isRequired,
-  buttonClass: PropTypes.string,
 };
 
 export { ControlPanel, ControlBox, ControlBtn, ControlSlider, ToggleOptions, ToggleColors };

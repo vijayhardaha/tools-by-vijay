@@ -1,7 +1,8 @@
 "use client";
 
+import React from "react";
+
 import { useRouter } from "next/navigation";
-import PropTypes from "prop-types";
 import { CgArrowLongLeft as ArrowLeftIcon } from "react-icons/cg";
 import { LuCheck as CheckIcon } from "react-icons/lu";
 import { MdHideSource as PreviewIcon } from "react-icons/md";
@@ -11,18 +12,25 @@ import DownloadImageTool from "@/components/text-story-maker/parts/header/Downlo
 import FrameSizeTool from "@/components/text-story-maker/parts/header/FrameSizeTool";
 import Button from "@/components/text-story-maker/parts/header/HeaderIconBtn";
 import TextOptionsTool from "@/components/text-story-maker/parts/header/TextOptionsTool";
+import { UpdateOptionsSetsType } from "@/components/text-story-maker/TextStoryMakerTool";
+
+interface HeaderProps extends UpdateOptionsSetsType {
+  activeTool: string;
+  setActiveTool: (tool: string) => void;
+}
 
 /**
  * Header component for the text story maker.
  *
- * @param {Object} props - Component props.
- * @param {Object} props.options - Options for the text story maker.
- * @param {Function} props.updateOption - Function to update options.
- * @param {string} props.activeTool - Currently active tool.
- * @param {Function} props.setActiveTool - Function to set the active tool.
+ * @param {HeaderProps} props - Component props.
  * @returns {JSX.Element} The rendered Header component.
  */
-const Header = ({ options, updateOption, activeTool, setActiveTool }) => {
+const Header: React.FC<HeaderProps> = ({
+  options,
+  updateOption,
+  activeTool,
+  setActiveTool,
+}: HeaderProps): React.JSX.Element => {
   const router = useRouter();
 
   return (
@@ -32,14 +40,6 @@ const Header = ({ options, updateOption, activeTool, setActiveTool }) => {
     >
       {activeTool ? (
         <div className="flex items-center justify-end">
-          {/**
-           * Button component for closing the active tool.
-           *
-           * @param {Object} props - Component props.
-           * @param {React.ElementType} props.icon - Icon to display in the button.
-           * @param {string} props.screenReaderText - Text for screen readers.
-           * @param {Function} props.onClick - Function to handle button click.
-           */}
           <Button
             icon={CheckIcon}
             screenReaderText="Save changes and close active tool panel"
@@ -49,42 +49,16 @@ const Header = ({ options, updateOption, activeTool, setActiveTool }) => {
       ) : (
         <>
           <div className="flex items-center justify-between gap-2">
-            {/**
-             * Button component for navigating to the previous page.
-             */}
             <Button
               icon={ArrowLeftIcon}
               screenReaderText="Return to main application page"
               onClick={() => router.push("/")}
             />
             <div className="ml-auto flex items-center gap-1.5" aria-label="Story editing tools">
-              {/**
-               * TextOptionsTool component for managing text options.
-               *
-               * @param {Object} props - Component props.
-               * @param {string} props.activeTool - Currently active tool.
-               * @param {Function} props.setActiveTool - Function to set the active tool.
-               */}
               <TextOptionsTool activeTool={activeTool} setActiveTool={setActiveTool} />
-              {/**
-               * BackgroundFillOptions component for managing background fill options.
-               */}
               <BackgroundFillOptions activeTool={activeTool} setActiveTool={setActiveTool} />
-              {/**
-               * FrameSizeTool component for managing frame size options.
-               *
-               * @param {Object} props - Component props.
-               * @param {Object} props.options - Options for the text story maker.
-               * @param {Function} props.updateOption - Function to update options.
-               */}
               <FrameSizeTool options={options} updateOption={updateOption} />
-              {/**
-               * DownloadImageTool component for managing image download options.
-               */}
               <DownloadImageTool options={options} updateOption={updateOption} />
-              {/**
-               * Button component for showing the preview.
-               */}
               <Button
                 icon={PreviewIcon}
                 screenReaderText="Show preview of your story without editing controls"
@@ -96,13 +70,6 @@ const Header = ({ options, updateOption, activeTool, setActiveTool }) => {
       )}
     </header>
   );
-};
-
-Header.propTypes = {
-  options: PropTypes.object.isRequired,
-  updateOption: PropTypes.func.isRequired,
-  activeTool: PropTypes.string.isRequired,
-  setActiveTool: PropTypes.func.isRequired,
 };
 
 export default Header;

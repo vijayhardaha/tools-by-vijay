@@ -50,7 +50,7 @@ const BulkSlugifyTool: React.FC = (): React.JSX.Element => {
 
         return slugify(processedText, {
           replacement: useUnderscore ? "_" : "-",
-          remove: removeNumbers ? /[0-9]/g : null,
+          remove: removeNumbers ? /[0-9]/g : undefined,
           lower: useLowercase,
           strict: true,
         });

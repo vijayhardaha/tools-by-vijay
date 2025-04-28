@@ -1,21 +1,25 @@
-import PropTypes from "prop-types";
+import React from "react";
 
 import { btnBaseStyles } from "@/components/text-story-maker/constants/btnBaseStyles";
 import { cn } from "@/utils/classNameUtils";
 
+interface IconButtonProps {
+  icon: React.ElementType;
+  className?: string;
+  iconClassName?: string;
+  screenReaderText?: string;
+  ariaLabel?: string;
+  children?: React.ReactNode;
+  [key: string]: any;
+}
+
 /**
  * IconButton component for rendering a button with an icon.
  *
- * @param {Object} props - Component props.
- * @param {React.ElementType} props.icon - The icon component to render inside the button.
- * @param {string} [props.className] - Additional classes for the button element.
- * @param {string} [props.iconClassName] - Additional classes for the icon element.
- * @param {string} [props.screenReaderText] - Screen reader text for accessibility.
- * @param {string} [props.ariaLabel] - Explicit aria-label text, falls back to screenReaderText if not provided.
- * @param {React.ReactNode} [props.children] - Optional children for accessibility text.
+ * @param {IconButtonProps} props - Component props.
  * @returns {JSX.Element} The rendered IconButton component.
  */
-export const IconButton = ({
+export const IconButton: React.FC<IconButtonProps> = ({
   icon: IconComponent,
   className,
   iconClassName,
@@ -23,7 +27,7 @@ export const IconButton = ({
   ariaLabel,
   children,
   ...props
-}) => (
+}: IconButtonProps): React.JSX.Element => (
   <button
     type="button"
     className={cn(btnBaseStyles.join(" "), "size-12 p-1", className)}
@@ -36,30 +40,3 @@ export const IconButton = ({
     {children}
   </button>
 );
-
-IconButton.propTypes = {
-  /**
-   * The icon component to render inside the button.
-   */
-  icon: PropTypes.elementType.isRequired,
-  /**
-   * Additional classes for the button element.
-   */
-  className: PropTypes.string,
-  /**
-   * Additional classes for the icon element.
-   */
-  iconClassName: PropTypes.string,
-  /**
-   * Screen reader text for accessibility.
-   */
-  screenReaderText: PropTypes.string,
-  /**
-   * Explicit aria-label text, falls back to screenReaderText if not provided.
-   */
-  ariaLabel: PropTypes.string,
-  /**
-   * Optional children for accessibility text or additional content.
-   */
-  children: PropTypes.node,
-};

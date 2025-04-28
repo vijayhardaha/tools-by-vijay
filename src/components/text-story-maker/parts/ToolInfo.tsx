@@ -9,7 +9,7 @@ import { cn } from "@/utils/classNameUtils";
  *
  * @returns {JSX.Element} A styled div containing the tool's name and description.
  */
-const ToolInfo = () => {
+const ToolInfo: React.FC = (): React.JSX.Element => {
   return (
     <div
       id="tool-info"
@@ -23,18 +23,16 @@ const ToolInfo = () => {
       <div className="flex flex-col items-start">
         <h1
           className={cn(
-            // Combines multiple class names for styling
             "mb-0 text-2xl leading-normal font-semibold tracking-wide",
-            getFontClassByName("bebas_neue") // Retrieves the font class for "bebas_neue"
+            getFontClassByName("bebas_neue") as string
           )}
         >
           Text Story Maker
         </h1>
         <p
           className={cn(
-            // Combines multiple class names for styling
             "text-accent-foreground -mt-2 text-lg leading-normal",
-            getFontClassByName("caveat") // Retrieves the font class for "caveat"
+            getFontClassByName("caveat") as string
           )}
         >
           A tool by Vijay Hardaha

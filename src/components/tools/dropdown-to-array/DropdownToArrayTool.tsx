@@ -38,7 +38,7 @@ const DropdownToArrayTool: React.FC = (): React.JSX.Element => {
   const generateSlug = (text: string): string =>
     slugify(latinize(text).toLowerCase(), {
       replacement: "_",
-      remove: null,
+      remove: undefined,
       lower: true,
       strict: true,
     });
@@ -91,7 +91,7 @@ const DropdownToArrayTool: React.FC = (): React.JSX.Element => {
         // Extract options from direct option elements
         return Array.from(optionElements).map((option) => ({
           value: option.value,
-          text: option.textContent.trim(),
+          text: option?.textContent?.trim() || "",
         }));
       }
 
@@ -105,10 +105,10 @@ const DropdownToArrayTool: React.FC = (): React.JSX.Element => {
 
       return Array.from(optionElements).map((option) => ({
         value: option.value,
-        text: option.textContent.trim(),
+        text: option?.textContent?.trim() || "",
       }));
-    } catch (err) {
-      setError(`Error parsing HTML: ${err.message}`);
+    } catch (error) {
+      setError(`Error parsing HTML: ${error instanceof Error ? error.message : "Unknown error"}`);
       return null;
     }
   };
@@ -164,8 +164,10 @@ const DropdownToArrayTool: React.FC = (): React.JSX.Element => {
         }));
         return JSON.stringify(associativeArray, null, 2);
       }
-    } catch (err) {
-      setError(`Error formatting JSON: ${err.message}`);
+    } catch (error) {
+      setError(
+        `Error formatting JSON: ${error instanceof Error ? error.message : "Unknown error"}`
+      );
       return "";
     }
   };
@@ -197,8 +199,10 @@ const DropdownToArrayTool: React.FC = (): React.JSX.Element => {
         );
         return `const dropdownArray = [\n${associativeArray.join(",\n")}\n];`;
       }
-    } catch (err) {
-      setError(`Error formatting JavaScript array: ${err.message}`);
+    } catch (error) {
+      setError(
+        `Error formatting JavaScript array: ${error instanceof Error ? error.message : "Unknown error"}`
+      );
       return "";
     }
   };
@@ -231,8 +235,10 @@ const DropdownToArrayTool: React.FC = (): React.JSX.Element => {
         );
         return `const dropdownObject = {\n${objectItems.join(",\n")}\n};`;
       }
-    } catch (err) {
-      setError(`Error formatting JavaScript object: ${err.message}`);
+    } catch (error) {
+      setError(
+        `Error formatting JavaScript object: ${error instanceof Error ? error.message : "Unknown error"}`
+      );
       return "";
     }
   };
@@ -264,8 +270,10 @@ const DropdownToArrayTool: React.FC = (): React.JSX.Element => {
         );
         return `<?php\n$data = array(\n${arrayItems.join(",\n")}\n);`;
       }
-    } catch (err) {
-      setError(`Error formatting PHP array: ${err.message}`);
+    } catch (error) {
+      setError(
+        `Error formatting PHP array: ${error instanceof Error ? error.message : "Unknown error"}`
+      );
       return "";
     }
   };
@@ -298,8 +306,10 @@ const DropdownToArrayTool: React.FC = (): React.JSX.Element => {
         );
         return `<?php\n$data = array(\n${arrayItems.join(",\n")}\n);`;
       }
-    } catch (err) {
-      setError(`Error formatting WordPress output: ${err.message}`);
+    } catch (error) {
+      setError(
+        `Error formatting WordPress output: ${error instanceof Error ? error.message : "Unknown error"}`
+      );
       return "";
     }
   };

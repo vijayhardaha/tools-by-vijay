@@ -1,12 +1,12 @@
 import { useState } from "react";
 
-import PropTypes from "prop-types";
 import { PiTextAa as AaIcon } from "react-icons/pi";
 import { PiTextAlignCenter as AlignCenterIcon } from "react-icons/pi";
 import { PiTextAlignLeft as AlignLeftIcon } from "react-icons/pi";
 import { PiTextAlignRight as AlignRightIcon } from "react-icons/pi";
 import { TiThLargeOutline as TextSettingsIcon } from "react-icons/ti";
 
+import { OptionsType } from "@/components/text-story-maker/constants";
 import { btnBaseStyles } from "@/components/text-story-maker/constants/btnBaseStyles";
 import {
   ControlPanel,
@@ -17,30 +17,31 @@ import {
   ToggleColors,
 } from "@/components/text-story-maker/parts/panels/PanelHelper";
 import TextColorsPanel from "@/components/text-story-maker/parts/panels/TextColorsPanel";
+import { UpdateOptionsSetsType } from "@/components/text-story-maker/TextStoryMakerTool";
 import FontSlider from "@/components/text-story-maker/ui/FontSlider";
 import { cn } from "@/utils/classNameUtils";
 
 /**
- * TextOptionsPanel component for managing text-related options.
- *
- * @param {Object} props - Component props.
- * @param {Object} props.options - Current text options.
- * @param {Function} props.updateOption - Function to update a specific text option.
- * @returns {JSX.Element} The rendered TextOptionsPanel component.
+ * Props for the TextOptionsPanel component.
  */
-const TextOptionsPanel = ({ options, updateOption }) => {
-  const [activeTool, setActiveTool] = useState("font-family");
-  const [showSettingsDropdown, setShowSettingsDropdown] = useState(false);
-  const [activeSettingsTab, setActiveSettingsTab] = useState("text");
+interface TextOptionsPanelProps extends UpdateOptionsSetsType {}
 
-  const textAlignments = ["center", "left", "right"];
+/**
+ * TextOptionsPanel component for managing text-related options.
+ */
+const TextOptionsPanel = ({ options, updateOption }: TextOptionsPanelProps) => {
+  const [activeTool, setActiveTool] = useState<string>("font-family");
+  const [showSettingsDropdown, setShowSettingsDropdown] = useState<boolean>(false);
+  const [activeSettingsTab, setActiveSettingsTab] = useState<string>("text");
+
+  const textAlignments: Array<"center" | "left" | "right"> = ["center", "left", "right"];
 
   /**
    * Handles changes to the active tool.
    *
    * @param {string} tool - The tool to activate.
    */
-  const handleActiveToolChange = (tool) => {
+  const handleActiveToolChange = (tool: string): void => {
     setActiveTool(tool);
     setShowSettingsDropdown(false);
   };
@@ -51,14 +52,15 @@ const TextOptionsPanel = ({ options, updateOption }) => {
    * @param {string} key - The option key to update.
    * @param {Array<number>} values - Array containing the value.
    */
-  const handleSliderChange = (key, values) => updateOption(key, parseFloat(values[0]));
+  const handleSliderChange = (key: string, values: Array<number>): void =>
+    updateOption(key as keyof OptionsType, parseFloat(values[0].toString()));
 
   /**
    * Toggles the text alignment option in sequence.
    */
-  const handleAlignmentChange = () => {
+  const handleAlignmentChange = (): void => {
     const currentAlignment = options.textAlign || "left";
-    const currentIndex = textAlignments.indexOf(currentAlignment);
+    const currentIndex = textAlignments.indexOf(currentAlignment as "center" | "left" | "right");
     const nextIndex = (currentIndex + 1) % textAlignments.length;
     handleActiveToolChange("");
     setShowSettingsDropdown(false);
@@ -68,7 +70,7 @@ const TextOptionsPanel = ({ options, updateOption }) => {
   /**
    * Toggles the bold text option.
    */
-  const handleBoldToggle = () => {
+  const handleBoldToggle = (): void => {
     const newBoldStatus = !options.textBold;
     updateOption("textBold", newBoldStatus);
   };
@@ -76,7 +78,7 @@ const TextOptionsPanel = ({ options, updateOption }) => {
   /**
    * Toggles the italic text option.
    */
-  const handleItalicToggle = () => {
+  const handleItalicToggle = (): void => {
     const newItalicStatus = !options.textItalic;
     updateOption("textItalic", newItalicStatus);
   };
@@ -84,7 +86,7 @@ const TextOptionsPanel = ({ options, updateOption }) => {
   /**
    * Toggles the uppercase text option.
    */
-  const handleUppercaseToggle = () => {
+  const handleUppercaseToggle = (): void => {
     const newUppercaseStatus = !options.textUppercase;
     updateOption("textUppercase", newUppercaseStatus);
   };
@@ -94,7 +96,7 @@ const TextOptionsPanel = ({ options, updateOption }) => {
    *
    * @returns {React.Component} The icon component for the current alignment.
    */
-  const getAlignmentIcon = () => {
+  const getAlignmentIcon = (): React.ElementType => {
     switch (options.textAlign) {
       case "left":
         return AlignLeftIcon;
@@ -267,7 +269,6 @@ const TextOptionsPanel = ({ options, updateOption }) => {
                   <ToggleOptions
                     label="Glossy Background"
                     options={{ Disabled: "", Enabled: "enabled" }}
-                    className="mb-2"
                     selected={options.boxGlossy}
                     onChangeKey="boxGlossy"
                     onChangeHandler={updateOption}
@@ -393,33 +394,6 @@ const TextOptionsPanel = ({ options, updateOption }) => {
       </ControlBox>
     </ControlPanel>
   );
-};
-
-TextOptionsPanel.propTypes = {
-  options: PropTypes.shape({
-    textSize: PropTypes.number.isRequired,
-    textLineHeight: PropTypes.number.isRequired,
-    textAlign: PropTypes.oneOf(["left", "center", "right"]).isRequired,
-    textFont: PropTypes.string.isRequired,
-    textColor: PropTypes.string.isRequired,
-    textBold: PropTypes.bool,
-    textItalic: PropTypes.bool,
-    textUppercase: PropTypes.bool,
-    textLetterSpacing: PropTypes.number,
-    boxBackground: PropTypes.oneOf(["", "white", "black"]),
-    boxOuterPadding: PropTypes.number,
-    boxBorderRadius: PropTypes.number,
-    boxInnerPadding: PropTypes.number,
-    boxBackgroundOpacity: PropTypes.number,
-    boxGlossy: PropTypes.oneOf(["", "enabled"]),
-    boxGlossyBlur: PropTypes.number,
-    boxGlossyShadow: PropTypes.number,
-    textStroke: PropTypes.oneOf(["", "white", "black"]),
-    textStrokeSize: PropTypes.number,
-    textShadow: PropTypes.oneOf(["", "white", "black"]),
-    textShadowSize: PropTypes.number,
-  }).isRequired,
-  updateOption: PropTypes.func.isRequired,
 };
 
 export default TextOptionsPanel;

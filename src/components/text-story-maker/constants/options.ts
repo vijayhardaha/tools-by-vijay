@@ -1,19 +1,37 @@
 /**
  * Default configuration options for the text story maker.
- * @typedef {Object} DefaultOptions
- * @property {string} textFont - The font family for the text.
- * @property {string} textSize - The font size for the text.
- * @property {number} textLineHeight - The line height for the text.
- * @property {string} textColor - The color of the text.
- * @property {string} textAlign - The alignment of the text (e.g., "center", "left", "right").
- * @property {string} cardRatio - The aspect ratio of the card (e.g., "9/16").
- * @property {string} bgType - The type of background (e.g., "solid", "gradient").
- * @property {string} bgColor - The background color or gradient name.
- * @property {string} text - The content of the text.
  */
+export interface OptionsType {
+  textFont: number;
+  textSize: number;
+  textLineHeight: number;
+  textLetterSpacing: number;
+  textColor: number;
+  textAlign: string;
+  textBold: boolean;
+  textItalic: boolean;
+  textUppercase: boolean;
+  textEffect: string;
+  textStroke: string;
+  textStrokeSize: number;
+  textShadow: string;
+  textShadowSize: number;
+  text: string;
+  boxBackground: string;
+  boxOuterPadding: number;
+  boxInnerPadding: number;
+  boxBorderRadius: number;
+  boxBackgroundOpacity: number;
+  boxGlossy: string;
+  boxGlossyBlur: number;
+  boxGlossyShadow: number;
+  cardRatio: string;
+  bgType: string;
+  bgColor: number;
+  downloadSize: string;
+}
 
-/** @type {DefaultOptions} */
-export const defaultOptions = {
+export const defaultOptions: OptionsType = {
   // Typography
   textFont: 0,
   textSize: 1.5,

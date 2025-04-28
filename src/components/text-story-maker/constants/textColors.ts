@@ -1,11 +1,15 @@
 /**
- * An object containing predefined text and background color classes.
- * Each key represents a color identifier, and its value is an object
- * with `text` and `bg` properties specifying the respective CSS classes.
- *
- * @type {Object<string, {text: string, bg: string}>}
+ * Represents a text and background color pair.
  */
-export const textColors = [
+export type TextColor = {
+  text: string;
+  bg: string;
+};
+
+/**
+ * An array containing predefined text and background color classes.
+ */
+export const textColors: TextColor[] = [
   // Grayscale
   { text: "text-white", bg: "bg-white" },
   { text: "text-black", bg: "bg-black" },

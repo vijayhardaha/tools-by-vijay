@@ -1,6 +1,4 @@
-import { cloneElement, useState, useEffect, useRef } from "react";
-
-import PropTypes from "prop-types";
+import React, { cloneElement, useState, useEffect, useRef, ReactNode, ReactElement } from "react";
 
 /**
  * Dropdown component for displaying a toggleable menu.
@@ -10,9 +8,14 @@ import PropTypes from "prop-types";
  * @param {string} props.label - Accessible label for the dropdown menu.
  * @returns {JSX.Element} The rendered Dropdown component.
  */
-export const Dropdown = ({ children, label = "Menu" }) => {
+interface DropdownProps {
+  children: (props: { isOpen: boolean; toggleDropdown: () => void; menuId: string }) => ReactNode;
+  label?: string;
+}
+
+export const Dropdown = ({ children, label = "Menu" }: DropdownProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  const dropdownRef = useRef(null);
+  const dropdownRef = useRef<HTMLDivElement | null>(null);
   const menuId = useRef(`dropdown-menu-${Math.random().toString(36).slice(2, 9)}`).current;
 
   /**
@@ -28,8 +31,8 @@ export const Dropdown = ({ children, label = "Menu" }) => {
      *
      * @param {MouseEvent} event - The mouse event triggered by clicking outside.
      */
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         setIsOpen(false);
       }
     };
@@ -42,7 +45,7 @@ export const Dropdown = ({ children, label = "Menu" }) => {
 
   // Handle keyboard events for accessibility
   useEffect(() => {
-    const handleKeyDown = (event) => {
+    const handleKeyDown = (event: KeyboardEvent) => {
       if (!isOpen) return;
 
       if (event.key === "Escape") {
@@ -63,57 +66,49 @@ export const Dropdown = ({ children, label = "Menu" }) => {
   );
 };
 
-Dropdown.propTypes = {
-  children: PropTypes.func.isRequired,
-  label: PropTypes.string,
+interface DropdownTriggerProps {
+  onClick: () => void;
+  children: ReactElement;
+  isOpen?: boolean;
+  menuId?: string;
+}
+
+export const DropdownTrigger = ({
+  onClick,
+  children,
+  isOpen = false,
+  menuId,
+}: DropdownTriggerProps) => {
+  // Ensure children is a valid ReactElement before calling cloneElement
+  if (React.isValidElement(children)) {
+    return (
+      <>
+        {cloneElement(children as ReactElement<any>, {
+          onClick,
+          "aria-expanded": isOpen,
+          "aria-haspopup": true,
+          "aria-controls": isOpen ? menuId : undefined,
+        })}
+      </>
+    );
+  }
+
+  return null; // Return null if children is not a valid React element
 };
 
-/**
- * DropdownTrigger component for rendering the trigger button.
- *
- * @param {Object} props - Component props.
- * @param {Function} props.onClick - The click handler for toggling the dropdown.
- * @param {React.ReactElement} props.children - The button element to be used as the trigger.
- * @param {boolean} props.isOpen - Whether the dropdown is open.
- * @param {string} props.menuId - ID of the dropdown menu for aria attributes.
- * @returns {JSX.Element} The rendered DropdownTrigger component.
- */
-export const DropdownTrigger = ({ onClick, children, isOpen, menuId }) => {
-  return (
-    <>
-      {cloneElement(children, {
-        onClick,
-        "aria-expanded": isOpen,
-        "aria-haspopup": true,
-        "aria-controls": isOpen ? menuId : undefined,
-      })}
-    </>
-  );
-};
+interface DropdownContentProps {
+  isOpen: boolean;
+  children: ReactNode;
+  menuId?: string;
+  label?: string;
+}
 
-DropdownTrigger.propTypes = {
-  onClick: PropTypes.func.isRequired,
-  children: PropTypes.element.isRequired,
-  isOpen: PropTypes.bool,
-  menuId: PropTypes.string,
-};
-
-/**
- * DropdownContent component for rendering the dropdown menu.
- *
- * @param {Object} props - Component props.
- * @param {boolean} props.isOpen - Whether the dropdown is open.
- * @param {React.ReactNode} props.children - The dropdown menu content.
- * @param {string} props.menuId - ID for the dropdown menu.
- * @param {string} props.label - Accessible label for the menu.
- * @returns {JSX.Element|null} The rendered DropdownContent component or null if not open.
- */
 export const DropdownContent = ({
   isOpen,
   children,
   menuId = "dropdown-menu",
   label = "Dropdown menu",
-}) => {
+}: DropdownContentProps) => {
   if (!isOpen) return null;
 
   return (
@@ -127,11 +122,4 @@ export const DropdownContent = ({
       <div role="presentation">{children}</div>
     </div>
   );
-};
-
-DropdownContent.propTypes = {
-  isOpen: PropTypes.bool.isRequired,
-  children: PropTypes.node.isRequired,
-  menuId: PropTypes.string,
-  label: PropTypes.string,
 };

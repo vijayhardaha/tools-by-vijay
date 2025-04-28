@@ -2,58 +2,63 @@ import { useState } from "react";
 
 import domToImage from "dom-to-image";
 import { saveAs } from "file-saver";
-import PropTypes from "prop-types";
 import { TbCloudDownload as DownloadToolIcon } from "react-icons/tb";
 
 import Button from "@/components/text-story-maker/parts/header/HeaderIconBtn";
+import { UpdateOptionsSetsType } from "@/components/text-story-maker/TextStoryMakerTool";
 import { Dropdown, DropdownTrigger, DropdownContent } from "@/components/text-story-maker/ui";
 import { cn } from "@/utils/classNameUtils";
 
 /**
+ * Type definition for the component props.
+ */
+interface DownloadImageToolProps extends UpdateOptionsSetsType {}
+
+/**
+ * Type definition for available sizes.
+ */
+type SizeKey = "hd" | "fhd" | "2k" | "4k";
+
+interface Size {
+  width: number;
+  label: string;
+}
+
+const sizes: Record<SizeKey, Size> = {
+  hd: { width: 720, label: "HD" },
+  fhd: { width: 1080, label: "FHD" },
+  "2k": { width: 1440, label: "2K" },
+  "4k": { width: 2160, label: "4K" },
+};
+
+/**
  * DownloadImageTool component allows users to download the main content as an image
  * in various formats (JPEG, PNG) and resolutions (HD, FHD, 2K, 4K).
- *
- * @param {Object} props - Component props.
- * @param {Object} props.options - Options for the download tool.
- * @param {string} props.options.downloadSize - Selected download size (e.g., "hd", "fhd").
- * @param {Function} props.updateOption - Function to update the selected options.
- * @returns {JSX.Element} The rendered component.
  */
-const DownloadImageTool = ({ options, updateOption }) => {
+const DownloadImageTool = ({ options, updateOption }: DownloadImageToolProps) => {
   const [isDownloading, setIsDownloading] = useState(false);
   const [downloadError, setDownloadError] = useState("");
-
-  /**
-   * Available sizes for download.
-   * Each size has a width and a label for display.
-   */
-  const sizes = {
-    hd: { width: 720, label: "HD" },
-    fhd: { width: 1080, label: "FHD" },
-    "2k": { width: 1440, label: "2K" },
-    "4k": { width: 2160, label: "4K" },
-  };
 
   /**
    * Handles the change of the selected size option.
    *
    * @param {string} size - The selected size key (e.g., "hd", "fhd").
    */
-  const handleSizeChange = (size) => {
+  const handleSizeChange = (size: string) => {
     updateOption("downloadSize", size);
   };
 
   /**
    * Handles the download of the image in the specified format and size.
    *
-   * @param {string} size - The selected size key (e.g., "hd", "fhd").
+   * @param {SizeKey} size - The selected size key (e.g., "hd", "fhd").
    * @param {Function} toggleDropdown - Function to toggle the dropdown visibility.
    */
-  const handleDownload = (size, toggleDropdown) => {
+  const handleDownload = (size: SizeKey, toggleDropdown: (isOpen: boolean) => void) => {
     const node = document.querySelector("#main-content");
     if (!node) return;
 
-    const getSizeWidth = (size) => parseInt(sizes[size].width, 10) || 1080;
+    const getSizeWidth = (size: SizeKey) => parseInt(sizes[size].width.toString(), 10) || 1080;
 
     const rect = node.getBoundingClientRect();
     const scale = getSizeWidth(size) / rect.width;
@@ -132,9 +137,9 @@ const DownloadImageTool = ({ options, updateOption }) => {
                         )}
                         role="radio"
                         aria-checked={options.downloadSize === size}
-                        aria-label={`${sizes[size].label} resolution`}
+                        aria-label={`${sizes[size as SizeKey].label} resolution`}
                       >
-                        {sizes[size].label}
+                        {sizes[size as SizeKey].label}
                       </button>
                     ))}
                   </div>
@@ -150,9 +155,9 @@ const DownloadImageTool = ({ options, updateOption }) => {
                       "bg-white text-neutral-900",
                       "hover:bg-accent-foreground hover:text-neutral-900"
                     )}
-                    onClick={() => handleDownload(options.downloadSize, toggleDropdown)}
+                    onClick={() => handleDownload(options.downloadSize as SizeKey, toggleDropdown)}
                     disabled={isDownloading}
-                    aria-label={`Download in ${sizes[options.downloadSize].label} resolution`}
+                    aria-label={`Download in ${sizes[options.downloadSize as SizeKey].label} resolution`}
                     role="menuitem"
                   >
                     Download
@@ -180,13 +185,6 @@ const DownloadImageTool = ({ options, updateOption }) => {
       </Dropdown>
     </>
   );
-};
-
-DownloadImageTool.propTypes = {
-  options: PropTypes.shape({
-    downloadSize: PropTypes.string.isRequired,
-  }).isRequired,
-  updateOption: PropTypes.func.isRequired,
 };
 
 export default DownloadImageTool;

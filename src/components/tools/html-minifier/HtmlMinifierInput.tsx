@@ -2,6 +2,7 @@
 
 import React from "react";
 
+import { HtmlMinifierOptions } from "@/components/tools/html-minifier/HtmlMinifierTool";
 import { Alert } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
@@ -14,8 +15,8 @@ import { Textarea } from "@/components/ui/textarea";
 interface HtmlMinifierInputProps {
   input: string;
   setInput: (value: string) => void;
-  options: Record<string, boolean>;
-  updateOption: (key: string, value: boolean) => void;
+  options: HtmlMinifierOptions;
+  updateOption: (key: keyof HtmlMinifierOptions, value: boolean) => void;
   onSubmit: () => void;
   onClear: () => void;
   onReset: () => void;

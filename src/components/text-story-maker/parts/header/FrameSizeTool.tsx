@@ -1,28 +1,30 @@
-import PropTypes from "prop-types";
 import { PiCheckCircleFill as CheckFillIcon } from "react-icons/pi";
 import { TbFrame as FrameToolIcon } from "react-icons/tb";
 
 import { cardRatios } from "@/components/text-story-maker/constants";
 import Button from "@/components/text-story-maker/parts/header/HeaderIconBtn";
+import { UpdateOptionsSetsType } from "@/components/text-story-maker/TextStoryMakerTool";
 import { Dropdown, DropdownTrigger, DropdownContent } from "@/components/text-story-maker/ui";
 import { cn } from "@/utils/classNameUtils";
 
 /**
- * FrameSizeTool provides a dropdown menu to select frame size options.
- *
- * @param {Object} props - The props for the component.
- * @param {Object} props.options - The current options for the frame.
- * @param {string} props.options.cardRatio - The currently selected card ratio.
- * @param {Function} props.updateOption - Function to update the selected option.
- * @returns {JSX.Element} The rendered FrameSizeTool component.
+ * Type definition for the component props.
  */
-const FrameSizeTool = ({ options, updateOption }) => {
+interface FrameSizeToolProps extends UpdateOptionsSetsType {}
+
+/**
+ * FrameSizeTool provides a dropdown menu to select frame size options.
+ */
+const FrameSizeTool: React.FC<FrameSizeToolProps> = ({
+  options,
+  updateOption,
+}: FrameSizeToolProps): React.JSX.Element => {
   /**
    * Handles the selection of a card ratio.
    *
    * @param {string} value - The selected card ratio value.
    */
-  const handleCardRatioChange = (value) => {
+  const handleCardRatioChange = (value: string) => {
     updateOption("cardRatio", value);
   };
 
@@ -66,13 +68,6 @@ const FrameSizeTool = ({ options, updateOption }) => {
       )}
     </Dropdown>
   );
-};
-
-FrameSizeTool.propTypes = {
-  options: PropTypes.shape({
-    cardRatio: PropTypes.string.isRequired, // The currently selected card ratio.
-  }).isRequired,
-  updateOption: PropTypes.func.isRequired, // Function to update the selected option.
 };
 
 export default FrameSizeTool;

@@ -4,13 +4,18 @@ import { useState, useEffect } from "react";
 
 import { PiNotePencilBold as EditIcon } from "react-icons/pi";
 
-import { defaultOptions } from "@/components/text-story-maker/constants";
+import { defaultOptions, OptionsType } from "@/components/text-story-maker/constants";
 import Content from "@/components/text-story-maker/parts/Content";
 import Footer from "@/components/text-story-maker/parts/Footer";
 import Header from "@/components/text-story-maker/parts/Header";
 import Button from "@/components/text-story-maker/parts/header/HeaderIconBtn";
 import ToolInfo from "@/components/text-story-maker/parts/ToolInfo";
 import { cn } from "@/utils/classNameUtils";
+
+export interface UpdateOptionsSetsType {
+  options: OptionsType;
+  updateOption: (key: keyof OptionsType, value: OptionsType[keyof OptionsType]) => void;
+}
 
 /**
  * TextStoryMakerTool component serves as the main container for the text story maker tool.
@@ -19,10 +24,10 @@ import { cn } from "@/utils/classNameUtils";
  * @component
  * @returns {JSX.Element} The rendered TextStoryMakerTool component.
  */
-const TextStoryMakerTool = () => {
-  const [options, setOptions] = useState(defaultOptions);
-  const [activeTool, setActiveTool] = useState("");
-  const [showConfirm, setShowConfirm] = useState(false);
+const TextStoryMakerTool: React.FC = (): React.JSX.Element => {
+  const [options, setOptions] = useState<OptionsType>(defaultOptions);
+  const [activeTool, setActiveTool] = useState<string>("");
+  const [showConfirm, setShowConfirm] = useState<boolean>(false);
 
   // Fetch options from local storage on load and merge with default options
   useEffect(() => {
@@ -46,7 +51,7 @@ const TextStoryMakerTool = () => {
    * @param {string} key - The key of the option to update.
    * @param {*} value - The new value for the option.
    */
-  const updateOption = (key, value) => {
+  const updateOption = (key: keyof OptionsType, value: OptionsType[keyof OptionsType]) => {
     setOptions((prevOptions) => {
       const updatedOptions = {
         ...prevOptions,
@@ -63,47 +68,13 @@ const TextStoryMakerTool = () => {
 
   return (
     <div className={cn("relative h-screen w-full bg-black/85", "flex flex-col")}>
-      {/**
-       * Header component displays the header section of the tool.
-       *
-       * @param {Object} props - Component props.
-       * @param {Object} props.options - Current options state.
-       * @param {Function} props.updateOption - Function to update options.
-       * @param {string} props.activeTool - Currently active tool.
-       * @param {Function} props.setActiveTool - Function to set the active tool.
-       */}
       <Header
         options={options}
         updateOption={updateOption}
         activeTool={activeTool}
         setActiveTool={setActiveTool}
       />
-
-      {/**
-       * Footer component displays the footer section of the tool.
-       *
-       * @param {Object} props - Component props.
-       * @param {Object} props.options - Current options state.
-       * @param {Function} props.updateOption - Function to update options.
-       * @param {string} props.activeTool - Currently active tool.
-       * @param {Function} props.setActiveTool - Function to set the active tool.
-       */}
-      <Footer
-        options={options}
-        updateOption={updateOption}
-        activeTool={activeTool}
-        setActiveTool={setActiveTool}
-      />
-
-      {/**
-       * Content component displays the main content area of the tool.
-       *
-       * @param {Object} props - Component props.
-       * @param {Object} props.options - Current options state.
-       * @param {Function} props.updateOption - Function to update options.
-       * @param {string} props.activeTool - Currently active tool.
-       * @param {Function} props.setActiveTool - Function to set the active tool.
-       */}
+      <Footer options={options} updateOption={updateOption} activeTool={activeTool} />
       <Content
         options={options}
         updateOption={updateOption}

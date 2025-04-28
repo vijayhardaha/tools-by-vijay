@@ -1,14 +1,17 @@
+import React from "react";
+
 import { useKeenSlider } from "keen-slider/react";
-import PropTypes from "prop-types";
 
 import { fonts } from "@/components/text-story-maker/constants";
 import { btnBaseStyles } from "@/components/text-story-maker/constants/btnBaseStyles";
+import { UpdateOptionsSetsType } from "@/components/text-story-maker/TextStoryMakerTool";
+import { getFontClass } from "@/components/text-story-maker/utils/styleUtils";
 import { cn } from "@/utils/classNameUtils";
-
-import { getFontClass } from "../utils/styleUtils";
 
 // eslint-disable-next-line import/order
 import "keen-slider/keen-slider.min.css";
+
+interface FontSliderProps extends UpdateOptionsSetsType {}
 
 /**
  * FontSlider component for selecting font family.
@@ -18,12 +21,15 @@ import "keen-slider/keen-slider.min.css";
  * @param {Function} props.updateOption - Function to update the font option.
  * @returns {JSX.Element} The rendered FontSlider component.
  */
-const FontSlider = ({ options, updateOption }) => {
+const FontSlider: React.FC<FontSliderProps> = ({
+  options,
+  updateOption,
+}: FontSliderProps): React.JSX.Element => {
   const [sliderRef] = useKeenSlider({
     loop: false,
     mode: "free-snap",
     renderMode: "performance",
-    initial: parseInt(options.textFont, 10) || 0,
+    initial: parseInt(options.textFont.toString(), 10) || 0,
     slides: { perView: "auto", spacing: 0, origin: "center" },
     slideChanged: (slider) => {
       const currentIndex = slider.track.details.rel;
@@ -56,7 +62,7 @@ const FontSlider = ({ options, updateOption }) => {
                   {
                     "bg-white text-neutral-900": options.textFont === font,
                   },
-                  getFontClass(font)
+                  getFontClass(font) as string
                 )}
                 onClick={() => {
                   updateOption("textFont", font);
@@ -76,13 +82,6 @@ const FontSlider = ({ options, updateOption }) => {
       </span>
     </div>
   );
-};
-
-FontSlider.propTypes = {
-  options: PropTypes.shape({
-    textFont: PropTypes.number.isRequired,
-  }).isRequired,
-  updateOption: PropTypes.func.isRequired,
 };
 
 export default FontSlider;

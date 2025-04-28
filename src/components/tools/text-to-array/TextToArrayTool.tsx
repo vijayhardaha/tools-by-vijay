@@ -38,7 +38,7 @@ const TextToArrayTool: React.FC = (): React.JSX.Element => {
   const generateSlug = (text: string): string =>
     slugify(latinize(text).toLowerCase(), {
       replacement: "_",
-      remove: null,
+      remove: undefined,
       lower: true,
       strict: true,
     });

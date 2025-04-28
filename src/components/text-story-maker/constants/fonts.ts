@@ -124,8 +124,15 @@ const Fresca = FrescaFont({
   display: "swap",
   weight: ["400"],
 });
+
+export type Font = {
+  key: string;
+  label: string;
+  class: string;
+};
+
 // prettier-ignore
-export const fonts = [
+export const fonts: Font[] = [
   { key: "comfortaa", label: "Comfortaa", class: Comfortaa.className },
   { key: "montserrat_alternates", label: "Montserrat (Alt)", class: Montserrat_Alternates.className},
   { key: "nerko_one", label: "Nerko", class: Nerko_One.className },

@@ -1,13 +1,12 @@
 import { useRef } from "react";
 
-import PropTypes from "prop-types";
 import { Scrollbars } from "react-custom-scrollbars-4";
 
 import { textColors } from "@/components/text-story-maker/constants";
 import { btnBaseStyles } from "@/components/text-story-maker/constants/btnBaseStyles";
+import { ControlBox } from "@/components/text-story-maker/parts/panels/PanelHelper";
+import { UpdateOptionsSetsType } from "@/components/text-story-maker/TextStoryMakerTool";
 import { cn } from "@/utils/classNameUtils";
-
-import { ControlBox } from "./PanelHelper";
 
 /**
  * TextColorsPanel component for selecting text color.
@@ -17,8 +16,17 @@ import { ControlBox } from "./PanelHelper";
  * @param {Function} props.updateOption - Function to update the text color option.
  * @returns {JSX.Element} The rendered TextColorsPanel component.
  */
-const TextColorsPanel = ({ options, updateOption }) => {
-  const scrollbars = useRef();
+
+/**
+ * Props for the TextColorsPanel component.
+ */
+interface TextColorsPanelProps extends UpdateOptionsSetsType {}
+
+const TextColorsPanel: React.FC<TextColorsPanelProps> = ({
+  options,
+  updateOption,
+}: TextColorsPanelProps): React.JSX.Element => {
+  const scrollbars = useRef<Scrollbars | null>(null);
 
   return (
     <ControlBox
@@ -47,13 +55,6 @@ const TextColorsPanel = ({ options, updateOption }) => {
       </Scrollbars>
     </ControlBox>
   );
-};
-
-TextColorsPanel.propTypes = {
-  options: PropTypes.shape({
-    textColor: PropTypes.number.isRequired,
-  }).isRequired,
-  updateOption: PropTypes.func.isRequired,
 };
 
 export default TextColorsPanel;

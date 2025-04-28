@@ -1,25 +1,26 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
-import PropTypes from "prop-types";
-
+import { OptionsType } from "@/components/text-story-maker/constants";
 import BgColorsSlider from "@/components/text-story-maker/parts/panels/BgColorsSlider";
 import {
   ControlPanel,
   ControlBox,
   ControlBtn,
 } from "@/components/text-story-maker/parts/panels/PanelHelper";
+import { UpdateOptionsSetsType } from "@/components/text-story-maker/TextStoryMakerTool";
+
+interface BgOptionsPanelProps extends UpdateOptionsSetsType {}
 
 /**
  * BgOptionsPanel component provides a toolbar for selecting background types.
  *
- * @param {Object} props - Component props.
- * @param {Object} props.options - Options object containing the current background settings.
- * @param {string} props.options.bgType - The current background type (e.g., "solid", "gradient", "mesh").
- * @param {string} props.options.bgColor - The current background color key.
- * @param {Function} props.updateOption - Function to update the selected background option.
+ * @param {BgOptionsPanelProps} props - Component props.
  * @returns {JSX.Element} The rendered BgOptionsPanel component.
  */
-const BgOptionsPanel = ({ options, updateOption }) => {
+const BgOptionsPanel: React.FC<BgOptionsPanelProps> = ({
+  options,
+  updateOption,
+}: BgOptionsPanelProps): React.JSX.Element => {
   const [activeTool, setActiveTool] = useState(options.bgType);
 
   const tools = [
@@ -33,7 +34,7 @@ const BgOptionsPanel = ({ options, updateOption }) => {
    *
    * @param {string} tool - The selected background tool type.
    */
-  const handleToolChange = (tool) => {
+  const handleToolChange = (tool: string) => {
     if (activeTool === tool) return;
     setActiveTool(tool);
     updateOption("bgType", tool);
@@ -53,7 +54,7 @@ const BgOptionsPanel = ({ options, updateOption }) => {
 
       <ControlBox>
         <ControlBtn
-          onClick={(e) => {
+          onClick={(e: React.MouseEvent) => {
             e.preventDefault();
           }}
           screenReaderText="Background Color Palette"
@@ -81,14 +82,6 @@ const BgOptionsPanel = ({ options, updateOption }) => {
       </ControlBox>
     </ControlPanel>
   );
-};
-
-BgOptionsPanel.propTypes = {
-  options: PropTypes.shape({
-    bgType: PropTypes.string.isRequired,
-    bgColor: PropTypes.string.isRequired,
-  }).isRequired,
-  updateOption: PropTypes.func.isRequired,
 };
 
 export default BgOptionsPanel;

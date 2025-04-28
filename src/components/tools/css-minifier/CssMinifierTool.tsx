@@ -104,7 +104,7 @@ const CssMinifierTool: React.FC = (): React.JSX.Element => {
       setOutput(data.minifiedCss);
     } catch (error) {
       console.error("CSS minification error:", error);
-      setError(error.message);
+      setError(error instanceof Error ? error.message : "An error occurred");
     } finally {
       setIsLoading(false);
     }

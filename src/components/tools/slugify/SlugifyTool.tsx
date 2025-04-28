@@ -32,10 +32,10 @@ const SlugifyTool: React.FC = (): React.JSX.Element => {
 
     // Use slugify package
     let slug = slugify(processedText, {
-      replacement: useUnderscore ? "_" : "-", // Replace spaces with underscore or dash
-      remove: removeNumbers ? /[0-9]/g : null, // Remove numbers if enabled
-      lower: useLowercase, // Convert to lowercase if enabled
-      strict: true, // Strip special characters
+      replacement: useUnderscore ? "_" : "-",
+      remove: removeNumbers ? /[0-9]/g : undefined,
+      lower: useLowercase,
+      strict: true,
     });
 
     return slug;

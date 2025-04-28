@@ -9,7 +9,7 @@ import HtmlMinifierOutput from "./HtmlMinifierOutput";
 /**
  * Type definition for the HTML Minifier options.
  */
-type HtmlMinifierOptions = {
+export interface HtmlMinifierOptions {
   removeComments: boolean;
   collapseWhitespace: boolean;
   conservativeCollapse: boolean;
@@ -27,7 +27,7 @@ type HtmlMinifierOptions = {
   minifyURLs: boolean;
   decodeEntities: boolean;
   useShortDoctype: boolean;
-};
+}
 
 /**
  * Default options for the HTML Minifier
@@ -101,7 +101,7 @@ const HtmlMinifierTool: React.FC = (): React.JSX.Element => {
       setOutput(data.minifiedHtml);
     } catch (error) {
       console.error("HTML minification error:", error);
-      setError(error.message);
+      setError(error instanceof Error ? error.message : "An error occurred");
     } finally {
       setIsLoading(false);
     }

@@ -1,8 +1,20 @@
-import PropTypes from "prop-types";
+import React from "react";
+
 import { Direction } from "react-range";
 import { Range } from "react-range";
 
 import { cn } from "@/utils/classNameUtils";
+
+interface RangeSliderProps {
+  min: number;
+  max: number;
+  step: number;
+  values: number[];
+  onChange: (values: number[]) => void;
+  label?: string;
+  ariaLabel?: string;
+  valueLabel?: string;
+}
 
 /**
  * RangeSlider component for rendering a horizontal range slider.
@@ -18,7 +30,7 @@ import { cn } from "@/utils/classNameUtils";
  * @param {string} [props.valueLabel] - Unit or descriptor for the value (e.g., "seconds", "%").
  * @returns {JSX.Element} The rendered RangeSlider component.
  */
-export const RangeSlider = ({
+export const RangeSlider: React.FC<RangeSliderProps> = ({
   min,
   max,
   step,
@@ -27,14 +39,14 @@ export const RangeSlider = ({
   label = "",
   ariaLabel,
   valueLabel = "",
-}) => {
+}: RangeSliderProps): React.JSX.Element => {
   /**
    * Formats a numeric value to a string with up to three decimal places, avoiding unnecessary trailing zeros.
    *
    * @param {number} value - The numeric value to format.
    * @returns {string} The formatted value as a string.
    */
-  const formatValue = (value) => {
+  const formatValue = (value: number): string => {
     return Number(value).toLocaleString(undefined, {
       minimumFractionDigits: 0,
       maximumFractionDigits: 2,
@@ -109,39 +121,4 @@ export const RangeSlider = ({
       />
     </div>
   );
-};
-
-RangeSlider.propTypes = {
-  /**
-   * Minimum value for the slider.
-   */
-  min: PropTypes.number.isRequired,
-  /**
-   * Maximum value for the slider.
-   */
-  max: PropTypes.number.isRequired,
-  /**
-   * Step value for the slider.
-   */
-  step: PropTypes.number.isRequired,
-  /**
-   * Current value(s) of the slider.
-   */
-  values: PropTypes.arrayOf(PropTypes.number).isRequired,
-  /**
-   * Callback function triggered when the slider value changes.
-   */
-  onChange: PropTypes.func.isRequired,
-  /**
-   * Label describing what the slider controls (e.g., "Volume", "Opacity").
-   */
-  label: PropTypes.string,
-  /**
-   * Accessible label for screen readers. More descriptive than the label.
-   */
-  ariaLabel: PropTypes.string,
-  /**
-   * Unit or descriptor for the value (e.g., "seconds", "%").
-   */
-  valueLabel: PropTypes.string,
 };

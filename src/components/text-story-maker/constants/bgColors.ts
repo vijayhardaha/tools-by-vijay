@@ -5,9 +5,13 @@
  * @property {Object.<string, string>} gradient - Gradient background color options.
  * @property {Object.<string, string>} mesh - Mesh background color options.
  */
+export type BgColors = {
+  solid: string[];
+  gradient: string[];
+  mesh: string[];
+};
 
-/** @type {BgColors} */
-export const bgColors = {
+export const bgColors: BgColors = {
   solid: [
     "bg-red-300",
     "bg-red-400",

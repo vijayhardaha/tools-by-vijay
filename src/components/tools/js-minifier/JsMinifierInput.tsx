@@ -1,5 +1,6 @@
 "use client";
 
+import { MinifyOptions } from "@/components/tools/js-minifier/JsMinifierTool";
 import { Alert } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
@@ -9,13 +10,8 @@ import { Textarea } from "@/components/ui/textarea";
 interface JsMinifierInputProps {
   input: string;
   setInput: (value: string) => void;
-  options: {
-    mangle: boolean;
-    removeConsole: boolean;
-    removeDebugger: boolean;
-    removeComments: boolean;
-  };
-  updateOption: (key: string, value: boolean) => void;
+  options: MinifyOptions;
+  updateOption: (key: keyof MinifyOptions, value: boolean) => void;
   onSubmit: () => void;
   onClear: () => void;
   onReset: () => void;
