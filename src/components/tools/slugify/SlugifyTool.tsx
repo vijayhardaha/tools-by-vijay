@@ -9,20 +9,15 @@ import SlugifyInfo from "./SlugifyInfo";
 import SlugifyInput from "./SlugifyInput";
 import SlugifyOutput from "./SlugifyOutput";
 
-const SlugifyTool = () => {
-  const [input, setInput] = useState("");
-  const [output, setOutput] = useState("");
-  const [useUnderscore, setUseUnderscore] = useState(false);
-  const [removeNumbers, setRemoveNumbers] = useState(false);
-  const [useLowercase, setUseLowercase] = useState(true);
-  const [useLitinize, setUseLitinize] = useState(true);
+const SlugifyTool: React.FC = (): React.JSX.Element => {
+  const [input, setInput] = useState<string>("");
+  const [output, setOutput] = useState<string>("");
+  const [useUnderscore, setUseUnderscore] = useState<boolean>(false);
+  const [removeNumbers, setRemoveNumbers] = useState<boolean>(false);
+  const [useLowercase, setUseLowercase] = useState<boolean>(true);
+  const [useLitinize, setUseLitinize] = useState<boolean>(true);
 
-  /**
-   * Generates a slug from the given text based on the current settings.
-   * @param {string} text - The input text to be slugified.
-   * @returns {string} The generated slug.
-   */
-  const generateSlug = (text) => {
+  const generateSlug = (text: string): string => {
     let processedText = text;
 
     // Apply latinize if enabled
@@ -46,38 +41,17 @@ const SlugifyTool = () => {
     return slug;
   };
 
-  /**
-   * Handles the generation of the slug and updates the output state.
-   * This function is triggered when the "Generate" button is clicked.
-   *
-   * @function
-   * @returns {void}
-   */
-  const handleSubmit = () => {
+  const handleSubmit = (): void => {
     const slug = generateSlug(input);
     setOutput(slug);
   };
 
-  /**
-   * Clears the input and output fields.
-   * This function is triggered when the "Clear" button is clicked.
-   *
-   * @function
-   * @returns {void}
-   */
-  const handleClear = () => {
+  const handleClear = (): void => {
     setInput("");
     setOutput("");
   };
 
-  /**
-   * Resets all input fields and settings to their default values.
-   * This function is triggered when the "Reset" button is clicked.
-   *
-   * @function
-   * @returns {void}
-   */
-  const handleReset = () => {
+  const handleReset = (): void => {
     handleClear();
     setUseUnderscore(false);
     setRemoveNumbers(false);
