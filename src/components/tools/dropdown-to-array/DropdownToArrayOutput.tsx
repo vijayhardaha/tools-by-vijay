@@ -1,21 +1,25 @@
-import PropTypes from "prop-types";
-
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import { CopyButton } from "@/components/ui/copyButton";
 import { Textarea } from "@/components/ui/textarea";
 
 /**
- * Displays the converted array output with copy functionality.
- * Shows the converted array in a readonly textarea and allows the user to copy it
- * to the clipboard with visual feedback when copied.
- *
- * @component
- * @param {Object} props - Component props
- * @param {string} props.output - The converted array output to display
- * @param {string} props.error - Error message to display, if any
- * @returns {JSX.Element} The rendered card with output display and copy functionality
+ * Props for the DropdownToArrayOutput component.
  */
-const DropdownToArrayOutput = ({ output }) => {
+interface DropdownToArrayOutputProps {
+  output: string;
+}
+
+/**
+ * DropdownToArrayOutput component.
+ *
+ * Displays the converted output and provides a copy button for easy copying.
+ *
+ * @param {DropdownToArrayOutputProps} props - The props for the component.
+ * @returns {React.JSX.Element} The rendered component.
+ */
+const DropdownToArrayOutput: React.FC<DropdownToArrayOutputProps> = ({
+  output,
+}: DropdownToArrayOutputProps): React.JSX.Element => {
   return (
     <Card>
       <CardHeader>
@@ -34,10 +38,6 @@ const DropdownToArrayOutput = ({ output }) => {
       </CardContent>
     </Card>
   );
-};
-
-DropdownToArrayOutput.propTypes = {
-  output: PropTypes.string.isRequired,
 };
 
 export default DropdownToArrayOutput;

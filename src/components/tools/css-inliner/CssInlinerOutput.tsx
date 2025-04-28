@@ -1,17 +1,25 @@
-import PropTypes from "prop-types";
-
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import { CopyButton } from "@/components/ui/copyButton";
 import { Textarea } from "@/components/ui/textarea";
 
 /**
- * Component that displays the inlined HTML output.
- *
- * @param {Object} props - Component props
- * @param {string} props.output - The inlined HTML output
- * @returns {JSX.Element} The CssInlinerOutput component
+ * Props for the CssInlinerOutput component.
+ * @property {string} output - The resulting HTML with inlined CSS to display.
  */
-const CssInlinerOutput = ({ output }) => {
+interface CssInlinerOutputProps {
+  output: string;
+}
+
+/**
+ * A component that displays the output of the CSS inliner tool.
+ * It includes a card layout with a copy button and a read-only textarea to show the inlined HTML.
+ *
+ * @param {CssInlinerOutputProps} props - The props for the component.
+ * @returns {React.JSX.Element} The rendered CssInlinerOutput component.
+ */
+const CssInlinerOutput: React.FC<CssInlinerOutputProps> = ({
+  output,
+}: CssInlinerOutputProps): React.JSX.Element => {
   return (
     <Card>
       <CardHeader>
@@ -32,10 +40,6 @@ const CssInlinerOutput = ({ output }) => {
       </CardContent>
     </Card>
   );
-};
-
-CssInlinerOutput.propTypes = {
-  output: PropTypes.string.isRequired,
 };
 
 export default CssInlinerOutput;

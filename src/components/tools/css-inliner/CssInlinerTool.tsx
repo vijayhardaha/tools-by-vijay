@@ -6,15 +6,23 @@ import CssInlinerInfo from "./CssInlinerInfo";
 import CssInlinerInput from "./CssInlinerInput";
 import CssInlinerOutput from "./CssInlinerOutput";
 
-const CssInlinerTool = () => {
-  const [htmlInput, setHtmlInput] = useState("");
-  const [cssInput, setCssInput] = useState("");
-  const [output, setOutput] = useState("");
-  const [error, setError] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+/**
+ * A tool for inlining CSS into HTML. It provides input fields for HTML and CSS,
+ * displays the inlined output, and handles API communication for processing.
+ *
+ * @returns {React.JSX.Element} The rendered CssInlinerTool component.
+ */
+const CssInlinerTool: React.FC = (): React.JSX.Element => {
+  const [htmlInput, setHtmlInput] = useState<string>("");
+  const [cssInput, setCssInput] = useState<string>("");
+  const [output, setOutput] = useState<string>("");
+  const [error, setError] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   /**
    * Handles the inlining of CSS into HTML via API.
+   * Sends the HTML and CSS inputs to the server and updates the output state with the result.
+   * Displays an error message if the API call fails.
    */
   const handleSubmit = async () => {
     try {
@@ -45,6 +53,7 @@ const CssInlinerTool = () => {
 
   /**
    * Clears all input and output fields.
+   * Resets the HTML input, CSS input, output, and error states to their initial values.
    */
   const handleClear = () => {
     setHtmlInput("");

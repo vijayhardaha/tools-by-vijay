@@ -9,56 +9,33 @@ import DropdownToArrayInfo from "./DropdownToArrayInfo";
 import DropdownToArrayInput from "./DropdownToArrayInput";
 import DropdownToArrayOutput from "./DropdownToArrayOutput";
 
+interface Option {
+  value: string;
+  text: string;
+}
+
 /**
- * Main component for the Dropdown to Array tool.
- * Manages the state and functionality for converting HTML dropdown/select elements to arrays in various formats.
+ * DropdownToArrayTool component.
  *
- * @component
- * @returns {JSX.Element} The complete dropdown to array tool with input options, output display, and information
+ * A tool for converting HTML dropdown/select content into various array formats.
+ *
+ * @returns {React.JSX.Element} The rendered component.
  */
-const DropdownToArrayTool = () => {
-  /**
-   * The HTML select/dropdown input
-   * @type {[string, function]} State and setter for HTML input
-   */
-  const [input, setInput] = useState("");
+const DropdownToArrayTool: React.FC = (): React.JSX.Element => {
+  const [input, setInput] = useState<string>("");
+  const [outputFormat, setOutputFormat] = useState<string>("json");
+  const [arrayType, setArrayType] = useState<string>("associative");
+  const [useSlugKeys, setUseSlugKeys] = useState<boolean>(true);
+  const [output, setOutput] = useState<string>("");
+  const [error, setError] = useState<string>("");
 
   /**
-   * The output format type (json, jsArray, jsObject, php, wordpress)
-   * @type {[string, function]} State and setter for output format
+   * Generates a slugified version of a given text.
+   *
+   * @param {string} text - The text to slugify.
+   * @returns {string} The slugified text.
    */
-  const [outputFormat, setOutputFormat] = useState("json");
-
-  /**
-   * The array structure type (simple, numeric, associative)
-   * @type {[string, function]} State and setter for array structure
-   */
-  const [arrayType, setArrayType] = useState("associative");
-
-  /**
-   * Whether to use slugified keys for associative arrays
-   * @type {[boolean, function]} State and setter for slug keys option
-   */
-  const [useSlugKeys, setUseSlugKeys] = useState(true);
-
-  /**
-   * The converted output result
-   * @type {[string, function]} State and setter for the converted output
-   */
-  const [output, setOutput] = useState("");
-
-  /**
-   * Any error message from the conversion process
-   * @type {[string, function]} State and setter for error messages
-   */
-  const [error, setError] = useState("");
-
-  /**
-   * Generates a slug from the given text.
-   * @param {string} text - The input text to be slugified.
-   * @returns {string} The generated slug.
-   */
-  const generateSlug = (text) =>
+  const generateSlug = (text: string): string =>
     slugify(latinize(text).toLowerCase(), {
       replacement: "_",
       remove: null,
@@ -67,22 +44,25 @@ const DropdownToArrayTool = () => {
     });
 
   /**
-   * Gets the key to use for an option based on settings
-   * @param {Object} option - The option element with value and text
-   * @returns {string} The key to use
+   * Gets the key for an option, slugifying it if necessary.
+   *
+   * @param {Option} option - The option object.
+   * @returns {string} The key for the option.
    */
-  const getKey = (option) => {
+  const getKey = (option: Option): string => {
     if (useSlugKeys) {
       return generateSlug(option.value);
     }
+
     return option.value;
   };
 
   /**
-   * Parses the HTML input and extracts option values and text
-   * @returns {Array|null} Array of extracted options or null if error
+   * Parses the HTML input and extracts option values and text.
+   *
+   * @returns {Option[] | null} Array of extracted options or null if an error occurs.
    */
-  const parseHtmlInput = () => {
+  const parseHtmlInput = (): Option[] | null => {
     try {
       setError("");
 
@@ -134,11 +114,12 @@ const DropdownToArrayTool = () => {
   };
 
   /**
-   * Formats the parsed options into the selected output format
-   * @param {Array} options - Parsed option elements with value and text
-   * @returns {string} Formatted output based on selected options
+   * Formats the parsed options into the selected output format.
+   *
+   * @param {Option[]} options - Parsed option elements with value and text.
+   * @returns {string} Formatted output based on selected options.
    */
-  const formatOutput = (options) => {
+  const formatOutput = (options: Option[]): string => {
     if (!options || options.length === 0) {
       return "";
     }
@@ -160,23 +141,24 @@ const DropdownToArrayTool = () => {
   };
 
   /**
-   * Formats options as JSON
-   * @param {Array} options - Parsed option elements
-   * @returns {string} JSON formatted output
+   * Formats options as JSON.
+   *
+   * @param {Option[]} options - Parsed option elements.
+   * @returns {string} JSON formatted output.
    */
-  const formatJsonOutput = (options) => {
+  const formatJsonOutput = (options: Option[]): string => {
     try {
       if (arrayType === "simple") {
         return JSON.stringify(options, null, 2);
       } else if (arrayType === "numeric") {
-        const numericArray = options.map((option, index) => ({
+        const numericArray = options.map((option: { text: any }, index: number) => ({
           id: index + 1,
           value: option.text,
         }));
         return JSON.stringify(numericArray, null, 2);
       } else {
         // associative
-        const associativeArray = options.map((option) => ({
+        const associativeArray = options.map((option: Option) => ({
           key: getKey(option),
           value: option.text,
         }));
@@ -189,25 +171,28 @@ const DropdownToArrayTool = () => {
   };
 
   /**
-   * Formats options as JavaScript array
-   * @param {Array} options - Parsed option elements
-   * @returns {string} JavaScript array formatted output
+   * Formats options as a JavaScript array.
+   *
+   * @param {Option[]} options - Parsed option elements.
+   * @returns {string} JavaScript array formatted output.
    */
-  const formatJsArrayOutput = (options) => {
+  const formatJsArrayOutput = (options: Option[]): string => {
     try {
       if (arrayType === "simple") {
-        const simpleArray = options.map((option) => `  "${option.text.replace(/"/g, '\\"')}"`);
+        const simpleArray = options.map(
+          (option: { text: string }) => `  "${option.text.replace(/"/g, '\\"')}"`
+        );
         return `const dropdownArray = [\n${simpleArray.join(",\n")}\n];`;
       } else if (arrayType === "numeric") {
         const numericArray = options.map(
-          (option, index) =>
+          (option: { text: string }, index: number) =>
             `  {\n    "id": ${index + 1},\n    "value": "${option.text.replace(/"/g, '\\"')}"\n  }`
         );
         return `const dropdownArray = [\n${numericArray.join(",\n")}\n];`;
       } else {
         // associative
         const associativeArray = options.map(
-          (option) =>
+          (option: Option) =>
             `  {\n    "key": "${getKey(option).replace(/"/g, '\\"')}",\n    "value": "${option.text.replace(/"/g, '\\"')}"\n  }`
         );
         return `const dropdownArray = [\n${associativeArray.join(",\n")}\n];`;
@@ -219,26 +204,29 @@ const DropdownToArrayTool = () => {
   };
 
   /**
-   * Formats options as JavaScript object
-   * @param {Array} options - Parsed option elements
-   * @returns {string} JavaScript object formatted output
+   * Formats options as a JavaScript object.
+   *
+   * @param {Option[]} options - Parsed option elements.
+   * @returns {string} JavaScript object formatted output.
    */
-  const formatJsObjectOutput = (options) => {
+  const formatJsObjectOutput = (options: Option[]): string => {
     try {
       if (arrayType === "simple") {
         const objectItems = options.map(
-          (option, index) => `  "${index + 1}": "${option.text.replace(/"/g, '\\"')}"`
+          (option: { text: string }, index: number) =>
+            `  "${index + 1}": "${option.text.replace(/"/g, '\\"')}"`
         );
         return `const dropdownObject = {\n${objectItems.join(",\n")}\n};`;
       } else if (arrayType === "numeric") {
         const objectItems = options.map(
-          (option, index) => `  "${index + 1}": "${option.text.replace(/"/g, '\\"')}"`
+          (option: { text: string }, index: number) =>
+            `  "${index + 1}": "${option.text.replace(/"/g, '\\"')}"`
         );
         return `const dropdownObject = {\n${objectItems.join(",\n")}\n};`;
       } else {
         // associative
         const objectItems = options.map(
-          (option) =>
+          (option: Option) =>
             `  "${getKey(option).replace(/"/g, '\\"')}": "${option.text.replace(/"/g, '\\"')}"`
         );
         return `const dropdownObject = {\n${objectItems.join(",\n")}\n};`;
@@ -250,24 +238,28 @@ const DropdownToArrayTool = () => {
   };
 
   /**
-   * Formats options as PHP array
-   * @param {Array} options - Parsed option elements
-   * @returns {string} PHP formatted output
+   * Formats options as a PHP array.
+   *
+   * @param {Option[]} options - Parsed option elements.
+   * @returns {string} PHP formatted output.
    */
-  const formatPhpOutput = (options) => {
+  const formatPhpOutput = (options: Option[]): string => {
     try {
       if (arrayType === "simple") {
-        const arrayItems = options.map((option) => `  '${option.text.replace(/'/g, "\\'")}'`);
+        const arrayItems = options.map(
+          (option: { text: string }) => `  '${option.text.replace(/'/g, "\\'")}'`
+        );
         return `<?php\n$data = array(\n${arrayItems.join(",\n")}\n);`;
       } else if (arrayType === "numeric") {
         const arrayItems = options.map(
-          (option, index) => `  '${index + 1}' => '${option.text.replace(/'/g, "\\'")}'`
+          (option: { text: string }, index: number) =>
+            `  '${index + 1}' => '${option.text.replace(/'/g, "\\'")}'`
         );
         return `<?php\n$data = array(\n${arrayItems.join(",\n")}\n);`;
       } else {
         // associative
         const arrayItems = options.map(
-          (option) =>
+          (option: Option) =>
             `  '${getKey(option).replace(/'/g, "\\'")}' => '${option.text.replace(/'/g, "\\'")}'`
         );
         return `<?php\n$data = array(\n${arrayItems.join(",\n")}\n);`;
@@ -279,27 +271,29 @@ const DropdownToArrayTool = () => {
   };
 
   /**
-   * Formats options as WordPress array for select fields
-   * @param {Array} options - Parsed option elements
-   * @returns {string} WordPress select options formatted output
+   * Formats options as WordPress select options.
+   *
+   * @param {Option[]} options - Parsed option elements.
+   * @returns {string} WordPress select options formatted output.
    */
-  const formatWordPressOutput = (options) => {
+  const formatWordPressOutput = (options: Option[]): string => {
     try {
       if (arrayType === "simple") {
         const arrayItems = options.map(
-          (option) => `  __( '${option.text.replace(/'/g, "\\'")}', 'text-domain' )`
+          (option: { text: string }) =>
+            `  __( '${option.text.replace(/'/g, "\\'")}', 'text-domain' )`
         );
         return `<?php\n$data = array(\n${arrayItems.join(",\n")}\n);`;
       } else if (arrayType === "numeric") {
         const arrayItems = options.map(
-          (option, index) =>
+          (option: { text: string }, index: number) =>
             `  '${index + 1}' => __( '${option.text.replace(/'/g, "\\'")}', 'text-domain' )`
         );
         return `<?php\n$data = array(\n${arrayItems.join(",\n")}\n);`;
       } else {
         // associative
         const arrayItems = options.map(
-          (option) =>
+          (option: Option) =>
             `  '${getKey(option).replace(/'/g, "\\'")}' => __( '${option.text.replace(/'/g, "\\'")}', 'text-domain' )`
         );
         return `<?php\n$data = array(\n${arrayItems.join(",\n")}\n);`;
@@ -311,12 +305,11 @@ const DropdownToArrayTool = () => {
   };
 
   /**
-   * Handles the conversion process when user submits the form
+   * Handles the conversion process when the user submits the form.
    *
-   * @function
    * @returns {void}
    */
-  const handleSubmit = () => {
+  const handleSubmit = (): void => {
     const parsedOptions = parseHtmlInput();
     if (parsedOptions) {
       const formatted = formatOutput(parsedOptions);
@@ -327,27 +320,22 @@ const DropdownToArrayTool = () => {
   };
 
   /**
-   * Clears only the input field while keeping other settings intact
+   * Clears only the input field while keeping other settings intact.
    *
-   * @function
    * @returns {void}
    */
-  const handleClear = () => {
+  const handleClear = (): void => {
     setInput("");
     setError("");
     setOutput("");
   };
 
   /**
-   * Resets all input fields and output
+   * Resets all input fields and output.
    *
-   * This function resets the input, output, and all settings to their default values.
-   * It is called when the user clicks the "Reset" button.
-   *
-   * @function
    * @returns {void}
    */
-  const handleReset = () => {
+  const handleReset = (): void => {
     handleClear();
     setOutputFormat("json");
     setArrayType("associative");

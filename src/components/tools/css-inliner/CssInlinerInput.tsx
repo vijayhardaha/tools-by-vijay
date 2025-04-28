@@ -1,28 +1,23 @@
 "use client";
 
-import PropTypes from "prop-types";
-
-import { Alert } from "@/components/ui/alert"; // Import Alert component
+import { Alert } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 
-/**
- * Component for inputting HTML and CSS for inlining.
- *
- * @param {Object} props - Component props
- * @param {string} props.htmlInput - The HTML input
- * @param {Function} props.setHtmlInput - Function to update HTML input
- * @param {string} props.cssInput - The CSS input
- * @param {Function} props.setCssInput - Function to update CSS input
- * @param {Function} props.onSubmit - Function to inline CSS
- * @param {Function} props.onClear - Function to clear inputs
- * @param {boolean} props.isLoading - Indicates if the API call is in progress
- * @param {string} props.error - Error message to display
- * @returns {JSX.Element} The CssInlinerInput component
- */
-const CssInlinerInput = ({
+interface CssInlinerInputProps {
+  htmlInput: string;
+  setHtmlInput: (value: string) => void;
+  cssInput: string;
+  setCssInput: (value: string) => void;
+  onSubmit: () => void;
+  onClear: () => void;
+  isLoading: boolean;
+  error?: string;
+}
+
+const CssInlinerInput: React.FC<CssInlinerInputProps> = ({
   htmlInput,
   setHtmlInput,
   cssInput,
@@ -31,13 +26,13 @@ const CssInlinerInput = ({
   onClear,
   isLoading,
   error,
-}) => {
+}: CssInlinerInputProps): React.JSX.Element => {
   /**
    * Handles form submission to inline CSS.
    *
    * @param {Object} e - Event object
    */
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onSubmit();
   };
@@ -85,17 +80,6 @@ const CssInlinerInput = ({
       </CardContent>
     </Card>
   );
-};
-
-CssInlinerInput.propTypes = {
-  htmlInput: PropTypes.string.isRequired,
-  setHtmlInput: PropTypes.func.isRequired,
-  cssInput: PropTypes.string.isRequired,
-  setCssInput: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired,
-  onClear: PropTypes.func.isRequired,
-  isLoading: PropTypes.bool.isRequired,
-  error: PropTypes.string,
 };
 
 export default CssInlinerInput;

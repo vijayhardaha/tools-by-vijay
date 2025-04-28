@@ -1,7 +1,5 @@
 "use client";
 
-import PropTypes from "prop-types";
-
 import { Alert } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
@@ -12,25 +10,32 @@ import { Select } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 
 /**
- * Component for inputting HTML dropdown and configuring conversion options.
- * Provides a form with controls for HTML input, output format, and array structure.
- *
- * @component
- * @param {Object} props - Component props
- * @param {string} props.input - Current HTML input
- * @param {Function} props.setInput - Function to update HTML input
- * @param {string} props.outputFormat - Selected output format
- * @param {Function} props.setOutputFormat - Function to update output format
- * @param {string} props.arrayType - Selected array structure type
- * @param {Function} props.setArrayType - Function to update array structure type
- * @param {boolean} props.useSlugKeys - Whether to use slugified keys
- * @param {Function} props.setUseSlugKeys - Function to update slug keys setting
- * @param {Function} props.onSubmit - Function to convert HTML to array
- * @param {Function} props.onClear - Function to clear only the input field
- * @param {Function} props.onReset - Function to reset all settings to defaults
- * @returns {JSX.Element} The rendered form with conversion options
+ * Props for the DropdownToArrayInput component.
  */
-const DropdownToArrayInput = ({
+interface DropdownToArrayInputProps {
+  input: string;
+  setInput: (value: string) => void;
+  outputFormat: string;
+  setOutputFormat: (value: string) => void;
+  arrayType: string;
+  setArrayType: (value: string) => void;
+  useSlugKeys: boolean;
+  setUseSlugKeys: (value: boolean) => void;
+  onSubmit: () => void;
+  onClear: () => void;
+  onReset: () => void;
+  error?: string;
+}
+
+/**
+ * DropdownToArrayInput component.
+ *
+ * A form component that allows users to paste HTML dropdown content and convert it into various array formats.
+ *
+ * @param {DropdownToArrayInputProps} props - The props for the component.
+ * @returns {React.JSX.Element} The rendered component.
+ */
+const DropdownToArrayInput: React.FC<DropdownToArrayInputProps> = ({
   input,
   setInput,
   outputFormat,
@@ -43,12 +48,8 @@ const DropdownToArrayInput = ({
   onClear,
   onReset,
   error,
-}) => {
-  /**
-   * Handles form submission by preventing default behavior and triggering conversion
-   * @param {FormEvent} e - Form event object
-   */
-  const handleSubmit = (e) => {
+}: DropdownToArrayInputProps): React.JSX.Element => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onSubmit();
   };
@@ -140,21 +141,6 @@ const DropdownToArrayInput = ({
       </CardContent>
     </Card>
   );
-};
-
-DropdownToArrayInput.propTypes = {
-  input: PropTypes.string.isRequired,
-  setInput: PropTypes.func.isRequired,
-  outputFormat: PropTypes.string.isRequired,
-  setOutputFormat: PropTypes.func.isRequired,
-  arrayType: PropTypes.string.isRequired,
-  setArrayType: PropTypes.func.isRequired,
-  useSlugKeys: PropTypes.bool.isRequired,
-  setUseSlugKeys: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired,
-  onClear: PropTypes.func.isRequired,
-  onReset: PropTypes.func.isRequired,
-  error: PropTypes.string,
 };
 
 export default DropdownToArrayInput;

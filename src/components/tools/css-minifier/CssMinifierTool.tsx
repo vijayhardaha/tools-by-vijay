@@ -7,9 +7,37 @@ import CssMinifierInput from "./CssMinifierInput";
 import CssMinifierOutput from "./CssMinifierOutput";
 
 /**
- * Default options for the CSS Minifier
+ * Interface for minification options.
+ * @property {number} level - The optimization level for minification.
+ * @property {boolean} compress - Whether to enable compression.
+ * @property {object} format - Formatting options for the output.
+ * @property {number} format.indentBy - Number of spaces for indentation.
+ * @property {string} format.indentWith - Type of indentation ("space" or "tab").
+ * @property {object} format.spaces - Space formatting options.
+ * @property {boolean} format.spaces.aroundSelectorRelation - Space around selector relations.
+ * @property {boolean} format.spaces.beforeBlockBegins - Space before blocks.
+ * @property {boolean} format.spaces.beforeValue - Space before values.
+ * @property {boolean | number} format.wrapAt - Wrap output at a specific character count or disable wrapping.
  */
-const defaultOptions = {
+interface MinificationOptions {
+  level: number;
+  compress: boolean;
+  format: {
+    indentBy: number;
+    indentWith: string;
+    spaces: {
+      aroundSelectorRelation: boolean;
+      beforeBlockBegins: boolean;
+      beforeValue: boolean;
+    };
+    wrapAt: boolean | number;
+  };
+}
+
+/**
+ * Default minification options.
+ */
+const defaultOptions: MinificationOptions = {
   level: 1,
   compress: true,
   format: {
@@ -25,26 +53,26 @@ const defaultOptions = {
 };
 
 /**
- * Main component for the CSS Minifier tool
- * Handles state management and minification logic
+ * A tool for minifying CSS code. It provides input fields for CSS, options for customization,
+ * and displays the minified output.
  *
- * @returns {JSX.Element} The CSS Minifier tool interface
+ * @returns {React.JSX.Element} The rendered CssMinifierTool component.
  */
-const CssMinifierTool = () => {
-  const [input, setInput] = useState("");
-  const [output, setOutput] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [options, setOptions] = useState(defaultOptions);
-  const [error, setError] = useState("");
+const CssMinifierTool: React.FC = (): React.JSX.Element => {
+  const [input, setInput] = useState<string>("");
+  const [output, setOutput] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [options, setOptions] = useState<MinificationOptions>(defaultOptions);
+  const [error, setError] = useState<string>("");
 
   /**
-   * Handles the minification process when the "Minify" button is clicked
-   * Makes an API call to the server-side minification endpoint
+   * Handles the minification process when the "Minify" button is clicked.
+   * Makes an API call to the server-side minification endpoint.
    *
    * @async
    * @function
    */
-  const handleSubmit = async () => {
+  const handleSubmit = async (): Promise<void> => {
     if (!input.trim()) return;
 
     setIsLoading(true);
@@ -83,43 +111,38 @@ const CssMinifierTool = () => {
   };
 
   /**
-   * Clears the input and output fields
-   *
-   * This function resets the input and output states to empty strings.
-   * It is called when the user clicks the "Clear" button.
-   * It does not affect the options state.
+   * Clears the input and output fields.
+   * Resets the input, output, and error states to their initial values.
    *
    * @function
    * @returns {void}
    */
-  const handleClear = () => {
+  const handleClear = (): void => {
     setInput("");
     setOutput("");
     setError("");
   };
 
   /**
-   * Resets all options to their default values
-   *
-   * This function resets the options state to its initial values.
-   * It is called when the user clicks the "Reset" button.
+   * Resets all options to their default values.
+   * Resets the options state to its initial values and clears input and output fields.
    *
    * @function
    * @returns {void}
    */
-  const handleReset = () => {
+  const handleReset = (): void => {
     handleClear();
     setOptions(defaultOptions);
   };
 
   /**
-   * Updates a specific option in the options state
+   * Updates a specific option in the options state.
    *
    * @function
-   * @param {string} key - The option key to update
-   * @param {any} value - The new value for the option
+   * @param {string} key - The option key to update.
+   * @param {any} value - The new value for the option.
    */
-  const updateOption = (key, value) => {
+  const updateOption = (key: string, value: any) => {
     setOptions((prevOptions) => ({
       ...prevOptions,
       [key]: value,
@@ -127,13 +150,13 @@ const CssMinifierTool = () => {
   };
 
   /**
-   * Updates a spaces option in the format options
+   * Updates a spaces option in the format options.
    *
    * @function
-   * @param {string} key - The spaces option key to update
-   * @param {boolean} value - The new value for the spaces option
+   * @param {string} key - The spaces option key to update.
+   * @param {boolean} value - The new value for the spaces option.
    */
-  const updateSpacesOption = (key, value) => {
+  const updateSpacesOption = (key: string, value: boolean) => {
     setOptions((prevOptions) => ({
       ...prevOptions,
       format: {

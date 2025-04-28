@@ -1,7 +1,5 @@
 "use client";
 
-import PropTypes from "prop-types";
-
 import { Alert } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
@@ -10,23 +8,62 @@ import { Select } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 
 /**
- * Component for CSS minifier input and options
- *
- * @param {Object} props - Component props
- * @param {string} props.input - The CSS input to be minified
- * @param {Function} props.setInput - Function to update input state
- * @param {Object} props.options - Minification options
- * @param {Function} props.updateOption - Function to update a specific option
- * @param {Function} props.updateSpacesOption - Function to update a spaces option
- * @param {Function} props.onSubmit - Function called when minify button is clicked
- * @param {Function} props.onClear - Function to clear the input
- * @param {Function} props.onReset - Function to reset all options to defaults
- * @param {boolean} props.isLoading - Whether minification is in progress
- * @param {string} props.error - Error message to display
- * @returns {JSX.Element} The CssMinifierInput component
+ * Interface for minification options.
+ * @property {number} level - The optimization level for minification.
+ * @property {boolean} compress - Whether to enable compression.
+ * @property {object} format - Formatting options for spaces.
+ * @property {object} format.spaces - Space formatting options.
+ * @property {boolean} format.spaces.aroundSelectorRelation - Space around selector relations.
+ * @property {boolean} format.spaces.beforeBlockBegins - Space before blocks.
+ * @property {boolean} format.spaces.beforeValue - Space before values.
  */
-const CssMinifierInput = ({
-  input = "",
+interface MinificationOptions {
+  level: number;
+  compress: boolean;
+  format: {
+    spaces: {
+      aroundSelectorRelation: boolean;
+      beforeBlockBegins: boolean;
+      beforeValue: boolean;
+    };
+  };
+}
+
+/**
+ * Props for the CssMinifierInput component.
+ * @property {string} input - The CSS input string.
+ * @property {(value: string) => void} setInput - Function to update the CSS input.
+ * @property {MinificationOptions} options - The minification options.
+ * @property {(key: string, value: any) => void} updateOption - Function to update a minification option.
+ * @property {(key: string, value: boolean) => void} updateSpacesOption - Function to update a space formatting option.
+ * @property {() => void} onSubmit - Function to handle form submission.
+ * @property {() => void} onClear - Function to clear the input.
+ * @property {() => void} onReset - Function to reset the form to default values.
+ * @property {boolean} isLoading - Whether the form is in a loading state.
+ * @property {string} [error] - Optional error message to display.
+ */
+interface CssMinifierInputProps {
+  input: string;
+  setInput: (value: string) => void;
+  options: MinificationOptions;
+  updateOption: (key: string, value: any) => void;
+  updateSpacesOption: (key: string, value: boolean) => void;
+  onSubmit: () => void;
+  onClear: () => void;
+  onReset: () => void;
+  isLoading: boolean;
+  error?: string;
+}
+
+/**
+ * A component for accepting CSS input and configuring minification options.
+ * It includes a form with input fields, checkboxes, and buttons for customization and actions.
+ *
+ * @param {CssMinifierInputProps} props - The props for the component.
+ * @returns {React.JSX.Element} The rendered CssMinifierInput component.
+ */
+const CssMinifierInput: React.FC<CssMinifierInputProps> = ({
+  input,
   setInput,
   options,
   updateOption,
@@ -36,13 +73,14 @@ const CssMinifierInput = ({
   onReset,
   isLoading,
   error,
-}) => {
+}: CssMinifierInputProps): React.JSX.Element => {
   /**
-   * Handles form submission and triggers CSS minification
+   * Handles the form submission event.
+   * Prevents the default form submission and triggers the onSubmit callback.
    *
-   * @param {FormEvent} e - The form event
+   * @param {React.FormEvent} e - The form event.
    */
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onSubmit();
   };
@@ -146,19 +184,6 @@ const CssMinifierInput = ({
       </CardContent>
     </Card>
   );
-};
-
-CssMinifierInput.propTypes = {
-  input: PropTypes.string.isRequired,
-  setInput: PropTypes.func.isRequired,
-  options: PropTypes.object.isRequired,
-  updateOption: PropTypes.func.isRequired,
-  updateSpacesOption: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired,
-  onClear: PropTypes.func.isRequired,
-  onReset: PropTypes.func.isRequired,
-  isLoading: PropTypes.bool.isRequired,
-  error: PropTypes.string,
 };
 
 export default CssMinifierInput;

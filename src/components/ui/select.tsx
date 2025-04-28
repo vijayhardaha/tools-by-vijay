@@ -18,7 +18,7 @@ interface SelectOption extends React.HTMLAttributes<HTMLDivElement> {
 /**
  * Props for the Select component
  */
-interface SelectProps {
+interface SelectProps extends React.HTMLAttributes<HTMLDivElement> {
   value?: string;
   defaultValue?: string;
   onValueChange?: (value: string) => void;
