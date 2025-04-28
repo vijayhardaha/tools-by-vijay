@@ -1,7 +1,7 @@
 /// <reference path="./tinyurl.d.ts" />
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 
 import TinyURL from "tinyurl";
 import validUrl from "valid-url";
