@@ -10,21 +10,21 @@ import ShuffleTextLinesOutput from "./ShuffleTextLinesOutput";
  * A tool for shuffling lines of text with options to remove duplicates.
  * @returns {JSX.Element} The ShuffleTextLinesTool component.
  */
-const ShuffleTextLinesTool = () => {
-  const [input, setInput] = useState("");
-  const [output, setOutput] = useState("");
-  const [removeDuplicates, setRemoveDuplicates] = useState(false);
-  const [removeEmptyLines, setRemoveEmptyLines] = useState(true);
-  const [trimLines, setTrimLines] = useState(true);
+const ShuffleTextLinesTool: React.FC = (): React.JSX.Element => {
+  const [input, setInput] = useState<string>("");
+  const [output, setOutput] = useState<string>("");
+  const [removeDuplicates, setRemoveDuplicates] = useState<boolean>(false);
+  const [removeEmptyLines, setRemoveEmptyLines] = useState<boolean>(true);
+  const [trimLines, setTrimLines] = useState<boolean>(true);
 
   /**
    * Handles the submission of the input text, shuffles the lines, and updates the output.
    */
-  const handleSubmit = () => {
-    let lines = input.split("\n");
+  const handleSubmit = (): void => {
+    let lines: string[] = input.split("\n");
 
     if (removeDuplicates) {
-      lines = [...new Set(lines)];
+      lines = Array.from(new Set(lines));
     }
 
     if (trimLines) {
@@ -46,7 +46,7 @@ const ShuffleTextLinesTool = () => {
   /**
    * Clears the input and output fields.
    */
-  const handleClear = () => {
+  const handleClear = (): void => {
     setInput("");
     setOutput("");
   };
@@ -54,7 +54,7 @@ const ShuffleTextLinesTool = () => {
   /**
    * Resets the tool to its initial state, clearing input, output, and options.
    */
-  const handleReset = () => {
+  const handleReset = (): void => {
     handleClear();
     setRemoveDuplicates(false);
     setRemoveEmptyLines(true);

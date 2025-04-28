@@ -1,16 +1,17 @@
-import PropTypes from "prop-types";
-
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import { CopyButton } from "@/components/ui/copyButton";
 import { Textarea } from "@/components/ui/textarea";
 
+interface ShuffleTextLinesOutputProps {
+  output: string;
+}
+
 /**
  * Displays the shuffled text output in a card with a copy button.
- * @param {Object} props - The component props.
- * @param {string} props.output - The shuffled text to display.
- * @returns {JSX.Element} The ShuffleTextLinesOutput component.
  */
-const ShuffleTextLinesOutput = ({ output }) => {
+const ShuffleTextLinesOutput: React.FC<ShuffleTextLinesOutputProps> = ({
+  output,
+}: ShuffleTextLinesOutputProps): React.JSX.Element => {
   return (
     <Card>
       <CardHeader>
@@ -29,10 +30,6 @@ const ShuffleTextLinesOutput = ({ output }) => {
       </CardContent>
     </Card>
   );
-};
-
-ShuffleTextLinesOutput.propTypes = {
-  output: PropTypes.string.isRequired,
 };
 
 export default ShuffleTextLinesOutput;
