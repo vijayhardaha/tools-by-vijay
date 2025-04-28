@@ -1,21 +1,28 @@
-import { ReactElement } from "react";
+import React, { JSX } from "react";
 
 /**
- * PageHeader component for displaying page titles and descriptions
- *
- * @param {Object} props - Component props
- * @param {string} props.title - The title of the page
- * @param {string} [props.description] - Optional description text for the page
- * @param {ReactElement} [props.icon] - Optional icon element to display next to the title
- * @returns {ReactElement} Rendered component
+ * Props for the PageHeader component.
+ * @property {string} title - The title of the page.
+ * @property {string} [description] - Optional description text for the page.
+ * @property {ReactElement | null} [icon] - Optional icon element to display next to the title.
  */
 type PageHeaderProps = {
   title: string;
   description?: string;
-  icon?: ReactElement | null;
+  icon?: React.ReactNode | null;
 };
 
-const PageHeader: React.FC<PageHeaderProps> = ({ title, description, icon = null }) => {
+/**
+ * PageHeader component for displaying page titles and descriptions.
+ *
+ * @param {PageHeaderProps} props - The props for the component.
+ * @returns {ReactElement} The rendered component.
+ */
+const PageHeader: React.FC<PageHeaderProps> = ({
+  title,
+  description,
+  icon = null,
+}: PageHeaderProps): JSX.Element => {
   return (
     <div
       className="relative left-1/2 -mt-8 mb-8 w-screen -translate-x-1/2 text-white"

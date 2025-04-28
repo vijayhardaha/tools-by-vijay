@@ -1,23 +1,33 @@
-import React from "react";
-
-import PropTypes from "prop-types";
+import React, { JSX } from "react";
 
 import ToolsListWidget from "@/components/page/ToolsListWidget";
 import { getAllCategorySlugs } from "@/utils/categoryUtils";
 
 /**
+ * Props for the EntryWithSidebar component.
+ */
+interface EntryWithSidebarProps {
+  tool: {
+    category: string;
+    slug: string;
+  };
+  children: React.ReactNode;
+}
+
+/**
  * A layout component that displays a page entry with a sidebar.
  *
- * @param {Object} props - The component props.
- * @param {Object} props.tool - The tool object containing name and category.
- * @param {React.ReactNode} props.children - The main content to display in the entry area.
+ * @param {EntryWithSidebarProps} props - The component props.
  * @returns {JSX.Element} The rendered component.
  */
-const EntryWithSidebar = ({ tool, children }) => {
+const EntryWithSidebar: React.FC<EntryWithSidebarProps> = ({
+  tool,
+  children,
+}: EntryWithSidebarProps): JSX.Element => {
   const categories = getAllCategorySlugs().filter((category) => category !== tool.category);
 
-  const getRandomCategories = (categories, count) => {
-    const selected = [];
+  const getRandomCategories = (categories: string[], count: number): string[] => {
+    const selected: string[] = [];
     while (selected.length < count) {
       const category = categories[Math.floor(Math.random() * categories.length)];
       if (!selected.includes(category)) {
@@ -40,11 +50,6 @@ const EntryWithSidebar = ({ tool, children }) => {
       </aside>
     </div>
   );
-};
-
-EntryWithSidebar.propTypes = {
-  tool: PropTypes.object.isRequired,
-  children: PropTypes.node.isRequired,
 };
 
 export default EntryWithSidebar;

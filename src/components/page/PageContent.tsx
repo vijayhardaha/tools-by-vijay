@@ -1,4 +1,11 @@
-import PropTypes from "prop-types";
+import { JSX } from "react";
+
+interface PageContentProps {
+  /**
+   * The content to be displayed inside the container
+   */
+  children: React.ReactNode;
+}
 
 /**
  * PageContent component
@@ -6,20 +13,11 @@ import PropTypes from "prop-types";
  * A container component that wraps page content with consistent styling.
  * Provides a white background with rounded corners and shadow.
  *
- * @component
- * @param {Object} props - Component props
- * @param {ReactNode} props.children - The content to be displayed inside the container
- * @returns {ReactElement} The rendered component
+ * @param {PageContentProps} props - Component props
+ * @returns {JSX.Element} The rendered component
  */
-const PageContent = ({ children }) => {
+const PageContent: React.FC<PageContentProps> = ({ children }: PageContentProps): JSX.Element => {
   return <div className="relative">{children}</div>;
-};
-
-PageContent.propTypes = {
-  /**
-   * The content to be displayed inside the container
-   */
-  children: PropTypes.node.isRequired,
 };
 
 export default PageContent;

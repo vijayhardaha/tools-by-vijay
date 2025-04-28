@@ -1,17 +1,24 @@
-import PropTypes from "prop-types";
+import React, { JSX } from "react";
 
 import Footer from "@/components/footer/Footer";
 import Header from "@/components/header/Header";
 
 /**
+ * Props for the PageLayout component.
+ * @property {React.ReactNode} children - The content to be displayed within the layout.
+ */
+type PageLayoutPropTypes = {
+  children: React.ReactNode;
+};
+
+/**
  * PageLayout component that provides a consistent layout structure
  * with a header, main content area, and footer.
  *
- * @param {Object} props - Component props.
- * @param {ReactNode} props.children - The content to be displayed within the layout.
+ * @param {PageLayoutPropTypes} props - The props for the component.
  * @returns {JSX.Element} The rendered layout component.
  */
-const PageLayout = ({ children }) => {
+const PageLayout = ({ children }: PageLayoutPropTypes): JSX.Element => {
   return (
     <div>
       <Header />
@@ -21,10 +28,6 @@ const PageLayout = ({ children }) => {
       <Footer />
     </div>
   );
-};
-
-PageLayout.propTypes = {
-  children: PropTypes.node.isRequired,
 };
 
 export default PageLayout;

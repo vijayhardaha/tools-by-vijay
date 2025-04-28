@@ -1,27 +1,38 @@
-import React from "react";
+import React, { JSX } from "react";
 
 import Link from "next/link";
-import PropTypes from "prop-types";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Category, Tool } from "@/types";
 import { getCategoryBySlug } from "@/utils/categoryUtils";
 import { cn } from "@/utils/classNameUtils";
 import { getToolsByCategory } from "@/utils/toolUtils";
 
 /**
- * A reusable widget component for displaying content in a sidebar card.
+ * Props for the ToolsListWidget component.
+ * @property {string} category - The category slug to filter tools.
+ * @property {string} [hideTool] - The tool slug to exclude from the list.
+ */
+interface ToolsListWidgetProps {
+  category: string;
+  hideTool?: string;
+}
+
+/**
+ * A reusable widget component for displaying a list of tools in a sidebar card.
  *
- * @param {Object} props - The component props.
- * @param {string} props.category - The category slug to filter tools.
- * @param {string} props.hideTool - The tool slug to exclude from the list.
+ * @param {ToolsListWidgetProps} props - The props for the component.
  * @returns {JSX.Element} The rendered component.
  */
-const ToolsListWidget = ({ category, hideTool }) => {
-  const toolsInCategory = getToolsByCategory(category).filter(
+const ToolsListWidget: React.FC<ToolsListWidgetProps> = ({
+  category,
+  hideTool = "",
+}: ToolsListWidgetProps): JSX.Element => {
+  const toolsInCategory: Tool[] = getToolsByCategory(category).filter(
     (categoryTool) => categoryTool.slug !== hideTool
   );
 
-  const categoryData = getCategoryBySlug(category);
+  const categoryData: Category = getCategoryBySlug(category);
 
   return (
     <Card className="md:gap-4 md:py-4">
@@ -56,11 +67,6 @@ const ToolsListWidget = ({ category, hideTool }) => {
       </CardContent>
     </Card>
   );
-};
-
-ToolsListWidget.propTypes = {
-  category: PropTypes.string.isRequired,
-  hideTool: PropTypes.string,
 };
 
 export default ToolsListWidget;
