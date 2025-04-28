@@ -1,5 +1,3 @@
-import React, { JSX } from "react";
-
 import { notFound } from "next/navigation";
 
 import EntryWithSidebar from "@/components/page/EntryWithSidebar";
@@ -35,7 +33,7 @@ export const metadata: Metadata = genMeta({
  * @component
  * @returns {JSX.Element} The rendered JSON Sorter tool page component.
  */
-const JsonSorter: React.FC = (): JSX.Element => {
+const JsonSorter: React.FC = (): React.JSX.Element => {
   if (!tool) {
     notFound(); // Render a 404 page if the tool is null
   }

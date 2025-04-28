@@ -27,7 +27,7 @@ export const CopyButton = ({
   copyText = "Copy",
   copiedText = "Copied!",
   className = "",
-}: CopyButtonProps): JSX.Element => {
+}: CopyButtonProps): React.JSX.Element => {
   const [copied, setCopied] = useState(false);
 
   /**

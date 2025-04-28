@@ -27,7 +27,7 @@ const NavLink: React.FC<NavLinkProps> = ({
   href,
   children,
   className = "",
-}: NavLinkProps): JSX.Element => (
+}: NavLinkProps): React.JSX.Element => (
   <Link
     href={href}
     className={`text-muted-foreground hover:text-primary transition-colors hover:underline ${className}`}
@@ -62,7 +62,7 @@ type CategorySectionProps = {
 const CategorySection: React.FC<CategorySectionProps> = ({
   title,
   tools,
-}: CategorySectionProps): JSX.Element => (
+}: CategorySectionProps): React.JSX.Element => (
   <div className="mb-6">
     <h3 className="text-foreground mb-3 text-sm font-bold uppercase">{title}</h3>
     <ul className="space-y-3">
@@ -80,7 +80,7 @@ const CategorySection: React.FC<CategorySectionProps> = ({
  *
  * @returns {JSX.Element} The sidebar body content.
  */
-const SidebarBody: React.FC = (): JSX.Element => {
+const SidebarBody: React.FC = (): React.JSX.Element => {
   // Group tools by category
   const categorizedTools = getToolsByCategories();
   const scrollbarsRef = useRef<Scrollbars>(null);

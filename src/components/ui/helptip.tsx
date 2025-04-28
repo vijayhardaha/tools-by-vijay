@@ -15,7 +15,7 @@ interface HelpTipProps {
  * @param {HelpTipProps} props - Component props.
  * @returns {JSX.Element} The rendered HelpTip component.
  */
-export const HelpTip = ({ text }: HelpTipProps): JSX.Element => (
+export const HelpTip = ({ text }: HelpTipProps): React.JSX.Element => (
   <Tooltip text={text} className="!max-w-80">
     <FiInfo className="text-muted-foreground h-4 w-4 cursor-help" />
   </Tooltip>

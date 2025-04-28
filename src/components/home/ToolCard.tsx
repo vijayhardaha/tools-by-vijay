@@ -20,7 +20,7 @@ interface ToolCardProps {
  * @param {ToolCardProps} props - The component props.
  * @returns {JSX.Element | null} The rendered ToolCard component.
  */
-const ToolCard = ({ slug, className = "" }: ToolCardProps): JSX.Element | null => {
+const ToolCard = ({ slug, className = "" }: ToolCardProps): React.JSX.Element | null => {
   const tool: Tool | null = findToolBySlug(slug);
 
   if (!tool) return null;

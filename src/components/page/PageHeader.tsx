@@ -1,5 +1,3 @@
-import React, { JSX } from "react";
-
 /**
  * Props for the PageHeader component.
  * @property {string} title - The title of the page.
@@ -22,7 +20,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({
   title,
   description,
   icon = null,
-}: PageHeaderProps): JSX.Element => {
+}: PageHeaderProps): React.JSX.Element => {
   return (
     <div
       className="relative left-1/2 -mt-8 mb-8 w-screen -translate-x-1/2 text-white"

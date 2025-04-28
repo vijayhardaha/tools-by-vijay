@@ -1,5 +1,3 @@
-import React, { JSX } from "react";
-
 import Link from "next/link";
 
 type FooterWidgetProps = {
@@ -19,7 +17,7 @@ type FooterWidgetProps = {
 const FooterWidget: React.FC<FooterWidgetProps> = ({
   title,
   links,
-}: FooterWidgetProps): JSX.Element => {
+}: FooterWidgetProps): React.JSX.Element => {
   /**
    * Check if a URL is external (starts with http:// or https://)
    * @param {string} url - The URL to check

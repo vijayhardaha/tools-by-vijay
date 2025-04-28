@@ -1,5 +1,3 @@
-import React, { JSX } from "react";
-
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import { CopyButton } from "@/components/ui/copyButton";
 import { Textarea } from "@/components/ui/textarea";
@@ -18,7 +16,7 @@ interface AlphabeticalLineSorterOutputProps {
  */
 const AlphabeticalLineSorterOutput: React.FC<AlphabeticalLineSorterOutputProps> = ({
   output,
-}: AlphabeticalLineSorterOutputProps): JSX.Element => {
+}: AlphabeticalLineSorterOutputProps): React.JSX.Element => {
   return (
     <Card>
       <CardHeader>

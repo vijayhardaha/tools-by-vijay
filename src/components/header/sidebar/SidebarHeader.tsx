@@ -1,5 +1,3 @@
-import React, { JSX } from "react";
-
 import Logo from "@/components/header/parts/Logo";
 import { SheetHeader } from "@/components/ui/sheet";
 
@@ -10,7 +8,7 @@ import { SheetHeader } from "@/components/ui/sheet";
  *
  * @returns {JSX.Element} The rendered SidebarHeader component.
  */
-const SidebarHeader: React.FC = (): JSX.Element => {
+const SidebarHeader: React.FC = (): React.JSX.Element => {
   return (
     <SheetHeader className="border-border border-b p-4">
       <div className="flex">

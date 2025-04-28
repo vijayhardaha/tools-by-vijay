@@ -1,7 +1,5 @@
 "use client";
 
-import React, { JSX } from "react";
-
 import { RiMenu3Fill } from "react-icons/ri";
 
 import { Button } from "@/components/ui/button";
@@ -19,7 +17,7 @@ type MenuButtonProps = {
  * @param {MenuButtonProps} props - The component props.
  * @returns {JSX.Element} A button component with "Menu" text and hamburger icon.
  */
-const MenuButton: React.FC<MenuButtonProps> = ({ onClick }: MenuButtonProps): JSX.Element => (
+const MenuButton: React.FC<MenuButtonProps> = ({ onClick }: MenuButtonProps): React.JSX.Element => (
   <Button onClick={onClick} variant="primary" className="w-12 md:w-auto">
     <span className="hidden md:inline-flex">Menu</span>
     <RiMenu3Fill />

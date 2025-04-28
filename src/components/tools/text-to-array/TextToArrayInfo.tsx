@@ -1,5 +1,3 @@
-import React, { JSX } from "react";
-
 /**
  * Provides information about the Text to Array Converter Tool, including its purpose,
  * usage instructions, and examples.
@@ -7,7 +5,7 @@ import React, { JSX } from "react";
  * @component
  * @returns {JSX.Element} The rendered component displaying tool information
  */
-const TextToArrayInfo: React.FC = (): JSX.Element => {
+const TextToArrayInfo: React.FC = (): React.JSX.Element => {
   return (
     <div className="max-w-none space-y-8">
       <section>

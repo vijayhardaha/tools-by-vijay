@@ -18,7 +18,7 @@ import BulkSlugifyOutput from "./BulkSlugifyOutput";
  *
  * @returns {JSX.Element} The complete Bulk Slugify Tool interface
  */
-const BulkSlugifyTool: React.FC = (): JSX.Element => {
+const BulkSlugifyTool: React.FC = (): React.JSX.Element => {
   const [input, setInput] = useState<string>("");
   const [output, setOutput] = useState<string>("");
   const [useUnderscore, setUseUnderscore] = useState<boolean>(false);

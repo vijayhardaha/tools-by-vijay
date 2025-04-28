@@ -1,5 +1,3 @@
-import React, { JSX } from "react";
-
 import ToolCard from "@/components/home/ToolCard";
 import PageLayout from "@/components/page/PageLayout";
 import { Tool, Category } from "@/types";
@@ -15,7 +13,7 @@ import { getToolsByCategories } from "@/utils/toolUtils";
  * @component
  * @returns {JSX.Element} The rendered Home component with categorized tools.
  */
-const Home: React.FC = (): JSX.Element => {
+const Home: React.FC = (): React.JSX.Element => {
   // Get all tools and group them by category
   const toolsByCategory: Record<string, Tool[]> = getToolsByCategories();
 

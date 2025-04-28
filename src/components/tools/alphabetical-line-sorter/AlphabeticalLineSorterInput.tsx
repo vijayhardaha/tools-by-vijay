@@ -1,5 +1,3 @@
-import React, { JSX } from "react";
-
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -40,7 +38,7 @@ const AlphabeticalLineSorterInput: React.FC<AlphabeticalLineSorterInputProps> = 
   onSubmit,
   onReset,
   onClear,
-}: AlphabeticalLineSorterInputProps): JSX.Element => {
+}: AlphabeticalLineSorterInputProps): React.JSX.Element => {
   /**
    * Handles form submission to sort lines alphabetically
    * @param {*} e - Event object

@@ -1,5 +1,3 @@
-import React, { JSX } from "react";
-
 import TextStoryMakerContent from "@/components/text-story-maker/TextStoryMakerTool";
 import { generateMetadata as genMeta, Metadata } from "@/utils/seoUtils";
 
@@ -20,7 +18,7 @@ export const metadata: Metadata = genMeta({
  * @component
  * @returns {JSX.Element} The rendered TextStoryMaker page.
  */
-const TextStoryMaker: React.FC = (): JSX.Element => {
+const TextStoryMaker: React.FC = (): React.JSX.Element => {
   return (
     <div className="mx-auto max-w-[540px]">
       <TextStoryMakerContent />

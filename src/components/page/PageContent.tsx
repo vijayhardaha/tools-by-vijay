@@ -16,7 +16,9 @@ interface PageContentProps {
  * @param {PageContentProps} props - Component props
  * @returns {JSX.Element} The rendered component
  */
-const PageContent: React.FC<PageContentProps> = ({ children }: PageContentProps): JSX.Element => {
+const PageContent: React.FC<PageContentProps> = ({
+  children,
+}: PageContentProps): React.JSX.Element => {
   return <div className="relative">{children}</div>;
 };
 

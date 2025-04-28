@@ -1,5 +1,3 @@
-import React, { JSX } from "react";
-
 import { FaFacebookF, FaXTwitter, FaGithub, FaInstagram } from "react-icons/fa6";
 import { TbWorldWww } from "react-icons/tb";
 
@@ -24,7 +22,7 @@ export const metadata: Metadata = genMeta({
  * Displays social links and ways to connect or contribute
  * @returns {JSX.Element} The rendered Contact page.
  */
-const Contact: React.FC = (): JSX.Element => {
+const Contact: React.FC = (): React.JSX.Element => {
   return (
     <PageLayout>
       <PageHeader

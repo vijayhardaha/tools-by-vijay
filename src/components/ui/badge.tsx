@@ -1,5 +1,3 @@
-import React, { JSX } from "react";
-
 import { cva } from "class-variance-authority";
 
 import { cn } from "@/utils/classNameUtils";
@@ -36,7 +34,12 @@ interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
  * @param {BadgeProps} props - Component props
  * @returns {JSX.Element} The rendered Badge component
  */
-function Badge({ className, variant = "default", children, ...props }: BadgeProps): JSX.Element {
+function Badge({
+  className,
+  variant = "default",
+  children,
+  ...props
+}: BadgeProps): React.JSX.Element {
   return (
     <span className={cn(badgeVariants({ variant }), className)} {...props}>
       {children}

@@ -1,5 +1,3 @@
-import React, { JSX } from "react";
-
 import PageContent from "@/components/page/PageContent";
 import PageHeader from "@/components/page/PageHeader";
 import PageLayout from "@/components/page/PageLayout";
@@ -16,7 +14,7 @@ export const metadata: Metadata = genMeta({
   slug: "about",
 });
 
-const About: React.FC = (): JSX.Element => {
+const About: React.FC = (): React.JSX.Element => {
   return (
     <PageLayout>
       <PageHeader title="About Me" description="Why I built this platform and what drives it" />

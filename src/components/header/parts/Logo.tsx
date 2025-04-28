@@ -18,7 +18,7 @@ type LogoProps = {
  * @param {LogoProps} props - Component props.
  * @returns {JSX.Element} A link to the homepage containing the site logo.
  */
-const Logo: React.FC<LogoProps> = ({ className }: LogoProps): JSX.Element => (
+const Logo: React.FC<LogoProps> = ({ className }: LogoProps): React.JSX.Element => (
   <Link href="/">
     <Image
       src="/images/site-logo.svg"

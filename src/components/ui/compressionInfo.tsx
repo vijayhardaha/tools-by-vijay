@@ -1,12 +1,10 @@
-import React, { JSX } from "react";
-
 /**
  * Utility function to wrap text in a <code> tag.
  *
  * @param {string} text - The text to wrap.
  * @returns {JSX.Element} The text wrapped in a <code> tag.
  */
-const wrapInCode = (text: string): JSX.Element => {
+const wrapInCode = (text: string): React.JSX.Element => {
   return (
     <code className="bg-muted rounded px-1 py-0.5 text-xs font-medium text-pink-500">{text}</code>
   );
@@ -23,7 +21,10 @@ interface CompressionInfoProps {
 /**
  * Displays compression information based on input and output data.
  */
-export const CompressionInfo = ({ input, output }: CompressionInfoProps): JSX.Element | null => {
+export const CompressionInfo = ({
+  input,
+  output,
+}: CompressionInfoProps): React.JSX.Element | null => {
   if (!output) return wrapInCode("Output is empty");
 
   const formatSize = (size: number): string => {

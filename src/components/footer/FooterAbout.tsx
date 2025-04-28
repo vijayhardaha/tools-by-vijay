@@ -1,5 +1,3 @@
-import React, { JSX } from "react";
-
 import Logo from "@/components/header/parts/Logo";
 import { Button } from "@/components/ui/button";
 import { socialMediaLinks } from "@/constants/socialLinks";
@@ -50,7 +48,7 @@ const SocialButton: React.FC<SocialButtonProps> = ({ icon: Icon, href, label, co
  *
  * @returns {JSX.Element} The rendered footer about section.
  */
-const FooterAbout: React.FC = (): JSX.Element => {
+const FooterAbout: React.FC = (): React.JSX.Element => {
   return (
     <div className="flex flex-col gap-4">
       <div className="space-y-2">

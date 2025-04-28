@@ -17,7 +17,7 @@ interface PageBreadcrumbProps {
  * @param {PageBreadcrumbProps} props - The props for the component.
  * @returns {JSX.Element} The rendered breadcrumb navigation.
  */
-const PageBreadcrumb: React.FC = ({ pageName }: PageBreadcrumbProps): JSX.Element => {
+const PageBreadcrumb: React.FC = ({ pageName }: PageBreadcrumbProps): React.JSX.Element => {
   return (
     <nav aria-label="breadcrumb">
       <ol className="flex flex-wrap items-center text-sm">

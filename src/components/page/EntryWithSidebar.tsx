@@ -1,5 +1,3 @@
-import React, { JSX } from "react";
-
 import ToolsListWidget from "@/components/page/ToolsListWidget";
 import { getAllCategorySlugs } from "@/utils/categoryUtils";
 
@@ -23,7 +21,7 @@ interface EntryWithSidebarProps {
 const EntryWithSidebar: React.FC<EntryWithSidebarProps> = ({
   tool,
   children,
-}: EntryWithSidebarProps): JSX.Element => {
+}: EntryWithSidebarProps): React.JSX.Element => {
   const categories = getAllCategorySlugs().filter((category) => category !== tool.category);
 
   const getRandomCategories = (categories: string[], count: number): string[] => {

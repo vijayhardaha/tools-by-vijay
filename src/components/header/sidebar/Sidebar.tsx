@@ -1,7 +1,5 @@
 "use client";
 
-import React, { JSX } from "react";
-
 import { Sheet, SheetContent } from "@/components/ui/sheet";
 
 import SidebarBody from "./SidebarBody";
@@ -23,7 +21,7 @@ type SidebarProps = {
  * @param {SidebarProps} props - Component props.
  * @returns {JSX.Element} Sidebar component.
  */
-const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }: SidebarProps): JSX.Element => (
+const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }: SidebarProps): React.JSX.Element => (
   <Sheet open={isOpen} onOpenChange={onClose}>
     <SheetContent
       side="right"

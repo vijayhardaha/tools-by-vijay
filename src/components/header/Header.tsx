@@ -17,7 +17,7 @@ import { cn } from "@/utils/classNameUtils";
  *
  * @returns {JSX.Element} Header component with logo, menu button and sidebar
  */
-const Header: React.FC = (): JSX.Element => {
+const Header: React.FC = (): React.JSX.Element => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDrawer = () => setIsOpen(!isOpen);

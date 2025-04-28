@@ -14,7 +14,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
  * @param {InputProps} props - Component props
  * @returns {JSX.Element} Input component
  */
-function Input({ className, type = "text", ...props }: InputProps): JSX.Element {
+function Input({ className, type = "text", ...props }: InputProps): React.JSX.Element {
   return (
     <input
       type={type}

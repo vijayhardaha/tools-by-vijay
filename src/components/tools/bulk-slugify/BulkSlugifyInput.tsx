@@ -1,7 +1,5 @@
 "use client";
 
-import React, { JSX } from "react";
-
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -49,7 +47,7 @@ const BulkSlugifyInput: React.FC<BulkSlugifyInputProps> = ({
   onReset,
   keepEmptyLines = false,
   setKeepEmptyLines,
-}: BulkSlugifyInputProps): JSX.Element => {
+}: BulkSlugifyInputProps): React.JSX.Element => {
   /**
    * Handles form submission to generate slugs
    *

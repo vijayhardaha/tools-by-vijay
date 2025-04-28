@@ -13,7 +13,7 @@ import AlphabeticalLineSorterOutput from "./AlphabeticalLineSorterOutput";
  * @component
  * @returns {JSX.Element} The complete Alphabetical Line Sorter tool with input options, output display, and functionality
  */
-const AlphabeticalLineSorterTool: React.FC = (): JSX.Element => {
+const AlphabeticalLineSorterTool: React.FC = (): React.JSX.Element => {
   const [input, setInput] = useState<string>("");
   const [output, setOutput] = useState<string>("");
   const [reverseSort, setReverseSort] = useState<boolean>(false);

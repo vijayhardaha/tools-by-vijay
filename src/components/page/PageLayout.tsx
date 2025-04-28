@@ -1,5 +1,3 @@
-import React, { JSX } from "react";
-
 import Footer from "@/components/footer/Footer";
 import Header from "@/components/header/Header";
 
@@ -18,7 +16,7 @@ type PageLayoutPropTypes = {
  * @param {PageLayoutPropTypes} props - The props for the component.
  * @returns {JSX.Element} The rendered layout component.
  */
-const PageLayout = ({ children }: PageLayoutPropTypes): JSX.Element => {
+const PageLayout = ({ children }: PageLayoutPropTypes): React.JSX.Element => {
   return (
     <div>
       <Header />

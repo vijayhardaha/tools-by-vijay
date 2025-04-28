@@ -39,7 +39,7 @@ export const metadata: BaseMetadataType = baseMetadata;
  * @param {{ children: ReactNode }} props - The props for the RootLayout component.
  * @returns {JSX.Element} The root layout structure.
  */
-const RootLayout = ({ children }: { children: ReactNode }): JSX.Element => {
+const RootLayout = ({ children }: { children: ReactNode }): React.JSX.Element => {
   return (
     <html lang="en" className={`${sansFont.variable} ${monoFont.variable}`}>
       <body>{children}</body>
