@@ -176,6 +176,17 @@ const tools: Tool[] = [
       "Randomly shuffle the lines of your text for creative or organizational purposes. Simple and fast tool.",
     category: "text-transformation",
   },
+  {
+    name: "Hindi Typing",
+    slug: "hindi-typing",
+    shortDescription: "Type in Hindi effortlessly.",
+    pageDescription:
+      "Use the Hindi Typing tool to type in Hindi using an English keyboard. Convert transliterated text into Hindi script.",
+    seoTitle: "Hindi Typing Tool – Type in Hindi Online",
+    seoDescription:
+      "Type in Hindi easily using an English keyboard. Convert transliterated text into Hindi script with this simple tool.",
+    category: "language-tools",
+  },
 ];
 
 export default tools;

@@ -52,6 +52,14 @@ const categories: Category[] = [
     seoDescription:
       "Format and organize your data with our free online tools. Sort JSON and structure your information efficiently.",
   },
+  {
+    label: "Language Tools",
+    slug: "language-tools",
+    description: "Tools for working with different languages and scripts.",
+    seoTitle: "Language Tools",
+    seoDescription:
+      "Explore tools for typing, converting, and working with various languages and scripts. Simplify language-related tasks.",
+  },
 ];
 
 export default categories;

@@ -15,6 +15,7 @@ import {
   PiCodeSimpleBold,
   PiQuotesFill,
   PiShuffleBold,
+  PiTranslateBold,
 } from "react-icons/pi";
 
 export const toolIcons: Record<string, React.ReactElement> = {
@@ -34,4 +35,5 @@ export const toolIcons: Record<string, React.ReactElement> = {
   "css-inliner": <PiCodeSimpleBold />,
   "replace-quotes": <PiQuotesFill />,
   "shuffle-text-lines": <PiShuffleBold />,
+  "language-tools": <PiTranslateBold />,
 };
