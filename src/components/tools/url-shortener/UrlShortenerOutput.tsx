@@ -1,27 +1,42 @@
-import PropTypes from "prop-types";
-
 import { Alert } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import { CopyButton } from "@/components/ui/copyButton";
 
 /**
- * Component that displays the shortened URLs and provides copy functionality
- *
- * This component renders the output of the URL shortening process, showing both
- * original and shortened URLs with copy functionality.
- *
- * @param {Object} props - Component props
- * @param {Array} props.results - Array of URL shortening results
- * @returns {JSX.Element} Output display with copy functionality
+ * Represents a single URL shortening result
  */
-const UrlShortenerOutput = ({ results }) => {
+interface UrlShortenerResult {
+  originalUrl: string;
+  shortenedUrl: string;
+  isValid: boolean;
+}
+
+/**
+ * Props for the UrlShortenerOutput component
+ */
+interface UrlShortenerOutputProps {
+  results: UrlShortenerResult[];
+}
+
+/**
+ * Component to display the results of the URL shortening process
+ *
+ * This component renders a list of shortened URLs along with their original URLs,
+ * validity status, and options to copy individual or all valid shortened URLs.
+ *
+ * @param {UrlShortenerOutputProps} props - Props for the component
+ * @returns {React.JSX.Element} The rendered component
+ */
+const UrlShortenerOutput: React.FC<UrlShortenerOutputProps> = ({
+  results,
+}: UrlShortenerOutputProps): React.JSX.Element => {
   /**
-   * Creates a text string containing all shortened URLs
+   * Creates a text string containing all valid shortened URLs
    *
-   * @returns {string} All valid shortened URLs
+   * @returns {string} All valid shortened URLs joined by newlines
    */
-  const getAllShortenedUrls = () => {
+  const getAllShortenedUrls = (): string => {
     return results
       .filter((result) => result.isValid)
       .map((result) => result.shortenedUrl)
@@ -102,16 +117,6 @@ const UrlShortenerOutput = ({ results }) => {
       </CardContent>
     </Card>
   );
-};
-
-UrlShortenerOutput.propTypes = {
-  results: PropTypes.arrayOf(
-    PropTypes.shape({
-      originalUrl: PropTypes.string.isRequired,
-      shortenedUrl: PropTypes.string.isRequired,
-      isValid: PropTypes.bool.isRequired,
-    })
-  ).isRequired,
 };
 
 export default UrlShortenerOutput;

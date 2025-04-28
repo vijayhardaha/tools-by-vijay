@@ -1,6 +1,6 @@
 "use client";
 
-import PropTypes from "prop-types";
+import { FC } from "react";
 
 import { Alert } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
@@ -8,34 +8,41 @@ import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/com
 import { Textarea } from "@/components/ui/textarea";
 
 /**
- * Component for user input of URLs to be shortened
- *
- * This component provides a form for users to input multiple URLs to be shortened,
- * with validation and processing controls.
- *
- * @param {Object} props - Component props
- * @param {string} props.input - The current input text with URLs
- * @param {Function} props.setInput - Function to update the input text
- * @param {Function} props.onSubmit - Function to process and shorten the URLs
- * @param {Function} props.onClear - Function to clear the input and results
- * @param {boolean} props.isLoading - Whether the shortening process is in progress
- * @param {string} props.error - Error message to display, if any
- * @returns {JSX.Element} Input form for URL shortening
+ * Props for the UrlShortenerInput component
  */
-const UrlShortenerInput = ({
+interface UrlShortenerInputProps {
+  input: string;
+  setInput: (value: string) => void;
+  onSubmit: () => void;
+  onClear: () => void;
+  isLoading?: boolean;
+  error?: string;
+}
+
+/**
+ * Component for the URL Shortener input form
+ *
+ * This component provides a text area for users to input URLs, along with buttons
+ * to submit the URLs for shortening or clear the input. It also displays any error
+ * messages and handles the loading state.
+ *
+ * @param {UrlShortenerInputProps} props - Props for the component
+ * @returns {React.JSX.Element} The rendered component
+ */
+const UrlShortenerInput: React.FC<UrlShortenerInputProps> = ({
   input = "",
   setInput,
   onSubmit,
   onClear,
   isLoading = false,
   error = "",
-}) => {
+}: UrlShortenerInputProps): React.JSX.Element => {
   /**
    * Handles form submission to shorten URLs
    *
-   * @param {Object} e - Event object
+   * @param {React.FormEvent} e - Event object
    */
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onSubmit();
   };
@@ -73,15 +80,6 @@ const UrlShortenerInput = ({
       </CardContent>
     </Card>
   );
-};
-
-UrlShortenerInput.propTypes = {
-  input: PropTypes.string.isRequired,
-  setInput: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired,
-  onClear: PropTypes.func.isRequired,
-  isLoading: PropTypes.bool,
-  error: PropTypes.string,
 };
 
 export default UrlShortenerInput;

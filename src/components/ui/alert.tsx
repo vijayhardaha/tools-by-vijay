@@ -35,7 +35,7 @@ const alertVariants = cva(
 );
 
 // Default icons for each variant
-const defaultIcons: Record<string, JSX.Element> = {
+const defaultIcons: Record<string, React.ReactElement> = {
   default: <LuCircleAlert />,
   info: <LuInfo />,
   warning: <LuTriangleAlert />,
@@ -48,7 +48,7 @@ interface AlertProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
   variant?: "default" | "info" | "warning" | "success" | "danger";
   title?: string;
-  text?: string;
+  text?: React.ReactNode;
   icon?: React.ReactNode | null;
   children?: React.ReactNode;
 }

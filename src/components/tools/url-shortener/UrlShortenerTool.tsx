@@ -9,6 +9,12 @@ import UrlShortenerInfo from "./UrlShortenerInfo";
 import UrlShortenerInput from "./UrlShortenerInput";
 import UrlShortenerOutput from "./UrlShortenerOutput";
 
+interface UrlResult {
+  originalUrl: string;
+  shortenedUrl: string;
+  isValid: boolean;
+}
+
 /**
  * Main component for the URL Shortener Tool
  *
@@ -17,11 +23,11 @@ import UrlShortenerOutput from "./UrlShortenerOutput";
  *
  * @returns {JSX.Element} The complete URL Shortener Tool interface
  */
-const UrlShortenerTool = () => {
-  const [input, setInput] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [results, setResults] = useState([]);
-  const [error, setError] = useState("");
+const UrlShortenerTool: React.FC = (): React.JSX.Element => {
+  const [input, setInput] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [results, setResults] = useState<UrlResult[]>([]);
+  const [error, setError] = useState<string>("");
 
   /**
    * Validates a URL
@@ -29,7 +35,7 @@ const UrlShortenerTool = () => {
    * @param {string} url - URL to validate
    * @returns {boolean} Whether the URL is valid
    */
-  const isValidUrl = (url) => validUrl.isWebUri(url) !== undefined;
+  const isValidUrl = (url: string): boolean => validUrl.isWebUri(url) !== undefined;
 
   /**
    * Shortens a single URL using TinyURL API
@@ -37,7 +43,7 @@ const UrlShortenerTool = () => {
    * @param {string} url - URL to shorten
    * @returns {Promise<string>} Shortened URL or error message
    */
-  const shortenUrl = async (url) => {
+  const shortenUrl = async (url: string): Promise<string> => {
     if (!url || url.trim() === "") return "";
 
     try {
@@ -51,8 +57,13 @@ const UrlShortenerTool = () => {
 
   /**
    * Processes all URLs in the input field
+   *
+   * Splits the input into individual URLs, validates them, and shortens them if valid.
+   * Updates the results state with the processed URLs.
+   *
+   * @returns {Promise<void>} Resolves when processing is complete
    */
-  const handleSubmit = async () => {
+  const handleSubmit = async (): Promise<void> => {
     setError("");
     setIsLoading(true);
 
@@ -65,7 +76,7 @@ const UrlShortenerTool = () => {
         return;
       }
 
-      const processedResults = await Promise.all(
+      const processedResults: UrlResult[] = await Promise.all(
         urls.map(async (url) => {
           const trimmedUrl = url.trim();
           const isValid = isValidUrl(trimmedUrl);
@@ -89,8 +100,10 @@ const UrlShortenerTool = () => {
 
   /**
    * Clears the input and results
+   *
+   * Resets the input field, results, and error message to their initial states.
    */
-  const handleClear = () => {
+  const handleClear = (): void => {
     setInput("");
     setResults([]);
     setError("");
