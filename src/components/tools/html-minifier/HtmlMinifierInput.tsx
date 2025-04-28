@@ -1,6 +1,6 @@
 "use client";
 
-import PropTypes from "prop-types";
+import React from "react";
 
 import { Alert } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
@@ -9,21 +9,28 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Textarea } from "@/components/ui/textarea";
 
 /**
- * Component for HTML minifier input and options
- *
- * @param {Object} props - Component props
- * @param {string} props.input - The HTML input to be minified
- * @param {Function} props.setInput - Function to update input state
- * @param {Object} props.options - Minification options
- * @param {Function} props.updateOption - Function to update a specific option
- * @param {Function} props.onSubmit - Function called when minify button is clicked
- * @param {Function} props.onClear - Function to clear the input
- * @param {Function} props.onReset - Function to reset all options to defaults
- * @param {boolean} props.isLoading - Indicates whether the minification process is ongoing
- * @param {boolean} props.error - Indicates whether there was an error during minification
- * @returns {JSX.Element} The HtmlMinifierInput component
+ * Props for the HtmlMinifierInput component.
  */
-const HtmlMinifierInput = ({
+interface HtmlMinifierInputProps {
+  input: string;
+  setInput: (value: string) => void;
+  options: Record<string, boolean>;
+  updateOption: (key: string, value: boolean) => void;
+  onSubmit: () => void;
+  onClear: () => void;
+  onReset: () => void;
+  isLoading: boolean;
+  error: string;
+}
+
+/**
+ * A React functional component for an HTML Minifier input form.
+ * Allows users to input HTML, configure minification options, and trigger actions like minify, clear, or reset.
+ *
+ * @param {HtmlMinifierInputProps} props - The props for the component.
+ * @returns {JSX.Element} The rendered HTML Minifier input component.
+ */
+const HtmlMinifierInput: React.FC<HtmlMinifierInputProps> = ({
   input = "",
   setInput,
   options,
@@ -33,13 +40,14 @@ const HtmlMinifierInput = ({
   onReset,
   isLoading,
   error,
-}) => {
+}: HtmlMinifierInputProps): React.JSX.Element => {
   /**
-   * Handles form submission and triggers HTML minification
+   * Handles the form submission event.
+   * Prevents the default form submission behavior and triggers the onSubmit callback.
    *
-   * @param {FormEvent} e - The form event
+   * @param {FormEvent} e - The form submission event.
    */
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onSubmit();
   };
@@ -235,18 +243,6 @@ const HtmlMinifierInput = ({
       </CardContent>
     </Card>
   );
-};
-
-HtmlMinifierInput.propTypes = {
-  input: PropTypes.string.isRequired,
-  setInput: PropTypes.func.isRequired,
-  options: PropTypes.object.isRequired,
-  updateOption: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired,
-  onClear: PropTypes.func.isRequired,
-  onReset: PropTypes.func.isRequired,
-  isLoading: PropTypes.bool.isRequired,
-  error: PropTypes.string.isRequired,
 };
 
 export default HtmlMinifierInput;

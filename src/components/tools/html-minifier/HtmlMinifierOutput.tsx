@@ -1,20 +1,29 @@
-import PropTypes from "prop-types";
-
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import { CompressionInfo } from "@/components/ui/compressionInfo";
 import { CopyButton } from "@/components/ui/copyButton";
 import { Textarea } from "@/components/ui/textarea";
 
 /**
- * Component that displays the minified HTML output and provides copy functionality
- *
- * @component
- * @param {Object} props - The component props
- * @param {string} props.output - The minified HTML to display
- * @param {string} props.input - The original HTML code
- * @returns {JSX.Element} The HtmlMinifierOutput component
+ * Props for the HtmlMinifierOutput component.
+ * @property {string} output - The minified HTML output.
+ * @property {string} input - The original HTML input.
  */
-const HtmlMinifierOutput = ({ output, input }) => {
+interface HtmlMinifierOutputProps {
+  output: string;
+  input: string;
+}
+
+/**
+ * A React component that displays the minified HTML output along with compression information.
+ * Includes a copy button to copy the output and a readonly textarea to view the minified HTML.
+ *
+ * @param {HtmlMinifierOutputProps} props - The props for the component.
+ * @returns {React.JSX.Element} The rendered component.
+ */
+const HtmlMinifierOutput: React.FC<HtmlMinifierOutputProps> = ({
+  output,
+  input,
+}: HtmlMinifierOutputProps): React.JSX.Element => {
   return (
     <Card>
       <CardHeader>
@@ -35,11 +44,6 @@ const HtmlMinifierOutput = ({ output, input }) => {
       </CardContent>
     </Card>
   );
-};
-
-HtmlMinifierOutput.propTypes = {
-  output: PropTypes.string.isRequired,
-  input: PropTypes.string.isRequired,
 };
 
 export default HtmlMinifierOutput;

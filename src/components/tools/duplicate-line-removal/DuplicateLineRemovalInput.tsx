@@ -1,6 +1,5 @@
 "use client";
-
-import PropTypes from "prop-types";
+import React from "react";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
@@ -8,15 +7,27 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { RadioBox } from "@/components/ui/radiobox";
 import { Textarea } from "@/components/ui/textarea";
 
+interface DuplicateLineRemovalInputProps {
+  input: string;
+  setInput: (value: string) => void;
+  sortType: string;
+  setSortType: (value: string) => void;
+  reverseSort: boolean;
+  setReverseSort: (value: boolean) => void;
+  onSubmit: () => void;
+  onReset: () => void;
+  onClear: () => void;
+}
+
 /**
  * Input component for the Duplicate Line Removal tool.
  * Provides a form for text input, sorting options, and reverse sorting.
  *
  * @component
- * @param {Object} props - Component props
+ * @param {DuplicateLineRemovalInputProps} props - Component props
  * @returns {JSX.Element} The rendered input form
  */
-const DuplicateLineRemovalInput = ({
+const DuplicateLineRemovalInput: React.FC<DuplicateLineRemovalInputProps> = ({
   input,
   setInput,
   sortType,
@@ -26,12 +37,12 @@ const DuplicateLineRemovalInput = ({
   onSubmit,
   onReset,
   onClear,
-}) => {
+}: DuplicateLineRemovalInputProps): React.JSX.Element => {
   /**
-   * Handles form submission by preventing default behavior and triggering conversion
-   * @param {FormEvent} e - Form event object
+   * Handles form submission by preventing default behavior and triggering conversion.
+   * @param {React.FormEvent} e - Form event object.
    */
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onSubmit();
   };
@@ -104,18 +115,6 @@ const DuplicateLineRemovalInput = ({
       </CardContent>
     </Card>
   );
-};
-
-DuplicateLineRemovalInput.propTypes = {
-  input: PropTypes.string.isRequired,
-  setInput: PropTypes.func.isRequired,
-  sortType: PropTypes.string.isRequired,
-  setSortType: PropTypes.func.isRequired,
-  reverseSort: PropTypes.bool.isRequired,
-  setReverseSort: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired,
-  onReset: PropTypes.func.isRequired,
-  onClear: PropTypes.func.isRequired,
 };
 
 export default DuplicateLineRemovalInput;

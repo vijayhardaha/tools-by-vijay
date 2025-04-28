@@ -1,15 +1,38 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 
 import HtmlMinifierInfo from "./HtmlMinifierInfo";
 import HtmlMinifierInput from "./HtmlMinifierInput";
 import HtmlMinifierOutput from "./HtmlMinifierOutput";
 
 /**
+ * Type definition for the HTML Minifier options.
+ */
+type HtmlMinifierOptions = {
+  removeComments: boolean;
+  collapseWhitespace: boolean;
+  conservativeCollapse: boolean;
+  collapseBooleanAttributes: boolean;
+  removeAttributeQuotes: boolean;
+  removeEmptyAttributes: boolean;
+  removeEmptyElements: boolean;
+  removeRedundantAttributes: boolean;
+  removeScriptTypeAttributes: boolean;
+  removeStyleLinkTypeAttributes: boolean;
+  sortAttributes: boolean;
+  sortClassName: boolean;
+  minifyCSS: boolean;
+  minifyJS: boolean;
+  minifyURLs: boolean;
+  decodeEntities: boolean;
+  useShortDoctype: boolean;
+};
+
+/**
  * Default options for the HTML Minifier
  */
-const defaultOptions = {
+const defaultOptions: HtmlMinifierOptions = {
   removeComments: true,
   collapseWhitespace: true,
   conservativeCollapse: false,
@@ -35,12 +58,12 @@ const defaultOptions = {
  *
  * @returns {JSX.Element} The HTML Minifier tool interface
  */
-const HtmlMinifierTool = () => {
-  const [input, setInput] = useState("");
-  const [output, setOutput] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [options, setOptions] = useState(defaultOptions);
-  const [error, setError] = useState("");
+const HtmlMinifierTool: React.FC = (): React.JSX.Element => {
+  const [input, setInput] = useState<string>("");
+  const [output, setOutput] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [options, setOptions] = useState<HtmlMinifierOptions>(defaultOptions);
+  const [error, setError] = useState<string>("");
 
   /**
    * Handles the minification process when the "Minify" button is clicked
@@ -50,7 +73,7 @@ const HtmlMinifierTool = () => {
    * @function
    * @returns {void}
    */
-  const handleSubmit = async () => {
+  const handleSubmit = async (): Promise<void> => {
     if (!input.trim()) return;
 
     setIsLoading(true);
@@ -90,7 +113,7 @@ const HtmlMinifierTool = () => {
    * @function
    * @returns {void}
    */
-  const handleClear = () => {
+  const handleClear = (): void => {
     setInput("");
     setOutput("");
     setError("");
@@ -102,7 +125,7 @@ const HtmlMinifierTool = () => {
    * @function
    * @returns {void}
    */
-  const handleReset = () => {
+  const handleReset = (): void => {
     handleClear();
     setOptions(defaultOptions);
   };
@@ -114,7 +137,7 @@ const HtmlMinifierTool = () => {
    * @param {string} key - The option key to update
    * @param {boolean} value - The new value for the option
    */
-  const updateOption = (key, value) => {
+  const updateOption = (key: keyof HtmlMinifierOptions, value: boolean): void => {
     setOptions((prevOptions) => ({
       ...prevOptions,
       [key]: value,

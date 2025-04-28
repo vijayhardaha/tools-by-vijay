@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 
 import jsonabc from "jsonabc";
 
@@ -15,11 +15,11 @@ import JsonSorterOutput from "./JsonSorterOutput";
  * @component
  * @returns {JSX.Element} The complete JSON sorter tool with input options, output display, and information
  */
-const JsonSorterTool = () => {
-  const [input, setInput] = useState("");
-  const [output, setOutput] = useState("");
-  const [spareArrays, setSpareArrays] = useState(true);
-  const [error, setError] = useState("");
+const JsonSorterTool: React.FC = (): React.JSX.Element => {
+  const [input, setInput] = useState<string>("");
+  const [output, setOutput] = useState<string>("");
+  const [spareArrays, setSpareArrays] = useState<boolean>(true);
+  const [error, setError] = useState<string>("");
 
   /**
    * Handles the sorting process when user submits the form
@@ -27,7 +27,7 @@ const JsonSorterTool = () => {
    * @function
    * @returns {void}
    */
-  const handleSubmit = () => {
+  const handleSubmit = (): void => {
     try {
       setError("");
 
@@ -41,7 +41,7 @@ const JsonSorterTool = () => {
       try {
         JSON.parse(input);
       } catch (err) {
-        setError(`Invalid JSON: ${err.message}`);
+        setError(`Invalid JSON: ${err instanceof Error ? err.message : "Unknown error"}`);
         setOutput("");
         return;
       }
@@ -50,7 +50,7 @@ const JsonSorterTool = () => {
       const output = jsonabc.sort(input, spareArrays);
       setOutput(output);
     } catch (err) {
-      setError(`Error sorting JSON: ${err.message}`);
+      setError(`Error sorting JSON: ${err instanceof Error ? err.message : "Unknown error"}`);
       setOutput("");
     }
   };
@@ -61,7 +61,7 @@ const JsonSorterTool = () => {
    * @function
    * @returns {void}
    */
-  const handleClear = () => {
+  const handleClear = (): void => {
     setInput("");
     setOutput("");
     setError("");
@@ -73,7 +73,7 @@ const JsonSorterTool = () => {
    * @function
    * @returns {void}
    */
-  const handleReset = () => {
+  const handleReset = (): void => {
     handleClear();
     setSpareArrays(true);
   };

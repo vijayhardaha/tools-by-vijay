@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 
 import DuplicateLineRemovalInfo from "./DuplicateLineRemovalInfo";
 import DuplicateLineRemovalInput from "./DuplicateLineRemovalInput";
@@ -13,11 +13,11 @@ import DuplicateLineRemovalOutput from "./DuplicateLineRemovalOutput";
  * @component
  * @returns {JSX.Element} The complete Duplicate Line Removal tool with input options, output display, and functionality
  */
-const DuplicateLineRemovalTool = () => {
-  const [input, setInput] = useState("");
-  const [output, setOutput] = useState("");
-  const [sortType, setSortType] = useState("none");
-  const [reverseSort, setReverseSort] = useState(false);
+const DuplicateLineRemovalTool: React.FC = (): React.JSX.Element => {
+  const [input, setInput] = useState<string>("");
+  const [output, setOutput] = useState<string>("");
+  const [sortType, setSortType] = useState<"none" | "alphabetical" | "ascii">("none");
+  const [reverseSort, setReverseSort] = useState<boolean>(false);
 
   /**
    * Processes the input to remove duplicate lines, sort them based on the selected sort type,
@@ -26,7 +26,7 @@ const DuplicateLineRemovalTool = () => {
    * @function
    * @returns {void}
    */
-  const handleSubmit = () => {
+  const handleSubmit = (): void => {
     const lines = input
       .split("\n")
       .map((line) => line.trim())
@@ -55,7 +55,7 @@ const DuplicateLineRemovalTool = () => {
    * @function
    * @returns {void}
    */
-  const handleClear = () => {
+  const handleClear = (): void => {
     setInput("");
     setOutput("");
   };
@@ -66,7 +66,7 @@ const DuplicateLineRemovalTool = () => {
    * @function
    * @returns {void}
    */
-  const handleReset = () => {
+  const handleReset = (): void => {
     handleClear();
     setSortType("none");
     setReverseSort(false);
@@ -79,7 +79,11 @@ const DuplicateLineRemovalTool = () => {
           input={input}
           setInput={setInput}
           sortType={sortType}
-          setSortType={setSortType}
+          setSortType={(value: string) => {
+            if (value === "none" || value === "alphabetical" || value === "ascii") {
+              setSortType(value);
+            }
+          }}
           reverseSort={reverseSort}
           setReverseSort={setReverseSort}
           onSubmit={handleSubmit}

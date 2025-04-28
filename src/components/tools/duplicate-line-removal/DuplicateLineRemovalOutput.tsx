@@ -1,19 +1,24 @@
-import PropTypes from "prop-types";
+import React from "react";
 
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import { CopyButton } from "@/components/ui/copyButton";
 import { Textarea } from "@/components/ui/textarea";
+
+interface DuplicateLineRemovalOutputProps {
+  output: string;
+}
 
 /**
  * Output component for the Duplicate Line Removal tool.
  * Displays the processed text in a readonly textarea with a copy button.
  *
  * @component
- * @param {Object} props - Component props
- * @param {string} props.output - The processed text to display
+ * @param {DuplicateLineRemovalOutputProps} props - Component props
  * @returns {JSX.Element} The rendered output display
  */
-const DuplicateLineRemovalOutput = ({ output }) => {
+const DuplicateLineRemovalOutput: React.FC<DuplicateLineRemovalOutputProps> = ({
+  output,
+}: DuplicateLineRemovalOutputProps): React.JSX.Element => {
   return (
     <Card>
       <CardHeader>
@@ -34,10 +39,6 @@ const DuplicateLineRemovalOutput = ({ output }) => {
       </CardContent>
     </Card>
   );
-};
-
-DuplicateLineRemovalOutput.propTypes = {
-  output: PropTypes.string.isRequired,
 };
 
 export default DuplicateLineRemovalOutput;

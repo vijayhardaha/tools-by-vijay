@@ -1,20 +1,20 @@
-import PropTypes from "prop-types";
-
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import { CopyButton } from "@/components/ui/copyButton";
 import { Textarea } from "@/components/ui/textarea";
 
+interface JsonSorterOutputProps {
+  output: string;
+}
+
 /**
  * Displays the sorted JSON output with copy functionality.
- * Shows the sorted JSON in a readonly textarea and allows the user to copy it
- * to the clipboard with visual feedback when copied.
  *
- * @component
- * @param {Object} props - Component props
- * @param {string} props.output - The sorted JSON output to display
- * @returns {JSX.Element} The rendered card with output display and copy functionality
+ * @param {JsonSorterOutputProps} props - Component props.
+ * @returns {JSX.Element} The rendered card with output display and copy functionality.
  */
-const JsonSorterOutput = ({ output }) => {
+const JsonSorterOutput: React.FC<JsonSorterOutputProps> = ({
+  output,
+}: JsonSorterOutputProps): React.JSX.Element => {
   return (
     <Card>
       <CardHeader>
@@ -33,10 +33,6 @@ const JsonSorterOutput = ({ output }) => {
       </CardContent>
     </Card>
   );
-};
-
-JsonSorterOutput.propTypes = {
-  output: PropTypes.string.isRequired,
 };
 
 export default JsonSorterOutput;

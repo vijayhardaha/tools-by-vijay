@@ -6,37 +6,32 @@ import JsMinifierInfo from "./JsMinifierInfo";
 import JsMinifierInput from "./JsMinifierInput";
 import JsMinifierOutput from "./JsMinifierOutput";
 
-/**
- * Putout Minify options
- */
-const defaultOptions = {
-  mangle: true,
-  removeConsole: false,
-  removeDebugger: true,
-  removeComments: true,
-};
+interface MinifyOptions {
+  mangle: boolean;
+  removeConsole: boolean;
+  removeDebugger: boolean;
+  removeComments: boolean;
+}
 
 /**
- * Main component for the JavaScript Minifier tool
- * Handles state management and minification logic
- * Uses @putout/minify for JavaScript minification
+ * Main component for the JavaScript Minifier tool.
  *
- * @returns {JSX.Element} The JavaScript Minifier tool interface
+ * @returns {JSX.Element} The JavaScript Minifier tool interface.
  */
-const JsMinifierTool = () => {
-  const [input, setInput] = useState("");
-  const [output, setOutput] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [options, setOptions] = useState(defaultOptions);
-  const [error, setError] = useState("");
+const JsMinifierTool: React.FC = (): React.JSX.Element => {
+  const [input, setInput] = useState<string>("");
+  const [output, setOutput] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [options, setOptions] = useState<MinifyOptions>({
+    mangle: true,
+    removeConsole: false,
+    removeDebugger: true,
+    removeComments: true,
+  });
+  const [error, setError] = useState<string>("");
 
   /**
-   * Handles the minification process when the "Minify" button is clicked
-   * Makes an API call to the server-side minification endpoint
-   *
-   * @async
-   * @function
-   * @returns {void}
+   * Handles the minification process when the "Minify" button is clicked.
    */
   const handleSubmit = async () => {
     if (!input.trim()) return;
@@ -73,10 +68,7 @@ const JsMinifierTool = () => {
   };
 
   /**
-   * Clears the input and output fields
-   *
-   * @function
-   * @returns {void}
+   * Clears the input and output fields.
    */
   const handleClear = () => {
     setInput("");
@@ -85,24 +77,22 @@ const JsMinifierTool = () => {
   };
 
   /**
-   * Resets all options to their default values
-   *
-   * @function
-   * @returns {void}
+   * Resets all options to their default values.
    */
   const handleReset = () => {
     handleClear();
-    setOptions(defaultOptions);
+    setOptions({
+      mangle: true,
+      removeConsole: false,
+      removeDebugger: true,
+      removeComments: true,
+    });
   };
 
   /**
-   * Updates an option in the options state
-   *
-   * @function
-   * @param {string} key - The option key to update
-   * @param {any} value - The new value for the option
+   * Updates an option in the options state.
    */
-  const updateOption = (key, value) => {
+  const updateOption = (key: keyof MinifyOptions, value: boolean) => {
     setOptions((prev) => ({
       ...prev,
       [key]: value,

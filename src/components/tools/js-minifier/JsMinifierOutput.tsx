@@ -1,20 +1,23 @@
-import PropTypes from "prop-types";
-
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import { CompressionInfo } from "@/components/ui/compressionInfo";
 import { CopyButton } from "@/components/ui/copyButton";
 import { Textarea } from "@/components/ui/textarea";
 
+interface JsMinifierOutputProps {
+  output: string;
+  input: string;
+}
+
 /**
- * Component that displays the minified JavaScript output and provides copy functionality
+ * Component that displays the minified JavaScript output and provides copy functionality.
  *
- * @component
- * @param {Object} props - The component props
- * @param {string} props.output - The minified JavaScript to display
- * @param {string} props.input - The original JavaScript code
- * @returns {JSX.Element} The JsMinifierOutput component
+ * @param {JsMinifierOutputProps} props - The component props.
+ * @returns {JSX.Element} The JsMinifierOutput component.
  */
-const JsMinifierOutput = ({ output, input }) => {
+const JsMinifierOutput: React.FC<JsMinifierOutputProps> = ({
+  output,
+  input,
+}: JsMinifierOutputProps): React.JSX.Element => {
   return (
     <Card>
       <CardHeader>
@@ -35,11 +38,6 @@ const JsMinifierOutput = ({ output, input }) => {
       </CardContent>
     </Card>
   );
-};
-
-JsMinifierOutput.propTypes = {
-  output: PropTypes.string.isRequired,
-  input: PropTypes.string.isRequired,
 };
 
 export default JsMinifierOutput;

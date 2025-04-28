@@ -1,7 +1,5 @@
 "use client";
 
-import PropTypes from "prop-types";
-
 import { Alert } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
@@ -10,23 +8,24 @@ import { HelpTip } from "@/components/ui/helptip";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 
+interface JsonSorterInputProps {
+  input: string;
+  setInput: (value: string) => void;
+  spareArrays: boolean;
+  setSpareArrays: (value: boolean) => void;
+  onSubmit: () => void;
+  onClear: () => void;
+  onReset: () => void;
+  error?: string;
+}
+
 /**
  * Component for inputting JSON and configuring sorting options.
- * Provides a form with controls for JSON input and sorting preferences.
  *
- * @component
- * @param {Object} props - Component props
- * @param {string} props.input - Current JSON input
- * @param {Function} props.setInput - Function to update JSON input
- * @param {boolean} props.spareArrays - Whether to preserve arrays without sorting
- * @param {Function} props.setSpareArrays - Function to update spare arrays setting
- * @param {Function} props.onSubmit - Function to sort the JSON
- * @param {Function} props.onClear - Function to clear JSON input only
- * @param {Function} props.onReset - Function to reset all settings to defaults
- * @param {string} props.error - Error message to display, if any
- * @returns {JSX.Element} The rendered form with sorting options
+ * @param {JsonSorterInputProps} props - Component props.
+ * @returns {JSX.Element} The rendered form with sorting options.
  */
-const JsonSorterInput = ({
+const JsonSorterInput: React.FC<JsonSorterInputProps> = ({
   input,
   setInput,
   spareArrays,
@@ -35,12 +34,13 @@ const JsonSorterInput = ({
   onClear,
   onReset,
   error,
-}) => {
+}: JsonSorterInputProps): React.JSX.Element => {
   /**
-   * Handles form submission by preventing default behavior and triggering sorting
-   * @param {FormEvent} e - Form event object
+   * Handles form submission by preventing default behavior and triggering sorting.
+   *
+   * @param {FormEvent} e - Form event object.
    */
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onSubmit();
   };
@@ -94,17 +94,6 @@ const JsonSorterInput = ({
       </CardContent>
     </Card>
   );
-};
-
-JsonSorterInput.propTypes = {
-  input: PropTypes.string.isRequired,
-  setInput: PropTypes.func.isRequired,
-  spareArrays: PropTypes.bool.isRequired,
-  setSpareArrays: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired,
-  onClear: PropTypes.func.isRequired,
-  onReset: PropTypes.func.isRequired,
-  error: PropTypes.string,
 };
 
 export default JsonSorterInput;

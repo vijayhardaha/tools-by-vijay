@@ -1,30 +1,36 @@
 "use client";
 
-import PropTypes from "prop-types";
-
 import { Alert } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Textarea } from "@/components/ui/textarea";
 
+interface JsMinifierInputProps {
+  input: string;
+  setInput: (value: string) => void;
+  options: {
+    mangle: boolean;
+    removeConsole: boolean;
+    removeDebugger: boolean;
+    removeComments: boolean;
+  };
+  updateOption: (key: string, value: boolean) => void;
+  onSubmit: () => void;
+  onClear: () => void;
+  onReset: () => void;
+  isLoading: boolean;
+  error?: string;
+}
+
 /**
- * Component for JavaScript minifier input and options
+ * Component for JavaScript minifier input and options.
  *
- * @param {Object} props - Component props
- * @param {string} props.input - The JavaScript input to be minified
- * @param {Function} props.setInput - Function to update input state
- * @param {Object} props.options - Minification options
- * @param {Function} props.updateOption - Function to update an option
- * @param {Function} props.onSubmit - Function called when minify button is clicked
- * @param {Function} props.onClear - Function to clear the input
- * @param {Function} props.onReset - Function to reset all options to defaults
- * @param {boolean} props.isLoading - Whether minification is in progress
- * @param {string} props.error - Error message to display
- * @returns {JSX.Element} The JsMinifierInput component
+ * @param {JsMinifierInputProps} props - Component props.
+ * @returns {JSX.Element} The JsMinifierInput component.
  */
-const JsMinifierInput = ({
-  input = "",
+const JsMinifierInput: React.FC<JsMinifierInputProps> = ({
+  input,
   setInput,
   options,
   updateOption,
@@ -33,13 +39,13 @@ const JsMinifierInput = ({
   onReset,
   isLoading,
   error,
-}) => {
+}: JsMinifierInputProps): React.JSX.Element => {
   /**
-   * Handles form submission and triggers JavaScript minification
+   * Handles form submission and triggers JavaScript minification.
    *
-   * @param {FormEvent} e - The form event
+   * @param {FormEvent} e - The form event.
    */
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onSubmit();
   };
@@ -117,18 +123,6 @@ const JsMinifierInput = ({
       </CardContent>
     </Card>
   );
-};
-
-JsMinifierInput.propTypes = {
-  input: PropTypes.string.isRequired,
-  setInput: PropTypes.func.isRequired,
-  options: PropTypes.object.isRequired,
-  updateOption: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired,
-  onClear: PropTypes.func.isRequired,
-  onReset: PropTypes.func.isRequired,
-  isLoading: PropTypes.bool.isRequired,
-  error: PropTypes.string,
 };
 
 export default JsMinifierInput;
