@@ -1,6 +1,6 @@
 "use client";
 
-import PropTypes from "prop-types";
+import React, { JSX } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
@@ -8,32 +8,32 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/utils/classNameUtils";
 
+interface BulkSlugifyInputProps {
+  input: string;
+  useUnderscore: boolean;
+  setInput: (value: string) => void;
+  removeNumbers: boolean;
+  useLowercase: boolean;
+  useLitinize: boolean;
+  setUseUnderscore: (value: boolean) => void;
+  setRemoveNumbers: (value: boolean) => void;
+  setUseLowercase: (value: boolean) => void;
+  setUseLitinize: (value: boolean) => void;
+  onSubmit: () => void;
+  onClear: () => void;
+  onReset: () => void;
+  keepEmptyLines: boolean;
+  setKeepEmptyLines: (value: boolean) => void;
+}
+
 /**
  * Component for user input and configuration options for the Bulk Slugify tool
  *
  * This component provides a form for users to input text strings to be slugified,
  * along with configuration options for the slugification process such as separator
  * type, case conversion, number removal, and character normalization.
- *
- * @param {Object} props - Component props
- * @param {string} props.input - The current input text
- * @param {boolean} props.useUnderscore - Whether to use underscore as separator instead of dash
- * @param {Function} props.setInput - Function to update the input text
- * @param {boolean} props.removeNumbers - Whether to remove numbers from the slugs
- * @param {boolean} props.useLowercase - Whether to convert slugs to lowercase
- * @param {boolean} props.useLitinize - Whether to normalize special characters using latinize
- * @param {Function} props.setUseUnderscore - Function to toggle underscore usage
- * @param {Function} props.setRemoveNumbers - Function to toggle number removal
- * @param {Function} props.setUseLowercase - Function to toggle lowercase conversion
- * @param {Function} props.setUseLitinize - Function to toggle latinize usage
- * @param {Function} props.onSubmit - Function to handle slug generation
- * @param {Function} props.onClear - Function to clear the input
- * @param {Function} props.onReset - Function to reset all options to defaults
- * @param {Function} props.setKeepEmptyLines - Function to toggle keeping empty lines
- * @param {boolean} props.keepEmptyLines - Whether to keep empty lines in the output
- * @returns {JSX.Element} Input form with configuration options
  */
-const BulkSlugifyInput = ({
+const BulkSlugifyInput: React.FC<BulkSlugifyInputProps> = ({
   input = "",
   useUnderscore = false,
   setInput,
@@ -49,13 +49,13 @@ const BulkSlugifyInput = ({
   onReset,
   keepEmptyLines = false,
   setKeepEmptyLines,
-}) => {
+}: BulkSlugifyInputProps): JSX.Element => {
   /**
    * Handles form submission to generate slugs
    *
    * @param {Object} e - Event object
    */
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onSubmit();
   };
@@ -147,24 +147,6 @@ const BulkSlugifyInput = ({
       </CardContent>
     </Card>
   );
-};
-
-BulkSlugifyInput.propTypes = {
-  input: PropTypes.string.isRequired,
-  setInput: PropTypes.func.isRequired,
-  useUnderscore: PropTypes.bool.isRequired,
-  setUseUnderscore: PropTypes.func.isRequired,
-  removeNumbers: PropTypes.bool.isRequired,
-  setRemoveNumbers: PropTypes.func.isRequired,
-  useLowercase: PropTypes.bool.isRequired,
-  setUseLowercase: PropTypes.func.isRequired,
-  useLitinize: PropTypes.bool.isRequired,
-  setUseLitinize: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired,
-  onClear: PropTypes.func.isRequired,
-  onReset: PropTypes.func.isRequired,
-  keepEmptyLines: PropTypes.bool.isRequired,
-  setKeepEmptyLines: PropTypes.func.isRequired,
 };
 
 export default BulkSlugifyInput;

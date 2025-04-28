@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React, { JSX, useState } from "react";
 
 import latinize from "latinize";
 import slugify from "slugify";
@@ -18,14 +18,14 @@ import BulkSlugifyOutput from "./BulkSlugifyOutput";
  *
  * @returns {JSX.Element} The complete Bulk Slugify Tool interface
  */
-const BulkSlugifyTool = () => {
-  const [input, setInput] = useState("");
-  const [output, setOutput] = useState("");
-  const [useUnderscore, setUseUnderscore] = useState(false);
-  const [removeNumbers, setRemoveNumbers] = useState(false);
-  const [useLowercase, setUseLowercase] = useState(true);
-  const [useLitinize, setUseLitinize] = useState(true);
-  const [keepEmptyLines, setKeepEmptyLines] = useState(false);
+const BulkSlugifyTool: React.FC = (): JSX.Element => {
+  const [input, setInput] = useState<string>("");
+  const [output, setOutput] = useState<string>("");
+  const [useUnderscore, setUseUnderscore] = useState<boolean>(false);
+  const [removeNumbers, setRemoveNumbers] = useState<boolean>(false);
+  const [useLowercase, setUseLowercase] = useState<boolean>(true);
+  const [useLitinize, setUseLitinize] = useState<boolean>(true);
+  const [keepEmptyLines, setKeepEmptyLines] = useState<boolean>(false);
 
   /**
    * Generates slugs from the input text based on configuration options
@@ -33,7 +33,7 @@ const BulkSlugifyTool = () => {
    * @param {string} text - The input text to convert to slugs
    * @returns {string} The processed slugs as a newline-separated string
    */
-  const generateSlugs = (text) => {
+  const generateSlugs = (text: string): string => {
     return text
       .split("\n")
       .filter((line) => keepEmptyLines || line.trim() !== "")
@@ -62,7 +62,7 @@ const BulkSlugifyTool = () => {
    * Handles the generation of slugs when the user clicks the generate button
    */
   const handleSubmit = () => {
-    const slugs = generateSlugs(input);
+    const slugs: string = generateSlugs(input);
     setOutput(slugs);
   };
 
@@ -116,7 +116,5 @@ const BulkSlugifyTool = () => {
     </>
   );
 };
-
-BulkSlugifyTool.propTypes = {};
 
 export default BulkSlugifyTool;

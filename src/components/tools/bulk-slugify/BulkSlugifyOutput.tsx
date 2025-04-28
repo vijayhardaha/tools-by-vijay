@@ -1,9 +1,13 @@
-import PropTypes from "prop-types";
+import React, { JSX } from "react";
 
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import { CopyButton } from "@/components/ui/copyButton";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+
+interface BulkSlugifyOutputProps {
+  output: string;
+}
 
 /**
  * Component that displays the generated slugs and provides copy functionality
@@ -11,14 +15,12 @@ import { Textarea } from "@/components/ui/textarea";
  * This component renders the output of the slugify process, allowing users to
  * copy individual slugs or all slugs at once. It shows visual feedback when
  * content is copied to the clipboard.
- *
- * @param {Object} props - Component props
- * @param {string} props.output - The generated slug output as a newline-separated string
- * @returns {JSX.Element} Output display with copy functionality
  */
-const BulkSlugifyOutput = ({ output }) => {
+const BulkSlugifyOutput: React.FC<BulkSlugifyOutputProps> = ({
+  output,
+}: BulkSlugifyOutputProps): JSX.Element => {
   // Split the output into individual lines and filter out empty lines
-  const lines = output.split("\n").filter((line) => line.trim() !== "");
+  const lines: string[] = output.split("\n").filter((line) => line.trim() !== "");
 
   return (
     <Card>
@@ -49,10 +51,6 @@ const BulkSlugifyOutput = ({ output }) => {
       </CardContent>
     </Card>
   );
-};
-
-BulkSlugifyOutput.propTypes = {
-  output: PropTypes.string.isRequired,
 };
 
 export default BulkSlugifyOutput;
