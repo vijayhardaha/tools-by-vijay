@@ -1,11 +1,13 @@
+import React, { JSX } from "react";
+
 /**
- * Info component for the Replace Quotes tool.
- * Provides additional information or instructions for the tool.
+ * Provides information about the Replace Quotes Tool, including its purpose,
+ * usage instructions, and examples.
  *
  * @component
- * @returns {JSX.Element} The info component for the Replace Quotes tool
+ * @returns {JSX.Element} The rendered component displaying tool information
  */
-const ReplaceQuotesInfo = () => {
+const ReplaceQuotesInfo: React.FC = (): JSX.Element => {
   return (
     <div className="max-w-none space-y-8">
       <section>

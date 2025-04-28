@@ -1,14 +1,13 @@
+import React, { JSX } from "react";
+
 /**
- * PasswordStrengthCheckerInfo Component
+ * Provides information about the Password Strength Checker Tool, including its purpose,
+ * usage instructions, and examples.
  *
- * @description Renders information about the Password Strength Checker tool,
- * including explanations of how password strength is measured, common
- * vulnerabilities, and best practices for creating secure passwords.
- * The component is informational only and does not accept any props.
- *
- * @returns {JSX.Element} A div containing sections with information about password security
+ * @component
+ * @returns {JSX.Element} The rendered component displaying tool information
  */
-const PasswordStrengthCheckerInfo = () => {
+const PasswordStrengthCheckerInfo: React.FC = (): JSX.Element => {
   return (
     <div className="max-w-none space-y-8">
       <section>

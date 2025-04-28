@@ -1,11 +1,13 @@
+import React, { JSX } from "react";
+
 /**
- * Provides information about the Password Generator tool, including its purpose,
- * importance of strong passwords, security tips, and credits.
+ * Provides information about the Password Generator Tool, including its purpose,
+ * usage instructions, and examples.
  *
  * @component
- * @returns {JSX.Element} The rendered component displaying password generator information
+ * @returns {JSX.Element} The rendered component displaying tool information
  */
-const PasswordGeneratorInfo = () => {
+const PasswordGeneratorInfo: React.FC = (): JSX.Element => {
   return (
     <div className="max-w-none space-y-8">
       <section>

@@ -1,9 +1,13 @@
+import React, { JSX } from "react";
+
 /**
- * Provides information and instructions for using the Shuffle Text Lines tool.
- * Includes details about the tool, how to use it, and example input/output.
- * @returns {JSX.Element} The ShuffleTextLinesInfo component.
+ * Provides information about the Shuffle Text Lines Tool, including its purpose,
+ * usage instructions, and examples.
+ *
+ * @component
+ * @returns {JSX.Element} The rendered component displaying tool information
  */
-const ShuffleTextLinesInfo = () => {
+const ShuffleTextLinesInfo: React.FC = (): JSX.Element => {
   return (
     <div className="max-w-none space-y-8">
       <section>

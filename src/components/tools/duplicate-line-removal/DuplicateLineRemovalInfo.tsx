@@ -1,3 +1,5 @@
+import React, { JSX } from "react";
+
 /**
  * Provides information about the Duplicate Line Removal tool, including its purpose,
  * usage instructions, and examples.
@@ -5,7 +7,7 @@
  * @component
  * @returns {JSX.Element} The rendered component displaying tool information
  */
-const DuplicateLineRemovalInfo = () => {
+const DuplicateLineRemovalInfo: React.FC = (): JSX.Element => {
   return (
     <div className="max-w-none space-y-8">
       <section>

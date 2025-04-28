@@ -1,13 +1,13 @@
+import React, { JSX } from "react";
+
 /**
- * CssInlinerInfo component
+ * Provides information about the CSS Inliner Tool, including its purpose,
+ * usage instructions, and examples.
  *
- * Displays information about the CSS Inliner Tool, including its description,
- * benefits, and credits. This component provides contextual information
- * to users about what the tool does and why they might want to use it.
- *
- * @returns {JSX.Element} The rendered CssInlinerInfo component
+ * @component
+ * @returns {JSX.Element} The rendered component displaying tool information
  */
-const CssInlinerInfo = () => {
+const CssInlinerInfo: React.FC = (): JSX.Element => {
   return (
     <div className="max-w-none space-y-8">
       <section>

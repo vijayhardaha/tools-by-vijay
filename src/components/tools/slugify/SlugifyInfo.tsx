@@ -1,13 +1,13 @@
+import React, { JSX } from "react";
+
 /**
- * SlugifyInfo component
+ * Provides information about the Slugify Tool, including its purpose,
+ * usage instructions, and examples.
  *
- * Displays information about the Slugify Tool, including its description,
- * benefits, and credits. This component provides contextual information
- * to users about what the tool does and why they might want to use it.
- *
- * @returns {JSX.Element} The rendered SlugifyInfo component
+ * @component
+ * @returns {JSX.Element} The rendered component displaying tool information
  */
-const SlugifyInfo = () => {
+const SlugifyInfo: React.FC = (): JSX.Element => {
   return (
     <div className="max-w-none space-y-8">
       <section>

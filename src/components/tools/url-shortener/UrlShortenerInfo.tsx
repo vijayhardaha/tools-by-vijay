@@ -1,12 +1,13 @@
+import React, { JSX } from "react";
+
 /**
- * Provides information about the URL Shortener Tool
+ * Provides information about the URL Shortener Tool, including its purpose,
+ * usage instructions, and examples.
  *
- * This component renders detailed information about the URL Shortener Tool,
- * including its purpose, benefits, and credits.
- *
- * @returns {JSX.Element} Information section about the URL Shortener Tool
+ * @component
+ * @returns {JSX.Element} The rendered component displaying tool information
  */
-const UrlShortenerInfo = () => {
+const UrlShortenerInfo: React.FC = (): JSX.Element => {
   return (
     <div className="max-w-none space-y-8">
       <section>

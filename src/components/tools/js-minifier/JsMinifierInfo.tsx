@@ -1,13 +1,13 @@
+import React, { JSX } from "react";
+
 /**
- * JsMinifierInfo component
+ * Provides information about the JavaScript Minifier Tool, including its purpose,
+ * usage instructions, and examples.
  *
- * Displays information about the JavaScript Minifier Tool, including its description,
- * benefits, and credits. This component provides contextual information
- * to users about what the tool does and why they might want to use it.
- *
- * @returns {JSX.Element} The rendered JsMinifierInfo component
+ * @component
+ * @returns {JSX.Element} The rendered component displaying tool information
  */
-const JsMinifierInfo = () => {
+const JsMinifierInfo: React.FC = (): JSX.Element => {
   return (
     <div className="max-w-none space-y-8">
       <section>

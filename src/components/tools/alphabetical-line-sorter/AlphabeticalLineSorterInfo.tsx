@@ -1,3 +1,5 @@
+import React, { JSX } from "react";
+
 /**
  * Provides information about the Alphabetical Line Sorter tool, including its purpose,
  * usage instructions, and examples.
@@ -5,7 +7,7 @@
  * @component
  * @returns {JSX.Element} The rendered component displaying tool information
  */
-const AlphabeticalLineSorterInfo = () => {
+const AlphabeticalLineSorterInfo: React.FC = (): JSX.Element => {
   return (
     <div className="max-w-none space-y-8">
       <section>
