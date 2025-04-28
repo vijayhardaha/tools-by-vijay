@@ -1,6 +1,6 @@
 "use client";
 
-import PropTypes from "prop-types";
+import React from "react";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
@@ -10,28 +10,33 @@ import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
 
 /**
+ * Props for the PasswordGeneratorInput component.
+ */
+interface PasswordGeneratorInputProps {
+  length: number;
+  setLength: (value: number) => void;
+  useUppercase: boolean;
+  setUseUppercase: (value: boolean) => void;
+  useLowercase: boolean;
+  setUseLowercase: (value: boolean) => void;
+  useNumbers: boolean;
+  setUseNumbers: (value: boolean) => void;
+  useSymbols: boolean;
+  setUseSymbols: (value: boolean) => void;
+  excludeSimilar: boolean;
+  setExcludeSimilar: (value: boolean) => void;
+  onSubmit: () => void;
+  onReset: () => void;
+}
+
+/**
  * Component for configuring password generation options.
  * Provides a form with controls for password length, character types, and other settings.
  *
- * @component
- * @param {Object} props - Component props
- * @param {number} props.length - Current password length setting
- * @param {Function} props.setLength - Function to update password length
- * @param {boolean} props.useUppercase - Whether to include uppercase letters
- * @param {Function} props.setUseUppercase - Function to toggle uppercase letters
- * @param {boolean} props.useLowercase - Whether to include lowercase letters
- * @param {Function} props.setUseLowercase - Function to toggle lowercase letters
- * @param {boolean} props.useNumbers - Whether to include numbers
- * @param {Function} props.setUseNumbers - Function to toggle numbers
- * @param {boolean} props.useSymbols - Whether to include symbols
- * @param {Function} props.setUseSymbols - Function to toggle symbols
- * @param {boolean} props.excludeSimilar - Whether to exclude similar characters
- * @param {Function} props.setExcludeSimilar - Function to toggle exclusion of similar characters
- * @param {Function} props.onSubmit - Function to generate a password with current settings
- * @param {Function} props.onReset - Function to reset all settings to defaults
- * @returns {JSX.Element} The rendered form with password generation options
+ * @param {PasswordGeneratorInputProps} props - Component props.
+ * @returns {JSX.Element} The rendered form with password generation options.
  */
-const PasswordGeneratorInput = ({
+const PasswordGeneratorInput: React.FC<PasswordGeneratorInputProps> = ({
   length,
   setLength,
   useUppercase,
@@ -46,12 +51,8 @@ const PasswordGeneratorInput = ({
   setExcludeSimilar,
   onSubmit,
   onReset,
-}) => {
-  /**
-   * Handles form submission by preventing default behavior and triggering password generation
-   * @param {FormEvent} e - Form event object
-   */
-  const handleSubmit = (e) => {
+}: PasswordGeneratorInputProps): React.JSX.Element => {
+  const handleSubmit = (e: React.FormEvent): void => {
     e.preventDefault();
     onSubmit();
   };
@@ -125,23 +126,6 @@ const PasswordGeneratorInput = ({
       </CardContent>
     </Card>
   );
-};
-
-PasswordGeneratorInput.propTypes = {
-  length: PropTypes.number.isRequired,
-  setLength: PropTypes.func.isRequired,
-  useUppercase: PropTypes.bool.isRequired,
-  setUseUppercase: PropTypes.func.isRequired,
-  useLowercase: PropTypes.bool.isRequired,
-  setUseLowercase: PropTypes.func.isRequired,
-  useNumbers: PropTypes.bool.isRequired,
-  setUseNumbers: PropTypes.func.isRequired,
-  useSymbols: PropTypes.bool.isRequired,
-  setUseSymbols: PropTypes.func.isRequired,
-  excludeSimilar: PropTypes.bool.isRequired,
-  setExcludeSimilar: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired,
-  onReset: PropTypes.func.isRequired,
 };
 
 export default PasswordGeneratorInput;

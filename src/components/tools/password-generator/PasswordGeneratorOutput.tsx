@@ -1,20 +1,28 @@
-import PropTypes from "prop-types";
+import React from "react";
 
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import { CopyButton } from "@/components/ui/copyButton";
 import { Input } from "@/components/ui/input";
 
 /**
+ * Props for the PasswordGeneratorOutput component.
+ * @property {string} password - The generated password to display.
+ */
+interface PasswordGeneratorOutputProps {
+  password: string;
+}
+
+/**
  * Displays the generated password with a copy functionality.
  * Shows the generated password in a readonly input field and allows the user to copy it
  * to the clipboard with visual feedback when copied.
  *
- * @component
- * @param {Object} props - Component props
- * @param {string} props.password - The generated password to display
- * @returns {JSX.Element} The rendered card with password display and copy functionality
+ * @param {PasswordGeneratorOutputProps} props - Component props.
+ * @returns {JSX.Element} The rendered card with password display and copy functionality.
  */
-const PasswordGeneratorOutput = ({ password }) => {
+const PasswordGeneratorOutput: React.FC<PasswordGeneratorOutputProps> = ({
+  password,
+}: PasswordGeneratorOutputProps): React.JSX.Element => {
   return (
     <Card>
       <CardHeader>
@@ -29,10 +37,6 @@ const PasswordGeneratorOutput = ({ password }) => {
       </CardContent>
     </Card>
   );
-};
-
-PasswordGeneratorOutput.propTypes = {
-  password: PropTypes.string.isRequired,
 };
 
 export default PasswordGeneratorOutput;

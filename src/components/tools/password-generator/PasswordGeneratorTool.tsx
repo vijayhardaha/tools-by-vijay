@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 
 import PasswordGeneratorInfo from "./PasswordGeneratorInfo";
 import PasswordGeneratorInput from "./PasswordGeneratorInput";
@@ -13,14 +13,14 @@ import PasswordGeneratorOutput from "./PasswordGeneratorOutput";
  * @component
  * @returns {JSX.Element} The complete password generator tool with input options, output display, and information
  */
-const PasswordGeneratorTool = () => {
-  const [length, setLength] = useState([12]);
-  const [useUppercase, setUseUppercase] = useState(true);
-  const [useLowercase, setUseLowercase] = useState(true);
-  const [useNumbers, setUseNumbers] = useState(true);
-  const [useSymbols, setUseSymbols] = useState(true);
-  const [excludeSimilar, setExcludeSimilar] = useState(false);
-  const [password, setPassword] = useState("");
+const PasswordGeneratorTool: React.FC = (): React.JSX.Element => {
+  const [length, setLength] = useState<number>(12);
+  const [useUppercase, setUseUppercase] = useState<boolean>(true);
+  const [useLowercase, setUseLowercase] = useState<boolean>(true);
+  const [useNumbers, setUseNumbers] = useState<boolean>(true);
+  const [useSymbols, setUseSymbols] = useState<boolean>(true);
+  const [excludeSimilar, setExcludeSimilar] = useState<boolean>(false);
+  const [password, setPassword] = useState<string>("");
 
   /**
    * Generates a password based on the current settings
@@ -28,7 +28,7 @@ const PasswordGeneratorTool = () => {
    * @function
    * @returns {string} The generated password or an error message
    */
-  const generatePassword = () => {
+  const generatePassword = (): string => {
     // Character sets
     const uppercaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     const lowercaseChars = "abcdefghijklmnopqrstuvwxyz";
@@ -73,7 +73,7 @@ const PasswordGeneratorTool = () => {
    * @function
    * @returns {void}
    */
-  const handleSubmit = () => {
+  const handleSubmit = (): void => {
     const password = generatePassword();
     setPassword(password);
   };
@@ -84,7 +84,7 @@ const PasswordGeneratorTool = () => {
    * @function
    * @returns {void}
    */
-  const handleReset = () => {
+  const handleReset = (): void => {
     setLength(12);
     setUseUppercase(true);
     setUseLowercase(true);
