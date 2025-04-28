@@ -1,19 +1,24 @@
-import PropTypes from "prop-types";
+import React, { JSX } from "react";
 
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import { CopyButton } from "@/components/ui/copyButton";
 import { Textarea } from "@/components/ui/textarea";
+
+interface AlphabeticalLineSorterOutputProps {
+  output: string;
+}
 
 /**
  * Output component for the Alphabetical Line Sorter tool.
  * Displays the sorted text in a readonly textarea with a copy button.
  *
  * @component
- * @param {Object} props - Component props
- * @param {string} props.output - The sorted text to display
+ * @param {AlphabeticalLineSorterOutputProps} props - Component props
  * @returns {JSX.Element} The rendered output display
  */
-const AlphabeticalLineSorterOutput = ({ output }) => {
+const AlphabeticalLineSorterOutput: React.FC<AlphabeticalLineSorterOutputProps> = ({
+  output,
+}: AlphabeticalLineSorterOutputProps): JSX.Element => {
   return (
     <Card>
       <CardHeader>
@@ -32,10 +37,6 @@ const AlphabeticalLineSorterOutput = ({ output }) => {
       </CardContent>
     </Card>
   );
-};
-
-AlphabeticalLineSorterOutput.propTypes = {
-  output: PropTypes.string.isRequired,
 };
 
 export default AlphabeticalLineSorterOutput;

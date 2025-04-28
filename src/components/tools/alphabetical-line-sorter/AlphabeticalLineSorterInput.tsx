@@ -1,6 +1,4 @@
-"use client";
-
-import PropTypes from "prop-types";
+import React, { JSX } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
@@ -8,15 +6,29 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { RadioBox } from "@/components/ui/radiobox";
 import { Textarea } from "@/components/ui/textarea";
 
+interface AlphabeticalLineSorterInputProps {
+  input: string;
+  setInput: (value: string) => void;
+  reverseSort: boolean;
+  setReverseSort: (value: boolean) => void;
+  removeDuplicates: boolean;
+  setRemoveDuplicates: (value: boolean) => void;
+  sortType: string;
+  setSortType: (value: string) => void;
+  onSubmit: () => void;
+  onReset: () => void;
+  onClear: () => void;
+}
+
 /**
  * Input component for the Alphabetical Line Sorter tool.
  * Provides a form for text input, sorting type, reverse sorting option, and duplicate removal.
  *
  * @component
- * @param {Object} props - Component props
+ * @param {AlphabeticalLineSorterInputProps} props - Component props
  * @returns {JSX.Element} The rendered input form
  */
-const AlphabeticalLineSorterInput = ({
+const AlphabeticalLineSorterInput: React.FC<AlphabeticalLineSorterInputProps> = ({
   input,
   setInput,
   reverseSort,
@@ -28,12 +40,12 @@ const AlphabeticalLineSorterInput = ({
   onSubmit,
   onReset,
   onClear,
-}) => {
+}: AlphabeticalLineSorterInputProps): JSX.Element => {
   /**
    * Handles form submission to sort lines alphabetically
    * @param {*} e - Event object
    */
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onSubmit();
   };
@@ -106,20 +118,6 @@ const AlphabeticalLineSorterInput = ({
       </CardContent>
     </Card>
   );
-};
-
-AlphabeticalLineSorterInput.propTypes = {
-  input: PropTypes.string.isRequired,
-  setInput: PropTypes.func.isRequired,
-  reverseSort: PropTypes.bool.isRequired,
-  setReverseSort: PropTypes.func.isRequired,
-  removeDuplicates: PropTypes.bool.isRequired,
-  setRemoveDuplicates: PropTypes.func.isRequired,
-  sortType: PropTypes.string.isRequired,
-  setSortType: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired,
-  onReset: PropTypes.func.isRequired,
-  onClear: PropTypes.func.isRequired,
 };
 
 export default AlphabeticalLineSorterInput;

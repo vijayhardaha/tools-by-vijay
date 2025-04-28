@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React, { JSX, useState } from "react";
 
 import AlphabeticalLineSorterInfo from "./AlphabeticalLineSorterInfo";
 import AlphabeticalLineSorterInput from "./AlphabeticalLineSorterInput";
@@ -13,12 +13,12 @@ import AlphabeticalLineSorterOutput from "./AlphabeticalLineSorterOutput";
  * @component
  * @returns {JSX.Element} The complete Alphabetical Line Sorter tool with input options, output display, and functionality
  */
-const AlphabeticalLineSorterTool = () => {
-  const [input, setInput] = useState("");
-  const [output, setOutput] = useState("");
-  const [reverseSort, setReverseSort] = useState(false);
-  const [removeDuplicates, setRemoveDuplicates] = useState(false);
-  const [sortType, setSortType] = useState("standard");
+const AlphabeticalLineSorterTool: React.FC = (): JSX.Element => {
+  const [input, setInput] = useState<string>("");
+  const [output, setOutput] = useState<string>("");
+  const [reverseSort, setReverseSort] = useState<boolean>(false);
+  const [removeDuplicates, setRemoveDuplicates] = useState<boolean>(false);
+  const [sortType, setSortType] = useState<"standard" | "ascii">("standard");
 
   /**
    * Handles the submission of the input text for sorting.
@@ -27,11 +27,11 @@ const AlphabeticalLineSorterTool = () => {
    * @function
    * @returns {void}
    */
-  const handleSubmit = () => {
+  const handleSubmit = (): void => {
     let lines = input.split("\n");
 
     if (removeDuplicates) {
-      lines = [...new Set(lines)];
+      lines = Array.from(new Set(lines));
     }
 
     lines = lines
@@ -59,7 +59,7 @@ const AlphabeticalLineSorterTool = () => {
    * @function
    * @returns {void}
    */
-  const handleClear = () => {
+  const handleClear = (): void => {
     setInput("");
     setOutput("");
   };
@@ -70,7 +70,7 @@ const AlphabeticalLineSorterTool = () => {
    * @function
    * @returns {void}
    */
-  const handleReset = () => {
+  const handleReset = (): void => {
     handleClear();
     setReverseSort(false);
     setRemoveDuplicates(false);
@@ -88,7 +88,11 @@ const AlphabeticalLineSorterTool = () => {
           removeDuplicates={removeDuplicates}
           setRemoveDuplicates={setRemoveDuplicates}
           sortType={sortType}
-          setSortType={setSortType}
+          setSortType={(value: string) => {
+            if (value === "standard" || value === "ascii") {
+              setSortType(value);
+            }
+          }}
           onSubmit={handleSubmit}
           onReset={handleReset}
           onClear={handleClear}
