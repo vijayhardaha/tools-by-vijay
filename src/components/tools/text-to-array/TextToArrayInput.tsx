@@ -1,7 +1,5 @@
 "use client";
 
-import PropTypes from "prop-types";
-
 import { Alert } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
@@ -11,30 +9,34 @@ import { Label } from "@/components/ui/label";
 import { Select } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 
+interface TextToArrayInputProps {
+  input: string;
+  setInput: (value: string) => void;
+  outputFormat: string;
+  setOutputFormat: (value: string) => void;
+  arrayType: string;
+  setArrayType: (value: string) => void;
+  trimLines: boolean;
+  setTrimLines: (value: boolean) => void;
+  removeEmptyLines: boolean;
+  setRemoveEmptyLines: (value: boolean) => void;
+  useSlugKeys: boolean;
+  setUseSlugKeys: (value: boolean) => void;
+  onSubmit: () => void;
+  onClear: () => void;
+  onReset: () => void;
+  error?: string;
+}
+
 /**
  * Component for inputting multiline text and configuring conversion options.
  * Provides a form with controls for text input, output format, and array structure.
  *
  * @component
  * @param {Object} props - Component props
- * @param {string} props.input - Current text input
- * @param {Function} props.setInput - Function to update text input
- * @param {string} props.outputFormat - Selected output format
- * @param {Function} props.setOutputFormat - Function to update output format
- * @param {string} props.arrayType - Selected array structure type
- * @param {Function} props.setArrayType - Function to update array structure type
- * @param {boolean} props.trimLines - Whether to trim whitespace from lines
- * @param {Function} props.setTrimLines - Function to update trim lines setting
- * @param {boolean} props.removeEmptyLines - Whether to remove empty lines
- * @param {Function} props.setRemoveEmptyLines - Function to update remove empty lines setting
- * @param {boolean} props.useSlugKeys - Whether to use slugified keys
- * @param {Function} props.setUseSlugKeys - Function to update slug keys setting
- * @param {Function} props.onSubmit - Function to convert text to array
- * @param {Function} props.onClear - Function to clear text input only
- * @param {Function} props.onReset - Function to reset all settings to defaults
  * @returns {JSX.Element} The rendered form with conversion options
  */
-const TextToArrayInput = ({
+const TextToArrayInput: React.FC<TextToArrayInputProps> = ({
   input,
   setInput,
   outputFormat,
@@ -51,12 +53,12 @@ const TextToArrayInput = ({
   onClear,
   onReset,
   error,
-}) => {
+}: TextToArrayInputProps): React.JSX.Element => {
   /**
    * Handles form submission by preventing default behavior and triggering conversion
-   * @param {FormEvent} e - Form event object
+   * @param {React.FormEvent} e - Form event object
    */
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent): void => {
     e.preventDefault();
     onSubmit();
   };
@@ -159,25 +161,6 @@ const TextToArrayInput = ({
       </CardContent>
     </Card>
   );
-};
-
-TextToArrayInput.propTypes = {
-  input: PropTypes.string.isRequired,
-  setInput: PropTypes.func.isRequired,
-  outputFormat: PropTypes.string.isRequired,
-  setOutputFormat: PropTypes.func.isRequired,
-  arrayType: PropTypes.string.isRequired,
-  setArrayType: PropTypes.func.isRequired,
-  trimLines: PropTypes.bool.isRequired,
-  setTrimLines: PropTypes.func.isRequired,
-  removeEmptyLines: PropTypes.bool.isRequired,
-  setRemoveEmptyLines: PropTypes.func.isRequired,
-  useSlugKeys: PropTypes.bool.isRequired,
-  setUseSlugKeys: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired,
-  onClear: PropTypes.func.isRequired,
-  onReset: PropTypes.func.isRequired,
-  error: PropTypes.string,
 };
 
 export default TextToArrayInput;

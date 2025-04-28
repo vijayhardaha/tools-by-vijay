@@ -9,6 +9,9 @@ import TextToArrayInfo from "./TextToArrayInfo";
 import TextToArrayInput from "./TextToArrayInput";
 import TextToArrayOutput from "./TextToArrayOutput";
 
+export type OutputFormat = "json" | "jsArray" | "jsObject" | "php" | "wordpress";
+export type ArrayType = "simple" | "numeric" | "associative";
+
 /**
  * Main component for the Text to Array tool.
  * Manages the state and functionality for converting multiline text to arrays in various formats.
@@ -16,15 +19,15 @@ import TextToArrayOutput from "./TextToArrayOutput";
  * @component
  * @returns {JSX.Element} The complete text to array tool with input options, output display, and information
  */
-const TextToArrayTool = () => {
-  const [input, setInput] = useState("");
-  const [output, setOutput] = useState("");
-  const [outputFormat, setOutputFormat] = useState("json");
-  const [arrayType, setArrayType] = useState("associative");
-  const [trimLines, setTrimLines] = useState(true);
-  const [removeEmptyLines, setRemoveEmptyLines] = useState(true);
-  const [useSlugKeys, setUseSlugKeys] = useState(true);
-  const [error, setError] = useState("");
+const TextToArrayTool: React.FC = (): React.JSX.Element => {
+  const [input, setInput] = useState<string>("");
+  const [output, setOutput] = useState<string>("");
+  const [outputFormat, setOutputFormat] = useState<OutputFormat>("json");
+  const [arrayType, setArrayType] = useState<ArrayType>("associative");
+  const [trimLines, setTrimLines] = useState<boolean>(true);
+  const [removeEmptyLines, setRemoveEmptyLines] = useState<boolean>(true);
+  const [useSlugKeys, setUseSlugKeys] = useState<boolean>(true);
+  const [error, setError] = useState<string>("");
 
   /**
    * Generates a slug from the given text.
@@ -32,7 +35,7 @@ const TextToArrayTool = () => {
    * @param {string} text - The input text to be slugified.
    * @returns {string} The generated slug.
    */
-  const generateSlug = (text) =>
+  const generateSlug = (text: string): string =>
     slugify(latinize(text).toLowerCase(), {
       replacement: "_",
       remove: null,
@@ -47,7 +50,7 @@ const TextToArrayTool = () => {
    * @param {string} value - The input value to generate a key from.
    * @returns {string} The key to use
    */
-  const getKey = (value) => {
+  const getKey = (value: string): string => {
     if (useSlugKeys) {
       return generateSlug(value);
     }
@@ -56,50 +59,55 @@ const TextToArrayTool = () => {
   };
 
   /**
-   * Parses the text input and processes it based on options
-   * @returns {Array|null} Array of processed lines or null if error
+   * Parses the text input and processes it based on options.
+   *
+   * @returns {string[]} Array of processed lines or an empty array if an error occurs.
    */
-  const parseTextInput = () => {
+  const parseTextInput = (): string[] => {
     try {
       setError("");
 
       // If input is empty, return error
       if (!input.trim()) {
         setError("Please enter the valid text content");
-        return null;
+        return [];
       }
 
       // Split the input by newlines
-      let lines = input.split("\n");
+      let lines: string[] = input.split("\n");
 
       // Apply processing options
       if (trimLines) {
-        lines = lines.map((line) => line.trim());
+        lines = lines.map((line: string) => line.trim());
       }
 
       if (removeEmptyLines) {
-        lines = lines.filter((line) => line.length > 0);
+        lines = lines.filter((line: string) => line.length > 0);
       }
 
       if (lines.length === 0) {
         setError("No valid lines found after processing");
-        return null;
+        return [];
       }
 
       return lines;
-    } catch (err) {
-      setError(`Error parsing text: ${err.message}`);
-      return null;
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(`Error parsing text: ${err.message}`);
+      } else {
+        setError("Unknown error occurred while parsing text");
+      }
+      return [];
     }
   };
 
   /**
-   * Formats the parsed lines into the selected output format
+   * Formats the parsed lines into the selected output format.
    *
-   * @param {Array} lines - Parsed lines of text
-   * @returns {string} Formatted output based on selected options
+   * @param {string[]} lines - Parsed lines of text.
+   * @returns {string} Formatted output based on selected options.
    */
-  const formatOutput = (lines) => {
+  const formatOutput = (lines: string[]): string => {
     if (!lines || lines.length === 0) {
       return "";
     }
@@ -126,7 +134,7 @@ const TextToArrayTool = () => {
    * @param {Array} lines - Parsed lines of text
    * @returns {string} JSON formatted output
    */
-  const formatJsonOutput = (lines) => {
+  const formatJsonOutput = (lines: string[]): string => {
     try {
       if (arrayType === "simple") {
         return JSON.stringify(lines, null, 2);
@@ -144,7 +152,7 @@ const TextToArrayTool = () => {
         }));
         return JSON.stringify(associativeArray, null, 2);
       }
-    } catch (err) {
+    } catch (err: any) {
       setError(`Error formatting JSON: ${err.message}`);
       return "";
     }
@@ -155,7 +163,7 @@ const TextToArrayTool = () => {
    * @param {Array} lines - Parsed lines of text
    * @returns {string} JavaScript array formatted output
    */
-  const formatJsArrayOutput = (lines) => {
+  const formatJsArrayOutput = (lines: string[]): string => {
     try {
       if (arrayType === "simple") {
         const simpleArray = lines.map((line) => `  "${line.replace(/"/g, '\\"')}"`);
@@ -174,7 +182,7 @@ const TextToArrayTool = () => {
         });
         return `const textArray = [\n${associativeArray.join(",\n")}\n];`;
       }
-    } catch (err) {
+    } catch (err: any) {
       setError(`Error formatting JavaScript array: ${err.message}`);
       return "";
     }
@@ -186,7 +194,7 @@ const TextToArrayTool = () => {
    * @param {Array} lines - Parsed lines of text
    * @returns {string} JavaScript object formatted output
    */
-  const formatJsObjectOutput = (lines) => {
+  const formatJsObjectOutput = (lines: string[]): string => {
     try {
       if (arrayType === "simple") {
         const objectItems = lines.map(
@@ -206,7 +214,7 @@ const TextToArrayTool = () => {
         });
         return `const textObject = {\n${objectItems.join(",\n")}\n};`;
       }
-    } catch (err) {
+    } catch (err: any) {
       setError(`Error formatting JavaScript object: ${err.message}`);
       return "";
     }
@@ -218,7 +226,7 @@ const TextToArrayTool = () => {
    * @param {Array} lines - Parsed lines of text
    * @returns {string} PHP formatted output
    */
-  const formatPhpOutput = (lines) => {
+  const formatPhpOutput = (lines: string[]): string => {
     try {
       if (arrayType === "simple") {
         const arrayItems = lines.map((line) => `  '${line.replace(/'/g, "\\'")}'`);
@@ -236,7 +244,7 @@ const TextToArrayTool = () => {
         });
         return `<?php\n$data = array(\n${arrayItems.join(",\n")}\n);`;
       }
-    } catch (err) {
+    } catch (err: any) {
       setError(`Error formatting PHP array: ${err.message}`);
       return "";
     }
@@ -248,7 +256,7 @@ const TextToArrayTool = () => {
    * @param {Array} lines - Parsed lines of text
    * @returns {string} WordPress formatted output
    */
-  const formatWordPressOutput = (lines) => {
+  const formatWordPressOutput = (lines: string[]): string => {
     try {
       if (arrayType === "simple") {
         const arrayItems = lines.map(
@@ -268,22 +276,22 @@ const TextToArrayTool = () => {
         });
         return `<?php\n$data = array(\n${arrayItems.join(",\n")}\n);`;
       }
-    } catch (err) {
+    } catch (err: any) {
       setError(`Error formatting WordPress output: ${err.message}`);
       return "";
     }
   };
 
   /**
-   * Handles the conversion process when user submits the form
+   * Handles the conversion process when the user submits the form.
    *
    * @function
    * @returns {void}
    */
-  const handleSubmit = () => {
-    const parsedLines = parseTextInput();
-    if (parsedLines) {
-      const formatted = formatOutput(parsedLines);
+  const handleSubmit = (): void => {
+    const parsedLines: string[] = parseTextInput();
+    if (parsedLines.length > 0) {
+      const formatted: string = formatOutput(parsedLines);
       setOutput(formatted);
     } else {
       setOutput("");
@@ -296,7 +304,7 @@ const TextToArrayTool = () => {
    * @function
    * @returns {void}
    */
-  const handleClear = () => {
+  const handleClear = (): void => {
     setInput("");
     setOutput("");
     setError("");
@@ -308,7 +316,7 @@ const TextToArrayTool = () => {
    * @function
    * @returns {void}
    */
-  const handleReset = () => {
+  const handleReset = (): void => {
     handleClear();
     setOutputFormat("json");
     setArrayType("associative");
@@ -324,9 +332,9 @@ const TextToArrayTool = () => {
           input={input}
           setInput={setInput}
           outputFormat={outputFormat}
-          setOutputFormat={setOutputFormat}
+          setOutputFormat={(value: string) => setOutputFormat(value as OutputFormat)}
           arrayType={arrayType}
-          setArrayType={setArrayType}
+          setArrayType={(value: string) => setArrayType(value as ArrayType)}
           trimLines={trimLines}
           setTrimLines={setTrimLines}
           removeEmptyLines={removeEmptyLines}

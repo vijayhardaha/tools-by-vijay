@@ -1,21 +1,28 @@
-import PropTypes from "prop-types";
-
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import { CopyButton } from "@/components/ui/copyButton";
 import { Textarea } from "@/components/ui/textarea";
 
 /**
- * Displays the converted array output with copy functionality.
- * Shows the converted array in a readonly textarea and allows the user to copy it
- * to the clipboard with visual feedback when copied.
+ * Props for the Text To Array Output component.
+ *
+ * @interface TextToArrayOutputProps
+ * @property {string} output - The converted array output to display.
+ */
+interface TextToArrayOutputProps {
+  output: string;
+}
+
+/**
+ * Text To Array Output component displays the converted array output in a card.
+ * It includes a readonly textarea for the output and a copy button for convenience.
  *
  * @component
- * @param {Object} props - Component props
- * @param {string} props.output - The converted array output to display
- * @param {string} props.error - Error message to display, if any
- * @returns {JSX.Element} The rendered card with output display and copy functionality
+ * @param {TextToArrayOutputProps} props - The props for the component.
+ * @returns {JSX.Element} The rendered component.
  */
-const TextToArrayOutput = ({ output }) => {
+const TextToArrayOutput: React.FC<TextToArrayOutputProps> = ({
+  output,
+}: TextToArrayOutputProps): React.JSX.Element => {
   return (
     <Card>
       <CardHeader>
@@ -34,10 +41,6 @@ const TextToArrayOutput = ({ output }) => {
       </CardContent>
     </Card>
   );
-};
-
-TextToArrayOutput.propTypes = {
-  output: PropTypes.string.isRequired,
 };
 
 export default TextToArrayOutput;
