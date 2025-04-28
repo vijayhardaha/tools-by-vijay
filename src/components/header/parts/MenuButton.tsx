@@ -1,34 +1,29 @@
 "use client";
 
-import PropTypes from "prop-types";
+import React, { JSX } from "react";
+
 import { RiMenu3Fill } from "react-icons/ri";
 
-import { Button } from "../../ui/button";
+import { Button } from "@/components/ui/button";
 
 /**
- * MenuButton component renders a button that toggles the sidebar menu
- *
- * @component
- * @param {Object} props - The component props
- * @param {Function} props.onClick - Callback function triggered when the button is clicked
- * @returns {JSX.Element} A button component with "Menu" text and hamburger icon
- * @example
- * // Basic usage
- * const handleClick = () => setIsOpen(true);
- * <MenuButton onClick={handleClick} />
- *
- * @since 1.0.0
- * @category Navigation
+ * Props for the MenuButton component.
  */
-const MenuButton = ({ onClick }) => (
+type MenuButtonProps = {
+  onClick: () => void;
+};
+
+/**
+ * MenuButton component renders a button that toggles the sidebar menu.
+ *
+ * @param {MenuButtonProps} props - The component props.
+ * @returns {JSX.Element} A button component with "Menu" text and hamburger icon.
+ */
+const MenuButton: React.FC<MenuButtonProps> = ({ onClick }: MenuButtonProps): JSX.Element => (
   <Button onClick={onClick} variant="primary" className="w-12 md:w-auto">
     <span className="hidden md:inline-flex">Menu</span>
     <RiMenu3Fill />
   </Button>
 );
-
-MenuButton.propTypes = {
-  onClick: PropTypes.func.isRequired,
-};
 
 export default MenuButton;

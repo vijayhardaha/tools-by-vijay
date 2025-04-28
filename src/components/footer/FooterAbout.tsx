@@ -1,10 +1,37 @@
-import PropTypes from "prop-types";
+import React, { JSX } from "react";
 
 import Logo from "@/components/header/parts/Logo";
 import { Button } from "@/components/ui/button";
 import { socialMediaLinks } from "@/constants/socialLinks";
 
-const SocialButton = ({ icon: Icon, href, label, color }) => (
+/**
+ * Props for the SocialButton component.
+ */
+type SocialButtonProps = {
+  icon: React.ElementType;
+  href: string;
+  label: string;
+  color?: string;
+};
+
+/**
+ * Represents a social media link.
+ */
+type SocialMediaLink = {
+  key: string;
+  icon: React.ElementType;
+  url: string;
+  name: string;
+  color?: string;
+};
+
+/**
+ * Button component for social media links.
+ *
+ * @param {SocialButtonProps} props - Props for the SocialButton component.
+ * @returns {JSX.Element} The rendered social button.
+ */
+const SocialButton: React.FC<SocialButtonProps> = ({ icon: Icon, href, label, color }) => (
   <Button
     variant="primary"
     size="icon"
@@ -18,19 +45,12 @@ const SocialButton = ({ icon: Icon, href, label, color }) => (
   </Button>
 );
 
-SocialButton.propTypes = {
-  icon: PropTypes.elementType.isRequired,
-  href: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
-  color: PropTypes.string,
-};
-
 /**
- * Footer about section component that displays the website logo and description
+ * Footer about section component that displays the website logo and description.
  *
  * @returns {JSX.Element} The rendered footer about section.
  */
-const FooterAbout = () => {
+const FooterAbout: React.FC = (): JSX.Element => {
   return (
     <div className="flex flex-col gap-4">
       <div className="space-y-2">
@@ -45,7 +65,7 @@ const FooterAbout = () => {
       </div>
 
       <div className="flex space-x-2">
-        {socialMediaLinks.map(({ key, icon, url, name, color }) => (
+        {socialMediaLinks.map(({ key, icon, url, name, color }: SocialMediaLink) => (
           <SocialButton key={key} icon={icon} href={url} label={name} color={color} />
         ))}
       </div>

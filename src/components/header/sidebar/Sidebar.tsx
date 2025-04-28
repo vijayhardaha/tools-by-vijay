@@ -1,6 +1,6 @@
 "use client";
 
-import PropTypes from "prop-types";
+import React, { JSX } from "react";
 
 import { Sheet, SheetContent } from "@/components/ui/sheet";
 
@@ -9,16 +9,21 @@ import SidebarFooter from "./SidebarFooter";
 import SidebarHeader from "./SidebarHeader";
 
 /**
+ * Props for the Sidebar component.
+ */
+type SidebarProps = {
+  isOpen: boolean;
+  onClose: () => void;
+};
+
+/**
  * Sidebar component that displays a sliding panel from the right side of the screen.
  * Contains header, body, and footer sections.
  *
- * @component
- * @param {Object} props - Component props
- * @param {boolean} props.isOpen - Controls the visibility of the sidebar
- * @param {Function} props.onClose - Callback function triggered when closing the sidebar
- * @returns {JSX.Element} Sidebar component
+ * @param {SidebarProps} props - Component props.
+ * @returns {JSX.Element} Sidebar component.
  */
-const Sidebar = ({ isOpen, onClose }) => (
+const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }: SidebarProps): JSX.Element => (
   <Sheet open={isOpen} onOpenChange={onClose}>
     <SheetContent
       side="right"
@@ -33,10 +38,5 @@ const Sidebar = ({ isOpen, onClose }) => (
     </SheetContent>
   </Sheet>
 );
-
-Sidebar.propTypes = {
-  isOpen: PropTypes.bool.isRequired,
-  onClose: PropTypes.func.isRequired,
-};
 
 export default Sidebar;

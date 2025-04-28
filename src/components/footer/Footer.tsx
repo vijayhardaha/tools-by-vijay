@@ -1,3 +1,5 @@
+import React, { JSX } from "react";
+
 import FooterBottom from "@/components/footer/FooterBottom";
 import FooterTop from "@/components/footer/FooterTop";
 
@@ -7,7 +9,7 @@ import FooterTop from "@/components/footer/FooterTop";
  *
  * @returns {JSX.Element} The rendered footer component.
  */
-const Footer = () => {
+const Footer: React.FC = (): JSX.Element => {
   return (
     <footer className="bg-amber-200 bg-[radial-gradient(var(--color-amber-500)_0.75px,var(--color-amber-200)_0.75px)] bg-[length:10px_10px] pt-10 pb-4">
       <div className="mx-auto max-w-6xl px-4">

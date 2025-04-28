@@ -1,21 +1,31 @@
+import React, { JSX } from "react";
+
 import Link from "next/link";
-import PropTypes from "prop-types";
+
+type FooterWidgetProps = {
+  title: string;
+  links: {
+    name: string;
+    href: string;
+  }[];
+};
 
 /**
  * Footer widget component that displays a list of links with a title
  *
- * @param {Object} props - Component props.
- * @param {string} props.title - Title of the widget.
- * @param {Array} props.links - Array of link objects with name and href properties.
+ * @param {FooterWidgetProps} props - Component props.
  * @returns {JSX.Element} The rendered footer widget.
  */
-const FooterWidget = ({ title, links }) => {
+const FooterWidget: React.FC<FooterWidgetProps> = ({
+  title,
+  links,
+}: FooterWidgetProps): JSX.Element => {
   /**
    * Check if a URL is external (starts with http:// or https://)
    * @param {string} url - The URL to check
    * @returns {boolean} True if the URL is external
    */
-  const isExternalLink = (url) => {
+  const isExternalLink = (url: string): boolean => {
     return url.startsWith("http://") || url.startsWith("https://");
   };
 
@@ -40,16 +50,6 @@ const FooterWidget = ({ title, links }) => {
       </ul>
     </div>
   );
-};
-
-FooterWidget.propTypes = {
-  title: PropTypes.string.isRequired,
-  links: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      href: PropTypes.string.isRequired,
-    })
-  ).isRequired,
 };
 
 export default FooterWidget;

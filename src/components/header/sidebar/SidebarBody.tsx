@@ -1,23 +1,33 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import React, { useRef, useEffect, JSX } from "react";
 
 import Link from "next/link";
-import PropTypes from "prop-types";
 import { Scrollbars } from "react-custom-scrollbars-4";
 
 import { getAllCategories } from "@/utils/categoryUtils";
 import { getToolsByCategories } from "@/utils/toolUtils";
 
 /**
- * NavLink component for consistent link styling in the sidebar using Shadcn classes
- * @param {Object} props - Component props
- * @param {string} props.href - Link destination
- * @param {ReactNode} props.children - Link content
- * @param {string} [props.className] - Additional CSS classes
- * @returns {JSX.Element} Styled navigation link
+ * Props for the NavLink component.
  */
-const NavLink = ({ href, children, className = "" }) => (
+type NavLinkProps = {
+  href: string;
+  children: React.ReactNode;
+  className?: string;
+};
+
+/**
+ * NavLink component for consistent link styling in the sidebar using Shadcn classes.
+ *
+ * @param {NavLinkProps} props - Component props.
+ * @returns {JSX.Element} Styled navigation link.
+ */
+const NavLink: React.FC<NavLinkProps> = ({
+  href,
+  children,
+  className = "",
+}: NavLinkProps): JSX.Element => (
   <Link
     href={href}
     className={`text-muted-foreground hover:text-primary transition-colors hover:underline ${className}`}
@@ -26,20 +36,33 @@ const NavLink = ({ href, children, className = "" }) => (
   </Link>
 );
 
-NavLink.propTypes = {
-  href: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired,
-  className: PropTypes.string,
+/**
+ * Props for the CategorySection component.
+ */
+type CategorySectionProps = {
+  /**
+   * Category title.
+   */
+  title: string;
+  /**
+   * Tools in this category.
+   */
+  tools: {
+    slug: string;
+    name: string;
+  }[];
 };
 
 /**
- * CategorySection component to display a group of tool links
- * @param {Object} props - Component props
- * @param {string} props.title - Category title
- * @param {Array} props.tools - Tools in this category
- * @returns {JSX.Element} Category section with tool links
+ * CategorySection component to display a group of tool links.
+ *
+ * @param {CategorySectionProps} props - Component props.
+ * @returns {JSX.Element} Category section with tool links.
  */
-const CategorySection = ({ title, tools }) => (
+const CategorySection: React.FC<CategorySectionProps> = ({
+  title,
+  tools,
+}: CategorySectionProps): JSX.Element => (
   <div className="mb-6">
     <h3 className="text-foreground mb-3 text-sm font-bold uppercase">{title}</h3>
     <ul className="space-y-3">
@@ -52,24 +75,15 @@ const CategorySection = ({ title, tools }) => (
   </div>
 );
 
-CategorySection.propTypes = {
-  title: PropTypes.string.isRequired,
-  tools: PropTypes.arrayOf(
-    PropTypes.shape({
-      slug: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-    })
-  ).isRequired,
-};
-
 /**
- * SidebarBody component containing navigation links and tool categories
- * @returns {JSX.Element} The sidebar body content
+ * SidebarBody component containing navigation links and tool categories.
+ *
+ * @returns {JSX.Element} The sidebar body content.
  */
-const SidebarBody = () => {
+const SidebarBody: React.FC = (): JSX.Element => {
   // Group tools by category
   const categorizedTools = getToolsByCategories();
-  const scrollbarsRef = useRef(null);
+  const scrollbarsRef = useRef<Scrollbars>(null);
 
   useEffect(() => {
     // Initialize scrollbar or perform additional setup if needed

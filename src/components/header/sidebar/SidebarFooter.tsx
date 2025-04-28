@@ -1,21 +1,25 @@
-"use client";
-
-import PropTypes from "prop-types";
+import React, { JSX } from "react";
 
 import { Button } from "@/components/ui/button";
 import { SheetFooter } from "@/components/ui/sheet";
 import { socialMediaLinks } from "@/constants/socialLinks";
 
 /**
+ * Props for the SocialButton component
+ */
+interface SocialButtonProps {
+  icon: React.ElementType;
+  href: string;
+  label: string;
+  color?: string;
+}
+
+/**
  * SocialButton component for social media links
- * @param {Object} props - Component props
- * @param {ElementType} props.icon - Icon component to display
- * @param {string} props.href - URL to navigate to
- * @param {string} props.label - Accessible label for the button
- * @param {string} props.color - Color for the button
+ * @param {SocialButtonProps} props - Component props
  * @returns {JSX.Element} A button with social media icon
  */
-const SocialButton = ({ icon: Icon, href, label, color }) => (
+const SocialButton = ({ icon: Icon, href, label, color }: SocialButtonProps): JSX.Element => (
   <Button
     variant="outline"
     size="icon"
@@ -29,18 +33,11 @@ const SocialButton = ({ icon: Icon, href, label, color }) => (
   </Button>
 );
 
-SocialButton.propTypes = {
-  icon: PropTypes.elementType.isRequired,
-  href: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
-  color: PropTypes.string,
-};
-
 /**
  * Footer component for the sidebar with social media links
  * @returns {JSX.Element} The sidebar footer component
  */
-const SidebarFooter = () => (
+const SidebarFooter = (): JSX.Element => (
   <SheetFooter>
     <div className="flex justify-center space-x-2">
       {socialMediaLinks.map(({ key, icon, url, name, color }) => (

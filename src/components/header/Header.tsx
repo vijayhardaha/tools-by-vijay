@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React, { JSX, useState } from "react";
 
 import Link from "next/link";
 import { PiTextAa as AaIcon } from "react-icons/pi";
@@ -17,7 +17,7 @@ import { cn } from "@/utils/classNameUtils";
  *
  * @returns {JSX.Element} Header component with logo, menu button and sidebar
  */
-const Header = () => {
+const Header: React.FC = (): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDrawer = () => setIsOpen(!isOpen);

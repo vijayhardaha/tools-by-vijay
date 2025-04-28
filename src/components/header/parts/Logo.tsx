@@ -1,18 +1,24 @@
+import { JSX } from "react";
+
 import Image from "next/image";
 import Link from "next/link";
-import propTypes from "prop-types";
 
 import { cn } from "@/utils/classNameUtils";
 
 /**
- * Logo component that displays the site logo with next/image
- *
- * @component
- * @param {object} props - Component props
- * @param {string} [props.className] - Additional CSS classes to apply
- * @returns {JSX.Element} A link to the homepage containing the site logo
+ * Props for the Logo component.
  */
-const Logo = ({ className }) => (
+type LogoProps = {
+  className?: string;
+};
+
+/**
+ * Logo component that displays the site logo with next/image.
+ *
+ * @param {LogoProps} props - Component props.
+ * @returns {JSX.Element} A link to the homepage containing the site logo.
+ */
+const Logo: React.FC<LogoProps> = ({ className }: LogoProps): JSX.Element => (
   <Link href="/">
     <Image
       src="/images/site-logo.svg"
@@ -26,9 +32,5 @@ const Logo = ({ className }) => (
     <span className="sr-only">Tools by Vijay Hardaha</span>
   </Link>
 );
-
-Logo.propTypes = {
-  className: propTypes.string,
-};
 
 export default Logo;
