@@ -1,11 +1,31 @@
 "use client";
 
-import PropTypes from "prop-types";
+import React from "react";
+
 import { LuCheck as CheckIcon, LuX as XIcon } from "react-icons/lu";
 
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { cn } from "@/utils/classNameUtils";
+
+type PasswordStrength = {
+  score: number;
+  feedback: {
+    warning: string;
+    suggestions: string[];
+  };
+  criteria: {
+    length: boolean;
+    hasUppercase: boolean;
+    hasLowercase: boolean;
+    hasDigit: boolean;
+    hasSpecialChar: boolean;
+  };
+};
+
+interface PasswordStrengthCheckerOutputProps {
+  strength: PasswordStrength;
+}
 
 /**
  * Helper function to render criteria with icons
@@ -14,7 +34,7 @@ import { cn } from "@/utils/classNameUtils";
  * @param {string} label - The label for the criteria
  * @returns {JSX.Element} - A div containing the icon and label
  */
-const renderCriteria = (isMet, label) => (
+const renderCriteria = (isMet: boolean, label: string): React.JSX.Element => (
   <div className="flex items-center gap-2">
     {isMet ? (
       <CheckIcon className="h-4 w-4 text-green-500" />
@@ -29,26 +49,17 @@ const renderCriteria = (isMet, label) => (
  * Component to display password strength analysis results
  *
  * @component
- * @param {Object} props - Component props
- * @param {Object} props.strength - The password strength evaluation results
- * @param {number} props.strength.score - Score from 0-4 indicating password strength
- * @param {Object} props.strength.feedback - Feedback on the password
- * @param {string} props.strength.feedback.warning - Warning message about password weakness
- * @param {string[]} props.strength.feedback.suggestions - List of suggestions to improve the password
- * @param {Object} props.strength.criteria - Password criteria evaluation
- * @param {boolean} props.strength.criteria.length - If password meets minimum length
- * @param {boolean} props.strength.criteria.hasUppercase - If password contains uppercase letters
- * @param {boolean} props.strength.criteria.hasLowercase - If password contains lowercase letters
- * @param {boolean} props.strength.criteria.hasDigit - If password contains numbers
- * @param {boolean} props.strength.criteria.hasSpecialChar - If password contains special characters
+ * @param {PasswordStrengthCheckerOutputProps} props - Component props
  * @returns {JSX.Element} The rendered password strength analysis
  */
-const PasswordStrengthCheckerOutput = ({ strength }) => {
+const PasswordStrengthCheckerOutput: React.FC<PasswordStrengthCheckerOutputProps> = ({
+  strength,
+}: PasswordStrengthCheckerOutputProps): React.JSX.Element => {
   // Strength level names
-  const strengthLevels = ["Very Weak", "Weak", "Fair", "Good", "Strong"];
+  const strengthLevels: string[] = ["Very Weak", "Weak", "Fair", "Good", "Strong"];
 
   // Colors for different strength levels
-  const strengthColors = [
+  const strengthColors: string[] = [
     "bg-red-500", // Very Weak
     "bg-orange-500", // Weak
     "bg-yellow-500", // Fair
@@ -57,7 +68,7 @@ const PasswordStrengthCheckerOutput = ({ strength }) => {
   ];
 
   // Text colors for strength levels
-  const strengthTextColors = [
+  const strengthTextColors: string[] = [
     "text-red-500", // Very Weak
     "text-orange-500", // Weak
     "text-yellow-500", // Fair
@@ -118,23 +129,6 @@ const PasswordStrengthCheckerOutput = ({ strength }) => {
       </CardContent>
     </Card>
   );
-};
-
-PasswordStrengthCheckerOutput.propTypes = {
-  strength: PropTypes.shape({
-    score: PropTypes.number.isRequired,
-    feedback: PropTypes.shape({
-      warning: PropTypes.string.isRequired,
-      suggestions: PropTypes.arrayOf(PropTypes.string).isRequired,
-    }).isRequired,
-    criteria: PropTypes.shape({
-      length: PropTypes.bool.isRequired,
-      hasUppercase: PropTypes.bool.isRequired,
-      hasLowercase: PropTypes.bool.isRequired,
-      hasDigit: PropTypes.bool.isRequired,
-      hasSpecialChar: PropTypes.bool.isRequired,
-    }).isRequired,
-  }).isRequired,
 };
 
 export default PasswordStrengthCheckerOutput;

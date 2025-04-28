@@ -1,28 +1,35 @@
 "use client";
 
-import PropTypes from "prop-types";
+import React from "react";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 
+interface PasswordStrengthCheckerInputProps {
+  password: string;
+  onSubmit: (password: string) => void;
+  onClear: () => void;
+}
+
 /**
  * Password Strength Checker Input Component
  *
  * @component
- * @param {Object} props - Component props
- * @param {string} props.password - The current password value
- * @param {Function} props.onSubmit - Callback function when password changes
- * @param {Function} props.onClear - Callback function to clear the password
+ * @param {PasswordStrengthCheckerInputProps} props - Component props
  * @returns {JSX.Element} Password input with visibility toggle and clear button
  */
-const PasswordStrengthCheckerInput = ({ password, onSubmit, onClear }) => {
+const PasswordStrengthCheckerInput: React.FC<PasswordStrengthCheckerInputProps> = ({
+  password,
+  onSubmit,
+  onClear,
+}: PasswordStrengthCheckerInputProps): React.JSX.Element => {
   /**
    * Handles password input changes
    *
-   * @param {ChangeEvent<HTMLInputElement>} e - Input change event
+   * @param {React.ChangeEvent<HTMLInputElement>} e - Input change event
    */
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     onSubmit(e.target.value);
   };
 
@@ -51,12 +58,6 @@ const PasswordStrengthCheckerInput = ({ password, onSubmit, onClear }) => {
       </CardContent>
     </Card>
   );
-};
-
-PasswordStrengthCheckerInput.propTypes = {
-  password: PropTypes.string.isRequired,
-  onSubmit: PropTypes.func.isRequired,
-  onClear: PropTypes.func.isRequired,
 };
 
 export default PasswordStrengthCheckerInput;

@@ -1,26 +1,43 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 
 import PasswordStrengthCheckerInfo from "./PasswordStrengthCheckerInfo";
 import PasswordStrengthCheckerInput from "./PasswordStrengthCheckerInput";
 import PasswordStrengthCheckerOutput from "./PasswordStrengthCheckerOutput";
 
 /**
- * Default strength options for the password strength checker
- * @type {Object}
- * @property {number} score - Initial score of the password strength
- * @property {Object} feedback - Feedback object containing warning and suggestions
- * @property {string} feedback.warning - Warning message for weak passwords
- * @property {string[]} feedback.suggestions - Array of suggestions for improvement
- * @property {Object} criteria - Criteria object containing boolean values for each strength criterion
- * @property {boolean} criteria.length - Whether password meets minimum length requirement
- * @property {boolean} criteria.hasUppercase - Whether password contains uppercase letters
- * @property {boolean} criteria.hasLowercase - Whether password contains lowercase letters
- * @property {boolean} criteria.hasDigit - Whether password contains numbers
- * @property {boolean} criteria.hasSpecialChar - Whether password contains special characters
+ * Type definition for password strength feedback.
  */
-const defaultStengthOptions = {
+interface PasswordFeedback {
+  warning: string;
+  suggestions: string[];
+}
+
+/**
+ * Type definition for password strength criteria.
+ */
+interface PasswordCriteria {
+  length: boolean;
+  hasUppercase: boolean;
+  hasLowercase: boolean;
+  hasDigit: boolean;
+  hasSpecialChar: boolean;
+}
+
+/**
+ * Type definition for password strength result.
+ */
+interface PasswordStrength {
+  score: number;
+  feedback: PasswordFeedback;
+  criteria: PasswordCriteria;
+}
+
+/**
+ * Default strength options for the password strength checker.
+ */
+const defaultStengthOptions: PasswordStrength = {
   score: 0,
   feedback: {
     warning: "",
@@ -44,17 +61,17 @@ const defaultStengthOptions = {
  * @component
  * @returns {JSX.Element} Complete password strength checker tool interface
  */
-const PasswordStrengthCheckerTool = () => {
-  const [password, setPassword] = useState("");
-  const [strength, setStrength] = useState(defaultStengthOptions);
+const PasswordStrengthCheckerTool: React.FC = (): React.JSX.Element => {
+  const [password, setPassword] = useState<string>("");
+  const [strength, setStrength] = useState<PasswordStrength>(defaultStengthOptions);
 
   /**
-   * Evaluates password strength based on various criteria
+   * Evaluates password strength based on various criteria.
    *
-   * @param {string} password - The password to analyze
-   * @returns {PasswordStrength} Object containing score, feedback, and criteria
+   * @param {string} password - The password to analyze.
+   * @returns {PasswordStrength} Object containing score, feedback, and criteria.
    */
-  const checkPasswordStrength = (password) => {
+  const checkPasswordStrength = (password: string): PasswordStrength => {
     // Initialize criteria
     const criteria = {
       length: password.length >= 8,
@@ -120,7 +137,7 @@ const PasswordStrengthCheckerTool = () => {
    *
    * @param {string} newPassword - The new password value
    */
-  const handleSubmit = (newPassword) => {
+  const handleSubmit = (newPassword: string): void => {
     setPassword(newPassword);
     if (newPassword) {
       const result = checkPasswordStrength(newPassword);
@@ -133,7 +150,7 @@ const PasswordStrengthCheckerTool = () => {
   /**
    * Resets password and strength state to initial values
    */
-  const handleClear = () => {
+  const handleClear = (): void => {
     setPassword("");
     setStrength(defaultStengthOptions);
   };
