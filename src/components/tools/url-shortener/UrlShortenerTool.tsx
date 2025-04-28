@@ -1,3 +1,4 @@
+/// <reference path="./tinyurl.d.ts" />
 "use client";
 
 import { useState } from "react";
