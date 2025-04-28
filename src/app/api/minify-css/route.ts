@@ -44,6 +44,9 @@ export async function POST(request: Request): Promise<Response> {
     });
   } catch (error) {
     console.error("CSS minification error:", error);
-    return NextResponse.json({ error: error.message || "Failed to minify CSS" }, { status: 500 });
+    return NextResponse.json(
+      { error: error instanceof Error ? error.message : "Failed to minify CSS" },
+      { status: 500 }
+    );
   }
 }

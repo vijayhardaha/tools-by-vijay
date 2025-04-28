@@ -1,3 +1,5 @@
+/// <reference path="./putout.d.ts" />
+
 import { minify } from "@putout/minify";
 import { NextResponse } from "next/server";
 
@@ -38,7 +40,7 @@ export async function POST(request: Request): Promise<Response> {
   } catch (error) {
     console.error("JavaScript minification error:", error);
     return NextResponse.json(
-      { error: error.message || "Failed to minify JavaScript" },
+      { error: error instanceof Error ? error.message : "Failed to minify JavaScript" },
       { status: 500 }
     );
   }
@@ -62,6 +64,8 @@ function minifyWithPutout(js: string, options: MinifyJsRequest["options"]): stri
 
     return minify(js, putoutOptions);
   } catch (error) {
-    throw new Error(`Putout Minify error: ${error.message}`);
+    throw new Error(
+      `Putout Minify error: ${error instanceof Error ? error.message : "Unknown error"}`
+    );
   }
 }

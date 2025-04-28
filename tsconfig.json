@@ -30,6 +30,7 @@
     "**/*.{js,jsx,ts,tsx,mjs,cjs}",
     "*.config.mjs",
     "next-env.d.ts",
+    "*.d.ts",
     ".next/types/**/*.ts"
   ]
 }

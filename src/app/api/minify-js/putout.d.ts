@@ -1,3 +1,10 @@
 declare module "@putout/minify" {
-  export function minify(code: string, options: Object): string;
+  export interface MinifyOptions {
+    mangle?: boolean;
+    removeConsole?: boolean;
+    removeDebugger?: boolean;
+    removeComments?: boolean;
+  }
+
+  export function minify(code: string, options: MinifyOptions): string;
 }

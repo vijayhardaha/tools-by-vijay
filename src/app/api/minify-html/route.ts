@@ -33,6 +33,9 @@ export async function POST(request: Request): Promise<Response> {
     return NextResponse.json({ minifiedHtml });
   } catch (error) {
     console.error("HTML minification error:", error);
-    return NextResponse.json({ error: error.message || "Failed to minify HTML" }, { status: 500 });
+    return NextResponse.json(
+      { error: error instanceof Error ? error.message : "Failed to minify HTML" },
+      { status: 500 }
+    );
   }
 }
