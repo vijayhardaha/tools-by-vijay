@@ -30,7 +30,11 @@ const ToolsListWidget: React.FC<ToolsListWidgetProps> = ({
     (categoryTool) => categoryTool.slug !== hideTool
   );
 
-  const categoryData: Category = getCategoryBySlug(category);
+  const categoryData: Category | null = getCategoryBySlug(category);
+
+  if (!categoryData || toolsInCategory.length === 0) {
+    return <></>;
+  }
 
   return (
     <Card className="md:gap-4 md:py-4">
