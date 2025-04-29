@@ -64,7 +64,7 @@ const UnminifyInput: React.FC<UnminifyInputProps> = ({
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <Textarea
             placeholder="Paste code here..."
-            rows={10}
+            rows={15}
             value={input}
             onChange={(e) => setInput(e.target.value)}
           />

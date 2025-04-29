@@ -23,15 +23,17 @@ const UnminifyOutput: React.FC<UnminifyOutputProps> = ({
     <Card>
       <CardHeader>
         <div className="flex w-full flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <CardTitle>Unminified Output</CardTitle>
-          <CardDescription>Below is the unminified version of your code.</CardDescription>
+          <div className="flex flex-col gap-1.5">
+            <CardTitle>Unminified Output</CardTitle>
+            <CardDescription>Below is the unminified version of your code.</CardDescription>
+          </div>
           <div className="inline-flex">
             <CopyButton text={output} />
           </div>
         </div>
       </CardHeader>
       <CardContent>
-        <Textarea value={output} rows={10} readOnly data-output />
+        <Textarea value={output} rows={15} readOnly data-output />
       </CardContent>
     </Card>
   );
