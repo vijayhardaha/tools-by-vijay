@@ -15,7 +15,7 @@ import {
   PiCodeSimpleBold,
   PiQuotesFill,
   PiShuffleBold,
-  PiTranslateBold,
+  PiGlobeBold,
 } from "react-icons/pi";
 
 export const toolIcons: Record<string, React.ReactElement> = {
@@ -35,5 +35,15 @@ export const toolIcons: Record<string, React.ReactElement> = {
   "css-inliner": <PiCodeSimpleBold />,
   "replace-quotes": <PiQuotesFill />,
   "shuffle-text-lines": <PiShuffleBold />,
-  "language-tools": <PiTranslateBold />,
+  "character-count": <PiTextAaBold />,
+  "url-decoder-encoder": <PiLinkBold />,
+  "base64-encode-decode": <PiBracketsCurlyBold />,
+  "country-name-generator": <PiGlobeBold />,
+  "random-username-generator": <PiShuffleBold />,
+  "text-case-changer": <PiTextAlignLeftBold />,
+  "text-to-php-variables": <PiCodeSimpleBold />,
+  "px-to-rem-converter": <PiFileCssBold />,
+  unminify: <PiFileHtmlBold />,
+  "barcode-generator": <PiQuotesFill />,
+  "qrcode-generator": <PiShieldCheckBold />,
 };
