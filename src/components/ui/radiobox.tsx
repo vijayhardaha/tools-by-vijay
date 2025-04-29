@@ -24,7 +24,7 @@ interface RadioBoxProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
  * RadioBox component for selecting a single option from a group.
  */
 function RadioBox({
-  className = "",
+  className,
   children,
   checked: controlledChecked,
   onCheckedChange,
