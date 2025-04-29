@@ -7,6 +7,11 @@ const nextConfig = {
         hostname: "api.qrserver.com",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "barcode.tec-it.com",
+        pathname: "/**",
+      },
     ],
   },
 };
