@@ -46,7 +46,7 @@ const UrlDecoderEncoderInput: React.FC<UrlDecoderEncoderInputProps> = ({
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Input URL</CardTitle>
+        <CardTitle>Input Text</CardTitle>
         <CardDescription>Enter the URL to encode or decode</CardDescription>
       </CardHeader>
       <CardContent>
