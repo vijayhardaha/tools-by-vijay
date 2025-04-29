@@ -23,7 +23,7 @@ const ReplaceQuotesOutput: React.FC<ReplaceQuotesOutputProps> = ({
   return (
     <Card>
       <CardHeader>
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex w-full flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex flex-col gap-1.5">
             <CardTitle>Output</CardTitle>
             <CardDescription>The text after replacing quotes</CardDescription>

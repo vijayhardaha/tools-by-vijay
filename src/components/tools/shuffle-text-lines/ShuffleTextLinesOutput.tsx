@@ -15,7 +15,7 @@ const ShuffleTextLinesOutput: React.FC<ShuffleTextLinesOutputProps> = ({
   return (
     <Card>
       <CardHeader>
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex w-full flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex flex-col gap-1.5">
             <CardTitle>Output</CardTitle>
             <CardDescription>The text after shuffling lines randomly.</CardDescription>
