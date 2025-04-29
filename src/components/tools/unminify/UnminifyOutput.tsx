@@ -1,4 +1,4 @@
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import { CopyButton } from "@/components/ui/copyButton";
 import { Textarea } from "@/components/ui/textarea";
 
@@ -24,6 +24,7 @@ const UnminifyOutput: React.FC<UnminifyOutputProps> = ({
       <CardHeader>
         <div className="flex w-full flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <CardTitle>Unminified Output</CardTitle>
+          <CardDescription>Below is the unminified version of your code.</CardDescription>
           <div className="inline-flex">
             <CopyButton text={output} />
           </div>
