@@ -119,7 +119,7 @@ const tools: Tool[] = [
     seoTitle: "JSON Sorter – Alphabetically Sort JSON Keys Online",
     seoDescription:
       "Sort JSON objects alphabetically by their keys. Make your JSON data more readable and consistent.",
-    category: "data-formatting",
+    category: "code-optimization",
   },
   {
     name: "Duplicate Line Removal",
@@ -210,7 +210,7 @@ const tools: Tool[] = [
     pageDescription: "Create random country names for creative or educational purposes.",
     seoTitle: "Country Name Generator – Generate Random Country Names",
     seoDescription: "Generate random country names for fun or creative projects. Free tool.",
-    category: "language-tools",
+    category: "web-utilities",
   },
   {
     name: "Random Username Generator",
