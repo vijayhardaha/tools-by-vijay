@@ -120,6 +120,18 @@ export default defineConfig([
           warnOnUnassignedImports: true,
         },
       ],
+
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        {
+          vars: "all",
+          varsIgnorePattern: "^_", // Keep ignoring variables starting with "_"
+          args: "after-used",
+          argsIgnorePattern: "^_",
+          ignoreRestSiblings: true,
+          caughtErrors: "all", // Ensure caught errors are also checked
+        },
+      ],
     },
   },
 ]);
