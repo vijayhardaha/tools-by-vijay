@@ -1,6 +1,6 @@
 "use client";
 
-import React, { JSX, forwardRef, isValidElement, ReactNode } from "react";
+import React, { forwardRef, isValidElement } from "react";
 import { cloneElement } from "react";
 
 import { cva } from "class-variance-authority";
@@ -11,7 +11,7 @@ import { cn } from "@/utils/classNameUtils";
  * Slot component for polymorphic prop forwarding.
  */
 type SlotProps = {
-  children: ReactNode; // Allow any valid ReactNode (string, ReactElement, etc.)
+  children: React.ReactNode; // Allow any valid ReactNode (string, ReactElement, etc.)
 } & React.HTMLAttributes<HTMLElement>;
 
 const Slot = forwardRef<HTMLElement, SlotProps>(({ children, ...props }, ref) => {
@@ -127,7 +127,7 @@ type ButtonProps = {
     | "link";
   size?: "default" | "sm" | "lg" | "icon";
   asChild?: boolean;
-  children: ReactNode; // Allow any valid ReactNode (string, ReactElement, etc.)
+  children: React.ReactNode; // Allow any valid ReactNode (string, ReactElement, etc.)
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(

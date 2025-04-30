@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from "react";
 
 import sanitizeHtml from "sanitize-html";
 
-import { OptionsType } from "@/components/text-story-maker/constants";
 import { BgColors } from "@/components/text-story-maker/constants/bgColors";
 import { UpdateOptionsSetsType } from "@/components/text-story-maker/TextStoryMakerTool";
 import {

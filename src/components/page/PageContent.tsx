@@ -1,9 +1,4 @@
-import { JSX } from "react";
-
 interface PageContentProps {
-  /**
-   * The content to be displayed inside the container
-   */
   children: React.ReactNode;
 }
 

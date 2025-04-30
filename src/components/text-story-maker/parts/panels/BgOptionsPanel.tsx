@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 
-import { OptionsType } from "@/components/text-story-maker/constants";
 import BgColorsSlider from "@/components/text-story-maker/parts/panels/BgColorsSlider";
 import {
   ControlPanel,

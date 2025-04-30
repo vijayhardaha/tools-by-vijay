@@ -1,6 +1,6 @@
 "use client";
 
-import { JSX, useState } from "react";
+import { useState } from "react";
 
 import { LuCopy as CopyIcon, LuCheck as CheckIcon } from "react-icons/lu";
 

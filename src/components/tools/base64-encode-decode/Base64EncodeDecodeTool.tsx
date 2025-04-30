@@ -24,6 +24,7 @@ const Base64EncodeDecodeTool: React.FC = (): React.JSX.Element => {
       const result = isEncoding ? btoa(input) : atob(input);
       setOutput(result);
     } catch (error) {
+      console.error("Error processing Base64:", error);
       setOutput("Error: Invalid input for the selected mode.");
     }
   };

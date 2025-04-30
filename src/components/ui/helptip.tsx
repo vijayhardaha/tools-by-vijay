@@ -1,8 +1,6 @@
-import { JSX } from "react";
-
 import { FiInfo } from "react-icons/fi";
 
-import { Tooltip } from "@/components/ui/Tooltip";
+import { Tooltip } from "@/components/ui/tooltip";
 
 // Define TypeScript types for the component props
 interface HelpTipProps {

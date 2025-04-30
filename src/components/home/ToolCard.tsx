@@ -1,5 +1,3 @@
-import { JSX } from "react";
-
 import Link from "next/link";
 
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";

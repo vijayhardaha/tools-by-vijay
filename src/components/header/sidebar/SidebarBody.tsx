@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useEffect, JSX } from "react";
+import React, { useRef, useEffect } from "react";
 
 import Link from "next/link";
 import { Scrollbars } from "react-custom-scrollbars-4";

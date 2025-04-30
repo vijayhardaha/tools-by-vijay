@@ -1,6 +1,6 @@
 "use client";
 
-import React, { JSX, useState } from "react";
+import React, { useState } from "react";
 
 import latinize from "latinize";
 import slugify from "slugify";

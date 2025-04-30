@@ -1,6 +1,6 @@
 "use client";
 
-import React, { JSX, useState } from "react";
+import React, { useState } from "react";
 
 import AlphabeticalLineSorterInfo from "./AlphabeticalLineSorterInfo";
 import AlphabeticalLineSorterInput from "./AlphabeticalLineSorterInput";

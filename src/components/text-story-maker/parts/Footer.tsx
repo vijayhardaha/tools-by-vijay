@@ -1,6 +1,5 @@
 import React from "react";
 
-import { OptionsType } from "@/components/text-story-maker/constants";
 import BgOptionsPanel from "@/components/text-story-maker/parts/panels/BgOptionsPanel";
 import TextOptionsPanel from "@/components/text-story-maker/parts/panels/TextOptionsPanel";
 import { UpdateOptionsSetsType } from "@/components/text-story-maker/TextStoryMakerTool";

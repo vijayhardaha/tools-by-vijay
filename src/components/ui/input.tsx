@@ -1,5 +1,3 @@
-import { JSX } from "react";
-
 import { cn } from "@/utils/classNameUtils";
 
 // Define TypeScript types for the component props
