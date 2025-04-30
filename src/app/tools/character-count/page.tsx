@@ -10,17 +10,32 @@ import { generateMetadata as genMeta, Metadata } from "@/utils/seoUtils";
 import { findToolBySlug } from "@/utils/toolUtils";
 import { getIconForTool } from "@/utils/toolUtils";
 
+/**
+ * Retrieves tool data for the Character Count tool.
+ * @constant {Tool|null} tool - The tool object containing metadata and configuration.
+ */
 const tool: Tool | null = findToolBySlug("character-count");
 
+/**
+ * SEO metadata for the Character Count tool page.
+ * @type {Metadata}
+ */
 export const metadata: Metadata = genMeta({
   title: tool?.seoTitle || "",
   description: tool?.seoDescription || "",
   slug: tool?.slug || "",
 });
 
+/**
+ * Character Count tool page component.
+ * Renders the page layout with header and the Character Count tool.
+ *
+ * @component
+ * @returns {JSX.Element} The rendered Character Count tool page component.
+ */
 const CharacterCount: React.FC = (): React.JSX.Element => {
   if (!tool) {
-    notFound();
+    notFound(); // Render a 404 page if the tool is null
   }
 
   return (

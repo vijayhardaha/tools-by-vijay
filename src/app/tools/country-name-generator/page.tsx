@@ -10,17 +10,32 @@ import { generateMetadata as genMeta, Metadata } from "@/utils/seoUtils";
 import { findToolBySlug } from "@/utils/toolUtils";
 import { getIconForTool } from "@/utils/toolUtils";
 
+/**
+ * Retrieves tool data for the Country Name Generator tool.
+ * @constant {Tool|null} tool - The tool object containing metadata and configuration.
+ */
 const tool: Tool | null = findToolBySlug("country-name-generator");
 
+/**
+ * SEO metadata for the Country Name Generator tool page.
+ * @type {Metadata}
+ */
 export const metadata: Metadata = genMeta({
   title: tool?.seoTitle || "",
   description: tool?.seoDescription || "",
   slug: tool?.slug || "",
 });
 
+/**
+ * Country Name Generator tool page component.
+ * Renders the page layout with header and the Country Name Generator tool.
+ *
+ * @component
+ * @returns {JSX.Element} The rendered Country Name Generator tool page component.
+ */
 const CountryNameGenerator: React.FC = (): React.JSX.Element => {
   if (!tool) {
-    notFound();
+    notFound(); // Render a 404 page if the tool is null
   }
 
   return (

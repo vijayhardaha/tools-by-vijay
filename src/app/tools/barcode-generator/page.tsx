@@ -10,17 +10,32 @@ import { generateMetadata as genMeta, Metadata } from "@/utils/seoUtils";
 import { findToolBySlug } from "@/utils/toolUtils";
 import { getIconForTool } from "@/utils/toolUtils";
 
+/**
+ * Retrieves tool data for the Barcode Generator tool.
+ * @constant {Tool|null} tool - The tool object containing metadata and configuration.
+ */
 const tool: Tool | null = findToolBySlug("barcode-generator");
 
+/**
+ * SEO metadata for the Barcode Generator page.
+ * @type {Metadata}
+ */
 export const metadata: Metadata = genMeta({
   title: tool?.seoTitle || "",
   description: tool?.seoDescription || "",
   slug: tool?.slug || "",
 });
 
+/**
+ * Barcode Generator tool page component.
+ * Renders the page layout with header and the Barcode Generator tool.
+ *
+ * @component
+ * @returns {JSX.Element} The rendered Barcode Generator tool page component.
+ */
 const BarcodeGenerator: React.FC = (): React.JSX.Element => {
   if (!tool) {
-    notFound();
+    notFound(); // Render a 404 page if the tool is null
   }
 
   return (

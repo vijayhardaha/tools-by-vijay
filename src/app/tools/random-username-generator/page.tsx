@@ -10,17 +10,32 @@ import { generateMetadata as genMeta, Metadata } from "@/utils/seoUtils";
 import { findToolBySlug } from "@/utils/toolUtils";
 import { getIconForTool } from "@/utils/toolUtils";
 
+/**
+ * Retrieves tool data for the Random Username Generator tool.
+ * @constant {Tool|null} tool - The tool object containing metadata and configuration.
+ */
 const tool: Tool | null = findToolBySlug("random-username-generator");
 
+/**
+ * SEO metadata for the Random Username Generator tool page.
+ * @type {Metadata}
+ */
 export const metadata: Metadata = genMeta({
   title: tool?.seoTitle || "",
   description: tool?.seoDescription || "",
   slug: tool?.slug || "",
 });
 
+/**
+ * Random Username Generator tool page component.
+ * Renders the page layout with header and the Random Username Generator tool.
+ *
+ * @component
+ * @returns {JSX.Element} The rendered Random Username Generator tool page component.
+ */
 const RandomUsernameGenerator: React.FC = (): React.JSX.Element => {
   if (!tool) {
-    notFound();
+    notFound(); // Render a 404 page if the tool is null
   }
 
   return (

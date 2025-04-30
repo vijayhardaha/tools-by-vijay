@@ -10,17 +10,32 @@ import { generateMetadata as genMeta, Metadata } from "@/utils/seoUtils";
 import { findToolBySlug } from "@/utils/toolUtils";
 import { getIconForTool } from "@/utils/toolUtils";
 
+/**
+ * Retrieves tool data for the PX to REM Converter tool.
+ * @constant {Tool|null} tool - The tool object containing metadata and configuration.
+ */
 const tool: Tool | null = findToolBySlug("px-to-rem-converter");
 
+/**
+ * SEO metadata for the PX to REM Converter tool page.
+ * @type {Metadata}
+ */
 export const metadata: Metadata = genMeta({
   title: tool?.seoTitle || "",
   description: tool?.seoDescription || "",
   slug: tool?.slug || "",
 });
 
+/**
+ * PX to REM Converter tool page component.
+ * Renders the page layout with header and the PX to REM Converter tool.
+ *
+ * @component
+ * @returns {JSX.Element} The rendered PX to REM Converter tool page component.
+ */
 const PxToRemConverter: React.FC = (): React.JSX.Element => {
   if (!tool) {
-    notFound();
+    notFound(); // Render a 404 page if the tool is null
   }
 
   return (
