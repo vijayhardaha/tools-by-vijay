@@ -7,58 +7,50 @@ const categories: Category[] = [
   {
     label: "Text Transformation",
     slug: "text-transformation",
-    description: "Tools for manipulating and transforming text content.",
+    description: "Modify, format, and clean up your text effortlessly.",
     seoTitle: "Text Transformation Tools",
     seoDescription:
-      "Transform text with our simple online tools. Convert, modify, and organize your text content efficiently.",
+      "Use our free online tools to transform text: clean, convert, and format your content with ease.",
   },
   {
     label: "Security",
     slug: "security",
-    description: "Tools for password management and security enhancement.",
+    description: "Secure your digital presence with smart password tools.",
     seoTitle: "Security Tools",
     seoDescription:
-      "Enhance your online security with our free password tools. Generate strong passwords and test your existing ones.",
+      "Generate strong passwords and test their strength with our free security tools. Stay protected online.",
   },
   {
     label: "Code Optimization",
     slug: "code-optimization",
-    description: "Tools for minifying and optimizing website code.",
+    description: "Improve your code performance with smart optimizers.",
     seoTitle: "Code Optimization Tools",
     seoDescription:
-      "Optimize your website code with our free minification tools. Enhance loading speed and efficiency.",
+      "Speed up your website with code minification and optimization tools. Enhance performance in one click.",
   },
   {
     label: "Web Utilities",
     slug: "web-utilities",
-    description: "Useful utilities for everyday web tasks.",
-    seoTitle: "Web Utilities Tools",
+    description: "Handy tools for common web development tasks.",
+    seoTitle: "Web Utility Tools",
     seoDescription:
-      "Practical web utilities for daily tasks. Simplify your workflow with our easy-to-use online tools.",
+      "Simplify your daily workflow with our essential online web utilities. Built for developers and creators.",
   },
   {
     label: "Data Conversion",
     slug: "data-conversion",
-    description: "Tools for converting data between different formats.",
+    description: "Convert text and files between formats in seconds.",
     seoTitle: "Data Conversion Tools",
     seoDescription:
-      "Convert data between different formats with our simple online converters. Transform text to arrays and more.",
+      "Transform data between formats quickly and accurately. JSON, CSV, arrays, and more—all in one place.",
   },
   {
     label: "Data Formatting",
     slug: "data-formatting",
-    description: "Tools for formatting and organizing data.",
+    description: "Structure and style your data for better readability.",
     seoTitle: "Data Formatting Tools",
     seoDescription:
-      "Format and organize your data with our free online tools. Sort JSON and structure your information efficiently.",
-  },
-  {
-    label: "Language Tools",
-    slug: "language-tools",
-    description: "Tools for working with different languages and scripts.",
-    seoTitle: "Language Tools",
-    seoDescription:
-      "Explore tools for typing, converting, and working with various languages and scripts. Simplify language-related tasks.",
+      "Format JSON, align tables, sort content and organize your data with easy-to-use online tools.",
   },
 ];
 
