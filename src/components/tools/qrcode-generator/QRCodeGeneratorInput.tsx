@@ -58,13 +58,18 @@ const QRCodeGeneratorInput: React.FC<QRCodeGeneratorInputProps> = ({
           />
 
           <div className="flex flex-col gap-2">
-            <Label htmlFor="qr-size">QR Code Size: {size}px</Label>
+            <Label htmlFor="qr-size">
+              QR Code Size:{" "}
+              <span className="text-muted-foreground text-sm">
+                <code className="bg-muted px-1 font-medium text-pink-500">{size}px</code>
+              </span>
+            </Label>
             <Slider
               id="qr-size"
               value={size}
               min={128}
               max={512}
-              step={16}
+              step={1}
               onValueChange={(value) => setSize(value)}
             />
           </div>
