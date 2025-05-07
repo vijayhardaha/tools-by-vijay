@@ -86,7 +86,7 @@ function Checkbox({
         disabled={disabled}
         required={required}
       />
-      <div
+      <span
         data-slot="checkbox-indicator"
         className={cn(
           "flex h-4 w-4 cursor-pointer items-center justify-center rounded border",
@@ -94,7 +94,7 @@ function Checkbox({
         )}
       >
         {isChecked && <CheckIcon className="h-3 w-3" />}
-      </div>
+      </span>
       {children && (
         <span className="ml-2 text-sm leading-none font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
           {children}
