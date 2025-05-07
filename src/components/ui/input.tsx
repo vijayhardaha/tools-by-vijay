@@ -17,7 +17,6 @@ function Input({ className, type = "text", ...props }: InputProps): React.JSX.El
     <input
       type={type}
       autoComplete="off"
-      autoCorrect="off"
       spellCheck="false"
       data-slot="input"
       className={cn(
