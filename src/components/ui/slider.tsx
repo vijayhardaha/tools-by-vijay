@@ -2,8 +2,6 @@
 
 import { useEffect, useState } from "react";
 
-import { Range } from "react-range";
-
 import { cn } from "@/utils/classNameUtils";
 
 /**
@@ -32,75 +30,39 @@ function Slider({
   disabled = false,
   ...props
 }: SliderProps) {
-  const [values, setValues] = useState([value]);
+  const [currentValue, setCurrentValue] = useState(value);
 
   useEffect(() => {
-    setValues([value]);
+    setCurrentValue(value);
   }, [value]);
 
-  const handleChange = (newValues: number[]) => {
-    setValues(newValues);
-    onValueChange?.(newValues[0]);
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = Number(event.target.value);
+    setCurrentValue(newValue);
+    onValueChange?.(newValue);
   };
 
   return (
     <div
-      data-slot="slider"
-      data-disabled={disabled || undefined}
-      className={cn(
-        "relative flex w-full touch-none items-center select-none data-[disabled]:opacity-50",
-        className
-      )}
-      {...props}
+      className={cn("relative flex w-full items-center py-3 data-[disabled]:opacity-50", className)}
     >
-      <Range
-        step={step}
+      <input
+        type="range"
         min={min}
         max={max}
-        values={values}
+        step={step}
+        value={currentValue}
         onChange={handleChange}
         disabled={disabled}
-        renderTrack={({ props: trackProps, children }) => (
-          <div className="flex h-6 w-full">
-            <div
-              {...trackProps}
-              ref={trackProps.ref}
-              className="h-1 w-full self-center rounded-full bg-stone-200"
-            >
-              {children}
-            </div>
-          </div>
+        className={cn(
+          "bg-input m-0 h-[1px] flex-1 appearance-none border-none outline-none",
+          "focus:outline-none",
+          "active:[&::-webkit-slider-thumb]:ring-primary/15 active:[&::-webkit-slider-thumb]:h-6 active:[&::-webkit-slider-thumb]:w-6 active:[&::-webkit-slider-thumb]:ring-4",
+          "active:[&::-moz-range-thumb]:ring-primary/15 active:[&::-moz-range-thumb]:h-6 active:[&::-moz-range-thumb]:w-6 active:[&::-moz-range-thumb]:ring-4",
+          "[&::-webkit-slider-thumb]:bg-primary [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:cursor-move [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:transition-[width,height] [&::-webkit-slider-thumb]:duration-100",
+          "[&::-moz-range-thumb]:bg-primary [&::-moz-range-thumb]:h-4 [&::-moz-range-thumb]:w-4 [&::-moz-range-thumb]:cursor-move [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:transition-[width,height] [&::-moz-range-thumb]:duration-100"
         )}
-        renderThumb={({ props: thumbProps, isDragged }) => {
-          const { key, ...thumbPropsWithoutKey } = thumbProps;
-
-          return (
-            <div
-              {...thumbPropsWithoutKey}
-              key={key}
-              role="slider"
-              aria-valuemin={min}
-              aria-valuemax={max}
-              aria-valuenow={values[0]}
-              className={cn(
-                "bg-primary flex h-4 w-4 transform items-center justify-center rounded-full outline-hidden",
-                isDragged ? "ring-primary/20 ring-4" : ""
-              )}
-            >
-              <div
-                className={cn(
-                  "absolute -top-9 flex items-center justify-center rounded-md bg-slate-900 px-3 py-1 text-xs text-white outline-hidden",
-                  !isDragged ? "hidden" : ""
-                )}
-                role="tooltip"
-                aria-live="polite"
-              >
-                {values[0]}
-                <div className="absolute -bottom-[6px] left-1/2 h-0 w-0 -translate-x-1/2 transform border-t-8 border-r-8 border-l-8 border-t-slate-900 border-r-transparent border-l-transparent"></div>
-              </div>
-            </div>
-          );
-        }}
+        {...props}
       />
     </div>
   );
