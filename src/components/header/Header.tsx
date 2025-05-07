@@ -27,7 +27,7 @@ const Header: React.FC = (): React.JSX.Element => {
     <>
       <header className="border-border sticky top-0 z-50 border-b bg-white">
         <div className="relative z-20 mx-auto max-w-6xl px-4">
-          <header className="flex items-center justify-between gap-4 py-4">
+          <div className="flex items-center justify-between gap-4 py-4">
             <Logo />
             <div className="flex items-center gap-2">
               <Button
@@ -49,7 +49,7 @@ const Header: React.FC = (): React.JSX.Element => {
               </Button>
               <MenuButton onClick={toggleDrawer} />
             </div>
-          </header>
+          </div>
         </div>
       </header>
       <Sidebar isOpen={isOpen} onClose={closeDrawer} />
