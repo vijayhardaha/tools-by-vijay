@@ -39,7 +39,7 @@ const EntryWithSidebar: React.FC<EntryWithSidebarProps> = ({
 
   return (
     <div className="grid grid-cols-1 gap-6 lg:grid-cols-6">
-      <main className="col-span-4 mb-8 lg:mb-0">{children}</main>
+      <article className="col-span-4 mb-8 lg:mb-0">{children}</article>
 
       <aside className="col-span-2 flex flex-col gap-6">
         <ToolsListWidget category={tool.category} hideTool={tool.slug}></ToolsListWidget>
