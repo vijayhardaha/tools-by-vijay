@@ -25,7 +25,6 @@ const BgOptionsPanel: React.FC<BgOptionsPanelProps> = ({
   const tools = [
     { name: "solid", label: "Solid" },
     { name: "gradient", label: "Gradient" },
-    { name: "mesh", label: "Mesh" },
   ];
 
   /**
