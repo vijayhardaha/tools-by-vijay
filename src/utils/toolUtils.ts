@@ -32,7 +32,7 @@ export const getToolsByCategory = (category: string): Tool[] => {
  */
 export const getUniqueCategories = (): string[] => {
   const categories = new Set(tools.map((tool) => tool.category));
-  return [...categories];
+  return Array.from(categories);
 };
 
 /**
