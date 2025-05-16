@@ -1,5 +1,3 @@
-import React from "react";
-
 import { useKeenSlider } from "keen-slider/react";
 
 import { fonts } from "@/components/text-story-maker/constants";
