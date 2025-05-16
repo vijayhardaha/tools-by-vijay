@@ -76,6 +76,7 @@ interface ControlSliderProps {
   step?: number;
   value: number;
   onChangeKey: string;
+  valueLabel?: string;
   onChangeHandler: (key: string, value: number[]) => void;
 }
 
@@ -86,37 +87,23 @@ const ControlSlider: FunctionComponent<ControlSliderProps> = ({
   step = 0.125,
   value,
   onChangeKey,
+  valueLabel = "",
   onChangeHandler,
 }) => {
   const handleChange = (values: number[]) => {
     onChangeHandler(onChangeKey, values);
   };
 
-  const sliderId = `slider-${onChangeKey}`;
-
   return (
-    <div className="space-y-1.25">
-      {label.length > 0 && (
-        <p id={sliderId} className="text-sm font-medium">
-          {label}
-        </p>
-      )}
-      <div className="px-0">
-        <RangeSlider
-          step={step}
-          min={min}
-          max={max}
-          values={[value]}
-          onChange={handleChange}
-          ariaLabel={label}
-          aria-labelledby={sliderId}
-          aria-valuemin={min}
-          aria-valuemax={max}
-          aria-valuenow={value}
-          aria-valuetext={`${label}: ${value}`}
-        />
-      </div>
-    </div>
+    <RangeSlider
+      step={step}
+      min={min}
+      max={max}
+      values={[value]}
+      onChange={handleChange}
+      label={label}
+      valueLabel={valueLabel}
+    />
   );
 };
 

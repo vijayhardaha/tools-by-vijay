@@ -220,7 +220,7 @@ const TextOptionsPanel = ({ options, updateOption }: TextOptionsPanelProps) => {
                 onChangeHandler={updateOption}
               />
 
-              <div className="mb-2 grid grid-cols-2 gap-4">
+              <div className="mb-4 grid grid-cols-2 gap-4">
                 <ControlSlider
                   label="Outer Gap"
                   min={0}
