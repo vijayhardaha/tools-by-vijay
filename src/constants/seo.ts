@@ -23,6 +23,9 @@ export interface IBaseMetadata {
     canonical: string;
   };
   keywords: string[];
+  verification: {
+    google: string;
+  };
   author: string;
   robots: string;
   icons: {
@@ -77,6 +80,9 @@ export const baseMetadata: IBaseMetadata = {
   keywords: ["tools", "utilities", "web tools", "online tools", "developer tools"],
   author: "Vijay",
   robots: "index, follow",
+  verification: {
+    google: "4CyrCxZi9TWgvS-GzB1QUhgEl0bKoIzT36368e_vlx0",
+  },
   icons: {
     icon: "/favicon.ico",
     apple: "/apple-touch-icon.png",
