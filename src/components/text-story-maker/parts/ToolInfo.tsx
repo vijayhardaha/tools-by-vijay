@@ -7,7 +7,7 @@ import { cn } from "@/utils/classNameUtils";
  * This component displays information about the "Text Story Maker" tool.
  * It includes the tool's name and a brief description, styled with specific fonts.
  *
- * @returns {JSX.Element} A styled div containing the tool's name and description.
+ * @returns {React.JSX.Element} A styled div containing the tool's name and description.
  */
 const ToolInfo: React.FC = (): React.JSX.Element => {
   return (

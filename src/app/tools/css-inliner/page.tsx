@@ -31,7 +31,7 @@ export const metadata: Metadata = generateMeta({
  * Renders the page layout with header and the Css Inliner tool.
  *
  * @component
- * @returns {JSX.Element} The rendered Css Inliner tool page component.
+ * @returns {React.JSX.Element} The rendered Css Inliner tool page component.
  */
 const CssInliner: React.FC = (): React.JSX.Element => {
   if (!tool) {

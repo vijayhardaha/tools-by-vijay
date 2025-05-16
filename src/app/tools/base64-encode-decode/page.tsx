@@ -31,7 +31,7 @@ export const metadata: Metadata = generateMeta({
  * Renders the page layout with header and the Base64 Encode/Decode tool.
  *
  * @component
- * @returns {JSX.Element} The rendered Base64 Encode/Decode tool page component.
+ * @returns {React.JSX.Element} The rendered Base64 Encode/Decode tool page component.
  */
 const Base64EncodeDecode: React.FC = (): React.JSX.Element => {
   if (!tool) {

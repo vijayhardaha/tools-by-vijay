@@ -13,7 +13,7 @@ import JsonSorterOutput from "./JsonSorterOutput";
  * Manages the state and functionality for sorting JSON objects alphabetically.
  *
  * @component
- * @returns {JSX.Element} The complete JSON sorter tool with input options, output display, and information
+ * @returns {React.JSX.Element} The complete JSON sorter tool with input options, output display, and information
  */
 const JsonSorterTool: React.FC = (): React.JSX.Element => {
   const [input, setInput] = useState<string>("");

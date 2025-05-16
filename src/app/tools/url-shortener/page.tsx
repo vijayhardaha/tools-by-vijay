@@ -31,7 +31,7 @@ export const metadata: Metadata = generateMeta({
  * Renders the page layout with header and the URL Shortener tool.
  *
  * @component
- * @returns {JSX.Element} The rendered URL Shortener tool page component.
+ * @returns {React.JSX.Element} The rendered URL Shortener tool page component.
  */
 const UrlShortener: React.FC = (): React.JSX.Element => {
   if (!tool) {

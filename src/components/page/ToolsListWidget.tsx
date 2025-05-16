@@ -20,7 +20,7 @@ interface IToolsListWidgetProps {
  * A reusable widget component for displaying a list of tools in a sidebar card.
  *
  * @param {ToolsListWidgetProps} props - The props for the component.
- * @returns {JSX.Element} The rendered component.
+ * @returns {React.JSX.Element} The rendered component.
  */
 const ToolsListWidget: React.FC<IToolsListWidgetProps> = ({
   category,

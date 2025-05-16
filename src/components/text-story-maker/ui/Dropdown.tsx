@@ -6,7 +6,7 @@ import React, { cloneElement, useState, useEffect, useRef, ReactNode, ReactEleme
  * @param {Object} props - Component props.
  * @param {React.ReactNode} props.children - The dropdown content, including DropdownTrigger and DropdownContent.
  * @param {string} props.label - Accessible label for the dropdown menu.
- * @returns {JSX.Element} The rendered Dropdown component.
+ * @returns {React.JSX.Element} The rendered Dropdown component.
  */
 interface DropdownProps {
   children: (props: { isOpen: boolean; toggleDropdown: () => void; menuId: string }) => ReactNode;

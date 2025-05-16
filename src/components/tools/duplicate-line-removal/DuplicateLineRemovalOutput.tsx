@@ -14,7 +14,7 @@ interface IDuplicateLineRemovalOutputProps {
  *
  * @component
  * @param {IDuplicateLineRemovalOutputProps} props - Component props
- * @returns {JSX.Element} The rendered output display
+ * @returns {React.JSX.Element} The rendered output display
  */
 const DuplicateLineRemovalOutput: React.FC<IDuplicateLineRemovalOutputProps> = ({
   output,

@@ -11,7 +11,7 @@ import { Textarea } from "@/components/ui/textarea";
  * @component
  * @param {Object} props - Component props
  * @param {string} props.output - The processed text to display
- * @returns {JSX.Element} The rendered card with output display and copy functionality
+ * @returns {React.JSX.Element} The rendered card with output display and copy functionality
  */
 interface IReplaceQuotesOutputProps {
   output: string;

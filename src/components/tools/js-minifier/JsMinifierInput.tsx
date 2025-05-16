@@ -23,7 +23,7 @@ interface IJsMinifierInputProps {
  * Component for JavaScript minifier input and options.
  *
  * @param {IJsMinifierInputProps} props - Component props.
- * @returns {JSX.Element} The JsMinifierInput component.
+ * @returns {React.JSX.Element} The JsMinifierInput component.
  */
 const JsMinifierInput: React.FC<IJsMinifierInputProps> = ({
   input,

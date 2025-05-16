@@ -31,7 +31,7 @@ export const metadata: Metadata = generateMeta({
  * Renders the page layout with header and the Shuffle Text Lines tool.
  *
  * @component
- * @returns {JSX.Element} The rendered Shuffle Text Lines tool page component.
+ * @returns {React.JSX.Element} The rendered Shuffle Text Lines tool page component.
  */
 const ShuffleTextLines: React.FC = (): React.JSX.Element => {
   if (!tool) {

@@ -31,7 +31,7 @@ export const metadata: Metadata = generateMeta({
  * Renders the page layout with header and the Alphabetical Line Sorter tool.
  *
  * @component
- * @returns {JSX.Element} The rendered Alphabetical Line Sorter tool page component.
+ * @returns {React.JSX.Element} The rendered Alphabetical Line Sorter tool page component.
  */
 const AlphabeticalLineSorter: React.FC = (): React.JSX.Element => {
   if (!tool) {

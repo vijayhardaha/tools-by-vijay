@@ -13,7 +13,7 @@ interface HeaderIconBtnProps {
  * HeaderIconBtn is a wrapper around the IconButton component, styled specifically for the header.
  *
  * @param {HeaderIconBtnProps} props - The props for the component.
- * @returns {JSX.Element} The rendered HeaderIconBtn component.
+ * @returns {React.JSX.Element} The rendered HeaderIconBtn component.
  */
 const HeaderIconBtn: React.FC<HeaderIconBtnProps> = ({
   icon,

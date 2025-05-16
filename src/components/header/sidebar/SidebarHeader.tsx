@@ -6,7 +6,7 @@ import { SheetHeader } from "@/components/ui/sheet";
  *
  * This component renders the header for the sidebar, which includes a logo.
  *
- * @returns {JSX.Element} The rendered SidebarHeader component.
+ * @returns {React.JSX.Element} The rendered SidebarHeader component.
  */
 const SidebarHeader: React.FC = (): React.JSX.Element => {
   return (

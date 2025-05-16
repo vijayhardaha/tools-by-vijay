@@ -31,7 +31,7 @@ export const metadata: Metadata = generateMeta({
  * Renders the page layout with header and the Dropdown to Array tool.
  *
  * @component
- * @returns {JSX.Element} The rendered Dropdown to Array tool page component.
+ * @returns {React.JSX.Element} The rendered Dropdown to Array tool page component.
  */
 const DropdownToArray: React.FC = (): React.JSX.Element => {
   if (!tool) {

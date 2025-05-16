@@ -11,7 +11,7 @@ import CharacterCountOutput from "./CharacterCountOutput";
  * Manages the state and functionality for analyzing text statistics.
  *
  * @component
- * @returns {JSX.Element} The complete Character Count tool with input options, output display, and information.
+ * @returns {React.JSX.Element} The complete Character Count tool with input options, output display, and information.
  */
 const CharacterCountTool: React.FC = (): React.JSX.Element => {
   const [text, setText] = useState<string>("");

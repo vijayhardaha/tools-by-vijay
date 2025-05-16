@@ -31,7 +31,7 @@ export const metadata: Metadata = generateMeta({
  * Renders the page layout with header and the Text to Array tool.
  *
  * @component
- * @returns {JSX.Element} The rendered Text to Array tool page component.
+ * @returns {React.JSX.Element} The rendered Text to Array tool page component.
  */
 const TextToArray: React.FC = (): React.JSX.Element => {
   if (!tool) {

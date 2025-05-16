@@ -32,7 +32,7 @@ interface IBadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
  * Badge component for displaying status, categories, or other small metadata
  *
  * @param {BadgeProps} props - Component props
- * @returns {JSX.Element} The rendered Badge component
+ * @returns {React.JSX.Element} The rendered Badge component
  */
 function Badge({
   className,

@@ -31,7 +31,7 @@ export const metadata: Metadata = generateMeta({
  * Renders the page layout with header and the HTML Minifier tool.
  *
  * @component
- * @returns {JSX.Element} The rendered HTML Minifier tool page component.
+ * @returns {React.JSX.Element} The rendered HTML Minifier tool page component.
  */
 const HtmlMinifier: React.FC = (): React.JSX.Element => {
   if (!tool) {

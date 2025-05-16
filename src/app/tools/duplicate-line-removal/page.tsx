@@ -31,7 +31,7 @@ export const metadata: Metadata = generateMeta({
  * Renders the page layout with header and the Duplicate Line Removal tool.
  *
  * @component
- * @returns {JSX.Element} The rendered Duplicate Line Removal tool page component.
+ * @returns {React.JSX.Element} The rendered Duplicate Line Removal tool page component.
  */
 const DuplicateLineRemoval: React.FC = (): React.JSX.Element => {
   if (!tool) {

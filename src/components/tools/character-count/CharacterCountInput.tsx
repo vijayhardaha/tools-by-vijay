@@ -12,7 +12,7 @@ interface CharacterCountInputProps {
  * Component for inputting text to analyze character count statistics.
  *
  * @param {CharacterCountInputProps} props - Component props.
- * @returns {JSX.Element} The rendered input form.
+ * @returns {React.JSX.Element} The rendered input form.
  */
 const CharacterCountInput: React.FC<CharacterCountInputProps> = ({
   text,

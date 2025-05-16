@@ -15,7 +15,7 @@ interface ISocialButtonProps {
 /**
  * SocialButton component for social media links
  * @param {SocialButtonProps} props - Component props
- * @returns {JSX.Element} A button with social media icon
+ * @returns {React.JSX.Element} A button with social media icon
  */
 const SocialButton = ({
   icon: Icon,
@@ -38,7 +38,7 @@ const SocialButton = ({
 
 /**
  * Footer component for the sidebar with social media links
- * @returns {JSX.Element} The sidebar footer component
+ * @returns {React.JSX.Element} The sidebar footer component
  */
 const SidebarFooter = (): React.JSX.Element => (
   <SheetFooter>

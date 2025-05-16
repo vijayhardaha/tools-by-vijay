@@ -5,7 +5,7 @@ import footerLinks from "@/constants/footerLinks";
 /**
  * Top section of the footer containing about information and navigation widgets
  *
- * @returns {JSX.Element} The rendered footer top section.
+ * @returns {React.JSX.Element} The rendered footer top section.
  */
 const FooterTop: React.FC = (): React.JSX.Element => {
   return (

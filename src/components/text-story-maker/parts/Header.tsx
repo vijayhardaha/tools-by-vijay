@@ -23,7 +23,7 @@ interface HeaderProps extends UpdateOptionsSetsType {
  * Header component for the text story maker.
  *
  * @param {HeaderProps} props - Component props.
- * @returns {JSX.Element} The rendered Header component.
+ * @returns {React.JSX.Element} The rendered Header component.
  */
 const Header: React.FC<HeaderProps> = ({
   options,

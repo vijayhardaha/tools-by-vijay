@@ -34,7 +34,7 @@ interface ITextToArrayInputProps {
  *
  * @component
  * @param {Object} props - Component props
- * @returns {JSX.Element} The rendered form with conversion options
+ * @returns {React.JSX.Element} The rendered form with conversion options
  */
 const TextToArrayInput: React.FC<ITextToArrayInputProps> = ({
   input,

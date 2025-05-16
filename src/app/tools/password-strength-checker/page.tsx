@@ -31,7 +31,7 @@ export const metadata: Metadata = generateMeta({
  * Renders the page layout with header and the Password Strength Checker tool.
  *
  * @component
- * @returns {JSX.Element} The rendered Password Strength Checker tool page component.
+ * @returns {React.JSX.Element} The rendered Password Strength Checker tool page component.
  */
 const PasswordStrengthChecker: React.FC = (): React.JSX.Element => {
   if (!tool) {

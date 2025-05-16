@@ -15,7 +15,7 @@ interface IPxToRemInputProps {
  * Component for inputting px value and base font size.
  *
  * @param {IPxToRemInputProps} props - Component props.
- * @returns {JSX.Element} The rendered input form.
+ * @returns {React.JSX.Element} The rendered input form.
  */
 const PxToRemInput: React.FC<IPxToRemInputProps> = ({
   pxValue,

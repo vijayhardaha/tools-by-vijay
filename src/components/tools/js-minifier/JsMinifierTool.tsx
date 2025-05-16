@@ -16,7 +16,7 @@ export interface IMinifyOptions {
 /**
  * Main component for the JavaScript Minifier tool.
  *
- * @returns {JSX.Element} The JavaScript Minifier tool interface.
+ * @returns {React.JSX.Element} The JavaScript Minifier tool interface.
  */
 const JsMinifierTool: React.FC = (): React.JSX.Element => {
   const [input, setInput] = useState<string>("");

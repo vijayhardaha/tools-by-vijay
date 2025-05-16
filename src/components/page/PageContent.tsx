@@ -9,7 +9,7 @@ interface IPageContentProps {
  * Provides a white background with rounded corners and shadow.
  *
  * @param {PageContentProps} props - Component props
- * @returns {JSX.Element} The rendered component
+ * @returns {React.JSX.Element} The rendered component
  */
 const PageContent: React.FC<IPageContentProps> = ({
   children,

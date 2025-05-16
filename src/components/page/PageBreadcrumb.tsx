@@ -13,7 +13,7 @@ interface IPageBreadcrumbProps {
  * with Home as a link and the current page name without a link.
  *
  * @param {IPageBreadcrumbProps} props - The props for the component.
- * @returns {JSX.Element} The rendered breadcrumb navigation.
+ * @returns {React.JSX.Element} The rendered breadcrumb navigation.
  */
 const PageBreadcrumb: React.FC = ({ pageName }: IPageBreadcrumbProps): React.JSX.Element => {
   return (

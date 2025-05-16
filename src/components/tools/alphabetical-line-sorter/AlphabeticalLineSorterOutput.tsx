@@ -12,7 +12,7 @@ interface IAlphabeticalLineSorterOutputProps {
  *
  * @component
  * @param {IAlphabeticalLineSorterOutputProps} props - Component props
- * @returns {JSX.Element} The rendered output display
+ * @returns {React.JSX.Element} The rendered output display
  */
 const AlphabeticalLineSorterOutput: React.FC<IAlphabeticalLineSorterOutputProps> = ({
   output,

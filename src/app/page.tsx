@@ -11,7 +11,7 @@ import { getToolsByCategories } from "@/utils/toolUtils";
  * that belong to that category.
  *
  * @component
- * @returns {JSX.Element} The rendered Home component with categorized tools.
+ * @returns {React.JSX.Element} The rendered Home component with categorized tools.
  */
 const Home: React.FC = (): React.JSX.Element => {
   // Get all tools and group them by category

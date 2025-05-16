@@ -31,7 +31,7 @@ export const metadata: Metadata = generateMeta({
  * Renders the page layout with header and the PX to REM Converter tool.
  *
  * @component
- * @returns {JSX.Element} The rendered PX to REM Converter tool page component.
+ * @returns {React.JSX.Element} The rendered PX to REM Converter tool page component.
  */
 const PxToRemConverter: React.FC = (): React.JSX.Element => {
   if (!tool) {

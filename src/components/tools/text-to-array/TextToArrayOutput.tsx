@@ -18,7 +18,7 @@ interface ITextToArrayOutputProps {
  *
  * @component
  * @param {ITextToArrayOutputProps} props - The props for the component.
- * @returns {JSX.Element} The rendered component.
+ * @returns {React.JSX.Element} The rendered component.
  */
 const TextToArrayOutput: React.FC<ITextToArrayOutputProps> = ({
   output,

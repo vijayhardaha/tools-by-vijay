@@ -12,7 +12,7 @@ interface IJsMinifierOutputProps {
  * Component that displays the minified JavaScript output and provides copy functionality.
  *
  * @param {IJsMinifierOutputProps} props - The component props.
- * @returns {JSX.Element} The JsMinifierOutput component.
+ * @returns {React.JSX.Element} The JsMinifierOutput component.
  */
 const JsMinifierOutput: React.FC<IJsMinifierOutputProps> = ({
   output,

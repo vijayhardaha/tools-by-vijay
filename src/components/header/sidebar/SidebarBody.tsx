@@ -21,7 +21,7 @@ type INavLinkProps = {
  * NavLink component for consistent link styling in the sidebar using Shadcn classes.
  *
  * @param {INavLinkProps} props - Component props.
- * @returns {JSX.Element} Styled navigation link.
+ * @returns {React.JSX.Element} Styled navigation link.
  */
 const NavLink: React.FC<INavLinkProps> = ({
   href,
@@ -57,7 +57,7 @@ type ICategorySectionProps = {
  * CategorySection component to display a group of tool links.
  *
  * @param {ICategorySectionProps} props - Component props.
- * @returns {JSX.Element} Category section with tool links.
+ * @returns {React.JSX.Element} Category section with tool links.
  */
 const CategorySection: React.FC<ICategorySectionProps> = ({
   title,
@@ -78,7 +78,7 @@ const CategorySection: React.FC<ICategorySectionProps> = ({
 /**
  * SidebarBody component containing navigation links and tool categories.
  *
- * @returns {JSX.Element} The sidebar body content.
+ * @returns {React.JSX.Element} The sidebar body content.
  */
 const SidebarBody: React.FC = (): React.JSX.Element => {
   // Group tools by category

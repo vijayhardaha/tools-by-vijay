@@ -11,7 +11,7 @@ interface IHelpTipProps {
  * HelpTip component displays an informational icon with a tooltip.
  *
  * @param {IHelpTipProps} props - Component props.
- * @returns {JSX.Element} The rendered HelpTip component.
+ * @returns {React.JSX.Element} The rendered HelpTip component.
  */
 export const HelpTip = ({ text }: IHelpTipProps): React.JSX.Element => (
   <Tooltip text={text} className="!max-w-80">

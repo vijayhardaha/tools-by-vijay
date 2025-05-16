@@ -14,6 +14,13 @@ export const metadata: IMetadata = generateMeta({
   slug: "about",
 });
 
+/**
+ * About page component.
+ * This page provides information about the developer, the motivation behind the platform.
+ *
+ * @component
+ * @returns {React.JSX.Element} The rendered About page.
+ */
 const About: React.FC = (): React.JSX.Element => {
   return (
     <PageLayout>

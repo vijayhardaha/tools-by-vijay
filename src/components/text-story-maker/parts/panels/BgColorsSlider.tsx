@@ -19,7 +19,7 @@ interface BgColorsSliderProps extends UpdateOptionsSetsType {
  * BgColorsSlider component renders a slider for selecting background colors.
  *
  * @param {BgColorsSliderProps} props - Component props.
- * @returns {JSX.Element} The rendered BgColorsSlider component.
+ * @returns {React.JSX.Element} The rendered BgColorsSlider component.
  */
 const BgColorsSlider: React.FC<BgColorsSliderProps> = ({
   tool,

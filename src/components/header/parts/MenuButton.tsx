@@ -15,7 +15,7 @@ type IMenuButtonProps = {
  * MenuButton component renders a button that toggles the sidebar menu.
  *
  * @param {MenuButtonProps} props - The component props.
- * @returns {JSX.Element} A button component with "Menu" text and hamburger icon.
+ * @returns {React.JSX.Element} A button component with "Menu" text and hamburger icon.
  */
 const MenuButton: React.FC<IMenuButtonProps> = ({
   onClick,

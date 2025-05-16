@@ -37,7 +37,7 @@ export const metadata: IBaseMetadata = baseMetadata;
  *
  * @component
  * @param {{ children: ReactNode }} props - The props for the RootLayout component.
- * @returns {JSX.Element} The root layout structure.
+ * @returns {React.JSX.Element} The root layout structure.
  */
 const RootLayout = ({ children }: { children: ReactNode }): React.JSX.Element => {
   return (

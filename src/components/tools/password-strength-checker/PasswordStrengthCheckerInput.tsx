@@ -17,7 +17,7 @@ interface IPasswordStrengthCheckerInputProps {
  *
  * @component
  * @param {IPasswordStrengthCheckerInputProps} props - Component props
- * @returns {JSX.Element} Password input with visibility toggle and clear button
+ * @returns {React.JSX.Element} Password input with visibility toggle and clear button
  */
 const PasswordStrengthCheckerInput: React.FC<IPasswordStrengthCheckerInputProps> = ({
   password,

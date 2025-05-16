@@ -22,7 +22,7 @@ interface ITextToPhpVariablesInputProps {
  *
  * @component
  * @param {TextToPhpVariablesInputProps} props - The props for the component.
- * @returns {JSX.Element} The rendered input component.
+ * @returns {React.JSX.Element} The rendered input component.
  */
 const TextToPhpVariablesInput: React.FC<ITextToPhpVariablesInputProps> = ({
   input,

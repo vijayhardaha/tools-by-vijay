@@ -31,7 +31,7 @@ export const metadata: Metadata = generateMeta({
  * Renders the page layout with header and the Random Username Generator tool.
  *
  * @component
- * @returns {JSX.Element} The rendered Random Username Generator tool page component.
+ * @returns {React.JSX.Element} The rendered Random Username Generator tool page component.
  */
 const RandomUsernameGenerator: React.FC = (): React.JSX.Element => {
   if (!tool) {

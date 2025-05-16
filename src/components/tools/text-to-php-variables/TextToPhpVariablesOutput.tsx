@@ -11,7 +11,7 @@ interface ITextToPhpVariablesOutputProps {
  *
  * @component
  * @param {ITextToPhpVariablesOutputProps} props - The props for the component.
- * @returns {JSX.Element} The rendered output component.
+ * @returns {React.JSX.Element} The rendered output component.
  */
 const TextToPhpVariablesOutput: React.FC<ITextToPhpVariablesOutputProps> = ({
   output,

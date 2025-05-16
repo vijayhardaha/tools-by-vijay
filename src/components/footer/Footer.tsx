@@ -5,7 +5,7 @@ import FooterTop from "@/components/footer/FooterTop";
  * Footer component that provides a consistent footer structure
  * with top section for navigation and bottom section for copyright.
  *
- * @returns {JSX.Element} The rendered footer component.
+ * @returns {React.JSX.Element} The rendered footer component.
  */
 const Footer: React.FC = (): React.JSX.Element => {
   return (

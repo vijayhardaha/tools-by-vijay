@@ -27,7 +27,7 @@ type ISocialMediaLink = {
  * Button component for social media links.
  *
  * @param {ISocialButtonProps} props - Props for the SocialButton component.
- * @returns {JSX.Element} The rendered social button.
+ * @returns {React.JSX.Element} The rendered social button.
  */
 const SocialButton: React.FC<ISocialButtonProps> = ({ icon: Icon, href, label, color }) => (
   <Button
@@ -46,7 +46,7 @@ const SocialButton: React.FC<ISocialButtonProps> = ({ icon: Icon, href, label, c
 /**
  * Footer about section component that displays the website logo and description.
  *
- * @returns {JSX.Element} The rendered footer about section.
+ * @returns {React.JSX.Element} The rendered footer about section.
  */
 const FooterAbout: React.FC = (): React.JSX.Element => {
   return (

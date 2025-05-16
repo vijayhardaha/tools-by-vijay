@@ -24,7 +24,7 @@ interface IAlphabeticalLineSorterInputProps {
  *
  * @component
  * @param {IAlphabeticalLineSorterInputProps} props - Component props
- * @returns {JSX.Element} The rendered input form
+ * @returns {React.JSX.Element} The rendered input form
  */
 const AlphabeticalLineSorterInput: React.FC<IAlphabeticalLineSorterInputProps> = ({
   input,

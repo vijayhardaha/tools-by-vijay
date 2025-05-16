@@ -3,7 +3,7 @@
  * usage instructions, and examples.
  *
  * @component
- * @returns {JSX.Element} The rendered component displaying tool information
+ * @returns {React.JSX.Element} The rendered component displaying tool information
  */
 const DropdownToArrayInfo: React.FC = (): React.JSX.Element => {
   return (

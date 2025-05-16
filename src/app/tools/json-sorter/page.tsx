@@ -31,7 +31,7 @@ export const metadata: Metadata = generateMeta({
  * Renders the page layout with header and the JSON Sorter tool.
  *
  * @component
- * @returns {JSX.Element} The rendered JSON Sorter tool page component.
+ * @returns {React.JSX.Element} The rendered JSON Sorter tool page component.
  */
 const JsonSorter: React.FC = (): React.JSX.Element => {
   if (!tool) {

@@ -26,7 +26,7 @@ interface IReplaceQuotesInputProps {
  *
  * @component
  * @param {IReplaceQuotesInputProps} props - Component props
- * @returns {JSX.Element} The input component for the Replace Quotes tool.
+ * @returns {React.JSX.Element} The input component for the Replace Quotes tool.
  */
 const ReplaceQuotesInput: React.FC<IReplaceQuotesInputProps> = ({
   input,

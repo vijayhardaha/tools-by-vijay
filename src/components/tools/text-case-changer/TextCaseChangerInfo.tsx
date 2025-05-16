@@ -3,7 +3,7 @@
  * usage instructions, examples, and benefits.
  *
  * @component
- * @returns {JSX.Element} The rendered component displaying tool information
+ * @returns {React.JSX.Element} The rendered component displaying tool information
  */
 const TextCaseChangerInfo: React.FC = (): React.JSX.Element => {
   return (

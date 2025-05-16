@@ -31,7 +31,7 @@ export const metadata: Metadata = generateMeta({
  * Renders the page layout with header and the Country Name Generator tool.
  *
  * @component
- * @returns {JSX.Element} The rendered Country Name Generator tool page component.
+ * @returns {React.JSX.Element} The rendered Country Name Generator tool page component.
  */
 const CountryNameGenerator: React.FC = (): React.JSX.Element => {
   if (!tool) {

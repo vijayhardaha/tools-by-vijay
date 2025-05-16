@@ -17,7 +17,7 @@ interface IconButtonProps {
  * IconButton component for rendering a button with an icon.
  *
  * @param {IconButtonProps} props - Component props.
- * @returns {JSX.Element} The rendered IconButton component.
+ * @returns {React.JSX.Element} The rendered IconButton component.
  */
 export const IconButton: React.FC<IconButtonProps> = ({
   icon: IconComponent,

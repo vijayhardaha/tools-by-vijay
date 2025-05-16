@@ -31,7 +31,7 @@ export const metadata: Metadata = generateMeta({
  * Renders the page layout with header and the Text to PHP Variables tool.
  *
  * @component
- * @returns {JSX.Element} The rendered Text to PHP Variables tool page component.
+ * @returns {React.JSX.Element} The rendered Text to PHP Variables tool page component.
  */
 const TextToPhpVariables: React.FC = (): React.JSX.Element => {
   if (!tool) {

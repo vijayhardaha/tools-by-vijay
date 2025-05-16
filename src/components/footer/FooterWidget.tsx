@@ -12,7 +12,7 @@ type IFooterWidgetProps = {
  * Footer widget component that displays a list of links with a title
  *
  * @param {IFooterWidgetProps} props - Component props.
- * @returns {JSX.Element} The rendered footer widget.
+ * @returns {React.JSX.Element} The rendered footer widget.
  */
 const FooterWidget: React.FC<IFooterWidgetProps> = ({
   title,

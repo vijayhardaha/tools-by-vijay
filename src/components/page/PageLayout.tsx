@@ -14,7 +14,7 @@ type IPageLayoutProps = {
  * with a header, main content area, and footer.
  *
  * @param {IPageLayoutProps} props - The props for the component.
- * @returns {JSX.Element} The rendered layout component.
+ * @returns {React.JSX.Element} The rendered layout component.
  */
 const PageLayout = ({ children }: IPageLayoutProps): React.JSX.Element => {
   return (

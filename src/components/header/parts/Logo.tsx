@@ -14,7 +14,7 @@ type ILogoProps = {
  * Logo component that displays the site logo with next/image.
  *
  * @param {LogoProps} props - Component props.
- * @returns {JSX.Element} A link to the homepage containing the site logo.
+ * @returns {React.JSX.Element} A link to the homepage containing the site logo.
  */
 const Logo: React.FC<ILogoProps> = ({ className }: ILogoProps): React.JSX.Element => (
   <Link href="/">

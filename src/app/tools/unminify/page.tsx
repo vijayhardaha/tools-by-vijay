@@ -31,7 +31,7 @@ export const metadata: Metadata = generateMeta({
  * Renders the page layout with header and the Unminify tool.
  *
  * @component
- * @returns {JSX.Element} The rendered Unminify tool page component.
+ * @returns {React.JSX.Element} The rendered Unminify tool page component.
  */
 const Unminify: React.FC = (): React.JSX.Element => {
   if (!tool) {

@@ -28,7 +28,7 @@ interface ColorSelectPanelProps extends UpdateOptionsSetsType {
  * ColorSelectPanel component for selecting a color option.
  *
  * @param {ColorSelectPanelProps} props - Component props.
- * @returns {JSX.Element} The rendered ColorSelectPanel component.
+ * @returns {React.JSX.Element} The rendered ColorSelectPanel component.
  */
 const ColorSelectPanel: React.FC<ColorSelectPanelProps> = ({
   options,

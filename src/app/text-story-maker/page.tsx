@@ -16,7 +16,7 @@ export const metadata: IMetadata = generateMeta({
  * TextStoryMaker page component renders the main layout for the text story maker tool.
  *
  * @component
- * @returns {JSX.Element} The rendered TextStoryMaker page.
+ * @returns {React.JSX.Element} The rendered TextStoryMaker page.
  */
 const TextStoryMaker: React.FC = (): React.JSX.Element => {
   return (

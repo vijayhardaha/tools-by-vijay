@@ -19,7 +19,7 @@ interface FontSliderProps extends UpdateOptionsSetsType {}
  * @param {Object} props - Component props.
  * @param {Object} props.options - Current text options.
  * @param {Function} props.updateOption - Function to update the font option.
- * @returns {JSX.Element} The rendered FontSlider component.
+ * @returns {React.JSX.Element} The rendered FontSlider component.
  */
 const FontSlider: React.FC<FontSliderProps> = ({
   options,

@@ -14,7 +14,7 @@ interface BackgroundFillOptionsProps {
  * A button component for toggling the "Background Fill Options" tool in the text story maker.
  *
  * @param {BackgroundFillOptionsProps} props - Component props.
- * @returns {JSX.Element} The rendered button component.
+ * @returns {React.JSX.Element} The rendered button component.
  */
 const BackgroundFillOptions: React.FC<BackgroundFillOptionsProps> = ({
   activeTool,

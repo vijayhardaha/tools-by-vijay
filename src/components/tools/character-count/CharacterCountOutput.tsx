@@ -16,7 +16,7 @@ interface CharacterCountOutputProps {
  * Displays the calculated text statistics.
  *
  * @param {CharacterCountOutputProps} props - Component props.
- * @returns {JSX.Element} The rendered card with text statistics.
+ * @returns {React.JSX.Element} The rendered card with text statistics.
  */
 const CharacterCountOutput: React.FC<CharacterCountOutputProps> = ({
   stats,
@@ -25,7 +25,7 @@ const CharacterCountOutput: React.FC<CharacterCountOutputProps> = ({
    * Renders a code block with specific styling.
    *
    * @param {string|number} code - The code to be displayed.
-   * @returns {JSX.Element} The rendered code block.
+   * @returns {React.JSX.Element} The rendered code block.
    */
   const codeBlock = (code: string | number): React.JSX.Element | null =>
     typeof code === "string" || typeof code === "number" ? (

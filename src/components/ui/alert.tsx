@@ -57,7 +57,7 @@ interface IAlertProps extends React.HTMLAttributes<HTMLDivElement> {
  * Alert component for showing important messages to users.
  *
  * @param {AlertProps} props - The component props
- * @returns {JSX.Element} The rendered Alert component
+ * @returns {React.JSX.Element} The rendered Alert component
  */
 function Alert({
   className,

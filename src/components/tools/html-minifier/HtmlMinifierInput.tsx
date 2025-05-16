@@ -29,7 +29,7 @@ interface IHtmlMinifierInputProps {
  * Allows users to input HTML, configure minification options, and trigger actions like minify, clear, or reset.
  *
  * @param {IHtmlMinifierInputProps} props - The props for the component.
- * @returns {JSX.Element} The rendered HTML Minifier input component.
+ * @returns {React.JSX.Element} The rendered HTML Minifier input component.
  */
 const HtmlMinifierInput: React.FC<IHtmlMinifierInputProps> = ({
   input = "",

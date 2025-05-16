@@ -17,7 +17,7 @@ export type ArrayType = "simple" | "numeric" | "associative";
  * Manages the state and functionality for converting multiline text to arrays in various formats.
  *
  * @component
- * @returns {JSX.Element} The complete text to array tool with input options, output display, and information
+ * @returns {React.JSX.Element} The complete text to array tool with input options, output display, and information
  */
 const TextToArrayTool: React.FC = (): React.JSX.Element => {
   const [input, setInput] = useState<string>("");

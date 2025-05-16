@@ -10,7 +10,7 @@ interface IInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
  * Input component for text entry, file uploads, and other input types.
  *
  * @param {InputProps} props - Component props
- * @returns {JSX.Element} Input component
+ * @returns {React.JSX.Element} Input component
  */
 function Input({ className, type = "text", ...props }: IInputProps): React.JSX.Element {
   return (

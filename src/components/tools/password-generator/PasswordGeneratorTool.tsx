@@ -11,7 +11,7 @@ import PasswordGeneratorOutput from "./PasswordGeneratorOutput";
  * Manages the state and functionality for generating secure passwords based on user preferences.
  *
  * @component
- * @returns {JSX.Element} The complete password generator tool with input options, output display, and information
+ * @returns {React.JSX.Element} The complete password generator tool with input options, output display, and information
  */
 const PasswordGeneratorTool: React.FC = (): React.JSX.Element => {
   const [length, setLength] = useState<number>(12);

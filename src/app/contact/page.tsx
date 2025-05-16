@@ -19,8 +19,10 @@ export const metadata: IMetadata = generateMeta({
 
 /**
  * Contact page component
- * Displays social links and ways to connect or contribute
- * @returns {JSX.Element} The rendered Contact page.
+ * Displays social links and ways to connect or contribute.
+ *
+ * @component
+ * @returns {React.JSX.Element} The rendered Contact page.
  */
 const Contact: React.FC = (): React.JSX.Element => {
   return (

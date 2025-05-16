@@ -23,7 +23,7 @@ interface IJsonSorterInputProps {
  * Component for inputting JSON and configuring sorting options.
  *
  * @param {IJsonSorterInputProps} props - Component props.
- * @returns {JSX.Element} The rendered form with sorting options.
+ * @returns {React.JSX.Element} The rendered form with sorting options.
  */
 const JsonSorterInput: React.FC<IJsonSorterInputProps> = ({
   input,

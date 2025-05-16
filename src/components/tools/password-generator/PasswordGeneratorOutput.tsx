@@ -18,7 +18,7 @@ interface IPasswordGeneratorOutputProps {
  * to the clipboard with visual feedback when copied.
  *
  * @param {IPasswordGeneratorOutputProps} props - Component props.
- * @returns {JSX.Element} The rendered card with password display and copy functionality.
+ * @returns {React.JSX.Element} The rendered card with password display and copy functionality.
  */
 const PasswordGeneratorOutput: React.FC<IPasswordGeneratorOutputProps> = ({
   password,

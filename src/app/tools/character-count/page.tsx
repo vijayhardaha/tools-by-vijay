@@ -31,7 +31,7 @@ export const metadata: Metadata = generateMeta({
  * Renders the page layout with header and the Character Count tool.
  *
  * @component
- * @returns {JSX.Element} The rendered Character Count tool page component.
+ * @returns {React.JSX.Element} The rendered Character Count tool page component.
  */
 const CharacterCount: React.FC = (): React.JSX.Element => {
   if (!tool) {

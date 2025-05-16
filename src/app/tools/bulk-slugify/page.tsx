@@ -31,7 +31,7 @@ export const metadata: Metadata = generateMeta({
  * Renders the page layout with header and the Bulk Slugify tool.
  *
  * @component
- * @returns {JSX.Element} The rendered Bulk Slugify tool page component.
+ * @returns {React.JSX.Element} The rendered Bulk Slugify tool page component.
  */
 const BulkSlugify: React.FC = (): React.JSX.Element => {
   if (!tool) {

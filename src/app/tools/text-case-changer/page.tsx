@@ -31,7 +31,7 @@ export const metadata: Metadata = generateMeta({
  * Renders the page layout with header and the Text Case Changer tool.
  *
  * @component
- * @returns {JSX.Element} The rendered Text Case Changer tool page component.
+ * @returns {React.JSX.Element} The rendered Text Case Changer tool page component.
  */
 const TextCaseChanger: React.FC = (): React.JSX.Element => {
   if (!tool) {

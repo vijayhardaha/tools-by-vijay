@@ -34,7 +34,7 @@ interface IPasswordGeneratorInputProps {
  * Provides a form with controls for password length, character types, and other settings.
  *
  * @param {IPasswordGeneratorInputProps} props - Component props.
- * @returns {JSX.Element} The rendered form with password generation options.
+ * @returns {React.JSX.Element} The rendered form with password generation options.
  */
 const PasswordGeneratorInput: React.FC<IPasswordGeneratorInputProps> = ({
   length,

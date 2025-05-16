@@ -31,7 +31,7 @@ export const metadata: Metadata = generateMeta({
  * Renders the page layout with header and the Barcode Generator tool.
  *
  * @component
- * @returns {JSX.Element} The rendered Barcode Generator tool page component.
+ * @returns {React.JSX.Element} The rendered Barcode Generator tool page component.
  */
 const BarcodeGenerator: React.FC = (): React.JSX.Element => {
   if (!tool) {

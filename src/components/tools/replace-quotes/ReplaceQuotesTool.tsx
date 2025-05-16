@@ -11,7 +11,7 @@ import ReplaceQuotesOutput from "./ReplaceQuotesOutput";
  * Manages the state and functionality for replacing quotes in text.
  *
  * @component
- * @returns {JSX.Element} The complete Replace Quotes tool with input options, output display, and information
+ * @returns {React.JSX.Element} The complete Replace Quotes tool with input options, output display, and information
  */
 const ReplaceQuotesTool: React.FC = (): React.JSX.Element => {
   const [input, setInput] = useState<string>("");

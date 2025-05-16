@@ -56,7 +56,7 @@ const defaultOptions: HtmlMinifierOptions = {
  * Main component for the HTML Minifier tool
  * Handles state management and minification logic
  *
- * @returns {JSX.Element} The HTML Minifier tool interface
+ * @returns {React.JSX.Element} The HTML Minifier tool interface
  */
 const HtmlMinifierTool: React.FC = (): React.JSX.Element => {
   const [input, setInput] = useState<string>("");

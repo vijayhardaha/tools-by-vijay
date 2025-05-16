@@ -20,7 +20,7 @@ interface ICopyButtonProps {
  *
  * @component
  * @param {CopyButtonProps} props - The component props
- * @returns {JSX.Element} The CopyButton component
+ * @returns {React.JSX.Element} The CopyButton component
  */
 export const CopyButton = ({
   text,

@@ -31,7 +31,7 @@ export const metadata: Metadata = generateMeta({
  * Renders the page layout with header and the QR Code Generator tool.
  *
  * @component
- * @returns {JSX.Element} The rendered QR Code Generator tool page component.
+ * @returns {React.JSX.Element} The rendered QR Code Generator tool page component.
  */
 const QRCodeGenerator: React.FC = (): React.JSX.Element => {
   if (!tool) {

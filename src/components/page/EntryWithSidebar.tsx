@@ -16,7 +16,7 @@ interface IEntryWithSidebarProps {
  * A layout component that displays a page entry with a sidebar.
  *
  * @param {EntryWithSidebarProps} props - The component props.
- * @returns {JSX.Element} The rendered component.
+ * @returns {React.JSX.Element} The rendered component.
  */
 const EntryWithSidebar: React.FC<IEntryWithSidebarProps> = ({
   tool,

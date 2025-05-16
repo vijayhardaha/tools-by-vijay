@@ -20,7 +20,7 @@ interface BgOptionsPanelProps extends UpdateOptionsSetsType {}
  * BgOptionsPanel component provides a toolbar for selecting background types.
  *
  * @param {BgOptionsPanelProps} props - Component props.
- * @returns {JSX.Element} The rendered BgOptionsPanel component.
+ * @returns {React.JSX.Element} The rendered BgOptionsPanel component.
  */
 const BgOptionsPanel: React.FC<BgOptionsPanelProps> = ({
   options,

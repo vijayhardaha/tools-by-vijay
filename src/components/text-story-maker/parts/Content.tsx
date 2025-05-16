@@ -68,7 +68,7 @@ const renderHtml = (text: string): string => text.trim();
 /**
  * Content component for rendering editable text content with various styles and options.
  * @param {ContentProps} props - The component props.
- * @returns {JSX.Element} - The rendered Content component.
+ * @returns {React.JSX.Element} - The rendered Content component.
  */
 const Content: React.FC<ContentProps> = ({
   options,

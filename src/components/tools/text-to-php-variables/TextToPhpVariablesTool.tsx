@@ -16,7 +16,7 @@ export type VariableCase = "camelCase" | "snake_case" | "PascalCase";
  * Manages the state and functionality for converting multiline text to PHP variables.
  *
  * @component
- * @returns {JSX.Element} The complete text to PHP variables tool with input options and output display.
+ * @returns {React.JSX.Element} The complete text to PHP variables tool with input options and output display.
  */
 const TextToPhpVariablesTool: React.FC = (): React.JSX.Element => {
   const [input, setInput] = useState<string>("");

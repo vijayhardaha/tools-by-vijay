@@ -31,7 +31,7 @@ export const metadata: Metadata = generateMeta({
  * Renders the page layout with header and the Replace Quotes tool.
  *
  * @component
- * @returns {JSX.Element} The rendered Replace Quotes tool page component.
+ * @returns {React.JSX.Element} The rendered Replace Quotes tool page component.
  */
 const ReplaceQuotes: React.FC = (): React.JSX.Element => {
   if (!tool) {

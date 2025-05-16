@@ -2,7 +2,7 @@
  * Utility function to wrap text in a <code> tag.
  *
  * @param {string} text - The text to wrap.
- * @returns {JSX.Element} The text wrapped in a <code> tag.
+ * @returns {React.JSX.Element} The text wrapped in a <code> tag.
  */
 const wrapInCode = (text: string): React.JSX.Element => {
   return (

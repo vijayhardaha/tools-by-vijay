@@ -32,7 +32,7 @@ interface PasswordStrengthCheckerOutputProps {
  *
  * @param {boolean} isMet - Indicates if the criteria is met
  * @param {string} label - The label for the criteria
- * @returns {JSX.Element} - A div containing the icon and label
+ * @returns {React.JSX.Element} - A div containing the icon and label
  */
 const renderCriteria = (isMet: boolean, label: string): React.JSX.Element => (
   <div className="flex items-center gap-2">
@@ -50,7 +50,7 @@ const renderCriteria = (isMet: boolean, label: string): React.JSX.Element => (
  *
  * @component
  * @param {PasswordStrengthCheckerOutputProps} props - Component props
- * @returns {JSX.Element} The rendered password strength analysis
+ * @returns {React.JSX.Element} The rendered password strength analysis
  */
 const PasswordStrengthCheckerOutput: React.FC<PasswordStrengthCheckerOutputProps> = ({
   strength,

@@ -15,7 +15,7 @@ import { cn } from "@/utils/classNameUtils";
  * Header component that displays the app logo and menu button
  * Controls the sidebar visibility
  *
- * @returns {JSX.Element} Header component with logo, menu button and sidebar
+ * @returns {React.JSX.Element} Header component with logo, menu button and sidebar
  */
 const Header: React.FC = (): React.JSX.Element => {
   const [isOpen, setIsOpen] = useState(false);

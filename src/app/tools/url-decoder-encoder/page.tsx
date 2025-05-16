@@ -31,7 +31,7 @@ export const metadata: Metadata = generateMeta({
  * Renders the page layout with header and the URL Decoder/Encoder tool.
  *
  * @component
- * @returns {JSX.Element} The rendered URL Decoder/Encoder tool page component.
+ * @returns {React.JSX.Element} The rendered URL Decoder/Encoder tool page component.
  */
 const UrlDecoderEncoder: React.FC = (): React.JSX.Element => {
   if (!tool) {

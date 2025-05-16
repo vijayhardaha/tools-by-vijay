@@ -19,7 +19,7 @@ type ISidebarProps = {
  * Contains header, body, and footer sections.
  *
  * @param {SidebarProps} props - Component props.
- * @returns {JSX.Element} Sidebar component.
+ * @returns {React.JSX.Element} Sidebar component.
  */
 const Sidebar: React.FC<ISidebarProps> = ({
   isOpen,

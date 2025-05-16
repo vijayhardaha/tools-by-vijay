@@ -25,7 +25,7 @@ interface IDuplicateLineRemovalInputProps {
  *
  * @component
  * @param {IDuplicateLineRemovalInputProps} props - Component props
- * @returns {JSX.Element} The rendered input form
+ * @returns {React.JSX.Element} The rendered input form
  */
 const DuplicateLineRemovalInput: React.FC<IDuplicateLineRemovalInputProps> = ({
   input,

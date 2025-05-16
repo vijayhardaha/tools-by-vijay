@@ -31,7 +31,7 @@ export const metadata: Metadata = generateMeta({
  * Renders the page layout with header and the Slugify tool.
  *
  * @component
- * @returns {JSX.Element} The rendered Slugify tool page component.
+ * @returns {React.JSX.Element} The rendered Slugify tool page component.
  */
 const Slugify: React.FC = (): React.JSX.Element => {
   if (!tool) {

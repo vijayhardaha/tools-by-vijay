@@ -11,7 +11,7 @@ import PxToRemOutput from "./PxToRemOutput";
  * Manages the state and functionality for converting px to rem.
  *
  * @component
- * @returns {JSX.Element} The complete Px to Rem Converter tool with input options, output display, and information.
+ * @returns {React.JSX.Element} The complete Px to Rem Converter tool with input options, output display, and information.
  */
 const PxToRemConverterTool: React.FC = (): React.JSX.Element => {
   const [pxValue, setPxValue] = useState<string>("");

@@ -22,7 +22,7 @@ export interface UpdateOptionsSetsType {
  * It manages the state of options and passes them to child components.
  *
  * @component
- * @returns {JSX.Element} The rendered TextStoryMakerTool component.
+ * @returns {React.JSX.Element} The rendered TextStoryMakerTool component.
  */
 const TextStoryMakerTool: React.FC = (): React.JSX.Element => {
   const [options, setOptions] = useState<OptionsType>(defaultOptions);

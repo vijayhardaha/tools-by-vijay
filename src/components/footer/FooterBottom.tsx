@@ -1,7 +1,7 @@
 /**
  * Bottom section of the footer containing copyright information
  *
- * @returns {JSX.Element} The rendered footer bottom section.
+ * @returns {React.JSX.Element} The rendered footer bottom section.
  */
 const FooterBottom: React.FC = (): React.JSX.Element => {
   const currentYear = new Date().getFullYear();

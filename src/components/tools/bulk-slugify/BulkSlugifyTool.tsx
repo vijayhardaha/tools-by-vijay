@@ -16,7 +16,7 @@ import BulkSlugifyOutput from "./BulkSlugifyOutput";
  * allowing users to convert multiple text strings into URL-friendly slugs
  * with various configuration options.
  *
- * @returns {JSX.Element} The complete Bulk Slugify Tool interface
+ * @returns {React.JSX.Element} The complete Bulk Slugify Tool interface
  */
 const BulkSlugifyTool: React.FC = (): React.JSX.Element => {
   const [input, setInput] = useState<string>("");
