@@ -13,10 +13,7 @@ const ToolInfo: React.FC = (): React.JSX.Element => {
   return (
     <div
       id="tool-info"
-      className="absolute right-4 bottom-4 z-50 bg-neutral-900/75 p-3 px-7 text-white"
-      style={{
-        borderRadius: "10% 90% 10% 90% / 90% 10% 90% 10%",
-      }}
+      className="absolute right-4 bottom-4 z-50 bg-neutral-900/75 p-6 py-2 text-white"
       aria-label="About this tool"
       role="complementary"
     >
@@ -24,7 +21,7 @@ const ToolInfo: React.FC = (): React.JSX.Element => {
         <h1
           className={cn(
             "mb-0 text-2xl leading-normal font-semibold tracking-wide",
-            getFontClassByName("bebas_neue") as string
+            getFontClassByName("nerko_one") as string
           )}
         >
           Text Story Maker
