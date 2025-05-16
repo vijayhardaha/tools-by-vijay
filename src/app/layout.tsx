@@ -1,5 +1,6 @@
 import React, { ReactNode } from "react";
 
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { NextFontWithVariable } from "next/dist/compiled/@next/font/dist/types";
 import { Work_Sans, Geist_Mono } from "next/font/google";
 
@@ -42,6 +43,9 @@ export const metadata: IBaseMetadata = baseMetadata;
 const RootLayout = ({ children }: { children: ReactNode }): React.JSX.Element => {
   return (
     <html lang="en" className={`${sansFont.variable} ${monoFont.variable}`}>
+      <head>
+        <GoogleAnalytics gaId="G-FM8D1WPKM7" />
+      </head>
       <body>{children}</body>
     </html>
   );
