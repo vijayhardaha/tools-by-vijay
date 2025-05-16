@@ -4,6 +4,7 @@ import { btnBaseStyles } from "@/components/text-story-maker/constants/btnBaseSt
 import { cn } from "@/utils/classNameUtils";
 
 interface TextButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  icon?: React.ElementType;
   className?: string;
   children: ReactNode;
   "aria-label"?: string;

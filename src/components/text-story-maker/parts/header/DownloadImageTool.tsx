@@ -17,7 +17,7 @@ interface DownloadImageToolProps extends UpdateOptionsSetsType {}
 /**
  * Type definition for available sizes.
  */
-type SizeKey = "hd" | "fhd" | "2k" | "4k";
+type SizeKey = "fhd" | "2k" | "4k";
 
 interface Size {
   width: number;
@@ -25,7 +25,6 @@ interface Size {
 }
 
 const sizes: Record<SizeKey, Size> = {
-  hd: { width: 720, label: "HD" },
   fhd: { width: 1080, label: "FHD" },
   "2k": { width: 1440, label: "2K" },
   "4k": { width: 2160, label: "4K" },
