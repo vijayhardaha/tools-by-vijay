@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
-import BgColorsSlider from "@/components/text-story-maker/parts/panels/BgColorsSlider";
+import { bgColors } from "@/components/text-story-maker/constants";
+import ColorSelectPanel from "@/components/text-story-maker/parts/panels/ColorSelectPanel";
 import {
   ControlPanel,
   ControlBox,
@@ -8,6 +9,11 @@ import {
 } from "@/components/text-story-maker/parts/panels/PanelHelper";
 import { UpdateOptionsSetsType } from "@/components/text-story-maker/TextStoryMakerTool";
 
+/**
+ * Props for BgOptionsPanel component.
+ * @property {any} options - Current options object.
+ * @property {(key: string, value: any) => void} updateOption - Function to update an option.
+ */
 interface BgOptionsPanelProps extends UpdateOptionsSetsType {}
 
 /**
@@ -20,9 +26,9 @@ const BgOptionsPanel: React.FC<BgOptionsPanelProps> = ({
   options,
   updateOption,
 }: BgOptionsPanelProps): React.JSX.Element => {
-  const [activeTool, setActiveTool] = useState(options.bgType);
+  const [activeTool, setActiveTool] = useState<string>(options.bgType);
 
-  const tools = [
+  const tools: { name: string; label: string }[] = [
     { name: "solid", label: "Solid" },
     { name: "gradient", label: "Gradient" },
   ];
@@ -31,23 +37,36 @@ const BgOptionsPanel: React.FC<BgOptionsPanelProps> = ({
    * Handles the change of the active background tool.
    *
    * @param {string} tool - The selected background tool type.
+   * @returns {void}
    */
-  const handleToolChange = (tool: string) => {
-    if (activeTool === tool) return;
-    setActiveTool(tool);
-    updateOption("bgType", tool);
-    if (options.bgType !== tool) {
-      updateOption("bgColor", 0);
+  const handleToolChange = (tool: string): void => {
+    if (activeTool === tool) {
+      setActiveTool("");
+    } else {
+      setActiveTool(tool);
     }
   };
 
   return (
     <ControlPanel>
-      {tools.map(
-        ({ name }) =>
-          activeTool === name && (
-            <BgColorsSlider key={name} tool={name} options={options} updateOption={updateOption} />
-          )
+      {activeTool === "gradient" && (
+        <ColorSelectPanel
+          optionKey="bgColor"
+          options={options}
+          updateOption={updateOption}
+          colors={bgColors.gradient}
+          onSelect={() => updateOption("bgType", "gradient")}
+        />
+      )}
+
+      {activeTool === "solid" && (
+        <ColorSelectPanel
+          optionKey="bgColor"
+          options={options}
+          updateOption={updateOption}
+          colors={bgColors.solid}
+          onSelect={() => updateOption("bgType", "solid")}
+        />
       )}
 
       <ControlBox>

@@ -6,8 +6,9 @@ import { PiTextAlignLeft as AlignLeftIcon } from "react-icons/pi";
 import { PiTextAlignRight as AlignRightIcon } from "react-icons/pi";
 import { TiThLargeOutline as TextSettingsIcon } from "react-icons/ti";
 
-import { OptionsType } from "@/components/text-story-maker/constants";
+import { OptionsType, textColors } from "@/components/text-story-maker/constants";
 import { btnBaseStyles } from "@/components/text-story-maker/constants/btnBaseStyles";
+import ColorSelectPanel from "@/components/text-story-maker/parts/panels/ColorSelectPanel";
 import {
   ControlPanel,
   ControlBox,
@@ -16,7 +17,6 @@ import {
   ToggleOptions,
   ToggleColors,
 } from "@/components/text-story-maker/parts/panels/PanelHelper";
-import TextColorsPanel from "@/components/text-story-maker/parts/panels/TextColorsPanel";
 import { UpdateOptionsSetsType } from "@/components/text-story-maker/TextStoryMakerTool";
 import FontSlider from "@/components/text-story-maker/ui/FontSlider";
 import { cn } from "@/utils/classNameUtils";
@@ -115,7 +115,12 @@ const TextOptionsPanel = ({ options, updateOption }: TextOptionsPanelProps) => {
       {activeTool === "font-family" && <FontSlider options={options} updateOption={updateOption} />}
 
       {activeTool === "text-color" && (
-        <TextColorsPanel options={options} updateOption={updateOption} />
+        <ColorSelectPanel
+          optionKey="textColor"
+          options={options}
+          updateOption={updateOption}
+          colors={textColors.map((color) => color.bg)}
+        />
       )}
 
       {activeTool === "text-settings" && showSettingsDropdown && (
