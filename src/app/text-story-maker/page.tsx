@@ -1,11 +1,11 @@
 import TextStoryMakerContent from "@/components/text-story-maker/TextStoryMakerTool";
-import { generateMetadata as genMeta, IMetadata } from "@/utils/seoUtils";
+import { generateMeta, IMetadata } from "@/utils/seoUtils";
 
 /**
  * SEO metadata for the Text Story Maker page.
  * @type {IMetadata}
  */
-export const metadata: IMetadata = genMeta({
+export const metadata: IMetadata = generateMeta({
   title: "Text Story Maker",
   description:
     "Text Story Maker is a powerful tool to create engaging and customized text stories with ease. Crafted by Vijay Hardaha, it lets you personalize fonts, colors, and backgrounds to make your stories truly stand out.",

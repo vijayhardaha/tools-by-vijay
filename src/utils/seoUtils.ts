@@ -1,11 +1,17 @@
 import { baseMetadata, SEO } from "@/constants/seo";
 
-export interface IMetadataParams {
+/**
+ * Interface for metadata parameters.
+ */
+export interface IGenerateMeta {
   title?: string;
   description?: string;
   slug?: string;
 }
 
+/**
+ * Interface for metadata object.
+ */
 export interface IMetadata {
   title: string;
   description: string;
@@ -70,11 +76,11 @@ export const generateSeoTitle = (title: string = ""): string => {
  * @param {MetadataParams} params - The parameters object
  * @returns {Metadata} A metadata object with title, description, canonical URL, and social media metadata.
  */
-export const generateMetadata = ({
+export const generateMeta = ({
   title = "",
   description = "",
   slug = "",
-}: IMetadataParams): IMetadata => {
+}: IGenerateMeta): IMetadata => {
   return {
     ...baseMetadata,
     title: generateSeoTitle(title),

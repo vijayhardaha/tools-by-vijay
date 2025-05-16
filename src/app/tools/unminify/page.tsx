@@ -6,7 +6,7 @@ import PageHeader from "@/components/page/PageHeader";
 import PageLayout from "@/components/page/PageLayout";
 import UnminifyTool from "@/components/tools/unminify/UnminifyTool";
 import { Tool } from "@/types";
-import { generateMetadata as genMeta, Metadata } from "@/utils/seoUtils";
+import { generateMeta, Metadata } from "@/utils/seoUtils";
 import { findToolBySlug } from "@/utils/toolUtils";
 import { getIconForTool } from "@/utils/toolUtils";
 
@@ -20,7 +20,7 @@ const tool: Tool | null = findToolBySlug("unminify");
  * SEO metadata for the Unminify tool page.
  * @type {Metadata}
  */
-export const metadata: Metadata = genMeta({
+export const metadata: Metadata = generateMeta({
   title: tool?.seoTitle || "",
   description: tool?.seoDescription || "",
   slug: tool?.slug || "",
