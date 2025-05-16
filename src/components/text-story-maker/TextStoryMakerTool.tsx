@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 
 import { PiNotePencilBold as EditIcon } from "react-icons/pi";
 
-import { defaultOptions, IOptions } from "@/components/text-story-maker/constants";
+import { defaultOptions, IOptions } from "@/components/text-story-maker/constants/options";
 import Content from "@/components/text-story-maker/parts/Content";
 import Footer from "@/components/text-story-maker/parts/Footer";
 import Header from "@/components/text-story-maker/parts/Header";

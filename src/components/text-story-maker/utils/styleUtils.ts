@@ -1,7 +1,9 @@
 import sanitizeHtml from "sanitize-html";
 
-import { bgColors, fonts, textColors } from "@/components/text-story-maker/constants";
+import { bgColors } from "@/components/text-story-maker/constants/bgColors";
+import { fonts } from "@/components/text-story-maker/constants/fonts";
 import { IOptions } from "@/components/text-story-maker/constants/options";
+import { textColors } from "@/components/text-story-maker/constants/textColors";
 import { ITextColor } from "@/components/text-story-maker/constants/textColors";
 
 /**
