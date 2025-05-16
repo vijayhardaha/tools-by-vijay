@@ -5,22 +5,22 @@ import PageContent from "@/components/page/PageContent";
 import PageHeader from "@/components/page/PageHeader";
 import PageLayout from "@/components/page/PageLayout";
 import TextCaseChangerTool from "@/components/tools/text-case-changer/TextCaseChangerTool";
-import { Tool } from "@/types";
-import { generateMeta, Metadata } from "@/utils/seoUtils";
+import { ITool } from "@/types";
+import { generateMeta, IMetadata } from "@/utils/seoUtils";
 import { findToolBySlug } from "@/utils/toolUtils";
 import { getIconForTool } from "@/utils/toolUtils";
 
 /**
  * Retrieves tool data for the Text Case Changer tool.
- * @constant {Tool|null} tool - The tool object containing metadata and configuration.
+ * @constant {ITool|null} tool - The tool object containing metadata and configuration.
  */
-const tool: Tool | null = findToolBySlug("text-case-changer");
+const tool: ITool | null = findToolBySlug("text-case-changer");
 
 /**
  * SEO metadata for the Text Case Changer tool page.
- * @type {Metadata}
+ * @type {IMetadata}
  */
-export const metadata: Metadata = generateMeta({
+export const metadata: IMetadata = generateMeta({
   title: tool?.seoTitle || "",
   description: tool?.seoDescription || "",
   slug: tool?.slug || "",

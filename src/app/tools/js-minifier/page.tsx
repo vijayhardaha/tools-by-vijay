@@ -5,8 +5,8 @@ import PageContent from "@/components/page/PageContent";
 import PageHeader from "@/components/page/PageHeader";
 import PageLayout from "@/components/page/PageLayout";
 import JsMinifierTool from "@/components/tools/js-minifier/JsMinifierTool";
-import { Tool } from "@/types";
-import { generateMeta, Metadata } from "@/utils/seoUtils";
+import { ITool } from "@/types";
+import { generateMeta, IMetadata } from "@/utils/seoUtils";
 import { findToolBySlug } from "@/utils/toolUtils";
 import { getIconForTool } from "@/utils/toolUtils";
 
@@ -14,13 +14,13 @@ import { getIconForTool } from "@/utils/toolUtils";
  * Retrieves tool data for the JavaScript Minifier tool.
  * @constant {Tool|null} tool - The tool object containing metadata and configuration.
  */
-const tool: Tool | null = findToolBySlug("js-minifier");
+const tool: ITool | null = findToolBySlug("js-minifier");
 
 /**
  * SEO metadata for the JavaScript Minifier tool page.
- * @type {Metadata}
+ * @type {IMetadata}
  */
-export const metadata: Metadata = generateMeta({
+export const metadata: IMetadata = generateMeta({
   title: tool?.seoTitle || "",
   description: tool?.seoDescription || "",
   slug: tool?.slug || "",

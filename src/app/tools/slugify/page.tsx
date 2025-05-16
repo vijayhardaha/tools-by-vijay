@@ -5,22 +5,22 @@ import PageContent from "@/components/page/PageContent";
 import PageHeader from "@/components/page/PageHeader";
 import PageLayout from "@/components/page/PageLayout";
 import SlugifyTool from "@/components/tools/slugify/SlugifyTool";
-import { Tool } from "@/types";
-import { generateMeta, Metadata } from "@/utils/seoUtils";
+import { ITool } from "@/types";
+import { generateMeta, IMetadata } from "@/utils/seoUtils";
 import { findToolBySlug } from "@/utils/toolUtils";
 import { getIconForTool } from "@/utils/toolUtils";
 
 /**
  * Retrieves tool data for the Slugify tool.
- * @constant {Tool|null} tool - The tool object containing metadata and configuration.
+ * @constant {ITool|null} tool - The tool object containing metadata and configuration.
  */
-const tool: Tool | null = findToolBySlug("slugify");
+const tool: ITool | null = findToolBySlug("slugify");
 
 /**
  * SEO metadata for the Slugify page.
  * @type {Metadata}
  */
-export const metadata: Metadata = generateMeta({
+export const metadata: IMetadata = generateMeta({
   title: tool?.seoTitle || "",
   description: tool?.seoDescription || "",
   slug: tool?.slug || "",

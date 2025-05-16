@@ -5,8 +5,8 @@ import PageContent from "@/components/page/PageContent";
 import PageHeader from "@/components/page/PageHeader";
 import PageLayout from "@/components/page/PageLayout";
 import CharacterCountTool from "@/components/tools/character-count/CharacterCountTool";
-import { Tool } from "@/types";
-import { generateMeta, Metadata } from "@/utils/seoUtils";
+import { ITool } from "@/types";
+import { generateMeta, IMetadata } from "@/utils/seoUtils";
 import { findToolBySlug } from "@/utils/toolUtils";
 import { getIconForTool } from "@/utils/toolUtils";
 
@@ -14,13 +14,13 @@ import { getIconForTool } from "@/utils/toolUtils";
  * Retrieves tool data for the Character Count tool.
  * @constant {Tool|null} tool - The tool object containing metadata and configuration.
  */
-const tool: Tool | null = findToolBySlug("character-count");
+const tool: ITool | null = findToolBySlug("character-count");
 
 /**
  * SEO metadata for the Character Count tool page.
- * @type {Metadata}
+ * @type {IMetadata}
  */
-export const metadata: Metadata = generateMeta({
+export const metadata: IMetadata = generateMeta({
   title: tool?.seoTitle || "",
   description: tool?.seoDescription || "",
   slug: tool?.slug || "",
