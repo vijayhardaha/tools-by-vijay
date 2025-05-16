@@ -12,7 +12,7 @@ import { getIconForTool } from "@/utils/toolUtils";
 
 /**
  * Retrieves tool data for the Duplicate Line Removal tool.
- * @constant {Tool|null} tool - The tool object containing metadata and configuration.
+ * @constant {ITool|null} tool - The tool object containing metadata and configuration.
  */
 const tool: ITool | null = findToolBySlug("duplicate-line-removal");
 

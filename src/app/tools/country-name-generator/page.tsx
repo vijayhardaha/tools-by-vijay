@@ -12,7 +12,7 @@ import { getIconForTool } from "@/utils/toolUtils";
 
 /**
  * Retrieves tool data for the Country Name Generator tool.
- * @constant {Tool|null} tool - The tool object containing metadata and configuration.
+ * @constant {ITool|null} tool - The tool object containing metadata and configuration.
  */
 const tool: ITool | null = findToolBySlug("country-name-generator");
 

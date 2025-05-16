@@ -12,7 +12,7 @@ import { getIconForTool } from "@/utils/toolUtils";
 
 /**
  * Retrieves tool data for the Base64 Encode/Decode tool.
- * @constant {Tool|null} tool - The tool object containing metadata and configuration.
+ * @constant {ITool|null} tool - The tool object containing metadata and configuration.
  */
 const tool: ITool | null = findToolBySlug("base64-encode-decode");
 

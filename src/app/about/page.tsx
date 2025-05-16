@@ -5,7 +5,7 @@ import { generateMeta, IMetadata } from "@/utils/seoUtils";
 
 /**
  * SEO metadata for the About page.
- * @type {Metadata}
+ * @type {IMetadata}
  */
 export const metadata: IMetadata = generateMeta({
   title: "About Me",

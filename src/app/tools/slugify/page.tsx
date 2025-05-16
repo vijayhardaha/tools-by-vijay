@@ -18,7 +18,7 @@ const tool: ITool | null = findToolBySlug("slugify");
 
 /**
  * SEO metadata for the Slugify page.
- * @type {Metadata}
+ * @type {IMetadata}
  */
 export const metadata: IMetadata = generateMeta({
   title: tool?.seoTitle || "",
