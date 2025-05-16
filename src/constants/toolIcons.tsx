@@ -18,10 +18,19 @@ import {
   PiGlobeBold,
 } from "react-icons/pi";
 
+/**
+ * Interface representing a tool icon.
+ */
 export interface IToolIcons {
   [key: string]: React.ReactElement;
 }
 
+/**
+ * A mapping of tool slugs to their corresponding icons.
+ * Each key is a tool slug, and the value is the icon component.
+ *
+ * @returns {IToolIcons} An object containing tool slugs as keys and their corresponding icons as values.
+ */
 export const toolIcons: IToolIcons = {
   slugify: <PiFadersHorizontalBold />,
   "bulk-slugify": <PiFadersBold />,

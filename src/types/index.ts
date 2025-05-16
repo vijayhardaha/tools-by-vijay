@@ -1,5 +1,8 @@
 import React from "react";
 
+/**
+ * Interface representing a tool.
+ */
 export interface ITool {
   name: string;
   slug: string;
@@ -10,6 +13,9 @@ export interface ITool {
   category: string;
 }
 
+/**
+ * Interface representing a tool category.
+ */
 export interface ICategory {
   label: string;
   slug: string;
@@ -18,6 +24,9 @@ export interface ICategory {
   seoDescription: string;
 }
 
+/**
+ * Interface representing a tool icon.
+ */
 export interface ISocialMediaLink {
   name: string;
   key: string;
