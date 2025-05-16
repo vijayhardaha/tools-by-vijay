@@ -1,7 +1,7 @@
 /**
  * Represents a text and background color pair.
  */
-export type TextColor = {
+export type ITextColor = {
   text: string;
   bg: string;
 };
@@ -9,7 +9,7 @@ export type TextColor = {
 /**
  * An array containing predefined text and background color classes.
  */
-export const textColors: TextColor[] = [
+export const textColors: ITextColor[] = [
   // Grayscale
   { text: "text-white", bg: "bg-white" },
   { text: "text-black", bg: "bg-black" },

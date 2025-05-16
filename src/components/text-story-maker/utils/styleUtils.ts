@@ -1,8 +1,8 @@
 import sanitizeHtml from "sanitize-html";
 
 import { bgColors, fonts, textColors } from "@/components/text-story-maker/constants";
-import { OptionsType } from "@/components/text-story-maker/constants/options";
-import { TextColor } from "@/components/text-story-maker/constants/textColors";
+import { IOptions } from "@/components/text-story-maker/constants/options";
+import { ITextColor } from "@/components/text-story-maker/constants/textColors";
 
 /**
  * Checks if the provided text is empty after sanitization.
@@ -63,10 +63,10 @@ export const getAlignmentClass = (alignment: string): string => {
  * Retrieves the CSS class for a given text color value and key.
  *
  * @param {number} value - The index representing the text color in the `textColors` array.
- * @param {keyof TextColor} [key="text"] - The specific property to retrieve from the text color object (default is "text").
+ * @param {keyof ITextColor} [key="text"] - The specific property to retrieve from the text color object (default is "text").
  * @returns {string} The CSS class for the specified text color and key, or an empty string if not found.
  */
-export function getTextColorClass(value: number, key: keyof TextColor = "text"): string {
+export function getTextColorClass(value: number, key: keyof ITextColor = "text"): string {
   if (textColors[value] && textColors[value][key]) {
     return textColors[value][key];
   }
@@ -133,10 +133,10 @@ export function getShadowProperty(value: number): string {
 /**
  * Generates the content styles based on the provided options.
  *
- * @param {OptionsType} options - The options object containing style properties.
+ * @param {IOptions} options - The options object containing style properties.
  * @returns {Record<string, string | number>} The generated styles object.
  */
-export function getContentStyles(options: OptionsType): Record<string, string | number> {
+export function getContentStyles(options: IOptions): Record<string, string | number> {
   let styles: Record<string, string | number> = {};
 
   const isNotEmpty = !isEmptyText(options.text);

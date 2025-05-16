@@ -12,9 +12,12 @@ import DownloadImageTool from "@/components/text-story-maker/parts/header/Downlo
 import FrameSizeTool from "@/components/text-story-maker/parts/header/FrameSizeTool";
 import Button from "@/components/text-story-maker/parts/header/HeaderIconBtn";
 import TextOptionsTool from "@/components/text-story-maker/parts/header/TextOptionsTool";
-import { UpdateOptionsSetsType } from "@/components/text-story-maker/TextStoryMakerTool";
+import { IUpdateOptionProps } from "@/components/text-story-maker/TextStoryMakerTool";
 
-interface HeaderProps extends UpdateOptionsSetsType {
+/**
+ * Interface for the Header component props.
+ */
+interface IHeaderProps extends IUpdateOptionProps {
   activeTool: string;
   setActiveTool: (tool: string) => void;
 }
@@ -22,15 +25,15 @@ interface HeaderProps extends UpdateOptionsSetsType {
 /**
  * Header component for the text story maker.
  *
- * @param {HeaderProps} props - Component props.
+ * @param {IHeaderProps} props - Component props.
  * @returns {React.JSX.Element} The rendered Header component.
  */
-const Header: React.FC<HeaderProps> = ({
+const Header: React.FC<IHeaderProps> = ({
   options,
   updateOption,
   activeTool,
   setActiveTool,
-}: HeaderProps): React.JSX.Element => {
+}: IHeaderProps): React.JSX.Element => {
   const router = useRouter();
 
   return (

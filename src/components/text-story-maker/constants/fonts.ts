@@ -59,14 +59,17 @@ const Fresca = FrescaFont({
   weight: ["400"],
 });
 
-export type Font = {
+/**
+ * Interface for font options.
+ */
+export interface IFont {
   key: string;
   label: string;
   class: string;
-};
+}
 
 // prettier-ignore
-export const fonts: Font[] = [
+export const fonts: IFont[] = [
   { key: "comfortaa", label: "Comfortaa", class: Comfortaa.className },
   { key: "montserrat_alternates", label: "Montserrat (Alt)", class: Montserrat_Alternates.className},
   { key: "nerko_one", label: "Nerko", class: Nerko_One.className },

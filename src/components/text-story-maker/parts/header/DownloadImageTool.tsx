@@ -5,25 +5,32 @@ import { saveAs } from "file-saver";
 import { TbCloudDownload as DownloadToolIcon } from "react-icons/tb";
 
 import Button from "@/components/text-story-maker/parts/header/HeaderIconBtn";
-import { UpdateOptionsSetsType } from "@/components/text-story-maker/TextStoryMakerTool";
+import { IUpdateOptionProps } from "@/components/text-story-maker/TextStoryMakerTool";
 import { Dropdown, DropdownTrigger, DropdownContent } from "@/components/text-story-maker/ui";
 import { cn } from "@/utils/classNameUtils";
 
 /**
- * Type definition for the component props.
+ * Interface for the DownloadImageTool component props.
  */
-interface DownloadImageToolProps extends UpdateOptionsSetsType {}
+interface IDownloadImageToolProps extends IUpdateOptionProps {}
 
 /**
  * Type definition for available sizes.
  */
 type SizeKey = "fhd" | "2k" | "4k";
 
+/**
+ * Type definition for the size object.
+ */
 interface Size {
   width: number;
   label: string;
 }
 
+/**
+ * Size options for downloading images.
+ * Each size has a width and a label for display.
+ */
 const sizes: Record<SizeKey, Size> = {
   fhd: { width: 1080, label: "FHD" },
   "2k": { width: 1440, label: "2K" },
@@ -34,7 +41,7 @@ const sizes: Record<SizeKey, Size> = {
  * DownloadImageTool component allows users to download the main content as an image
  * in various formats (JPEG, PNG) and resolutions (HD, FHD, 2K, 4K).
  */
-const DownloadImageTool = ({ options, updateOption }: DownloadImageToolProps) => {
+const DownloadImageTool = ({ options, updateOption }: IDownloadImageToolProps) => {
   const [isDownloading, setIsDownloading] = useState(false);
   const [downloadError, setDownloadError] = useState("");
 

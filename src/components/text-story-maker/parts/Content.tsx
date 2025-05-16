@@ -2,8 +2,8 @@ import React, { useState, useRef, useEffect } from "react";
 
 import sanitizeHtml from "sanitize-html";
 
-import { BgColors } from "@/components/text-story-maker/constants/bgColors";
-import { UpdateOptionsSetsType } from "@/components/text-story-maker/TextStoryMakerTool";
+import { IBgColors } from "@/components/text-story-maker/constants/bgColors";
+import { IUpdateOptionProps } from "@/components/text-story-maker/TextStoryMakerTool";
 import {
   getAlignmentClass,
   getBgColorClass,
@@ -15,7 +15,10 @@ import {
 } from "@/components/text-story-maker/utils/styleUtils";
 import { cn } from "@/utils/classNameUtils";
 
-interface ContentProps extends UpdateOptionsSetsType {
+/**
+ * Interface for the Content component props.
+ */
+interface IContentProps extends IUpdateOptionProps {
   activeTool: string;
   setActiveTool: (tool: string) => void;
 }
@@ -70,12 +73,12 @@ const renderHtml = (text: string): string => text.trim();
  * @param {ContentProps} props - The component props.
  * @returns {React.JSX.Element} - The rendered Content component.
  */
-const Content: React.FC<ContentProps> = ({
+const Content: React.FC<IContentProps> = ({
   options,
   updateOption,
   activeTool,
   setActiveTool,
-}: ContentProps): React.JSX.Element => {
+}: IContentProps): React.JSX.Element => {
   const [focused, setFocused] = useState<boolean>(false);
   const contentRef = useRef<HTMLDivElement | null>(null);
   const isFallbackNeeded: boolean = false;
@@ -127,7 +130,7 @@ const Content: React.FC<ContentProps> = ({
             "relative z-10",
             "w-full overflow-hidden p-10",
             "flex flex-col items-center justify-center",
-            getBgColorClass(options.bgType as keyof BgColors, options.bgColor),
+            getBgColorClass(options.bgType as keyof IBgColors, options.bgColor),
             getRatioClass(options.cardRatio)
           )}
           style={{

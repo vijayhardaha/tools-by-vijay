@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 
 import { PiNotePencilBold as EditIcon } from "react-icons/pi";
 
-import { defaultOptions, OptionsType } from "@/components/text-story-maker/constants";
+import { defaultOptions, IOptions } from "@/components/text-story-maker/constants";
 import Content from "@/components/text-story-maker/parts/Content";
 import Footer from "@/components/text-story-maker/parts/Footer";
 import Header from "@/components/text-story-maker/parts/Header";
@@ -12,9 +12,12 @@ import Button from "@/components/text-story-maker/parts/header/HeaderIconBtn";
 import ToolInfo from "@/components/text-story-maker/parts/ToolInfo";
 import { cn } from "@/utils/classNameUtils";
 
-export interface UpdateOptionsSetsType {
-  options: OptionsType;
-  updateOption: (key: keyof OptionsType, value: OptionsType[keyof OptionsType]) => void;
+/**
+ * Interface for the update options function.
+ */
+export interface IUpdateOptionProps {
+  options: IOptions;
+  updateOption: (key: keyof IOptions, value: IOptions[keyof IOptions]) => void;
 }
 
 /**
@@ -25,7 +28,7 @@ export interface UpdateOptionsSetsType {
  * @returns {React.JSX.Element} The rendered TextStoryMakerTool component.
  */
 const TextStoryMakerTool: React.FC = (): React.JSX.Element => {
-  const [options, setOptions] = useState<OptionsType>(defaultOptions);
+  const [options, setOptions] = useState<IOptions>(defaultOptions);
   const [activeTool, setActiveTool] = useState<string>("");
   const [showConfirm, setShowConfirm] = useState<boolean>(false);
 
@@ -51,7 +54,7 @@ const TextStoryMakerTool: React.FC = (): React.JSX.Element => {
    * @param {string} key - The key of the option to update.
    * @param {*} value - The new value for the option.
    */
-  const updateOption = (key: keyof OptionsType, value: OptionsType[keyof OptionsType]) => {
+  const updateOption = (key: keyof IOptions, value: IOptions[keyof IOptions]) => {
     setOptions((prevOptions) => {
       const updatedOptions = {
         ...prevOptions,

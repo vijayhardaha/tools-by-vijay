@@ -1,16 +1,16 @@
 /**
- * Background color options for the text story maker.
- * @typedef {Object} BgColors
- * @property {Object.<string, string>} solid - Solid background color options.
- * @property {Object.<string, string>} gradient - Gradient background color options.
- * @property {Object.<string, string>} mesh - Mesh background color options.
+ * Interface representing the structure of background colors.
  */
-export type BgColors = {
+export interface IBgColors {
   solid: string[];
   gradient: string[];
-};
+}
 
-export const bgColors: BgColors = {
+/**
+ * An array containing predefined background color classes.
+ * The colors are categorized into solid and gradient types.
+ */
+export const bgColors: IBgColors = {
   solid: [
     "bg-red-300",
     "bg-red-400",

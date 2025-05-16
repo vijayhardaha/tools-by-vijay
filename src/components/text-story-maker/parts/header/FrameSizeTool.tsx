@@ -3,22 +3,25 @@ import { TbFrame as FrameToolIcon } from "react-icons/tb";
 
 import { cardRatios } from "@/components/text-story-maker/constants";
 import Button from "@/components/text-story-maker/parts/header/HeaderIconBtn";
-import { UpdateOptionsSetsType } from "@/components/text-story-maker/TextStoryMakerTool";
+import { IUpdateOptionProps } from "@/components/text-story-maker/TextStoryMakerTool";
 import { Dropdown, DropdownTrigger, DropdownContent } from "@/components/text-story-maker/ui";
 import { cn } from "@/utils/classNameUtils";
 
 /**
- * Type definition for the component props.
+ * Interface for the FrameSizeTool component props.
  */
-interface FrameSizeToolProps extends UpdateOptionsSetsType {}
+interface IFrameSizeToolProps extends IUpdateOptionProps {}
 
 /**
  * FrameSizeTool provides a dropdown menu to select frame size options.
+ *
+ * @param {IFrameSizeToolProps} props - Component props.
+ * @returns {React.JSX.Element} The rendered FrameSizeTool component.
  */
-const FrameSizeTool: React.FC<FrameSizeToolProps> = ({
+const FrameSizeTool: React.FC<IFrameSizeToolProps> = ({
   options,
   updateOption,
-}: FrameSizeToolProps): React.JSX.Element => {
+}: IFrameSizeToolProps): React.JSX.Element => {
   /**
    * Handles the selection of a card ratio.
    *

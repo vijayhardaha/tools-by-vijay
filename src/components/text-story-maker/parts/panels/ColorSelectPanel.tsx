@@ -2,24 +2,18 @@ import { useRef } from "react";
 
 import { Scrollbars } from "react-custom-scrollbars-4";
 
-import { OptionsType } from "@/components/text-story-maker/constants";
+import { IOptions } from "@/components/text-story-maker/constants";
 import { btnBaseStyles } from "@/components/text-story-maker/constants/btnBaseStyles";
 import { ControlBox } from "@/components/text-story-maker/parts/panels/PanelHelper";
-import { UpdateOptionsSetsType } from "@/components/text-story-maker/TextStoryMakerTool";
+import { IUpdateOptionProps } from "@/components/text-story-maker/TextStoryMakerTool";
 import { cn } from "@/utils/classNameUtils";
 
 /**
- * Props for ColorSelectPanel component.
- * @property {OptionsType} options - Current options object.
- * @property {(key: keyof OptionsType, value: number) => void} updateOption - Function to update an option.
- * @property {string[]} colors - Array of color class names.
- * @property {keyof OptionsType} optionKey - The key in options to update.
- * @property {string} [className] - Additional class names.
- * @property {(idx: number) => void} [onSelect] - Optional callback after selection.
+ * Interface for the ColorSelectPanel component props.
  */
-interface ColorSelectPanelProps extends UpdateOptionsSetsType {
+interface IColorSelectPanelProps extends IUpdateOptionProps {
   colors: string[];
-  optionKey: keyof OptionsType;
+  optionKey: keyof IOptions;
   className?: string;
   onSelect?: (idx: number) => void;
 }
@@ -27,17 +21,17 @@ interface ColorSelectPanelProps extends UpdateOptionsSetsType {
 /**
  * ColorSelectPanel component for selecting a color option.
  *
- * @param {ColorSelectPanelProps} props - Component props.
+ * @param {IColorSelectPanelProps} props - Component props.
  * @returns {React.JSX.Element} The rendered ColorSelectPanel component.
  */
-const ColorSelectPanel: React.FC<ColorSelectPanelProps> = ({
+const ColorSelectPanel: React.FC<IColorSelectPanelProps> = ({
   options,
   colors,
   updateOption,
   optionKey,
   className,
   onSelect,
-}: ColorSelectPanelProps): React.JSX.Element => {
+}: IColorSelectPanelProps): React.JSX.Element => {
   const scrollbars = useRef<Scrollbars | null>(null);
 
   return (

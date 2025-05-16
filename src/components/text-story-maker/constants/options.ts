@@ -1,7 +1,7 @@
 /**
  * Default configuration options for the text story maker.
  */
-export interface OptionsType {
+export interface IOptions {
   textFont: number;
   textSize: number;
   textLineHeight: number;
@@ -31,7 +31,7 @@ export interface OptionsType {
   downloadSize: string;
 }
 
-export const defaultOptions: OptionsType = {
+export const defaultOptions: IOptions = {
   // Typography
   textFont: 0,
   textSize: 1.5,

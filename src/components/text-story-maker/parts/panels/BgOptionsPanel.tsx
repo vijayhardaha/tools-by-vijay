@@ -7,25 +7,23 @@ import {
   ControlBox,
   ControlBtn,
 } from "@/components/text-story-maker/parts/panels/PanelHelper";
-import { UpdateOptionsSetsType } from "@/components/text-story-maker/TextStoryMakerTool";
+import { IUpdateOptionProps } from "@/components/text-story-maker/TextStoryMakerTool";
 
 /**
- * Props for BgOptionsPanel component.
- * @property {any} options - Current options object.
- * @property {(key: string, value: any) => void} updateOption - Function to update an option.
+ * Interface for the BgOptionsPanel component props.
  */
-interface BgOptionsPanelProps extends UpdateOptionsSetsType {}
+interface IBgOptionsPanelProps extends IUpdateOptionProps {}
 
 /**
  * BgOptionsPanel component provides a toolbar for selecting background types.
  *
- * @param {BgOptionsPanelProps} props - Component props.
+ * @param {IBgOptionsPanelProps} props - Component props.
  * @returns {React.JSX.Element} The rendered BgOptionsPanel component.
  */
-const BgOptionsPanel: React.FC<BgOptionsPanelProps> = ({
+const BgOptionsPanel: React.FC<IBgOptionsPanelProps> = ({
   options,
   updateOption,
-}: BgOptionsPanelProps): React.JSX.Element => {
+}: IBgOptionsPanelProps): React.JSX.Element => {
   const [activeTool, setActiveTool] = useState<string>(options.bgType);
 
   const tools: { name: string; label: string }[] = [

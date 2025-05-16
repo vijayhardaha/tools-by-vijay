@@ -4,14 +4,14 @@ import { useKeenSlider } from "keen-slider/react";
 
 import { fonts } from "@/components/text-story-maker/constants";
 import { btnBaseStyles } from "@/components/text-story-maker/constants/btnBaseStyles";
-import { UpdateOptionsSetsType } from "@/components/text-story-maker/TextStoryMakerTool";
+import { IUpdateOptionProps } from "@/components/text-story-maker/TextStoryMakerTool";
 import { getFontClass } from "@/components/text-story-maker/utils/styleUtils";
 import { cn } from "@/utils/classNameUtils";
 
 // eslint-disable-next-line import/order
 import "keen-slider/keen-slider.min.css";
 
-interface FontSliderProps extends UpdateOptionsSetsType {}
+interface IFontSliderProps extends IUpdateOptionProps {}
 
 /**
  * FontSlider component for selecting font family.
@@ -21,10 +21,10 @@ interface FontSliderProps extends UpdateOptionsSetsType {}
  * @param {Function} props.updateOption - Function to update the font option.
  * @returns {React.JSX.Element} The rendered FontSlider component.
  */
-const FontSlider: React.FC<FontSliderProps> = ({
+const FontSlider: React.FC<IFontSliderProps> = ({
   options,
   updateOption,
-}: FontSliderProps): React.JSX.Element => {
+}: IFontSliderProps): React.JSX.Element => {
   const [sliderRef] = useKeenSlider({
     loop: false,
     mode: "free-snap",

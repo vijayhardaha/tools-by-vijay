@@ -2,17 +2,26 @@ import React from "react";
 
 import BgOptionsPanel from "@/components/text-story-maker/parts/panels/BgOptionsPanel";
 import TextOptionsPanel from "@/components/text-story-maker/parts/panels/TextOptionsPanel";
-import { UpdateOptionsSetsType } from "@/components/text-story-maker/TextStoryMakerTool";
+import { IUpdateOptionProps } from "@/components/text-story-maker/TextStoryMakerTool";
 
-// Define TypeScript types
-interface FooterProps extends UpdateOptionsSetsType {
+/**
+ * Interface for the Footer component props.
+ */
+interface IFooterProps extends IUpdateOptionProps {
   activeTool: string;
 }
 
 /**
  * Footer component for the text story maker.
+ *
+ * @param {IFooterProps} props - Component props.
+ * @returns {React.JSX.Element} The rendered Footer component.
  */
-const Footer: React.FC<FooterProps> = ({ options, updateOption, activeTool }) => (
+const Footer: React.FC<IFooterProps> = ({
+  options,
+  updateOption,
+  activeTool,
+}: IFooterProps): React.JSX.Element => (
   <footer aria-label="Story formatting options" role="region">
     {activeTool === "text" && (
       <TextOptionsPanel

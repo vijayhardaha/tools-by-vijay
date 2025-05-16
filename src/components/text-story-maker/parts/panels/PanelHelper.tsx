@@ -1,14 +1,23 @@
-import { ReactNode, ElementType, FunctionComponent } from "react";
-
 import { IconButton, TextButton } from "@/components/text-story-maker/ui";
 import { RangeSlider } from "@/components/text-story-maker/ui";
 import { cn } from "@/utils/classNameUtils";
 
-interface ControlPanelProps {
-  children: ReactNode;
+/**
+ * Interface for the ControlPanel component props.
+ */
+interface IControlPanelProps {
+  children: React.ReactNode;
 }
 
-const ControlPanel: FunctionComponent<ControlPanelProps> = ({ children }) => {
+/**
+ * ControlPanel component wraps the panel controls at the bottom of the UI.
+ *
+ * @param {IControlPanelProps} props - Component props.
+ * @returns {React.JSX.Element} The rendered ControlPanel component.
+ */
+const ControlPanel: React.FC<IControlPanelProps> = ({
+  children,
+}: IControlPanelProps): React.JSX.Element => {
   return (
     <div className="user-select-none absolute bottom-0 left-0 z-40 w-full space-y-4 p-4 py-6 text-center">
       {children}
@@ -16,12 +25,24 @@ const ControlPanel: FunctionComponent<ControlPanelProps> = ({ children }) => {
   );
 };
 
-interface ControlBoxProps {
-  children: ReactNode;
+/**
+ * Interface for the ControlBox component props.
+ */
+interface IControlBoxProps {
+  children: React.ReactNode;
   className?: string;
 }
 
-const ControlBox: FunctionComponent<ControlBoxProps> = ({ children, className }) => {
+/**
+ * ControlBox component wraps a group of controls in a styled box.
+ *
+ * @param {IControlBoxProps} props - Component props.
+ * @returns {React.JSX.Element} The rendered ControlPanel component.
+ */
+const ControlBox: React.FC<IControlBoxProps> = ({
+  children,
+  className,
+}: IControlBoxProps): React.JSX.Element => {
   return (
     <div
       className={cn(
@@ -34,17 +55,26 @@ const ControlBox: FunctionComponent<ControlBoxProps> = ({ children, className })
   );
 };
 
-interface ControlBtnProps {
+/**
+ * Interface for the ControlBtn component props.
+ */
+interface IControlBtnProps {
   type?: "icon" | "text";
-  icon?: ElementType;
+  icon?: React.ElementType;
   className?: string;
-  children?: ReactNode;
+  children?: React.ReactNode;
   active?: boolean;
   screenReaderText?: string;
   [key: string]: any;
 }
 
-const ControlBtn: FunctionComponent<ControlBtnProps> = ({
+/**
+ * ControlBtn component renders a button for panel controls, either icon or text.
+ *
+ * @param {IControlBtnProps} props - Component props.
+ * @returns {React.JSX.Element} The rendered ControlPanel component.
+ */
+const ControlBtn: React.FC<IControlBtnProps> = ({
   type = "icon",
   icon,
   className,
@@ -52,7 +82,7 @@ const ControlBtn: FunctionComponent<ControlBtnProps> = ({
   active,
   screenReaderText,
   ...props
-}) => {
+}: IControlBtnProps): React.JSX.Element => {
   const Component = type === "icon" ? IconButton : TextButton;
 
   return (
@@ -69,7 +99,10 @@ const ControlBtn: FunctionComponent<ControlBtnProps> = ({
   );
 };
 
-interface ControlSliderProps {
+/**
+ * Interface for the ControlSlider component props.
+ */
+interface IControlSliderProps {
   label?: string;
   min?: number;
   max?: number;
@@ -80,7 +113,13 @@ interface ControlSliderProps {
   onChangeHandler: (key: string, value: number[]) => void;
 }
 
-const ControlSlider: FunctionComponent<ControlSliderProps> = ({
+/**
+ * ControlSlider component renders a slider for numeric options.
+ *
+ * @param {IControlSliderProps} props - Component props.
+ * @returns {React.JSX.Element} The rendered ControlPanel component.
+ */
+const ControlSlider: React.FC<IControlSliderProps> = ({
   label = "",
   min = 0,
   max = 20,
@@ -89,7 +128,7 @@ const ControlSlider: FunctionComponent<ControlSliderProps> = ({
   onChangeKey,
   valueLabel = "",
   onChangeHandler,
-}) => {
+}: IControlSliderProps): React.JSX.Element => {
   const handleChange = (values: number[]) => {
     onChangeHandler(onChangeKey, values);
   };
@@ -107,7 +146,10 @@ const ControlSlider: FunctionComponent<ControlSliderProps> = ({
   );
 };
 
-interface ToggleOptionsProps {
+/**
+ * Interface for the ToggleOptions component props.
+ */
+interface IToggleOptionsProps {
   label: string;
   options?: Record<string, string>;
   selected: string;
@@ -116,19 +158,25 @@ interface ToggleOptionsProps {
   buttonClass?: string;
 }
 
-const ToggleOptions: FunctionComponent<ToggleOptionsProps> = ({
+/**
+ * ToggleOptions component renders a group of toggle buttons for selecting options.
+ *
+ * @param {IToggleOptionsProps} props - Component props.
+ * @returns {React.JSX.Element} The rendered ControlPanel component.
+ */
+const ToggleOptions: React.FC<IToggleOptionsProps> = ({
   label,
   options = {},
   selected,
   onChangeKey,
   onChangeHandler,
   buttonClass,
-}) => {
+}: IToggleOptionsProps): React.JSX.Element => {
   const handleClick = (value: string) => {
     onChangeHandler(onChangeKey, value);
   };
 
-  if (!options) return null;
+  if (!options) return <></>;
 
   const groupId = `toggle-${onChangeKey}`;
 
@@ -160,7 +208,10 @@ const ToggleOptions: FunctionComponent<ToggleOptionsProps> = ({
   );
 };
 
-interface ToggleColorsProps {
+/**
+ * Interface for the ToggleColors component props.
+ */
+interface IToggleColorsProps {
   label: string;
   selected: string;
   onChangeKey: string;
@@ -168,13 +219,19 @@ interface ToggleColorsProps {
   buttonClass?: string;
 }
 
-const ToggleColors: FunctionComponent<ToggleColorsProps> = ({
+/**
+ * ToggleColors component renders a group of color toggle buttons.
+ *
+ * @param {IToggleColorsProps} props - Component props.
+ * @returns {React.JSX.Element} The rendered ControlPanel component.
+ */
+const ToggleColors: React.FC<IToggleColorsProps> = ({
   label,
   selected,
   onChangeKey,
   onChangeHandler,
   buttonClass,
-}) => {
+}: IToggleColorsProps): React.JSX.Element => {
   const handleClick = (value: string) => {
     onChangeHandler(onChangeKey, value);
   };

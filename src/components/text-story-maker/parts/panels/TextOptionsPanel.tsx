@@ -6,7 +6,7 @@ import { PiTextAlignLeft as AlignLeftIcon } from "react-icons/pi";
 import { PiTextAlignRight as AlignRightIcon } from "react-icons/pi";
 import { TiThLargeOutline as TextSettingsIcon } from "react-icons/ti";
 
-import { OptionsType, textColors } from "@/components/text-story-maker/constants";
+import { IOptions, textColors } from "@/components/text-story-maker/constants";
 import { btnBaseStyles } from "@/components/text-story-maker/constants/btnBaseStyles";
 import ColorSelectPanel from "@/components/text-story-maker/parts/panels/ColorSelectPanel";
 import {
@@ -17,19 +17,19 @@ import {
   ToggleOptions,
   ToggleColors,
 } from "@/components/text-story-maker/parts/panels/PanelHelper";
-import { UpdateOptionsSetsType } from "@/components/text-story-maker/TextStoryMakerTool";
+import { IUpdateOptionProps } from "@/components/text-story-maker/TextStoryMakerTool";
 import FontSlider from "@/components/text-story-maker/ui/FontSlider";
 import { cn } from "@/utils/classNameUtils";
 
 /**
- * Props for the TextOptionsPanel component.
+ * Interface for the TextOptionsPanel component props.
  */
-interface TextOptionsPanelProps extends UpdateOptionsSetsType {}
+interface ITextOptionsPanelProps extends IUpdateOptionProps {}
 
 /**
  * TextOptionsPanel component for managing text-related options.
  */
-const TextOptionsPanel = ({ options, updateOption }: TextOptionsPanelProps) => {
+const TextOptionsPanel = ({ options, updateOption }: ITextOptionsPanelProps) => {
   const [activeTool, setActiveTool] = useState<string>("font-family");
   const [showSettingsDropdown, setShowSettingsDropdown] = useState<boolean>(false);
   const [activeSettingsTab, setActiveSettingsTab] = useState<string>("text");
@@ -53,7 +53,7 @@ const TextOptionsPanel = ({ options, updateOption }: TextOptionsPanelProps) => {
    * @param {Array<number>} values - Array containing the value.
    */
   const handleSliderChange = (key: string, values: Array<number>): void =>
-    updateOption(key as keyof OptionsType, parseFloat(values[0].toString()));
+    updateOption(key as keyof IOptions, parseFloat(values[0].toString()));
 
   /**
    * Toggles the text alignment option in sequence.

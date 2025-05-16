@@ -4,17 +4,20 @@ import Button from "@/components/text-story-maker/parts/header/HeaderIconBtn";
 import { cn } from "@/utils/classNameUtils";
 
 /**
- * Type definition for the component props.
+ * Interface for the TextOptionsTool component props.
  */
-interface TextOptionsToolProps {
+interface ITextOptionsToolProps {
   activeTool: string;
   setActiveTool: (tool: string) => void;
 }
 
 /**
  * A button component for toggling the "Text Options" tool in the text story maker.
+ *
+ * @param {ITextOptionsToolProps} props - Component props.
+ * @returns {React.JSX.Element} The rendered button component.
  */
-const TextOptionsTool = ({ activeTool, setActiveTool }: TextOptionsToolProps) => {
+const TextOptionsTool = ({ activeTool, setActiveTool }: ITextOptionsToolProps) => {
   const isActive = activeTool === "text";
 
   /**

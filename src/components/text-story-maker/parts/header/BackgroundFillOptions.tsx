@@ -5,7 +5,10 @@ import { PiPaintBrushBroadFill as BgToolIcon } from "react-icons/pi";
 import Button from "@/components/text-story-maker/parts/header/HeaderIconBtn";
 import { cn } from "@/utils/classNameUtils";
 
-interface BackgroundFillOptionsProps {
+/**
+ * Interface for the BackgroundFillOptions component props.
+ */
+interface IBackgroundFillOptionsProps {
   activeTool: string;
   setActiveTool: (tool: string) => void;
 }
@@ -13,13 +16,13 @@ interface BackgroundFillOptionsProps {
 /**
  * A button component for toggling the "Background Fill Options" tool in the text story maker.
  *
- * @param {BackgroundFillOptionsProps} props - Component props.
+ * @param {IBackgroundFillOptionsProps} props - Component props.
  * @returns {React.JSX.Element} The rendered button component.
  */
-const BackgroundFillOptions: React.FC<BackgroundFillOptionsProps> = ({
+const BackgroundFillOptions: React.FC<IBackgroundFillOptionsProps> = ({
   activeTool,
   setActiveTool,
-}: BackgroundFillOptionsProps): React.JSX.Element => {
+}: IBackgroundFillOptionsProps): React.JSX.Element => {
   const isActive = activeTool === "background";
 
   /**

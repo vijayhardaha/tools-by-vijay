@@ -3,7 +3,10 @@ import React from "react";
 import { IconButton } from "@/components/text-story-maker/ui";
 import { cn } from "@/utils/classNameUtils";
 
-interface HeaderIconBtnProps {
+/**
+ * Interface for the HeaderIconBtn component props.
+ */
+interface IHeaderIconBtnProps {
   icon: React.ElementType;
   className?: string;
   [key: string]: any;
@@ -12,14 +15,14 @@ interface HeaderIconBtnProps {
 /**
  * HeaderIconBtn is a wrapper around the IconButton component, styled specifically for the header.
  *
- * @param {HeaderIconBtnProps} props - The props for the component.
+ * @param {IHeaderIconBtnProps} props - The props for the component.
  * @returns {React.JSX.Element} The rendered HeaderIconBtn component.
  */
-const HeaderIconBtn: React.FC<HeaderIconBtnProps> = ({
+const HeaderIconBtn: React.FC<IHeaderIconBtnProps> = ({
   icon,
   className,
   ...props
-}: HeaderIconBtnProps): React.JSX.Element => (
+}: IHeaderIconBtnProps): React.JSX.Element => (
   <IconButton
     icon={icon}
     className={cn("xs:size-12 size-11 rounded-full bg-neutral-900 text-white", className)}
