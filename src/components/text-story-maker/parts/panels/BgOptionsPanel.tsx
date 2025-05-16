@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { bgColors } from "@/components/text-story-maker/constants";
+import { bgColors } from "@/components/text-story-maker/constants/bgColors";
 import ColorSelectPanel from "@/components/text-story-maker/parts/panels/ColorSelectPanel";
 import {
   ControlPanel,

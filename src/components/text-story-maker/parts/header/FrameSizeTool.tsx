@@ -1,7 +1,7 @@
 import { PiCheckCircleFill as CheckFillIcon } from "react-icons/pi";
 import { TbFrame as FrameToolIcon } from "react-icons/tb";
 
-import { cardRatios } from "@/components/text-story-maker/constants";
+import { cardRatios } from "@/components/text-story-maker/constants/cardRatios";
 import Button from "@/components/text-story-maker/parts/header/HeaderIconBtn";
 import { IUpdateOptionProps } from "@/components/text-story-maker/TextStoryMakerTool";
 import { Dropdown, DropdownTrigger, DropdownContent } from "@/components/text-story-maker/ui";

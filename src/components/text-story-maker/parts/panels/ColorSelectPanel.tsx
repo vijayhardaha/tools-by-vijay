@@ -2,8 +2,8 @@ import { useRef } from "react";
 
 import { Scrollbars } from "react-custom-scrollbars-4";
 
-import { IOptions } from "@/components/text-story-maker/constants";
 import { btnBaseStyles } from "@/components/text-story-maker/constants/btnBaseStyles";
+import { IOptions } from "@/components/text-story-maker/constants/options";
 import { ControlBox } from "@/components/text-story-maker/parts/panels/PanelHelper";
 import { IUpdateOptionProps } from "@/components/text-story-maker/TextStoryMakerTool";
 import { cn } from "@/utils/classNameUtils";

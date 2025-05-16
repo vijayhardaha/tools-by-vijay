@@ -1,7 +1,7 @@
 import { useKeenSlider } from "keen-slider/react";
 
-import { fonts } from "@/components/text-story-maker/constants";
 import { btnBaseStyles } from "@/components/text-story-maker/constants/btnBaseStyles";
+import { fonts } from "@/components/text-story-maker/constants/fonts";
 import { IUpdateOptionProps } from "@/components/text-story-maker/TextStoryMakerTool";
 import { getFontClass } from "@/components/text-story-maker/utils/styleUtils";
 import { cn } from "@/utils/classNameUtils";

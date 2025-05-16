@@ -6,8 +6,9 @@ import { PiTextAlignLeft as AlignLeftIcon } from "react-icons/pi";
 import { PiTextAlignRight as AlignRightIcon } from "react-icons/pi";
 import { TiThLargeOutline as TextSettingsIcon } from "react-icons/ti";
 
-import { IOptions, textColors } from "@/components/text-story-maker/constants";
 import { btnBaseStyles } from "@/components/text-story-maker/constants/btnBaseStyles";
+import { IOptions } from "@/components/text-story-maker/constants/options";
+import { textColors } from "@/components/text-story-maker/constants/textColors";
 import ColorSelectPanel from "@/components/text-story-maker/parts/panels/ColorSelectPanel";
 import {
   ControlPanel,
