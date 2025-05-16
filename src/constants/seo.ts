@@ -1,13 +1,19 @@
 import { getBaseUrl } from "@/utils/seoUtils";
 
-type SEOType = {
+/**
+ * Interface for SEO-related constants.
+ */
+export interface ISEO {
   title: string;
   description: string;
   titlePostfix: string;
   separator: string;
-};
+}
 
-export type BaseMetadataType = {
+/**
+ * Interface for base metadata used in the application.
+ */
+export interface IBaseMetadata {
   title: string;
   description: string;
   metadataBase: URL;
@@ -43,12 +49,12 @@ export type BaseMetadataType = {
     images: string[];
     creator: string;
   };
-};
+}
 
 /**
  * An object containing SEO-related constants for the application.
  */
-export const SEO: SEOType = {
+export const SEO: ISEO = {
   title: "Tools by Vijay Hardaha — Useful Web Utilities",
   description:
     "A collection of free online tools built to make developer’s lives easier. From code optimization to text transformation, find the tools you need for your projects.",
@@ -56,7 +62,10 @@ export const SEO: SEOType = {
   separator: "—",
 };
 
-export const baseMetadata: BaseMetadataType = {
+/**
+ * Base metadata for the application, including SEO and Open Graph properties.
+ */
+export const baseMetadata: IBaseMetadata = {
   title: SEO.title,
   description: SEO.description,
   metadataBase: new URL(getBaseUrl()),

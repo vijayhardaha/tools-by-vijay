@@ -6,19 +6,19 @@ import { Textarea } from "@/components/ui/textarea";
  * Props for the UnminifyOutput component.
  * @property {string} output - The unminified code output.
  */
-interface UnminifyOutputProps {
+interface IUnminifyOutputProps {
   output: string;
 }
 
 /**
  * A component that displays the unminified code output.
  *
- * @param {UnminifyOutputProps} props - The props for the component.
+ * @param {IUnminifyOutputProps} props - The props for the component.
  * @returns {React.JSX.Element} The rendered UnminifyOutput component.
  */
-const UnminifyOutput: React.FC<UnminifyOutputProps> = ({
+const UnminifyOutput: React.FC<IUnminifyOutputProps> = ({
   output,
-}: UnminifyOutputProps): React.JSX.Element => {
+}: IUnminifyOutputProps): React.JSX.Element => {
   return (
     <Card>
       <CardHeader>

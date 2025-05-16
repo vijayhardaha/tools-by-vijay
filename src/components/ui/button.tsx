@@ -10,11 +10,11 @@ import { cn } from "@/utils/classNameUtils";
 /**
  * Slot component for polymorphic prop forwarding.
  */
-type SlotProps = {
+type ISlotProps = {
   children: React.ReactNode; // Allow any valid ReactNode (string, ReactElement, etc.)
 } & React.HTMLAttributes<HTMLElement>;
 
-const Slot = forwardRef<HTMLElement, SlotProps>(({ children, ...props }, ref) => {
+const Slot = forwardRef<HTMLElement, ISlotProps>(({ children, ...props }, ref) => {
   if (!isValidElement(children)) {
     return null;
   }
@@ -114,7 +114,7 @@ const buttonVariants = cva(
 /**
  * Button component with various styles and sizes.
  */
-type ButtonProps = {
+type IButtonProps = {
   className?: string;
   variant?:
     | "default"
@@ -130,7 +130,7 @@ type ButtonProps = {
   children: React.ReactNode; // Allow any valid ReactNode (string, ReactElement, etc.)
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
-const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+const Button = forwardRef<HTMLButtonElement, IButtonProps>(
   (
     { className, variant = "default", size = "default", asChild = false, children, ...props },
     ref

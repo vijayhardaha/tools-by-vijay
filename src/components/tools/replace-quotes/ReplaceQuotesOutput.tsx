@@ -13,13 +13,13 @@ import { Textarea } from "@/components/ui/textarea";
  * @param {string} props.output - The processed text to display
  * @returns {JSX.Element} The rendered card with output display and copy functionality
  */
-interface ReplaceQuotesOutputProps {
+interface IReplaceQuotesOutputProps {
   output: string;
 }
 
-const ReplaceQuotesOutput: React.FC<ReplaceQuotesOutputProps> = ({
+const ReplaceQuotesOutput: React.FC<IReplaceQuotesOutputProps> = ({
   output,
-}: ReplaceQuotesOutputProps): React.JSX.Element => {
+}: IReplaceQuotesOutputProps): React.JSX.Element => {
   return (
     <Card>
       <CardHeader>

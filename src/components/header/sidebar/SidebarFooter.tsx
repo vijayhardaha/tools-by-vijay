@@ -5,7 +5,7 @@ import { socialMediaLinks } from "@/constants/socialLinks";
 /**
  * Props for the SocialButton component
  */
-interface SocialButtonProps {
+interface ISocialButtonProps {
   icon: React.ElementType;
   href: string;
   label: string;
@@ -17,7 +17,12 @@ interface SocialButtonProps {
  * @param {SocialButtonProps} props - Component props
  * @returns {JSX.Element} A button with social media icon
  */
-const SocialButton = ({ icon: Icon, href, label, color }: SocialButtonProps): React.JSX.Element => (
+const SocialButton = ({
+  icon: Icon,
+  href,
+  label,
+  color,
+}: ISocialButtonProps): React.JSX.Element => (
   <Button
     variant="outline"
     size="icon"

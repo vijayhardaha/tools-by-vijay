@@ -1,17 +1,17 @@
 "use client";
 
-import { MinifyOptions } from "@/components/tools/js-minifier/JsMinifierTool";
+import { IMinifyOptions } from "@/components/tools/js-minifier/JsMinifierTool";
 import { Alert } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Textarea } from "@/components/ui/textarea";
 
-interface JsMinifierInputProps {
+interface IJsMinifierInputProps {
   input: string;
   setInput: (value: string) => void;
-  options: MinifyOptions;
-  updateOption: (key: keyof MinifyOptions, value: boolean) => void;
+  options: IMinifyOptions;
+  updateOption: (key: keyof IMinifyOptions, value: boolean) => void;
   onSubmit: () => void;
   onClear: () => void;
   onReset: () => void;
@@ -22,10 +22,10 @@ interface JsMinifierInputProps {
 /**
  * Component for JavaScript minifier input and options.
  *
- * @param {JsMinifierInputProps} props - Component props.
+ * @param {IJsMinifierInputProps} props - Component props.
  * @returns {JSX.Element} The JsMinifierInput component.
  */
-const JsMinifierInput: React.FC<JsMinifierInputProps> = ({
+const JsMinifierInput: React.FC<IJsMinifierInputProps> = ({
   input,
   setInput,
   options,
@@ -35,7 +35,7 @@ const JsMinifierInput: React.FC<JsMinifierInputProps> = ({
   onReset,
   isLoading,
   error,
-}: JsMinifierInputProps): React.JSX.Element => {
+}: IJsMinifierInputProps): React.JSX.Element => {
   /**
    * Handles form submission and triggers JavaScript minification.
    *

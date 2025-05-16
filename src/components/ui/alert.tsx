@@ -44,7 +44,7 @@ const defaultIcons: Record<string, React.ReactElement> = {
 };
 
 // Define TypeScript types for the Alert component props
-interface AlertProps extends React.HTMLAttributes<HTMLDivElement> {
+interface IAlertProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
   variant?: "default" | "info" | "warning" | "success" | "danger";
   title?: string;
@@ -67,7 +67,7 @@ function Alert({
   icon,
   children,
   ...props
-}: AlertProps): React.JSX.Element {
+}: IAlertProps): React.JSX.Element {
   // Use provided icon or default for the variant
   const iconToRender = icon || defaultIcons[variant];
 

@@ -12,7 +12,7 @@ import { Textarea } from "@/components/ui/textarea";
 /**
  * Props for the DropdownToArrayInput component.
  */
-interface DropdownToArrayInputProps {
+interface IDropdownToArrayInputProps {
   input: string;
   setInput: (value: string) => void;
   outputFormat: string;
@@ -32,10 +32,10 @@ interface DropdownToArrayInputProps {
  *
  * A form component that allows users to paste HTML dropdown content and convert it into various array formats.
  *
- * @param {DropdownToArrayInputProps} props - The props for the component.
+ * @param {IDropdownToArrayInputProps} props - The props for the component.
  * @returns {React.JSX.Element} The rendered component.
  */
-const DropdownToArrayInput: React.FC<DropdownToArrayInputProps> = ({
+const DropdownToArrayInput: React.FC<IDropdownToArrayInputProps> = ({
   input,
   setInput,
   outputFormat,
@@ -48,7 +48,7 @@ const DropdownToArrayInput: React.FC<DropdownToArrayInputProps> = ({
   onClear,
   onReset,
   error,
-}: DropdownToArrayInputProps): React.JSX.Element => {
+}: IDropdownToArrayInputProps): React.JSX.Element => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onSubmit();

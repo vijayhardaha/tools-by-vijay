@@ -4,7 +4,7 @@ import { getAllCategorySlugs } from "@/utils/categoryUtils";
 /**
  * Props for the EntryWithSidebar component.
  */
-interface EntryWithSidebarProps {
+interface IEntryWithSidebarProps {
   tool: {
     category: string;
     slug: string;
@@ -18,10 +18,10 @@ interface EntryWithSidebarProps {
  * @param {EntryWithSidebarProps} props - The component props.
  * @returns {JSX.Element} The rendered component.
  */
-const EntryWithSidebar: React.FC<EntryWithSidebarProps> = ({
+const EntryWithSidebar: React.FC<IEntryWithSidebarProps> = ({
   tool,
   children,
-}: EntryWithSidebarProps): React.JSX.Element => {
+}: IEntryWithSidebarProps): React.JSX.Element => {
   const categories = getAllCategorySlugs().filter((category) => category !== tool.category);
 
   const getRandomCategories = (categories: string[], count: number): string[] => {

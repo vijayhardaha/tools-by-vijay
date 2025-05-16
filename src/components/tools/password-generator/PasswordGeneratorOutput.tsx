@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
  * Props for the PasswordGeneratorOutput component.
  * @property {string} password - The generated password to display.
  */
-interface PasswordGeneratorOutputProps {
+interface IPasswordGeneratorOutputProps {
   password: string;
 }
 
@@ -17,12 +17,12 @@ interface PasswordGeneratorOutputProps {
  * Shows the generated password in a readonly input field and allows the user to copy it
  * to the clipboard with visual feedback when copied.
  *
- * @param {PasswordGeneratorOutputProps} props - Component props.
+ * @param {IPasswordGeneratorOutputProps} props - Component props.
  * @returns {JSX.Element} The rendered card with password display and copy functionality.
  */
-const PasswordGeneratorOutput: React.FC<PasswordGeneratorOutputProps> = ({
+const PasswordGeneratorOutput: React.FC<IPasswordGeneratorOutputProps> = ({
   password,
-}: PasswordGeneratorOutputProps): React.JSX.Element => {
+}: IPasswordGeneratorOutputProps): React.JSX.Element => {
   return (
     <Card>
       <CardHeader>

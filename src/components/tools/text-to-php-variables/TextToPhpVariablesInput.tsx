@@ -6,7 +6,7 @@ import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/com
 import { Select } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 
-interface TextToPhpVariablesInputProps {
+interface ITextToPhpVariablesInputProps {
   input: string;
   setInput: (value: string) => void;
   variableCase: string;
@@ -24,7 +24,7 @@ interface TextToPhpVariablesInputProps {
  * @param {TextToPhpVariablesInputProps} props - The props for the component.
  * @returns {JSX.Element} The rendered input component.
  */
-const TextToPhpVariablesInput: React.FC<TextToPhpVariablesInputProps> = ({
+const TextToPhpVariablesInput: React.FC<ITextToPhpVariablesInputProps> = ({
   input,
   setInput,
   variableCase,
@@ -33,7 +33,7 @@ const TextToPhpVariablesInput: React.FC<TextToPhpVariablesInputProps> = ({
   onClear,
   onReset,
   error,
-}: TextToPhpVariablesInputProps): React.JSX.Element => {
+}: ITextToPhpVariablesInputProps): React.JSX.Element => {
   /**
    * Handles form submission.
    * @param {React.FormEvent} e - The form submission event.

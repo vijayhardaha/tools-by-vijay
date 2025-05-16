@@ -17,7 +17,7 @@ import { Textarea } from "@/components/ui/textarea";
  * @property {boolean} isLoading - Whether the form is in a loading state.
  * @property {string} [error] - Optional error message to display.
  */
-interface UnminifyInputProps {
+interface IUnminifyInputProps {
   input: string;
   setInput: (value: string) => void;
   codeType: string;
@@ -31,10 +31,10 @@ interface UnminifyInputProps {
 /**
  * A component for accepting code input and triggering unminification.
  *
- * @param {UnminifyInputProps} props - The props for the component.
+ * @param {IUnminifyInputProps} props - The props for the component.
  * @returns {React.JSX.Element} The rendered UnminifyInput component.
  */
-const UnminifyInput: React.FC<UnminifyInputProps> = ({
+const UnminifyInput: React.FC<IUnminifyInputProps> = ({
   input,
   setInput,
   codeType,
@@ -43,7 +43,7 @@ const UnminifyInput: React.FC<UnminifyInputProps> = ({
   onClear,
   isLoading,
   error,
-}: UnminifyInputProps): React.JSX.Element => {
+}: IUnminifyInputProps): React.JSX.Element => {
   /**
    * Handles the form submission event.
    *

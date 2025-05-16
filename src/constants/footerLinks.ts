@@ -1,12 +1,12 @@
-type FooterLink = {
+interface IFooterLink {
   name: string;
   href: string;
-};
+}
 
 /**
  * Footer navigation links organized by section
  */
-const footerLinks: Record<string, FooterLink[]> = {
+const footerLinks: Record<string, IFooterLink[]> = {
   quickLinks: [
     { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },

@@ -6,7 +6,7 @@ import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/com
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 
-interface CssInlinerInputProps {
+interface ICssInlinerInputProps {
   htmlInput: string;
   setHtmlInput: (value: string) => void;
   cssInput: string;
@@ -17,7 +17,7 @@ interface CssInlinerInputProps {
   error?: string;
 }
 
-const CssInlinerInput: React.FC<CssInlinerInputProps> = ({
+const CssInlinerInput: React.FC<ICssInlinerInputProps> = ({
   htmlInput,
   setHtmlInput,
   cssInput,
@@ -26,7 +26,7 @@ const CssInlinerInput: React.FC<CssInlinerInputProps> = ({
   onClear,
   isLoading,
   error,
-}: CssInlinerInputProps): React.JSX.Element => {
+}: ICssInlinerInputProps): React.JSX.Element => {
   /**
    * Handles form submission to inline CSS.
    *

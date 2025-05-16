@@ -12,7 +12,7 @@ import { Textarea } from "@/components/ui/textarea";
 /**
  * Props for the HtmlMinifierInput component.
  */
-interface HtmlMinifierInputProps {
+interface IHtmlMinifierInputProps {
   input: string;
   setInput: (value: string) => void;
   options: HtmlMinifierOptions;
@@ -28,10 +28,10 @@ interface HtmlMinifierInputProps {
  * A React functional component for an HTML Minifier input form.
  * Allows users to input HTML, configure minification options, and trigger actions like minify, clear, or reset.
  *
- * @param {HtmlMinifierInputProps} props - The props for the component.
+ * @param {IHtmlMinifierInputProps} props - The props for the component.
  * @returns {JSX.Element} The rendered HTML Minifier input component.
  */
-const HtmlMinifierInput: React.FC<HtmlMinifierInputProps> = ({
+const HtmlMinifierInput: React.FC<IHtmlMinifierInputProps> = ({
   input = "",
   setInput,
   options,
@@ -41,7 +41,7 @@ const HtmlMinifierInput: React.FC<HtmlMinifierInputProps> = ({
   onReset,
   isLoading,
   error,
-}: HtmlMinifierInputProps): React.JSX.Element => {
+}: IHtmlMinifierInputProps): React.JSX.Element => {
   /**
    * Handles the form submission event.
    * Prevents the default form submission behavior and triggers the onSubmit callback.

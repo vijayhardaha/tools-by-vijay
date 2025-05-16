@@ -18,7 +18,11 @@ import {
   PiGlobeBold,
 } from "react-icons/pi";
 
-export const toolIcons: Record<string, React.ReactElement> = {
+export interface IToolIcons {
+  [key: string]: React.ReactElement;
+}
+
+export const toolIcons: IToolIcons = {
   slugify: <PiFadersHorizontalBold />,
   "bulk-slugify": <PiFadersBold />,
   "password-generator": <PiPasswordBold />,

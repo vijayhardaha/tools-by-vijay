@@ -8,7 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 /**
  * Props for the UrlShortenerInput component
  */
-interface UrlShortenerInputProps {
+interface IUrlShortenerInputProps {
   input: string;
   setInput: (value: string) => void;
   onSubmit: () => void;
@@ -24,17 +24,17 @@ interface UrlShortenerInputProps {
  * to submit the URLs for shortening or clear the input. It also displays any error
  * messages and handles the loading state.
  *
- * @param {UrlShortenerInputProps} props - Props for the component
+ * @param {IUrlShortenerInputProps} props - Props for the component
  * @returns {React.JSX.Element} The rendered component
  */
-const UrlShortenerInput: React.FC<UrlShortenerInputProps> = ({
+const UrlShortenerInput: React.FC<IUrlShortenerInputProps> = ({
   input = "",
   setInput,
   onSubmit,
   onClear,
   isLoading = false,
   error = "",
-}: UrlShortenerInputProps): React.JSX.Element => {
+}: IUrlShortenerInputProps): React.JSX.Element => {
   /**
    * Handles form submission to shorten URLs
    *

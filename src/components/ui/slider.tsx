@@ -7,7 +7,7 @@ import { cn } from "@/utils/classNameUtils";
 /**
  * Props for the Slider component
  */
-interface SliderProps extends React.HTMLAttributes<HTMLDivElement> {
+interface ISliderProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
   min?: number;
   max?: number;
@@ -29,7 +29,7 @@ function Slider({
   onValueChange,
   disabled = false,
   ...props
-}: SliderProps) {
+}: ISliderProps) {
   const [currentValue, setCurrentValue] = useState(value);
 
   useEffect(() => {

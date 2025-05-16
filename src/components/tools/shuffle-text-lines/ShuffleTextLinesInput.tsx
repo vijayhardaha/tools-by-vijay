@@ -5,7 +5,7 @@ import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/com
 import { Checkbox } from "@/components/ui/checkbox";
 import { Textarea } from "@/components/ui/textarea";
 
-interface ShuffleTextLinesInputProps {
+interface IShuffleTextLinesInputProps {
   input: string;
   setInput: (value: string) => void;
   removeDuplicates: boolean;
@@ -25,7 +25,7 @@ interface ShuffleTextLinesInputProps {
  *
  * @component
  */
-const ShuffleTextLinesInput: React.FC<ShuffleTextLinesInputProps> = ({
+const ShuffleTextLinesInput: React.FC<IShuffleTextLinesInputProps> = ({
   input,
   setInput,
   removeDuplicates,
@@ -37,7 +37,7 @@ const ShuffleTextLinesInput: React.FC<ShuffleTextLinesInputProps> = ({
   onSubmit,
   onReset,
   onClear,
-}: ShuffleTextLinesInputProps): React.JSX.Element => {
+}: IShuffleTextLinesInputProps): React.JSX.Element => {
   /**
    * Handles form submission to shuffle lines.
    * @param {React.FormEvent} e - The form submission event.

@@ -3,7 +3,7 @@ import { CompressionInfo } from "@/components/ui/compressionInfo";
 import { CopyButton } from "@/components/ui/copyButton";
 import { Textarea } from "@/components/ui/textarea";
 
-interface JsMinifierOutputProps {
+interface IJsMinifierOutputProps {
   output: string;
   input: string;
 }
@@ -11,13 +11,13 @@ interface JsMinifierOutputProps {
 /**
  * Component that displays the minified JavaScript output and provides copy functionality.
  *
- * @param {JsMinifierOutputProps} props - The component props.
+ * @param {IJsMinifierOutputProps} props - The component props.
  * @returns {JSX.Element} The JsMinifierOutput component.
  */
-const JsMinifierOutput: React.FC<JsMinifierOutputProps> = ({
+const JsMinifierOutput: React.FC<IJsMinifierOutputProps> = ({
   output,
   input,
-}: JsMinifierOutputProps): React.JSX.Element => {
+}: IJsMinifierOutputProps): React.JSX.Element => {
   return (
     <Card>
       <CardHeader>

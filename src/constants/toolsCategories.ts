@@ -1,9 +1,9 @@
-import { Category } from "@/types";
+import { ICategory } from "@/types";
 
 /**
  * Array of category objects, each containing information about a tool category.
  */
-const categories: Category[] = [
+const categories: ICategory[] = [
   {
     label: "Text Transformation",
     slug: "text-transformation",

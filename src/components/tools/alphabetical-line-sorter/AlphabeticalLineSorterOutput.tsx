@@ -2,7 +2,7 @@ import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/com
 import { CopyButton } from "@/components/ui/copyButton";
 import { Textarea } from "@/components/ui/textarea";
 
-interface AlphabeticalLineSorterOutputProps {
+interface IAlphabeticalLineSorterOutputProps {
   output: string;
 }
 
@@ -11,12 +11,12 @@ interface AlphabeticalLineSorterOutputProps {
  * Displays the sorted text in a readonly textarea with a copy button.
  *
  * @component
- * @param {AlphabeticalLineSorterOutputProps} props - Component props
+ * @param {IAlphabeticalLineSorterOutputProps} props - Component props
  * @returns {JSX.Element} The rendered output display
  */
-const AlphabeticalLineSorterOutput: React.FC<AlphabeticalLineSorterOutputProps> = ({
+const AlphabeticalLineSorterOutput: React.FC<IAlphabeticalLineSorterOutputProps> = ({
   output,
-}: AlphabeticalLineSorterOutputProps): React.JSX.Element => {
+}: IAlphabeticalLineSorterOutputProps): React.JSX.Element => {
   return (
     <Card>
       <CardHeader>

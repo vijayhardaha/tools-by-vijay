@@ -6,7 +6,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/utils/classNameUtils";
 
-interface BulkSlugifyInputProps {
+interface IBulkSlugifyInputProps {
   input: string;
   useUnderscore: boolean;
   setInput: (value: string) => void;
@@ -31,7 +31,7 @@ interface BulkSlugifyInputProps {
  * along with configuration options for the slugification process such as separator
  * type, case conversion, number removal, and character normalization.
  */
-const BulkSlugifyInput: React.FC<BulkSlugifyInputProps> = ({
+const BulkSlugifyInput: React.FC<IBulkSlugifyInputProps> = ({
   input = "",
   useUnderscore = false,
   setInput,
@@ -47,7 +47,7 @@ const BulkSlugifyInput: React.FC<BulkSlugifyInputProps> = ({
   onReset,
   keepEmptyLines = false,
   setKeepEmptyLines,
-}: BulkSlugifyInputProps): React.JSX.Element => {
+}: IBulkSlugifyInputProps): React.JSX.Element => {
   /**
    * Handles form submission to generate slugs
    *

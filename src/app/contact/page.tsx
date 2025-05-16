@@ -4,13 +4,13 @@ import { TbWorldWww } from "react-icons/tb";
 import PageContent from "@/components/page/PageContent";
 import PageHeader from "@/components/page/PageHeader";
 import PageLayout from "@/components/page/PageLayout";
-import { generateMetadata as genMeta, Metadata } from "@/utils/seoUtils";
+import { generateMetadata as genMeta, IMetadata } from "@/utils/seoUtils";
 
 /**
  * SEO metadata for the Contact page.
- * @type {Metadata}
+ * @type {IMetadata}
  */
-export const metadata: Metadata = genMeta({
+export const metadata: IMetadata = genMeta({
   title: "Contact",
   description:
     "Get in touch with Vijay, explore the open-source code on GitHub, or hire him for freelance WordPress, WooCommerce, or Next.js projects. Based in India, working globally.",

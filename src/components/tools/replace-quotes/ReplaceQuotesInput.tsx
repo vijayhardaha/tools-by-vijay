@@ -6,7 +6,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { RadioBox } from "@/components/ui/radiobox";
 import { Textarea } from "@/components/ui/textarea";
 
-interface ReplaceQuotesInputProps {
+interface IReplaceQuotesInputProps {
   input: string;
   setInput: (value: string) => void;
   replaceType: "simple-to-curly" | "curly-to-simple";
@@ -25,10 +25,10 @@ interface ReplaceQuotesInputProps {
  * Handles user input and actions for replacing quotes.
  *
  * @component
- * @param {ReplaceQuotesInputProps} props - Component props
+ * @param {IReplaceQuotesInputProps} props - Component props
  * @returns {JSX.Element} The input component for the Replace Quotes tool.
  */
-const ReplaceQuotesInput: React.FC<ReplaceQuotesInputProps> = ({
+const ReplaceQuotesInput: React.FC<IReplaceQuotesInputProps> = ({
   input,
   setInput,
   replaceType,
@@ -40,7 +40,7 @@ const ReplaceQuotesInput: React.FC<ReplaceQuotesInputProps> = ({
   onSubmit,
   onClear,
   onReset,
-}: ReplaceQuotesInputProps): React.JSX.Element => {
+}: IReplaceQuotesInputProps): React.JSX.Element => {
   /**
    * Handles form submission by preventing default behavior and triggering the replace action.
    * @param {React.FormEvent} e - Form event object

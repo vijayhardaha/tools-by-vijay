@@ -3,7 +3,7 @@ import { CopyButton } from "@/components/ui/copyButton";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
-interface BulkSlugifyOutputProps {
+interface IBulkSlugifyOutputProps {
   output: string;
 }
 
@@ -14,9 +14,9 @@ interface BulkSlugifyOutputProps {
  * copy individual slugs or all slugs at once. It shows visual feedback when
  * content is copied to the clipboard.
  */
-const BulkSlugifyOutput: React.FC<BulkSlugifyOutputProps> = ({
+const BulkSlugifyOutput: React.FC<IBulkSlugifyOutputProps> = ({
   output,
-}: BulkSlugifyOutputProps): React.JSX.Element => {
+}: IBulkSlugifyOutputProps): React.JSX.Element => {
   // Split the output into individual lines and filter out empty lines
   const lines: string[] = output.split("\n").filter((line) => line.trim() !== "");
 

@@ -1,7 +1,7 @@
 import { cn } from "@/utils/classNameUtils";
 
 // Define TypeScript types for the component props
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+interface IInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   className?: string;
   type?: string;
 }
@@ -12,7 +12,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
  * @param {InputProps} props - Component props
  * @returns {JSX.Element} Input component
  */
-function Input({ className, type = "text", ...props }: InputProps): React.JSX.Element {
+function Input({ className, type = "text", ...props }: IInputProps): React.JSX.Element {
   return (
     <input
       type={type}

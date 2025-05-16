@@ -2,11 +2,11 @@ import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/com
 import { CopyButton } from "@/components/ui/copyButton";
 import { Input } from "@/components/ui/input";
 
-interface SlugifyOutputProps {
+interface ISlugifyOutputProps {
   output: string;
 }
 
-const SlugifyOutput = ({ output }: SlugifyOutputProps) => {
+const SlugifyOutput = ({ output }: ISlugifyOutputProps) => {
   return (
     <Card>
       <CardHeader>

@@ -1,13 +1,13 @@
 import { FaFacebookF, FaXTwitter, FaGithub, FaInstagram } from "react-icons/fa6";
 import { TbWorldWww } from "react-icons/tb";
 
-import { SocialMediaLink } from "@/types";
+import { ISocialMediaLink } from "@/types";
 
 /**
  * A list of social media links with metadata and icons.
- * @type {SocialMediaLink[]}
+ * @type {ISocialMediaLink[]}
  */
-export const socialMediaLinks: SocialMediaLink[] = [
+export const socialMediaLinks: ISocialMediaLink[] = [
   {
     key: "github",
     name: "GitHub",

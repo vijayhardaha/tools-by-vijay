@@ -9,7 +9,7 @@ import DropdownToArrayInfo from "./DropdownToArrayInfo";
 import DropdownToArrayInput from "./DropdownToArrayInput";
 import DropdownToArrayOutput from "./DropdownToArrayOutput";
 
-interface Option {
+interface IOption {
   value: string;
   text: string;
 }
@@ -49,7 +49,7 @@ const DropdownToArrayTool: React.FC = (): React.JSX.Element => {
    * @param {Option} option - The option object.
    * @returns {string} The key for the option.
    */
-  const getKey = (option: Option): string => {
+  const getKey = (option: IOption): string => {
     if (useSlugKeys) {
       return generateSlug(option.value);
     }
@@ -62,7 +62,7 @@ const DropdownToArrayTool: React.FC = (): React.JSX.Element => {
    *
    * @returns {Option[] | null} Array of extracted options or null if an error occurs.
    */
-  const parseHtmlInput = (): Option[] | null => {
+  const parseHtmlInput = (): IOption[] | null => {
     try {
       setError("");
 
@@ -119,7 +119,7 @@ const DropdownToArrayTool: React.FC = (): React.JSX.Element => {
    * @param {Option[]} options - Parsed option elements with value and text.
    * @returns {string} Formatted output based on selected options.
    */
-  const formatOutput = (options: Option[]): string => {
+  const formatOutput = (options: IOption[]): string => {
     if (!options || options.length === 0) {
       return "";
     }
@@ -146,7 +146,7 @@ const DropdownToArrayTool: React.FC = (): React.JSX.Element => {
    * @param {Option[]} options - Parsed option elements.
    * @returns {string} JSON formatted output.
    */
-  const formatJsonOutput = (options: Option[]): string => {
+  const formatJsonOutput = (options: IOption[]): string => {
     try {
       if (arrayType === "simple") {
         return JSON.stringify(options, null, 2);
@@ -158,7 +158,7 @@ const DropdownToArrayTool: React.FC = (): React.JSX.Element => {
         return JSON.stringify(numericArray, null, 2);
       } else {
         // associative
-        const associativeArray = options.map((option: Option) => ({
+        const associativeArray = options.map((option: IOption) => ({
           key: getKey(option),
           value: option.text,
         }));
@@ -178,7 +178,7 @@ const DropdownToArrayTool: React.FC = (): React.JSX.Element => {
    * @param {Option[]} options - Parsed option elements.
    * @returns {string} JavaScript array formatted output.
    */
-  const formatJsArrayOutput = (options: Option[]): string => {
+  const formatJsArrayOutput = (options: IOption[]): string => {
     try {
       if (arrayType === "simple") {
         const simpleArray = options.map(
@@ -194,7 +194,7 @@ const DropdownToArrayTool: React.FC = (): React.JSX.Element => {
       } else {
         // associative
         const associativeArray = options.map(
-          (option: Option) =>
+          (option: IOption) =>
             `  {\n    "key": "${getKey(option).replace(/"/g, '\\"')}",\n    "value": "${option.text.replace(/"/g, '\\"')}"\n  }`
         );
         return `const dropdownArray = [\n${associativeArray.join(",\n")}\n];`;
@@ -213,7 +213,7 @@ const DropdownToArrayTool: React.FC = (): React.JSX.Element => {
    * @param {Option[]} options - Parsed option elements.
    * @returns {string} JavaScript object formatted output.
    */
-  const formatJsObjectOutput = (options: Option[]): string => {
+  const formatJsObjectOutput = (options: IOption[]): string => {
     try {
       if (arrayType === "simple") {
         const objectItems = options.map(
@@ -230,7 +230,7 @@ const DropdownToArrayTool: React.FC = (): React.JSX.Element => {
       } else {
         // associative
         const objectItems = options.map(
-          (option: Option) =>
+          (option: IOption) =>
             `  "${getKey(option).replace(/"/g, '\\"')}": "${option.text.replace(/"/g, '\\"')}"`
         );
         return `const dropdownObject = {\n${objectItems.join(",\n")}\n};`;
@@ -249,7 +249,7 @@ const DropdownToArrayTool: React.FC = (): React.JSX.Element => {
    * @param {Option[]} options - Parsed option elements.
    * @returns {string} PHP formatted output.
    */
-  const formatPhpOutput = (options: Option[]): string => {
+  const formatPhpOutput = (options: IOption[]): string => {
     try {
       if (arrayType === "simple") {
         const arrayItems = options.map(
@@ -265,7 +265,7 @@ const DropdownToArrayTool: React.FC = (): React.JSX.Element => {
       } else {
         // associative
         const arrayItems = options.map(
-          (option: Option) =>
+          (option: IOption) =>
             `  '${getKey(option).replace(/'/g, "\\'")}' => '${option.text.replace(/'/g, "\\'")}'`
         );
         return `<?php\n$data = array(\n${arrayItems.join(",\n")}\n);`;
@@ -284,7 +284,7 @@ const DropdownToArrayTool: React.FC = (): React.JSX.Element => {
    * @param {Option[]} options - Parsed option elements.
    * @returns {string} WordPress select options formatted output.
    */
-  const formatWordPressOutput = (options: Option[]): string => {
+  const formatWordPressOutput = (options: IOption[]): string => {
     try {
       if (arrayType === "simple") {
         const arrayItems = options.map(
@@ -301,7 +301,7 @@ const DropdownToArrayTool: React.FC = (): React.JSX.Element => {
       } else {
         // associative
         const arrayItems = options.map(
-          (option: Option) =>
+          (option: IOption) =>
             `  '${getKey(option).replace(/'/g, "\\'")}' => __( '${option.text.replace(/'/g, "\\'")}', 'text-domain' )`
         );
         return `<?php\n$data = array(\n${arrayItems.join(",\n")}\n);`;

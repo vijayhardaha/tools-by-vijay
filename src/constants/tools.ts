@@ -1,10 +1,10 @@
-import { Tool } from "@/types";
+import { ITool } from "@/types";
 
 /**
  * Array of tool objects, each containing metadata for display and SEO purposes.
- * @type {Tool[]}
+ * @type {ITool[]}
  */
-const tools: Tool[] = [
+const tools: ITool[] = [
   {
     name: "Slugify",
     slug: "slugify",

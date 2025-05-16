@@ -7,7 +7,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { RadioBox } from "@/components/ui/radiobox";
 import { Textarea } from "@/components/ui/textarea";
 
-interface DuplicateLineRemovalInputProps {
+interface IDuplicateLineRemovalInputProps {
   input: string;
   setInput: (value: string) => void;
   sortType: string;
@@ -24,10 +24,10 @@ interface DuplicateLineRemovalInputProps {
  * Provides a form for text input, sorting options, and reverse sorting.
  *
  * @component
- * @param {DuplicateLineRemovalInputProps} props - Component props
+ * @param {IDuplicateLineRemovalInputProps} props - Component props
  * @returns {JSX.Element} The rendered input form
  */
-const DuplicateLineRemovalInput: React.FC<DuplicateLineRemovalInputProps> = ({
+const DuplicateLineRemovalInput: React.FC<IDuplicateLineRemovalInputProps> = ({
   input,
   setInput,
   sortType,
@@ -37,7 +37,7 @@ const DuplicateLineRemovalInput: React.FC<DuplicateLineRemovalInputProps> = ({
   onSubmit,
   onReset,
   onClear,
-}: DuplicateLineRemovalInputProps): React.JSX.Element => {
+}: IDuplicateLineRemovalInputProps): React.JSX.Element => {
   /**
    * Handles form submission by preventing default behavior and triggering conversion.
    * @param {React.FormEvent} e - Form event object.

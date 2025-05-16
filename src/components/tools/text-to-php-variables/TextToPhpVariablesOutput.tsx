@@ -2,7 +2,7 @@ import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/com
 import { CopyButton } from "@/components/ui/copyButton";
 import { Textarea } from "@/components/ui/textarea";
 
-interface TextToPhpVariablesOutputProps {
+interface ITextToPhpVariablesOutputProps {
   output: string;
 }
 
@@ -10,12 +10,12 @@ interface TextToPhpVariablesOutputProps {
  * Output component for the Text to PHP Variables tool.
  *
  * @component
- * @param {TextToPhpVariablesOutputProps} props - The props for the component.
+ * @param {ITextToPhpVariablesOutputProps} props - The props for the component.
  * @returns {JSX.Element} The rendered output component.
  */
-const TextToPhpVariablesOutput: React.FC<TextToPhpVariablesOutputProps> = ({
+const TextToPhpVariablesOutput: React.FC<ITextToPhpVariablesOutputProps> = ({
   output,
-}: TextToPhpVariablesOutputProps): React.JSX.Element => {
+}: ITextToPhpVariablesOutputProps): React.JSX.Element => {
   return (
     <Card>
       <CardHeader>

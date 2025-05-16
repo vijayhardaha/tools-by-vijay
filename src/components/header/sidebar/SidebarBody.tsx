@@ -11,7 +11,7 @@ import { getToolsByCategories } from "@/utils/toolUtils";
 /**
  * Props for the NavLink component.
  */
-type NavLinkProps = {
+type INavLinkProps = {
   href: string;
   children: React.ReactNode;
   className?: string;
@@ -20,14 +20,14 @@ type NavLinkProps = {
 /**
  * NavLink component for consistent link styling in the sidebar using Shadcn classes.
  *
- * @param {NavLinkProps} props - Component props.
+ * @param {INavLinkProps} props - Component props.
  * @returns {JSX.Element} Styled navigation link.
  */
-const NavLink: React.FC<NavLinkProps> = ({
+const NavLink: React.FC<INavLinkProps> = ({
   href,
   children,
   className = "",
-}: NavLinkProps): React.JSX.Element => (
+}: INavLinkProps): React.JSX.Element => (
   <Link
     href={href}
     className={`text-muted-foreground hover:text-primary transition-colors hover:underline ${className}`}
@@ -39,7 +39,7 @@ const NavLink: React.FC<NavLinkProps> = ({
 /**
  * Props for the CategorySection component.
  */
-type CategorySectionProps = {
+type ICategorySectionProps = {
   /**
    * Category title.
    */
@@ -56,13 +56,13 @@ type CategorySectionProps = {
 /**
  * CategorySection component to display a group of tool links.
  *
- * @param {CategorySectionProps} props - Component props.
+ * @param {ICategorySectionProps} props - Component props.
  * @returns {JSX.Element} Category section with tool links.
  */
-const CategorySection: React.FC<CategorySectionProps> = ({
+const CategorySection: React.FC<ICategorySectionProps> = ({
   title,
   tools,
-}: CategorySectionProps): React.JSX.Element => (
+}: ICategorySectionProps): React.JSX.Element => (
   <div className="mb-6">
     <h3 className="text-foreground mb-3 text-sm font-bold uppercase">{title}</h3>
     <ul className="space-y-3">

@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Category, Tool } from "@/types";
+import { ICategory, ITool } from "@/types";
 import { getCategoryBySlug } from "@/utils/categoryUtils";
 import { cn } from "@/utils/classNameUtils";
 import { getToolsByCategory } from "@/utils/toolUtils";
@@ -11,7 +11,7 @@ import { getToolsByCategory } from "@/utils/toolUtils";
  * @property {string} category - The category slug to filter tools.
  * @property {string} [hideTool] - The tool slug to exclude from the list.
  */
-interface ToolsListWidgetProps {
+interface IToolsListWidgetProps {
   category: string;
   hideTool?: string;
 }
@@ -22,15 +22,15 @@ interface ToolsListWidgetProps {
  * @param {ToolsListWidgetProps} props - The props for the component.
  * @returns {JSX.Element} The rendered component.
  */
-const ToolsListWidget: React.FC<ToolsListWidgetProps> = ({
+const ToolsListWidget: React.FC<IToolsListWidgetProps> = ({
   category,
   hideTool = "",
-}: ToolsListWidgetProps): React.JSX.Element => {
-  const toolsInCategory: Tool[] = getToolsByCategory(category).filter(
+}: IToolsListWidgetProps): React.JSX.Element => {
+  const toolsInCategory: ITool[] = getToolsByCategory(category).filter(
     (categoryTool) => categoryTool.slug !== hideTool
   );
 
-  const categoryData: Category | null = getCategoryBySlug(category);
+  const categoryData: ICategory | null = getCategoryBySlug(category);
 
   if (!categoryData || toolsInCategory.length === 0) {
     return <></>;

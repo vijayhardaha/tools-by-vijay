@@ -1,12 +1,12 @@
 import { baseMetadata, SEO } from "@/constants/seo";
 
-export type MetadataParams = {
+export interface IMetadataParams {
   title?: string;
   description?: string;
   slug?: string;
-};
+}
 
-export interface Metadata {
+export interface IMetadata {
   title: string;
   description: string;
   alternates: {
@@ -74,7 +74,7 @@ export const generateMetadata = ({
   title = "",
   description = "",
   slug = "",
-}: MetadataParams): Metadata => {
+}: IMetadataParams): IMetadata => {
   return {
     ...baseMetadata,
     title: generateSeoTitle(title),

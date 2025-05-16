@@ -9,7 +9,7 @@ import { cn } from "@/utils/classNameUtils";
 /**
  * Props for the RadioBox component
  */
-interface RadioBoxProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
+interface IRadioBoxProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
   className?: string;
   checked?: boolean;
   onCheckedChange?: (checked: boolean) => void;
@@ -33,7 +33,7 @@ function RadioBox({
   id,
   name,
   ...props
-}: RadioBoxProps) {
+}: IRadioBoxProps) {
   const [internalChecked, setInternalChecked] = useState(controlledChecked || false);
 
   const isControlled = controlledChecked !== undefined;

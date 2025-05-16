@@ -5,7 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 /**
  * Props for the TextCaseChangerOutput component.
  */
-interface TextCaseChangerOutputProps {
+interface ITextCaseChangerOutputProps {
   output: string;
 }
 
@@ -14,9 +14,9 @@ interface TextCaseChangerOutputProps {
  * @param props - The props for the TextCaseChangerOutput component.
  * @returns The TextCaseChangerOutput component.
  */
-const TextCaseChangerOutput: React.FC<TextCaseChangerOutputProps> = ({
+const TextCaseChangerOutput: React.FC<ITextCaseChangerOutputProps> = ({
   output,
-}: TextCaseChangerOutputProps): React.JSX.Element => {
+}: ITextCaseChangerOutputProps): React.JSX.Element => {
   return (
     <Card>
       <CardHeader>

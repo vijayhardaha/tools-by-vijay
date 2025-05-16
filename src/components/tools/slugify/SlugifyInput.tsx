@@ -9,7 +9,7 @@ import { cn } from "@/utils/classNameUtils";
 /**
  * Props for the SlugifyInput component.
  */
-interface SlugifyInputProps {
+interface ISlugifyInputProps {
   input: string;
   setInput: (value: string) => void;
   useUnderscore: boolean;
@@ -28,10 +28,10 @@ interface SlugifyInputProps {
 /**
  * A React component for generating slugs from input strings with various options.
  *
- * @param {SlugifyInputProps} props - The props for the component.
+ * @param {ISlugifyInputProps} props - The props for the component.
  * @returns {React.JSX.Element} The rendered SlugifyInput component.
  */
-const SlugifyInput: React.FC<SlugifyInputProps> = ({
+const SlugifyInput: React.FC<ISlugifyInputProps> = ({
   input = "",
   setInput,
   useUnderscore = false,
@@ -45,7 +45,7 @@ const SlugifyInput: React.FC<SlugifyInputProps> = ({
   onSubmit,
   onClear,
   onReset,
-}: SlugifyInputProps): React.JSX.Element => {
+}: ISlugifyInputProps): React.JSX.Element => {
   /**
    * Handles form submission and triggers slug generation.
    *

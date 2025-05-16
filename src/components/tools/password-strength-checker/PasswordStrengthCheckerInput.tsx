@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 
-interface PasswordStrengthCheckerInputProps {
+interface IPasswordStrengthCheckerInputProps {
   password: string;
   onSubmit: (password: string) => void;
   onClear: () => void;
@@ -16,14 +16,14 @@ interface PasswordStrengthCheckerInputProps {
  * Password Strength Checker Input Component
  *
  * @component
- * @param {PasswordStrengthCheckerInputProps} props - Component props
+ * @param {IPasswordStrengthCheckerInputProps} props - Component props
  * @returns {JSX.Element} Password input with visibility toggle and clear button
  */
-const PasswordStrengthCheckerInput: React.FC<PasswordStrengthCheckerInputProps> = ({
+const PasswordStrengthCheckerInput: React.FC<IPasswordStrengthCheckerInputProps> = ({
   password,
   onSubmit,
   onClear,
-}: PasswordStrengthCheckerInputProps): React.JSX.Element => {
+}: IPasswordStrengthCheckerInputProps): React.JSX.Element => {
   /**
    * Handles password input changes
    *

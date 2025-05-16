@@ -5,7 +5,7 @@ import { socialMediaLinks } from "@/constants/socialLinks";
 /**
  * Props for the SocialButton component.
  */
-type SocialButtonProps = {
+type ISocialButtonProps = {
   icon: React.ElementType;
   href: string;
   label: string;
@@ -15,7 +15,7 @@ type SocialButtonProps = {
 /**
  * Represents a social media link.
  */
-type SocialMediaLink = {
+type ISocialMediaLink = {
   key: string;
   icon: React.ElementType;
   url: string;
@@ -26,10 +26,10 @@ type SocialMediaLink = {
 /**
  * Button component for social media links.
  *
- * @param {SocialButtonProps} props - Props for the SocialButton component.
+ * @param {ISocialButtonProps} props - Props for the SocialButton component.
  * @returns {JSX.Element} The rendered social button.
  */
-const SocialButton: React.FC<SocialButtonProps> = ({ icon: Icon, href, label, color }) => (
+const SocialButton: React.FC<ISocialButtonProps> = ({ icon: Icon, href, label, color }) => (
   <Button
     variant="primary"
     size="icon"
@@ -63,7 +63,7 @@ const FooterAbout: React.FC = (): React.JSX.Element => {
       </div>
 
       <div className="flex space-x-2">
-        {socialMediaLinks.map(({ key, icon, url, name, color }: SocialMediaLink) => (
+        {socialMediaLinks.map(({ key, icon, url, name, color }: ISocialMediaLink) => (
           <SocialButton key={key} icon={icon} href={url} label={name} color={color} />
         ))}
       </div>

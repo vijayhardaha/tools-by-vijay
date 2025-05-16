@@ -8,7 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 /**
  * Props for the Base64EncodeDecodeInput component.
  */
-interface Base64EncodeDecodeInputProps {
+interface IBase64EncodeDecodeInputProps {
   input: string;
   setInput: (value: string) => void;
   isEncoding: boolean;
@@ -22,10 +22,10 @@ interface Base64EncodeDecodeInputProps {
  * A component for accepting user input for Base64 encoding or decoding.
  * It includes a textarea for input, radio buttons to select the mode, and action buttons.
  *
- * @param {Base64EncodeDecodeInputProps} props - The props for the component.
+ * @param {IBase64EncodeDecodeInputProps} props - The props for the component.
  * @returns {React.JSX.Element} The rendered input component.
  */
-const Base64EncodeDecodeInput: React.FC<Base64EncodeDecodeInputProps> = ({
+const Base64EncodeDecodeInput: React.FC<IBase64EncodeDecodeInputProps> = ({
   input,
   setInput,
   isEncoding,
@@ -33,7 +33,7 @@ const Base64EncodeDecodeInput: React.FC<Base64EncodeDecodeInputProps> = ({
   onProcess,
   onClear,
   onReset,
-}: Base64EncodeDecodeInputProps): React.JSX.Element => {
+}: IBase64EncodeDecodeInputProps): React.JSX.Element => {
   /**
    * Handles the form submission to process the input.
    * @param {React.FormEvent} e - The form submission event.

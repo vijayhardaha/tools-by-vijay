@@ -1,6 +1,6 @@
 import React from "react";
 
-export interface Tool {
+export interface ITool {
   name: string;
   slug: string;
   shortDescription: string;
@@ -10,7 +10,7 @@ export interface Tool {
   category: string;
 }
 
-export interface Category {
+export interface ICategory {
   label: string;
   slug: string;
   description: string;
@@ -18,7 +18,7 @@ export interface Category {
   seoDescription: string;
 }
 
-export interface SocialMediaLink {
+export interface ISocialMediaLink {
   name: string;
   key: string;
   url: string;

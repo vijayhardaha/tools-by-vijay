@@ -9,7 +9,7 @@ import { Label } from "@/components/ui/label";
 import { Select } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 
-interface TextToArrayInputProps {
+interface ITextToArrayInputProps {
   input: string;
   setInput: (value: string) => void;
   outputFormat: string;
@@ -36,7 +36,7 @@ interface TextToArrayInputProps {
  * @param {Object} props - Component props
  * @returns {JSX.Element} The rendered form with conversion options
  */
-const TextToArrayInput: React.FC<TextToArrayInputProps> = ({
+const TextToArrayInput: React.FC<ITextToArrayInputProps> = ({
   input,
   setInput,
   outputFormat,
@@ -53,7 +53,7 @@ const TextToArrayInput: React.FC<TextToArrayInputProps> = ({
   onClear,
   onReset,
   error,
-}: TextToArrayInputProps): React.JSX.Element => {
+}: ITextToArrayInputProps): React.JSX.Element => {
   /**
    * Handles form submission by preventing default behavior and triggering conversion
    * @param {React.FormEvent} e - Form event object

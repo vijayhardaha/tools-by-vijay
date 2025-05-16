@@ -23,14 +23,14 @@ const monoFont: NextFontWithVariable = Geist_Mono({
   variable: "--font-app-mono",
 });
 
-import { baseMetadata, BaseMetadataType } from "@/constants/seo";
+import { baseMetadata, IBaseMetadata } from "@/constants/seo";
 
 import "../styles/globals.css";
 
 /**
  * Metadata for the application.
  */
-export const metadata: BaseMetadataType = baseMetadata;
+export const metadata: IBaseMetadata = baseMetadata;
 
 /**
  * Root layout component for the application.

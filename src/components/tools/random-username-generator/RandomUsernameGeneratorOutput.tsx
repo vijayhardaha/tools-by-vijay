@@ -5,7 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 /**
  * Props for the RandomUsernameGeneratorOutput component.
  */
-interface RandomUsernameGeneratorOutputProps {
+interface IRandomUsernameGeneratorOutputProps {
   output: string[];
 }
 
@@ -14,9 +14,9 @@ interface RandomUsernameGeneratorOutputProps {
  * @param props - The props for the RandomUsernameGeneratorOutput component.
  * @returns The RandomUsernameGeneratorOutput component.
  */
-const RandomUsernameGeneratorOutput: React.FC<RandomUsernameGeneratorOutputProps> = ({
+const RandomUsernameGeneratorOutput: React.FC<IRandomUsernameGeneratorOutputProps> = ({
   output,
-}: RandomUsernameGeneratorOutputProps): React.JSX.Element => {
+}: IRandomUsernameGeneratorOutputProps): React.JSX.Element => {
   return (
     <Card>
       <CardHeader>

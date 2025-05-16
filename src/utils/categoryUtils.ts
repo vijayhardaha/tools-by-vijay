@@ -1,20 +1,20 @@
 import categories from "@/constants/toolsCategories";
-import { Category } from "@/types";
+import { ICategory } from "@/types";
 
 /**
  * Get all categores
- * @returns {Category[]} Array of all categories
+ * @returns {ICategory[]} Array of all categories
  */
-export const getAllCategories = (): Category[] => {
+export const getAllCategories = (): ICategory[] => {
   return categories;
 };
 
 /**
  * Get a category by its slug
  * @param {string} slug - The slug of the category to find
- * @returns {Object|null} The category object or null if not found
+ * @returns {ICategory|null} The category object or null if not found
  */
-export const getCategoryBySlug = (slug: string): Category | null => {
+export const getCategoryBySlug = (slug: string): ICategory | null => {
   return categories.find((category) => category.slug === slug) || null;
 };
 
@@ -38,9 +38,9 @@ export const categoryExists = (slug: string): boolean => {
 /**
  * Filter categories by a search term (matches against label or description)
  * @param {string} searchTerm - The term to search for
- * @returns {Category[]} Filtered array of categories
+ * @returns {ICategory[]} Filtered array of categories
  */
-export const filterCategories = (searchTerm: string): Category[] => {
+export const filterCategories = (searchTerm: string): ICategory[] => {
   if (!searchTerm) return categories;
 
   const term = searchTerm.toLowerCase();
@@ -53,9 +53,9 @@ export const filterCategories = (searchTerm: string): Category[] => {
 
 /**
  * Sort categories alphabetically by label
- * @param {Category[]} categoriesToSort - Array of categories to sort
- * @returns {Category[]} Sorted array of categories
+ * @param {ICategory[]} categoriesToSort - Array of categories to sort
+ * @returns {ICategory[]} Sorted array of categories
  */
-export const sortCategoriesAlphabetically = (categoriesToSort: Category[]): Category[] => {
+export const sortCategoriesAlphabetically = (categoriesToSort: ICategory[]): ICategory[] => {
   return [...categoriesToSort].sort((a, b) => a.label.localeCompare(b.label));
 };

@@ -1,13 +1,13 @@
 import PageContent from "@/components/page/PageContent";
 import PageHeader from "@/components/page/PageHeader";
 import PageLayout from "@/components/page/PageLayout";
-import { generateMetadata as genMeta, Metadata } from "@/utils/seoUtils";
+import { generateMetadata as genMeta, IMetadata } from "@/utils/seoUtils";
 
 /**
  * SEO metadata for the About page.
  * @type {Metadata}
  */
-export const metadata: Metadata = genMeta({
+export const metadata: IMetadata = genMeta({
   title: "About Me",
   description:
     "Learn more about Vijay, the developer behind this platform. Discover the motivation behind these tools and how they’re built for speed, simplicity, and everyday use.",

@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-type FooterWidgetProps = {
+type IFooterWidgetProps = {
   title: string;
   links: {
     name: string;
@@ -11,13 +11,13 @@ type FooterWidgetProps = {
 /**
  * Footer widget component that displays a list of links with a title
  *
- * @param {FooterWidgetProps} props - Component props.
+ * @param {IFooterWidgetProps} props - Component props.
  * @returns {JSX.Element} The rendered footer widget.
  */
-const FooterWidget: React.FC<FooterWidgetProps> = ({
+const FooterWidget: React.FC<IFooterWidgetProps> = ({
   title,
   links,
-}: FooterWidgetProps): React.JSX.Element => {
+}: IFooterWidgetProps): React.JSX.Element => {
   /**
    * Check if a URL is external (starts with http:// or https://)
    * @param {string} url - The URL to check

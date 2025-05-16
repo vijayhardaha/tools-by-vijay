@@ -2,19 +2,19 @@ import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/com
 import { CopyButton } from "@/components/ui/copyButton";
 import { Textarea } from "@/components/ui/textarea";
 
-interface JsonSorterOutputProps {
+interface IJsonSorterOutputProps {
   output: string;
 }
 
 /**
  * Displays the sorted JSON output with copy functionality.
  *
- * @param {JsonSorterOutputProps} props - Component props.
+ * @param {IJsonSorterOutputProps} props - Component props.
  * @returns {JSX.Element} The rendered card with output display and copy functionality.
  */
-const JsonSorterOutput: React.FC<JsonSorterOutputProps> = ({
+const JsonSorterOutput: React.FC<IJsonSorterOutputProps> = ({
   output,
-}: JsonSorterOutputProps): React.JSX.Element => {
+}: IJsonSorterOutputProps): React.JSX.Element => {
   return (
     <Card>
       <CardHeader>

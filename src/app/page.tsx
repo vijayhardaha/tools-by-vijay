@@ -1,6 +1,6 @@
 import ToolCard from "@/components/home/ToolCard";
 import PageLayout from "@/components/page/PageLayout";
-import { Tool, Category } from "@/types";
+import { ITool, ICategory } from "@/types";
 import { getCategoryBySlug } from "@/utils/categoryUtils";
 import { getToolsByCategories } from "@/utils/toolUtils";
 
@@ -15,12 +15,12 @@ import { getToolsByCategories } from "@/utils/toolUtils";
  */
 const Home: React.FC = (): React.JSX.Element => {
   // Get all tools and group them by category
-  const toolsByCategory: Record<string, Tool[]> = getToolsByCategories();
+  const toolsByCategory: Record<string, ITool[]> = getToolsByCategories();
 
   return (
     <PageLayout>
-      {Object.entries(toolsByCategory).map(([categorySlug, categoryTools]: [string, Tool[]]) => {
-        const category: Category | null = getCategoryBySlug(categorySlug);
+      {Object.entries(toolsByCategory).map(([categorySlug, categoryTools]: [string, ITool[]]) => {
+        const category: ICategory | null = getCategoryBySlug(categorySlug);
 
         if (!category) return null;
 
@@ -32,7 +32,7 @@ const Home: React.FC = (): React.JSX.Element => {
             </div>
 
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-6">
-              {categoryTools.map((tool: Tool) => (
+              {categoryTools.map((tool: ITool) => (
                 <ToolCard key={tool.slug} slug={tool.slug} />
               ))}
             </div>

@@ -9,7 +9,7 @@ import SidebarHeader from "./SidebarHeader";
 /**
  * Props for the Sidebar component.
  */
-type SidebarProps = {
+type ISidebarProps = {
   isOpen: boolean;
   onClose: () => void;
 };
@@ -21,7 +21,10 @@ type SidebarProps = {
  * @param {SidebarProps} props - Component props.
  * @returns {JSX.Element} Sidebar component.
  */
-const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }: SidebarProps): React.JSX.Element => (
+const Sidebar: React.FC<ISidebarProps> = ({
+  isOpen,
+  onClose,
+}: ISidebarProps): React.JSX.Element => (
   <Sheet open={isOpen} onOpenChange={onClose}>
     <SheetContent
       side="right"

@@ -19,7 +19,7 @@ import CssMinifierOutput from "./CssMinifierOutput";
  * @property {boolean} format.spaces.beforeValue - Space before values.
  * @property {boolean | number} format.wrapAt - Wrap output at a specific character count or disable wrapping.
  */
-interface MinificationOptions {
+interface IMinificationOptions {
   level: number;
   compress: boolean;
   format: {
@@ -37,7 +37,7 @@ interface MinificationOptions {
 /**
  * Default minification options.
  */
-const defaultOptions: MinificationOptions = {
+const defaultOptions: IMinificationOptions = {
   level: 1,
   compress: true,
   format: {
@@ -62,7 +62,7 @@ const CssMinifierTool: React.FC = (): React.JSX.Element => {
   const [input, setInput] = useState<string>("");
   const [output, setOutput] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [options, setOptions] = useState<MinificationOptions>(defaultOptions);
+  const [options, setOptions] = useState<IMinificationOptions>(defaultOptions);
   const [error, setError] = useState<string>("");
 
   /**

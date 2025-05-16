@@ -6,7 +6,7 @@ import JsMinifierInfo from "./JsMinifierInfo";
 import JsMinifierInput from "./JsMinifierInput";
 import JsMinifierOutput from "./JsMinifierOutput";
 
-export interface MinifyOptions {
+export interface IMinifyOptions {
   mangle: boolean;
   removeConsole: boolean;
   removeDebugger: boolean;
@@ -22,7 +22,7 @@ const JsMinifierTool: React.FC = (): React.JSX.Element => {
   const [input, setInput] = useState<string>("");
   const [output, setOutput] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [options, setOptions] = useState<MinifyOptions>({
+  const [options, setOptions] = useState<IMinifyOptions>({
     mangle: true,
     removeConsole: false,
     removeDebugger: true,
@@ -92,7 +92,7 @@ const JsMinifierTool: React.FC = (): React.JSX.Element => {
   /**
    * Updates an option in the options state.
    */
-  const updateOption = (key: keyof MinifyOptions, value: boolean) => {
+  const updateOption = (key: keyof IMinifyOptions, value: boolean) => {
     setOptions((prev) => ({
       ...prev,
       [key]: value,

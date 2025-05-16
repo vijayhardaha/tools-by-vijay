@@ -9,7 +9,7 @@ import { cn } from "@/utils/classNameUtils";
 /**
  * Option type for the Select component
  */
-interface SelectOption extends React.HTMLAttributes<HTMLDivElement> {
+interface ISelectOption extends React.HTMLAttributes<HTMLDivElement> {
   value: string;
   label: string;
   disabled?: boolean;
@@ -18,12 +18,12 @@ interface SelectOption extends React.HTMLAttributes<HTMLDivElement> {
 /**
  * Props for the Select component
  */
-interface SelectProps extends React.HTMLAttributes<HTMLDivElement> {
+interface ISelectProps extends React.HTMLAttributes<HTMLDivElement> {
   value?: string;
   defaultValue?: string;
   onValueChange?: (value: string) => void;
   disabled?: boolean;
-  options: SelectOption[];
+  options: ISelectOption[];
   placeholder?: string;
   className?: string;
   size?: "default" | "sm";
@@ -42,7 +42,7 @@ function Select({
   className = "",
   size = "default",
   ...props
-}: SelectProps) {
+}: ISelectProps) {
   const [selectedValue, setSelectedValue] = useState(defaultValue || value || "");
   const [open, setOpen] = useState(false);
   const selectRef = useRef<HTMLDivElement>(null);

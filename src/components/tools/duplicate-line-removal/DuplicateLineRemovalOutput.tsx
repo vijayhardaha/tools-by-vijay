@@ -4,7 +4,7 @@ import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/com
 import { CopyButton } from "@/components/ui/copyButton";
 import { Textarea } from "@/components/ui/textarea";
 
-interface DuplicateLineRemovalOutputProps {
+interface IDuplicateLineRemovalOutputProps {
   output: string;
 }
 
@@ -13,12 +13,12 @@ interface DuplicateLineRemovalOutputProps {
  * Displays the processed text in a readonly textarea with a copy button.
  *
  * @component
- * @param {DuplicateLineRemovalOutputProps} props - Component props
+ * @param {IDuplicateLineRemovalOutputProps} props - Component props
  * @returns {JSX.Element} The rendered output display
  */
-const DuplicateLineRemovalOutput: React.FC<DuplicateLineRemovalOutputProps> = ({
+const DuplicateLineRemovalOutput: React.FC<IDuplicateLineRemovalOutputProps> = ({
   output,
-}: DuplicateLineRemovalOutputProps): React.JSX.Element => {
+}: IDuplicateLineRemovalOutputProps): React.JSX.Element => {
   return (
     <Card>
       <CardHeader>

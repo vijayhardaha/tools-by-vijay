@@ -9,20 +9,13 @@ import { cn } from "@/utils/classNameUtils";
 /**
  * Props for the Checkbox component.
  */
-interface CheckboxProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
-  /** Additional CSS classes. */
+interface ICheckboxProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
   className?: string;
-  /** Whether the checkbox is checked. */
   checked?: boolean;
-  /** Callback when checkbox state changes. */
   onCheckedChange?: (checked: boolean) => void;
-  /** Whether the checkbox is disabled. */
   disabled?: boolean;
-  /** Whether the checkbox is required. */
   required?: boolean;
-  /** ID for the checkbox input element. */
   id?: string;
-  /** Optional child elements. */
   children?: ReactNode;
 }
 
@@ -38,7 +31,7 @@ function Checkbox({
   required,
   id,
   ...props
-}: CheckboxProps) {
+}: ICheckboxProps) {
   const [internalChecked, setInternalChecked] = useState(controlledChecked || false);
 
   const isControlled = controlledChecked !== undefined;

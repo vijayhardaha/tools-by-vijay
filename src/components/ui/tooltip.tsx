@@ -12,7 +12,7 @@ import "react-tooltip/dist/react-tooltip.css";
 /**
  * Props for the Tooltip component
  */
-interface TooltipProps extends React.HTMLAttributes<HTMLDivElement> {
+interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement> {
   text: string;
   children: ReactNode;
   className?: string;
@@ -30,7 +30,7 @@ function Tooltip({
   sideOffset = 4,
   delayDuration = 300,
   ...props
-}: TooltipProps) {
+}: ITooltipProps) {
   const tooltipId = useId();
 
   return (

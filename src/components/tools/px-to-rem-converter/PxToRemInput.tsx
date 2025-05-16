@@ -4,7 +4,7 @@ import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/com
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-interface PxToRemInputProps {
+interface IPxToRemInputProps {
   pxValue: string;
   setPxValue: (value: string) => void;
   baseFontSize: number;
@@ -14,15 +14,15 @@ interface PxToRemInputProps {
 /**
  * Component for inputting px value and base font size.
  *
- * @param {PxToRemInputProps} props - Component props.
+ * @param {IPxToRemInputProps} props - Component props.
  * @returns {JSX.Element} The rendered input form.
  */
-const PxToRemInput: React.FC<PxToRemInputProps> = ({
+const PxToRemInput: React.FC<IPxToRemInputProps> = ({
   pxValue,
   setPxValue,
   baseFontSize,
   setBaseFontSize,
-}: PxToRemInputProps): React.JSX.Element => {
+}: IPxToRemInputProps): React.JSX.Element => {
   return (
     <Card>
       <CardHeader>

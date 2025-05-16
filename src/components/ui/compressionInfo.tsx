@@ -13,7 +13,7 @@ const wrapInCode = (text: string): React.JSX.Element => {
 /**
  * Props for the CompressionInfo component.
  */
-interface CompressionInfoProps {
+interface ICompressionInfoProps {
   input: string | null;
   output: string | null;
 }
@@ -24,7 +24,7 @@ interface CompressionInfoProps {
 export const CompressionInfo = ({
   input,
   output,
-}: CompressionInfoProps): React.JSX.Element | null => {
+}: ICompressionInfoProps): React.JSX.Element | null => {
   if (!output) return wrapInCode("Output is empty");
 
   const formatSize = (size: number): string => {

@@ -6,7 +6,7 @@ import { CopyButton } from "@/components/ui/copyButton";
 /**
  * Represents a single URL shortening result
  */
-interface UrlShortenerResult {
+interface IUrlShortenerResult {
   originalUrl: string;
   shortenedUrl: string;
   isValid: boolean;
@@ -15,8 +15,8 @@ interface UrlShortenerResult {
 /**
  * Props for the UrlShortenerOutput component
  */
-interface UrlShortenerOutputProps {
-  results: UrlShortenerResult[];
+interface IUrlShortenerOutputProps {
+  results: IUrlShortenerResult[];
 }
 
 /**
@@ -25,12 +25,12 @@ interface UrlShortenerOutputProps {
  * This component renders a list of shortened URLs along with their original URLs,
  * validity status, and options to copy individual or all valid shortened URLs.
  *
- * @param {UrlShortenerOutputProps} props - Props for the component
+ * @param {IUrlShortenerOutputProps} props - Props for the component
  * @returns {React.JSX.Element} The rendered component
  */
-const UrlShortenerOutput: React.FC<UrlShortenerOutputProps> = ({
+const UrlShortenerOutput: React.FC<IUrlShortenerOutputProps> = ({
   results,
-}: UrlShortenerOutputProps): React.JSX.Element => {
+}: IUrlShortenerOutputProps): React.JSX.Element => {
   /**
    * Creates a text string containing all valid shortened URLs
    *

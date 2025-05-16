@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 /**
  * Props for the RandomUsernameGeneratorInput component.
  */
-interface RandomUsernameGeneratorInputProps {
+interface IRandomUsernameGeneratorInputProps {
   count: number;
   setCount: (value: number) => void;
   onGenerate: () => void;
@@ -21,13 +21,13 @@ interface RandomUsernameGeneratorInputProps {
  * @param props - The props for the RandomUsernameGeneratorInput component.
  * @returns The RandomUsernameGeneratorInput component.
  */
-const RandomUsernameGeneratorInput: React.FC<RandomUsernameGeneratorInputProps> = ({
+const RandomUsernameGeneratorInput: React.FC<IRandomUsernameGeneratorInputProps> = ({
   count,
   setCount,
   onGenerate,
   onClear,
   error,
-}: RandomUsernameGeneratorInputProps): React.JSX.Element => {
+}: IRandomUsernameGeneratorInputProps): React.JSX.Element => {
   /**
    * Handles the form submission event.
    * @param e - The form submission event.

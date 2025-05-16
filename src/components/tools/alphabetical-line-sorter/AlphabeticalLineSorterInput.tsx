@@ -4,7 +4,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { RadioBox } from "@/components/ui/radiobox";
 import { Textarea } from "@/components/ui/textarea";
 
-interface AlphabeticalLineSorterInputProps {
+interface IAlphabeticalLineSorterInputProps {
   input: string;
   setInput: (value: string) => void;
   reverseSort: boolean;
@@ -23,10 +23,10 @@ interface AlphabeticalLineSorterInputProps {
  * Provides a form for text input, sorting type, reverse sorting option, and duplicate removal.
  *
  * @component
- * @param {AlphabeticalLineSorterInputProps} props - Component props
+ * @param {IAlphabeticalLineSorterInputProps} props - Component props
  * @returns {JSX.Element} The rendered input form
  */
-const AlphabeticalLineSorterInput: React.FC<AlphabeticalLineSorterInputProps> = ({
+const AlphabeticalLineSorterInput: React.FC<IAlphabeticalLineSorterInputProps> = ({
   input,
   setInput,
   reverseSort,
@@ -38,7 +38,7 @@ const AlphabeticalLineSorterInput: React.FC<AlphabeticalLineSorterInputProps> = 
   onSubmit,
   onReset,
   onClear,
-}: AlphabeticalLineSorterInputProps): React.JSX.Element => {
+}: IAlphabeticalLineSorterInputProps): React.JSX.Element => {
   /**
    * Handles form submission to sort lines alphabetically
    * @param {*} e - Event object

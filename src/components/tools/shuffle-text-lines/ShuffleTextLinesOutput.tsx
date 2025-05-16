@@ -2,16 +2,16 @@ import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/com
 import { CopyButton } from "@/components/ui/copyButton";
 import { Textarea } from "@/components/ui/textarea";
 
-interface ShuffleTextLinesOutputProps {
+interface IShuffleTextLinesOutputProps {
   output: string;
 }
 
 /**
  * Displays the shuffled text output in a card with a copy button.
  */
-const ShuffleTextLinesOutput: React.FC<ShuffleTextLinesOutputProps> = ({
+const ShuffleTextLinesOutput: React.FC<IShuffleTextLinesOutputProps> = ({
   output,
-}: ShuffleTextLinesOutputProps): React.JSX.Element => {
+}: IShuffleTextLinesOutputProps): React.JSX.Element => {
   return (
     <Card>
       <CardHeader>

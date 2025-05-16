@@ -8,7 +8,7 @@ import { HelpTip } from "@/components/ui/helptip";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 
-interface JsonSorterInputProps {
+interface IJsonSorterInputProps {
   input: string;
   setInput: (value: string) => void;
   spareArrays: boolean;
@@ -22,10 +22,10 @@ interface JsonSorterInputProps {
 /**
  * Component for inputting JSON and configuring sorting options.
  *
- * @param {JsonSorterInputProps} props - Component props.
+ * @param {IJsonSorterInputProps} props - Component props.
  * @returns {JSX.Element} The rendered form with sorting options.
  */
-const JsonSorterInput: React.FC<JsonSorterInputProps> = ({
+const JsonSorterInput: React.FC<IJsonSorterInputProps> = ({
   input,
   setInput,
   spareArrays,
@@ -34,7 +34,7 @@ const JsonSorterInput: React.FC<JsonSorterInputProps> = ({
   onClear,
   onReset,
   error,
-}: JsonSorterInputProps): React.JSX.Element => {
+}: IJsonSorterInputProps): React.JSX.Element => {
   /**
    * Handles form submission by preventing default behavior and triggering sorting.
    *

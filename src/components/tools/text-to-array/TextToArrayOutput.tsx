@@ -5,10 +5,10 @@ import { Textarea } from "@/components/ui/textarea";
 /**
  * Props for the Text To Array Output component.
  *
- * @interface TextToArrayOutputProps
+ * @interface ITextToArrayOutputProps
  * @property {string} output - The converted array output to display.
  */
-interface TextToArrayOutputProps {
+interface ITextToArrayOutputProps {
   output: string;
 }
 
@@ -17,12 +17,12 @@ interface TextToArrayOutputProps {
  * It includes a readonly textarea for the output and a copy button for convenience.
  *
  * @component
- * @param {TextToArrayOutputProps} props - The props for the component.
+ * @param {ITextToArrayOutputProps} props - The props for the component.
  * @returns {JSX.Element} The rendered component.
  */
-const TextToArrayOutput: React.FC<TextToArrayOutputProps> = ({
+const TextToArrayOutput: React.FC<ITextToArrayOutputProps> = ({
   output,
-}: TextToArrayOutputProps): React.JSX.Element => {
+}: ITextToArrayOutputProps): React.JSX.Element => {
   return (
     <Card>
       <CardHeader>

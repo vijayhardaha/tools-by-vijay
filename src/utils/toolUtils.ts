@@ -1,28 +1,28 @@
 import { toolIcons } from "@/constants/toolIcons";
 import tools from "@/constants/tools";
-import { Tool } from "@/types";
+import { ITool } from "@/types";
 
 /**
  * Get all available tools
- * @returns {Tool[]} Array of all tool objects
+ * @returns {ITool[]} Array of all tool objects
  */
-export const getAllTools = (): Tool[] => tools;
+export const getAllTools = (): ITool[] => tools;
 
 /**
  * Find a tool by its slug
  * @param {string} slug - The slug to search for
- * @returns {Tool | null} The tool object if found, null otherwise
+ * @returns {ITool | null} The tool object if found, null otherwise
  */
-export const findToolBySlug = (slug: string): Tool | null => {
+export const findToolBySlug = (slug: string): ITool | null => {
   return tools.find((tool) => tool.slug === slug) || null;
 };
 
 /**
  * Get all tools that belong to a specific category
  * @param {string} category - The category slug to filter by
- * @returns {Tool[]} Array of tool objects in the category
+ * @returns {ITool[]} Array of tool objects in the category
  */
-export const getToolsByCategory = (category: string): Tool[] => {
+export const getToolsByCategory = (category: string): ITool[] => {
   return tools.filter((tool) => tool.category === category);
 };
 
@@ -39,9 +39,9 @@ export const getUniqueCategories = (): string[] => {
  * Get related tools based on the same category
  * @param {string} toolSlug - The slug of the current tool
  * @param {number} limit - Maximum number of related tools to return
- * @returns {Tool[]} Array of related tool objects
+ * @returns {ITool[]} Array of related tool objects
  */
-export const getRelatedTools = (toolSlug: string, limit = 3): Tool[] => {
+export const getRelatedTools = (toolSlug: string, limit = 3): ITool[] => {
   const currentTool = findToolBySlug(toolSlug);
   if (!currentTool) return [];
 
@@ -53,9 +53,9 @@ export const getRelatedTools = (toolSlug: string, limit = 3): Tool[] => {
 /**
  * Search tools by name or description
  * @param {string} query - The search query
- * @returns {Tool[]} Array of matching tool objects
+ * @returns {ITool[]} Array of matching tool objects
  */
-export const searchTools = (query: string): Tool[] => {
+export const searchTools = (query: string): ITool[] => {
   if (!query || query.trim() === "") return [];
 
   const searchTerm = query.toLowerCase().trim();
@@ -70,9 +70,9 @@ export const searchTools = (query: string): Tool[] => {
 
 /**
  * Group tools by their categories
- * @returns {Record<string, Tool[]>} An object with category slugs as keys and arrays of tools as values
+ * @returns {Record<string, ITool[]>} An object with category slugs as keys and arrays of tools as values
  */
-export const getToolsByCategories = (): Record<string, Tool[]> => {
+export const getToolsByCategories = (): Record<string, ITool[]> => {
   return tools.reduce(
     (grouped, tool) => {
       if (!grouped[tool.category]) {
@@ -81,7 +81,7 @@ export const getToolsByCategories = (): Record<string, Tool[]> => {
       grouped[tool.category].push(tool);
       return grouped;
     },
-    {} as Record<string, Tool[]>
+    {} as Record<string, ITool[]>
   );
 };
 

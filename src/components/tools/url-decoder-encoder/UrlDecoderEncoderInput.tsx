@@ -8,7 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 /**
  * Props for the UrlDecoderEncoderInput component.
  */
-interface UrlDecoderEncoderInputProps {
+interface IUrlDecoderEncoderInputProps {
   input: string;
   setInput: (value: string) => void;
   isEncoding: boolean;
@@ -22,10 +22,10 @@ interface UrlDecoderEncoderInputProps {
  * A component for accepting user input for URL encoding or decoding.
  * It includes a textarea for input, radio buttons to select the mode, and action buttons.
  *
- * @param {UrlDecoderEncoderInputProps} props - The props for the component.
+ * @param {IUrlDecoderEncoderInputProps} props - The props for the component.
  * @returns {React.JSX.Element} The rendered input component.
  */
-const UrlDecoderEncoderInput: React.FC<UrlDecoderEncoderInputProps> = ({
+const UrlDecoderEncoderInput: React.FC<IUrlDecoderEncoderInputProps> = ({
   input,
   setInput,
   isEncoding,
@@ -33,7 +33,7 @@ const UrlDecoderEncoderInput: React.FC<UrlDecoderEncoderInputProps> = ({
   onProcess,
   onClear,
   onReset,
-}: UrlDecoderEncoderInputProps): React.JSX.Element => {
+}: IUrlDecoderEncoderInputProps): React.JSX.Element => {
   /**
    * Handles the form submission to process the input.
    * @param {React.FormEvent} e - The form submission event.

@@ -1,14 +1,14 @@
 import Link from "next/link";
 
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Tool } from "@/types";
+import { ITool } from "@/types";
 import { cn } from "@/utils/classNameUtils";
 import { findToolBySlug, getIconForTool } from "@/utils/toolUtils";
 
 /**
  * Props for the ToolCard component.
  */
-interface ToolCardProps {
+interface IToolCardProps {
   slug: string;
   className?: string;
 }
@@ -18,8 +18,8 @@ interface ToolCardProps {
  * @param {ToolCardProps} props - The component props.
  * @returns {JSX.Element | null} The rendered ToolCard component.
  */
-const ToolCard = ({ slug, className = "" }: ToolCardProps): React.JSX.Element | null => {
-  const tool: Tool | null = findToolBySlug(slug);
+const ToolCard = ({ slug, className = "" }: IToolCardProps): React.JSX.Element | null => {
+  const tool: ITool | null = findToolBySlug(slug);
 
   if (!tool) return null;
 

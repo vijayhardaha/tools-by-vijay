@@ -5,7 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 /**
  * Props for the DropdownToArrayOutput component.
  */
-interface DropdownToArrayOutputProps {
+interface IDropdownToArrayOutputProps {
   output: string;
 }
 
@@ -17,9 +17,9 @@ interface DropdownToArrayOutputProps {
  * @param {DropdownToArrayOutputProps} props - The props for the component.
  * @returns {React.JSX.Element} The rendered component.
  */
-const DropdownToArrayOutput: React.FC<DropdownToArrayOutputProps> = ({
+const DropdownToArrayOutput: React.FC<IDropdownToArrayOutputProps> = ({
   output,
-}: DropdownToArrayOutputProps): React.JSX.Element => {
+}: IDropdownToArrayOutputProps): React.JSX.Element => {
   return (
     <Card>
       <CardHeader>
