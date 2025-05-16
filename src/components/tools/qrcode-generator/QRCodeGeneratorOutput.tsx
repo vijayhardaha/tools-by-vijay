@@ -2,10 +2,10 @@ import Image from "next/image";
 
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 
+/**
+ * Interface for the QRCodeGeneratorOutput component props.
+ */
 interface IQrCodeGeneratorOutputProps {
-  /**
-   * The URL of the generated QR code image.
-   */
   output: string;
 }
 

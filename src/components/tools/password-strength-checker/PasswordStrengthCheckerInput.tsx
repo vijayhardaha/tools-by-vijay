@@ -6,6 +6,9 @@ import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 
+/**
+ * Interface for the PasswordStrengthCheckerInput component props.
+ */
 interface IPasswordStrengthCheckerInputProps {
   password: string;
   onSubmit: (password: string) => void;

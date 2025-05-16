@@ -7,7 +7,7 @@ import TextCaseChangerInput from "./TextCaseChangerInput";
 import TextCaseChangerOutput from "./TextCaseChangerOutput";
 
 /**
- * Represents the supported text case transformations.
+ * Type representing the various text case options available for transformation.
  */
 export type TextCase =
   | "Sentence case"

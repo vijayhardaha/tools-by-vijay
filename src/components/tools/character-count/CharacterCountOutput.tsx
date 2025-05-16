@@ -2,6 +2,9 @@ import React from "react";
 
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
+/**
+ * Interface for the CharacterCountOutput component props.
+ */
 interface CharacterCountOutputProps {
   stats: {
     characters: number;

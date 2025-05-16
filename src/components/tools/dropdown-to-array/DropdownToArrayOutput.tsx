@@ -3,7 +3,7 @@ import { CopyButton } from "@/components/ui/copyButton";
 import { Textarea } from "@/components/ui/textarea";
 
 /**
- * Props for the DropdownToArrayOutput component.
+ * Interface for the CountryNameGeneratorOutput component props.
  */
 interface IDropdownToArrayOutputProps {
   output: string;

@@ -6,6 +6,9 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/utils/classNameUtils";
 
+/**
+ * Interface for the BulkSlugifyInput component props.
+ */
 interface IBulkSlugifyInputProps {
   input: string;
   useUnderscore: boolean;
@@ -30,6 +33,9 @@ interface IBulkSlugifyInputProps {
  * This component provides a form for users to input text strings to be slugified,
  * along with configuration options for the slugification process such as separator
  * type, case conversion, number removal, and character normalization.
+ *
+ * @param {IBulkSlugifyInputProps} props - The props for the component.
+ * @returns {React.JSX.Element} The rendered barcode input component.
  */
 const BulkSlugifyInput: React.FC<IBulkSlugifyInputProps> = ({
   input = "",

@@ -8,6 +8,7 @@ import ShuffleTextLinesOutput from "./ShuffleTextLinesOutput";
 
 /**
  * A tool for shuffling lines of text with options to remove duplicates.
+ *
  * @returns {React.JSX.Element} The ShuffleTextLinesTool component.
  */
 const ShuffleTextLinesTool: React.FC = (): React.JSX.Element => {

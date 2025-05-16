@@ -4,9 +4,7 @@ import { CopyButton } from "@/components/ui/copyButton";
 import { Textarea } from "@/components/ui/textarea";
 
 /**
- * Props for the HtmlMinifierOutput component.
- * @property {string} output - The minified HTML output.
- * @property {string} input - The original HTML input.
+ * Interface for the HtmlMinifierOutput component props.
  */
 interface IHtmlMinifierOutputProps {
   output: string;

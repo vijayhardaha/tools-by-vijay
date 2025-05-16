@@ -5,8 +5,7 @@ import { CopyButton } from "@/components/ui/copyButton";
 import { Input } from "@/components/ui/input";
 
 /**
- * Props for the PasswordGeneratorOutput component.
- * @property {string} password - The generated password to display.
+ * Interface for the PasswordGeneratorOutput component props.
  */
 interface IPasswordGeneratorOutputProps {
   password: string;

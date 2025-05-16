@@ -8,7 +8,8 @@ import UsernameGeneratorOutput from "./RandomUsernameGeneratorOutput";
 
 /**
  * A tool for generating random usernames.
- * @returns The RandomUsernameGeneratorTool component.
+ *
+ * @returns {React.JSX.Element} The RandomUsernameGeneratorTool component.
  */
 const RandomUsernameGeneratorTool: React.FC = (): React.JSX.Element => {
   const [count, setCount] = useState<number>(1);

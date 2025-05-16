@@ -3,6 +3,9 @@ import { CompressionInfo } from "@/components/ui/compressionInfo";
 import { CopyButton } from "@/components/ui/copyButton";
 import { Textarea } from "@/components/ui/textarea";
 
+/**
+ * Interface for the JsMinifierOutput component props.
+ */
 interface IJsMinifierOutputProps {
   output: string;
   input: string;

@@ -10,7 +10,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Textarea } from "@/components/ui/textarea";
 
 /**
- * Props for the HtmlMinifierInput component.
+ * Interface for the HTML Minifier input component props.
  */
 interface IHtmlMinifierInputProps {
   input: string;

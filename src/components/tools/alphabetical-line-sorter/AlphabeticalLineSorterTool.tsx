@@ -39,7 +39,7 @@ const AlphabeticalLineSorterTool: React.FC = (): React.JSX.Element => {
       .filter((line) => line !== "")
       .filter((line) => line.length > 0);
 
-    let sortedLines;
+    let sortedLines: any[];
     if (sortType === "ascii") {
       sortedLines = [...lines].sort();
     } else {

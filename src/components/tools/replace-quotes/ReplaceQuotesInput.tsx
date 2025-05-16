@@ -6,6 +6,9 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { RadioBox } from "@/components/ui/radiobox";
 import { Textarea } from "@/components/ui/textarea";
 
+/**
+ * Interface for the Replace Quotes input component props.
+ */
 interface IReplaceQuotesInputProps {
   input: string;
   setInput: (value: string) => void;

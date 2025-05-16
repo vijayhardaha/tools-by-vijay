@@ -5,6 +5,13 @@ import { CopyButton } from "@/components/ui/copyButton";
 import { Textarea } from "@/components/ui/textarea";
 
 /**
+ * Interface for the Replace Quotes output component props.
+ */
+interface IReplaceQuotesOutputProps {
+  output: string;
+}
+
+/**
  * Output component for the Replace Quotes tool.
  * Displays the processed text after replacing quotes with copy functionality.
  *
@@ -13,10 +20,6 @@ import { Textarea } from "@/components/ui/textarea";
  * @param {string} props.output - The processed text to display
  * @returns {React.JSX.Element} The rendered card with output display and copy functionality
  */
-interface IReplaceQuotesOutputProps {
-  output: string;
-}
-
 const ReplaceQuotesOutput: React.FC<IReplaceQuotesOutputProps> = ({
   output,
 }: IReplaceQuotesOutputProps): React.JSX.Element => {

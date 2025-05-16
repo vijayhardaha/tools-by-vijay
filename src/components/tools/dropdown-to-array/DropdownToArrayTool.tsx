@@ -9,6 +9,9 @@ import DropdownToArrayInfo from "./DropdownToArrayInfo";
 import DropdownToArrayInput from "./DropdownToArrayInput";
 import DropdownToArrayOutput from "./DropdownToArrayOutput";
 
+/**
+ * Interface for the option elements.
+ */
 interface IOption {
   value: string;
   text: string;

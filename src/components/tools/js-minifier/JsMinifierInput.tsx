@@ -7,6 +7,9 @@ import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/com
 import { Checkbox } from "@/components/ui/checkbox";
 import { Textarea } from "@/components/ui/textarea";
 
+/**
+ * Interface for the JavaScript Minifier input component props.
+ */
 interface IJsMinifierInputProps {
   input: string;
   setInput: (value: string) => void;

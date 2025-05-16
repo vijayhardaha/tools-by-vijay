@@ -3,7 +3,7 @@ import { CopyButton } from "@/components/ui/copyButton";
 import { Textarea } from "@/components/ui/textarea";
 
 /**
- * Props for the CountryNameGeneratorOutput component.
+ * Interface for the CountryNameGeneratorOutput component props.
  */
 interface CountryNameGeneratorOutputProps {
   output: string[];
@@ -11,8 +11,8 @@ interface CountryNameGeneratorOutputProps {
 
 /**
  * A component for displaying the generated country names.
- * @param props - The props for the CountryNameGeneratorOutput component.
- * @returns The CountryNameGeneratorOutput component.
+ * @param {CountryNameGeneratorOutputProps} props - The props for the CountryNameGeneratorOutput component.
+ * @returns {React.JSX.Element} The CountryNameGeneratorOutput component.
  */
 const CountryNameGeneratorOutput: React.FC<CountryNameGeneratorOutputProps> = ({
   output,

@@ -6,6 +6,9 @@ import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/com
 import { Select } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 
+/**
+ * Interface for the TextToPhpVariablesInput component props.
+ */
 interface ITextToPhpVariablesInputProps {
   input: string;
   setInput: (value: string) => void;

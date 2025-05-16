@@ -3,6 +3,9 @@
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 
+/**
+ * Interface for the CharacterCountInput component props.
+ */
 interface CharacterCountInputProps {
   text: string;
   setText: (value: string) => void;

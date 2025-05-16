@@ -4,7 +4,6 @@ import { Textarea } from "@/components/ui/textarea";
 
 /**
  * Props for the Base64EncodeDecodeOutput component.
- * @property {string} output - The processed Base64 string to display.
  */
 interface IBase64EncodeDecodeOutputProps {
   output: string;

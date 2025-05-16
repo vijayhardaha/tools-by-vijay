@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { cn } from "@/utils/classNameUtils";
 
 /**
- * Props for the SlugifyInput component.
+ * Interface for the SlugifyInput component props.
  */
 interface ISlugifyInputProps {
   input: string;

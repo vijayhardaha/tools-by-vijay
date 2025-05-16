@@ -8,7 +8,8 @@ import CountryNameGeneratorOutput from "./CountryNameGeneratorOutput";
 
 /**
  * A tool for generating random country names.
- * @returns The CountryNameGeneratorTool component.
+ *
+ * @returns {React.JSX.Element} The CountryNameGeneratorTool component.
  */
 const CountryNameGeneratorTool: React.FC = (): React.JSX.Element => {
   const [count, setCount] = useState<number>(1);

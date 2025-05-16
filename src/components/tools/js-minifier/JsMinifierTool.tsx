@@ -6,6 +6,9 @@ import JsMinifierInfo from "./JsMinifierInfo";
 import JsMinifierInput from "./JsMinifierInput";
 import JsMinifierOutput from "./JsMinifierOutput";
 
+/**
+ * Interface for the minification options.
+ */
 export interface IMinifyOptions {
   mangle: boolean;
   removeConsole: boolean;

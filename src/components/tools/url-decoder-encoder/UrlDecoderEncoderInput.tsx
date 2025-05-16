@@ -6,7 +6,7 @@ import { RadioBox } from "@/components/ui/radiobox";
 import { Textarea } from "@/components/ui/textarea";
 
 /**
- * Props for the UrlDecoderEncoderInput component.
+ * Interface for the UrlDecoderEncoderInput component props.
  */
 interface IUrlDecoderEncoderInputProps {
   input: string;

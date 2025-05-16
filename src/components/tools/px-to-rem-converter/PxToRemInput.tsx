@@ -4,6 +4,9 @@ import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/com
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
+/**
+ * Interface for the PxToRemInput component props.
+ */
 interface IPxToRemInputProps {
   pxValue: string;
   setPxValue: (value: string) => void;

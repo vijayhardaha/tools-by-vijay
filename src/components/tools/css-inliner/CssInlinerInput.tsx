@@ -6,6 +6,9 @@ import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/com
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 
+/**
+ * Interface for the CssInlinerInput component props.
+ */
 interface ICssInlinerInputProps {
   htmlInput: string;
   setHtmlInput: (value: string) => void;
@@ -17,6 +20,12 @@ interface ICssInlinerInputProps {
   error?: string;
 }
 
+/**
+ * Component for inputting HTML and CSS to inline styles.
+ *
+ * @param {ICssInlinerInputProps} props - The props for the CssInlinerInput component.
+ * @returns {React.JSX.Element} The CssInlinerInput component.
+ */
 const CssInlinerInput: React.FC<ICssInlinerInputProps> = ({
   htmlInput,
   setHtmlInput,

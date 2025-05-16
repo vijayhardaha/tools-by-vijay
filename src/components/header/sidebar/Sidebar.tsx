@@ -1,5 +1,3 @@
-"use client";
-
 import { Sheet, SheetContent } from "@/components/ui/sheet";
 
 import SidebarBody from "./SidebarBody";

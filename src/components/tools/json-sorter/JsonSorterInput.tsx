@@ -8,6 +8,9 @@ import { HelpTip } from "@/components/ui/helptip";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 
+/**
+ * Interface for the JSON sorter input component props.
+ */
 interface IJsonSorterInputProps {
   input: string;
   setInput: (value: string) => void;

@@ -8,14 +8,7 @@ import { Select } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 
 /**
- * Interface for minification options.
- * @property {number} level - The optimization level for minification.
- * @property {boolean} compress - Whether to enable compression.
- * @property {object} format - Formatting options for spaces.
- * @property {object} format.spaces - Space formatting options.
- * @property {boolean} format.spaces.aroundSelectorRelation - Space around selector relations.
- * @property {boolean} format.spaces.beforeBlockBegins - Space before blocks.
- * @property {boolean} format.spaces.beforeValue - Space before values.
+ * Interface for the minification options.
  */
 interface IMinificationOptions {
   level: number;
@@ -30,17 +23,7 @@ interface IMinificationOptions {
 }
 
 /**
- * Props for the CssMinifierInput component.
- * @property {string} input - The CSS input string.
- * @property {(value: string) => void} setInput - Function to update the CSS input.
- * @property {IMinificationOptions} options - The minification options.
- * @property {(key: string, value: any) => void} updateOption - Function to update a minification option.
- * @property {(key: string, value: boolean) => void} updateSpacesOption - Function to update a space formatting option.
- * @property {() => void} onSubmit - Function to handle form submission.
- * @property {() => void} onClear - Function to clear the input.
- * @property {() => void} onReset - Function to reset the form to default values.
- * @property {boolean} isLoading - Whether the form is in a loading state.
- * @property {string} [error] - Optional error message to display.
+ * Interface for the CssMinifierInput component props.
  */
 interface ICssMinifierInputProps {
   input: string;

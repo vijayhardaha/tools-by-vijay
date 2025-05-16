@@ -6,6 +6,9 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
 
+/**
+ * Interface for the QR code generator input component props.
+ */
 interface IQrCodeGeneratorInputProps {
   input: string;
   setInput: (value: string) => void;

@@ -9,6 +9,9 @@ import { Label } from "@/components/ui/label";
 import { Select } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 
+/**
+ * Interface for the TextToArrayInput component props.
+ */
 interface ITextToArrayInputProps {
   input: string;
   setInput: (value: string) => void;
@@ -33,8 +36,8 @@ interface ITextToArrayInputProps {
  * Provides a form with controls for text input, output format, and array structure.
  *
  * @component
- * @param {Object} props - Component props
- * @returns {React.JSX.Element} The rendered form with conversion options
+ * @param {ITextToArrayInputProps} props - The props for the component.
+ * @returns {React.JSX.Element} The rendered TextToArrayInput component.
  */
 const TextToArrayInput: React.FC<ITextToArrayInputProps> = ({
   input,

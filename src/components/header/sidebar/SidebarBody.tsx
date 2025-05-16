@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useRef, useEffect } from "react";
 
 import Link from "next/link";
@@ -40,13 +38,7 @@ const NavLink: React.FC<INavLinkProps> = ({
  * Props for the CategorySection component.
  */
 type ICategorySectionProps = {
-  /**
-   * Category title.
-   */
   title: string;
-  /**
-   * Tools in this category.
-   */
   tools: {
     slug: string;
     name: string;
@@ -88,7 +80,6 @@ const SidebarBody: React.FC = (): React.JSX.Element => {
   useEffect(() => {
     // Initialize scrollbar or perform additional setup if needed
     if (scrollbarsRef.current) {
-      // Example: scroll to top on component mount
       scrollbarsRef.current.scrollToTop();
     }
   }, []);

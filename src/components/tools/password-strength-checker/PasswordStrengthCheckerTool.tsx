@@ -7,7 +7,7 @@ import PasswordStrengthCheckerInput from "./PasswordStrengthCheckerInput";
 import PasswordStrengthCheckerOutput from "./PasswordStrengthCheckerOutput";
 
 /**
- * Type definition for password strength feedback.
+ * Interface for the password strength feedback.
  */
 interface PasswordFeedback {
   warning: string;
@@ -15,7 +15,7 @@ interface PasswordFeedback {
 }
 
 /**
- * Type definition for password strength criteria.
+ * Interface for the password strength criteria.
  */
 interface PasswordCriteria {
   length: boolean;
@@ -26,7 +26,7 @@ interface PasswordCriteria {
 }
 
 /**
- * Type definition for password strength result.
+ * Interface for the password strength analysis result.
  */
 interface PasswordStrength {
   score: number;

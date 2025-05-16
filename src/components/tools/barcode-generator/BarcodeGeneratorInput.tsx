@@ -4,6 +4,9 @@ import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 
+/**
+ * Props for the BarcodeGeneratorInput component.
+ */
 interface IBarcodeGeneratorInputProps {
   input: string;
   setInput: (value: string) => void;

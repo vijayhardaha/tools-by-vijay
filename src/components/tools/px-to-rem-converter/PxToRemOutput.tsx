@@ -4,6 +4,9 @@ import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/com
 import { CopyButton } from "@/components/ui/copyButton";
 import { Input } from "@/components/ui/input";
 
+/**
+ * Interface for the PxToRemOutput component props.
+ */
 interface IPxToRemOutputProps {
   remValue: string;
 }

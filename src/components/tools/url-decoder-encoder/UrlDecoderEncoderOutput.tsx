@@ -3,8 +3,7 @@ import { CopyButton } from "@/components/ui/copyButton";
 import { Textarea } from "@/components/ui/textarea";
 
 /**
- * Props for the UrlDecoderEncoderOutput component.
- * @property {string} output - The processed URL string to display.
+ * Interface for the CountryNameGeneratorOutput component props.
  */
 interface IUrlDecoderEncoderOutputProps {
   output: string;

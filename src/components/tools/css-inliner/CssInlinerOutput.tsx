@@ -3,8 +3,7 @@ import { CopyButton } from "@/components/ui/copyButton";
 import { Textarea } from "@/components/ui/textarea";
 
 /**
- * Props for the CssInlinerOutput component.
- * @property {string} output - The resulting HTML with inlined CSS to display.
+ * Interface for the CountryNameGeneratorOutput component props.
  */
 interface CssInlinerOutputProps {
   output: string;

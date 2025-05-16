@@ -6,7 +6,7 @@ import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/com
 import { Input } from "@/components/ui/input";
 
 /**
- * Props for the RandomUsernameGeneratorInput component.
+ * Interface for the CountryNameGeneratorInput component props.
  */
 interface IRandomUsernameGeneratorInputProps {
   count: number;
@@ -18,8 +18,9 @@ interface IRandomUsernameGeneratorInputProps {
 
 /**
  * A component for accepting input to generate usernames.
- * @param props - The props for the RandomUsernameGeneratorInput component.
- * @returns The RandomUsernameGeneratorInput component.
+ *
+ * @param {IRandomUsernameGeneratorInputProps} props - The props for the RandomUsernameGeneratorInput component.
+ * @returns {React.JSX.Element} The RandomUsernameGeneratorInput component.
  */
 const RandomUsernameGeneratorInput: React.FC<IRandomUsernameGeneratorInputProps> = ({
   count,
@@ -30,7 +31,7 @@ const RandomUsernameGeneratorInput: React.FC<IRandomUsernameGeneratorInputProps>
 }: IRandomUsernameGeneratorInputProps): React.JSX.Element => {
   /**
    * Handles the form submission event.
-   * @param e - The form submission event.
+   * @param {React.FormEvent} e - The form submission event.
    */
   const handleSubmit = (e: React.FormEvent): void => {
     e.preventDefault();

@@ -4,7 +4,7 @@ import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/com
 import { CopyButton } from "@/components/ui/copyButton";
 
 /**
- * Represents a single URL shortening result
+ * Interface for the URL shortener result.
  */
 interface IUrlShortenerResult {
   originalUrl: string;
@@ -13,20 +13,20 @@ interface IUrlShortenerResult {
 }
 
 /**
- * Props for the UrlShortenerOutput component
+ * Interface for the UrlShortenerOutput component props.
  */
 interface IUrlShortenerOutputProps {
   results: IUrlShortenerResult[];
 }
 
 /**
- * Component to display the results of the URL shortening process
+ * Component to display the results of the URL shortening process.
  *
  * This component renders a list of shortened URLs along with their original URLs,
  * validity status, and options to copy individual or all valid shortened URLs.
  *
- * @param {IUrlShortenerOutputProps} props - Props for the component
- * @returns {React.JSX.Element} The rendered component
+ * @param {IUrlShortenerOutputProps} props - The props for the component.
+ * @returns {React.JSX.Element} The rendered component.
  */
 const UrlShortenerOutput: React.FC<IUrlShortenerOutputProps> = ({
   results,

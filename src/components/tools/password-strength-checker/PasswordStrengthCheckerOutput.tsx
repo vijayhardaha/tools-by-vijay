@@ -8,7 +8,10 @@ import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/com
 import { Progress } from "@/components/ui/progress";
 import { cn } from "@/utils/classNameUtils";
 
-type PasswordStrength = {
+/**
+ * Interface for the password strength analysis result.
+ */
+interface PasswordStrength {
   score: number;
   feedback: {
     warning: string;
@@ -21,8 +24,11 @@ type PasswordStrength = {
     hasDigit: boolean;
     hasSpecialChar: boolean;
   };
-};
+}
 
+/**
+ * Interface for the PasswordStrengthCheckerOutput component props.
+ */
 interface PasswordStrengthCheckerOutputProps {
   strength: PasswordStrength;
 }

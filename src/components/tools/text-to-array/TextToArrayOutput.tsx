@@ -3,10 +3,7 @@ import { CopyButton } from "@/components/ui/copyButton";
 import { Textarea } from "@/components/ui/textarea";
 
 /**
- * Props for the Text To Array Output component.
- *
- * @interface ITextToArrayOutputProps
- * @property {string} output - The converted array output to display.
+ * Interface for the CountryNameGeneratorOutput component props.
  */
 interface ITextToArrayOutputProps {
   output: string;

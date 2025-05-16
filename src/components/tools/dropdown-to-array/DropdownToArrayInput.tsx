@@ -10,7 +10,7 @@ import { Select } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 
 /**
- * Props for the DropdownToArrayInput component.
+ * Interface for the DropdownToArrayInput component props.
  */
 interface IDropdownToArrayInputProps {
   input: string;

@@ -29,7 +29,12 @@ type ISocialMediaLink = {
  * @param {ISocialButtonProps} props - Props for the SocialButton component.
  * @returns {React.JSX.Element} The rendered social button.
  */
-const SocialButton: React.FC<ISocialButtonProps> = ({ icon: Icon, href, label, color }) => (
+const SocialButton: React.FC<ISocialButtonProps> = ({
+  icon: Icon,
+  href,
+  label,
+  color,
+}: ISocialButtonProps): React.JSX.Element => (
   <Button
     variant="primary"
     size="icon"

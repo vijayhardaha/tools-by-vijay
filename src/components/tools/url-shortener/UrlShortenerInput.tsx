@@ -6,7 +6,7 @@ import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/com
 import { Textarea } from "@/components/ui/textarea";
 
 /**
- * Props for the UrlShortenerInput component
+ * Interface for the UrlShortenerInput component props.
  */
 interface IUrlShortenerInputProps {
   input: string;

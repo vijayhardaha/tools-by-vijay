@@ -5,6 +5,9 @@ import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/com
 import { Checkbox } from "@/components/ui/checkbox";
 import { Textarea } from "@/components/ui/textarea";
 
+/**
+ * Interface for the Shuffle Text Lines input component props.
+ */
 interface IShuffleTextLinesInputProps {
   input: string;
   setInput: (value: string) => void;
@@ -24,6 +27,8 @@ interface IShuffleTextLinesInputProps {
  * Provides a form for text input and options to shuffle lines randomly.
  *
  * @component
+ * @param {IShuffleTextLinesInputProps} props - The props for the component.
+ * @returns {React.JSX.Element} The input component for the Shuffle Text Lines tool.
  */
 const ShuffleTextLinesInput: React.FC<IShuffleTextLinesInputProps> = ({
   input,

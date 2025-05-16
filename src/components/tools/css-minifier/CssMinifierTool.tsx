@@ -7,17 +7,7 @@ import CssMinifierInput from "./CssMinifierInput";
 import CssMinifierOutput from "./CssMinifierOutput";
 
 /**
- * Interface for minification options.
- * @property {number} level - The optimization level for minification.
- * @property {boolean} compress - Whether to enable compression.
- * @property {object} format - Formatting options for the output.
- * @property {number} format.indentBy - Number of spaces for indentation.
- * @property {string} format.indentWith - Type of indentation ("space" or "tab").
- * @property {object} format.spaces - Space formatting options.
- * @property {boolean} format.spaces.aroundSelectorRelation - Space around selector relations.
- * @property {boolean} format.spaces.beforeBlockBegins - Space before blocks.
- * @property {boolean} format.spaces.beforeValue - Space before values.
- * @property {boolean | number} format.wrapAt - Wrap output at a specific character count or disable wrapping.
+ * Interface for the minification options.
  */
 interface IMinificationOptions {
   level: number;

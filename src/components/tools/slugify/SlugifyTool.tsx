@@ -9,6 +9,11 @@ import SlugifyInfo from "./SlugifyInfo";
 import SlugifyInput from "./SlugifyInput";
 import SlugifyOutput from "./SlugifyOutput";
 
+/**
+ * Main component for the Slugify Tool.
+ *
+ * @returns {React.JSX.Element} The complete Slugify Tool interface.
+ */
 const SlugifyTool: React.FC = (): React.JSX.Element => {
   const [input, setInput] = useState<string>("");
   const [output, setOutput] = useState<string>("");

@@ -6,7 +6,7 @@ import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/com
 import { Input } from "@/components/ui/input";
 
 /**
- * Props for the CountryNameGeneratorInput component.
+ * Interface for the CountryNameGeneratorInput component props.
  */
 interface CountryNameGeneratorInputProps {
   count: number;
@@ -18,8 +18,9 @@ interface CountryNameGeneratorInputProps {
 
 /**
  * A component for accepting input to generate country names.
- * @param props - The props for the CountryNameGeneratorInput component.
- * @returns The CountryNameGeneratorInput component.
+ *
+ * @param {CountryNameGeneratorInputProps}props - The props for the CountryNameGeneratorInput component.
+ * @returns {React.JSX.Element} The CountryNameGeneratorInput component.
  */
 const CountryNameGeneratorInput: React.FC<CountryNameGeneratorInputProps> = ({
   count,
@@ -30,7 +31,7 @@ const CountryNameGeneratorInput: React.FC<CountryNameGeneratorInputProps> = ({
 }: CountryNameGeneratorInputProps): React.JSX.Element => {
   /**
    * Handles the form submission event.
-   * @param e - The form submission event.
+   * @param {React.FormEvent} e - The form submission event.
    */
   const handleSubmit = (e: React.FormEvent): void => {
     e.preventDefault();

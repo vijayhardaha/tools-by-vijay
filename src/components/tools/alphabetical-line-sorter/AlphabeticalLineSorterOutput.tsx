@@ -2,6 +2,9 @@ import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/com
 import { CopyButton } from "@/components/ui/copyButton";
 import { Textarea } from "@/components/ui/textarea";
 
+/**
+ * Props for the AlphabeticalLineSorterOutput component.
+ */
 interface IAlphabeticalLineSorterOutputProps {
   output: string;
 }

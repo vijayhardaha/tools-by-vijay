@@ -3,16 +3,17 @@ import { CopyButton } from "@/components/ui/copyButton";
 import { Textarea } from "@/components/ui/textarea";
 
 /**
- * Props for the TextCaseChangerOutput component.
+ * Interface for the CountryNameGeneratorOutput component props.
  */
 interface ITextCaseChangerOutputProps {
   output: string;
 }
 
 /**
- * A component for displaying the transformed text and providing a copy button.
- * @param props - The props for the TextCaseChangerOutput component.
- * @returns The TextCaseChangerOutput component.
+ * Component for displaying the transformed text and providing a copy button.
+ *
+ * @param {ITextCaseChangerOutputProps} props - The props for the TextCaseChangerOutput component.
+ * @returns {React.JSX.Element} The TextCaseChangerOutput component.
  */
 const TextCaseChangerOutput: React.FC<ITextCaseChangerOutputProps> = ({
   output,

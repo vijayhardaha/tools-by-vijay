@@ -10,7 +10,7 @@ import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
 
 /**
- * Props for the PasswordGeneratorInput component.
+ * Interface for the password generation input component props.
  */
 interface IPasswordGeneratorInputProps {
   length: number;

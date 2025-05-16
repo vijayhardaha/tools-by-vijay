@@ -4,6 +4,9 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { RadioBox } from "@/components/ui/radiobox";
 import { Textarea } from "@/components/ui/textarea";
 
+/**
+ * Props for the AlphabeticalLineSorterInput component.
+ */
 interface IAlphabeticalLineSorterInputProps {
   input: string;
   setInput: (value: string) => void;

@@ -7,15 +7,7 @@ import { RadioBox } from "@/components/ui/radiobox";
 import { Textarea } from "@/components/ui/textarea";
 
 /**
- * Props for the UnminifyInput component.
- * @property {string} input - The code input string.
- * @property {(value: string) => void} setInput - Function to update the code input.
- * @property {string} codeType - The selected code type.
- * @property {(value: string) => void} setCodeType - Function to update the selected code type.
- * @property {() => void} onSubmit - Function to handle form submission.
- * @property {() => void} onClear - Function to clear the input.
- * @property {boolean} isLoading - Whether the form is in a loading state.
- * @property {string} [error] - Optional error message to display.
+ * Interface for the UnminifyInput component props.
  */
 interface IUnminifyInputProps {
   input: string;
@@ -29,7 +21,7 @@ interface IUnminifyInputProps {
 }
 
 /**
- * A component for accepting code input and triggering unminification.
+ * Component for accepting code input and triggering unminification.
  *
  * @param {IUnminifyInputProps} props - The props for the component.
  * @returns {React.JSX.Element} The rendered UnminifyInput component.

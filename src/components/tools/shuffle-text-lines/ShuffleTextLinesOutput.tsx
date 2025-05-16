@@ -2,12 +2,19 @@ import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/com
 import { CopyButton } from "@/components/ui/copyButton";
 import { Textarea } from "@/components/ui/textarea";
 
+/**
+ * Interface for the JsonSorterOutput component props.
+ */
 interface IShuffleTextLinesOutputProps {
   output: string;
 }
 
 /**
  * Displays the shuffled text output in a card with a copy button.
+ *
+ * @component
+ * @param {IShuffleTextLinesOutputProps} props - The component props.
+ * @returns {React.JSX.Element} The rendered card with output display and copy functionality.
  */
 const ShuffleTextLinesOutput: React.FC<IShuffleTextLinesOutputProps> = ({
   output,

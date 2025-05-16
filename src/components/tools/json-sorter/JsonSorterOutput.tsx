@@ -2,6 +2,9 @@ import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/com
 import { CopyButton } from "@/components/ui/copyButton";
 import { Textarea } from "@/components/ui/textarea";
 
+/**
+ * Interface for the JsonSorterOutput component props.
+ */
 interface IJsonSorterOutputProps {
   output: string;
 }

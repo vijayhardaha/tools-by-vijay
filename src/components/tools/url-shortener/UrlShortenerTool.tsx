@@ -17,12 +17,12 @@ interface UrlResult {
 }
 
 /**
- * Main component for the URL Shortener Tool
+ * Main component for the URL Shortener Tool.
  *
  * This component manages the state and functionality of the URL shortener tool,
  * allowing users to shorten multiple URLs in bulk using the TinyURL API.
  *
- * @returns {React.JSX.Element} The complete URL Shortener Tool interface
+ * @returns {React.JSX.Element} The rendered URL Shortener Tool component.
  */
 const UrlShortenerTool: React.FC = (): React.JSX.Element => {
   const [input, setInput] = useState<string>("");

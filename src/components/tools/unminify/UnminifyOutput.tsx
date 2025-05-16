@@ -3,15 +3,14 @@ import { CopyButton } from "@/components/ui/copyButton";
 import { Textarea } from "@/components/ui/textarea";
 
 /**
- * Props for the UnminifyOutput component.
- * @property {string} output - The unminified code output.
+ * Interface for the CountryNameGeneratorOutput component props.
  */
 interface IUnminifyOutputProps {
   output: string;
 }
 
 /**
- * A component that displays the unminified code output.
+ * Component that displays the unminified code output.
  *
  * @param {IUnminifyOutputProps} props - The props for the component.
  * @returns {React.JSX.Element} The rendered UnminifyOutput component.

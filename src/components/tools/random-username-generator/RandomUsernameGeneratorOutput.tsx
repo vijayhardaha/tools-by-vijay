@@ -3,7 +3,7 @@ import { CopyButton } from "@/components/ui/copyButton";
 import { Textarea } from "@/components/ui/textarea";
 
 /**
- * Props for the RandomUsernameGeneratorOutput component.
+ * Interface for the CountryNameGeneratorOutput component props.
  */
 interface IRandomUsernameGeneratorOutputProps {
   output: string[];
