@@ -8,7 +8,7 @@ import { generateMeta, IMetadata } from "@/utils/seoUtils";
  * @type {IMetadata}
  */
 export const metadata: IMetadata = generateMeta({
-  title: "About Me",
+  title: "About Vijay Hardaha",
   description:
     "Discover Vijay, a passionate web developer and vegan, who built this fast, privacy-focused tool platform. Learn about the motivation, technology stack, and commitment to user experience.",
   slug: "about",
