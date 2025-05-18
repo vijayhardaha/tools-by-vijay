@@ -53,7 +53,7 @@ function readSitemap(filePath) {
 }
 
 /**
- * Notifies IndexNow API with a list of URLs.
+ * Notifies IndexNow API with a list of URLs, processing each URL individually and asynchronously.
  * @param {string[]} urls - Array of URLs to notify.
  * @returns {Promise<void>}
  */
@@ -62,45 +62,38 @@ async function notifyIndexNow(urls) {
     console.warn("No URLs to notify IndexNow.");
     return;
   }
-  for (const url of urls) {
-    console.log(`Processing URL: ${url}`);
-  }
-  let res;
-  try {
-    res = await fetch("https://api.indexnow.org/indexnow", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        host: new URL(siteUrl).host,
-        key,
-        keyLocation,
-        urlList: urls,
-      }),
-    });
-  } catch (err) {
-    console.error("❌ Network error while submitting to IndexNow:", err);
-    for (const url of urls) {
-      console.log(`Status for ${url}: Failed (Network error)`);
-    }
-    return;
-  }
 
-  if (res && res.ok) {
-    for (const url of urls) {
-      console.log(`Status for ${url}: Success`);
-    }
-    console.log("✅ URLs submitted to IndexNow");
-  } else {
-    let errorText = "";
+  for (const url of urls) {
+    let res;
     try {
-      errorText = res ? await res.text() : "No response";
-    } catch (e) {
-      errorText = e instanceof Error ? e.message : "Unknown error";
+      res = await fetch("https://api.indexnow.org/indexnow", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          host: new URL(siteUrl).host,
+          key,
+          keyLocation,
+          urlList: [url],
+        }),
+      });
+    } catch (err) {
+      console.error(`❌ Network error while submitting ${url} to IndexNow:`, err);
+      console.log(`Status for ${url}: Failed (Network error)`);
+      continue;
     }
-    for (const url of urls) {
+
+    if (res && res.ok) {
+      console.log(`Status for ${url}: ✅ Success`);
+    } else {
+      let errorText = "";
+      try {
+        errorText = res ? await res.text() : "No response";
+      } catch (e) {
+        errorText = e instanceof Error ? e.message : "Unknown error";
+      }
       console.log(`Status for ${url}: Failed (${errorText})`);
+      console.error(`❌ Submission failed for ${url}:`, errorText);
     }
-    console.error("❌ Submission failed:", errorText);
   }
 }
 
