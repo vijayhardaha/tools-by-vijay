@@ -1,5 +1,8 @@
 import Link from "next/link";
 
+/**
+ * Interface representing the props for the FooterWidget component.
+ */
 type IFooterWidgetProps = {
   title: string;
   links: {
