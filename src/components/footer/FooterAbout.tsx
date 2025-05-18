@@ -55,13 +55,13 @@ const SocialButton: React.FC<ISocialButtonProps> = ({
  */
 const FooterAbout: React.FC = (): React.JSX.Element => {
   return (
-    <div className="flex flex-col gap-4">
+    <div className="mb-6 flex flex-col gap-4">
       <div className="space-y-2">
         <div>
           <Logo className="mb-3 h-12" />
         </div>
 
-        <p className="text-foreground text-sm">
+        <p className="text-foreground text-base">
           Discover a powerful suite of free online developer tools designed to boost your
           productivity and streamline your workflow. Whether you need advanced code optimization,
           text transformation, or quick utility tools, our platform offers fast, reliable, and

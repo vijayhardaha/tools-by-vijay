@@ -31,7 +31,7 @@ const FooterWidget: React.FC<IFooterWidgetProps> = ({
   };
 
   return (
-    <div className="footer-widget">
+    <nav className="footer-widget" aria-label={title}>
       <h3 className="mb-2 text-base font-bold">{title}</h3>
       <ul className="flex flex-col gap-1">
         {links.map((link) => (
@@ -49,7 +49,7 @@ const FooterWidget: React.FC<IFooterWidgetProps> = ({
           </li>
         ))}
       </ul>
-    </div>
+    </nav>
   );
 };
 
