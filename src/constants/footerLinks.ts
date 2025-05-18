@@ -1,5 +1,5 @@
 /**
- * Interface representing a footer link
+ * Interface representing a footer link.
  */
 interface IFooterLink {
   name: string;
