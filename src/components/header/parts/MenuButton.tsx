@@ -20,8 +20,9 @@ type IMenuButtonProps = {
 const MenuButton: React.FC<IMenuButtonProps> = ({
   onClick,
 }: IMenuButtonProps): React.JSX.Element => (
-  <Button onClick={onClick} variant="primary" className="w-12 md:w-auto">
+  <Button onClick={onClick} variant="primary" className="w-12 md:w-auto" aria-label="Menu">
     <span className="hidden md:inline-flex">Menu</span>
+    <span className="sr-only">Menu</span>
     <RiMenu3Fill />
   </Button>
 );
