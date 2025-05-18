@@ -63,7 +63,7 @@ export const searchTools = (query: string): ITool[] => {
     return (
       tool.name.toLowerCase().includes(searchTerm) ||
       tool.shortDescription.toLowerCase().includes(searchTerm) ||
-      tool.pageDescription.toLowerCase().includes(searchTerm)
+      tool.description.toLowerCase().includes(searchTerm)
     );
   });
 };

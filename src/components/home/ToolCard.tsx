@@ -39,7 +39,7 @@ const ToolCard = ({ slug, className = "" }: IToolCardProps): React.JSX.Element |
             <CardTitle component="h3">{tool.name}</CardTitle>
           </div>
 
-          <CardDescription className="lg:pr-14">{tool.pageDescription}</CardDescription>
+          <CardDescription className="lg:pr-14">{tool.description}</CardDescription>
         </CardHeader>
       </Card>
     </Link>

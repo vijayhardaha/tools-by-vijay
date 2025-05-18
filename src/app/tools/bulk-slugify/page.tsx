@@ -42,7 +42,7 @@ const BulkSlugify: React.FC = (): React.JSX.Element => {
     <PageLayout>
       <PageHeader
         title={tool.name}
-        description={tool.pageDescription}
+        description={tool.description}
         icon={getIconForTool(tool.slug)}
       />
       <PageContent>

@@ -6,8 +6,7 @@ import React from "react";
 export interface ITool {
   name: string;
   slug: string;
-  shortDescription: string;
-  pageDescription: string;
+  description: string;
   seoTitle: string;
   seoDescription: string;
   category: string;
