@@ -52,20 +52,18 @@ const Home: React.FC = (): React.JSX.Element => {
 
       <div className="text-muted-foreground mb-12 space-y-12">
         <section>
-          <h2 className="text-foreground mb-2 text-2xl font-bold">
-            Why Use Online Developer Tools?
-          </h2>
+          <h2 className="text-foreground mb-2 text-2xl font-bold">Why Use These Everyday Tools?</h2>
           <div className="space-y-4">
             <p>
-              Gone are the days when every task needed a heavy desktop app or local installation.
-              Online tools have revolutionized how developers build, test, and deploy software.
-              Whether you're working on a side project, debugging in production, or preparing a
-              quick prototype, our tools are always accessible - right from your browser.
+              These tools are built to simplify the small but essential tasks developers and
+              creators face daily — from generating clean slugs to checking password strength or
+              formatting code snippets. They save time, reduce friction, and help you stay focused
+              on your actual work.
             </p>
             <p>
-              Online tools reduce setup time, improve cross-platform compatibility, and work
-              seamlessly across environments. They are lightweight, focused, and save precious
-              minutes (or even hours) by offering instant functionality at your fingertips.
+              Unlike bloated platforms filled with ads and distractions, these tools are fast,
+              minimal, and privacy-respecting. No tracking, no clutter — just useful functionality
+              that works right in your browser, anytime you need it.
             </p>
           </div>
         </section>
