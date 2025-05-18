@@ -14,7 +14,7 @@ const tools: ITool[] = [
     seoTitle: "Slugify Tool – Instantly Create SEO-Friendly URL Slugs",
     seoDescription:
       "Generate optimized, readable slugs from text. Improve your URLs for search engines and users.",
-    category: "text-transformation",
+    category: "text-transformation-tools",
   },
   {
     name: "Bulk Slugify",
@@ -25,7 +25,7 @@ const tools: ITool[] = [
     seoTitle: "Bulk Slugify Tool – Batch Convert Strings into URL Slugs",
     seoDescription:
       "Efficiently slugify multiple lines of text at once. Perfect for bulk URL generation.",
-    category: "text-transformation",
+    category: "text-transformation-tools",
   },
   {
     name: "Password Generator",
@@ -36,7 +36,7 @@ const tools: ITool[] = [
     seoTitle: "Password Generator – Create Strong & Secure Passwords Online",
     seoDescription:
       "Generate complex, secure passwords quickly. Ideal for personal and professional use.",
-    category: "security",
+    category: "security-tools",
   },
   {
     name: "Password Strength Checker",
@@ -47,7 +47,7 @@ const tools: ITool[] = [
     seoTitle: "Password Strength Checker – Analyze Password Security",
     seoDescription:
       "Check how strong your password is with real-time analysis and security suggestions.",
-    category: "security",
+    category: "security-tools",
   },
   {
     name: "HTML Minifier",
@@ -58,7 +58,7 @@ const tools: ITool[] = [
     seoTitle: "HTML Minifier – Compress HTML for Better Performance",
     seoDescription:
       "Shrink HTML files and improve SEO and speed by removing unnecessary whitespace.",
-    category: "code-optimization",
+    category: "code-optimization-tools",
   },
   {
     name: "CSS Minifier",
@@ -69,7 +69,7 @@ const tools: ITool[] = [
     seoTitle: "CSS Minifier – Optimize CSS for Faster Load Times",
     seoDescription:
       "Minify CSS for reduced file size and improved page speed. Quick and effective.",
-    category: "code-optimization",
+    category: "code-optimization-tools",
   },
   {
     name: "JS Minifier",
@@ -79,7 +79,7 @@ const tools: ITool[] = [
       "Optimize your JavaScript files by removing extra spaces and comments for faster loading.",
     seoTitle: "JavaScript Minifier – Compress JS Code Instantly",
     seoDescription: "Speed up your site with compressed JavaScript. Simple, efficient, and fast.",
-    category: "code-optimization",
+    category: "code-optimization-tools",
   },
   {
     name: "URL Shortener",
@@ -89,7 +89,7 @@ const tools: ITool[] = [
       "Generate short links in bulk with the help of TinyURL and simplify your URLs.",
     seoTitle: "URL Shortener – Bulk Short URL Generator with TinyURL",
     seoDescription: "Shorten many links at once using TinyURL. Ideal for marketers and developers.",
-    category: "web-utilities",
+    category: "web-utility-tools",
   },
   {
     name: "Dropdown to Array",
@@ -99,7 +99,7 @@ const tools: ITool[] = [
     seoTitle: "Dropdown to Array – Convert HTML Options to Code",
     seoDescription:
       "Easily convert dropdown options into PHP or JS arrays for seamless integration.",
-    category: "data-conversion",
+    category: "data-conversion-tools",
   },
   {
     name: "Text to Array",
@@ -110,7 +110,7 @@ const tools: ITool[] = [
     seoTitle: "Text to Array – Instantly Generate PHP/JS Arrays",
     seoDescription:
       "Turn text into clean, structured arrays for coding purposes. Fast and developer-friendly.",
-    category: "data-conversion",
+    category: "data-conversion-tools",
   },
   {
     name: "JSON Sorter",
@@ -121,7 +121,7 @@ const tools: ITool[] = [
     seoTitle: "JSON Sorter – Organize JSON Keys Alphabetically",
     seoDescription:
       "Sort JSON data for clarity and ease of use. Great for developers and data handling.",
-    category: "code-optimization",
+    category: "code-optimization-tools",
   },
   {
     name: "Duplicate Line Removal",
@@ -132,7 +132,7 @@ const tools: ITool[] = [
     seoTitle: "Duplicate Line Remover – Eliminate Repeated Lines",
     seoDescription:
       "Remove duplicate lines in your content with one click. Clean up your data instantly.",
-    category: "text-transformation",
+    category: "text-transformation-tools",
   },
   {
     name: "Alphabetical Line Sorter",
@@ -142,7 +142,7 @@ const tools: ITool[] = [
       "Arrange lines in alphabetical, reverse, or numeric order with this line sorting tool.",
     seoTitle: "Text Line Sorter – Sort Lines Alphabetically or Numerically",
     seoDescription: "Sort text lines in multiple ways for organized content. Fast and reliable.",
-    category: "text-transformation",
+    category: "text-transformation-tools",
   },
   {
     name: "CSS Inliner",
@@ -153,7 +153,7 @@ const tools: ITool[] = [
     seoTitle: "CSS Inliner – Convert CSS into Inline HTML Styles",
     seoDescription:
       "Inline your CSS for email compatibility or simplified delivery. Quick and effective.",
-    category: "code-optimization",
+    category: "code-optimization-tools",
   },
   {
     name: "Replace Quotes",
@@ -164,7 +164,7 @@ const tools: ITool[] = [
     seoTitle: "Replace Quotes Tool – Toggle Between Curly and Straight Quotes",
     seoDescription:
       "Easily convert between smart and straight quotes for better text presentation.",
-    category: "text-transformation",
+    category: "text-transformation-tools",
   },
   {
     name: "Shuffle Text Lines",
@@ -175,7 +175,7 @@ const tools: ITool[] = [
     seoTitle: "Shuffle Text Lines – Randomize Line Order Online",
     seoDescription:
       "Reorder text lines randomly in a click. Great for contests, ideas, or presentations.",
-    category: "text-transformation",
+    category: "text-transformation-tools",
   },
   {
     name: "Character Count",
@@ -185,7 +185,7 @@ const tools: ITool[] = [
       "Analyze your text for character, word, and space counts with real-time output.",
     seoTitle: "Character Counter – Count Words, Characters & Spaces",
     seoDescription: "Track word count, character length, and spacing in your text instantly.",
-    category: "text-transformation",
+    category: "text-transformation-tools",
   },
   {
     name: "URL Decoder/Encoder",
@@ -195,7 +195,7 @@ const tools: ITool[] = [
       "Quickly encode or decode URLs to ensure compatibility across browsers and systems.",
     seoTitle: "URL Decoder & Encoder – Convert URLs with Ease",
     seoDescription: "Effortlessly encode or decode URLs for clean, usable web links.",
-    category: "web-utilities",
+    category: "web-utility-tools",
   },
   {
     name: "Base64 Encode/Decode",
@@ -204,7 +204,7 @@ const tools: ITool[] = [
     pageDescription: "Convert files or strings to and from Base64 format quickly and securely.",
     seoTitle: "Base64 Converter – Encode or Decode Text and Files",
     seoDescription: "Convert Base64 to text or vice versa for secure data transfer. Easy to use.",
-    category: "data-conversion",
+    category: "data-conversion-tools",
   },
   {
     name: "Country Name Generator",
@@ -213,7 +213,7 @@ const tools: ITool[] = [
     pageDescription: "Generate fictional country names for fun, writing, or simulation projects.",
     seoTitle: "Country Name Generator – Random Country Name Creator",
     seoDescription: "Create random country names for creativity or games. Fast and fun.",
-    category: "web-utilities",
+    category: "web-utility-tools",
   },
   {
     name: "Random Username Generator",
@@ -222,7 +222,7 @@ const tools: ITool[] = [
     pageDescription: "Generate random usernames instantly for new accounts or creative use.",
     seoTitle: "Username Generator – Create Random & Unique Usernames",
     seoDescription: "Find unique usernames for your accounts or projects. Free and easy.",
-    category: "web-utilities",
+    category: "web-utility-tools",
   },
   {
     name: "Text Case Changer",
@@ -232,7 +232,7 @@ const tools: ITool[] = [
     seoTitle: "Text Case Converter – Change Case Instantly",
     seoDescription:
       "Quickly convert text to any case format. Useful for editors, devs, and writers.",
-    category: "text-transformation",
+    category: "text-transformation-tools",
   },
   {
     name: "Text to PHP Variables",
@@ -241,7 +241,7 @@ const tools: ITool[] = [
     pageDescription: "Convert each line of text into PHP variable assignments automatically.",
     seoTitle: "Text to PHP Variables – Generate PHP Code from Text",
     seoDescription: "Transform plain text into PHP variables for coding ease. Fast and simple.",
-    category: "data-conversion",
+    category: "data-conversion-tools",
   },
   {
     name: "PX to REM Converter",
@@ -250,7 +250,7 @@ const tools: ITool[] = [
     pageDescription: "Translate PX values to REM for scalable and responsive web design.",
     seoTitle: "PX to REM Converter – Convert CSS Units Easily",
     seoDescription: "Convert PX to REM for better responsiveness. Ideal for modern web design.",
-    category: "code-optimization",
+    category: "code-optimization-tools",
   },
   {
     name: "Unminify",
@@ -259,7 +259,7 @@ const tools: ITool[] = [
     pageDescription: "Restore readable format from minified HTML, CSS, or JavaScript files.",
     seoTitle: "Unminify Code – Beautify Minified HTML, CSS, JS",
     seoDescription: "Convert minified code into human-readable format. Simple online formatter.",
-    category: "code-optimization",
+    category: "code-optimization-tools",
   },
   {
     name: "Barcode Generator",
@@ -270,7 +270,7 @@ const tools: ITool[] = [
     seoTitle: "Barcode Generator – Create Product Barcodes Instantly",
     seoDescription:
       "Generate standard barcodes in seconds. Useful for product labeling and tracking.",
-    category: "web-utilities",
+    category: "web-utility-tools",
   },
   {
     name: "QRCode Generator",
@@ -279,7 +279,7 @@ const tools: ITool[] = [
     pageDescription: "Generate QR codes for links, contact info, or plain text easily.",
     seoTitle: "QR Code Generator – Make Custom QR Codes Online",
     seoDescription: "Create personalized QR codes for sharing URLs or data. Simple and free.",
-    category: "web-utilities",
+    category: "web-utility-tools",
   },
 ];
 
