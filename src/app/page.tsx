@@ -52,7 +52,9 @@ const Home: React.FC = (): React.JSX.Element => {
 
       <div className="text-muted-foreground mb-12 space-y-12">
         <section>
-          <h2 className="text-foreground mb-2 text-2xl font-bold">Why Use These Everyday Tools?</h2>
+          <h2 className="text-foreground mb-2 text-2xl font-bold">
+            Why Use Online Developer Tools?
+          </h2>
           <div className="space-y-4">
             <p>
               These tools are built to simplify the small but essential tasks developers and
@@ -65,6 +67,12 @@ const Home: React.FC = (): React.JSX.Element => {
               minimal, and privacy-respecting. No tracking, no clutter — just useful functionality
               that works right in your browser, anytime you need it.
             </p>
+            <p>
+              These tools can be accessible from any device with a web browser, making them perfect
+              for. on-the-go developers or those who prefer not to install software. Whether you’re
+              at your desk, on a laptop, or using a mobile device, you can quickly access the tools
+              you need without any hassle.
+            </p>
           </div>
         </section>
 
@@ -72,28 +80,38 @@ const Home: React.FC = (): React.JSX.Element => {
           <h2 className="text-foreground mb-2 text-2xl font-bold">What You’ll Find on This Site</h2>
           <div className="space-y-4">
             <p>
-              This website features categorized utilities crafted to serve different aspects of
-              development. From basic utilities like <span className="italic">JSON formatter</span>,{" "}
-              <span className="italic">Base64 encoder/decoder</span>,{" "}
-              <span className="italic">UUID generator</span>, and{" "}
-              <span className="italic">regex tester</span> to productivity-focused tools like{" "}
-              <span className="italic">lorem ipsum generator</span>,{" "}
-              <span className="italic">timestamp converter</span>, and{" "}
-              <span className="italic">code minifiers</span> - we’re continually adding new features
-              based on what developers actually need.
+              This website offers a growing collection of categorized developer utilities designed
+              to simplify everyday tasks. Whether you're cleaning up content, transforming data
+              formats, or optimizing code, our tools are built for speed and ease of use. Popular
+              options include <strong className="font-bold italic">JSON Sorter</strong>,{" "}
+              <strong className="font-bold italic">Base64 Encoder/Decoder</strong>,{" "}
+              <strong className="font-bold italic">Dropdown to Array Converter</strong>, and{" "}
+              <strong className="font-bold italic">Alphabetical Line Sorter</strong>. We also
+              provide productivity-focused tools like{" "}
+              <strong className="font-bold italic">Duplicate Line Remover</strong>,{" "}
+              <strong className="font-bold italic">CSS Inliner</strong>, and{" "}
+              <strong className="font-bold italic">Code Minifiers</strong>. Each tool is crafted to
+              solve real developer pain points with zero distractions.
             </p>
+
             <ul className="list-disc space-y-2 pl-6">
               <li>
-                <span className="font-bold">Data Formatting Tools</span> – Clean up messy data,
-                format JSON, XML, and SQL instantly.
+                <strong className="font-bold">Text & Content Utilities</strong> – Sort lines
+                alphabetically, remove duplicates, convert dropdown options to arrays, and clean up
+                plain text.
               </li>
               <li>
-                <span className="font-bold">Encoders & Decoders</span> – Easily encode/decode URLs,
-                HTML entities, Base64, etc.
+                <strong className="font-bold">Data Formatting Tools</strong> – Format and validate
+                JSON, prettify XML, and transform raw data into readable structure instantly.
               </li>
               <li>
-                <span className="font-bold">Code Utilities</span> – Minify JavaScript/CSS, beautify
-                HTML, convert code between formats.
+                <strong className="font-bold">Encoding & Conversion Tools</strong> – Encode/decode
+                Base64, HTML entities, or URLs, with support for quick bidirectional conversion.
+              </li>
+              <li>
+                <strong className="font-bold">Frontend Helpers</strong> – Minify or beautify
+                HTML/CSS/JS, inline CSS for email templates, and generate optimized code for web
+                use.
               </li>
             </ul>
           </div>
@@ -125,26 +143,30 @@ const Home: React.FC = (): React.JSX.Element => {
               These tools are not just for professional developers. They’re also incredibly useful
               for:
             </p>
-            <ul className="list-disc space-y-2 pl-6">
+            <ul className="list-disc space-y-2 pl-5">
               <li>
-                <span className="font-bold">Frontend Engineers</span> – Format, minify, and test
-                your HTML/CSS/JS code quickly.
+                <span className="font-bold">Frontend Developers</span> – Quickly minify or beautify
+                HTML, CSS, and JavaScript, generate responsive meta tags, or preview text formats to
+                speed up interface development.
               </li>
               <li>
-                <span className="font-bold">Backend Developers</span> – Encode data, manipulate
-                timestamps, test webhooks.
+                <span className="font-bold">Backend Developers</span> – Test input/output formats,
+                validate JSON, generate secure passwords, and create URL-safe slugs in seconds.
               </li>
               <li>
-                <span className="font-bold">Tech Writers & Bloggers</span> – Generate placeholder
-                text or convert Markdown.
+                <span className="font-bold">Tech Writers & Bloggers</span> – Convert headlines to
+                SEO-friendly slugs, format readable markdown or HTML snippets, and check how content
+                renders across formats.
               </li>
               <li>
-                <span className="font-bold">Students & Learners</span> – Use interactive tools to
-                better understand technical concepts.
+                <span className="font-bold">Students & Learners</span> – Use simple tools to
+                practice coding basics, format or debug snippets, and build clean content without
+                installing anything.
               </li>
               <li>
-                <span className="font-bold">Non-Tech Users</span> – Perform small daily tasks like
-                decoding text or converting dates.
+                <span className="font-bold">Non-Tech Users</span> – Perform quick everyday tasks
+                like text case conversion, password strength checking, or URL formatting without
+                needing technical skills.
               </li>
             </ul>
           </div>
@@ -156,9 +178,10 @@ const Home: React.FC = (): React.JSX.Element => {
           </h2>
           <div className="space-y-4">
             <p>
-              You don’t need to create an account or install a single file. All tools work instantly
-              in the browser, ensuring lightning-fast access and zero dependency bloat. We also
-              respect your privacy - no login, no data collection, and no tracking scripts.
+              No sign-up, no downloads, no hassle. All tools run instantly in your browser — with
+              zero tracking, and zero clutter. Everything is designed to be fast, lightweight, and
+              privacy-focused. You get full functionality without ever creating an account or
+              sharing any data.
             </p>
           </div>
         </section>
