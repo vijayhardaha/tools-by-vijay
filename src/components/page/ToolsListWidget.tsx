@@ -59,9 +59,7 @@ const ToolsListWidget: React.FC<IToolsListWidgetProps> = ({
                 )}
               >
                 <span className="text-sm font-semibold transition-colors">{categoryTool.name}</span>
-                <span className="text-muted-foreground text-xs">
-                  {categoryTool.shortDescription}
-                </span>
+                <span className="text-muted-foreground text-xs">{categoryTool.description}</span>
               </Link>
             </li>
           ))}
