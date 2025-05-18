@@ -208,7 +208,6 @@ function SheetContent({ className = "", children, side = "right", ...props }: IS
         ref={contentRef}
         data-slot="sheet-content"
         data-state={open ? "open" : "closed"}
-        aria-hidden={!open}
         className={cn(
           "bg-background border-border/50 fixed z-50 flex flex-col gap-4 shadow-lg",
           "transition-all duration-300 ease-in-out",
