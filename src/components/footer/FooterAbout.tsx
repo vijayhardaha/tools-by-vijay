@@ -41,7 +41,7 @@ const SocialButton: React.FC<ISocialButtonProps> = ({
     asChild
     className={`rounded-lg hover:border-transparent hover:text-white ${color}`}
   >
-    <a href={href} aria-label={label} rel="noopener noreferrer" target="_blank">
+    <a href={href} aria-label={label} title={label} rel="noopener noreferrer" target="_blank">
       <Icon className="h-4 w-4" />
       <span className="sr-only">{label}</span>
     </a>
@@ -62,8 +62,10 @@ const FooterAbout: React.FC = (): React.JSX.Element => {
         </div>
 
         <p className="text-foreground text-sm">
-          A collection of free online tools built to make developer’s lives easier. From code
-          optimization to text transformation, find the tools you need for your projects.
+          Discover a powerful suite of free online developer tools designed to boost your
+          productivity and streamline your workflow. Whether you need advanced code optimization,
+          text transformation, or quick utility tools, our platform offers fast, reliable, and
+          easy-to-use solutions tailored for developers and creators of all skill levels.
         </p>
       </div>
 
