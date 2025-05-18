@@ -58,9 +58,9 @@ export interface IBaseMetadata {
  * An object containing SEO-related constants for the application.
  */
 export const SEO: ISEO = {
-  title: "Tools by Vijay Hardaha — Useful Web Utilities",
+  title: "Developer Tools to Boost Productivity by Vijay Hardaha",
   description:
-    "A collection of free online tools built to make developer’s lives easier. From code optimization to text transformation, find the tools you need for your projects.",
+    "Online tools to help developers and users work faster and smarter. Boost your productivity with free, browser-based utilities.",
   titlePostfix: "Tools by Vijay Hardaha",
   separator: "—",
 };
