@@ -38,7 +38,7 @@ const About: React.FC = (): React.JSX.Element => {
           </p>
 
           <p>
-            Over the years, I found myself frequently using small but essential utilities — like
+            Over the years, I found myself frequently using small but essential utilities - like
             generating URL slugs, checking password strength, minifying code, or converting text
             formats. However, many existing online tools felt cluttered with ads, slow to respond,
             or invasive of user privacy.
@@ -58,7 +58,7 @@ const About: React.FC = (): React.JSX.Element => {
           </p>
 
           <p>
-            My goal is to serve a broad audience — whether you’re a developer, writer, student, or
+            My goal is to serve a broad audience - whether you’re a developer, writer, student, or
             anyone looking for reliable and efficient online tools. I keep expanding the collection
             based on my own needs and community suggestions, constantly improving performance and
             adding new features.

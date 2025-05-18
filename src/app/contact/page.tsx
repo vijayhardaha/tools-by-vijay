@@ -74,7 +74,7 @@ const Contact: React.FC = (): React.JSX.Element => {
 
           <p>
             If you have a project in mind or want to discuss potential collaborations, you can reach
-            me through PeoplePerHour — a trusted freelance platform where I’ve successfully
+            me through PeoplePerHour - a trusted freelance platform where I’ve successfully
             completed numerous client projects.
           </p>
 

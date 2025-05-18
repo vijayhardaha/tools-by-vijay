@@ -26,7 +26,7 @@ const Home: React.FC = (): React.JSX.Element => {
       <p className="text-muted-foreground mb-12">
         Explore a curated collection of powerful and easy-to-use web tools designed for developers
         and tech enthusiasts. From code formatting and data conversion to productivity boosters, our
-        tools help you work smarter and faster — all in your browser.
+        tools help you work smarter and faster - all in your browser.
       </p>
 
       {/* Categorized Tools */}
@@ -60,7 +60,7 @@ const Home: React.FC = (): React.JSX.Element => {
               Gone are the days when every task needed a heavy desktop app or local installation.
               Online tools have revolutionized how developers build, test, and deploy software.
               Whether you're working on a side project, debugging in production, or preparing a
-              quick prototype, our tools are always accessible — right from your browser.
+              quick prototype, our tools are always accessible - right from your browser.
             </p>
             <p>
               Online tools reduce setup time, improve cross-platform compatibility, and work
@@ -81,7 +81,7 @@ const Home: React.FC = (): React.JSX.Element => {
               <span className="italic">regex tester</span> to productivity-focused tools like{" "}
               <span className="italic">lorem ipsum generator</span>,{" "}
               <span className="italic">timestamp converter</span>, and{" "}
-              <span className="italic">code minifiers</span> — we’re continually adding new features
+              <span className="italic">code minifiers</span> - we’re continually adding new features
               based on what developers actually need.
             </p>
             <ul className="list-disc space-y-2 pl-6">
@@ -107,10 +107,10 @@ const Home: React.FC = (): React.JSX.Element => {
           </h2>
           <div className="space-y-4">
             <p>
-              As a developer myself, I understand the real-world problems that slow us down — the
+              As a developer myself, I understand the real-world problems that slow us down - the
               constant context-switching between coding and external tools, the friction of bloated
               apps, and the simple need for quick results. That’s why I created{" "}
-              <span className="font-bold">Tools by Vijay Hardaha</span> — to bring together the most
+              <span className="font-bold">Tools by Vijay Hardaha</span> - to bring together the most
               essential utilities in one distraction-free, no-login-needed platform.
             </p>
             <p>
@@ -160,7 +160,7 @@ const Home: React.FC = (): React.JSX.Element => {
             <p>
               You don’t need to create an account or install a single file. All tools work instantly
               in the browser, ensuring lightning-fast access and zero dependency bloat. We also
-              respect your privacy — no login, no data collection, and no tracking scripts.
+              respect your privacy - no login, no data collection, and no tracking scripts.
             </p>
           </div>
         </section>
@@ -169,7 +169,7 @@ const Home: React.FC = (): React.JSX.Element => {
           <h2 className="text-foreground mb-2 text-2xl font-bold">Continuous Improvement</h2>
           <div className="space-y-4">
             <p>
-              The developer ecosystem evolves rapidly — and so will this platform. I regularly add
+              The developer ecosystem evolves rapidly - and so will this platform. I regularly add
               new tools, fix bugs, and optimize performance based on feedback from users like you.
               If there’s a specific tool you think should exist here, feel free to suggest it. This
               platform is built with the community in mind.
@@ -184,7 +184,7 @@ const Home: React.FC = (): React.JSX.Element => {
               My goal is to empower developers and creators by removing friction from their
               workflow. If you find these tools helpful, please consider sharing the site, starring
               the GitHub repo (if applicable), or contributing ideas. The more visibility the site
-              gets, the more useful tools I can keep building — for everyone.
+              gets, the more useful tools I can keep building - for everyone.
             </p>
             <p>
               Thank you for visiting <span className="font-bold">Tools by Vijay Hardaha</span>.
