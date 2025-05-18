@@ -10,7 +10,8 @@
     "lint": "next lint",
     "fix": "next lint --fix",
     "typecheck": "tsc --noEmit",
-    "postbuild": "next-sitemap"
+    "postbuild": "next-sitemap",
+    "indexnow": "node scripts/indexnow.js"
   },
   "dependencies": {
     "@next/third-parties": "^15.3.2",
@@ -73,6 +74,7 @@
     "globals": "^16.0.0",
     "next-sitemap": "^4.2.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "xml2js": "^0.6.2"
   }
 }
