@@ -26,11 +26,5 @@
     "target": "ES2024"
   },
   "exclude": ["node_modules"],
-  "include": [
-    "**/*.{js,jsx,ts,tsx,mjs,cjs}",
-    "*.config.mjs",
-    "next-env.d.ts",
-    "*.d.ts",
-    ".next/types/**/*.ts"
-  ]
+  "include": ["**/*.{js,jsx,ts,tsx,mjs,cjs}", "*.config.mjs", "next-env.d.ts", "*.d.ts", ".next/types/**/*.ts"]
 }
