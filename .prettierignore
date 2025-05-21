@@ -1,9 +1,4 @@
 .git
 .next
-.vscode/
-build/
-dist/
 node_modules
-node_modules/
-out
-public/static
+public/
