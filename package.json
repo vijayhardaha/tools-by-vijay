@@ -4,14 +4,15 @@
   "description": "A collection of free online tools built to make developer’s lives easier. From code optimization to text transformation, find the tools you need for your projects.",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "fix": "next lint --fix",
-    "typecheck": "tsc --noEmit",
     "postbuild": "next-sitemap",
-    "indexnow": "node scripts/indexnow.js"
+    "preindexnow": "next-sitemap",
+    "indexnow": "node ./scripts/indexnow.mjs",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",
