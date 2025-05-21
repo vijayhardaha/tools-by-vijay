@@ -15,6 +15,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@putout/minify": "^5.0.1",
     "class-variance-authority": "^0.7.1",
     "clean-css": "^5.3.3",
     "clsx": "^2.1.1",
