@@ -86,7 +86,7 @@ const SlugifyTool: React.FC = (): React.JSX.Element => {
         {output && <SlugifyOutput output={output} />}
       </div>
 
-      <div className="mt-16">
+      <div className="mt-12">
         <SlugifyInfo />
       </div>
     </>
