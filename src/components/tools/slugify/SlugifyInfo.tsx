@@ -7,7 +7,7 @@
  */
 const SlugifyInfo: React.FC = (): React.JSX.Element => {
   return (
-    <div className="space-y-12">
+    <div className="mt-12 space-y-12">
       <section>
         <h2 className="text-primary mb-4 text-2xl font-bold">What is a Slug and Why It Matters?</h2>
         <p className="mb-4">
