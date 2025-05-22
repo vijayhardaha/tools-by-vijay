@@ -110,9 +110,7 @@ const BulkSlugifyTool: React.FC = (): React.JSX.Element => {
         {output && <BulkSlugifyOutput output={output} />}
       </div>
 
-      <div className="mt-16">
-        <BulkSlugifyInfo />
-      </div>
+      <BulkSlugifyInfo />
     </>
   );
 };
