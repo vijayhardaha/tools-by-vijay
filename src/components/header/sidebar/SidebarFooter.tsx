@@ -17,12 +17,7 @@ interface ISocialButtonProps {
  * @param {SocialButtonProps} props - Component props
  * @returns {React.JSX.Element} A button with social media icon
  */
-const SocialButton = ({
-  icon: Icon,
-  href,
-  label,
-  color,
-}: ISocialButtonProps): React.JSX.Element => (
+const SocialButton = ({ icon: Icon, href, label, color }: ISocialButtonProps): React.JSX.Element => (
   <Button
     variant="outline"
     size="icon"

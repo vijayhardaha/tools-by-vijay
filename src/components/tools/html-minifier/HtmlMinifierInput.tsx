@@ -184,9 +184,7 @@ const HtmlMinifierInput: React.FC<IHtmlMinifierInputProps> = ({
                 <Checkbox
                   id="remove-style-link-type-attributes"
                   checked={options.removeStyleLinkTypeAttributes}
-                  onCheckedChange={(checked) =>
-                    updateOption("removeStyleLinkTypeAttributes", checked)
-                  }
+                  onCheckedChange={(checked) => updateOption("removeStyleLinkTypeAttributes", checked)}
                 >
                   Remove style/link type attributes
                 </Checkbox>

@@ -11,20 +11,16 @@ const CssMinifierInfo: React.FC = (): React.JSX.Element => {
       <section>
         <h2 className="text-primary mb-4 text-xl font-bold">About CSS Minifier Tool</h2>
         <p className="mb-4">
-          The CSS Minifier Tool is an online utility designed to reduce the size of your CSS files
-          by removing unnecessary characters, whitespace, comments, and optimizing the code
-          structure. This process, known as minification, helps improve page load times and reduce
-          bandwidth usage, resulting in a better user experience and potentially better search
-          engine rankings.
+          The CSS Minifier Tool is an online utility designed to reduce the size of your CSS files by removing
+          unnecessary characters, whitespace, comments, and optimizing the code structure. This process, known as
+          minification, helps improve page load times and reduce bandwidth usage, resulting in a better user experience
+          and potentially better search engine rankings.
         </p>
         <p className="mb-4">
-          We use the{" "}
-          <code className="bg-muted rounded px-1 py-0.5 text-sm font-medium text-pink-500">
-            clean-css
-          </code>{" "}
-          package under the hood, which provides powerful and configurable CSS minification
-          capabilities. With our tool, you can customize the minification process to suit your
-          specific needs, whether you’re working on a small website or a large web application.
+          We use the <code className="bg-muted rounded px-1 py-0.5 text-sm font-medium text-pink-500">clean-css</code>{" "}
+          package under the hood, which provides powerful and configurable CSS minification capabilities. With our tool,
+          you can customize the minification process to suit your specific needs, whether you’re working on a small
+          website or a large web application.
         </p>
       </section>
 

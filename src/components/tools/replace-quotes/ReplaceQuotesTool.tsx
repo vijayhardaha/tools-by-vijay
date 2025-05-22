@@ -16,9 +16,7 @@ import ReplaceQuotesOutput from "./ReplaceQuotesOutput";
 const ReplaceQuotesTool: React.FC = (): React.JSX.Element => {
   const [input, setInput] = useState<string>("");
   const [output, setOutput] = useState<string>("");
-  const [replaceType, setReplaceType] = useState<"simple-to-curly" | "curly-to-simple">(
-    "simple-to-curly"
-  );
+  const [replaceType, setReplaceType] = useState<"simple-to-curly" | "curly-to-simple">("simple-to-curly");
   const [replaceApostrophes, setReplaceApostrophes] = useState<boolean>(true);
   const [replaceStandaloneQuotes, setReplaceStandaloneQuotes] = useState<boolean>(false);
 

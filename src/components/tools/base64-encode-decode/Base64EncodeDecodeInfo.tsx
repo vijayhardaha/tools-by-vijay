@@ -11,20 +11,13 @@ const Base64EncodeDecodeInfo: React.FC = (): React.JSX.Element => {
       <section>
         <h2 className="text-primary mb-4 text-xl font-bold">About Base64 Encode/Decode Tool</h2>
         <p className="mb-4">
-          This tool helps you encode or decode Base64 strings easily. Encoding converts data into a
-          Base64 format, while decoding reverses this process to retrieve the original data.
+          This tool helps you encode or decode Base64 strings easily. Encoding converts data into a Base64 format, while
+          decoding reverses this process to retrieve the original data.
         </p>
         <p className="mb-4">
-          We use the{" "}
-          <code className="bg-muted rounded px-1 py-0.5 text-sm font-medium text-pink-500">
-            btoa
-          </code>{" "}
-          and{" "}
-          <code className="bg-muted rounded px-1 py-0.5 text-sm font-medium text-pink-500">
-            atob
-          </code>{" "}
-          functions under the hood to ensure accurate and reliable encoding and decoding of Base64
-          strings.
+          We use the <code className="bg-muted rounded px-1 py-0.5 text-sm font-medium text-pink-500">btoa</code> and{" "}
+          <code className="bg-muted rounded px-1 py-0.5 text-sm font-medium text-pink-500">atob</code> functions under
+          the hood to ensure accurate and reliable encoding and decoding of Base64 strings.
         </p>
       </section>
 

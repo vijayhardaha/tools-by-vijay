@@ -75,11 +75,7 @@ interface ICardTitleProps extends React.HTMLAttributes<HTMLHeadingElement> {
 function CardTitle({ className, children, component, ...props }: ICardTitleProps) {
   const Tag = component || "h2";
   return (
-    <Tag
-      data-slot="card-title"
-      className={cn("text-lg leading-none font-bold", className)}
-      {...props}
-    >
+    <Tag data-slot="card-title" className={cn("text-lg leading-none font-bold", className)} {...props}>
       {children}
     </Tag>
   );
@@ -103,11 +99,7 @@ interface ICardDescriptionProps extends React.HTMLAttributes<HTMLParagraphElemen
 function CardDescription({ className, children, component, ...props }: ICardDescriptionProps) {
   const Tag = component || "p";
   return (
-    <Tag
-      data-slot="card-description"
-      className={cn("text-muted-foreground text-sm", className)}
-      {...props}
-    >
+    <Tag data-slot="card-description" className={cn("text-muted-foreground text-sm", className)} {...props}>
       {children}
     </Tag>
   );
@@ -176,10 +168,7 @@ function CardFooter({ className, children, component, ...props }: ICardFooterPro
   return (
     <Tag
       data-slot="card-footer"
-      className={cn(
-        "flex items-center px-4 md:px-6 [.border-t]:pt-4 md:[.border-t]:pt-6",
-        className
-      )}
+      className={cn("flex items-center px-4 md:px-6 [.border-t]:pt-4 md:[.border-t]:pt-6", className)}
       {...props}
     >
       {children}

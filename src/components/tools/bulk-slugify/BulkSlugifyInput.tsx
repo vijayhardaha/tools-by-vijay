@@ -113,11 +113,7 @@ const BulkSlugifyInput: React.FC<IBulkSlugifyInputProps> = ({
               Convert to lowercase
             </Checkbox>
 
-            <Checkbox
-              id="remove-numbers"
-              checked={removeNumbers}
-              onCheckedChange={setRemoveNumbers}
-            >
+            <Checkbox id="remove-numbers" checked={removeNumbers} onCheckedChange={setRemoveNumbers}>
               Remove numbers
             </Checkbox>
 
@@ -125,11 +121,7 @@ const BulkSlugifyInput: React.FC<IBulkSlugifyInputProps> = ({
               Use latinize
             </Checkbox>
 
-            <Checkbox
-              id="keep-empty-lines"
-              checked={keepEmptyLines}
-              onCheckedChange={setKeepEmptyLines}
-            >
+            <Checkbox id="keep-empty-lines" checked={keepEmptyLines} onCheckedChange={setKeepEmptyLines}>
               Keep empty lines
             </Checkbox>
           </div>

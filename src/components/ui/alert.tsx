@@ -72,20 +72,12 @@ function Alert({
   const iconToRender = icon || defaultIcons[variant];
 
   return (
-    <div
-      data-slot="alert"
-      role="alert"
-      className={cn(alertVariants({ variant }), className)}
-      {...props}
-    >
+    <div data-slot="alert" role="alert" className={cn(alertVariants({ variant }), className)} {...props}>
       {icon !== null && iconToRender}
       {children}
 
       {title && (
-        <div
-          data-slot="alert-title"
-          className="col-start-2 line-clamp-1 min-h-4 font-semibold tracking-tight"
-        >
+        <div data-slot="alert-title" className="col-start-2 line-clamp-1 min-h-4 font-semibold tracking-tight">
           {title}
         </div>
       )}

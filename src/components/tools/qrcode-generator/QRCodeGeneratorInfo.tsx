@@ -11,13 +11,13 @@ const QRCodeGeneratorInfo: React.FC = (): React.JSX.Element => {
       <section>
         <h2 className="text-primary mb-4 text-xl font-bold">About QR Code Tool</h2>
         <p className="mb-4">
-          QR Code Tool is an online utility that helps you generate QR codes for any text, URL, or
-          other data. You can customize the size, color, and format of the QR code to suit your
-          needs. Simply input your data, adjust the settings, and download your QR code instantly.
+          QR Code Tool is an online utility that helps you generate QR codes for any text, URL, or other data. You can
+          customize the size, color, and format of the QR code to suit your needs. Simply input your data, adjust the
+          settings, and download your QR code instantly.
         </p>
         <p className="mb-4">
-          This tool leverages open-source libraries to ensure high-quality QR code generation that
-          works seamlessly across various devices and platforms.
+          This tool leverages open-source libraries to ensure high-quality QR code generation that works seamlessly
+          across various devices and platforms.
         </p>
       </section>
 
@@ -44,8 +44,7 @@ const QRCodeGeneratorInfo: React.FC = (): React.JSX.Element => {
           >
             Vijay Hardaha
           </a>
-          . This tool uses open-source libraries to ensure reliable and efficient QR code
-          generation.
+          . This tool uses open-source libraries to ensure reliable and efficient QR code generation.
         </p>
       </section>
     </div>

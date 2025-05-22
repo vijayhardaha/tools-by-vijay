@@ -42,11 +42,7 @@ interface PasswordStrengthCheckerOutputProps {
  */
 const renderCriteria = (isMet: boolean, label: string): React.JSX.Element => (
   <div className="flex items-center gap-2">
-    {isMet ? (
-      <CheckIcon className="h-4 w-4 text-green-500" />
-    ) : (
-      <XIcon className="h-4 w-4 text-red-500" />
-    )}
+    {isMet ? <CheckIcon className="h-4 w-4 text-green-500" /> : <XIcon className="h-4 w-4 text-red-500" />}
     <span className="text-sm">{label}</span>
   </div>
 );

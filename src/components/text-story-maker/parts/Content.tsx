@@ -114,8 +114,7 @@ const Content: React.FC<IContentProps> = ({
   return (
     <div
       className={cn({
-        "flex h-full flex-col justify-center":
-          options.cardRatio === "1/1" || options.cardRatio === "4/5",
+        "flex h-full flex-col justify-center": options.cardRatio === "1/1" || options.cardRatio === "4/5",
       })}
     >
       <main
@@ -170,8 +169,7 @@ const Content: React.FC<IContentProps> = ({
             onPaste={(e) => {
               e.preventDefault();
 
-              const pastedText =
-                e.clipboardData.getData("text/html") || e.clipboardData.getData("text/plain");
+              const pastedText = e.clipboardData.getData("text/html") || e.clipboardData.getData("text/plain");
 
               const cleanHtml = renderHtml(sanitize(pastedText).trim());
 

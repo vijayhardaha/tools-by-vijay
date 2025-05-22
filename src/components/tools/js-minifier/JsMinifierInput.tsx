@@ -53,9 +53,7 @@ const JsMinifierInput: React.FC<IJsMinifierInputProps> = ({
     <Card>
       <CardHeader>
         <CardTitle>JavaScript Input</CardTitle>
-        <CardDescription>
-          Paste your JavaScript code and customize minification options
-        </CardDescription>
+        <CardDescription>Paste your JavaScript code and customize minification options</CardDescription>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">

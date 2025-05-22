@@ -34,24 +34,23 @@ const Contact: React.FC = (): React.JSX.Element => {
       <PageContent>
         <div className="space-y-6 text-base leading-relaxed text-gray-800">
           <p>
-            Hello! I’m Vijay, a professional <strong>freelance web developer</strong> based in India
-            with extensive experience in building websites and applications using technologies like{" "}
-            <strong>WordPress</strong>, <strong>WooCommerce</strong>, and <strong>Next.js</strong>.
-            I collaborate remotely with clients from around the world to deliver clean, efficient,
-            and scalable web solutions.
+            Hello! I’m Vijay, a professional <strong>freelance web developer</strong> based in India with extensive
+            experience in building websites and applications using technologies like <strong>WordPress</strong>,{" "}
+            <strong>WooCommerce</strong>, and <strong>Next.js</strong>. I collaborate remotely with clients from around
+            the world to deliver clean, efficient, and scalable web solutions.
           </p>
 
           <p>
-            If you find the tools on this site useful, I’d love to hear your feedback or suggestions
-            for new features. Whether you’re a developer, content creator, student, or business
-            owner, your input helps me improve and expand the platform to better serve your needs.
+            If you find the tools on this site useful, I’d love to hear your feedback or suggestions for new features.
+            Whether you’re a developer, content creator, student, or business owner, your input helps me improve and
+            expand the platform to better serve your needs.
           </p>
 
           <p>
-            This entire website is open-source and publicly available on GitHub. If you’re curious
-            about how it’s built, want to contribute code, report bugs, or suggest enhancements,
-            feel free to explore the repository below. Open-source collaboration is at the heart of
-            what I do, and I welcome developers of all skill levels to get involved.
+            This entire website is open-source and publicly available on GitHub. If you’re curious about how it’s built,
+            want to contribute code, report bugs, or suggest enhancements, feel free to explore the repository below.
+            Open-source collaboration is at the heart of what I do, and I welcome developers of all skill levels to get
+            involved.
           </p>
 
           <p>
@@ -66,16 +65,14 @@ const Contact: React.FC = (): React.JSX.Element => {
           </p>
 
           <p>
-            Beyond building these tools, I’m available for freelance work, specializing in WordPress
-            website development, WooCommerce online stores, and modern React-based web applications
-            using Next.js. I’m passionate about writing clean, maintainable code and creating
-            seamless user experiences.
+            Beyond building these tools, I’m available for freelance work, specializing in WordPress website
+            development, WooCommerce online stores, and modern React-based web applications using Next.js. I’m
+            passionate about writing clean, maintainable code and creating seamless user experiences.
           </p>
 
           <p>
-            If you have a project in mind or want to discuss potential collaborations, you can reach
-            me through PeoplePerHour - a trusted freelance platform where I’ve successfully
-            completed numerous client projects.
+            If you have a project in mind or want to discuss potential collaborations, you can reach me through
+            PeoplePerHour - a trusted freelance platform where I’ve successfully completed numerous client projects.
           </p>
 
           <p>
@@ -90,8 +87,8 @@ const Contact: React.FC = (): React.JSX.Element => {
           </p>
 
           <p>
-            I’m also active on various social media platforms where I share updates, tips, and
-            engage with the community. Feel free to follow or message me on any of these channels:
+            I’m also active on various social media platforms where I share updates, tips, and engage with the
+            community. Feel free to follow or message me on any of these channels:
           </p>
 
           <div className="flex flex-wrap gap-3">
@@ -148,15 +145,15 @@ const Contact: React.FC = (): React.JSX.Element => {
           </div>
 
           <p>
-            Thank you for visiting my site. I hope these tools help streamline your workflow and
-            make your web projects easier. Whether you want to contribute to the codebase, hire me
-            for a project, or just say hello, I’m always excited to connect with new people.
+            Thank you for visiting my site. I hope these tools help streamline your workflow and make your web projects
+            easier. Whether you want to contribute to the codebase, hire me for a project, or just say hello, I’m always
+            excited to connect with new people.
           </p>
 
           <p>
-            For any questions or inquiries not covered here, you can also send me a direct message
-            on any of the social platforms above, or email me through the contact form (if
-            available). I aim to respond promptly and provide the support you need.
+            For any questions or inquiries not covered here, you can also send me a direct message on any of the social
+            platforms above, or email me through the contact form (if available). I aim to respond promptly and provide
+            the support you need.
           </p>
         </div>
       </PageContent>

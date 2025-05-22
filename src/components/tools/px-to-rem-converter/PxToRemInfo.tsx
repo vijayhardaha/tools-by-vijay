@@ -11,12 +11,12 @@ const PxToRemInfo: React.FC = (): React.JSX.Element => {
       <section>
         <h2 className="text-primary mb-4 text-xl font-bold">About Px to Rem Converter Tool</h2>
         <p className="mb-4">
-          The Px to Rem Converter Tool helps you convert pixel values to rem units based on a base
-          font size. This is useful for creating responsive and scalable designs in web development.
+          The Px to Rem Converter Tool helps you convert pixel values to rem units based on a base font size. This is
+          useful for creating responsive and scalable designs in web development.
         </p>
         <p className="mb-4">
-          This tool simplifies the process of maintaining consistent spacing, typography, and layout
-          across your project by using relative units instead of fixed pixel values.
+          This tool simplifies the process of maintaining consistent spacing, typography, and layout across your project
+          by using relative units instead of fixed pixel values.
         </p>
       </section>
 
@@ -57,8 +57,7 @@ const PxToRemInfo: React.FC = (): React.JSX.Element => {
           >
             Vijay Hardaha
           </a>
-          . This tool is designed to simplify web development workflows and improve design
-          consistency.
+          . This tool is designed to simplify web development workflows and improve design consistency.
         </p>
       </section>
     </div>

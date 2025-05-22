@@ -11,19 +11,14 @@ const UrlDecoderEncoderInfo: React.FC = (): React.JSX.Element => {
       <section>
         <h2 className="text-primary mb-4 text-xl font-bold">About URL Decoder/Encoder Tool</h2>
         <p className="mb-4">
-          This tool helps you encode or decode URLs easily. Encoding ensures that special characters
-          in a URL are converted to a format that can be transmitted over the internet. Decoding
-          reverses this process, converting encoded URLs back to their original form.
+          This tool helps you encode or decode URLs easily. Encoding ensures that special characters in a URL are
+          converted to a format that can be transmitted over the internet. Decoding reverses this process, converting
+          encoded URLs back to their original form.
         </p>
         <p className="mb-4">
           We use the{" "}
-          <code className="bg-muted rounded px-1 py-0.5 text-sm font-medium text-pink-500">
-            encodeURIComponent
-          </code>{" "}
-          and{" "}
-          <code className="bg-muted rounded px-1 py-0.5 text-sm font-medium text-pink-500">
-            decodeURIComponent
-          </code>{" "}
+          <code className="bg-muted rounded px-1 py-0.5 text-sm font-medium text-pink-500">encodeURIComponent</code> and{" "}
+          <code className="bg-muted rounded px-1 py-0.5 text-sm font-medium text-pink-500">decodeURIComponent</code>{" "}
           functions under the hood to ensure accurate and reliable encoding and decoding of URLs.
         </p>
       </section>

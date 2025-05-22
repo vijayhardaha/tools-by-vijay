@@ -15,9 +15,7 @@ interface IControlPanelProps {
  * @param {IControlPanelProps} props - Component props.
  * @returns {React.JSX.Element} The rendered ControlPanel component.
  */
-const ControlPanel: React.FC<IControlPanelProps> = ({
-  children,
-}: IControlPanelProps): React.JSX.Element => {
+const ControlPanel: React.FC<IControlPanelProps> = ({ children }: IControlPanelProps): React.JSX.Element => {
   return (
     <div className="user-select-none absolute bottom-0 left-0 z-40 w-full space-y-4 p-4 py-6 text-center">
       {children}
@@ -39,10 +37,7 @@ interface IControlBoxProps {
  * @param {IControlBoxProps} props - Component props.
  * @returns {React.JSX.Element} The rendered ControlPanel component.
  */
-const ControlBox: React.FC<IControlBoxProps> = ({
-  children,
-  className,
-}: IControlBoxProps): React.JSX.Element => {
+const ControlBox: React.FC<IControlBoxProps> = ({ children, className }: IControlBoxProps): React.JSX.Element => {
   return (
     <div
       className={cn(
@@ -192,10 +187,7 @@ const ToggleOptions: React.FC<IToggleOptionsProps> = ({
             key={value}
             active={selected === value}
             onClick={() => handleClick(value)}
-            className={cn(
-              "rounded-lg bg-neutral-800 py-2 text-xs font-semibold shadow",
-              buttonClass
-            )}
+            className={cn("rounded-lg bg-neutral-800 py-2 text-xs font-semibold shadow", buttonClass)}
             role="radio"
             aria-checked={selected === value}
             aria-label={`${text} option for ${label}`}

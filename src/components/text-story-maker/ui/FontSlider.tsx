@@ -19,10 +19,7 @@ interface IFontSliderProps extends IUpdateOptionProps {}
  * @param {Function} props.updateOption - Function to update the font option.
  * @returns {React.JSX.Element} The rendered FontSlider component.
  */
-const FontSlider: React.FC<IFontSliderProps> = ({
-  options,
-  updateOption,
-}: IFontSliderProps): React.JSX.Element => {
+const FontSlider: React.FC<IFontSliderProps> = ({ options, updateOption }: IFontSliderProps): React.JSX.Element => {
   const [sliderRef] = useKeenSlider({
     loop: false,
     mode: "free-snap",
@@ -36,11 +33,7 @@ const FontSlider: React.FC<IFontSliderProps> = ({
   });
 
   return (
-    <div
-      className="relative w-full overflow-hidden"
-      role="region"
-      aria-label="Font selection slider"
-    >
+    <div className="relative w-full overflow-hidden" role="region" aria-label="Font selection slider">
       <div ref={sliderRef} className="keen-slider" aria-roledescription="carousel">
         {fonts.map(({ label }, font) => (
           <div
@@ -75,9 +68,7 @@ const FontSlider: React.FC<IFontSliderProps> = ({
           </div>
         ))}
       </div>
-      <span className="sr-only">
-        Use left and right arrow keys to navigate between font options
-      </span>
+      <span className="sr-only">Use left and right arrow keys to navigate between font options</span>
     </div>
   );
 };

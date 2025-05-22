@@ -15,9 +15,7 @@ interface IUnminifyOutputProps {
  * @param {IUnminifyOutputProps} props - The props for the component.
  * @returns {React.JSX.Element} The rendered UnminifyOutput component.
  */
-const UnminifyOutput: React.FC<IUnminifyOutputProps> = ({
-  output,
-}: IUnminifyOutputProps): React.JSX.Element => {
+const UnminifyOutput: React.FC<IUnminifyOutputProps> = ({ output }: IUnminifyOutputProps): React.JSX.Element => {
   return (
     <Card>
       <CardHeader>

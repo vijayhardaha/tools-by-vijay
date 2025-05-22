@@ -1,14 +1,6 @@
 "use client";
 
-import {
-  useState,
-  useEffect,
-  useContext,
-  createContext,
-  useCallback,
-  useRef,
-  ReactNode,
-} from "react";
+import { useState, useEffect, useContext, createContext, useCallback, useRef, ReactNode } from "react";
 
 import { createPortal } from "react-dom";
 import { RiCloseFill } from "react-icons/ri";

@@ -121,11 +121,7 @@ const DownloadImageTool = ({ options, updateOption }: IDownloadImageToolProps) =
                   <p className="mb-1 text-base font-semibold" id="size-selection">
                     Size:
                   </p>
-                  <div
-                    className="flex justify-evenly gap-2"
-                    role="radiogroup"
-                    aria-labelledby="size-selection"
-                  >
+                  <div className="flex justify-evenly gap-2" role="radiogroup" aria-labelledby="size-selection">
                     {Object.keys(sizes).map((size) => (
                       <button
                         key={size}
@@ -176,11 +172,7 @@ const DownloadImageTool = ({ options, updateOption }: IDownloadImageToolProps) =
                 )}
 
                 {isDownloading && (
-                  <p
-                    className="mt-4 text-sm font-medium text-white"
-                    aria-live="polite"
-                    role="status"
-                  >
+                  <p className="mt-4 text-sm font-medium text-white" aria-live="polite" role="status">
                     Downloading Image...
                   </p>
                 )}

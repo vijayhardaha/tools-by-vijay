@@ -86,12 +86,7 @@ const UnminifyInput: React.FC<IUnminifyInputProps> = ({
             >
               HTML/XML
             </RadioBox>
-            <RadioBox
-              name="codeType"
-              id="css"
-              checked={codeType === "css"}
-              onCheckedChange={() => setCodeType("css")}
-            >
+            <RadioBox name="codeType" id="css" checked={codeType === "css"} onCheckedChange={() => setCodeType("css")}>
               CSS
             </RadioBox>
           </div>

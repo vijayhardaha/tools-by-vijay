@@ -76,11 +76,7 @@ export const generateSeoTitle = (title: string = ""): string => {
  * @param {MetadataParams} params - The parameters object
  * @returns {Metadata} A metadata object with title, description, canonical URL, and social media metadata.
  */
-export const generateMeta = ({
-  title = "",
-  description = "",
-  slug = "",
-}: IGenerateMeta): IMetadata => {
+export const generateMeta = ({ title = "", description = "", slug = "" }: IGenerateMeta): IMetadata => {
   return {
     ...baseMetadata,
     title: generateSeoTitle(title),

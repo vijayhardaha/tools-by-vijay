@@ -28,9 +28,7 @@ const DuplicateLineRemovalOutput: React.FC<IDuplicateLineRemovalOutputProps> = (
         <div className="flex w-full flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex flex-col gap-1.5">
             <CardTitle>Output</CardTitle>
-            <CardDescription>
-              The text after removing duplicate lines and applying sorting options.
-            </CardDescription>
+            <CardDescription>The text after removing duplicate lines and applying sorting options.</CardDescription>
           </div>
           <div className="inline-flex">
             <CopyButton text={output} />

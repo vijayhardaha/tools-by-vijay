@@ -50,9 +50,7 @@ const CssInlinerInput: React.FC<ICssInlinerInputProps> = ({
     <Card>
       <CardHeader>
         <CardTitle>Input HTML and CSS</CardTitle>
-        <CardDescription>
-          Provide your HTML and CSS below to inline the styles into the HTML.
-        </CardDescription>
+        <CardDescription>Provide your HTML and CSS below to inline the styles into the HTML.</CardDescription>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">

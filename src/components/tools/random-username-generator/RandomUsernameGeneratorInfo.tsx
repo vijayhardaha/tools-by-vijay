@@ -11,8 +11,8 @@ const RandomUsernameGeneratorInfo: React.FC = (): React.JSX.Element => {
       <section>
         <h2 className="text-primary mb-4 text-xl font-bold">About Username Generator</h2>
         <p className="mb-4">
-          The Random Username Generator tool helps you create random usernames for testing, gaming,
-          or creative projects. It is useful for developers, gamers, and content creators.
+          The Random Username Generator tool helps you create random usernames for testing, gaming, or creative
+          projects. It is useful for developers, gamers, and content creators.
         </p>
       </section>
 

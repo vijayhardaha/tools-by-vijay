@@ -10,8 +10,7 @@ const categories: ICategory[] = [
     description:
       "Easily transform, clean, and format your text for blogs, code, or documents with powerful online text editing tools.",
     seoTitle: "Text Transformation Tools",
-    seoDescription:
-      "Use our free online tools to transform text: clean, convert, and format your content with ease.",
+    seoDescription: "Use our free online tools to transform text: clean, convert, and format your content with ease.",
   },
   {
     label: "Security Tools",
@@ -55,8 +54,7 @@ const categories: ICategory[] = [
     description:
       "Format and organize your data with powerful JSON beautifiers, table aligners, content sorters, and more.",
     seoTitle: "Data Formatting Tools",
-    seoDescription:
-      "Format JSON, align tables, sort content and organize your data with easy-to-use online tools.",
+    seoDescription: "Format JSON, align tables, sort content and organize your data with easy-to-use online tools.",
   },
 ];
 

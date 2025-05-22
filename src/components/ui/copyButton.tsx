@@ -46,11 +46,7 @@ export const CopyButton = ({
   };
 
   return (
-    <Button
-      variant={copied ? "success" : "secondary"}
-      onClick={handleCopy}
-      className={cn("min-w-30", className)}
-    >
+    <Button variant={copied ? "success" : "secondary"} onClick={handleCopy} className={cn("min-w-30", className)}>
       {copied ? <CheckIcon className="h-4 w-4" /> : <CopyIcon className="h-4 w-4" />}
       {copied ? copiedText : copyText}
     </Button>

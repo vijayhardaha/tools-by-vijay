@@ -15,9 +15,7 @@ interface IJsonSorterOutputProps {
  * @param {IJsonSorterOutputProps} props - Component props.
  * @returns {React.JSX.Element} The rendered card with output display and copy functionality.
  */
-const JsonSorterOutput: React.FC<IJsonSorterOutputProps> = ({
-  output,
-}: IJsonSorterOutputProps): React.JSX.Element => {
+const JsonSorterOutput: React.FC<IJsonSorterOutputProps> = ({ output }: IJsonSorterOutputProps): React.JSX.Element => {
   return (
     <Card>
       <CardHeader>

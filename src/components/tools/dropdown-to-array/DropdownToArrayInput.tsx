@@ -58,9 +58,7 @@ const DropdownToArrayInput: React.FC<IDropdownToArrayInputProps> = ({
     <Card>
       <CardHeader>
         <CardTitle>Dropdown HTML</CardTitle>
-        <CardDescription>
-          Paste HTML select/dropdown content and convert to various array formats
-        </CardDescription>
+        <CardDescription>Paste HTML select/dropdown content and convert to various array formats</CardDescription>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">

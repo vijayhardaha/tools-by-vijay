@@ -170,8 +170,7 @@ const TextToArrayTool: React.FC = (): React.JSX.Element => {
         return `const textArray = [\n${simpleArray.join(",\n")}\n];`;
       } else if (arrayType === "numeric") {
         const numericArray = lines.map(
-          (line, index) =>
-            `  {\n    "id": ${index + 1},\n    "value": "${line.replace(/"/g, '\\"')}"\n  }`
+          (line, index) => `  {\n    "id": ${index + 1},\n    "value": "${line.replace(/"/g, '\\"')}"\n  }`
         );
         return `const textArray = [\n${numericArray.join(",\n")}\n];`;
       } else {
@@ -197,14 +196,10 @@ const TextToArrayTool: React.FC = (): React.JSX.Element => {
   const formatJsObjectOutput = (lines: string[]): string => {
     try {
       if (arrayType === "simple") {
-        const objectItems = lines.map(
-          (line, index) => `  "${index + 1}": "${line.replace(/"/g, '\\"')}"`
-        );
+        const objectItems = lines.map((line, index) => `  "${index + 1}": "${line.replace(/"/g, '\\"')}"`);
         return `const textObject = {\n${objectItems.join(",\n")}\n};`;
       } else if (arrayType === "numeric") {
-        const objectItems = lines.map(
-          (line, index) => `  "${index + 1}": "${line.replace(/"/g, '\\"')}"`
-        );
+        const objectItems = lines.map((line, index) => `  "${index + 1}": "${line.replace(/"/g, '\\"')}"`);
         return `const textObject = {\n${objectItems.join(",\n")}\n};`;
       } else {
         // associative
@@ -232,9 +227,7 @@ const TextToArrayTool: React.FC = (): React.JSX.Element => {
         const arrayItems = lines.map((line) => `  '${line.replace(/'/g, "\\'")}'`);
         return `<?php\n$data = array(\n${arrayItems.join(",\n")}\n);`;
       } else if (arrayType === "numeric") {
-        const arrayItems = lines.map(
-          (line, index) => `  ${index + 1} => '${line.replace(/'/g, "\\'")}'`
-        );
+        const arrayItems = lines.map((line, index) => `  ${index + 1} => '${line.replace(/'/g, "\\'")}'`);
         return `<?php\n$data = array(\n${arrayItems.join(",\n")}\n);`;
       } else {
         // associative
@@ -259,9 +252,7 @@ const TextToArrayTool: React.FC = (): React.JSX.Element => {
   const formatWordPressOutput = (lines: string[]): string => {
     try {
       if (arrayType === "simple") {
-        const arrayItems = lines.map(
-          (line) => `  __( '${line.replace(/'/g, "\\'")}', 'text-domain' )`
-        );
+        const arrayItems = lines.map((line) => `  __( '${line.replace(/'/g, "\\'")}', 'text-domain' )`);
         return `<?php\n$data = array(\n${arrayItems.join(",\n")}\n);`;
       } else if (arrayType === "numeric") {
         const arrayItems = lines.map(

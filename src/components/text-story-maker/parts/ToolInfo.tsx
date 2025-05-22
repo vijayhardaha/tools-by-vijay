@@ -27,10 +27,7 @@ const ToolInfo: React.FC = (): React.JSX.Element => {
           Text Story Maker
         </h1>
         <p
-          className={cn(
-            "text-accent-foreground -mt-2 text-lg leading-normal",
-            getFontClassByName("caveat") as string
-          )}
+          className={cn("text-accent-foreground -mt-2 text-lg leading-normal", getFontClassByName("caveat") as string)}
         >
           A tool by Vijay Hardaha
         </p>

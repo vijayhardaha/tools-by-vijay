@@ -40,11 +40,7 @@ const Base64EncodeDecode: React.FC = (): React.JSX.Element => {
 
   return (
     <PageLayout>
-      <PageHeader
-        title={tool.name}
-        description={tool.description}
-        icon={getIconForTool(tool.slug)}
-      />
+      <PageHeader title={tool.name} description={tool.description} icon={getIconForTool(tool.slug)} />
       <PageContent>
         <EntryWithSidebar tool={tool}>
           <Base64EncodeDecodeTool />

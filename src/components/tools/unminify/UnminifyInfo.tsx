@@ -11,17 +11,14 @@ const UnminifyInfo: React.FC = (): React.JSX.Element => {
       <section>
         <h2 className="text-primary mb-4 text-xl font-bold">About Unminify Tool</h2>
         <p className="mb-4">
-          The Unminify Tool is an online utility designed to make minified or obfuscated code
-          readable and pretty. It supports JavaScript, CSS, HTML, XML, and JSON code.
+          The Unminify Tool is an online utility designed to make minified or obfuscated code readable and pretty. It
+          supports JavaScript, CSS, HTML, XML, and JSON code.
         </p>
         <p className="mb-4">
-          We use the{" "}
-          <code className="bg-muted rounded px-1 py-0.5 text-sm font-medium text-pink-500">
-            Prettier
-          </code>{" "}
-          package under the hood, which provides powerful and configurable unminification
-          capabilities. With our tool, you can customize the formatting to suit your specific needs,
-          whether you’re working on a small project or a large application.
+          We use the <code className="bg-muted rounded px-1 py-0.5 text-sm font-medium text-pink-500">Prettier</code>{" "}
+          package under the hood, which provides powerful and configurable unminification capabilities. With our tool,
+          you can customize the formatting to suit your specific needs, whether you’re working on a small project or a
+          large application.
         </p>
       </section>
 

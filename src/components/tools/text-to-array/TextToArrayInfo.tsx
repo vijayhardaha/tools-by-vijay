@@ -11,14 +11,13 @@ const TextToArrayInfo: React.FC = (): React.JSX.Element => {
       <section>
         <h2 className="text-primary mb-4 text-xl font-bold">About Text to Array Converter</h2>
         <p className="mb-4">
-          The Text to Array Converter is a utility tool that helps developers convert multiline text
-          into various array and object formats for different programming languages. This tool is
-          especially useful for quickly transforming lists, comma-separated values, or any
-          line-based data into structured arrays for your code.
+          The Text to Array Converter is a utility tool that helps developers convert multiline text into various array
+          and object formats for different programming languages. This tool is especially useful for quickly
+          transforming lists, comma-separated values, or any line-based data into structured arrays for your code.
         </p>
         <p className="mb-4">
-          All conversion happens directly in your browser – your text is never sent to a server,
-          ensuring privacy and security when working with sensitive data.
+          All conversion happens directly in your browser – your text is never sent to a server, ensuring privacy and
+          security when working with sensitive data.
         </p>
       </section>
 
@@ -26,16 +25,16 @@ const TextToArrayInfo: React.FC = (): React.JSX.Element => {
         <h3 className="text-primary mb-4 text-lg font-bold">How to Use This Tool</h3>
         <ol className="list-decimal space-y-2 pl-6">
           <li>
-            <strong>Enter Your Text:</strong> Type or paste your multiline text into the input area.
-            Each line will become an element in the resulting array.
+            <strong>Enter Your Text:</strong> Type or paste your multiline text into the input area. Each line will
+            become an element in the resulting array.
           </li>
           <li>
-            <strong>Configure Processing Options:</strong> Choose whether to trim whitespace from
-            each line and whether to remove empty lines from the input.
+            <strong>Configure Processing Options:</strong> Choose whether to trim whitespace from each line and whether
+            to remove empty lines from the input.
           </li>
           <li>
-            <strong>Select Output Format:</strong> Choose the programming language and format you
-            want to convert to (JSON, JavaScript, PHP, or WordPress).
+            <strong>Select Output Format:</strong> Choose the programming language and format you want to convert to
+            (JSON, JavaScript, PHP, or WordPress).
           </li>
           <li>
             <strong>Choose Array Structure:</strong> Pick how you want your data structured:
@@ -52,8 +51,8 @@ const TextToArrayInfo: React.FC = (): React.JSX.Element => {
             </ul>
           </li>
           <li>
-            <strong>Enable Slugified Keys:</strong> For associative arrays, you can enable this
-            feature to automatically generate clean, URL-friendly keys from the line text.
+            <strong>Enable Slugified Keys:</strong> For associative arrays, you can enable this feature to automatically
+            generate clean, URL-friendly keys from the line text.
           </li>
           <li>
             <strong>Convert:</strong> Click the “Convert” button to generate your output.
@@ -85,9 +84,7 @@ const TextToArrayInfo: React.FC = (): React.JSX.Element => {
               </div>
 
               <div>
-                <h5 className="text-sm font-medium">
-                  JavaScript Array (Associative with Slugified Keys):
-                </h5>
+                <h5 className="text-sm font-medium">JavaScript Array (Associative with Slugified Keys):</h5>
                 <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-sm">
                   {`const textArray = [\n\t{\n\t\t"key": "united_states",\n\t\t"value": "United States"\n\t},\n\t{\n\t\t"key": "canada",\n\t\t"value": "Canada"\n\t},\n\t{\n\t\t"key": "united_kingdom",\n\t\t"value": "United Kingdom"\n\t},\n\t{\n\t\t"key": "australia",\n\t\t"value": "Australia"\n\t}\n];`}
                 </pre>
@@ -128,8 +125,8 @@ const TextToArrayInfo: React.FC = (): React.JSX.Element => {
           >
             Vijay Hardaha
           </a>
-          . This tool is built with web developers in mind to streamline the process of working with
-          text data in different programming environments.
+          . This tool is built with web developers in mind to streamline the process of working with text data in
+          different programming environments.
         </p>
       </section>
     </div>

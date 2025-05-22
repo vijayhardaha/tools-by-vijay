@@ -132,11 +132,7 @@ const TextToArrayInput: React.FC<ITextToArrayInputProps> = ({
               Trim whitespace from each line
             </Checkbox>
 
-            <Checkbox
-              id="remove-empty-lines"
-              checked={removeEmptyLines}
-              onCheckedChange={setRemoveEmptyLines}
-            >
+            <Checkbox id="remove-empty-lines" checked={removeEmptyLines} onCheckedChange={setRemoveEmptyLines}>
               Remove empty lines
             </Checkbox>
 

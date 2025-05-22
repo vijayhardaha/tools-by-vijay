@@ -11,14 +11,14 @@ const DropdownToArrayInfo: React.FC = (): React.JSX.Element => {
       <section>
         <h2 className="text-primary mb-4 text-xl font-bold">About Dropdown to Array Converter</h2>
         <p className="mb-4">
-          The Dropdown to Array Converter is a utility tool that helps developers convert HTML
-          select/dropdown elements into various array and object formats for different programming
-          languages. This tool saves time when working with form elements across platforms, allowing
-          you to quickly transform dropdown options into usable data structures.
+          The Dropdown to Array Converter is a utility tool that helps developers convert HTML select/dropdown elements
+          into various array and object formats for different programming languages. This tool saves time when working
+          with form elements across platforms, allowing you to quickly transform dropdown options into usable data
+          structures.
         </p>
         <p className="mb-4">
-          All conversion happens directly in your browser – your HTML code is never sent to a
-          server, ensuring privacy and security when working with sensitive data.
+          All conversion happens directly in your browser – your HTML code is never sent to a server, ensuring privacy
+          and security when working with sensitive data.
         </p>
       </section>
 
@@ -26,12 +26,12 @@ const DropdownToArrayInfo: React.FC = (): React.JSX.Element => {
         <h3 className="text-primary mb-4 text-lg font-bold">How to Use This Tool</h3>
         <ol className="list-decimal space-y-2 pl-6">
           <li>
-            <strong>Paste Your HTML:</strong> Copy and paste your HTML select element with options
-            into the input area. You can paste a complete select element or just the option tags.
+            <strong>Paste Your HTML:</strong> Copy and paste your HTML select element with options into the input area.
+            You can paste a complete select element or just the option tags.
           </li>
           <li>
-            <strong>Select Output Format:</strong> Choose the programming language and format you
-            want to convert to (JSON, JavaScript, PHP, or WordPress).
+            <strong>Select Output Format:</strong> Choose the programming language and format you want to convert to
+            (JSON, JavaScript, PHP, or WordPress).
           </li>
           <li>
             <strong>Choose Array Structure:</strong> Pick how you want your data structured:
@@ -48,9 +48,9 @@ const DropdownToArrayInfo: React.FC = (): React.JSX.Element => {
             </ul>
           </li>
           <li>
-            <strong>Enable Slugified Keys:</strong> Optionally, you can enable this feature to
-            automatically generate clean, URL-friendly keys from the option values instead of using
-            the raw values, which is especially useful for associative structures.
+            <strong>Enable Slugified Keys:</strong> Optionally, you can enable this feature to automatically generate
+            clean, URL-friendly keys from the option values instead of using the raw values, which is especially useful
+            for associative structures.
           </li>
           <li>
             <strong>Convert:</strong> Click the “Convert” button to generate your output.
@@ -82,9 +82,7 @@ const DropdownToArrayInfo: React.FC = (): React.JSX.Element => {
               </div>
 
               <div>
-                <h5 className="text-sm font-medium">
-                  JavaScript Array (Associative with Slugified Keys):
-                </h5>
+                <h5 className="text-sm font-medium">JavaScript Array (Associative with Slugified Keys):</h5>
                 <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-sm">
                   {`const dropdownArray = [\n\t{\n\t\t"key": "us",\n\t\t"value": "United States"\n\t},\n\t{\n\t\t"key": "ca",\n\t\t"value": "Canada"\n\t},\n\t{\n\t\t"key": "uk",\n\t\t"value": "United Kingdom"\n\t},\n\t{\n\t\t"key": "au",\n\t\t"value": "Australia"\n\t}\n];`}
                 </pre>
@@ -115,9 +113,7 @@ const DropdownToArrayInfo: React.FC = (): React.JSX.Element => {
           <li>Save time when migrating between platforms or languages.</li>
           <li>Generate slugified keys automatically for cleaner code and better compatibility.</li>
           <li>Easily format data for use in JavaScript, PHP, or WordPress applications.</li>
-          <li>
-            Transform user interface elements directly into data structures for API integration.
-          </li>
+          <li>Transform user interface elements directly into data structures for API integration.</li>
           <li>Generate WordPress-ready select option arrays with proper formatting.</li>
         </ul>
       </section>
@@ -134,8 +130,8 @@ const DropdownToArrayInfo: React.FC = (): React.JSX.Element => {
           >
             Vijay Hardaha
           </a>
-          . This tool is built with web developers in mind to streamline the process of working with
-          dropdown menus across different programming environments.
+          . This tool is built with web developers in mind to streamline the process of working with dropdown menus
+          across different programming environments.
         </p>
       </section>
     </div>

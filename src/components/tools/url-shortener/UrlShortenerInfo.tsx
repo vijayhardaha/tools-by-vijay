@@ -11,15 +11,14 @@ const UrlShortenerInfo: React.FC = (): React.JSX.Element => {
       <section>
         <h2 className="text-primary mb-4 text-xl font-bold">About URL Shortener Tool</h2>
         <p className="mb-4">
-          The URL Shortener Tool is an online utility designed to help you convert multiple long
-          URLs into shorter, more manageable links in one operation. This tool uses the TinyURL API
-          to create short, redirect links that are easier to share, especially in places with
-          character limitations like social media posts, SMS messages, or printed materials.
+          The URL Shortener Tool is an online utility designed to help you convert multiple long URLs into shorter, more
+          manageable links in one operation. This tool uses the TinyURL API to create short, redirect links that are
+          easier to share, especially in places with character limitations like social media posts, SMS messages, or
+          printed materials.
         </p>
         <p className="mb-4">
-          We perform validation on each URL to ensure that only properly formatted web addresses are
-          processed. For each valid URL, you’ll receive a shortened link that redirects to your
-          original destination.
+          We perform validation on each URL to ensure that only properly formatted web addresses are processed. For each
+          valid URL, you’ll receive a shortened link that redirects to your original destination.
         </p>
       </section>
 

@@ -36,9 +36,7 @@ const TextCaseChangerTool: React.FC = (): React.JSX.Element => {
   const convertToTextCase = (text: string): string => {
     switch (textCase) {
       case "Sentence case":
-        return text
-          .toLowerCase()
-          .replace(/(^\s*[a-z])|(\.\s*[a-z])/g, (match) => match.toUpperCase());
+        return text.toLowerCase().replace(/(^\s*[a-z])|(\.\s*[a-z])/g, (match) => match.toUpperCase());
       case "lower case":
         return text.toLowerCase();
       case "UPPER CASE":

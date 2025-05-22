@@ -43,9 +43,7 @@ function Slider({
   };
 
   return (
-    <div
-      className={cn("relative flex w-full items-center py-3 data-[disabled]:opacity-50", className)}
-    >
+    <div className={cn("relative flex w-full items-center py-3 data-[disabled]:opacity-50", className)}>
       <input
         type="range"
         min={min}

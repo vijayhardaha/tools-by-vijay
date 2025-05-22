@@ -11,9 +11,8 @@ const CountryNameGeneratorInfo: React.FC = (): React.JSX.Element => {
       <section>
         <h2 className="text-primary mb-4 text-xl font-bold">About Country Name Generator</h2>
         <p className="mb-4">
-          The Country Name Generator tool helps you generate random country names for testing,
-          educational purposes, or creative projects. It is useful for developers, educators, and
-          content creators.
+          The Country Name Generator tool helps you generate random country names for testing, educational purposes, or
+          creative projects. It is useful for developers, educators, and content creators.
         </p>
       </section>
 
@@ -70,8 +69,7 @@ const CountryNameGeneratorInfo: React.FC = (): React.JSX.Element => {
           >
             Vijay Hardaha
           </a>
-          . This tool is designed to assist with generating random country names for various
-          purposes.
+          . This tool is designed to assist with generating random country names for various purposes.
         </p>
       </section>
     </div>

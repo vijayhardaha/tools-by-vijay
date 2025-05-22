@@ -5,9 +5,7 @@
  * @returns {React.JSX.Element} The text wrapped in a <code> tag.
  */
 const wrapInCode = (text: string): React.JSX.Element => {
-  return (
-    <code className="bg-muted rounded px-1 py-0.5 text-xs font-medium text-pink-500">{text}</code>
-  );
+  return <code className="bg-muted rounded px-1 py-0.5 text-xs font-medium text-pink-500">{text}</code>;
 };
 
 /**
@@ -21,10 +19,7 @@ interface ICompressionInfoProps {
 /**
  * Displays compression information based on input and output data.
  */
-export const CompressionInfo = ({
-  input,
-  output,
-}: ICompressionInfoProps): React.JSX.Element | null => {
+export const CompressionInfo = ({ input, output }: ICompressionInfoProps): React.JSX.Element | null => {
   if (!output) return wrapInCode("Output is empty");
 
   const formatSize = (size: number): string => {
@@ -53,8 +48,8 @@ export const CompressionInfo = ({
 
       stats = (
         <>
-          Original size: {wrapInCode(originalSize)} • Compressed size: {wrapInCode(compressedSize)}{" "}
-          • Saving: {wrapInCode(formatSize(saved))} • Compression: {wrapInCode(`${percent}%`)}
+          Original size: {wrapInCode(originalSize)} • Compressed size: {wrapInCode(compressedSize)} • Saving:{" "}
+          {wrapInCode(formatSize(saved))} • Compression: {wrapInCode(`${percent}%`)}
         </>
       );
     }

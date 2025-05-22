@@ -56,15 +56,8 @@ function Tabs({ className, defaultValue, value, onValueChange, children, ...prop
   );
 
   return (
-    <div
-      data-slot="tabs"
-      className={cn("flex flex-col gap-2", className)}
-      role="tablist"
-      {...props}
-    >
-      <TabsContext.Provider value={{ selectedTab, setSelectedTab: handleTabChange }}>
-        {children}
-      </TabsContext.Provider>
+    <div data-slot="tabs" className={cn("flex flex-col gap-2", className)} role="tablist" {...props}>
+      <TabsContext.Provider value={{ selectedTab, setSelectedTab: handleTabChange }}>{children}</TabsContext.Provider>
     </div>
   );
 }

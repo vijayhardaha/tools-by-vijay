@@ -92,9 +92,7 @@ const buttonVariants = cva(
           "bg-background border-primary text-primary",
           "hover:bg-primary hover:border-primary hover:text-primary-foreground",
         ].join(" "),
-        ghost: [
-          "border-transparent hover:bg-accent hover:border-transparent hover:text-accent-foreground",
-        ].join(" "),
+        ghost: ["border-transparent hover:bg-accent hover:border-transparent hover:text-accent-foreground"].join(" "),
         link: ["border-transparent text-primary underline-offset-4", "hover:underline"].join(" "),
       },
       size: {
@@ -116,37 +114,21 @@ const buttonVariants = cva(
  */
 type IButtonProps = {
   className?: string;
-  variant?:
-    | "default"
-    | "primary"
-    | "destructive"
-    | "success"
-    | "outline"
-    | "secondary"
-    | "ghost"
-    | "link";
+  variant?: "default" | "primary" | "destructive" | "success" | "outline" | "secondary" | "ghost" | "link";
   size?: "default" | "sm" | "lg" | "icon";
   asChild?: boolean;
   children: React.ReactNode; // Allow any valid ReactNode (string, ReactElement, etc.)
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 const Button = forwardRef<HTMLButtonElement, IButtonProps>(
-  (
-    { className, variant = "default", size = "default", asChild = false, children, ...props },
-    ref
-  ) => {
+  ({ className, variant = "default", size = "default", asChild = false, children, ...props }, ref) => {
     const Comp = asChild ? Slot : "button";
 
     // Ensure props is an object before spreading
     const validProps = props && typeof props === "object" ? props : {};
 
     return (
-      <Comp
-        data-slot="button"
-        className={cn(buttonVariants({ variant, size, className }))}
-        {...validProps}
-        ref={ref}
-      >
+      <Comp data-slot="button" className={cn(buttonVariants({ variant, size, className }))} {...validProps} ref={ref}>
         {children}
       </Comp>
     );

@@ -45,9 +45,7 @@ export const getRelatedTools = (toolSlug: string, limit = 3): ITool[] => {
   const currentTool = findToolBySlug(toolSlug);
   if (!currentTool) return [];
 
-  return tools
-    .filter((tool) => tool.category === currentTool.category && tool.slug !== toolSlug)
-    .slice(0, limit);
+  return tools.filter((tool) => tool.category === currentTool.category && tool.slug !== toolSlug).slice(0, limit);
 };
 
 /**
@@ -60,10 +58,7 @@ export const searchTools = (query: string): ITool[] => {
 
   const searchTerm = query.toLowerCase().trim();
   return tools.filter((tool) => {
-    return (
-      tool.name.toLowerCase().includes(searchTerm) ||
-      tool.description.toLowerCase().includes(searchTerm)
-    );
+    return tool.name.toLowerCase().includes(searchTerm) || tool.description.toLowerCase().includes(searchTerm);
   });
 };
 

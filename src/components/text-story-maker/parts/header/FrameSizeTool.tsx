@@ -59,10 +59,7 @@ const FrameSizeTool: React.FC<IFrameSizeToolProps> = ({
               >
                 {label}
                 {options.cardRatio === value && (
-                  <CheckFillIcon
-                    className="text-accent-foreground ml-2 size-6"
-                    aria-hidden="true"
-                  />
+                  <CheckFillIcon className="text-accent-foreground ml-2 size-6" aria-hidden="true" />
                 )}
               </button>
             ))}

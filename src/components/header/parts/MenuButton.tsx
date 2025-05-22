@@ -17,9 +17,7 @@ type IMenuButtonProps = {
  * @param {MenuButtonProps} props - The component props.
  * @returns {React.JSX.Element} A button component with "Menu" text and hamburger icon.
  */
-const MenuButton: React.FC<IMenuButtonProps> = ({
-  onClick,
-}: IMenuButtonProps): React.JSX.Element => (
+const MenuButton: React.FC<IMenuButtonProps> = ({ onClick }: IMenuButtonProps): React.JSX.Element => (
   <Button onClick={onClick} variant="primary" className="w-12 md:w-auto" aria-label="Menu">
     <span className="hidden md:inline-flex">Menu</span>
     <span className="sr-only">Menu</span>

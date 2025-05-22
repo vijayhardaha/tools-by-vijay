@@ -49,9 +49,7 @@ const UrlShortenerInput: React.FC<IUrlShortenerInputProps> = ({
     <Card>
       <CardHeader>
         <CardTitle>Enter URLs to Shorten</CardTitle>
-        <CardDescription>
-          Enter one URL per line. Each URL will be shortened individually.
-        </CardDescription>
+        <CardDescription>Enter one URL per line. Each URL will be shortened individually.</CardDescription>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">

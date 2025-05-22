@@ -71,19 +71,9 @@ const TextStoryMakerTool: React.FC = (): React.JSX.Element => {
 
   return (
     <div className={cn("relative h-screen w-full bg-black/85", "flex flex-col")}>
-      <Header
-        options={options}
-        updateOption={updateOption}
-        activeTool={activeTool}
-        setActiveTool={setActiveTool}
-      />
+      <Header options={options} updateOption={updateOption} activeTool={activeTool} setActiveTool={setActiveTool} />
       <Footer options={options} updateOption={updateOption} activeTool={activeTool} />
-      <Content
-        options={options}
-        updateOption={updateOption}
-        activeTool={activeTool}
-        setActiveTool={setActiveTool}
-      />
+      <Content options={options} updateOption={updateOption} activeTool={activeTool} setActiveTool={setActiveTool} />
 
       {!activeTool && (
         <div className="absolute bottom-4 left-4 z-20">

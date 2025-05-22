@@ -102,11 +102,7 @@ const PasswordGeneratorInput: React.FC<IPasswordGeneratorInputProps> = ({
           </div>
 
           <div className="flex items-center gap-2">
-            <Checkbox
-              id="excludeSimilar"
-              checked={excludeSimilar}
-              onCheckedChange={setExcludeSimilar}
-            >
+            <Checkbox id="excludeSimilar" checked={excludeSimilar} onCheckedChange={setExcludeSimilar}>
               Exclude similar characters (i, l, 1, L, o, 0, O)
             </Checkbox>
 

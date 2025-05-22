@@ -21,11 +21,7 @@ type INavLinkProps = {
  * @param {INavLinkProps} props - Component props.
  * @returns {React.JSX.Element} Styled navigation link.
  */
-const NavLink: React.FC<INavLinkProps> = ({
-  href,
-  children,
-  className = "",
-}: INavLinkProps): React.JSX.Element => (
+const NavLink: React.FC<INavLinkProps> = ({ href, children, className = "" }: INavLinkProps): React.JSX.Element => (
   <Link
     href={href}
     className={`text-muted-foreground hover:text-primary transition-colors hover:underline ${className}`}
@@ -99,9 +95,7 @@ const SidebarBody: React.FC = (): React.JSX.Element => {
             const categoryTools = categorizedTools[category.slug] || [];
             if (categoryTools.length === 0) return null;
 
-            return (
-              <CategorySection key={category.slug} title={category.label} tools={categoryTools} />
-            );
+            return <CategorySection key={category.slug} title={category.label} tools={categoryTools} />;
           })}
 
           {/* Handle any uncategorized tools */}

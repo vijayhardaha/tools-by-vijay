@@ -17,9 +17,7 @@ interface IPxToRemOutputProps {
  * @param {IPxToRemOutputProps} props - Component props.
  * @returns {React.JSX.Element} The rendered card with the rem value.
  */
-const PxToRemOutput: React.FC<IPxToRemOutputProps> = ({
-  remValue,
-}: IPxToRemOutputProps): React.JSX.Element => {
+const PxToRemOutput: React.FC<IPxToRemOutputProps> = ({ remValue }: IPxToRemOutputProps): React.JSX.Element => {
   return (
     <Card>
       <CardHeader>

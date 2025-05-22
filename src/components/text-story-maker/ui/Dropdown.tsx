@@ -73,12 +73,7 @@ interface DropdownTriggerProps {
   menuId?: string;
 }
 
-export const DropdownTrigger = ({
-  onClick,
-  children,
-  isOpen = false,
-  menuId,
-}: DropdownTriggerProps) => {
+export const DropdownTrigger = ({ onClick, children, isOpen = false, menuId }: DropdownTriggerProps) => {
   // Ensure children is a valid ReactElement before calling cloneElement
   if (React.isValidElement(children)) {
     return (

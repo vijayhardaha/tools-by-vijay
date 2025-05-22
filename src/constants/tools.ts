@@ -18,8 +18,7 @@ const tools: ITool[] = [
   {
     name: "Bulk Slugify",
     slug: "bulk-slugify",
-    description:
-      "Convert multiple lines of text into SEO-friendly slugs in bulk, perfect for batch URL processing.",
+    description: "Convert multiple lines of text into SEO-friendly slugs in bulk, perfect for batch URL processing.",
     seoTitle: "Bulk Slugify Tool – Batch Convert Strings into URL Slugs",
     seoDescription:
       "Slugify many lines of text at once for optimized URLs. Great for SEO-focused content creation and automation.",
@@ -28,38 +27,31 @@ const tools: ITool[] = [
   {
     name: "Password Generator",
     slug: "password-generator",
-    description:
-      "Generate strong, complex passwords instantly to secure your personal and professional accounts.",
+    description: "Generate strong, complex passwords instantly to secure your personal and professional accounts.",
     seoTitle: "Password Generator – Create Strong & Secure Passwords Online",
-    seoDescription:
-      "Create complex and highly secure passwords quickly. Ideal for all your security needs.",
+    seoDescription: "Create complex and highly secure passwords quickly. Ideal for all your security needs.",
     category: "security-tools",
   },
   {
     name: "Password Strength Checker",
     slug: "password-strength-checker",
-    description:
-      "Instantly assess the strength of your password and receive actionable security tips.",
+    description: "Instantly assess the strength of your password and receive actionable security tips.",
     seoTitle: "Password Strength Checker – Analyze Password Security",
-    seoDescription:
-      "Evaluate your password strength in real-time and get expert recommendations to enhance security.",
+    seoDescription: "Evaluate your password strength in real-time and get expert recommendations to enhance security.",
     category: "security-tools",
   },
   {
     name: "HTML Minifier",
     slug: "html-minifier",
-    description:
-      "Minify HTML files to reduce size and speed up your website load times effectively.",
+    description: "Minify HTML files to reduce size and speed up your website load times effectively.",
     seoTitle: "HTML Minifier – Compress HTML for Better Performance",
-    seoDescription:
-      "Shrink HTML files by removing unnecessary whitespace for faster loading and better SEO.",
+    seoDescription: "Shrink HTML files by removing unnecessary whitespace for faster loading and better SEO.",
     category: "code-optimization-tools",
   },
   {
     name: "CSS Minifier",
     slug: "css-minifier",
-    description:
-      "Compress and optimize your CSS files quickly without changing their functionality.",
+    description: "Compress and optimize your CSS files quickly without changing their functionality.",
     seoTitle: "CSS Minifier – Optimize CSS for Faster Load Times",
     seoDescription: "Reduce CSS file size efficiently to enhance page speed and performance.",
     category: "code-optimization-tools",
@@ -85,15 +77,13 @@ const tools: ITool[] = [
     slug: "dropdown-to-array",
     description: "Convert HTML dropdown options into usable PHP or JavaScript arrays instantly.",
     seoTitle: "Dropdown to Array – Convert HTML Options to Code",
-    seoDescription:
-      "Easily transform dropdown <select> options into clean PHP or JS arrays for coding.",
+    seoDescription: "Easily transform dropdown <select> options into clean PHP or JS arrays for coding.",
     category: "data-conversion-tools",
   },
   {
     name: "Text to Array",
     slug: "text-to-array",
-    description:
-      "Transform plain text lists into structured PHP or JavaScript arrays with auto-generated keys.",
+    description: "Transform plain text lists into structured PHP or JavaScript arrays with auto-generated keys.",
     seoTitle: "Text to Array – Instantly Generate PHP/JS Arrays",
     seoDescription: "Convert text into organized arrays for efficient programming use.",
     category: "data-conversion-tools",
@@ -101,8 +91,7 @@ const tools: ITool[] = [
   {
     name: "JSON Sorter",
     slug: "json-sorter",
-    description:
-      "Alphabetically sort JSON object keys for improved readability and data consistency.",
+    description: "Alphabetically sort JSON object keys for improved readability and data consistency.",
     seoTitle: "JSON Sorter – Organize JSON Keys Alphabetically",
     seoDescription: "Sort your JSON data keys to enhance clarity and structure for development.",
     category: "code-optimization-tools",
@@ -110,28 +99,23 @@ const tools: ITool[] = [
   {
     name: "Duplicate Line Removal",
     slug: "duplicate-line-removal",
-    description:
-      "Remove duplicate lines from your text automatically while preserving the original order.",
+    description: "Remove duplicate lines from your text automatically while preserving the original order.",
     seoTitle: "Duplicate Line Remover – Eliminate Repeated Lines",
-    seoDescription:
-      "Clean up your content by quickly removing repeated lines to ensure uniqueness.",
+    seoDescription: "Clean up your content by quickly removing repeated lines to ensure uniqueness.",
     category: "text-transformation-tools",
   },
   {
     name: "Alphabetical Line Sorter",
     slug: "alphabetical-line-sorter",
-    description:
-      "Sort lines of text alphabetically, in reverse, or numerically to organize your data.",
+    description: "Sort lines of text alphabetically, in reverse, or numerically to organize your data.",
     seoTitle: "Text Line Sorter – Sort Lines Alphabetically or Numerically",
-    seoDescription:
-      "Arrange your text lines in various orders to improve readability and workflow.",
+    seoDescription: "Arrange your text lines in various orders to improve readability and workflow.",
     category: "text-transformation-tools",
   },
   {
     name: "CSS Inliner",
     slug: "css-inliner",
-    description:
-      "Convert CSS rules into inline styles within HTML tags, perfect for emails and simple documents.",
+    description: "Convert CSS rules into inline styles within HTML tags, perfect for emails and simple documents.",
     seoTitle: "CSS Inliner – Convert CSS into Inline HTML Styles",
     seoDescription: "Inline CSS to enhance email compatibility and simplify HTML delivery.",
     category: "code-optimization-tools",
@@ -141,15 +125,13 @@ const tools: ITool[] = [
     slug: "replace-quotes",
     description: "Toggle between curly and straight quotes for clean and professional typography.",
     seoTitle: "Replace Quotes Tool – Toggle Between Curly and Straight Quotes",
-    seoDescription:
-      "Convert straight quotes to smart curly quotes or vice versa to improve text presentation.",
+    seoDescription: "Convert straight quotes to smart curly quotes or vice versa to improve text presentation.",
     category: "text-transformation-tools",
   },
   {
     name: "Shuffle Text Lines",
     slug: "shuffle-text-lines",
-    description:
-      "Randomly reorder lines of text for creative or practical uses like contests or presentations.",
+    description: "Randomly reorder lines of text for creative or practical uses like contests or presentations.",
     seoTitle: "Shuffle Text Lines – Randomize Line Order Online",
     seoDescription: "Shuffle the order of your text lines quickly and easily for varied output.",
     category: "text-transformation-tools",
@@ -159,15 +141,13 @@ const tools: ITool[] = [
     slug: "character-count",
     description: "Count the number of characters, words, and spaces in any text instantly.",
     seoTitle: "Character Counter – Count Words, Characters & Spaces",
-    seoDescription:
-      "Track text length and composition in real-time for writing and editing purposes.",
+    seoDescription: "Track text length and composition in real-time for writing and editing purposes.",
     category: "text-transformation-tools",
   },
   {
     name: "URL Decoder/Encoder",
     slug: "url-decoder-encoder",
-    description:
-      "Encode or decode URLs quickly to ensure they work across different browsers and platforms.",
+    description: "Encode or decode URLs quickly to ensure they work across different browsers and platforms.",
     seoTitle: "URL Decoder & Encoder – Convert URLs with Ease",
     seoDescription: "Effortlessly encode or decode URLs for clean and functional web links.",
     category: "web-utility-tools",
@@ -183,8 +163,7 @@ const tools: ITool[] = [
   {
     name: "Country Name Generator",
     slug: "country-name-generator",
-    description:
-      "Generate fictional country names randomly for creative writing, games, or simulations.",
+    description: "Generate fictional country names randomly for creative writing, games, or simulations.",
     seoTitle: "Country Name Generator – Random Country Name Creator",
     seoDescription: "Create unique and imaginative country names instantly for various projects.",
     category: "web-utility-tools",
@@ -194,8 +173,7 @@ const tools: ITool[] = [
     slug: "random-username-generator",
     description: "Generate unique and creative usernames instantly for accounts or entertainment.",
     seoTitle: "Username Generator – Create Random & Unique Usernames",
-    seoDescription:
-      "Find fresh and interesting usernames quickly for your online profiles and apps.",
+    seoDescription: "Find fresh and interesting usernames quickly for your online profiles and apps.",
     category: "web-utility-tools",
   },
   {
@@ -235,8 +213,7 @@ const tools: ITool[] = [
     slug: "barcode-generator",
     description: "Create standard barcodes quickly for products, inventory, or business use.",
     seoTitle: "Barcode Generator – Create Product Barcodes Instantly",
-    seoDescription:
-      "Generate professional barcodes easily to aid in product labeling and tracking.",
+    seoDescription: "Generate professional barcodes easily to aid in product labeling and tracking.",
     category: "web-utility-tools",
   },
   {

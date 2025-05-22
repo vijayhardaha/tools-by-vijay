@@ -11,14 +11,13 @@ const DuplicateLineRemovalInfo: React.FC = (): React.JSX.Element => {
       <section>
         <h2 className="text-primary mb-4 text-xl font-bold">About Duplicate Line Removal</h2>
         <p className="mb-4">
-          The Duplicate Line Removal tool helps you clean up text by removing duplicate lines. It
-          also provides options to sort the lines alphabetically, by ASCII values, or leave them
-          unsorted. This tool is useful for text processing, data cleanup, and ensuring unique
-          entries in lists.
+          The Duplicate Line Removal tool helps you clean up text by removing duplicate lines. It also provides options
+          to sort the lines alphabetically, by ASCII values, or leave them unsorted. This tool is useful for text
+          processing, data cleanup, and ensuring unique entries in lists.
         </p>
         <p className="mb-4">
-          All processing happens directly in your browser – your data is never sent to a server,
-          ensuring privacy and security when working with sensitive information.
+          All processing happens directly in your browser – your data is never sent to a server, ensuring privacy and
+          security when working with sensitive information.
         </p>
       </section>
 
@@ -32,18 +31,16 @@ const DuplicateLineRemovalInfo: React.FC = (): React.JSX.Element => {
             <strong>Configure Options:</strong>
             <ul className="list-disc pt-2 pl-6">
               <li>
-                <strong>Type of Sorting:</strong> Choose between no sorting, alphabetical sorting,
-                or ASCII sorting.
+                <strong>Type of Sorting:</strong> Choose between no sorting, alphabetical sorting, or ASCII sorting.
               </li>
               <li>
-                <strong>Reverse Sorting:</strong> Enable this option to reverse the sorting order
-                (Z-A or 9-0).
+                <strong>Reverse Sorting:</strong> Enable this option to reverse the sorting order (Z-A or 9-0).
               </li>
             </ul>
           </li>
           <li>
-            <strong>Process Text:</strong> Click the “Process” button to remove duplicate lines and
-            apply the selected sorting options.
+            <strong>Process Text:</strong> Click the “Process” button to remove duplicate lines and apply the selected
+            sorting options.
           </li>
           <li>
             <strong>Copy Result:</strong> Copy the processed text to your clipboard for further use.
@@ -63,9 +60,7 @@ const DuplicateLineRemovalInfo: React.FC = (): React.JSX.Element => {
 
           <div>
             <h4 className="mb-2 font-medium">Output Example (Alphabetical Sort):</h4>
-            <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-sm">
-              {`apple\nbanana\norange`}
-            </pre>
+            <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-sm">{`apple\nbanana\norange`}</pre>
           </div>
         </div>
       </section>

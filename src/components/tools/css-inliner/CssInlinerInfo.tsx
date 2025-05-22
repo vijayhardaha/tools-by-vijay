@@ -11,9 +11,9 @@ const CssInlinerInfo: React.FC = (): React.JSX.Element => {
       <section>
         <h2 className="text-primary mb-4 text-xl font-bold">About CSS Inliner Tool</h2>
         <p className="mb-4">
-          The CSS Inliner Tool helps you embed CSS styles directly into your HTML, making it easier
-          to send styled emails or create self-contained HTML files. Simply input your HTML and CSS,
-          and the tool will generate the inlined HTML for you.
+          The CSS Inliner Tool helps you embed CSS styles directly into your HTML, making it easier to send styled
+          emails or create self-contained HTML files. Simply input your HTML and CSS, and the tool will generate the
+          inlined HTML for you.
         </p>
       </section>
 

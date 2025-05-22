@@ -16,18 +16,14 @@ interface CssInlinerOutputProps {
  * @param {CssInlinerOutputProps} props - The props for the component.
  * @returns {React.JSX.Element} The rendered CssInlinerOutput component.
  */
-const CssInlinerOutput: React.FC<CssInlinerOutputProps> = ({
-  output,
-}: CssInlinerOutputProps): React.JSX.Element => {
+const CssInlinerOutput: React.FC<CssInlinerOutputProps> = ({ output }: CssInlinerOutputProps): React.JSX.Element => {
   return (
     <Card>
       <CardHeader>
         <div className="flex w-full flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex flex-col gap-1.5">
             <CardTitle>Output</CardTitle>
-            <CardDescription>
-              The resulting HTML with inlined CSS will appear below.
-            </CardDescription>
+            <CardDescription>The resulting HTML with inlined CSS will appear below.</CardDescription>
           </div>
           <div className="inline-flex">
             <CopyButton text={output} />

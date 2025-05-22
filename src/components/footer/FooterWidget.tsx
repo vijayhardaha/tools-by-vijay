@@ -17,10 +17,7 @@ type IFooterWidgetProps = {
  * @param {IFooterWidgetProps} props - Component props.
  * @returns {React.JSX.Element} The rendered footer widget.
  */
-const FooterWidget: React.FC<IFooterWidgetProps> = ({
-  title,
-  links,
-}: IFooterWidgetProps): React.JSX.Element => {
+const FooterWidget: React.FC<IFooterWidgetProps> = ({ title, links }: IFooterWidgetProps): React.JSX.Element => {
   /**
    * Check if a URL is external (starts with http:// or https://)
    * @param {string} url - The URL to check

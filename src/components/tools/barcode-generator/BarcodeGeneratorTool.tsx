@@ -38,12 +38,7 @@ const BarcodeGeneratorTool: React.FC = (): React.JSX.Element => {
   return (
     <>
       <div className="grid grid-cols-1 gap-6">
-        <BarcodeInput
-          input={input}
-          setInput={setInput}
-          onSubmit={generateBarcode}
-          onClear={handleClear}
-        />
+        <BarcodeInput input={input} setInput={setInput} onSubmit={generateBarcode} onClear={handleClear} />
 
         {output && <BarcodeOutput output={output} />}
       </div>

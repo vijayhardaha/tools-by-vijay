@@ -45,9 +45,7 @@ export const filterCategories = (searchTerm: string): ICategory[] => {
 
   const term = searchTerm.toLowerCase();
   return categories.filter(
-    (category) =>
-      category.label.toLowerCase().includes(term) ||
-      category.description.toLowerCase().includes(term)
+    (category) => category.label.toLowerCase().includes(term) || category.description.toLowerCase().includes(term)
   );
 };
 

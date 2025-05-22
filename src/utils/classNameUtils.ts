@@ -7,8 +7,6 @@ import { twMerge } from "tailwind-merge";
  * @param {...(string | string[] | boolean | undefined | { [key: string]: boolean })[]} inputs - The class names to combine.
  * @returns {string} - A single string of combined and merged class names.
  */
-export function cn(
-  ...inputs: (string | string[] | boolean | undefined | { [key: string]: boolean })[]
-): string {
+export function cn(...inputs: (string | string[] | boolean | undefined | { [key: string]: boolean })[]): string {
   return twMerge(clsx(inputs));
 }

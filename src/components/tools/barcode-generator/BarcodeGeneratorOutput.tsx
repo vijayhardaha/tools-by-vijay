@@ -28,13 +28,7 @@ const BarcodeGeneratorOutput: React.FC<IBarcodeGeneratorOutputProps> = ({
       </CardHeader>
       <CardContent>
         <div className="flex flex-col gap-4">
-          <Image
-            src={output}
-            alt="Generated Barcode"
-            className="w-auto max-w-xs"
-            width={250}
-            height={100}
-          />
+          <Image src={output} alt="Generated Barcode" className="w-auto max-w-xs" width={250} height={100} />
         </div>
       </CardContent>
     </Card>

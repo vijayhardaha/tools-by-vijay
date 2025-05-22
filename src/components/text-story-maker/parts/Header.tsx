@@ -37,10 +37,7 @@ const Header: React.FC<IHeaderProps> = ({
   const router = useRouter();
 
   return (
-    <header
-      className="xs:p-4 absolute top-0 right-0 z-40 w-full p-2"
-      aria-label="Story maker toolbar"
-    >
+    <header className="xs:p-4 absolute top-0 right-0 z-40 w-full p-2" aria-label="Story maker toolbar">
       {activeTool ? (
         <div className="flex items-center justify-end">
           <Button

@@ -11,13 +11,13 @@ const JsonSorterInfo: React.FC = (): React.JSX.Element => {
       <section>
         <h2 className="text-primary mb-4 text-xl font-bold">About JSON Sorter</h2>
         <p className="mb-4">
-          The JSON Sorter is a developer utility that alphabetically sorts the keys in JSON objects.
-          This tool helps maintain consistent ordering in JSON files, making them easier to read,
-          compare, and manage in version control systems.
+          The JSON Sorter is a developer utility that alphabetically sorts the keys in JSON objects. This tool helps
+          maintain consistent ordering in JSON files, making them easier to read, compare, and manage in version control
+          systems.
         </p>
         <p className="mb-4">
-          All sorting happens directly in your browser – your data is never sent to a server,
-          ensuring privacy and security when working with sensitive information.
+          All sorting happens directly in your browser – your data is never sent to a server, ensuring privacy and
+          security when working with sensitive information.
         </p>
       </section>
 
@@ -31,18 +31,16 @@ const JsonSorterInfo: React.FC = (): React.JSX.Element => {
             <strong>Configure Sorting Options:</strong>
             <ul className="list-disc pt-2 pl-6">
               <li>
-                <strong>Spare plain arrays:</strong> Keep the original order of simple arrays
-                instead of sorting their elements.
+                <strong>Spare plain arrays:</strong> Keep the original order of simple arrays instead of sorting their
+                elements.
               </li>
             </ul>
           </li>
           <li>
-            <strong>Sort JSON:</strong> Click the “Sort JSON” button to generate alphabetically
-            sorted output.
+            <strong>Sort JSON:</strong> Click the “Sort JSON” button to generate alphabetically sorted output.
           </li>
           <li>
-            <strong>Copy Result:</strong> Use the copy button to copy the sorted JSON to your
-            clipboard.
+            <strong>Copy Result:</strong> Use the copy button to copy the sorted JSON to your clipboard.
           </li>
         </ol>
       </section>

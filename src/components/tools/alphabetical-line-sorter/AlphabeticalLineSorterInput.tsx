@@ -55,9 +55,7 @@ const AlphabeticalLineSorterInput: React.FC<IAlphabeticalLineSorterInputProps> =
     <Card>
       <CardHeader>
         <CardTitle>Alphabetical Line Sorter Input</CardTitle>
-        <CardDescription>
-          Enter your text and configure options to sort lines alphabetically.
-        </CardDescription>
+        <CardDescription>Enter your text and configure options to sort lines alphabetically.</CardDescription>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
@@ -93,11 +91,7 @@ const AlphabeticalLineSorterInput: React.FC<IAlphabeticalLineSorterInputProps> =
               Reverse Sorting (Z-A)
             </Checkbox>
 
-            <Checkbox
-              id="remove-duplicates"
-              checked={removeDuplicates}
-              onCheckedChange={setRemoveDuplicates}
-            >
+            <Checkbox id="remove-duplicates" checked={removeDuplicates} onCheckedChange={setRemoveDuplicates}>
               Remove Duplicate Lines
             </Checkbox>
           </div>

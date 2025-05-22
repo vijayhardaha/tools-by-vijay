@@ -17,25 +17,13 @@ interface IFooterProps extends IUpdateOptionProps {
  * @param {IFooterProps} props - Component props.
  * @returns {React.JSX.Element} The rendered Footer component.
  */
-const Footer: React.FC<IFooterProps> = ({
-  options,
-  updateOption,
-  activeTool,
-}: IFooterProps): React.JSX.Element => (
+const Footer: React.FC<IFooterProps> = ({ options, updateOption, activeTool }: IFooterProps): React.JSX.Element => (
   <footer aria-label="Story formatting options" role="region">
     {activeTool === "text" && (
-      <TextOptionsPanel
-        options={options}
-        updateOption={updateOption}
-        aria-label="Text formatting options panel"
-      />
+      <TextOptionsPanel options={options} updateOption={updateOption} aria-label="Text formatting options panel" />
     )}
     {activeTool === "background" && (
-      <BgOptionsPanel
-        options={options}
-        updateOption={updateOption}
-        aria-label="Background formatting options panel"
-      />
+      <BgOptionsPanel options={options} updateOption={updateOption} aria-label="Background formatting options panel" />
     )}
   </footer>
 );

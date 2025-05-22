@@ -281,10 +281,7 @@ const CountryNameGeneratorTool: React.FC = (): React.JSX.Element => {
       "Zimbabwe",
     ];
 
-    const generated = Array.from(
-      { length: count },
-      () => countries[Math.floor(Math.random() * countries.length)]
-    );
+    const generated = Array.from({ length: count }, () => countries[Math.floor(Math.random() * countries.length)]);
 
     setOutput(generated);
   };

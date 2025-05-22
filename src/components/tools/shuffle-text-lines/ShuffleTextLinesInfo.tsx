@@ -11,12 +11,12 @@ const ShuffleTextLinesInfo: React.FC = (): React.JSX.Element => {
       <section>
         <h2 className="text-primary mb-4 text-xl font-bold">About Shuffle Text Lines</h2>
         <p className="mb-4">
-          The Shuffle Text Lines tool helps you randomize the order of lines in your text. It is
-          useful for creating randomized lists, testing, or simply mixing up content.
+          The Shuffle Text Lines tool helps you randomize the order of lines in your text. It is useful for creating
+          randomized lists, testing, or simply mixing up content.
         </p>
         <p className="mb-4">
-          All processing happens directly in your browser – your data is never sent to a server,
-          ensuring privacy and security when working with sensitive information.
+          All processing happens directly in your browser – your data is never sent to a server, ensuring privacy and
+          security when working with sensitive information.
         </p>
       </section>
 
@@ -30,16 +30,13 @@ const ShuffleTextLinesInfo: React.FC = (): React.JSX.Element => {
             <strong>Configure Options:</strong>
             <ul className="list-disc pt-2 pl-6">
               <li>
-                <strong>Remove Duplicates:</strong> Enable this option to remove duplicate lines
-                before shuffling.
+                <strong>Remove Duplicates:</strong> Enable this option to remove duplicate lines before shuffling.
               </li>
               <li>
-                <strong>Remove Empty Lines:</strong> Enable this option to exclude empty lines from
-                the output.
+                <strong>Remove Empty Lines:</strong> Enable this option to exclude empty lines from the output.
               </li>
               <li>
-                <strong>Trim Lines:</strong> Enable this option to remove leading and trailing
-                spaces from each line.
+                <strong>Trim Lines:</strong> Enable this option to remove leading and trailing spaces from each line.
               </li>
             </ul>
           </li>
@@ -57,16 +54,12 @@ const ShuffleTextLinesInfo: React.FC = (): React.JSX.Element => {
         <div className="space-y-4">
           <div>
             <h4 className="mb-2 font-medium">Input Example:</h4>
-            <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-sm">
-              {`apple\nbanana\norange`}
-            </pre>
+            <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-sm">{`apple\nbanana\norange`}</pre>
           </div>
 
           <div>
             <h4 className="mb-2 font-medium">Output Example (Shuffled):</h4>
-            <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-sm">
-              {`banana\norange\napple`}
-            </pre>
+            <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-sm">{`banana\norange\napple`}</pre>
           </div>
         </div>
       </section>
@@ -83,8 +76,8 @@ const ShuffleTextLinesInfo: React.FC = (): React.JSX.Element => {
           >
             Vijay Hardaha
           </a>
-          . This tool is designed to be simple and effective, focusing on providing a fast and
-          reliable way to shuffle text lines.
+          . This tool is designed to be simple and effective, focusing on providing a fast and reliable way to shuffle
+          text lines.
         </p>
       </section>
     </div>

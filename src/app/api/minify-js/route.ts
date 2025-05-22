@@ -64,8 +64,6 @@ function minifyWithPutout(js: string, options: MinifyJsRequest["options"]): stri
 
     return minify(js, putoutOptions);
   } catch (error) {
-    throw new Error(
-      `Putout Minify error: ${error instanceof Error ? error.message : "Unknown error"}`
-    );
+    throw new Error(`Putout Minify error: ${error instanceof Error ? error.message : "Unknown error"}`);
   }
 }

@@ -139,9 +139,7 @@ const CssMinifierInput: React.FC<ICssMinifierInputProps> = ({
                 <Checkbox
                   id="aroundSelectorRelation"
                   checked={options.format.spaces.aroundSelectorRelation}
-                  onCheckedChange={(checked) =>
-                    updateSpacesOption("aroundSelectorRelation", checked)
-                  }
+                  onCheckedChange={(checked) => updateSpacesOption("aroundSelectorRelation", checked)}
                 >
                   Space around selector relations
                 </Checkbox>

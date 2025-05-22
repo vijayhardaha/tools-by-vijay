@@ -62,10 +62,10 @@ const FooterAbout: React.FC = (): React.JSX.Element => {
         </div>
 
         <p className="text-foreground text-base">
-          Discover a powerful suite of free online developer tools designed to boost your
-          productivity and streamline your workflow. Whether you need advanced code optimization,
-          text transformation, or quick utility tools, our platform offers fast, reliable, and
-          easy-to-use solutions tailored for developers and creators of all skill levels.
+          Discover a powerful suite of free online developer tools designed to boost your productivity and streamline
+          your workflow. Whether you need advanced code optimization, text transformation, or quick utility tools, our
+          platform offers fast, reliable, and easy-to-use solutions tailored for developers and creators of all skill
+          levels.
         </p>
       </div>
 

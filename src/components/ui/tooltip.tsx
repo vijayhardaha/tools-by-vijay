@@ -23,25 +23,12 @@ interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement> {
 /**
  * Tooltip component to display a tooltip with customizable content and styles.
  */
-function Tooltip({
-  text,
-  children,
-  className,
-  sideOffset = 4,
-  delayDuration = 300,
-  ...props
-}: ITooltipProps) {
+function Tooltip({ text, children, className, sideOffset = 4, delayDuration = 300, ...props }: ITooltipProps) {
   const tooltipId = useId();
 
   return (
     <>
-      <span
-        data-tooltip-id={tooltipId}
-        data-tooltip-content={text}
-        role="button"
-        tabIndex={0}
-        {...props}
-      >
+      <span data-tooltip-id={tooltipId} data-tooltip-content={text} role="button" tabIndex={0} {...props}>
         {children}
       </span>
 

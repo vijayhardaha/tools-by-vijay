@@ -11,13 +11,13 @@ const TextCaseChangerInfo: React.FC = (): React.JSX.Element => {
       <section>
         <h2 className="text-primary mb-4 text-xl font-bold">About Text Case Changer</h2>
         <p className="mb-4">
-          The Text Case Changer tool helps you convert text into various cases such as camelCase,
-          snake_case, PascalCase, UPPERCASE, and lowercase. This tool is useful for developers and
-          content creators who need consistent text formatting.
+          The Text Case Changer tool helps you convert text into various cases such as camelCase, snake_case,
+          PascalCase, UPPERCASE, and lowercase. This tool is useful for developers and content creators who need
+          consistent text formatting.
         </p>
         <p className="mb-4">
-          All processing happens directly in your browser – your text is never sent to a server,
-          ensuring privacy and security when working with sensitive data.
+          All processing happens directly in your browser – your text is never sent to a server, ensuring privacy and
+          security when working with sensitive data.
         </p>
       </section>
 
@@ -44,16 +44,12 @@ const TextCaseChangerInfo: React.FC = (): React.JSX.Element => {
         <div className="space-y-4">
           <div>
             <h4 className="mb-2 font-medium">Input Example:</h4>
-            <pre className="bg-secondary overflow-x-auto rounded-xl p-4 text-sm">
-              {`hello world\nexample text`}
-            </pre>
+            <pre className="bg-secondary overflow-x-auto rounded-xl p-4 text-sm">{`hello world\nexample text`}</pre>
           </div>
 
           <div>
             <h4 className="mb-2 font-medium">Output Example:</h4>
-            <pre className="bg-secondary overflow-x-auto rounded-xl p-4 text-sm">
-              {`helloWorld\nexampleText`}
-            </pre>
+            <pre className="bg-secondary overflow-x-auto rounded-xl p-4 text-sm">{`helloWorld\nexampleText`}</pre>
           </div>
         </div>
       </section>

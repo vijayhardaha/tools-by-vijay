@@ -168,9 +168,7 @@ const DropdownToArrayTool: React.FC = (): React.JSX.Element => {
         return JSON.stringify(associativeArray, null, 2);
       }
     } catch (error) {
-      setError(
-        `Error formatting JSON: ${error instanceof Error ? error.message : "Unknown error"}`
-      );
+      setError(`Error formatting JSON: ${error instanceof Error ? error.message : "Unknown error"}`);
       return "";
     }
   };
@@ -184,9 +182,7 @@ const DropdownToArrayTool: React.FC = (): React.JSX.Element => {
   const formatJsArrayOutput = (options: IOption[]): string => {
     try {
       if (arrayType === "simple") {
-        const simpleArray = options.map(
-          (option: { text: string }) => `  "${option.text.replace(/"/g, '\\"')}"`
-        );
+        const simpleArray = options.map((option: { text: string }) => `  "${option.text.replace(/"/g, '\\"')}"`);
         return `const dropdownArray = [\n${simpleArray.join(",\n")}\n];`;
       } else if (arrayType === "numeric") {
         const numericArray = options.map(
@@ -203,9 +199,7 @@ const DropdownToArrayTool: React.FC = (): React.JSX.Element => {
         return `const dropdownArray = [\n${associativeArray.join(",\n")}\n];`;
       }
     } catch (error) {
-      setError(
-        `Error formatting JavaScript array: ${error instanceof Error ? error.message : "Unknown error"}`
-      );
+      setError(`Error formatting JavaScript array: ${error instanceof Error ? error.message : "Unknown error"}`);
       return "";
     }
   };
@@ -220,28 +214,23 @@ const DropdownToArrayTool: React.FC = (): React.JSX.Element => {
     try {
       if (arrayType === "simple") {
         const objectItems = options.map(
-          (option: { text: string }, index: number) =>
-            `  "${index + 1}": "${option.text.replace(/"/g, '\\"')}"`
+          (option: { text: string }, index: number) => `  "${index + 1}": "${option.text.replace(/"/g, '\\"')}"`
         );
         return `const dropdownObject = {\n${objectItems.join(",\n")}\n};`;
       } else if (arrayType === "numeric") {
         const objectItems = options.map(
-          (option: { text: string }, index: number) =>
-            `  "${index + 1}": "${option.text.replace(/"/g, '\\"')}"`
+          (option: { text: string }, index: number) => `  "${index + 1}": "${option.text.replace(/"/g, '\\"')}"`
         );
         return `const dropdownObject = {\n${objectItems.join(",\n")}\n};`;
       } else {
         // associative
         const objectItems = options.map(
-          (option: IOption) =>
-            `  "${getKey(option).replace(/"/g, '\\"')}": "${option.text.replace(/"/g, '\\"')}"`
+          (option: IOption) => `  "${getKey(option).replace(/"/g, '\\"')}": "${option.text.replace(/"/g, '\\"')}"`
         );
         return `const dropdownObject = {\n${objectItems.join(",\n")}\n};`;
       }
     } catch (error) {
-      setError(
-        `Error formatting JavaScript object: ${error instanceof Error ? error.message : "Unknown error"}`
-      );
+      setError(`Error formatting JavaScript object: ${error instanceof Error ? error.message : "Unknown error"}`);
       return "";
     }
   };
@@ -255,28 +244,22 @@ const DropdownToArrayTool: React.FC = (): React.JSX.Element => {
   const formatPhpOutput = (options: IOption[]): string => {
     try {
       if (arrayType === "simple") {
-        const arrayItems = options.map(
-          (option: { text: string }) => `  '${option.text.replace(/'/g, "\\'")}'`
-        );
+        const arrayItems = options.map((option: { text: string }) => `  '${option.text.replace(/'/g, "\\'")}'`);
         return `<?php\n$data = array(\n${arrayItems.join(",\n")}\n);`;
       } else if (arrayType === "numeric") {
         const arrayItems = options.map(
-          (option: { text: string }, index: number) =>
-            `  '${index + 1}' => '${option.text.replace(/'/g, "\\'")}'`
+          (option: { text: string }, index: number) => `  '${index + 1}' => '${option.text.replace(/'/g, "\\'")}'`
         );
         return `<?php\n$data = array(\n${arrayItems.join(",\n")}\n);`;
       } else {
         // associative
         const arrayItems = options.map(
-          (option: IOption) =>
-            `  '${getKey(option).replace(/'/g, "\\'")}' => '${option.text.replace(/'/g, "\\'")}'`
+          (option: IOption) => `  '${getKey(option).replace(/'/g, "\\'")}' => '${option.text.replace(/'/g, "\\'")}'`
         );
         return `<?php\n$data = array(\n${arrayItems.join(",\n")}\n);`;
       }
     } catch (error) {
-      setError(
-        `Error formatting PHP array: ${error instanceof Error ? error.message : "Unknown error"}`
-      );
+      setError(`Error formatting PHP array: ${error instanceof Error ? error.message : "Unknown error"}`);
       return "";
     }
   };
@@ -291,8 +274,7 @@ const DropdownToArrayTool: React.FC = (): React.JSX.Element => {
     try {
       if (arrayType === "simple") {
         const arrayItems = options.map(
-          (option: { text: string }) =>
-            `  __( '${option.text.replace(/'/g, "\\'")}', 'text-domain' )`
+          (option: { text: string }) => `  __( '${option.text.replace(/'/g, "\\'")}', 'text-domain' )`
         );
         return `<?php\n$data = array(\n${arrayItems.join(",\n")}\n);`;
       } else if (arrayType === "numeric") {
@@ -310,9 +292,7 @@ const DropdownToArrayTool: React.FC = (): React.JSX.Element => {
         return `<?php\n$data = array(\n${arrayItems.join(",\n")}\n);`;
       }
     } catch (error) {
-      setError(
-        `Error formatting WordPress output: ${error instanceof Error ? error.message : "Unknown error"}`
-      );
+      setError(`Error formatting WordPress output: ${error instanceof Error ? error.message : "Unknown error"}`);
       return "";
     }
   };

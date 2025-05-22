@@ -11,13 +11,12 @@ const TextToPhpVariablesInfo: React.FC = (): React.JSX.Element => {
       <section>
         <h2 className="text-primary mb-4 text-xl font-bold">About Text to PHP Variables</h2>
         <p className="mb-4">
-          The Text to PHP Variables tool helps developers convert multiline text into PHP variable
-          declarations. This tool is especially useful for quickly generating PHP code from lists or
-          line-based data.
+          The Text to PHP Variables tool helps developers convert multiline text into PHP variable declarations. This
+          tool is especially useful for quickly generating PHP code from lists or line-based data.
         </p>
         <p className="mb-4">
-          All processing happens directly in your browser – your text is never sent to a server,
-          ensuring privacy and security when working with sensitive data.
+          All processing happens directly in your browser – your text is never sent to a server, ensuring privacy and
+          security when working with sensitive data.
         </p>
       </section>
 
@@ -25,20 +24,18 @@ const TextToPhpVariablesInfo: React.FC = (): React.JSX.Element => {
         <h3 className="text-primary mb-4 text-lg font-bold">How to Use This Tool</h3>
         <ol className="list-decimal space-y-2 pl-6">
           <li>
-            <strong>Enter Your Text:</strong> Type or paste your multiline text into the input area.
-            Each line will be converted into a PHP variable.
+            <strong>Enter Your Text:</strong> Type or paste your multiline text into the input area. Each line will be
+            converted into a PHP variable.
           </li>
           <li>
-            <strong>Select Variable Case:</strong> Choose the naming convention for your variables
-            (camelCase, snake_case, or PascalCase).
+            <strong>Select Variable Case:</strong> Choose the naming convention for your variables (camelCase,
+            snake_case, or PascalCase).
           </li>
           <li>
-            <strong>Generate:</strong> Click the “Generate” button to create the PHP variable
-            declarations.
+            <strong>Generate:</strong> Click the “Generate” button to create the PHP variable declarations.
           </li>
           <li>
-            <strong>Copy Result:</strong> Use the copy button to copy the generated PHP code to your
-            clipboard.
+            <strong>Copy Result:</strong> Use the copy button to copy the generated PHP code to your clipboard.
           </li>
         </ol>
       </section>

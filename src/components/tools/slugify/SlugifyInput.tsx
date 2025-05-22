@@ -106,11 +106,7 @@ const SlugifyInput: React.FC<ISlugifyInputProps> = ({
               Convert to lowercase
             </Checkbox>
 
-            <Checkbox
-              id="remove-numbers"
-              checked={removeNumbers}
-              onCheckedChange={setRemoveNumbers}
-            >
+            <Checkbox id="remove-numbers" checked={removeNumbers} onCheckedChange={setRemoveNumbers}>
               Remove numbers
             </Checkbox>
 

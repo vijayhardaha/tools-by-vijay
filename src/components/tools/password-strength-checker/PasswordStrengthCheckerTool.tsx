@@ -158,11 +158,7 @@ const PasswordStrengthCheckerTool: React.FC = (): React.JSX.Element => {
   return (
     <>
       <div className="grid grid-cols-1 gap-6">
-        <PasswordStrengthCheckerInput
-          password={password}
-          onSubmit={handleSubmit}
-          onClear={handleClear}
-        />
+        <PasswordStrengthCheckerInput password={password} onSubmit={handleSubmit} onClear={handleClear} />
 
         {password && <PasswordStrengthCheckerOutput strength={strength} />}
       </div>

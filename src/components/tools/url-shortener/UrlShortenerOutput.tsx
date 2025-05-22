@@ -53,11 +53,7 @@ const UrlShortenerOutput: React.FC<IUrlShortenerOutputProps> = ({
           </div>
           {results.length > 0 && (
             <div className="inline-flex">
-              <CopyButton
-                text={getAllShortenedUrls()}
-                copyText="Copy All Valid URLs"
-                copiedText="Copied All!"
-              />
+              <CopyButton text={getAllShortenedUrls()} copyText="Copy All Valid URLs" copiedText="Copied All!" />
             </div>
           )}
         </div>
@@ -70,10 +66,7 @@ const UrlShortenerOutput: React.FC<IUrlShortenerOutputProps> = ({
                 <div className="flex-1">
                   <div className="mb-2 flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <Badge
-                        variant={result.isValid ? "success" : "danger"}
-                        className="font-medium"
-                      >
+                      <Badge variant={result.isValid ? "success" : "danger"} className="font-medium">
                         {result.isValid ? "Valid" : "Invalid URL"}
                       </Badge>
                       <span className="text-muted-foreground max-w-60 truncate font-mono text-sm">

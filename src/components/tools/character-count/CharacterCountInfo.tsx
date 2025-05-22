@@ -11,12 +11,12 @@ const CharacterCountInfo: React.FC = (): React.JSX.Element => {
       <section>
         <h2 className="text-primary mb-4 text-xl font-bold">About Character Count Tool</h2>
         <p className="mb-4">
-          The Character Count Tool is a utility that provides detailed statistics about your text,
-          including character count, word count, sentence count, paragraph count, and space count.
+          The Character Count Tool is a utility that provides detailed statistics about your text, including character
+          count, word count, sentence count, paragraph count, and space count.
         </p>
         <p className="mb-4">
-          All processing happens directly in your browser – your data is never sent to a server,
-          ensuring privacy and security when working with sensitive information.
+          All processing happens directly in your browser – your data is never sent to a server, ensuring privacy and
+          security when working with sensitive information.
         </p>
       </section>
 
@@ -27,8 +27,7 @@ const CharacterCountInfo: React.FC = (): React.JSX.Element => {
             <strong>Enter Your Text:</strong> Paste or type your text into the input area.
           </li>
           <li>
-            <strong>View Statistics:</strong> The tool will automatically calculate and display text
-            statistics.
+            <strong>View Statistics:</strong> The tool will automatically calculate and display text statistics.
           </li>
         </ol>
       </section>

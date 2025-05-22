@@ -56,9 +56,7 @@ const ShuffleTextLinesInput: React.FC<IShuffleTextLinesInputProps> = ({
     <Card>
       <CardHeader>
         <CardTitle>Shuffle Text Lines Input</CardTitle>
-        <CardDescription>
-          Enter your text and configure options to shuffle lines randomly.
-        </CardDescription>
+        <CardDescription>Enter your text and configure options to shuffle lines randomly.</CardDescription>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
@@ -71,19 +69,11 @@ const ShuffleTextLinesInput: React.FC<IShuffleTextLinesInputProps> = ({
           />
 
           <div className="flex flex-wrap gap-4">
-            <Checkbox
-              id="remove-duplicates"
-              checked={removeDuplicates}
-              onCheckedChange={setRemoveDuplicates}
-            >
+            <Checkbox id="remove-duplicates" checked={removeDuplicates} onCheckedChange={setRemoveDuplicates}>
               Remove Duplicate Lines
             </Checkbox>
 
-            <Checkbox
-              id="remove-empty-lines"
-              checked={removeEmptyLines}
-              onCheckedChange={setRemoveEmptyLines}
-            >
+            <Checkbox id="remove-empty-lines" checked={removeEmptyLines} onCheckedChange={setRemoveEmptyLines}>
               Remove Empty Lines
             </Checkbox>
 

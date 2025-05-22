@@ -25,9 +25,7 @@ const Base64EncodeDecodeOutput: React.FC<IBase64EncodeDecodeOutputProps> = ({
         <div className="flex w-full flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex flex-col gap-1.5">
             <CardTitle>Output</CardTitle>
-            <CardDescription>
-              The result of your Base64 encoding or decoding operation
-            </CardDescription>
+            <CardDescription>The result of your Base64 encoding or decoding operation</CardDescription>
           </div>
           <div className="inline-flex">
             <CopyButton text={output} />

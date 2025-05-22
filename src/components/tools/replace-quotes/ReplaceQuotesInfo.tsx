@@ -11,21 +11,18 @@ const ReplaceQuotesInfo: React.FC = (): React.JSX.Element => {
       <section>
         <h2 className="text-primary mb-4 text-xl font-bold">About Replace Quotes Tool</h2>
         <p className="mb-4">
-          The Replace Quotes Tool is a simple utility that helps you convert straight quotes (&apos;
-          and &quot;) to curly quotes (‘, ’, “, and ”) and vice versa. This is particularly useful
-          for text formatting, ensuring consistent quote styles in your content, and improving the
-          overall readability of your text.
+          The Replace Quotes Tool is a simple utility that helps you convert straight quotes (&apos; and &quot;) to
+          curly quotes (‘, ’, “, and ”) and vice versa. This is particularly useful for text formatting, ensuring
+          consistent quote styles in your content, and improving the overall readability of your text.
         </p>
         <p className="mb-4">
-          Whether you’re preparing content for publishing, editing documents, or working on
-          typography, this tool makes it easy to switch between quote styles with just a few clicks.
+          Whether you’re preparing content for publishing, editing documents, or working on typography, this tool makes
+          it easy to switch between quote styles with just a few clicks.
         </p>
       </section>
 
       <section>
-        <h3 className="text-primary mb-4 text-lg font-bold">
-          Why You Should Use the Replace Quotes Tool
-        </h3>
+        <h3 className="text-primary mb-4 text-lg font-bold">Why You Should Use the Replace Quotes Tool</h3>
         <ul className="list-inside list-disc space-y-1 pl-4">
           <li>Ensures consistent quote styles across your content.</li>
           <li>Improves the visual appeal and readability of your text.</li>
@@ -47,8 +44,8 @@ const ReplaceQuotesInfo: React.FC = (): React.JSX.Element => {
           >
             Vijay Hardaha
           </a>
-          . This tool uses open-source libraries and custom algorithms to ensure accurate and
-          efficient quote replacements.
+          . This tool uses open-source libraries and custom algorithms to ensure accurate and efficient quote
+          replacements.
         </p>
       </section>
     </div>

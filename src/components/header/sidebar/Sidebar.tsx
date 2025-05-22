@@ -19,10 +19,7 @@ type ISidebarProps = {
  * @param {SidebarProps} props - Component props.
  * @returns {React.JSX.Element} Sidebar component.
  */
-const Sidebar: React.FC<ISidebarProps> = ({
-  isOpen,
-  onClose,
-}: ISidebarProps): React.JSX.Element => (
+const Sidebar: React.FC<ISidebarProps> = ({ isOpen, onClose }: ISidebarProps): React.JSX.Element => (
   <Sheet open={isOpen} onOpenChange={onClose}>
     <SheetContent
       side="right"
