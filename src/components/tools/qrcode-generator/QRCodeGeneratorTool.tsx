@@ -13,7 +13,7 @@ import QRCodeOutput from './QRCodeGeneratorOutput';
  *
  * @returns {React.JSX.Element} The rendered QR code generator tool component.
  */
-const QRCodeGeneratorTool: React.FC = (): React.JSX.Element => {
+const QRCodeGeneratorTool = (): React.JSX.Element => {
   const [input, setInput] = useState<string>('');
   const [size, setSize] = useState<number>(256);
   const [output, setOutput] = useState<string>('');
