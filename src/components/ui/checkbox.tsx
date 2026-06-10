@@ -1,7 +1,7 @@
-'use client';
+import type { JSX, ChangeEvent, ReactNode } from 'react';
+('use client');
 
 import { useState } from 'react';
-import type { ChangeEvent, ReactNode } from 'react';
 
 import { LuCheck as CheckIcon } from 'react-icons/lu';
 
@@ -25,7 +25,7 @@ interface CheckboxProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
  *
  * @param {CheckboxProps} props - The component props
  *
- * @returns {React.JSX.Element} The rendered checkbox component
+ * @returns {JSX.Element} The rendered checkbox component
  */
 function Checkbox({
   className = '',
@@ -36,7 +36,7 @@ function Checkbox({
   required,
   id,
   ...props
-}: CheckboxProps): React.JSX.Element {
+}: CheckboxProps): JSX.Element {
   const [internalChecked, setInternalChecked] = useState(controlledChecked || false);
 
   const isControlled = controlledChecked !== undefined;
