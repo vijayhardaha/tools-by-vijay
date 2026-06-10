@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import { Alert } from '@/components/ui/alert';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
@@ -27,11 +29,9 @@ interface UrlShortenerOutputProps {
  *
  * @param {UrlShortenerOutputProps} props - The props for the component.
  *
- * @returns {React.JSX.Element} The rendered component.
+ * @returns {JSX.Element} The rendered component.
  */
-const UrlShortenerOutput: React.FC<UrlShortenerOutputProps> = ({
-  results,
-}: UrlShortenerOutputProps): React.JSX.Element => {
+const UrlShortenerOutput = ({ results }: UrlShortenerOutputProps): JSX.Element => {
   /**
    * Creates a text string containing all valid shortened URLs
    *
