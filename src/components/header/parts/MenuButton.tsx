@@ -1,5 +1,6 @@
+'use client';
+
 import type { JSX } from 'react';
-('use client');
 
 import { RiMenu3Fill } from 'react-icons/ri';
 
