@@ -34,7 +34,7 @@ export const metadata: PageMeta = generateMeta({
  *
  * @returns {React.JSX.Element} The rendered Bulk Slugify tool page component.
  */
-const BulkSlugify: React.FC = (): React.JSX.Element => {
+const BulkSlugify = (): React.JSX.Element => {
   if (!tool) {
     notFound(); // Render a 404 page if the tool is null
   }
