@@ -26,7 +26,7 @@ interface UrlShortenerInputProps {
  * to submit the URLs for shortening or clear the input. It also displays any error
  * messages and handles the loading state.
  *
- * @param {IUrlShortenerInputProps} props - Props for the component
+ * @param {UrlShortenerInputProps} props - Props for the component
  *
  * @returns {React.JSX.Element} The rendered component
  */
