@@ -11,7 +11,7 @@ import Base64EncodeDecodeOutput from './Base64EncodeDecodeOutput';
  *
  * @returns {React.JSX.Element} The rendered Base64 Encode/Decode Tool component.
  */
-const Base64EncodeDecodeTool: React.FC = (): React.JSX.Element => {
+const Base64EncodeDecodeTool = (): React.JSX.Element => {
   const [input, setInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
   const [isEncoding, setIsEncoding] = useState<boolean>(true);
