@@ -12,7 +12,7 @@ import PasswordGeneratorOutput from './PasswordGeneratorOutput';
  *
  * @returns {React.JSX.Element} The complete password generator tool with input options, output display, and information
  */
-const PasswordGeneratorTool: React.FC = (): React.JSX.Element => {
+const PasswordGeneratorTool = (): React.JSX.Element => {
   const [length, setLength] = useState<number>(12);
   const [useUppercase, setUseUppercase] = useState<boolean>(true);
   const [useLowercase, setUseLowercase] = useState<boolean>(true);
