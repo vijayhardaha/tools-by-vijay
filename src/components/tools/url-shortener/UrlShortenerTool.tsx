@@ -24,7 +24,7 @@ interface UrlResult {
  *
  * @returns {React.JSX.Element} The rendered URL Shortener Tool component.
  */
-const UrlShortenerTool: React.FC = (): React.JSX.Element => {
+const UrlShortenerTool = (): React.JSX.Element => {
   const [input, setInput] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [results, setResults] = useState<UrlResult[]>([]);
