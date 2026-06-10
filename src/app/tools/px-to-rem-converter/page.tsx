@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import { notFound } from 'next/navigation';
 
 import EntryWithSidebar from '@/components/page/EntryWithSidebar';
@@ -32,9 +34,9 @@ export const metadata: PageMeta = generateMeta({
  * PX to REM Converter tool page component.
  * Renders the page layout with header and the PX to REM Converter tool.
  *
- * @returns {React.JSX.Element} The rendered PX to REM Converter tool page component.
+ * @returns {JSX.Element} The rendered PX to REM Converter tool page component.
  */
-const PxToRemConverter = (): React.JSX.Element => {
+const PxToRemConverter = (): JSX.Element => {
   if (!tool) {
     notFound(); // Render a 404 page if the tool is null
   }
