@@ -9,7 +9,7 @@ import { Input } from '@/components/ui/input';
 /**
  * Props for the BarcodeGeneratorInput component.
  */
-interface IBarcodeGeneratorInputProps {
+interface BarcodeGeneratorInputProps {
   input: string;
   setInput: (value: string) => void;
   onSubmit: () => void;
@@ -20,16 +20,16 @@ interface IBarcodeGeneratorInputProps {
  * BarcodeGeneratorInput is a React functional component that provides
  * input fields and controls for generating a barcode.
  *
- * @param {IBarcodeGeneratorInputProps} props - The props for the component.
+ *  @param {BarcodeGeneratorInputProps} props - The props for the component.
  *
  * @returns {React.JSX.Element} The rendered barcode input component.
  */
-const BarcodeGeneratorInput: React.FC<IBarcodeGeneratorInputProps> = ({
+const BarcodeGeneratorInput: React.FC<BarcodeGeneratorInputProps> = ({
   input,
   setInput,
   onSubmit,
   onClear,
-}: IBarcodeGeneratorInputProps): React.JSX.Element => {
+}: BarcodeGeneratorInputProps): React.JSX.Element => {
   /**
    * Handles the form submission to generate the barcode.
    *
