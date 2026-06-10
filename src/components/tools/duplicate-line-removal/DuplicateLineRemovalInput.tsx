@@ -1,5 +1,6 @@
-import type { JSX, FormEvent } from 'react';
-('use client');
+'use client';
+
+import type { JSX, SubmitEvent } from 'react';
 import React from 'react';
 
 import { Button } from '@/components/ui/button';
@@ -45,9 +46,9 @@ const DuplicateLineRemovalInput = ({
   /**
    * Handles form submission by preventing default behavior and triggering conversion.
    *
-   * @param {FormEvent} e - Form event object.
+   * @param {SubmitEvent} e - Form event object.
    */
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = (e: SubmitEvent) => {
     e.preventDefault();
     onSubmit();
   };
