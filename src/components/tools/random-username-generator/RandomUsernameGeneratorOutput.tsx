@@ -5,21 +5,20 @@ import { Textarea } from '@/components/ui/textarea';
 /**
  * Interface for the CountryNameGeneratorOutput component props.
  */
-interface IRandomUsernameGeneratorOutputProps {
+interface RandomUsernameGeneratorOutputProps {
   output: string[];
 }
 
 /**
  * A component for displaying the generated usernames.
  *
- * @param props - The props for the RandomUsernameGeneratorOutput component.
- * @param props.output
+ * @param {RandomUsernameGeneratorOutputProps} props - The component props
  *
- * @returns The RandomUsernameGeneratorOutput component.
+ * @returns {React.JSX.Element} The rendered component
  */
-const RandomUsernameGeneratorOutput: React.FC<IRandomUsernameGeneratorOutputProps> = ({
+const RandomUsernameGeneratorOutput: React.FC<RandomUsernameGeneratorOutputProps> = ({
   output,
-}: IRandomUsernameGeneratorOutputProps): React.JSX.Element => {
+}: RandomUsernameGeneratorOutputProps): React.JSX.Element => {
   return (
     <Card>
       <CardHeader>
