@@ -4,7 +4,7 @@
  *
  * @returns {React.JSX.Element} The rendered component displaying tool information
  */
-const AlphabeticalLineSorterInfo: React.FC = (): React.JSX.Element => {
+const AlphabeticalLineSorterInfo = (): React.JSX.Element => {
   return (
     <div className="max-w-none space-y-10 px-4 md:px-0">
       <section>
@@ -13,9 +13,9 @@ const AlphabeticalLineSorterInfo: React.FC = (): React.JSX.Element => {
         </h2>
         <p className="mb-4">
           The <strong>Alphabetical Line Sorter</strong> is a powerful and easy-to-use online tool designed to help you
-          quickly organize and sort lines of text alphabetically. Whether you're managing data lists, cleaning up text
-          content, or preparing information for further processing, this tool provides a simple solution to make your
-          text more structured and readable.
+          quickly organize and sort lines of text alphabetically. Whether you&apos;re managing data lists, cleaning up
+          text content, or preparing information for further processing, this tool provides a simple solution to make
+          your text more structured and readable.
         </p>
         <p className="mb-4">
           This tool processes your text entirely <strong>within your web browser</strong>, ensuring that your data
@@ -61,8 +61,8 @@ const AlphabeticalLineSorterInfo: React.FC = (): React.JSX.Element => {
             (A-Z) or reverse alphabetical order (Z-A) by toggling the reverse sort option.
           </li>
           <li>
-            <strong>Click "Process":</strong> Start the sorting operation by clicking the button. The tool instantly
-            rearranges your lines accordingly.
+            <strong>Click &quot;Process&quot;:</strong> Start the sorting operation by clicking the button. The tool
+            instantly rearranges your lines accordingly.
           </li>
           <li>
             <strong>Review and Copy:</strong> View the sorted output below and copy it for your documents, code, or data
