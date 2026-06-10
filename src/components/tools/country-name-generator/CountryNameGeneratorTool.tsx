@@ -11,7 +11,7 @@ import CountryNameGeneratorOutput from './CountryNameGeneratorOutput';
  *
  * @returns {React.JSX.Element} The CountryNameGeneratorTool component.
  */
-const CountryNameGeneratorTool: React.FC = (): React.JSX.Element => {
+const CountryNameGeneratorTool = (): React.JSX.Element => {
   const [count, setCount] = useState<number>(1);
   const [output, setOutput] = useState<string[]>([]);
   const [error, setError] = useState<string>('');
