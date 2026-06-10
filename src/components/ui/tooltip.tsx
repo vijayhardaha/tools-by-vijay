@@ -1,7 +1,7 @@
-'use client';
+import type { JSX, ReactNode } from 'react';
+('use client');
 
 import { useId } from 'react';
-import type { ReactNode } from 'react';
 
 import { Tooltip as ReactTooltip } from 'react-tooltip';
 import 'react-tooltip/dist/react-tooltip.css';
@@ -24,7 +24,7 @@ interface TooltipProps extends React.HTMLAttributes<HTMLDivElement> {
  *
  * @param {TooltipProps} props - The component props
  *
- * @returns {React.JSX.Element} The rendered tooltip component
+ * @returns {JSX.Element} The rendered tooltip component
  */
 function Tooltip({
   text,
@@ -33,7 +33,7 @@ function Tooltip({
   sideOffset = 4,
   delayDuration = 300,
   ...props
-}: TooltipProps): React.JSX.Element {
+}: TooltipProps): JSX.Element {
   const tooltipId = useId();
 
   return (
