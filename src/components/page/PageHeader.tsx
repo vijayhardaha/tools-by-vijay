@@ -3,22 +3,22 @@
  *
  * @property {string} title - The title of the page.
  * @property {string} [description] - Optional description text for the page.
- * @property {ReactElement | null} [icon] - Optional icon element to display next to the title.
+ * @property {React.ReactNode | null} [icon] - Optional icon element to display next to the title.
  */
-type IPageHeaderProps = { title: string; description?: string; icon?: React.ReactNode | null };
+type PageHeaderProps = { title: string; description?: string; icon?: React.ReactNode | null };
 
 /**
  * PageHeader component for displaying page titles and descriptions.
  *
- * @param {IPageHeaderProps} props - The props for the component.
+ * @param {PageHeaderProps} props - The props for the component.
  *
- * @returns {ReactElement} The rendered component.
+ * @returns {React.JSX.Element} The rendered component.
  */
-const PageHeader: React.FC<IPageHeaderProps> = ({
+const PageHeader: React.FC<PageHeaderProps> = ({
   title,
   description,
   icon = null,
-}: IPageHeaderProps): React.JSX.Element => {
+}: PageHeaderProps): React.JSX.Element => {
   return (
     <div
       className="relative left-1/2 -mt-8 mb-8 w-screen -translate-x-1/2 text-white"
