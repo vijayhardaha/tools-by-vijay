@@ -1,6 +1,5 @@
-'use client';
-
-import type { FormEvent } from 'react';
+import type { JSX, FormEvent } from 'react';
+('use client');
 
 import { Alert } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
@@ -23,15 +22,15 @@ interface RandomUsernameGeneratorInputProps {
  *
  *  @param {RandomUsernameGeneratorInputProps} props - The props for the RandomUsernameGeneratorInput component.
  *
- * @returns {React.JSX.Element} The RandomUsernameGeneratorInput component.
+ * @returns {JSX.Element} The RandomUsernameGeneratorInput component.
  */
-const RandomUsernameGeneratorInput: React.FC<RandomUsernameGeneratorInputProps> = ({
+const RandomUsernameGeneratorInput = ({
   count,
   setCount,
   onGenerate,
   onClear,
   error,
-}: RandomUsernameGeneratorInputProps): React.JSX.Element => {
+}: RandomUsernameGeneratorInputProps): JSX.Element => {
   /**
    * Handles the form submission event.
    *
