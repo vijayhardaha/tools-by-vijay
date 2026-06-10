@@ -5,20 +5,20 @@ import { Textarea } from '@/components/ui/textarea';
 /**
  * Interface for the CountryNameGeneratorOutput component props.
  */
-interface ITextCaseChangerOutputProps {
+interface TextCaseChangerOutputProps {
   output: string;
 }
 
 /**
  * Component for displaying the transformed text and providing a copy button.
  *
- * @param {ITextCaseChangerOutputProps} props - The props for the TextCaseChangerOutput component.
+ *  @param {TextCaseChangerOutputProps} props - The props for the TextCaseChangerOutput component.
  *
  * @returns {React.JSX.Element} The TextCaseChangerOutput component.
  */
-const TextCaseChangerOutput: React.FC<ITextCaseChangerOutputProps> = ({
+const TextCaseChangerOutput: React.FC<TextCaseChangerOutputProps> = ({
   output,
-}: ITextCaseChangerOutputProps): React.JSX.Element => {
+}: TextCaseChangerOutputProps): React.JSX.Element => {
   return (
     <Card>
       <CardHeader>
