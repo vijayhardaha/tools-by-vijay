@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
 import { CopyButton } from '@/components/ui/copyButton';
 import { Textarea } from '@/components/ui/textarea';
@@ -14,11 +16,9 @@ interface TextToPhpVariablesOutputProps {
  *
  *  @param {TextToPhpVariablesOutputProps} props - The props for the component.
  *
- * @returns {React.JSX.Element} The rendered output component.
+ * @returns {JSX.Element} The rendered output component.
  */
-const TextToPhpVariablesOutput: React.FC<TextToPhpVariablesOutputProps> = ({
-  output,
-}: TextToPhpVariablesOutputProps): React.JSX.Element => {
+const TextToPhpVariablesOutput = ({ output }: TextToPhpVariablesOutputProps): JSX.Element => {
   return (
     <Card>
       <CardHeader>
