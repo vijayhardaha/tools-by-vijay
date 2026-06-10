@@ -1,4 +1,5 @@
-'use client';
+import type { JSX } from 'react';
+('use client');
 
 import React, { useState } from 'react';
 
@@ -10,9 +11,9 @@ import Sidebar from '@/components/header/sidebar/Sidebar';
  * Header component that displays the app logo and menu button
  * Controls the sidebar visibility
  *
- * @returns {React.JSX.Element} Header component with logo, menu button and sidebar
+ * @returns {JSX.Element} Header component with logo, menu button and sidebar
  */
-const Header = (): React.JSX.Element => {
+const Header = (): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDrawer = () => setIsOpen(!isOpen);
