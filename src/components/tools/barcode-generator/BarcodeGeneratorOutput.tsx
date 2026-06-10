@@ -5,7 +5,7 @@ import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/com
 /**
  * Props for the BarcodeGeneratorOutput component.
  */
-interface IBarcodeGeneratorOutputProps {
+interface BarcodeGeneratorOutputProps {
   output: string;
 }
 
@@ -13,14 +13,14 @@ interface IBarcodeGeneratorOutputProps {
  * BarcodeGeneratorOutput is a React functional component that displays the
  * generated barcode along with a download link.
  *
- * @param {IBarcodeGeneratorOutputProps} props - The props for the component.
+ *  @param {BarcodeGeneratorOutputProps} props - The props for the component.
  * @param {string} props.output - The URL of the generated barcode image.
  *
  * @returns {React.JSX.Element} The rendered barcode output component.
  */
-const BarcodeGeneratorOutput: React.FC<IBarcodeGeneratorOutputProps> = ({
+const BarcodeGeneratorOutput: React.FC<BarcodeGeneratorOutputProps> = ({
   output,
-}: IBarcodeGeneratorOutputProps): React.JSX.Element => {
+}: BarcodeGeneratorOutputProps): React.JSX.Element => {
   return (
     <Card>
       <CardHeader>
