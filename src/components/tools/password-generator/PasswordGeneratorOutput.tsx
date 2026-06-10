@@ -1,3 +1,4 @@
+import type { JSX } from 'react';
 import React from 'react';
 
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
@@ -18,11 +19,9 @@ interface PasswordGeneratorOutputProps {
  *
  *  @param {PasswordGeneratorOutputProps} props - Component props.
  *
- * @returns {React.JSX.Element} The rendered card with password display and copy functionality.
+ * @returns {JSX.Element} The rendered card with password display and copy functionality.
  */
-const PasswordGeneratorOutput: React.FC<PasswordGeneratorOutputProps> = ({
-  password,
-}: PasswordGeneratorOutputProps): React.JSX.Element => {
+const PasswordGeneratorOutput = ({ password }: PasswordGeneratorOutputProps): JSX.Element => {
   return (
     <Card>
       <CardHeader>
