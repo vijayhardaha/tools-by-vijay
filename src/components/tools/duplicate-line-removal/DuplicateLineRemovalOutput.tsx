@@ -7,7 +7,7 @@ import { Textarea } from '@/components/ui/textarea';
 /**
  * Interface for the DuplicateLineRemovalOutput component props.
  */
-interface IDuplicateLineRemovalOutputProps {
+interface DuplicateLineRemovalOutputProps {
   output: string;
 }
 
@@ -15,13 +15,13 @@ interface IDuplicateLineRemovalOutputProps {
  * Output component for the Duplicate Line Removal tool.
  * Displays the processed text in a readonly textarea with a copy button.
  *
- * @param {IDuplicateLineRemovalOutputProps} props - Component props
+ *  @param {DuplicateLineRemovalOutputProps} props - Component props
  *
  * @returns {React.JSX.Element} The rendered output display
  */
-const DuplicateLineRemovalOutput: React.FC<IDuplicateLineRemovalOutputProps> = ({
+const DuplicateLineRemovalOutput: React.FC<DuplicateLineRemovalOutputProps> = ({
   output,
-}: IDuplicateLineRemovalOutputProps): React.JSX.Element => {
+}: DuplicateLineRemovalOutputProps): React.JSX.Element => {
   return (
     <Card>
       <CardHeader>
