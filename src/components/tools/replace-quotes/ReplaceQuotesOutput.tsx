@@ -1,4 +1,5 @@
-'use client';
+import type { JSX } from 'react';
+('use client');
 
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
 import { CopyButton } from '@/components/ui/copyButton';
@@ -18,11 +19,9 @@ interface ReplaceQuotesOutputProps {
  * @param {object} props - Component props
  * @param {string} props.output - The processed text to display
  *
- * @returns {React.JSX.Element} The rendered card with output display and copy functionality
+ * @returns {JSX.Element} The rendered card with output display and copy functionality
  */
-const ReplaceQuotesOutput: React.FC<ReplaceQuotesOutputProps> = ({
-  output,
-}: ReplaceQuotesOutputProps): React.JSX.Element => {
+const ReplaceQuotesOutput = ({ output }: ReplaceQuotesOutputProps): JSX.Element => {
   return (
     <Card>
       <CardHeader>
