@@ -34,7 +34,7 @@ export const metadata: PageMeta = generateMeta({
  *
  * @returns {React.JSX.Element} The rendered Country Name Generator tool page component.
  */
-const CountryNameGenerator: React.FC = (): React.JSX.Element => {
+const CountryNameGenerator = (): React.JSX.Element => {
   if (!tool) {
     notFound(); // Render a 404 page if the tool is null
   }
