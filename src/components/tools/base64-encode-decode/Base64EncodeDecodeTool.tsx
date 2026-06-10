@@ -1,4 +1,5 @@
-'use client';
+import type { JSX } from 'react';
+('use client');
 
 import { useState } from 'react';
 
@@ -9,9 +10,9 @@ import Base64EncodeDecodeOutput from './Base64EncodeDecodeOutput';
 /**
  * A tool for encoding and decoding Base64 strings. It provides input, output, and informational components.
  *
- * @returns {React.JSX.Element} The rendered Base64 Encode/Decode Tool component.
+ * @returns {JSX.Element} The rendered Base64 Encode/Decode Tool component.
  */
-const Base64EncodeDecodeTool = (): React.JSX.Element => {
+const Base64EncodeDecodeTool = (): JSX.Element => {
   const [input, setInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
   const [isEncoding, setIsEncoding] = useState<boolean>(true);
