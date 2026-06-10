@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
 import { CopyButton } from '@/components/ui/copyButton';
 import { Textarea } from '@/components/ui/textarea';
@@ -16,11 +18,9 @@ interface DropdownToArrayOutputProps {
  *
  * @param {DropdownToArrayOutputProps} props - The props for the component.
  *
- * @returns {React.JSX.Element} The rendered component.
+ * @returns {JSX.Element} The rendered component.
  */
-const DropdownToArrayOutput: React.FC<DropdownToArrayOutputProps> = ({
-  output,
-}: DropdownToArrayOutputProps): React.JSX.Element => {
+const DropdownToArrayOutput = ({ output }: DropdownToArrayOutputProps): JSX.Element => {
   return (
     <Card>
       <CardHeader>
