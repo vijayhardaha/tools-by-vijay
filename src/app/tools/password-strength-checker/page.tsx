@@ -34,7 +34,7 @@ export const metadata: PageMeta = generateMeta({
  *
  * @returns {React.JSX.Element} The rendered Password Strength Checker tool page component.
  */
-const PasswordStrengthChecker: React.FC = (): React.JSX.Element => {
+const PasswordStrengthChecker = (): React.JSX.Element => {
   if (!tool) {
     notFound(); // Render a 404 page if the tool is null
   }
