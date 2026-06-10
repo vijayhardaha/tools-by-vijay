@@ -34,7 +34,7 @@ export const metadata: PageMeta = generateMeta({
  *
  * @returns {React.JSX.Element} The rendered Base64 Encode/Decode tool page component.
  */
-const Base64EncodeDecode: React.FC = (): React.JSX.Element => {
+const Base64EncodeDecode = (): React.JSX.Element => {
   if (!tool) {
     notFound(); // Render a 404 page if the tool is null
   }
