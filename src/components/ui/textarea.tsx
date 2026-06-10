@@ -3,17 +3,18 @@ import { cn } from '@/utils/classNameUtils';
 /**
  * Props for the Textarea component
  */
-interface ITextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   className?: string;
 }
 
 /**
  * Textarea component for multi-line text input.
  *
- * @param root0
- * @param root0.className
+ * @param {TextareaProps} props - The component props
+ *
+ * @returns {React.JSX.Element} The rendered textarea component
  */
-function Textarea({ className, ...props }: ITextareaProps) {
+function Textarea({ className, ...props }: TextareaProps): React.JSX.Element {
   return (
     <textarea
       data-slot="textarea"
