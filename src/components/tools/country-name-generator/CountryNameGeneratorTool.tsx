@@ -1,4 +1,5 @@
-'use client';
+import type { JSX } from 'react';
+('use client');
 
 import { useState } from 'react';
 
@@ -9,9 +10,9 @@ import CountryNameGeneratorOutput from './CountryNameGeneratorOutput';
 /**
  * A tool for generating random country names.
  *
- * @returns {React.JSX.Element} The CountryNameGeneratorTool component.
+ * @returns {JSX.Element} The CountryNameGeneratorTool component.
  */
-const CountryNameGeneratorTool = (): React.JSX.Element => {
+const CountryNameGeneratorTool = (): JSX.Element => {
   const [count, setCount] = useState<number>(1);
   const [output, setOutput] = useState<string[]>([]);
   const [error, setError] = useState<string>('');
