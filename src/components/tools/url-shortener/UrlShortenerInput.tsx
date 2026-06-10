@@ -1,6 +1,5 @@
-'use client';
-
-import type { FormEvent } from 'react';
+import type { JSX, FormEvent } from 'react';
+('use client');
 
 import { Alert } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
@@ -28,16 +27,16 @@ interface UrlShortenerInputProps {
  *
  * @param {UrlShortenerInputProps} props - Props for the component
  *
- * @returns {React.JSX.Element} The rendered component
+ * @returns {JSX.Element} The rendered component
  */
-const UrlShortenerInput: React.FC<UrlShortenerInputProps> = ({
+const UrlShortenerInput = ({
   input = '',
   setInput,
   onSubmit,
   onClear,
   isLoading = false,
   error = '',
-}: UrlShortenerInputProps): React.JSX.Element => {
+}: UrlShortenerInputProps): JSX.Element => {
   /**
    * Handles form submission to shorten URLs
    *
