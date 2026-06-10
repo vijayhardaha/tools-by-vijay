@@ -6,7 +6,7 @@ import { Textarea } from '@/components/ui/textarea';
 /**
  * Interface for the JsMinifierOutput component props.
  */
-interface IJsMinifierOutputProps {
+interface JsMinifierOutputProps {
   output: string;
   input: string;
 }
@@ -14,14 +14,14 @@ interface IJsMinifierOutputProps {
 /**
  * Component that displays the minified JavaScript output and provides copy functionality.
  *
- * @param {IJsMinifierOutputProps} props - The component props.
+ * @param {JsMinifierOutputProps} props - The component props.
  *
  * @returns {React.JSX.Element} The JsMinifierOutput component.
  */
-const JsMinifierOutput: React.FC<IJsMinifierOutputProps> = ({
+const JsMinifierOutput: React.FC<JsMinifierOutputProps> = ({
   output,
   input,
-}: IJsMinifierOutputProps): React.JSX.Element => {
+}: JsMinifierOutputProps): React.JSX.Element => {
   return (
     <Card>
       <CardHeader>
