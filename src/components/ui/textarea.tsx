@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import { cn } from '@/utils/classNameUtils';
 
 /**
@@ -12,9 +14,9 @@ interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement
  *
  * @param {TextareaProps} props - The component props
  *
- * @returns {React.JSX.Element} The rendered textarea component
+ * @returns {JSX.Element} The rendered textarea component
  */
-function Textarea({ className, ...props }: TextareaProps): React.JSX.Element {
+function Textarea({ className, ...props }: TextareaProps): JSX.Element {
   return (
     <textarea
       data-slot="textarea"
