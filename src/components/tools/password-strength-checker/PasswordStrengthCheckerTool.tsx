@@ -51,7 +51,7 @@ const defaultStengthOptions: PasswordStrength = {
  *
  * @returns {React.JSX.Element} Complete password strength checker tool interface
  */
-const PasswordStrengthCheckerTool: React.FC = (): React.JSX.Element => {
+const PasswordStrengthCheckerTool = (): React.JSX.Element => {
   const [password, setPassword] = useState<string>('');
   const [strength, setStrength] = useState<PasswordStrength>(defaultStengthOptions);
 
