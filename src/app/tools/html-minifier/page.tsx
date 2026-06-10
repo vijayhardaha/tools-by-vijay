@@ -34,7 +34,7 @@ export const metadata: PageMeta = generateMeta({
  *
  * @returns {React.JSX.Element} The rendered HTML Minifier tool page component.
  */
-const HtmlMinifier: React.FC = (): React.JSX.Element => {
+const HtmlMinifier = (): React.JSX.Element => {
   if (!tool) {
     notFound(); // Render a 404 page if the tool is null
   }
