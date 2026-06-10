@@ -1,10 +1,11 @@
+import type { JSX } from 'react';
 /**
  * Provides information about the JSON Sorter Tool, including its purpose,
  * usage instructions, and examples.
  *
- * @returns {React.JSX.Element} The rendered component displaying tool information
+ * @returns {JSX.Element} The rendered component displaying tool information
  */
-const JsonSorterInfo = (): React.JSX.Element => {
+const JsonSorterInfo = (): JSX.Element => {
   return (
     <div className="max-w-none space-y-8">
       <section>
