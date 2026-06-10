@@ -39,7 +39,7 @@ type AnyObject = Record<string, unknown>;
  * isPlainObject(null) // false
  */
 const isPlainObject = (value: unknown): value is AnyObject => {
-  return value !== null && typeof value === 'object' && !Array.isArray(value);
+  return value !== null && typeof value === 'object' && !Array.isArray(value) && value.constructor === Object;
 };
 
 /**
