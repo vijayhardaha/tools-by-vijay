@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import Link from 'next/link';
 
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -18,9 +20,9 @@ interface ToolCardProps {
  *
  * @param {ToolCardProps} props - The component props.
  *
- * @returns {React.JSX.Element | null} The rendered ToolCard component.
+ * @returns {JSX.Element | null} The rendered ToolCard component.
  */
-const ToolCard = ({ slug, className = '' }: ToolCardProps): React.JSX.Element | null => {
+const ToolCard = ({ slug, className = '' }: ToolCardProps): JSX.Element | null => {
   const tool: Tool | null = findToolBySlug(slug);
 
   if (!tool) return null;
