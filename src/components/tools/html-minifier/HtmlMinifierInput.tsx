@@ -1,7 +1,7 @@
-'use client';
+import type { JSX, FormEvent } from 'react';
+('use client');
 
 import React from 'react';
-import type { FormEvent } from 'react';
 
 import type { HtmlMinifierOptions } from '@/components/tools/html-minifier/HtmlMinifierTool';
 import { Alert } from '@/components/ui/alert';
@@ -31,9 +31,9 @@ interface HtmlMinifierInputProps {
  *
  *  @param {HtmlMinifierInputProps} props - The props for the component.
  *
- * @returns {React.JSX.Element} The rendered HTML Minifier input component.
+ * @returns {JSX.Element} The rendered HTML Minifier input component.
  */
-const HtmlMinifierInput: React.FC<HtmlMinifierInputProps> = ({
+const HtmlMinifierInput = ({
   input = '',
   setInput,
   options,
@@ -43,7 +43,7 @@ const HtmlMinifierInput: React.FC<HtmlMinifierInputProps> = ({
   onReset,
   isLoading,
   error,
-}: HtmlMinifierInputProps): React.JSX.Element => {
+}: HtmlMinifierInputProps): JSX.Element => {
   /**
    * Handles the form submission event.
    * Prevents the default form submission behavior and triggers the onSubmit callback.
