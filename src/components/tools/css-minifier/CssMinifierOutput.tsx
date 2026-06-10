@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
 import { CompressionInfo } from '@/components/ui/compressionInfo';
 import { CopyButton } from '@/components/ui/copyButton';
@@ -20,12 +22,9 @@ interface CssMinifierOutputProps {
  *
  * @param {CssMinifierOutputProps} props - The props for the component.
  *
- * @returns {React.JSX.Element} The rendered CssMinifierOutput component.
+ * @returns {JSX.Element} The rendered CssMinifierOutput component.
  */
-const CssMinifierOutput: React.FC<CssMinifierOutputProps> = ({
-  output,
-  input,
-}: CssMinifierOutputProps): React.JSX.Element => {
+const CssMinifierOutput = ({ output, input }: CssMinifierOutputProps): JSX.Element => {
   return (
     <Card>
       <CardHeader>
