@@ -12,7 +12,7 @@ import UnminifyOutput from './UnminifyOutput';
  *
  * @returns {React.JSX.Element} The rendered UnminifyTool component.
  */
-const UnminifyTool: React.FC = (): React.JSX.Element => {
+const UnminifyTool = (): React.JSX.Element => {
   const [input, setInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
   const [codeType, setCodeType] = useState<string>('javascript');
