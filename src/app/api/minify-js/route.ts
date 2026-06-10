@@ -3,7 +3,13 @@
 import { minify } from '@putout/minify';
 import { NextResponse } from 'next/server';
 
-// Define the expected input structure
+/**
+ * Interface for the JavaScript minification request.
+ *
+ * @type {MinifyJsRequest}
+ * @property {string} js - The JavaScript code to minify
+ * @property {{ mangle?: boolean; removeConsole?: boolean; removeDebugger?: boolean; removeComments?: boolean }} [options] - Optional minification options
+ */
 type MinifyJsRequest = {
   js: string;
   options?: { mangle?: boolean; removeConsole?: boolean; removeDebugger?: boolean; removeComments?: boolean };
