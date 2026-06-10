@@ -2,9 +2,9 @@
  * Fully expanded version of the Slugify Tool information for SEO purposes.
  * Includes in-depth explanations, keyword-rich content, and added sections.
  *
- * @returns {React.JSX.Element}
+ * @returns {React.JSX.Element} The rendered component displaying tool information
  */
-const SlugifyInfo: React.FC = (): React.JSX.Element => {
+const SlugifyInfo = (): React.JSX.Element => {
   return (
     <div className="mt-12 space-y-12">
       <section>
@@ -36,11 +36,11 @@ const SlugifyInfo: React.FC = (): React.JSX.Element => {
             <code>My First Blog Post!</code> → <code>my-first-blog-post</code>
           </li>
           <li>
-            <code>2025: What's New in Tech?</code> → <code>2025-whats-new-in-tech</code>
+            <code>2025: What&apos;s New in Tech?</code> → <code>2025-whats-new-in-tech</code>
           </li>
         </ul>
         <p className="mt-4">
-          Whether you're a content manager creating dozens of URLs daily or a developer working on a CMS, this tool
+          Whether you&apos;re a content manager creating dozens of URLs daily or a developer working on a CMS, this tool
           simplifies slug creation and avoids manual cleanup.
         </p>
       </section>
@@ -77,7 +77,7 @@ const SlugifyInfo: React.FC = (): React.JSX.Element => {
         <h2 className="text-primary mb-4 text-2xl font-bold">Why Use This Slugify Tool?</h2>
         <p className="mb-4">
           The Slugify Tool simplifies the process of transforming titles into URL-friendly strings, which is crucial for
-          maintaining a clean and structured website. Here's why you should use this tool:
+          maintaining a clean and structured website. Here&apos;s why you should use this tool:
         </p>
         <ul className="list-disc space-y-2 pl-6">
           <li>
@@ -119,7 +119,7 @@ const SlugifyInfo: React.FC = (): React.JSX.Element => {
           </li>
         </ul>
         <p className="mt-4">
-          Whether you're optimizing blog post links, creating clean category paths, or generating routes in your
+          Whether you&apos;re optimizing blog post links, creating clean category paths, or generating routes in your
           frontend framework, this tool can be part of your regular publishing workflow.
         </p>
       </section>
@@ -130,7 +130,7 @@ const SlugifyInfo: React.FC = (): React.JSX.Element => {
           This tool is built using the open-source <code className="text-sm font-medium text-pink-500">slugify</code>{' '}
           package, which provides advanced string manipulation capabilities. We’ve also integrated{' '}
           <code className="text-sm font-medium text-pink-500">latinize</code> to handle special characters and accents.
-          Here's what happens behind the scenes:
+          Here&apos;s what happens behind the scenes:
         </p>
         <ol className="list-decimal space-y-2 pl-6">
           <li>Text is trimmed and converted to lowercase (unless specified otherwise).</li>
