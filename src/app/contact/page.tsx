@@ -25,7 +25,7 @@ export const metadata: PageMeta = generateMeta({
  *
  * @returns {React.JSX.Element} The rendered Contact page.
  */
-const Contact: React.FC = (): React.JSX.Element => {
+const Contact = (): React.JSX.Element => {
   return (
     <PageLayout>
       <PageHeader
