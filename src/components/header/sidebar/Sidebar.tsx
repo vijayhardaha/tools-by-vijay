@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import { Sheet, SheetContent } from '@/components/ui/sheet';
 
 import SidebarBody from './SidebarBody';
@@ -15,13 +17,13 @@ type SidebarProps = { isOpen: boolean; onClose: () => void };
  *
  * @param {SidebarProps} props - Component props.
  *
- * @returns {React.JSX.Element} Sidebar component.
+ * @returns {JSX.Element} Sidebar component.
  */
-const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }: SidebarProps): React.JSX.Element => (
+const Sidebar = ({ isOpen, onClose }: SidebarProps): JSX.Element => (
   <Sheet open={isOpen} onOpenChange={onClose}>
     <SheetContent
       side="right"
-      className="fixed inset-y-0 right-0 m-0 h-full w-[600px] max-w-full rounded-none p-0 shadow-lg"
+      className="fixed inset-y-0 right-0 m-0 h-full w-150 max-w-full rounded-none p-0 shadow-lg"
     >
       <SidebarHeader />
 
