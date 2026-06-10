@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import { notFound } from 'next/navigation';
 
 import EntryWithSidebar from '@/components/page/EntryWithSidebar';
@@ -32,9 +34,9 @@ export const metadata: PageMeta = generateMeta({
  * Password Strength Checker tool page component.
  * Renders the page layout with header and the Password Strength Checker tool.
  *
- * @returns {React.JSX.Element} The rendered Password Strength Checker tool page component.
+ * @returns {JSX.Element} The rendered Password Strength Checker tool page component.
  */
-const PasswordStrengthChecker = (): React.JSX.Element => {
+const PasswordStrengthChecker = (): JSX.Element => {
   if (!tool) {
     notFound(); // Render a 404 page if the tool is null
   }
