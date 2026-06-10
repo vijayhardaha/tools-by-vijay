@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
 import { CopyButton } from '@/components/ui/copyButton';
 import { Input } from '@/components/ui/input';
@@ -19,9 +21,9 @@ interface BulkSlugifyOutputProps {
  *
  *  @param {BulkSlugifyOutputProps} props - The props for the component.
  *
- * @returns {React.JSX.Element} The rendered component.
+ * @returns {JSX.Element} The rendered component.
  */
-const BulkSlugifyOutput: React.FC<BulkSlugifyOutputProps> = ({ output }: BulkSlugifyOutputProps): React.JSX.Element => {
+const BulkSlugifyOutput = ({ output }: BulkSlugifyOutputProps): JSX.Element => {
   // Split the output into individual lines and filter out empty lines
   const lines: string[] = output.split('\n').filter((line) => line.trim() !== '');
 
