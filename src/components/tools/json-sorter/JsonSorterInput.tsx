@@ -1,6 +1,5 @@
-'use client';
-
-import type { FormEvent } from 'react';
+import type { JSX, FormEvent } from 'react';
+('use client');
 
 import { Alert } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
@@ -29,9 +28,9 @@ interface JsonSorterInputProps {
  *
  *  @param {JsonSorterInputProps} props - Component props.
  *
- * @returns {React.JSX.Element} The rendered form with sorting options.
+ * @returns {JSX.Element} The rendered form with sorting options.
  */
-const JsonSorterInput: React.FC<JsonSorterInputProps> = ({
+const JsonSorterInput = ({
   input,
   setInput,
   spareArrays,
@@ -40,7 +39,7 @@ const JsonSorterInput: React.FC<JsonSorterInputProps> = ({
   onClear,
   onReset,
   error,
-}: JsonSorterInputProps): React.JSX.Element => {
+}: JsonSorterInputProps): JSX.Element => {
   /**
    * Handles form submission by preventing default behavior and triggering sorting.
    *
