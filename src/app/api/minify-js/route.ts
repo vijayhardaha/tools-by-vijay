@@ -15,6 +15,8 @@ type MinifyJsRequest = {
  * @param {Request} request - The incoming request object
  *
  * @returns {Promise<Response>} JSON response with minified JS or error
+ *
+ * @throws {Error} When minification fails or input is invalid
  */
 export async function POST(request: Request): Promise<Response> {
   try {
@@ -49,6 +51,8 @@ export async function POST(request: Request): Promise<Response> {
  * @param {object} options - Minification options
  *
  * @returns {string} Minified JavaScript code
+ *
+ * @throws {Error} When Putout minification fails
  */
 function minifyWithPutout(js: string, options: MinifyJsRequest['options']): string {
   try {
