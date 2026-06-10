@@ -1,6 +1,5 @@
-'use client';
-
-import type { FormEvent } from 'react';
+import type { JSX, FormEvent } from 'react';
+('use client');
 
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
@@ -30,9 +29,9 @@ interface ShuffleTextLinesInputProps {
  *
  *  @param {ShuffleTextLinesInputProps} props - The props for the component.
  *
- * @returns {React.JSX.Element} The input component for the Shuffle Text Lines tool.
+ * @returns {JSX.Element} The input component for the Shuffle Text Lines tool.
  */
-const ShuffleTextLinesInput: React.FC<ShuffleTextLinesInputProps> = ({
+const ShuffleTextLinesInput = ({
   input,
   setInput,
   removeDuplicates,
@@ -44,7 +43,7 @@ const ShuffleTextLinesInput: React.FC<ShuffleTextLinesInputProps> = ({
   onSubmit,
   onReset,
   onClear,
-}: ShuffleTextLinesInputProps): React.JSX.Element => {
+}: ShuffleTextLinesInputProps): JSX.Element => {
   /**
    * Handles form submission to shuffle lines.
    *
