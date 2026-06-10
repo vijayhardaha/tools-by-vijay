@@ -1,4 +1,4 @@
-import React from 'react';
+import type { ReactElement } from 'react';
 
 import {
   PiFadersHorizontalBold,
@@ -24,7 +24,7 @@ import {
  * Interface representing a tool icon.
  */
 export interface ToolIcons {
-  [key: string]: React.ReactElement;
+  [key: string]: ReactElement;
 }
 
 /**

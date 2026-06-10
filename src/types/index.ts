@@ -1,4 +1,4 @@
-import React from 'react';
+import type { ComponentType } from 'react';
 
 /**
  * Interface representing a tool.
@@ -31,5 +31,5 @@ export interface SocialMediaLink {
   key: string;
   url: string;
   color: string;
-  icon: React.ComponentType;
+  icon: ComponentType;
 }
