@@ -10,7 +10,7 @@ import { cn } from '@/utils/classNameUtils';
 /**
  * Props for the RadioBox component
  */
-interface IRadioBoxProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
+interface RadioBoxProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
   className?: string;
   checked?: boolean;
   onCheckedChange?: (checked: boolean) => void;
@@ -24,15 +24,9 @@ interface IRadioBoxProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
 /**
  * RadioBox component for selecting a single option from a group.
  *
- * @param root0
- * @param root0.className
- * @param root0.children
- * @param root0.checked
- * @param root0.onCheckedChange
- * @param root0.disabled
- * @param root0.required
- * @param root0.id
- * @param root0.name
+ * @param {RadioBoxProps} props - The component props
+ *
+ * @returns {React.JSX.Element} The rendered radio box component
  */
 function RadioBox({
   className,
@@ -44,7 +38,7 @@ function RadioBox({
   id,
   name,
   ...props
-}: IRadioBoxProps) {
+}: RadioBoxProps): React.JSX.Element {
   const [internalChecked, setInternalChecked] = useState(controlledChecked || false);
 
   const isControlled = controlledChecked !== undefined;
@@ -53,7 +47,7 @@ function RadioBox({
   /**
    * Handles the radio box state change event
    *
-   * @param event
+   * @param {React.ChangeEvent<HTMLInputElement>} event - The change event
    */
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (!isControlled) {
