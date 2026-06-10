@@ -3,7 +3,7 @@
 'use client';
 
 import type { JSX } from 'react';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import TinyURL from 'tinyurl';
 import validUrl from 'valid-url';

@@ -1,7 +1,7 @@
 'use client';
 
 import type { JSX } from 'react';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import PasswordGeneratorInfo from './PasswordGeneratorInfo';
 import PasswordGeneratorInput from './PasswordGeneratorInput';
