@@ -1,5 +1,6 @@
-import type { JSX, FormEvent } from 'react';
-('use client');
+'use client';
+
+import type { JSX, SubmitEvent } from 'react';
 
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
@@ -40,9 +41,9 @@ const QRCodeGeneratorInput = ({
   /**
    * Handles the form submission to generate the QR code.
    *
-   * @param {FormEvent} e - The form submission event.
+   * @param {SubmitEvent} e - The form submission event.
    */
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = (e: SubmitEvent) => {
     e.preventDefault();
     onSubmit();
   };

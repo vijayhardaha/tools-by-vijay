@@ -95,7 +95,7 @@ const BulkSlugifyInput = ({
                 variant={!useUnderscore ? 'default' : 'outline'}
                 onClick={() => setUseUnderscore(false)}
                 disabled={!useUnderscore}
-                className={cn('!opacity-100')}
+                className={cn('opacity-100!')}
               >
                 <span className="text-xs">With dash (-)</span>
               </Button>
@@ -104,7 +104,7 @@ const BulkSlugifyInput = ({
                 variant={useUnderscore ? 'default' : 'outline'}
                 onClick={() => setUseUnderscore(true)}
                 disabled={useUnderscore}
-                className={cn('!opacity-100')}
+                className={cn('opacity-100!')}
               >
                 <span className="text-xs">With underscore (_)</span>
               </Button>

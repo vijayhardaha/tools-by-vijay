@@ -1,4 +1,4 @@
-import type { JSX, FormEvent } from 'react';
+import type { JSX, SubmitEvent } from 'react';
 
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
@@ -47,9 +47,9 @@ const AlphabeticalLineSorterInput = ({
   /**
    * Handles form submission to sort lines alphabetically
    *
-   * @param {FormEvent} e - Event object
+   * @param {SubmitEvent} e - Event object
    */
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = (e: SubmitEvent) => {
     e.preventDefault();
     onSubmit();
   };

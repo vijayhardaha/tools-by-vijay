@@ -1,5 +1,6 @@
-import type { JSX, FormEvent } from 'react';
-('use client');
+'use client';
+
+import type { JSX, SubmitEvent } from 'react';
 
 import { Alert } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
@@ -57,9 +58,9 @@ const CssMinifierInput = ({
    * Handles the form submission event.
    * Prevents the default form submission and triggers the onSubmit callback.
    *
-   * @param {FormEvent} e - The form event.
+   * @param {SubmitEvent} e - The form event.
    */
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = (e: SubmitEvent) => {
     e.preventDefault();
     onSubmit();
   };

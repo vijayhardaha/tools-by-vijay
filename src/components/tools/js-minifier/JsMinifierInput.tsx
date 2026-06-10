@@ -1,5 +1,6 @@
-import type { JSX, FormEvent } from 'react';
-('use client');
+'use client';
+
+import type { JSX, SubmitEvent } from 'react';
 
 import type { MinifyOptions } from '@/components/tools/js-minifier/JsMinifierTool';
 import { Alert } from '@/components/ui/alert';
@@ -44,9 +45,9 @@ const JsMinifierInput = ({
   /**
    * Handles form submission and triggers JavaScript minification.
    *
-   * @param {FormEvent} e - The form event.
+   * @param {SubmitEvent} e - The form event.
    */
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = (e: SubmitEvent) => {
     e.preventDefault();
     onSubmit();
   };

@@ -1,6 +1,6 @@
 'use client';
 
-import type { JSX, FormEvent } from 'react';
+import type { JSX, SubmitEvent } from 'react';
 
 import type { HtmlMinifierOptions } from '@/components/tools/html-minifier/HtmlMinifierTool';
 import { Alert } from '@/components/ui/alert';
@@ -47,9 +47,9 @@ const HtmlMinifierInput = ({
    * Handles the form submission event.
    * Prevents the default form submission behavior and triggers the onSubmit callback.
    *
-   * @param {FormEvent} e - The form submission event.
+   * @param {SubmitEvent} e - The form submission event.
    */
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = (e: SubmitEvent) => {
     e.preventDefault();
     onSubmit();
   };

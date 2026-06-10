@@ -1,5 +1,6 @@
-import type { JSX, FormEvent } from 'react';
-('use client');
+'use client';
+
+import type { JSX, SubmitEvent } from 'react';
 
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
@@ -51,9 +52,9 @@ const SlugifyInput = ({
   /**
    * Handles form submission and triggers slug generation.
    *
-   * @param {FormEvent} e - The form event.
+   * @param {SubmitEvent} e - The form event.
    */
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = (e: SubmitEvent) => {
     e.preventDefault();
     onSubmit();
   };
@@ -86,7 +87,7 @@ const SlugifyInput = ({
                 variant={!useUnderscore ? 'default' : 'outline'}
                 onClick={() => setUseUnderscore(false)}
                 disabled={!useUnderscore}
-                className={cn('!opacity-100')}
+                className={cn('opacity-100!')}
               >
                 <span className="text-xs">With dash (-)</span>
               </Button>
@@ -96,7 +97,7 @@ const SlugifyInput = ({
                 variant={useUnderscore ? 'default' : 'outline'}
                 onClick={() => setUseUnderscore(true)}
                 disabled={useUnderscore}
-                className={cn('!opacity-100')}
+                className={cn('opacity-100!')}
               >
                 <span className="text-xs">With underscore (_)</span>
               </Button>

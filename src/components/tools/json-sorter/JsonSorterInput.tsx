@@ -1,5 +1,6 @@
-import type { JSX, FormEvent } from 'react';
-('use client');
+'use client';
+
+import type { JSX, SubmitEvent } from 'react';
 
 import { Alert } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
@@ -43,9 +44,9 @@ const JsonSorterInput = ({
   /**
    * Handles form submission by preventing default behavior and triggering sorting.
    *
-   * @param {FormEvent} e - Form event object.
+   * @param {SubmitEvent} e - Form event object.
    */
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = (e: SubmitEvent) => {
     e.preventDefault();
     onSubmit();
   };

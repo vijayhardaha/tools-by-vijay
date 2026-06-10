@@ -1,5 +1,6 @@
-import type { JSX, FormEvent } from 'react';
-('use client');
+'use client';
+
+import type { JSX, SubmitEvent } from 'react';
 
 import { Alert } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
@@ -34,9 +35,9 @@ const RandomUsernameGeneratorInput = ({
   /**
    * Handles the form submission event.
    *
-   * @param {FormEvent} e - The form submission event.
+   * @param {SubmitEvent} e - The form submission event.
    */
-  const handleSubmit = (e: FormEvent): void => {
+  const handleSubmit = (e: SubmitEvent): void => {
     e.preventDefault();
     onGenerate();
   };

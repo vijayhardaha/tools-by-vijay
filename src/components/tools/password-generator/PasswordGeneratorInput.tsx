@@ -1,6 +1,6 @@
 'use client';
 
-import type { JSX, FormEvent } from 'react';
+import type { JSX, SubmitEvent } from 'react';
 
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
@@ -53,7 +53,7 @@ const PasswordGeneratorInput = ({
   onSubmit,
   onReset,
 }: PasswordGeneratorInputProps): JSX.Element => {
-  const handleSubmit = (e: FormEvent): void => {
+  const handleSubmit = (e: SubmitEvent): void => {
     e.preventDefault();
     onSubmit();
   };

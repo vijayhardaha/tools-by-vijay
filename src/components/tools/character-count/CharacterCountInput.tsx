@@ -1,5 +1,6 @@
+'use client';
+
 import type { JSX } from 'react';
-('use client');
 
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
 import { Textarea } from '@/components/ui/textarea';
