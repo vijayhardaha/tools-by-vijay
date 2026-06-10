@@ -1,4 +1,5 @@
-'use client';
+import type { JSX } from 'react';
+('use client');
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 
@@ -34,7 +35,7 @@ interface SelectProps extends React.HTMLAttributes<HTMLDivElement> {
  *
  * @param {SelectProps} props - The component props
  *
- * @returns {React.JSX.Element} The rendered select component
+ * @returns {JSX.Element} The rendered select component
  */
 function Select({
   value,
@@ -46,7 +47,7 @@ function Select({
   className = '',
   size = 'default',
   ...props
-}: SelectProps): React.JSX.Element {
+}: SelectProps): JSX.Element {
   const [localValue, setLocalValue] = useState<string>(defaultValue || value || '');
   const [open, setOpen] = useState(false);
   const selectRef = useRef<HTMLDivElement>(null);
