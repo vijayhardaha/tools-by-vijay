@@ -66,9 +66,9 @@ export const generateSeoTitle = (title: string = ''): string => {
 /**
  * Generates a complete metadata object for SEO, Open Graph, and Twitter cards.
  *
- * @param {MetadataParams} params - The parameters object
+ * @param {MetaParams} params - The parameters object
  *
- * @returns {Metadata} A metadata object with title, description, canonical URL, and social media metadata.
+ * @returns {PageMeta} A metadata object with title, description, canonical URL, and social media metadata.
  */
 export const generateMeta = ({ title = '', description = '', slug = '' }: MetaParams): PageMeta => {
   return {
