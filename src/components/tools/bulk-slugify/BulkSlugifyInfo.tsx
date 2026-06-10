@@ -4,7 +4,7 @@
  *
  * @returns {React.JSX.Element} The rendered component displaying tool information
  */
-const BulkSlugifyInfo: React.FC = (): React.JSX.Element => {
+const BulkSlugifyInfo = (): React.JSX.Element => {
   return (
     <div className="mt-12 space-y-12">
       <section>
