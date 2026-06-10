@@ -5,20 +5,20 @@ import { Textarea } from '@/components/ui/textarea';
 /**
  * Interface for the JsonSorterOutput component props.
  */
-interface ITextToPhpVariablesOutputProps {
+interface TextToPhpVariablesOutputProps {
   output: string;
 }
 
 /**
  * Output component for the Text to PHP Variables tool.
  *
- * @param {ITextToPhpVariablesOutputProps} props - The props for the component.
+ *  @param {TextToPhpVariablesOutputProps} props - The props for the component.
  *
  * @returns {React.JSX.Element} The rendered output component.
  */
-const TextToPhpVariablesOutput: React.FC<ITextToPhpVariablesOutputProps> = ({
+const TextToPhpVariablesOutput: React.FC<TextToPhpVariablesOutputProps> = ({
   output,
-}: ITextToPhpVariablesOutputProps): React.JSX.Element => {
+}: TextToPhpVariablesOutputProps): React.JSX.Element => {
   return (
     <Card>
       <CardHeader>
