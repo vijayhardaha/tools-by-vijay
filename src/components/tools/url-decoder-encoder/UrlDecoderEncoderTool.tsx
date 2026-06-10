@@ -11,7 +11,7 @@ import UrlDecoderEncoderOutput from './UrlDecoderEncoderOutput';
  *
  * @returns {React.JSX.Element} The rendered URL Decoder/Encoder Tool component.
  */
-const UrlDecoderEncoderTool: React.FC = (): React.JSX.Element => {
+const UrlDecoderEncoderTool = (): React.JSX.Element => {
   const [input, setInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
   const [isEncoding, setIsEncoding] = useState<boolean>(true);
