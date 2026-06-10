@@ -9,7 +9,7 @@ import { Input } from '@/components/ui/input';
 /**
  * Interface for the PasswordStrengthCheckerInput component props.
  */
-interface IPasswordStrengthCheckerInputProps {
+interface PasswordStrengthCheckerInputProps {
   password: string;
   onSubmit: (password: string) => void;
   onClear: () => void;
@@ -18,15 +18,15 @@ interface IPasswordStrengthCheckerInputProps {
 /**
  * Password Strength Checker Input Component
  *
- * @param {IPasswordStrengthCheckerInputProps} props - Component props
+ *  @param {PasswordStrengthCheckerInputProps} props - Component props
  *
  * @returns {React.JSX.Element} Password input with visibility toggle and clear button
  */
-const PasswordStrengthCheckerInput: React.FC<IPasswordStrengthCheckerInputProps> = ({
+const PasswordStrengthCheckerInput: React.FC<PasswordStrengthCheckerInputProps> = ({
   password,
   onSubmit,
   onClear,
-}: IPasswordStrengthCheckerInputProps): React.JSX.Element => {
+}: PasswordStrengthCheckerInputProps): React.JSX.Element => {
   /**
    * Handles password input changes
    *
