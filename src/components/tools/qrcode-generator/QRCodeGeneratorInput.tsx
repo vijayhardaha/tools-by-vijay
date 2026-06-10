@@ -1,6 +1,5 @@
-'use client';
-
-import type { FormEvent } from 'react';
+import type { JSX, FormEvent } from 'react';
+('use client');
 
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
@@ -27,9 +26,9 @@ interface QrCodeGeneratorInputProps {
  *
  *  @param {QrCodeGeneratorInputProps} props - The props for the component.
  *
- * @returns {React.JSX.Element} The rendered QR code input component.
+ * @returns {JSX.Element} The rendered QR code input component.
  */
-const QRCodeGeneratorInput: React.FC<QrCodeGeneratorInputProps> = ({
+const QRCodeGeneratorInput = ({
   input,
   setInput,
   size,
@@ -37,7 +36,7 @@ const QRCodeGeneratorInput: React.FC<QrCodeGeneratorInputProps> = ({
   onSubmit,
   onClear,
   onReset,
-}): React.JSX.Element => {
+}: QrCodeGeneratorInputProps): JSX.Element => {
   /**
    * Handles the form submission to generate the QR code.
    *
