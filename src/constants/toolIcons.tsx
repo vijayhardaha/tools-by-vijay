@@ -21,17 +21,19 @@ import {
 } from 'react-icons/pi';
 
 /**
- * Interface representing a tool icon.
+ * A mapping of tool slugs to their corresponding icon elements.
+ *
+ * @type {ToolIcons}
  */
 export interface ToolIcons {
   [key: string]: ReactElement;
 }
 
 /**
- * A mapping of tool slugs to their corresponding icons.
- * Each key is a tool slug, and the value is the icon component.
+ * A mapping of tool slugs to their corresponding icon components.
+ * Each key is a tool slug, and the value is the icon element.
  *
- * @returns {ToolIcons} An object containing tool slugs as keys and their corresponding icons as values.
+ * @type {ToolIcons}
  */
 export const toolIcons: ToolIcons = {
   slugify: <PiFadersHorizontalBold />,

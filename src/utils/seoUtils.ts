@@ -1,52 +1,21 @@
-import { baseMetadata, SEO } from '@/constants/seo';
+import type { Metadata } from 'next';
+
+import { SITE_CONFIG, SITE_METADATA } from '@/constants/seo';
+import { getPermaLink } from '@/utils/seo';
 
 /**
- * Interface for metadata parameters.
+ * Interface for metadata generation parameters.
+ *
+ * @type {MetaParams}
+ * @property {string} [title] - Optional page title
+ * @property {string} [description] - Optional page description
+ * @property {string} [slug] - Optional page slug for canonical URL
  */
 export interface MetaParams {
   title?: string;
   description?: string;
   slug?: string;
 }
-
-/**
- * Interface for metadata object.
- */
-export interface PageMeta {
-  title: string;
-  description: string;
-  alternates: { canonical: string };
-  openGraph: { title: string; description: string; url: string };
-  twitter: { title: string; description: string };
-}
-
-/**
- * Retrieves the base URL based on the environment variables.
- *
- * @returns {string} The base URL.
- */
-export const getBaseUrl = (): string => {
-  const url =
-    process.env.VERCEL_PROJECT_PRODUCTION_URL
-    || process.env.VERCEL_BRANCH_URL
-    || process.env.VERCEL_URL
-    || `http://localhost:${process.env.PORT || 3000}`;
-
-  return url.startsWith('http://') || url.startsWith('https://')
-    ? url.replace(/\/$/, '')
-    : `https://${url.replace(/\/$/, '')}`;
-};
-
-/**
- * Computes the canonical URL based on the environment variables.
- *
- * @param {string} slug - The slug for generating the canonical URL.
- *
- * @returns {string} The canonical URL.
- */
-export const getCanonicalUrl = (slug: string = ''): string => {
-  return `${getBaseUrl()}/${slug.replace(/^\//, '')}`;
-};
 
 /**
  * Generates an SEO-friendly title by appending a fixed suffix to the given title.
@@ -57,10 +26,10 @@ export const getCanonicalUrl = (slug: string = ''): string => {
  */
 export const generateSeoTitle = (title: string = ''): string => {
   if (!title) {
-    return SEO.title;
+    return SITE_CONFIG.title;
   }
 
-  return [title, SEO.separator, SEO.titlePostfix].join(' ');
+  return [title, SITE_CONFIG.separator, SITE_CONFIG.titlePostfix].join(' ');
 };
 
 /**
@@ -68,20 +37,20 @@ export const generateSeoTitle = (title: string = ''): string => {
  *
  * @param {MetaParams} params - The parameters object
  *
- * @returns {PageMeta} A metadata object with title, description, canonical URL, and social media metadata.
+ * @returns {Metadata} A metadata object with title, description, canonical URL, and social media metadata.
  */
-export const generateMeta = ({ title = '', description = '', slug = '' }: MetaParams): PageMeta => {
+export const generateMeta = ({ title = '', description = '', slug = '' }: MetaParams): Metadata => {
   return {
-    ...baseMetadata,
+    ...SITE_METADATA,
     title: generateSeoTitle(title),
     description: description,
-    alternates: { canonical: getCanonicalUrl(slug) },
+    alternates: { canonical: getPermaLink(slug) },
     openGraph: {
-      ...baseMetadata.openGraph,
+      ...SITE_METADATA.openGraph,
       title: generateSeoTitle(title),
       description: description,
-      url: getCanonicalUrl(slug),
+      url: getPermaLink(slug),
     },
-    twitter: { ...baseMetadata.twitter, title: generateSeoTitle(title), description: description },
+    twitter: { ...SITE_METADATA.twitter, title: generateSeoTitle(title), description: description },
   };
 };

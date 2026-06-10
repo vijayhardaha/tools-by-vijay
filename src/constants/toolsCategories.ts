@@ -2,6 +2,8 @@ import type { Category } from '@/types';
 
 /**
  * Array of category objects, each containing information about a tool category.
+ *
+ * @type {Category[]}
  */
 const categories: Category[] = [
   {

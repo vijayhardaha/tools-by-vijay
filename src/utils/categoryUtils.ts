@@ -2,7 +2,7 @@ import categories from '@/constants/toolsCategories';
 import type { Category } from '@/types';
 
 /**
- * Get all categores
+ * Get all categories
  *
  * @returns {Category[]} Array of all categories
  */

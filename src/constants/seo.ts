@@ -1,82 +1,92 @@
-import { getBaseUrl } from '@/utils/seoUtils';
+import { CREATOR, type CreatorConfig } from '@vijayhardaha/schema-builder';
+import type { Metadata } from 'next';
+
+import { siteUrl } from '@/utils/seo';
 
 /**
- * Interface for SEO-related constants.
+ * Site-wide configuration values for SEO and metadata.
  */
-export interface SEOConfig {
-  title: string;
-  description: string;
-  titlePostfix: string;
-  separator: string;
-}
-
-/**
- * Interface for base metadata used in the application.
- */
-export interface BaseMetadata {
-  title: string;
-  description: string;
-  metadataBase: URL;
-  manifest: string;
-  appleTouchIcon: string;
-  alternates: { canonical: string };
-  keywords: string[];
-  verification: { google: string };
-  author: string;
-  robots: string;
-  icons: { icon: string; apple: string };
-  openGraph: {
-    title: string;
-    description: string;
-    images: { url: string; width: number; height: number }[];
-    type: string;
-    siteName: string;
-    locale: string;
-    url: string;
-  };
-  twitter: { card: string; title: string; description: string; images: string[]; creator: string };
-}
-
-/**
- * An object containing SEO-related constants for the application.
- */
-export const SEO: SEOConfig = {
+export const SITE_CONFIG = {
+  name: 'Tools by Vijay Hardaha',
   title: 'Developer Tools to Boost Productivity by Vijay Hardaha',
   description:
-    'Online tools to help developers and users work faster and smarter. Boost your productivity with free, browser-based utilities.',
+    'Online tools to help developers and workers work faster and smarter. Boost your productivity with free, browser-based utilities.',
   titlePostfix: 'Tools by Vijay Hardaha',
   separator: '-',
+  url: 'https://toolsbyvijay.vercel.app',
+  twitterHandle: '@vijayhardaha',
+  category: 'Developer Tools',
+  classification: 'Online Developer Tools, Web Utilities, Developer Productivity, Code Formatters',
+  creator: CREATOR as CreatorConfig,
+  organization: {
+    name: 'Tools by Vijay Hardaha',
+    description:
+      'Tools by Vijay Hardaha is a collection of free online developer tools and utilities designed to simplify everyday tasks for developers, content creators, and tech enthusiasts.',
+  },
+} as const;
+
+/**
+ * SEO keywords for search engine optimization.
+ */
+const SEO_KEYWORDS = ['tools', 'utilities', 'web tools', 'online tools', 'developer tools'];
+
+/**
+ * Google Search Console verification code for the site.
+ */
+const GOOGLE_SITE_VERIFICATION = '4CyrCxZi9TWgvS-GzB1QUhgEl0bKoIzT36368e_vlx0';
+
+/**
+ * Google Analytics measurement ID for the site.
+ */
+export const GOOGLE_ANALYTICS_ID = 'G-FM8D1WPKM7';
+
+/**
+ * Title and description used for SEO, Open Graph, and Twitter cards.
+ */
+const titleAndDescription = { title: SITE_CONFIG.title, description: SITE_CONFIG.description };
+
+/**
+ * Default image metadata used for Open Graph and Twitter cards.
+ */
+const seoImage = {
+  url: '/images/thumbnail.png',
+  secureUrl: '/images/thumbnail.png',
+  alt: 'Tools by Vijay Hardaha Thumbnail',
+  width: 512,
+  height: 512,
+  type: 'image/png',
 };
 
 /**
- * Base metadata for the application, including SEO and Open Graph properties.
+ * The main metadata object containing all SEO-related information for the website.
  */
-export const baseMetadata: BaseMetadata = {
-  title: SEO.title,
-  description: SEO.description,
-  metadataBase: new URL(getBaseUrl()),
-  manifest: '/site.webmanifest',
-  appleTouchIcon: '/apple-touch-icon.png',
-  alternates: { canonical: getBaseUrl() },
-  keywords: ['tools', 'utilities', 'web tools', 'online tools', 'developer tools'],
-  author: 'Vijay',
-  robots: 'index, follow',
-  verification: { google: '4CyrCxZi9TWgvS-GzB1QUhgEl0bKoIzT36368e_vlx0' },
+export const SITE_METADATA: Metadata = {
+  ...titleAndDescription,
+  metadataBase: new URL(siteUrl()),
+  alternates: { canonical: siteUrl() },
+  keywords: SEO_KEYWORDS,
+  applicationName: SITE_CONFIG.name,
+  authors: [{ name: SITE_CONFIG.creator.name, url: SITE_CONFIG.creator.urls.gravatar }],
+  creator: SITE_CONFIG.creator.name,
+  publisher: SITE_CONFIG.name,
+  robots: { index: true, follow: true },
+  category: SITE_CONFIG.category,
+  classification: SITE_CONFIG.classification,
+  verification: { google: GOOGLE_SITE_VERIFICATION },
   icons: { icon: '/favicon.ico', apple: '/apple-touch-icon.png' },
   openGraph: {
-    title: SEO.title,
-    description: SEO.description,
-    images: [{ url: '/images/thumbnail.png', width: 512, height: 512 }],
+    ...titleAndDescription,
+    images: seoImage,
     type: 'website',
-    siteName: 'Tools by Vijay Hardaha',
+    siteName: SITE_CONFIG.name,
     locale: 'en_US',
-    url: 'https://toolsbyvijay.vercel.app',
+    url: SITE_CONFIG.url,
   },
   twitter: {
+    ...titleAndDescription,
     card: 'summary_large_image',
-    title: SEO.title,
-    description: SEO.description,
-    images: ['/images/thumbnail.png'],
-    creator: '@vijayhardaha',
+    images: seoImage,
+    creator: SITE_CONFIG.creator.handles[0],
   },
+  other: { lang: 'en' },
 };

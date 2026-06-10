@@ -1,5 +1,9 @@
 /**
- * Interface representing a footer link.
+ * Interface representing a footer navigation link.
+ *
+ * @type {FooterLink}
+ * @property {string} name - The display text for the link
+ * @property {string} href - The URL the link points to
  */
 interface FooterLink {
   name: string;
