@@ -11,7 +11,7 @@ import { Textarea } from '@/components/ui/textarea';
 /**
  * Interface for the CssInlinerInput component props.
  */
-interface ICssInlinerInputProps {
+interface CssInlinerInputProps {
   htmlInput: string;
   setHtmlInput: (value: string) => void;
   cssInput: string;
@@ -25,11 +25,11 @@ interface ICssInlinerInputProps {
 /**
  * Component for inputting HTML and CSS to inline styles.
  *
- * @param {ICssInlinerInputProps} props - The props for the CssInlinerInput component.
+ *  @param {CssInlinerInputProps} props - The props for the CssInlinerInput component.
  *
  * @returns {React.JSX.Element} The CssInlinerInput component.
  */
-const CssInlinerInput: React.FC<ICssInlinerInputProps> = ({
+const CssInlinerInput: React.FC<CssInlinerInputProps> = ({
   htmlInput,
   setHtmlInput,
   cssInput,
@@ -38,7 +38,7 @@ const CssInlinerInput: React.FC<ICssInlinerInputProps> = ({
   onClear,
   isLoading,
   error,
-}: ICssInlinerInputProps): React.JSX.Element => {
+}: CssInlinerInputProps): React.JSX.Element => {
   /**
    * Handles form submission to inline CSS.
    *
