@@ -4,7 +4,7 @@
  *
  * @returns {React.JSX.Element} The rendered component displaying tool information
  */
-const ReplaceQuotesInfo: React.FC = (): React.JSX.Element => {
+const ReplaceQuotesInfo = (): React.JSX.Element => {
   return (
     <div className="max-w-none space-y-8">
       <section>
