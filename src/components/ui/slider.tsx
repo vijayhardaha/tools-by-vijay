@@ -1,4 +1,5 @@
-'use client';
+import type { JSX } from 'react';
+('use client');
 
 import { useState } from 'react';
 
@@ -22,7 +23,7 @@ interface SliderProps extends React.HTMLAttributes<HTMLDivElement> {
  *
  * @param {SliderProps} props - The component props
  *
- * @returns {React.JSX.Element} The rendered slider component
+ * @returns {JSX.Element} The rendered slider component
  */
 function Slider({
   className,
@@ -33,7 +34,7 @@ function Slider({
   onValueChange,
   disabled = false,
   ...props
-}: SliderProps): React.JSX.Element {
+}: SliderProps): JSX.Element {
   const [localValue, setLocalValue] = useState(value);
 
   // Derive the effective value during render (fixes set-state-in-effect)
