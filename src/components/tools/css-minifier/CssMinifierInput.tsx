@@ -1,6 +1,5 @@
-'use client';
-
-import type { FormEvent } from 'react';
+import type { JSX, FormEvent } from 'react';
+('use client');
 
 import { Alert } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
@@ -40,9 +39,9 @@ interface CssMinifierInputProps {
  *
  *  @param {CssMinifierInputProps} props - The props for the component.
  *
- * @returns {React.JSX.Element} The rendered CssMinifierInput component.
+ * @returns {JSX.Element} The rendered CssMinifierInput component.
  */
-const CssMinifierInput: React.FC<CssMinifierInputProps> = ({
+const CssMinifierInput = ({
   input,
   setInput,
   options,
@@ -53,7 +52,7 @@ const CssMinifierInput: React.FC<CssMinifierInputProps> = ({
   onReset,
   isLoading,
   error,
-}: CssMinifierInputProps): React.JSX.Element => {
+}: CssMinifierInputProps): JSX.Element => {
   /**
    * Handles the form submission event.
    * Prevents the default form submission and triggers the onSubmit callback.
