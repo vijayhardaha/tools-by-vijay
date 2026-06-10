@@ -18,7 +18,7 @@ export type ArrayType = 'simple' | 'numeric' | 'associative';
  *
  * @returns {React.JSX.Element} The complete text to array tool with input options, output display, and information
  */
-const TextToArrayTool: React.FC = (): React.JSX.Element => {
+const TextToArrayTool = (): React.JSX.Element => {
   const [input, setInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
   const [outputFormat, setOutputFormat] = useState<OutputFormat>('json');
