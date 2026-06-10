@@ -1,4 +1,5 @@
-'use client';
+import type { JSX } from 'react';
+('use client');
 
 import React, { useState } from 'react';
 
@@ -10,9 +11,9 @@ import CharacterCountOutput from './CharacterCountOutput';
  * Main component for the Character Count tool.
  * Manages the state and functionality for analyzing text statistics.
  *
- * @returns {React.JSX.Element} The complete Character Count tool with input options, output display, and information.
+ * @returns {JSX.Element} The complete Character Count tool with input options, output display, and information.
  */
-const CharacterCountTool = (): React.JSX.Element => {
+const CharacterCountTool = (): JSX.Element => {
   const [text, setText] = useState<string>('');
 
   /**
