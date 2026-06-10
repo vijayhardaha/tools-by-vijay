@@ -11,7 +11,7 @@ import { Slider } from '@/components/ui/slider';
 /**
  * Interface for the QR code generator input component props.
  */
-interface IQrCodeGeneratorInputProps {
+interface QrCodeGeneratorInputProps {
   input: string;
   setInput: (value: string) => void;
   size: number;
@@ -25,11 +25,11 @@ interface IQrCodeGeneratorInputProps {
  * QRCodeGeneratorInput is a React functional component that provides
  * input fields and controls for generating a QR code.
  *
- * @param {IQrCodeGeneratorInputProps} props - The props for the component.
+ *  @param {QrCodeGeneratorInputProps} props - The props for the component.
  *
  * @returns {React.JSX.Element} The rendered QR code input component.
  */
-const QRCodeGeneratorInput: React.FC<IQrCodeGeneratorInputProps> = ({
+const QRCodeGeneratorInput: React.FC<QrCodeGeneratorInputProps> = ({
   input,
   setInput,
   size,
