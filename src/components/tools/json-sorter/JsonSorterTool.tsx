@@ -14,7 +14,7 @@ import JsonSorterOutput from './JsonSorterOutput';
  *
  * @returns {React.JSX.Element} The complete JSON sorter tool with input options, output display, and information
  */
-const JsonSorterTool: React.FC = (): React.JSX.Element => {
+const JsonSorterTool = (): React.JSX.Element => {
   const [input, setInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
   const [spareArrays, setSpareArrays] = useState<boolean>(true);
