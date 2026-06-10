@@ -11,7 +11,7 @@ import { cn } from '@/utils/classNameUtils';
 /**
  * Interface for the BulkSlugifyInput component props.
  */
-interface IBulkSlugifyInputProps {
+interface BulkSlugifyInputProps {
   input: string;
   useUnderscore: boolean;
   setInput: (value: string) => void;
@@ -36,11 +36,11 @@ interface IBulkSlugifyInputProps {
  * along with configuration options for the slugification process such as separator
  * type, case conversion, number removal, and character normalization.
  *
- * @param {IBulkSlugifyInputProps} props - The props for the component.
+ * @param {BulkSlugifyInputProps} props - The props for the component.
  *
  * @returns {React.JSX.Element} The rendered barcode input component.
  */
-const BulkSlugifyInput: React.FC<IBulkSlugifyInputProps> = ({
+const BulkSlugifyInput: React.FC<BulkSlugifyInputProps> = ({
   input = '',
   useUnderscore = false,
   setInput,
@@ -56,7 +56,7 @@ const BulkSlugifyInput: React.FC<IBulkSlugifyInputProps> = ({
   onReset,
   keepEmptyLines = false,
   setKeepEmptyLines,
-}: IBulkSlugifyInputProps): React.JSX.Element => {
+}: BulkSlugifyInputProps): React.JSX.Element => {
   /**
    * Handles form submission to generate slugs
    *
