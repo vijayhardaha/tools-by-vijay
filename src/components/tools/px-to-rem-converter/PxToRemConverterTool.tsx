@@ -1,4 +1,5 @@
-'use client';
+import type { JSX } from 'react';
+('use client');
 
 import React, { useState } from 'react';
 
@@ -10,9 +11,9 @@ import PxToRemOutput from './PxToRemOutput';
  * Main component for the Px to Rem Converter tool.
  * Manages the state and functionality for converting px to rem.
  *
- * @returns {React.JSX.Element} The complete Px to Rem Converter tool with input options, output display, and information.
+ * @returns {JSX.Element} The complete Px to Rem Converter tool with input options, output display, and information.
  */
-const PxToRemConverterTool = (): React.JSX.Element => {
+const PxToRemConverterTool = (): JSX.Element => {
   const [pxValue, setPxValue] = useState<string>('');
   const [baseFontSize, setBaseFontSize] = useState<number>(16);
 
