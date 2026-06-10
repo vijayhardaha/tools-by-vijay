@@ -13,7 +13,7 @@ import BarcodeOutput from './BarcodeGeneratorOutput';
  *
  * @returns {React.JSX.Element} The rendered barcode generator tool component.
  */
-const BarcodeGeneratorTool: React.FC = (): React.JSX.Element => {
+const BarcodeGeneratorTool = (): React.JSX.Element => {
   const [input, setInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
 
