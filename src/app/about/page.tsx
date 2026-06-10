@@ -22,7 +22,7 @@ export const metadata: PageMeta = generateMeta({
  *
  * @returns {React.JSX.Element} The rendered About page.
  */
-const About: React.FC = (): React.JSX.Element => {
+const About = (): React.JSX.Element => {
   return (
     <PageLayout>
       <PageHeader
