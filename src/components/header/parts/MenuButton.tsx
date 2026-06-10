@@ -8,6 +8,9 @@ import { Button } from '@/components/ui/button';
 
 /**
  * Props for the MenuButton component.
+ *
+ * @type {MenuButtonProps}
+ * @property {() => void} onClick - Callback when the menu button is clicked
  */
 type MenuButtonProps = { onClick: () => void };
 
@@ -18,12 +21,12 @@ type MenuButtonProps = { onClick: () => void };
  *
  * @returns {JSX.Element} A button component with "Menu" text and hamburger icon.
  */
-const MenuButton = ({ onClick }: MenuButtonProps): JSX.Element => (
-  <Button onClick={onClick} variant="primary" className="w-12 md:w-auto" aria-label="Menu">
-    <span className="hidden md:inline-flex">Menu</span>
-    <span className="sr-only">Menu</span>
-    <RiMenu3Fill />
-  </Button>
-);
-
-export default MenuButton;
+export default function MenuButton({ onClick }: MenuButtonProps): JSX.Element {
+  return (
+    <Button onClick={onClick} variant="primary" className="w-12 md:w-auto" aria-label="Menu">
+      <span className="hidden md:inline-flex">Menu</span>
+      <span className="sr-only">Menu</span>
+      <RiMenu3Fill />
+    </Button>
+  );
+}

@@ -10,7 +10,7 @@ import { SheetHeader } from '@/components/ui/sheet';
  *
  * @returns {JSX.Element} The rendered SidebarHeader component.
  */
-const SidebarHeader = (): JSX.Element => {
+export default function SidebarHeader(): JSX.Element {
   return (
     <SheetHeader className="border-border border-b p-4">
       <div className="flex">
@@ -18,6 +18,4 @@ const SidebarHeader = (): JSX.Element => {
       </div>
     </SheetHeader>
   );
-};
-
-export default SidebarHeader;
+}

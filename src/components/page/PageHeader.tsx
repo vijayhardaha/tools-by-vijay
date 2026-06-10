@@ -2,9 +2,10 @@ import type { JSX, ReactNode } from 'react';
 /**
  * Props for the PageHeader component.
  *
- * @property {string} title - The title of the page.
- * @property {string} [description] - Optional description text for the page.
- * @property {ReactNode | null} [icon] - Optional icon element to display next to the title.
+ * @type {PageHeaderProps}
+ * @property {string} title - The title of the page
+ * @property {string} [description] - Optional description text for the page
+ * @property {ReactNode | null} [icon] - Optional icon element to display next to the title
  */
 type PageHeaderProps = { title: string; description?: string; icon?: ReactNode | null };
 
@@ -15,7 +16,7 @@ type PageHeaderProps = { title: string; description?: string; icon?: ReactNode |
  *
  * @returns {JSX.Element} The rendered component.
  */
-const PageHeader = ({ title, description, icon = null }: PageHeaderProps): JSX.Element => {
+export default function PageHeader({ title, description, icon = null }: PageHeaderProps): JSX.Element {
   return (
     <div
       className="relative left-1/2 -mt-8 mb-8 w-screen -translate-x-1/2 text-white"
@@ -36,6 +37,4 @@ const PageHeader = ({ title, description, icon = null }: PageHeaderProps): JSX.E
       </div>
     </div>
   );
-};
-
-export default PageHeader;
+}

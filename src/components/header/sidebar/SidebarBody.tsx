@@ -9,6 +9,11 @@ import { getToolsByCategories } from '@/utils/toolUtils';
 
 /**
  * Props for the NavLink component.
+ *
+ * @type {NavLinkProps}
+ * @property {string} href - The URL the link points to
+ * @property {ReactNode} children - Link content
+ * @property {string} [className] - Additional CSS classes
  */
 type NavLinkProps = { href: string; children: ReactNode; className?: string };
 
@@ -30,6 +35,10 @@ const NavLink = ({ href, children, className = '' }: NavLinkProps): JSX.Element 
 
 /**
  * Props for the CategorySection component.
+ *
+ * @type {CategorySectionProps}
+ * @property {string} title - The section heading text
+ * @property {{ slug: string; name: string }[]} tools - Array of tools in this category
  */
 type CategorySectionProps = { title: string; tools: { slug: string; name: string }[] };
 
@@ -58,7 +67,7 @@ const CategorySection = ({ title, tools }: CategorySectionProps): JSX.Element =>
  *
  * @returns {JSX.Element} The sidebar body content.
  */
-const SidebarBody = (): JSX.Element => {
+export default function SidebarBody(): JSX.Element {
   // Group tools by category
   const categorizedTools = getToolsByCategories();
   const scrollbarsRef = useRef<Scrollbars>(null);
@@ -107,6 +116,4 @@ const SidebarBody = (): JSX.Element => {
       </div>
     </Scrollbars>
   );
-};
-
-export default SidebarBody;
+}

@@ -9,7 +9,7 @@ import footerLinks from '@/constants/footerLinks';
  *
  * @returns {JSX.Element} The rendered footer top section.
  */
-const FooterTop = (): JSX.Element => {
+export default function FooterTop(): JSX.Element {
   return (
     <div className="mb-6 flex flex-col gap-6">
       {/* About section - takes 2 columns on large screens */}
@@ -24,6 +24,4 @@ const FooterTop = (): JSX.Element => {
       </div>
     </div>
   );
-};
-
-export default FooterTop;
+}

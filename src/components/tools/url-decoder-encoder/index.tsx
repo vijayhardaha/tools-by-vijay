@@ -12,7 +12,7 @@ import OutputBlock from './output-block';
  *
  * @returns {JSX.Element} The rendered URL Decoder/Encoder Tool component.
  */
-const UrlDecoderEncoder = (): JSX.Element => {
+export default function UrlDecoderEncoder(): JSX.Element {
   const [input, setInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
   const [isEncoding, setIsEncoding] = useState<boolean>(true);
@@ -62,6 +62,4 @@ const UrlDecoderEncoder = (): JSX.Element => {
       </div>
     </>
   );
-};
-
-export default UrlDecoderEncoder;
+}

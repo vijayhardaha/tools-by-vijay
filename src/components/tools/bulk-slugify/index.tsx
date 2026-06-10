@@ -19,7 +19,7 @@ import OutputBlock from './output-block';
  *
  * @returns {JSX.Element} The complete Bulk Slugify Tool interface
  */
-const BulkSlugify = (): JSX.Element => {
+export default function BulkSlugify(): JSX.Element {
   const [input, setInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
   const [useUnderscore, setUseUnderscore] = useState<boolean>(false);
@@ -115,6 +115,4 @@ const BulkSlugify = (): JSX.Element => {
       <InfoBlock />
     </>
   );
-};
-
-export default BulkSlugify;
+}

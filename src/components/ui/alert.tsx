@@ -34,6 +34,8 @@ const alertVariants = cva(
   }
 );
 
+export { Alert };
+
 // Default icons for each variant
 const defaultIcons: Record<string, ReactElement> = {
   default: <LuCircleAlert />,
@@ -43,7 +45,17 @@ const defaultIcons: Record<string, ReactElement> = {
   danger: <LuCircleX />,
 };
 
-// Define TypeScript types for the Alert component props
+/**
+ * Props for the Alert component.
+ *
+ * @type {AlertProps}
+ * @property {string} [className] - Additional CSS classes
+ * @property {'default' | 'info' | 'warning' | 'success' | 'danger'} [variant] - The alert variant for styling
+ * @property {string} [title] - The alert title text
+ * @property {ReactNode} [text] - The alert description content
+ * @property {ReactNode | null} [icon] - Custom icon element, set to null to hide
+ * @property {ReactNode} [children] - Additional alert content
+ */
 interface AlertProps extends HTMLAttributes<HTMLDivElement> {
   className?: string;
   variant?: 'default' | 'info' | 'warning' | 'success' | 'danger';
@@ -60,7 +72,7 @@ interface AlertProps extends HTMLAttributes<HTMLDivElement> {
  *
  * @returns {JSX.Element} The rendered Alert component
  */
-function Alert({
+export default function Alert({
   className,
   variant = 'default',
   title = '',
@@ -94,5 +106,3 @@ function Alert({
     </div>
   );
 }
-
-export { Alert };

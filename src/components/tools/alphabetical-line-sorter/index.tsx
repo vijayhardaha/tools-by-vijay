@@ -13,7 +13,7 @@ import OutputBlock from './output-block';
  *
  * @returns {JSX.Element} The complete Alphabetical Line Sorter tool with input options, output display, and functionality
  */
-const AlphabeticalLineSorter = (): JSX.Element => {
+export default function AlphabeticalLineSorter(): JSX.Element {
   const [input, setInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
   const [reverseSort, setReverseSort] = useState<boolean>(false);
@@ -112,6 +112,4 @@ const AlphabeticalLineSorter = (): JSX.Element => {
       </div>
     </>
   );
-};
-
-export default AlphabeticalLineSorter;
+}

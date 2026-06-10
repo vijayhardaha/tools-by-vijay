@@ -12,7 +12,7 @@ import OutputBlock from './output-block';
  *
  * @returns {JSX.Element} The CountryNameGeneratorTool component.
  */
-const CountryNameGenerator = (): JSX.Element => {
+export default function CountryNameGenerator(): JSX.Element {
   const [count, setCount] = useState<number>(1);
   const [output, setOutput] = useState<string[]>([]);
   const [error, setError] = useState<string>('');
@@ -313,6 +313,4 @@ const CountryNameGenerator = (): JSX.Element => {
       </div>
     </>
   );
-};
-
-export default CountryNameGenerator;
+}

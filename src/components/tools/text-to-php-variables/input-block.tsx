@@ -10,6 +10,16 @@ import { Textarea } from '@/components/ui/textarea';
 
 /**
  * Interface for the TextToPhpVariablesInput component props.
+ *
+ * @type {InputBlockProps}
+ * @property {string} input - The current text input
+ * @property {(value: string) => void} setInput - Callback to update the input
+ * @property {string} variableCase - The selected variable naming convention
+ * @property {(value: string) => void} setVariableCase - Callback to update naming convention
+ * @property {() => void} onSubmit - Callback to trigger generation
+ * @property {() => void} onClear - Callback to clear input and output
+ * @property {() => void} onReset - Callback to reset all options
+ * @property {string} [error] - Current error message, if any
  */
 interface InputBlockProps {
   input: string;
@@ -29,7 +39,7 @@ interface InputBlockProps {
  *
  * @returns {JSX.Element} The rendered input component.
  */
-const InputBlock = ({
+export default function InputBlock({
   input,
   setInput,
   variableCase,
@@ -38,7 +48,7 @@ const InputBlock = ({
   onClear,
   onReset,
   error,
-}: InputBlockProps): JSX.Element => {
+}: InputBlockProps): JSX.Element {
   /**
    * Handles form submission.
    *
@@ -95,6 +105,4 @@ const InputBlock = ({
       </CardContent>
     </Card>
   );
-};
-
-export default InputBlock;
+}

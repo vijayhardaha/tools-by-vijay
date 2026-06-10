@@ -5,7 +5,10 @@ import { CopyButton } from '@/components/ui/copyButton';
 import { Textarea } from '@/components/ui/textarea';
 
 /**
- * Interface for the CountryNameGeneratorOutput component props.
+ * Interface for the CssInlinerOutput component props.
+ *
+ * @type {OutputBlockProps}
+ * @property {string} output - The HTML output with inlined CSS
  */
 interface OutputBlockProps {
   output: string;
@@ -19,7 +22,7 @@ interface OutputBlockProps {
  *
  * @returns {JSX.Element} The rendered CssInlinerOutput component.
  */
-const OutputBlock = ({ output }: OutputBlockProps): JSX.Element => {
+export default function OutputBlock({ output }: OutputBlockProps): JSX.Element {
   return (
     <Card>
       <CardHeader>
@@ -38,6 +41,4 @@ const OutputBlock = ({ output }: OutputBlockProps): JSX.Element => {
       </CardContent>
     </Card>
   );
-};
-
-export default OutputBlock;
+}

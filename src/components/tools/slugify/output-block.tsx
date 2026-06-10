@@ -6,6 +6,9 @@ import { Input } from '@/components/ui/input';
 
 /**
  * Interface for the SlugifyOutput component props.
+ *
+ * @type {OutputBlockProps}
+ * @property {string} output - The generated slug output
  */
 interface OutputBlockProps {
   output: string;
@@ -18,7 +21,7 @@ interface OutputBlockProps {
  *
  * @returns {JSX.Element} The rendered slugified output component.
  */
-const OutputBlock = ({ output }: OutputBlockProps): JSX.Element => {
+export default function OutputBlock({ output }: OutputBlockProps): JSX.Element {
   return (
     <Card>
       <CardHeader>
@@ -33,6 +36,4 @@ const OutputBlock = ({ output }: OutputBlockProps): JSX.Element => {
       </CardContent>
     </Card>
   );
-};
-
-export default OutputBlock;
+}

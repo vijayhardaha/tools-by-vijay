@@ -9,6 +9,13 @@ import { Input } from '@/components/ui/input';
 
 /**
  * Props for the RandomUsernameGenerator input component.
+ *
+ * @type {InputBlockProps}
+ * @property {number} count - The number of usernames to generate
+ * @property {(value: number) => void} setCount - Callback to update generation count
+ * @property {() => void} onGenerate - Callback to trigger username generation
+ * @property {() => void} onClear - Callback to clear input and output
+ * @property {string} [error] - Current error message, if any
  */
 interface InputBlockProps {
   count: number;
@@ -25,7 +32,7 @@ interface InputBlockProps {
  *
  * @returns {JSX.Element} The RandomUsernameGeneratorInput component.
  */
-const InputBlock = ({ count, setCount, onGenerate, onClear, error }: InputBlockProps): JSX.Element => {
+export default function InputBlock({ count, setCount, onGenerate, onClear, error }: InputBlockProps): JSX.Element {
   /**
    * Handles the form submission event.
    *
@@ -70,6 +77,4 @@ const InputBlock = ({ count, setCount, onGenerate, onClear, error }: InputBlockP
       </CardContent>
     </Card>
   );
-};
-
-export default InputBlock;
+}

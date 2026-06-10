@@ -5,7 +5,13 @@ import { SheetFooter } from '@/components/ui/sheet';
 import { socialMediaLinks } from '@/constants/socialLinks';
 
 /**
- * Props for the SocialButton component
+ * Props for the SocialButton component.
+ *
+ * @type {SocialButtonProps}
+ * @property {ElementType} icon - The icon component for the social platform
+ * @property {string} href - The URL to the social media profile
+ * @property {string} label - The accessible label for the button
+ * @property {string} [color] - The hover color class for the button
  */
 interface SocialButtonProps {
   icon: ElementType;
@@ -40,14 +46,14 @@ const SocialButton = ({ icon: Icon, href, label, color }: SocialButtonProps): JS
  *
  * @returns {JSX.Element} The sidebar footer component
  */
-const SidebarFooter = (): JSX.Element => (
-  <SheetFooter>
-    <div className="flex justify-center space-x-2">
-      {socialMediaLinks.map(({ key, icon, url, name, color }) => (
-        <SocialButton key={key} icon={icon} href={url} label={name} color={color} />
-      ))}
-    </div>
-  </SheetFooter>
-);
-
-export default SidebarFooter;
+export default function SidebarFooter(): JSX.Element {
+  return (
+    <SheetFooter>
+      <div className="flex justify-center space-x-2">
+        {socialMediaLinks.map(({ key, icon, url, name, color }) => (
+          <SocialButton key={key} icon={icon} href={url} label={name} color={color} />
+        ))}
+      </div>
+    </SheetFooter>
+  );
+}

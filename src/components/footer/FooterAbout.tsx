@@ -6,11 +6,24 @@ import { socialMediaLinks } from '@/constants/socialLinks';
 
 /**
  * Props for the SocialButton component.
+ *
+ * @type {SocialButtonProps}
+ * @property {ElementType} icon - The icon component for the social platform
+ * @property {string} href - The URL to the social media profile
+ * @property {string} label - The accessible label for the button
+ * @property {string} [color] - The hover color class for the button
  */
 type SocialButtonProps = { icon: ElementType; href: string; label: string; color?: string };
 
 /**
- * Represents a social media link.
+ * Represents a social media link with metadata.
+ *
+ * @type {SocialMediaLinkItem}
+ * @property {string} key - The unique key identifier for the link
+ * @property {ElementType} icon - The icon component for the platform
+ * @property {string} url - The URL to the social media profile
+ * @property {string} name - The display name of the social profile
+ * @property {string} [color] - The hover color class for the button
  */
 type SocialMediaLinkItem = { key: string; icon: ElementType; url: string; name: string; color?: string };
 
@@ -40,7 +53,7 @@ const SocialButton = ({ icon: Icon, href, label, color }: SocialButtonProps): JS
  *
  * @returns {JSX.Element} The rendered footer about section.
  */
-const FooterAbout = (): JSX.Element => {
+export default function FooterAbout(): JSX.Element {
   return (
     <div className="mb-6 flex flex-col gap-4">
       <div className="space-y-2">
@@ -63,6 +76,4 @@ const FooterAbout = (): JSX.Element => {
       </div>
     </div>
   );
-};
-
-export default FooterAbout;
+}

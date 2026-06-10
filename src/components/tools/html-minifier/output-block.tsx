@@ -7,6 +7,10 @@ import { Textarea } from '@/components/ui/textarea';
 
 /**
  * Interface for the HtmlMinifierOutput component props.
+ *
+ * @type {OutputBlockProps}
+ * @property {string} output - The minified HTML output
+ * @property {string} input - The original HTML input for compression comparison
  */
 interface OutputBlockProps {
   output: string;
@@ -21,7 +25,7 @@ interface OutputBlockProps {
  *
  * @returns {JSX.Element} The rendered component.
  */
-const OutputBlock = ({ output, input }: OutputBlockProps): JSX.Element => {
+export default function OutputBlock({ output, input }: OutputBlockProps): JSX.Element {
   return (
     <Card>
       <CardHeader>
@@ -42,6 +46,4 @@ const OutputBlock = ({ output, input }: OutputBlockProps): JSX.Element => {
       </CardContent>
     </Card>
   );
-};
-
-export default OutputBlock;
+}

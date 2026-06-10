@@ -18,7 +18,7 @@ export type VariableCase = 'camelCase' | 'snake_case' | 'PascalCase';
  *
  * @returns {JSX.Element} The complete text to PHP variables tool with input options and output display.
  */
-const TextToPhpVariables = (): JSX.Element => {
+export default function TextToPhpVariables(): JSX.Element {
   const [input, setInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
   const [variableCase, setVariableCase] = useState<VariableCase>('snake_case');
@@ -110,6 +110,4 @@ const TextToPhpVariables = (): JSX.Element => {
       </div>
     </>
   );
-};
-
-export default TextToPhpVariables;
+}

@@ -6,6 +6,9 @@ import { Input } from '@/components/ui/input';
 
 /**
  * Interface for the PxToRemOutput component props.
+ *
+ * @type {OutputBlockProps}
+ * @property {string} remValue - The calculated rem value as a string
  */
 interface OutputBlockProps {
   remValue: string;
@@ -18,7 +21,7 @@ interface OutputBlockProps {
  *
  * @returns {JSX.Element} The rendered card with the rem value.
  */
-const OutputBlock = ({ remValue }: OutputBlockProps): JSX.Element => {
+export default function OutputBlock({ remValue }: OutputBlockProps): JSX.Element {
   return (
     <Card>
       <CardHeader>
@@ -39,6 +42,4 @@ const OutputBlock = ({ remValue }: OutputBlockProps): JSX.Element => {
       </CardContent>
     </Card>
   );
-};
-
-export default OutputBlock;
+}

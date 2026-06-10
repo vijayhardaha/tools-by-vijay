@@ -10,6 +10,16 @@ import { Textarea } from '@/components/ui/textarea';
 
 /**
  * Interface for the UnminifyInput component props.
+ *
+ * @type {InputBlockProps}
+ * @property {string} input - The minified code input
+ * @property {(value: string) => void} setInput - Callback to update the input
+ * @property {string} codeType - The selected code type (javascript, json, html, css)
+ * @property {(value: string) => void} setCodeType - Callback to update code type
+ * @property {() => void} onSubmit - Callback to trigger unminification
+ * @property {() => void} onClear - Callback to clear input and output
+ * @property {boolean} isLoading - Whether an unminification request is in progress
+ * @property {string} [error] - Current error message, if any
  */
 interface InputBlockProps {
   input: string;
@@ -29,7 +39,7 @@ interface InputBlockProps {
  *
  * @returns {JSX.Element} The rendered UnminifyInput component.
  */
-const InputBlock = ({
+export default function InputBlock({
   input,
   setInput,
   codeType,
@@ -38,7 +48,7 @@ const InputBlock = ({
   onClear,
   isLoading,
   error,
-}: InputBlockProps): JSX.Element => {
+}: InputBlockProps): JSX.Element {
   /**
    * Handles the form submission event.
    *
@@ -109,6 +119,4 @@ const InputBlock = ({
       </CardContent>
     </Card>
   );
-};
-
-export default InputBlock;
+}

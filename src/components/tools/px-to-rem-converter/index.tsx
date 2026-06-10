@@ -13,7 +13,7 @@ import OutputBlock from './output-block';
  *
  * @returns {JSX.Element} The complete Px to Rem Converter tool with input options, output display, and information.
  */
-const PxToRemConverter = (): JSX.Element => {
+export default function PxToRemConverter(): JSX.Element {
   const [pxValue, setPxValue] = useState<string>('');
   const [baseFontSize, setBaseFontSize] = useState<number>(16);
 
@@ -49,6 +49,4 @@ const PxToRemConverter = (): JSX.Element => {
       </div>
     </>
   );
-};
-
-export default PxToRemConverter;
+}

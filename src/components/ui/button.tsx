@@ -9,7 +9,7 @@ import { cva } from 'class-variance-authority';
 import { cn } from '@/utils/classNameUtils';
 
 /**
- * Button component with multiple variants and sizes.
+ * Variant and size styles for the Button component.
  */
 const buttonVariants = cva(
   [
@@ -70,7 +70,9 @@ const buttonVariants = cva(
 );
 
 /**
- * Button component with various styles and sizes.
+ * Props for the Button component.
+ *
+ * @type {ButtonProps}
  */
 type ButtonProps = {
   className?: string;

@@ -5,7 +5,7 @@ import type { JSX } from 'react';
  *
  * @returns {JSX.Element} The rendered component displaying tool information
  */
-const InfoBlock = (): JSX.Element => {
+export default function InfoBlock(): JSX.Element {
   return (
     <div className="mt-12 space-y-12">
       <section>
@@ -183,6 +183,4 @@ const InfoBlock = (): JSX.Element => {
       </section>
     </div>
   );
-};
-
-export default InfoBlock;
+}

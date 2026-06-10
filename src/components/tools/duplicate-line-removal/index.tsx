@@ -13,7 +13,7 @@ import OutputBlock from './output-block';
  *
  * @returns {JSX.Element} The complete Duplicate Line Removal tool with input options, output display, and functionality
  */
-const DuplicateLineRemoval = (): JSX.Element => {
+export default function DuplicateLineRemoval(): JSX.Element {
   const [input, setInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
   const [sortType, setSortType] = useState<'none' | 'alphabetical' | 'ascii'>('none');
@@ -102,6 +102,4 @@ const DuplicateLineRemoval = (): JSX.Element => {
       </div>
     </>
   );
-};
-
-export default DuplicateLineRemoval;
+}

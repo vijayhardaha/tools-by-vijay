@@ -8,6 +8,12 @@ import { Input } from '@/components/ui/input';
 
 /**
  * Props for the BarcodeGeneratorInput component.
+ *
+ * @type {InputBlockProps}
+ * @property {string} input - The current text input
+ * @property {(value: string) => void} setInput - Callback to update the input text
+ * @property {() => void} onSubmit - Callback to trigger barcode generation
+ * @property {() => void} onClear - Callback to clear input and output
  */
 interface InputBlockProps {
   input: string;
@@ -24,7 +30,7 @@ interface InputBlockProps {
  *
  * @returns {JSX.Element} The rendered barcode input component.
  */
-const InputBlock = ({ input, setInput, onSubmit, onClear }: InputBlockProps): JSX.Element => {
+export default function InputBlock({ input, setInput, onSubmit, onClear }: InputBlockProps): JSX.Element {
   /**
    * Handles the form submission to generate the barcode.
    *
@@ -64,6 +70,4 @@ const InputBlock = ({ input, setInput, onSubmit, onClear }: InputBlockProps): JS
       </CardContent>
     </Card>
   );
-};
-
-export default InputBlock;
+}

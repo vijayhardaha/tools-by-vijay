@@ -8,7 +8,15 @@ import { LuCopy as CopyIcon, LuCheck as CheckIcon } from 'react-icons/lu';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/utils/classNameUtils';
 
-// Define TypeScript types for the component props
+/**
+ * Props for the CopyButton component.
+ *
+ * @type {CopyButtonProps}
+ * @property {string} text - The text to copy to clipboard
+ * @property {string} [copyText] - The label when not yet copied
+ * @property {string} [copiedText] - The label after successful copy
+ * @property {string} [className] - Additional CSS classes
+ */
 interface CopyButtonProps {
   text: string;
   copyText?: string;
@@ -23,21 +31,16 @@ interface CopyButtonProps {
  *
  * @returns {JSX.Element} The CopyButton component
  */
-export const CopyButton = ({
+export default function CopyButton({
   text,
   copyText = 'Copy',
   copiedText = 'Copied!',
   className = '',
-}: CopyButtonProps): JSX.Element => {
+}: CopyButtonProps): JSX.Element {
   const [copied, setCopied] = useState(false);
 
   /**
    * Copies the text to the clipboard and updates the copied state.
-   *
-   * @returns {Promise<void>}
-   *
-   * @async
-   * @function
    */
   const handleCopy = async (): Promise<void> => {
     if (text) {
@@ -53,4 +56,6 @@ export const CopyButton = ({
       {copied ? copiedText : copyText}
     </Button>
   );
-};
+}
+
+export { CopyButton };

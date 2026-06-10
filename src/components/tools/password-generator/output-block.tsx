@@ -6,6 +6,9 @@ import { Input } from '@/components/ui/input';
 
 /**
  * Interface for the PasswordGeneratorOutput component props.
+ *
+ * @type {OutputBlockProps}
+ * @property {string} password - The generated password
  */
 interface OutputBlockProps {
   password: string;
@@ -20,7 +23,7 @@ interface OutputBlockProps {
  *
  * @returns {JSX.Element} The rendered card with password display and copy functionality.
  */
-const OutputBlock = ({ password }: OutputBlockProps): JSX.Element => {
+export default function OutputBlock({ password }: OutputBlockProps): JSX.Element {
   return (
     <Card>
       <CardHeader>
@@ -35,6 +38,4 @@ const OutputBlock = ({ password }: OutputBlockProps): JSX.Element => {
       </CardContent>
     </Card>
   );
-};
-
-export default OutputBlock;
+}

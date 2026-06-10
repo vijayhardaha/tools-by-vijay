@@ -5,7 +5,10 @@ import { CopyButton } from '@/components/ui/copyButton';
 import { Textarea } from '@/components/ui/textarea';
 
 /**
- * Interface for the CountryNameGeneratorOutput component props.
+ * Interface for the TextCaseChangerOutput component props.
+ *
+ * @type {OutputBlockProps}
+ * @property {string} output - The converted text output
  */
 interface OutputBlockProps {
   output: string;
@@ -18,7 +21,7 @@ interface OutputBlockProps {
  *
  * @returns {JSX.Element} The TextCaseChangerOutput component.
  */
-const OutputBlock = ({ output }: OutputBlockProps): JSX.Element => {
+export default function OutputBlock({ output }: OutputBlockProps): JSX.Element {
   return (
     <Card>
       <CardHeader>
@@ -37,6 +40,4 @@ const OutputBlock = ({ output }: OutputBlockProps): JSX.Element => {
       </CardContent>
     </Card>
   );
-};
-
-export default OutputBlock;
+}

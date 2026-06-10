@@ -4,7 +4,7 @@ import type { JSX } from 'react';
  *
  * @returns {JSX.Element} The rendered footer bottom section.
  */
-const FooterBottom = (): JSX.Element => {
+export default function FooterBottom(): JSX.Element {
   const currentYear = new Date().getFullYear();
 
   return (
@@ -25,6 +25,4 @@ const FooterBottom = (): JSX.Element => {
       </p>
     </div>
   );
-};
-
-export default FooterBottom;
+}

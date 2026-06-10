@@ -8,8 +8,17 @@ import 'react-tooltip/dist/react-tooltip.css';
 
 import { cn } from '@/utils/classNameUtils';
 
+export { Tooltip };
+
 /**
- * Props for the Tooltip component
+ * Props for the Tooltip component.
+ *
+ * @type {TooltipProps}
+ * @property {string} text - The tooltip content text
+ * @property {ReactNode} children - The element that triggers the tooltip
+ * @property {string} [className] - Additional CSS classes
+ * @property {number} [sideOffset] - Offset from the trigger element, defaults to 4
+ * @property {number} [delayDuration] - Delay before showing the tooltip in ms, defaults to 300
  */
 interface TooltipProps extends HTMLAttributes<HTMLDivElement> {
   text: string;
@@ -26,7 +35,7 @@ interface TooltipProps extends HTMLAttributes<HTMLDivElement> {
  *
  * @returns {JSX.Element} The rendered tooltip component
  */
-function Tooltip({
+export default function Tooltip({
   text,
   children,
   className,
@@ -55,5 +64,3 @@ function Tooltip({
     </>
   );
 }
-
-export { Tooltip };

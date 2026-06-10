@@ -1,3 +1,5 @@
+'use client';
+
 import type { JSX, ReactNode } from 'react';
 import { useRef, useEffect, useState } from 'react';
 
@@ -6,6 +8,10 @@ import { getAllCategorySlugs } from '@/utils/categoryUtils';
 
 /**
  * Props for the EntryWithSidebar component.
+ *
+ * @type {EntryWithSidebarProps}
+ * @property {{ category: string; slug: string }} tool - The current tool with category and slug
+ * @property {ReactNode} children - The main page content
  */
 interface EntryWithSidebarProps {
   tool: { category: string; slug: string };
@@ -19,7 +25,7 @@ interface EntryWithSidebarProps {
  *
  * @returns {JSX.Element} The rendered component.
  */
-const EntryWithSidebar = ({ tool, children }: EntryWithSidebarProps): JSX.Element => {
+export default function EntryWithSidebar({ tool, children }: EntryWithSidebarProps): JSX.Element {
   const categories = getAllCategorySlugs().filter((category) => category !== tool.category);
 
   const [category1, setCategory1] = useState('');
@@ -58,6 +64,4 @@ const EntryWithSidebar = ({ tool, children }: EntryWithSidebarProps): JSX.Elemen
       </aside>
     </div>
   );
-};
-
-export default EntryWithSidebar;
+}

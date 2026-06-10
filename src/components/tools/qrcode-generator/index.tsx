@@ -14,7 +14,7 @@ import OutputBlock from './output-block';
  *
  * @returns {JSX.Element} The rendered QR code generator tool component.
  */
-const QRCodeGenerator = (): JSX.Element => {
+export default function QRCodeGenerator(): JSX.Element {
   const [input, setInput] = useState<string>('');
   const [size, setSize] = useState<number>(256);
   const [output, setOutput] = useState<string>('');
@@ -68,6 +68,4 @@ const QRCodeGenerator = (): JSX.Element => {
       </div>
     </>
   );
-};
-
-export default QRCodeGenerator;
+}

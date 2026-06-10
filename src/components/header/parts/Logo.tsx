@@ -7,6 +7,9 @@ import { cn } from '@/utils/classNameUtils';
 
 /**
  * Props for the Logo component.
+ *
+ * @type {LogoProps}
+ * @property {string} [className] - Additional CSS classes for the logo image
  */
 type LogoProps = { className?: string };
 
@@ -17,19 +20,19 @@ type LogoProps = { className?: string };
  *
  * @returns {JSX.Element} A link to the homepage containing the site logo.
  */
-const Logo = ({ className }: LogoProps): JSX.Element => (
-  <Link href="/">
-    <Image
-      src="/images/site-logo.svg"
-      alt="Site logo for Tools by Vijay Hardaha"
-      aria-label="Site logo for Tools by Vijay Hardaha"
-      width={791}
-      height={160}
-      className={cn('h-10 w-auto', className)}
-      priority
-    />
-    <span className="sr-only">Tools by Vijay Hardaha</span>
-  </Link>
-);
-
-export default Logo;
+export default function Logo({ className }: LogoProps): JSX.Element {
+  return (
+    <Link href="/">
+      <Image
+        src="/images/site-logo.svg"
+        alt="Site logo for Tools by Vijay Hardaha"
+        aria-label="Site logo for Tools by Vijay Hardaha"
+        width={791}
+        height={160}
+        className={cn('h-10 w-auto', className)}
+        priority
+      />
+      <span className="sr-only">Tools by Vijay Hardaha</span>
+    </Link>
+  );
+}

@@ -8,6 +8,19 @@ import { Textarea } from '@/components/ui/textarea';
 
 /**
  * Props for the AlphabeticalLineSorterInput component.
+ *
+ * @type {InputBlockProps}
+ * @property {string} input - The current text input
+ * @property {(value: string) => void} setInput - Callback to update the input text
+ * @property {boolean} reverseSort - Whether to sort in reverse order
+ * @property {(value: boolean) => void} setReverseSort - Callback to toggle reverse sort
+ * @property {boolean} removeDuplicates - Whether to remove duplicate lines
+ * @property {(value: boolean) => void} setRemoveDuplicates - Callback to toggle duplicate removal
+ * @property {string} sortType - The sorting algorithm (standard or ascii)
+ * @property {(value: string) => void} setSortType - Callback to update sort type
+ * @property {() => void} onSubmit - Callback to trigger sorting
+ * @property {() => void} onReset - Callback to reset all options
+ * @property {() => void} onClear - Callback to clear input and output
  */
 interface InputBlockProps {
   input: string;
@@ -31,7 +44,7 @@ interface InputBlockProps {
  *
  * @returns {JSX.Element} The rendered input form
  */
-const InputBlock = ({
+export default function InputBlock({
   input,
   setInput,
   reverseSort,
@@ -43,7 +56,7 @@ const InputBlock = ({
   onSubmit,
   onReset,
   onClear,
-}: InputBlockProps): JSX.Element => {
+}: InputBlockProps): JSX.Element {
   /**
    * Handles form submission to sort lines alphabetically
    *
@@ -116,6 +129,4 @@ const InputBlock = ({
       </CardContent>
     </Card>
   );
-};
-
-export default InputBlock;
+}

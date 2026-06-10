@@ -12,6 +12,10 @@ const wrapInCode = (text: string): JSX.Element => {
 
 /**
  * Props for the CompressionInfo component.
+ *
+ * @type {CompressionInfoProps}
+ * @property {string | null} input - The original input string
+ * @property {string | null} output - The compressed output string
  */
 interface CompressionInfoProps {
   input: string | null;
@@ -25,7 +29,7 @@ interface CompressionInfoProps {
  *
  * @returns {JSX.Element | null} The formatted compression info
  */
-export const CompressionInfo = ({ input, output }: CompressionInfoProps): JSX.Element | null => {
+export default function CompressionInfo({ input, output }: CompressionInfoProps): JSX.Element | null {
   if (!output) return wrapInCode('Output is empty');
 
   const formatSize = (size: number): string => {
@@ -62,4 +66,6 @@ export const CompressionInfo = ({ input, output }: CompressionInfoProps): JSX.El
   }
 
   return stats || <>Compressed size: {wrapInCode(compressedSize)}</>;
-};
+}
+
+export { CompressionInfo };

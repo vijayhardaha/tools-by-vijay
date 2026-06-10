@@ -7,8 +7,19 @@ import { LuCheck as CheckIcon } from 'react-icons/lu';
 
 import { cn } from '@/utils/classNameUtils';
 
+export { Checkbox };
+
 /**
  * Props for the Checkbox component.
+ *
+ * @type {CheckboxProps}
+ * @property {string} [className] - Additional CSS classes
+ * @property {boolean} [checked] - Whether the checkbox is checked
+ * @property {(checked: boolean) => void} [onCheckedChange] - Callback when checked state changes
+ * @property {boolean} [disabled] - Whether the checkbox is disabled
+ * @property {boolean} [required] - Whether the checkbox is required
+ * @property {string} [id] - The unique ID for the checkbox input
+ * @property {ReactNode} [children] - Label content displayed next to the checkbox
  */
 interface CheckboxProps extends LabelHTMLAttributes<HTMLLabelElement> {
   className?: string;
@@ -27,7 +38,7 @@ interface CheckboxProps extends LabelHTMLAttributes<HTMLLabelElement> {
  *
  * @returns {JSX.Element} The rendered checkbox component
  */
-function Checkbox({
+export default function Checkbox({
   className = '',
   children,
   checked: controlledChecked,
@@ -103,5 +114,3 @@ function Checkbox({
     </label>
   );
 }
-
-export { Checkbox };

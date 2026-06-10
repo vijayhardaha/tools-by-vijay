@@ -10,6 +10,17 @@ import { Textarea } from '@/components/ui/textarea';
 
 /**
  * Interface for the DuplicateLineRemovalInput component props.
+ *
+ * @type {InputBlockProps}
+ * @property {string} input - The current text input
+ * @property {(value: string) => void} setInput - Callback to update the input text
+ * @property {string} sortType - The sorting type (none, alphabetical, ascii)
+ * @property {(value: string) => void} setSortType - Callback to update sort type
+ * @property {boolean} reverseSort - Whether to sort in reverse order
+ * @property {(value: boolean) => void} setReverseSort - Callback to toggle reverse sort
+ * @property {() => void} onSubmit - Callback to trigger processing
+ * @property {() => void} onReset - Callback to reset all options
+ * @property {() => void} onClear - Callback to clear input and output
  */
 interface InputBlockProps {
   input: string;
@@ -31,7 +42,7 @@ interface InputBlockProps {
  *
  * @returns {JSX.Element} The rendered component.
  */
-const InputBlock = ({
+export default function InputBlock({
   input,
   setInput,
   sortType,
@@ -41,7 +52,7 @@ const InputBlock = ({
   onSubmit,
   onReset,
   onClear,
-}: InputBlockProps): JSX.Element => {
+}: InputBlockProps): JSX.Element {
   /**
    * Handles form submission by preventing default behavior and triggering conversion.
    *
@@ -120,6 +131,4 @@ const InputBlock = ({
       </CardContent>
     </Card>
   );
-};
-
-export default InputBlock;
+}

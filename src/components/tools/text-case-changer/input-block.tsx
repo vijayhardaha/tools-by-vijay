@@ -10,6 +10,16 @@ import { Textarea } from '@/components/ui/textarea';
 
 /**
  * Interface for the TextCaseChangerInput component props.
+ *
+ * @type {InputBlockProps}
+ * @property {string} input - The current text input
+ * @property {(value: string) => void} setInput - Callback to update the input text
+ * @property {string} textCase - The selected text case option
+ * @property {(value: string) => void} setTextCase - Callback to update the text case option
+ * @property {() => void} onSubmit - Callback to trigger text case conversion
+ * @property {() => void} onClear - Callback to clear input and output
+ * @property {() => void} onReset - Callback to reset all options
+ * @property {string} [error] - Current error message, if any
  */
 interface InputBlockProps {
   input: string;
@@ -29,7 +39,7 @@ interface InputBlockProps {
  *
  * @returns {JSX.Element} The TextCaseChangerInput component.
  */
-const InputBlock = ({
+export default function InputBlock({
   input,
   setInput,
   textCase,
@@ -38,7 +48,7 @@ const InputBlock = ({
   onClear,
   onReset,
   error,
-}: InputBlockProps): JSX.Element => {
+}: InputBlockProps): JSX.Element {
   /**
    * Handles the form submission event.
    *
@@ -99,6 +109,4 @@ const InputBlock = ({
       </CardContent>
     </Card>
   );
-};
-
-export default InputBlock;
+}

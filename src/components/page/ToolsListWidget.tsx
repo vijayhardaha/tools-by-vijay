@@ -11,8 +11,9 @@ import { getToolsByCategory } from '@/utils/toolUtils';
 /**
  * Props for the ToolsListWidget component.
  *
- * @property {string} category - The category slug to filter tools.
- * @property {string} [hideTool] - The tool slug to exclude from the list.
+ * @type {ToolsListWidgetProps}
+ * @property {string} category - The category slug to filter tools
+ * @property {string} [hideTool] - The tool slug to exclude from the list
  */
 interface ToolsListWidgetProps {
   category: string;
@@ -26,7 +27,7 @@ interface ToolsListWidgetProps {
  *
  * @returns {JSX.Element} The rendered component.
  */
-const ToolsListWidget = ({ category, hideTool = '' }: ToolsListWidgetProps): JSX.Element => {
+export default function ToolsListWidget({ category, hideTool = '' }: ToolsListWidgetProps): JSX.Element {
   const toolsInCategory: Tool[] = getToolsByCategory(category).filter((categoryTool) => categoryTool.slug !== hideTool);
 
   const categoryData: Category | null = getCategoryBySlug(category);
@@ -66,6 +67,4 @@ const ToolsListWidget = ({ category, hideTool = '' }: ToolsListWidgetProps): JSX
       </CardContent>
     </Card>
   );
-};
-
-export default ToolsListWidget;
+}

@@ -10,6 +10,23 @@ import { cn } from '@/utils/classNameUtils';
 
 /**
  * Interface for the BulkSlugifyInput component props.
+ *
+ * @type {InputBlockProps}
+ * @property {string} input - The current text input
+ * @property {boolean} useUnderscore - Whether to use underscores instead of dashes
+ * @property {(value: string) => void} setInput - Callback to update the input text
+ * @property {boolean} removeNumbers - Whether to remove numbers from slugs
+ * @property {boolean} useLowercase - Whether to convert to lowercase
+ * @property {boolean} useLitinize - Whether to normalize unicode characters
+ * @property {(value: boolean) => void} setUseUnderscore - Callback to toggle underscore usage
+ * @property {(value: boolean) => void} setRemoveNumbers - Callback to toggle number removal
+ * @property {(value: boolean) => void} setUseLowercase - Callback to toggle lowercase conversion
+ * @property {(value: boolean) => void} setUseLitinize - Callback to toggle latinize
+ * @property {() => void} onSubmit - Callback to trigger slug generation
+ * @property {() => void} onClear - Callback to clear input and output
+ * @property {() => void} onReset - Callback to reset all options
+ * @property {boolean} keepEmptyLines - Whether to keep empty lines in output
+ * @property {(value: boolean) => void} setKeepEmptyLines - Callback to toggle empty line preservation
  */
 interface InputBlockProps {
   input: string;
@@ -40,7 +57,7 @@ interface InputBlockProps {
  *
  * @returns {JSX.Element} The rendered barcode input component.
  */
-const InputBlock = ({
+export default function InputBlock({
   input = '',
   useUnderscore = false,
   setInput,
@@ -56,7 +73,7 @@ const InputBlock = ({
   onReset,
   keepEmptyLines = false,
   setKeepEmptyLines,
-}: InputBlockProps): JSX.Element => {
+}: InputBlockProps): JSX.Element {
   /**
    * Handles form submission to generate slugs
    *
@@ -146,6 +163,4 @@ const InputBlock = ({
       </CardContent>
     </Card>
   );
-};
-
-export default InputBlock;
+}

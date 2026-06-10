@@ -5,7 +5,7 @@ import type { JSX } from 'react';
  *
  * @returns {JSX.Element} The rendered component displaying tool information
  */
-const InfoBlock = (): JSX.Element => {
+export default function InfoBlock(): JSX.Element {
   return (
     <div className="max-w-none space-y-8">
       <section>
@@ -73,6 +73,4 @@ const InfoBlock = (): JSX.Element => {
       </section>
     </div>
   );
-};
-
-export default InfoBlock;
+}

@@ -11,6 +11,22 @@ import { Slider } from '@/components/ui/slider';
 
 /**
  * Interface for the password generation input component props.
+ *
+ * @type {InputBlockProps}
+ * @property {number} length - The password length
+ * @property {(value: number) => void} setLength - Callback to update password length
+ * @property {boolean} useUppercase - Whether to include uppercase letters
+ * @property {(value: boolean) => void} setUseUppercase - Callback to toggle uppercase inclusion
+ * @property {boolean} useLowercase - Whether to include lowercase letters
+ * @property {(value: boolean) => void} setUseLowercase - Callback to toggle lowercase inclusion
+ * @property {boolean} useNumbers - Whether to include numbers
+ * @property {(value: boolean) => void} setUseNumbers - Callback to toggle number inclusion
+ * @property {boolean} useSymbols - Whether to include symbols
+ * @property {(value: boolean) => void} setUseSymbols - Callback to toggle symbol inclusion
+ * @property {boolean} excludeSimilar - Whether to exclude similar looking characters
+ * @property {(value: boolean) => void} setExcludeSimilar - Callback to toggle similar character exclusion
+ * @property {() => void} onSubmit - Callback to trigger password generation
+ * @property {() => void} onReset - Callback to reset all options
  */
 interface InputBlockProps {
   length: number;
@@ -37,7 +53,7 @@ interface InputBlockProps {
  *
  * @returns {JSX.Element} The rendered form with password generation options.
  */
-const InputBlock = ({
+export default function InputBlock({
   length,
   setLength,
   useUppercase,
@@ -52,7 +68,7 @@ const InputBlock = ({
   setExcludeSimilar,
   onSubmit,
   onReset,
-}: InputBlockProps): JSX.Element => {
+}: InputBlockProps): JSX.Element {
   const handleSubmit = (e: SubmitEvent): void => {
     e.preventDefault();
     onSubmit();
@@ -123,6 +139,4 @@ const InputBlock = ({
       </CardContent>
     </Card>
   );
-};
-
-export default InputBlock;
+}

@@ -7,6 +7,11 @@ import { CopyButton } from '@/components/ui/copyButton';
 
 /**
  * Interface for the URL shortener result.
+ *
+ * @type {UrlShortenerResult}
+ * @property {string} originalUrl - The original URL before shortening
+ * @property {string} shortenedUrl - The shortened URL after processing
+ * @property {boolean} isValid - Whether the original URL was valid
  */
 interface UrlShortenerResult {
   originalUrl: string;
@@ -16,6 +21,9 @@ interface UrlShortenerResult {
 
 /**
  * Interface for the UrlShortenerOutput component props.
+ *
+ * @type {OutputBlockProps}
+ * @property {UrlShortenerResult[]} results - Array of URL shortening results
  */
 interface OutputBlockProps {
   results: UrlShortenerResult[];
@@ -31,7 +39,7 @@ interface OutputBlockProps {
  *
  * @returns {JSX.Element} The rendered component.
  */
-const OutputBlock = ({ results }: OutputBlockProps): JSX.Element => {
+export default function OutputBlock({ results }: OutputBlockProps): JSX.Element {
   /**
    * Creates a text string containing all valid shortened URLs
    *
@@ -111,6 +119,4 @@ const OutputBlock = ({ results }: OutputBlockProps): JSX.Element => {
       </CardContent>
     </Card>
   );
-};
-
-export default OutputBlock;
+}

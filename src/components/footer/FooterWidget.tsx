@@ -4,6 +4,10 @@ import Link from 'next/link';
 
 /**
  * Interface representing the props for the FooterWidget component.
+ *
+ * @type {FooterWidgetProps}
+ * @property {string} title - The widget section heading
+ * @property {{ name: string; href: string }[]} links - Array of navigation links
  */
 type FooterWidgetProps = { title: string; links: { name: string; href: string }[] };
 
@@ -14,7 +18,7 @@ type FooterWidgetProps = { title: string; links: { name: string; href: string }[
  *
  * @returns {JSX.Element} The rendered footer widget.
  */
-const FooterWidget = ({ title, links }: FooterWidgetProps): JSX.Element => {
+export default function FooterWidget({ title, links }: FooterWidgetProps): JSX.Element {
   /**
    * Check if a URL is external (starts with http:// or https://)
    *
@@ -44,6 +48,4 @@ const FooterWidget = ({ title, links }: FooterWidgetProps): JSX.Element => {
       </ul>
     </nav>
   );
-};
-
-export default FooterWidget;
+}

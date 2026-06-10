@@ -52,7 +52,7 @@ const defaultStengthOptions: PasswordStrength = {
  *
  * @returns {JSX.Element} Complete password strength checker tool interface
  */
-const PasswordStrengthChecker = (): JSX.Element => {
+export default function PasswordStrengthChecker(): JSX.Element {
   const [password, setPassword] = useState<string>('');
   const [strength, setStrength] = useState<PasswordStrength>(defaultStengthOptions);
 
@@ -153,6 +153,4 @@ const PasswordStrengthChecker = (): JSX.Element => {
       </div>
     </>
   );
-};
-
-export default PasswordStrengthChecker;
+}

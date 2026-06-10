@@ -7,7 +7,14 @@ import { cva } from 'class-variance-authority';
 
 import { cn } from '@/utils/classNameUtils';
 
-// Define TypeScript types for the component props
+/**
+ * Props for the Label component.
+ *
+ * @type {LabelProps}
+ * @property {string} [className] - Additional CSS classes
+ * @property {ReactNode} children - Label content
+ * @property {string} htmlFor - The ID of the associated input element
+ */
 interface LabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
   className?: string;
   children: ReactNode;

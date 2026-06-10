@@ -7,6 +7,9 @@ import { Textarea } from '@/components/ui/textarea';
 
 /**
  * Interface for the BulkSlugifyOutput component props.
+ *
+ * @type {OutputBlockProps}
+ * @property {string} output - The generated slug output
  */
 interface OutputBlockProps {
   output: string;
@@ -23,7 +26,7 @@ interface OutputBlockProps {
  *
  * @returns {JSX.Element} The rendered component.
  */
-const OutputBlock = ({ output }: OutputBlockProps): JSX.Element => {
+export default function OutputBlock({ output }: OutputBlockProps): JSX.Element {
   // Split the output into individual lines and filter out empty lines
   const lines: string[] = output.split('\n').filter((line) => line.trim() !== '');
 
@@ -56,6 +59,4 @@ const OutputBlock = ({ output }: OutputBlockProps): JSX.Element => {
       </CardContent>
     </Card>
   );
-};
-
-export default OutputBlock;
+}

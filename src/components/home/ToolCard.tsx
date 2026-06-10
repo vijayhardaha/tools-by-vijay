@@ -9,6 +9,10 @@ import { findToolBySlug, getIconForTool } from '@/utils/toolUtils';
 
 /**
  * Props for the ToolCard component.
+ *
+ * @type {ToolCardProps}
+ * @property {string} slug - The tool slug to look up and display
+ * @property {string} [className] - Additional CSS classes
  */
 interface ToolCardProps {
   slug: string;
@@ -22,7 +26,7 @@ interface ToolCardProps {
  *
  * @returns {JSX.Element | null} The rendered ToolCard component.
  */
-const ToolCard = ({ slug, className = '' }: ToolCardProps): JSX.Element | null => {
+export default function ToolCard({ slug, className = '' }: ToolCardProps): JSX.Element | null {
   const tool: Tool | null = findToolBySlug(slug);
 
   if (!tool) return null;
@@ -48,6 +52,4 @@ const ToolCard = ({ slug, className = '' }: ToolCardProps): JSX.Element | null =
       </Card>
     </Link>
   );
-};
-
-export default ToolCard;
+}

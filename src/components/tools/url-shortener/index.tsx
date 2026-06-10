@@ -12,6 +12,14 @@ import InfoBlock from './info-block';
 import InputBlock from './input-block';
 import OutputBlock from './output-block';
 
+/**
+ * Interface for a URL shortening result.
+ *
+ * @type {UrlResult}
+ * @property {string} originalUrl - The original URL before shortening
+ * @property {string} shortenedUrl - The shortened URL after processing
+ * @property {boolean} isValid - Whether the original URL was valid
+ */
 interface UrlResult {
   originalUrl: string;
   shortenedUrl: string;
@@ -26,7 +34,7 @@ interface UrlResult {
  *
  * @returns {JSX.Element} The rendered URL Shortener Tool component.
  */
-const UrlShortener = (): JSX.Element => {
+export default function UrlShortener(): JSX.Element {
   const [input, setInput] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [results, setResults] = useState<UrlResult[]>([]);
@@ -134,6 +142,4 @@ const UrlShortener = (): JSX.Element => {
       </div>
     </>
   );
-};
-
-export default UrlShortener;
+}

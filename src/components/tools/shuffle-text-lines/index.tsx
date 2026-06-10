@@ -12,7 +12,7 @@ import OutputBlock from './output-block';
  *
  * @returns {JSX.Element} The ShuffleTextLinesTool component.
  */
-const ShuffleTextLines = (): JSX.Element => {
+export default function ShuffleTextLines(): JSX.Element {
   const [input, setInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
   const [removeDuplicates, setRemoveDuplicates] = useState<boolean>(false);
@@ -88,6 +88,4 @@ const ShuffleTextLines = (): JSX.Element => {
       </div>
     </>
   );
-};
-
-export default ShuffleTextLines;
+}

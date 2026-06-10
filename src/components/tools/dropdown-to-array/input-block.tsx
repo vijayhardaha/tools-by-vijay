@@ -13,6 +13,20 @@ import { Textarea } from '@/components/ui/textarea';
 
 /**
  * Interface for the DropdownToArrayInput component props.
+ *
+ * @type {InputBlockProps}
+ * @property {string} input - The HTML dropdown input
+ * @property {(value: string) => void} setInput - Callback to update the input
+ * @property {string} outputFormat - The selected output format (json, jsArray, jsObject, php, wordpress)
+ * @property {(value: string) => void} setOutputFormat - Callback to update output format
+ * @property {string} arrayType - The selected array structure type
+ * @property {(value: string) => void} setArrayType - Callback to update array type
+ * @property {boolean} useSlugKeys - Whether to use slugified keys
+ * @property {(value: boolean) => void} setUseSlugKeys - Callback to toggle slug keys
+ * @property {() => void} onSubmit - Callback to trigger conversion
+ * @property {() => void} onClear - Callback to clear input and output
+ * @property {() => void} onReset - Callback to reset all options
+ * @property {string} [error] - Current error message, if any
  */
 interface InputBlockProps {
   input: string;
@@ -38,7 +52,7 @@ interface InputBlockProps {
  *
  * @returns {JSX.Element} The rendered component.
  */
-const InputBlock = ({
+export default function InputBlock({
   input,
   setInput,
   outputFormat,
@@ -51,7 +65,7 @@ const InputBlock = ({
   onClear,
   onReset,
   error,
-}: InputBlockProps): JSX.Element => {
+}: InputBlockProps): JSX.Element {
   const handleSubmit = (e: SubmitEvent) => {
     e.preventDefault();
     onSubmit();
@@ -142,6 +156,4 @@ const InputBlock = ({
       </CardContent>
     </Card>
   );
-};
-
-export default InputBlock;
+}

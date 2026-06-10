@@ -7,8 +7,20 @@ import { LuCheck as CheckIcon } from 'react-icons/lu';
 
 import { cn } from '@/utils/classNameUtils';
 
+export { RadioBox };
+
 /**
- * Props for the RadioBox component
+ * Props for the RadioBox component.
+ *
+ * @type {RadioBoxProps}
+ * @property {string} [className] - Additional CSS classes
+ * @property {boolean} [checked] - Whether the radio is selected
+ * @property {(checked: boolean) => void} [onCheckedChange] - Callback when selection changes
+ * @property {boolean} [disabled] - Whether the radio is disabled
+ * @property {boolean} [required] - Whether the radio is required
+ * @property {string} [id] - The unique ID for the radio input
+ * @property {string} [name] - The name attribute for the radio group
+ * @property {ReactNode} [children] - Label content displayed next to the radio
  */
 interface RadioBoxProps extends LabelHTMLAttributes<HTMLLabelElement> {
   className?: string;
@@ -28,7 +40,7 @@ interface RadioBoxProps extends LabelHTMLAttributes<HTMLLabelElement> {
  *
  * @returns {JSX.Element} The rendered radio box component
  */
-function RadioBox({
+export default function RadioBox({
   className,
   children,
   checked: controlledChecked,
@@ -106,5 +118,3 @@ function RadioBox({
     </label>
   );
 }
-
-export { RadioBox };

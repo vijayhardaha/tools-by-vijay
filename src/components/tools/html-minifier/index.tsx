@@ -9,6 +9,25 @@ import OutputBlock from './output-block';
 
 /**
  * Type definition for the HTML Minifier options.
+ *
+ * @type {HtmlMinifierOptions}
+ * @property {boolean} removeComments - Whether to remove HTML comments
+ * @property {boolean} collapseWhitespace - Whether to collapse whitespace
+ * @property {boolean} conservativeCollapse - Whether to collapse whitespace conservatively
+ * @property {boolean} collapseBooleanAttributes - Whether to collapse boolean attributes
+ * @property {boolean} removeAttributeQuotes - Whether to remove attribute quotes
+ * @property {boolean} removeEmptyAttributes - Whether to remove empty attributes
+ * @property {boolean} removeEmptyElements - Whether to remove empty elements
+ * @property {boolean} removeRedundantAttributes - Whether to remove redundant attributes
+ * @property {boolean} removeScriptTypeAttributes - Whether to remove script type attributes
+ * @property {boolean} removeStyleLinkTypeAttributes - Whether to remove style/link type attributes
+ * @property {boolean} sortAttributes - Whether to sort attributes alphabetically
+ * @property {boolean} sortClassName - Whether to sort class names
+ * @property {boolean} minifyCSS - Whether to minify inline CSS
+ * @property {boolean} minifyJS - Whether to minify inline JavaScript
+ * @property {boolean} minifyURLs - Whether to minify URLs
+ * @property {boolean} decodeEntities - Whether to decode HTML entities
+ * @property {boolean} useShortDoctype - Whether to use short doctype
  */
 export interface HtmlMinifierOptions {
   removeComments: boolean;
@@ -31,7 +50,9 @@ export interface HtmlMinifierOptions {
 }
 
 /**
- * Default options for the HTML Minifier
+ * Default options for the HTML Minifier.
+ *
+ * @type {HtmlMinifierOptions}
  */
 const defaultOptions: HtmlMinifierOptions = {
   removeComments: true,
@@ -59,7 +80,7 @@ const defaultOptions: HtmlMinifierOptions = {
  *
  * @returns {JSX.Element} The HTML Minifier tool interface
  */
-const HtmlMinifier = (): JSX.Element => {
+export default function HtmlMinifier(): JSX.Element {
   const [input, setInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -164,6 +185,4 @@ const HtmlMinifier = (): JSX.Element => {
       </div>
     </>
   );
-};
-
-export default HtmlMinifier;
+}

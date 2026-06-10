@@ -8,8 +8,9 @@ import { Textarea } from '@/components/ui/textarea';
 /**
  * Props for the CssMinifierOutput component.
  *
- * @property {string} output - The minified CSS output.
- * @property {string} input - The original CSS input.
+ * @type {OutputBlockProps}
+ * @property {string} output - The minified CSS output
+ * @property {string} input - The original CSS input for compression comparison
  */
 interface OutputBlockProps {
   output: string;
@@ -24,7 +25,7 @@ interface OutputBlockProps {
  *
  * @returns {JSX.Element} The rendered CssMinifierOutput component.
  */
-const OutputBlock = ({ output, input }: OutputBlockProps): JSX.Element => {
+export default function OutputBlock({ output, input }: OutputBlockProps): JSX.Element {
   return (
     <Card>
       <CardHeader>
@@ -45,6 +46,4 @@ const OutputBlock = ({ output, input }: OutputBlockProps): JSX.Element => {
       </CardContent>
     </Card>
   );
-};
-
-export default OutputBlock;
+}

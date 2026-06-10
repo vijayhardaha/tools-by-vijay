@@ -13,7 +13,7 @@ import OutputBlock from './output-block';
  *
  * @returns {JSX.Element} The complete password generator tool with input options, output display, and information
  */
-const PasswordGenerator = (): JSX.Element => {
+export default function PasswordGenerator(): JSX.Element {
   const [length, setLength] = useState<number>(12);
   const [useUppercase, setUseUppercase] = useState<boolean>(true);
   const [useLowercase, setUseLowercase] = useState<boolean>(true);
@@ -125,6 +125,4 @@ const PasswordGenerator = (): JSX.Element => {
       </div>
     </>
   );
-};
-
-export default PasswordGenerator;
+}

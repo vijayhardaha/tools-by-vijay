@@ -4,6 +4,9 @@ import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 
 /**
  * Interface for the CharacterCountOutput component props.
+ *
+ * @type {OutputBlockProps}
+ * @property {{ characters: number; words: number; sentences: number; paragraphs: number; spaces: number }} stats - Text statistics data
  */
 interface OutputBlockProps {
   stats: { characters: number; words: number; sentences: number; paragraphs: number; spaces: number };
@@ -16,7 +19,7 @@ interface OutputBlockProps {
  *
  * @returns {JSX.Element} The rendered card with text statistics.
  */
-const OutputBlock = ({ stats }: OutputBlockProps): JSX.Element => {
+export default function OutputBlock({ stats }: OutputBlockProps): JSX.Element {
   /**
    * Renders a code block with specific styling.
    *
@@ -55,6 +58,4 @@ const OutputBlock = ({ stats }: OutputBlockProps): JSX.Element => {
       </CardContent>
     </Card>
   );
-};
-
-export default OutputBlock;
+}

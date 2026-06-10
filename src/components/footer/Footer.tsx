@@ -9,7 +9,7 @@ import FooterTop from '@/components/footer/FooterTop';
  *
  * @returns {JSX.Element} The rendered footer component.
  */
-const Footer = (): JSX.Element => {
+export default function Footer(): JSX.Element {
   return (
     <footer className="bg-size[10px_10px] bg-amber-200 bg-[radial-gradient(var(--color-amber-500)_0.75px,var(--color-amber-200)_0.75px)] pt-10 pb-4">
       <div className="mx-auto max-w-6xl px-4">
@@ -18,6 +18,4 @@ const Footer = (): JSX.Element => {
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

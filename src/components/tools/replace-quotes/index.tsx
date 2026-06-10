@@ -13,7 +13,7 @@ import OutputBlock from './output-block';
  *
  * @returns {JSX.Element} The complete Replace Quotes tool with input options, output display, and information
  */
-const ReplaceQuotes = (): JSX.Element => {
+export default function ReplaceQuotes(): JSX.Element {
   const [input, setInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
   const [replaceType, setReplaceType] = useState<'simple-to-curly' | 'curly-to-simple'>('simple-to-curly');
@@ -118,6 +118,4 @@ const ReplaceQuotes = (): JSX.Element => {
       </div>
     </>
   );
-};
-
-export default ReplaceQuotes;
+}

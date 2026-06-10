@@ -13,6 +13,24 @@ import { Textarea } from '@/components/ui/textarea';
 
 /**
  * Interface for the TextToArrayInput component props.
+ *
+ * @type {InputBlockProps}
+ * @property {string} input - The current text input
+ * @property {(value: string) => void} setInput - Callback to update the input text
+ * @property {string} outputFormat - The selected output format (json, jsArray, jsObject, php, wordpress)
+ * @property {(value: string) => void} setOutputFormat - Callback to update output format
+ * @property {string} arrayType - The selected array structure type
+ * @property {(value: string) => void} setArrayType - Callback to update array type
+ * @property {boolean} trimLines - Whether to trim whitespace from lines
+ * @property {(value: boolean) => void} setTrimLines - Callback to toggle line trimming
+ * @property {boolean} removeEmptyLines - Whether to remove empty lines
+ * @property {(value: boolean) => void} setRemoveEmptyLines - Callback to toggle empty line removal
+ * @property {boolean} useSlugKeys - Whether to use slugified keys
+ * @property {(value: boolean) => void} setUseSlugKeys - Callback to toggle slug keys
+ * @property {() => void} onSubmit - Callback to trigger conversion
+ * @property {() => void} onClear - Callback to clear input and output
+ * @property {() => void} onReset - Callback to reset all options
+ * @property {string} [error] - Current error message, if any
  */
 interface InputBlockProps {
   input: string;
@@ -41,7 +59,7 @@ interface InputBlockProps {
  *
  * @returns {JSX.Element} The rendered TextToArrayInput component.
  */
-const InputBlock = ({
+export default function InputBlock({
   input,
   setInput,
   outputFormat,
@@ -58,7 +76,7 @@ const InputBlock = ({
   onClear,
   onReset,
   error,
-}: InputBlockProps): JSX.Element => {
+}: InputBlockProps): JSX.Element {
   /**
    * Handles form submission by preventing default behavior and triggering conversion
    *
@@ -163,6 +181,4 @@ const InputBlock = ({
       </CardContent>
     </Card>
   );
-};
-
-export default InputBlock;
+}

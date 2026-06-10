@@ -10,6 +10,19 @@ import { Textarea } from '@/components/ui/textarea';
 
 /**
  * Interface for the Replace Quotes input component props.
+ *
+ * @type {InputBlockProps}
+ * @property {string} input - The current text input
+ * @property {(value: string) => void} setInput - Callback to update the input text
+ * @property {'simple-to-curly' | 'curly-to-simple'} replaceType - The quote replacement direction
+ * @property {(value: 'simple-to-curly' | 'curly-to-simple') => void} setReplaceType - Callback to update replacement type
+ * @property {boolean} replaceApostrophes - Whether to replace apostrophes
+ * @property {(value: boolean) => void} setReplaceApostrophes - Callback to toggle apostrophe replacement
+ * @property {boolean} replaceStandaloneQuotes - Whether to replace standalone quotes
+ * @property {(value: boolean) => void} setReplaceStandaloneQuotes - Callback to toggle standalone quote replacement
+ * @property {() => void} onSubmit - Callback to trigger quote replacement
+ * @property {() => void} onClear - Callback to clear input and output
+ * @property {() => void} onReset - Callback to reset all options
  */
 interface InputBlockProps {
   input: string;
@@ -33,7 +46,7 @@ interface InputBlockProps {
  *
  * @returns {JSX.Element} The input component for the Replace Quotes tool.
  */
-const InputBlock = ({
+export default function InputBlock({
   input,
   setInput,
   replaceType,
@@ -45,7 +58,7 @@ const InputBlock = ({
   onSubmit,
   onClear,
   onReset,
-}: InputBlockProps): JSX.Element => {
+}: InputBlockProps): JSX.Element {
   /**
    * Handles form submission by preventing default behavior and triggering the replace action.
    *
@@ -125,6 +138,4 @@ const InputBlock = ({
       </CardContent>
     </Card>
   );
-};
-
-export default InputBlock;
+}

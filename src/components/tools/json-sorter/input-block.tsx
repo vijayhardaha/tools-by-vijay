@@ -12,6 +12,16 @@ import { Textarea } from '@/components/ui/textarea';
 
 /**
  * Interface for the JSON sorter input component props.
+ *
+ * @type {InputBlockProps}
+ * @property {string} input - The JSON input string
+ * @property {(value: string) => void} setInput - Callback to update the input
+ * @property {boolean} spareArrays - Whether to preserve array element order
+ * @property {(value: boolean) => void} setSpareArrays - Callback to toggle array sparing
+ * @property {() => void} onSubmit - Callback to trigger sorting
+ * @property {() => void} onClear - Callback to clear input and output
+ * @property {() => void} onReset - Callback to reset all options
+ * @property {string} [error] - Current error message, if any
  */
 interface InputBlockProps {
   input: string;
@@ -31,7 +41,7 @@ interface InputBlockProps {
  *
  * @returns {JSX.Element} The rendered form with sorting options.
  */
-const InputBlock = ({
+export default function InputBlock({
   input,
   setInput,
   spareArrays,
@@ -40,7 +50,7 @@ const InputBlock = ({
   onClear,
   onReset,
   error,
-}: InputBlockProps): JSX.Element => {
+}: InputBlockProps): JSX.Element {
   /**
    * Handles form submission by preventing default behavior and triggering sorting.
    *
@@ -100,6 +110,4 @@ const InputBlock = ({
       </CardContent>
     </Card>
   );
-};
-
-export default InputBlock;
+}

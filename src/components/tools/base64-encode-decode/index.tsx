@@ -12,7 +12,7 @@ import OutputBlock from './output-block';
  *
  * @returns {JSX.Element} The rendered Base64 Encode/Decode Tool component.
  */
-const Base64EncodeDecode = (): JSX.Element => {
+export default function Base64EncodeDecode(): JSX.Element {
   const [input, setInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
   const [isEncoding, setIsEncoding] = useState<boolean>(true);
@@ -67,6 +67,4 @@ const Base64EncodeDecode = (): JSX.Element => {
       </div>
     </>
   );
-};
-
-export default Base64EncodeDecode;
+}

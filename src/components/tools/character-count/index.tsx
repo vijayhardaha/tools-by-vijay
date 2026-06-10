@@ -13,7 +13,7 @@ import OutputBlock from './output-block';
  *
  * @returns {JSX.Element} The complete Character Count tool with input options, output display, and information.
  */
-const CharacterCount = (): JSX.Element => {
+export default function CharacterCount(): JSX.Element {
   const [text, setText] = useState<string>('');
 
   /**
@@ -49,6 +49,4 @@ const CharacterCount = (): JSX.Element => {
       </div>
     </>
   );
-};
-
-export default CharacterCount;
+}

@@ -6,6 +6,9 @@ import { Textarea } from '@/components/ui/textarea';
 
 /**
  * Props for the Base64EncodeDecodeOutput component.
+ *
+ * @type {OutputBlockProps}
+ * @property {string} output - The encoded or decoded output string
  */
 interface OutputBlockProps {
   output: string;
@@ -19,7 +22,7 @@ interface OutputBlockProps {
  *
  * @returns {JSX.Element} The rendered component.
  */
-const OutputBlock = ({ output }: OutputBlockProps): JSX.Element => {
+export default function OutputBlock({ output }: OutputBlockProps): JSX.Element {
   return (
     <Card>
       <CardHeader>
@@ -38,6 +41,4 @@ const OutputBlock = ({ output }: OutputBlockProps): JSX.Element => {
       </CardContent>
     </Card>
   );
-};
-
-export default OutputBlock;
+}

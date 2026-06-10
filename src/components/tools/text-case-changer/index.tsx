@@ -24,7 +24,7 @@ export type TextCase =
  *
  * @returns {JSX.Element} The rendered TextCaseChangerTool component.
  */
-const TextCaseChanger = (): JSX.Element => {
+export default function TextCaseChanger(): JSX.Element {
   const [input, setInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
   const [textCase, setTextCase] = useState<TextCase>('Sentence case');
@@ -126,6 +126,4 @@ const TextCaseChanger = (): JSX.Element => {
       </div>
     </>
   );
-};
-
-export default TextCaseChanger;
+}

@@ -15,7 +15,7 @@ import OutputBlock from './output-block';
  *
  * @returns {JSX.Element} The complete JSON sorter tool with input options, output display, and information
  */
-const JsonSorter = (): JSX.Element => {
+export default function JsonSorter(): JSX.Element {
   const [input, setInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
   const [spareArrays, setSpareArrays] = useState<boolean>(true);
@@ -103,6 +103,4 @@ const JsonSorter = (): JSX.Element => {
       </div>
     </>
   );
-};
-
-export default JsonSorter;
+}

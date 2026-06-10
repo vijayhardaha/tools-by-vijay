@@ -5,7 +5,10 @@ import { CopyButton } from '@/components/ui/copyButton';
 import { Textarea } from '@/components/ui/textarea';
 
 /**
- * Interface for the CountryNameGeneratorOutput component props.
+ * Interface for the RandomUsernameGeneratorOutput component props.
+ *
+ * @type {OutputBlockProps}
+ * @property {string[]} output - Array of generated usernames
  */
 interface OutputBlockProps {
   output: string[];
@@ -18,7 +21,7 @@ interface OutputBlockProps {
  *
  * @returns {JSX.Element} The rendered component
  */
-const OutputBlock = ({ output }: OutputBlockProps): JSX.Element => {
+export default function OutputBlock({ output }: OutputBlockProps): JSX.Element {
   return (
     <Card>
       <CardHeader>
@@ -37,6 +40,4 @@ const OutputBlock = ({ output }: OutputBlockProps): JSX.Element => {
       </CardContent>
     </Card>
   );
-};
-
-export default OutputBlock;
+}

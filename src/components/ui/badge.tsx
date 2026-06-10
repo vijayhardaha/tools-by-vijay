@@ -18,7 +18,14 @@ const badgeVariants = cva('inline-flex items-center rounded-md px-2 py-1 text-xs
   defaultVariants: { variant: 'default' },
 });
 
-// Define TypeScript types for the Badge component props
+/**
+ * Props for the Badge component.
+ *
+ * @type {BadgeProps}
+ * @property {string} [className] - Additional CSS classes
+ * @property {'default' | 'secondary' | 'success' | 'warning' | 'danger' | 'info'} [variant] - The badge variant for styling
+ * @property {ReactNode} children - Badge content
+ */
 interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
   className?: string;
   variant?: 'default' | 'secondary' | 'success' | 'warning' | 'danger' | 'info';
@@ -32,7 +39,7 @@ interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
  *
  * @returns {JSX.Element} The rendered Badge component
  */
-function Badge({ className, variant = 'default', children, ...props }: BadgeProps): JSX.Element {
+export default function Badge({ className, variant = 'default', children, ...props }: BadgeProps): JSX.Element {
   return (
     <span className={cn(badgeVariants({ variant }), className)} {...props}>
       {children}

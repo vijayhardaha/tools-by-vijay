@@ -9,7 +9,14 @@ import { RiCloseFill } from 'react-icons/ri';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/utils/classNameUtils';
 
-// Create context for state management
+/**
+ * Type for the Sheet context value.
+ *
+ * @type {SheetContextType}
+ * @property {boolean} open - Whether the sheet is open
+ * @property {(value: boolean) => void} onOpenChange - Callback to toggle sheet visibility
+ * @property {'right' | 'left' | 'top' | 'bottom'} side - The side from which the sheet enters
+ */
 interface SheetContextType {
   open: boolean;
   onOpenChange: (value: boolean) => void;
@@ -19,7 +26,12 @@ interface SheetContextType {
 const SheetContext = createContext<SheetContextType>({ open: false, onOpenChange: () => {}, side: 'right' });
 
 /**
- * Props for the Sheet component
+ * Props for the Sheet component.
+ *
+ * @type {SheetProps}
+ * @property {boolean} [open] - Whether the sheet is open
+ * @property {(value: boolean) => void} [onOpenChange] - Callback when sheet visibility changes
+ * @property {ReactNode} children - Sheet content
  */
 interface SheetProps extends HTMLAttributes<HTMLDivElement> {
   open?: boolean;
@@ -34,7 +46,7 @@ interface SheetProps extends HTMLAttributes<HTMLDivElement> {
  *
  * @returns {JSX.Element} The rendered sheet component
  */
-function Sheet({ open: controlledOpen, onOpenChange, children, ...props }: SheetProps): JSX.Element {
+export default function Sheet({ open: controlledOpen, onOpenChange, children, ...props }: SheetProps): JSX.Element {
   const [uncontrolledOpen, setUncontrolledOpen] = useState(false);
 
   const open = controlledOpen !== undefined ? controlledOpen : uncontrolledOpen;
@@ -58,7 +70,11 @@ function Sheet({ open: controlledOpen, onOpenChange, children, ...props }: Sheet
 }
 
 /**
- * Props for the SheetClose component
+ * Props for the SheetClose component.
+ *
+ * @type {SheetCloseProps}
+ * @property {string} [className] - Additional CSS classes
+ * @property {ReactNode} children - Close button content
  */
 interface SheetCloseProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
@@ -90,7 +106,10 @@ function SheetClose({ className = '', children, ...props }: SheetCloseProps): JS
 }
 
 /**
- * Props for the SheetPortal component
+ * Props for the SheetPortal component.
+ *
+ * @type {SheetPortalProps}
+ * @property {ReactNode} children - Content to render in the portal
  */
 interface SheetPortalProps {
   children: ReactNode;
@@ -128,7 +147,10 @@ function SheetPortal({ children, ...props }: SheetPortalProps): JSX.Element | nu
 }
 
 /**
- * Props for the SheetOverlay component
+ * Props for the SheetOverlay component.
+ *
+ * @type {SheetOverlayProps}
+ * @property {string} [className] - Additional CSS classes
  */
 interface SheetOverlayProps extends HTMLAttributes<HTMLDivElement> {
   className?: string;
@@ -164,7 +186,12 @@ function SheetOverlay({ className = '', ...props }: SheetOverlayProps): JSX.Elem
 }
 
 /**
- * Props for the SheetContent component
+ * Props for the SheetContent component.
+ *
+ * @type {SheetContentProps}
+ * @property {string} [className] - Additional CSS classes
+ * @property {ReactNode} children - Main content of the sheet
+ * @property {'right' | 'left' | 'top' | 'bottom'} [side] - The side the sheet slides in from, defaults to "right"
  */
 interface SheetContentProps extends HTMLAttributes<HTMLDivElement> {
   className?: string;
@@ -256,7 +283,11 @@ function SheetContent({ className = '', children, side = 'right', ...props }: Sh
 }
 
 /**
- * Props for the SheetHeader component
+ * Props for the SheetHeader component.
+ *
+ * @type {SheetHeaderProps}
+ * @property {string} [className] - Additional CSS classes
+ * @property {ReactNode} children - Header content
  */
 interface SheetHeaderProps extends HTMLAttributes<HTMLDivElement> {
   className?: string;
@@ -287,7 +318,10 @@ function SheetHeader({ className, children, ...props }: SheetHeaderProps): JSX.E
 }
 
 /**
- * Props for the SheetFooter component
+ * Props for the SheetFooter component.
+ *
+ * @type {SheetFooterProps}
+ * @property {string} [className] - Additional CSS classes
  */
 interface SheetFooterProps extends HTMLAttributes<HTMLDivElement> {
   className?: string;

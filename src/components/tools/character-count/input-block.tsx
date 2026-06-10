@@ -7,6 +7,10 @@ import { Textarea } from '@/components/ui/textarea';
 
 /**
  * Interface for the CharacterCountInput component props.
+ *
+ * @type {InputBlockProps}
+ * @property {string} text - The current text input
+ * @property {(value: string) => void} setText - Callback to update the text input
  */
 interface InputBlockProps {
   text: string;
@@ -20,7 +24,7 @@ interface InputBlockProps {
  *
  * @returns {JSX.Element} The rendered input form.
  */
-const InputBlock = ({ text, setText }: InputBlockProps): JSX.Element => {
+export default function InputBlock({ text, setText }: InputBlockProps): JSX.Element {
   return (
     <Card>
       <CardHeader>
@@ -39,6 +43,4 @@ const InputBlock = ({ text, setText }: InputBlockProps): JSX.Element => {
       </CardContent>
     </Card>
   );
-};
-
-export default InputBlock;
+}

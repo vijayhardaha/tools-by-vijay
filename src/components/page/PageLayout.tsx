@@ -6,7 +6,8 @@ import Header from '@/components/header/Header';
 /**
  * Props for the PageLayout component.
  *
- * @property {ReactNode} children - The content to be displayed within the layout.
+ * @type {PageLayoutProps}
+ * @property {ReactNode} children - The content to display within the layout
  */
 type PageLayoutProps = { children: ReactNode };
 
@@ -18,7 +19,7 @@ type PageLayoutProps = { children: ReactNode };
  *
  * @returns {JSX.Element} The rendered layout component.
  */
-const PageLayout = ({ children }: PageLayoutProps): JSX.Element => {
+export default function PageLayout({ children }: PageLayoutProps): JSX.Element {
   return (
     <div>
       <Header />
@@ -28,6 +29,4 @@ const PageLayout = ({ children }: PageLayoutProps): JSX.Element => {
       <Footer />
     </div>
   );
-};
-
-export default PageLayout;
+}

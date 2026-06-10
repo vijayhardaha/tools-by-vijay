@@ -1,4 +1,10 @@
 import type { JSX, ReactNode } from 'react';
+/**
+ * Props for the PageContent component.
+ *
+ * @type {PageContentProps}
+ * @property {ReactNode} children - The content to be rendered inside the page
+ */
 interface PageContentProps {
   children: ReactNode;
 }
@@ -13,8 +19,6 @@ interface PageContentProps {
  *
  * @returns {JSX.Element} The rendered component
  */
-const PageContent = ({ children }: PageContentProps): JSX.Element => {
+export default function PageContent({ children }: PageContentProps): JSX.Element {
   return <div className="relative">{children}</div>;
-};
-
-export default PageContent;
+}

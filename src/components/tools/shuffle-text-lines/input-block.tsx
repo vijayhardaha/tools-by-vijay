@@ -9,6 +9,19 @@ import { Textarea } from '@/components/ui/textarea';
 
 /**
  * Interface for the Shuffle Text Lines input component props.
+ *
+ * @type {InputBlockProps}
+ * @property {string} input - The current text input
+ * @property {(value: string) => void} setInput - Callback to update the input text
+ * @property {boolean} removeDuplicates - Whether to remove duplicate lines
+ * @property {(value: boolean) => void} setRemoveDuplicates - Callback to toggle duplicate removal
+ * @property {boolean} removeEmptyLines - Whether to remove empty lines
+ * @property {(value: boolean) => void} setRemoveEmptyLines - Callback to toggle empty line removal
+ * @property {boolean} trimLines - Whether to trim whitespace from lines
+ * @property {(value: boolean) => void} setTrimLines - Callback to toggle line trimming
+ * @property {() => void} onSubmit - Callback to trigger shuffling
+ * @property {() => void} onReset - Callback to reset all options
+ * @property {() => void} onClear - Callback to clear input and output
  */
 interface InputBlockProps {
   input: string;
@@ -32,7 +45,7 @@ interface InputBlockProps {
  *
  * @returns {JSX.Element} The input component for the Shuffle Text Lines tool.
  */
-const InputBlock = ({
+export default function InputBlock({
   input,
   setInput,
   removeDuplicates,
@@ -44,7 +57,7 @@ const InputBlock = ({
   onSubmit,
   onReset,
   onClear,
-}: InputBlockProps): JSX.Element => {
+}: InputBlockProps): JSX.Element {
   /**
    * Handles form submission to shuffle lines.
    *
@@ -102,6 +115,4 @@ const InputBlock = ({
       </CardContent>
     </Card>
   );
-};
-
-export default InputBlock;
+}

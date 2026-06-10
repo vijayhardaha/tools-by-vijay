@@ -10,6 +10,16 @@ import { Textarea } from '@/components/ui/textarea';
 
 /**
  * Interface for the CssInlinerInput component props.
+ *
+ * @type {InputBlockProps}
+ * @property {string} htmlInput - The HTML input string
+ * @property {(value: string) => void} setHtmlInput - Callback to update the HTML input
+ * @property {string} cssInput - The CSS input string
+ * @property {(value: string) => void} setCssInput - Callback to update the CSS input
+ * @property {() => void} onSubmit - Callback to trigger CSS inlining
+ * @property {() => void} onClear - Callback to clear inputs and output
+ * @property {boolean} isLoading - Whether a processing request is in progress
+ * @property {string} [error] - Current error message, if any
  */
 interface InputBlockProps {
   htmlInput: string;
@@ -29,7 +39,7 @@ interface InputBlockProps {
  *
  * @returns {JSX.Element} The CssInlinerInput component.
  */
-const InputBlock = ({
+export default function InputBlock({
   htmlInput,
   setHtmlInput,
   cssInput,
@@ -38,7 +48,7 @@ const InputBlock = ({
   onClear,
   isLoading,
   error,
-}: InputBlockProps): JSX.Element => {
+}: InputBlockProps): JSX.Element {
   /**
    * Handles form submission to inline CSS.
    *
@@ -90,6 +100,4 @@ const InputBlock = ({
       </CardContent>
     </Card>
   );
-};
-
-export default InputBlock;
+}

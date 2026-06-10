@@ -2,8 +2,13 @@ import type { JSX, TextareaHTMLAttributes } from 'react';
 
 import { cn } from '@/utils/classNameUtils';
 
+export { Textarea };
+
 /**
- * Props for the Textarea component
+ * Props for the Textarea component.
+ *
+ * @type {TextareaProps}
+ * @property {string} [className] - Additional CSS classes
  */
 interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   className?: string;
@@ -16,7 +21,7 @@ interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
  *
  * @returns {JSX.Element} The rendered textarea component
  */
-function Textarea({ className, ...props }: TextareaProps): JSX.Element {
+export default function Textarea({ className, ...props }: TextareaProps): JSX.Element {
   return (
     <textarea
       data-slot="textarea"
@@ -58,5 +63,3 @@ function Textarea({ className, ...props }: TextareaProps): JSX.Element {
     />
   );
 }
-
-export { Textarea };

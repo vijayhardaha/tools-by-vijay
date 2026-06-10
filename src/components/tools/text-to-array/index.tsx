@@ -19,7 +19,7 @@ export type ArrayType = 'simple' | 'numeric' | 'associative';
  *
  * @returns {JSX.Element} The complete text to array tool with input options, output display, and information
  */
-const TextToArray = (): JSX.Element => {
+export default function TextToArray(): JSX.Element {
   const [input, setInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
   const [outputFormat, setOutputFormat] = useState<OutputFormat>('json');
@@ -347,6 +347,4 @@ const TextToArray = (): JSX.Element => {
       </div>
     </>
   );
-};
-
-export default TextToArray;
+}

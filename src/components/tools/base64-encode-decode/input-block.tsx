@@ -9,6 +9,15 @@ import { Textarea } from '@/components/ui/textarea';
 
 /**
  * Props for the Base64EncodeDecodeInput component.
+ *
+ * @type {InputBlockProps}
+ * @property {string} input - The current text input
+ * @property {(value: string) => void} setInput - Callback to update the input text
+ * @property {boolean} isEncoding - Whether the current mode is encoding
+ * @property {(value: boolean) => void} setIsEncoding - Callback to toggle encode/decode mode
+ * @property {() => void} onProcess - Callback to trigger encoding or decoding
+ * @property {() => void} onClear - Callback to clear input and output
+ * @property {() => void} onReset - Callback to reset to defaults
  */
 interface InputBlockProps {
   input: string;
@@ -28,7 +37,7 @@ interface InputBlockProps {
  *
  * @returns {JSX.Element} The rendered input component.
  */
-const InputBlock = ({
+export default function InputBlock({
   input,
   setInput,
   isEncoding,
@@ -36,7 +45,7 @@ const InputBlock = ({
   onProcess,
   onClear,
   onReset,
-}: InputBlockProps): JSX.Element => {
+}: InputBlockProps): JSX.Element {
   /**
    * Handles the form submission to process the input.
    *
@@ -99,6 +108,4 @@ const InputBlock = ({
       </CardContent>
     </Card>
   );
-};
-
-export default InputBlock;
+}

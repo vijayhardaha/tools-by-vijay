@@ -7,8 +7,15 @@ import { LuCheck as CheckIcon, LuChevronDown as ChevronDownIcon } from 'react-ic
 
 import { cn } from '@/utils/classNameUtils';
 
+export { Select };
+
 /**
- * Option type for the Select component
+ * Option type for the Select component.
+ *
+ * @type {SelectOption}
+ * @property {string} value - The value of the option
+ * @property {string} label - The display label for the option
+ * @property {boolean} [disabled] - Whether the option is disabled
  */
 interface SelectOption extends HTMLAttributes<HTMLDivElement> {
   value: string;
@@ -17,7 +24,17 @@ interface SelectOption extends HTMLAttributes<HTMLDivElement> {
 }
 
 /**
- * Props for the Select component
+ * Props for the Select component.
+ *
+ * @type {SelectProps}
+ * @property {string} [value] - Controlled selected value
+ * @property {string} [defaultValue] - Default selected value
+ * @property {(value: string) => void} [onValueChange] - Callback when selection changes
+ * @property {boolean} [disabled] - Whether the select is disabled
+ * @property {SelectOption[]} options - Available options to choose from
+ * @property {string} [placeholder] - Placeholder text when no option is selected
+ * @property {string} [className] - Additional CSS classes
+ * @property {'default' | 'sm'} [size] - The size variant of the select
  */
 interface SelectProps extends HTMLAttributes<HTMLDivElement> {
   value?: string;
@@ -37,7 +54,7 @@ interface SelectProps extends HTMLAttributes<HTMLDivElement> {
  *
  * @returns {JSX.Element} The rendered select component
  */
-function Select({
+export default function Select({
   value,
   defaultValue,
   onValueChange,
@@ -200,5 +217,3 @@ function Select({
     </div>
   );
 }
-
-export { Select };

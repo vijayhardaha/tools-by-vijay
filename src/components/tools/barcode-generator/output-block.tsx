@@ -6,6 +6,9 @@ import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/com
 
 /**
  * Props for the BarcodeGeneratorOutput component.
+ *
+ * @type {OutputBlockProps}
+ * @property {string} output - The URL of the generated barcode image
  */
 interface OutputBlockProps {
   output: string;
@@ -20,7 +23,7 @@ interface OutputBlockProps {
  *
  * @returns {JSX.Element} The rendered barcode output component.
  */
-const OutputBlock = ({ output }: OutputBlockProps): JSX.Element => {
+export default function OutputBlock({ output }: OutputBlockProps): JSX.Element {
   return (
     <Card>
       <CardHeader>
@@ -34,6 +37,4 @@ const OutputBlock = ({ output }: OutputBlockProps): JSX.Element => {
       </CardContent>
     </Card>
   );
-};
-
-export default OutputBlock;
+}

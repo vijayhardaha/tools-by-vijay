@@ -15,7 +15,7 @@ import OutputBlock from './output-block';
  *
  * @returns {JSX.Element} The complete Slugify Tool interface.
  */
-const Slugify = (): JSX.Element => {
+export default function Slugify(): JSX.Element {
   const [input, setInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
   const [useUnderscore, setUseUnderscore] = useState<boolean>(false);
@@ -90,6 +90,4 @@ const Slugify = (): JSX.Element => {
       <InfoBlock />
     </>
   );
-};
-
-export default Slugify;
+}

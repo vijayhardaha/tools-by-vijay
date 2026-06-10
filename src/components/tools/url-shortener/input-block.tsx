@@ -9,6 +9,14 @@ import { Textarea } from '@/components/ui/textarea';
 
 /**
  * Interface for the UrlShortenerInput component props.
+ *
+ * @type {InputBlockProps}
+ * @property {string} input - The current URL input
+ * @property {(value: string) => void} setInput - Callback to update the input
+ * @property {() => void} onSubmit - Callback to trigger URL shortening
+ * @property {() => void} onClear - Callback to clear input and output
+ * @property {boolean} [isLoading] - Whether a shortening request is in progress
+ * @property {string} [error] - Current error message, if any
  */
 interface InputBlockProps {
   input: string;
@@ -30,14 +38,14 @@ interface InputBlockProps {
  *
  * @returns {JSX.Element} The rendered component
  */
-const InputBlock = ({
+export default function InputBlock({
   input = '',
   setInput,
   onSubmit,
   onClear,
   isLoading = false,
   error = '',
-}: InputBlockProps): JSX.Element => {
+}: InputBlockProps): JSX.Element {
   /**
    * Handles form submission to shorten URLs
    *
@@ -79,6 +87,4 @@ const InputBlock = ({
       </CardContent>
     </Card>
   );
-};
-
-export default InputBlock;
+}

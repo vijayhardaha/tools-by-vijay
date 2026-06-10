@@ -10,6 +10,11 @@ import { cn } from '@/utils/classNameUtils';
 
 /**
  * Interface for the password strength analysis result.
+ *
+ * @type {PasswordStrength}
+ * @property {number} score - The strength score from 0 (very weak) to 4 (strong)
+ * @property {{ warning: string; suggestions: string[] }} feedback - Warning and suggestion messages
+ * @property {{ length: boolean; hasUppercase: boolean; hasLowercase: boolean; hasDigit: boolean; hasSpecialChar: boolean }} criteria - Individual password criteria checks
  */
 interface PasswordStrength {
   score: number;
@@ -25,6 +30,9 @@ interface PasswordStrength {
 
 /**
  * Interface for the PasswordStrengthCheckerOutput component props.
+ *
+ * @type {OutputBlockProps}
+ * @property {PasswordStrength} strength - The password strength analysis data
  */
 interface OutputBlockProps {
   strength: PasswordStrength;
@@ -52,7 +60,7 @@ const renderCriteria = (isMet: boolean, label: string): JSX.Element => (
  *
  * @returns {JSX.Element} The rendered password strength analysis
  */
-const OutputBlock = ({ strength }: OutputBlockProps): JSX.Element => {
+export default function OutputBlock({ strength }: OutputBlockProps): JSX.Element {
   // Strength level names
   const strengthLevels: string[] = ['Very Weak', 'Weak', 'Fair', 'Good', 'Strong'];
 
@@ -127,6 +135,4 @@ const OutputBlock = ({ strength }: OutputBlockProps): JSX.Element => {
       </CardContent>
     </Card>
   );
-};
-
-export default OutputBlock;
+}

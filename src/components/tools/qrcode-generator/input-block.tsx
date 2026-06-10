@@ -10,6 +10,15 @@ import { Slider } from '@/components/ui/slider';
 
 /**
  * Interface for the QR code generator input component props.
+ *
+ * @type {QrCodeGeneratorInputProps}
+ * @property {string} input - The text or URL to encode in the QR code
+ * @property {(value: string) => void} setInput - Callback to update the input
+ * @property {number} size - The QR code size in pixels
+ * @property {(value: number) => void} setSize - Callback to update the size
+ * @property {() => void} onSubmit - Callback to trigger QR code generation
+ * @property {() => void} onClear - Callback to clear input and output
+ * @property {() => void} onReset - Callback to reset all options
  */
 interface QrCodeGeneratorInputProps {
   input: string;
@@ -29,7 +38,7 @@ interface QrCodeGeneratorInputProps {
  *
  * @returns {JSX.Element} The rendered QR code input component.
  */
-const QRCodeGeneratorInput = ({
+export default function QRCodeGeneratorInput({
   input,
   setInput,
   size,
@@ -37,7 +46,7 @@ const QRCodeGeneratorInput = ({
   onSubmit,
   onClear,
   onReset,
-}: QrCodeGeneratorInputProps): JSX.Element => {
+}: QrCodeGeneratorInputProps): JSX.Element {
   /**
    * Handles the form submission to generate the QR code.
    *
@@ -91,6 +100,4 @@ const QRCodeGeneratorInput = ({
       </CardContent>
     </Card>
   );
-};
-
-export default QRCodeGeneratorInput;
+}

@@ -8,6 +8,11 @@ import { Input } from '@/components/ui/input';
 
 /**
  * Interface for the PasswordStrengthCheckerInput component props.
+ *
+ * @type {InputBlockProps}
+ * @property {string} password - The current password input value
+ * @property {(password: string) => void} onSubmit - Callback triggered when password changes
+ * @property {() => void} onClear - Callback to clear the input
  */
 interface InputBlockProps {
   password: string;
@@ -22,7 +27,7 @@ interface InputBlockProps {
  *
  * @returns {JSX.Element} Password input with visibility toggle and clear button
  */
-const InputBlock = ({ password, onSubmit, onClear }: InputBlockProps): JSX.Element => {
+export default function InputBlock({ password, onSubmit, onClear }: InputBlockProps): JSX.Element {
   /**
    * Handles password input changes
    *
@@ -57,6 +62,4 @@ const InputBlock = ({ password, onSubmit, onClear }: InputBlockProps): JSX.Eleme
       </CardContent>
     </Card>
   );
-};
-
-export default InputBlock;
+}

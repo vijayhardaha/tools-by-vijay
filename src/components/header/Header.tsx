@@ -13,7 +13,7 @@ import Sidebar from '@/components/header/sidebar/Sidebar';
  *
  * @returns {JSX.Element} Header component with logo, menu button and sidebar
  */
-const Header = (): JSX.Element => {
+export default function Header(): JSX.Element {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDrawer = () => setIsOpen(!isOpen);
@@ -34,6 +34,4 @@ const Header = (): JSX.Element => {
       <Sidebar isOpen={isOpen} onClose={closeDrawer} />
     </>
   );
-};
-
-export default Header;
+}

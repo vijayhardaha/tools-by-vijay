@@ -8,7 +8,13 @@ import InputBlock from './input-block';
 import OutputBlock from './output-block';
 
 /**
- * Interface for the minification options.
+ * Interface for the JS minification options.
+ *
+ * @type {MinifyOptions}
+ * @property {boolean} mangle - Whether to mangle variable names
+ * @property {boolean} removeConsole - Whether to remove console statements
+ * @property {boolean} removeDebugger - Whether to remove debugger statements
+ * @property {boolean} removeComments - Whether to remove comments
  */
 export interface MinifyOptions {
   mangle: boolean;
@@ -22,7 +28,7 @@ export interface MinifyOptions {
  *
  * @returns {JSX.Element} The JavaScript Minifier tool interface.
  */
-const JsMinifier = (): JSX.Element => {
+export default function JsMinifier(): JSX.Element {
   const [input, setInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -116,6 +122,4 @@ const JsMinifier = (): JSX.Element => {
       </div>
     </>
   );
-};
-
-export default JsMinifier;
+}

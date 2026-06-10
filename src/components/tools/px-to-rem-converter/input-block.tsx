@@ -8,6 +8,12 @@ import { Label } from '@/components/ui/label';
 
 /**
  * Interface for the PxToRemInput component props.
+ *
+ * @type {InputBlockProps}
+ * @property {string} pxValue - The pixel value to convert
+ * @property {(value: string) => void} setPxValue - Callback to update the pixel value
+ * @property {number} baseFontSize - The base font size in pixels
+ * @property {(value: number) => void} setBaseFontSize - Callback to update the base font size
  */
 interface InputBlockProps {
   pxValue: string;
@@ -23,7 +29,12 @@ interface InputBlockProps {
  *
  * @returns {JSX.Element} The rendered input form.
  */
-const InputBlock = ({ pxValue, setPxValue, baseFontSize, setBaseFontSize }: InputBlockProps): JSX.Element => {
+export default function InputBlock({
+  pxValue,
+  setPxValue,
+  baseFontSize,
+  setBaseFontSize,
+}: InputBlockProps): JSX.Element {
   return (
     <Card>
       <CardHeader>
@@ -58,6 +69,4 @@ const InputBlock = ({ pxValue, setPxValue, baseFontSize, setBaseFontSize }: Inpu
       </CardContent>
     </Card>
   );
-};
-
-export default InputBlock;
+}

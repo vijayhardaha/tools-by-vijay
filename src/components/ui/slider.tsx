@@ -5,8 +5,19 @@ import { useState } from 'react';
 
 import { cn } from '@/utils/classNameUtils';
 
+export { Slider };
+
 /**
- * Props for the Slider component
+ * Props for the Slider component.
+ *
+ * @type {SliderProps}
+ * @property {string} [className] - Additional CSS classes
+ * @property {number} [min] - The minimum value, defaults to 0
+ * @property {number} [max] - The maximum value, defaults to 100
+ * @property {number} [step] - The step increment, defaults to 1
+ * @property {number} [value] - The current slider value
+ * @property {(value: number) => void} [onValueChange] - Callback when value changes
+ * @property {boolean} [disabled] - Whether the slider is disabled
  */
 interface SliderProps extends HTMLAttributes<HTMLDivElement> {
   className?: string;
@@ -25,7 +36,7 @@ interface SliderProps extends HTMLAttributes<HTMLDivElement> {
  *
  * @returns {JSX.Element} The rendered slider component
  */
-function Slider({
+export default function Slider({
   className,
   min = 0,
   max = 100,
@@ -69,5 +80,3 @@ function Slider({
     </div>
   );
 }
-
-export { Slider };

@@ -5,7 +5,8 @@ import Link from 'next/link';
 /**
  * Props for the PageBreadcrumb component.
  *
- * @property {string} pageName - The name of the current page to display in the breadcrumb.
+ * @type {PageBreadcrumbProps}
+ * @property {string} pageName - The name of the current page to display in the breadcrumb
  */
 interface PageBreadcrumbProps {
   pageName: string;
@@ -19,7 +20,7 @@ interface PageBreadcrumbProps {
  *
  * @returns {JSX.Element} The rendered breadcrumb navigation.
  */
-const PageBreadcrumb = ({ pageName }: PageBreadcrumbProps): JSX.Element => {
+export default function PageBreadcrumb({ pageName }: PageBreadcrumbProps): JSX.Element {
   return (
     <nav aria-label="breadcrumb">
       <ol className="flex flex-wrap items-center text-sm">
@@ -35,6 +36,4 @@ const PageBreadcrumb = ({ pageName }: PageBreadcrumbProps): JSX.Element => {
       </ol>
     </nav>
   );
-};
-
-export default PageBreadcrumb;
+}

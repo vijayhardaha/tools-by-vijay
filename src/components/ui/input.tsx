@@ -2,7 +2,13 @@ import type { JSX, InputHTMLAttributes } from 'react';
 
 import { cn } from '@/utils/classNameUtils';
 
-// Define TypeScript types for the component props
+/**
+ * Props for the Input component.
+ *
+ * @type {InputProps}
+ * @property {string} [className] - Additional CSS classes
+ * @property {string} [type] - The input type, defaults to "text"
+ */
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   className?: string;
   type?: string;
@@ -15,7 +21,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
  *
  * @returns {JSX.Element} Input component
  */
-function Input({ className, type = 'text', ...props }: InputProps): JSX.Element {
+export default function Input({ className, type = 'text', ...props }: InputProps): JSX.Element {
   return (
     <input
       type={type}

@@ -12,7 +12,7 @@ import OutputBlock from './output-block';
  *
  * @returns {JSX.Element} The RandomUsernameGeneratorTool component.
  */
-const RandomUsernameGenerator = (): JSX.Element => {
+export default function RandomUsernameGenerator(): JSX.Element {
   const [count, setCount] = useState<number>(1);
   const [output, setOutput] = useState<string[]>([]);
   const [error, setError] = useState<string>('');
@@ -132,6 +132,4 @@ const RandomUsernameGenerator = (): JSX.Element => {
       </div>
     </>
   );
-};
-
-export default RandomUsernameGenerator;
+}

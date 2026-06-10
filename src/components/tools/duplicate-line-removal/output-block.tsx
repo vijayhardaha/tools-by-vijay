@@ -6,6 +6,9 @@ import { Textarea } from '@/components/ui/textarea';
 
 /**
  * Interface for the DuplicateLineRemovalOutput component props.
+ *
+ * @type {OutputBlockProps}
+ * @property {string} output - The processed text output
  */
 interface OutputBlockProps {
   output: string;
@@ -19,7 +22,7 @@ interface OutputBlockProps {
  *
  * @returns {JSX.Element} The rendered output display
  */
-const OutputBlock = ({ output }: OutputBlockProps): JSX.Element => {
+export default function OutputBlock({ output }: OutputBlockProps): JSX.Element {
   return (
     <Card>
       <CardHeader>
@@ -38,6 +41,4 @@ const OutputBlock = ({ output }: OutputBlockProps): JSX.Element => {
       </CardContent>
     </Card>
   );
-};
-
-export default OutputBlock;
+}

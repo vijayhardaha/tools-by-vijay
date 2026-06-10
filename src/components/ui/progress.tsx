@@ -5,7 +5,12 @@ import { forwardRef } from 'react';
 import { cn } from '@/utils/classNameUtils';
 
 /**
- * Props for the Progress component
+ * Props for the Progress component.
+ *
+ * @type {ProgressProps}
+ * @property {number} [value] - The current progress value (0-100)
+ * @property {string} [className] - Additional CSS classes for the container
+ * @property {string} [indicatorClassName] - Additional CSS classes for the indicator bar
  */
 interface ProgressProps extends HTMLAttributes<HTMLDivElement> {
   value?: number;
@@ -14,7 +19,11 @@ interface ProgressProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 /**
- * Progress component that shows a horizontal progress bar
+ * Progress component that displays a horizontal progress bar.
+ *
+ * @param {ProgressProps} props - The component props
+ *
+ * @returns {JSX.Element} The rendered progress bar
  */
 const Progress = forwardRef<HTMLDivElement, ProgressProps>(
   ({ className = '', value = 0, indicatorClassName, ...props }, ref) => (

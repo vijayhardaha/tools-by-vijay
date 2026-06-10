@@ -6,6 +6,9 @@ import { Textarea } from '@/components/ui/textarea';
 
 /**
  * Interface for the JsonSorterOutput component props.
+ *
+ * @type {OutputBlockProps}
+ * @property {string} output - The sorted JSON output
  */
 interface OutputBlockProps {
   output: string;
@@ -18,7 +21,7 @@ interface OutputBlockProps {
  *
  * @returns {JSX.Element} The rendered card with output display and copy functionality.
  */
-const OutputBlock = ({ output }: OutputBlockProps): JSX.Element => {
+export default function OutputBlock({ output }: OutputBlockProps): JSX.Element {
   return (
     <Card>
       <CardHeader>
@@ -37,6 +40,4 @@ const OutputBlock = ({ output }: OutputBlockProps): JSX.Element => {
       </CardContent>
     </Card>
   );
-};
-
-export default OutputBlock;
+}

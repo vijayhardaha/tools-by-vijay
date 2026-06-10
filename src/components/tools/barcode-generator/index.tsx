@@ -14,7 +14,7 @@ import OutputBlock from './output-block';
  *
  * @returns {JSX.Element} The rendered barcode generator tool component.
  */
-const BarcodeGenerator = (): JSX.Element => {
+export default function BarcodeGenerator(): JSX.Element {
   const [input, setInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
 
@@ -49,6 +49,4 @@ const BarcodeGenerator = (): JSX.Element => {
       </div>
     </>
   );
-};
-
-export default BarcodeGenerator;
+}

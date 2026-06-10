@@ -8,7 +8,16 @@ import InputBlock from './input-block';
 import OutputBlock from './output-block';
 
 /**
- * Interface for the minification options.
+ * Interface for the CSS minification options.
+ *
+ * @type {MinificationOptions}
+ * @property {number} level - The optimization level (0-2)
+ * @property {boolean} compress - Whether to enable compression
+ * @property {object} format - Formatting configuration
+ * @property {number} format.indentBy - Number of spaces for indentation
+ * @property {string} format.indentWith - Character used for indentation
+ * @property {{ aroundSelectorRelation: boolean; beforeBlockBegins: boolean; beforeValue: boolean }} format.spaces - Space-related formatting options
+ * @property {boolean | number} format.wrapAt - Line wrap configuration
  */
 interface MinificationOptions {
   level: number;
@@ -23,6 +32,8 @@ interface MinificationOptions {
 
 /**
  * Default minification options.
+ *
+ * @type {MinificationOptions}
  */
 const defaultOptions: MinificationOptions = {
   level: 1,
@@ -41,7 +52,7 @@ const defaultOptions: MinificationOptions = {
  *
  * @returns {JSX.Element} The rendered CssMinifierTool component.
  */
-const CssMinifier = (): JSX.Element => {
+export default function CssMinifier(): JSX.Element {
   const [input, setInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -166,6 +177,4 @@ const CssMinifier = (): JSX.Element => {
       </div>
     </>
   );
-};
-
-export default CssMinifier;
+}

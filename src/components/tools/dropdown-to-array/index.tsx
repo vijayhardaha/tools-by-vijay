@@ -25,7 +25,7 @@ interface Option {
  *
  * @returns {JSX.Element} The rendered component.
  */
-const DropdownToArray = (): JSX.Element => {
+export default function DropdownToArray(): JSX.Element {
   const [input, setInput] = useState<string>('');
   const [outputFormat, setOutputFormat] = useState<string>('json');
   const [arrayType, setArrayType] = useState<string>('associative');
@@ -362,6 +362,4 @@ const DropdownToArray = (): JSX.Element => {
       </div>
     </>
   );
-};
-
-export default DropdownToArray;
+}

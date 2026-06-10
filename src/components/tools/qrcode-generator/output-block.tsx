@@ -6,6 +6,9 @@ import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/com
 
 /**
  * Interface for the QRCodeGeneratorOutput component props.
+ *
+ * @type {QrCodeGeneratorOutputProps}
+ * @property {string} output - The URL of the generated QR code image
  */
 interface QrCodeGeneratorOutputProps {
   output: string;
@@ -20,7 +23,7 @@ interface QrCodeGeneratorOutputProps {
  *
  * @returns {JSX.Element} The rendered QR code output component.
  */
-const QRCodeGeneratorOutput = ({ output }: QrCodeGeneratorOutputProps): JSX.Element => {
+export default function QRCodeGeneratorOutput({ output }: QrCodeGeneratorOutputProps): JSX.Element {
   return (
     <Card>
       <CardHeader>
@@ -34,6 +37,4 @@ const QRCodeGeneratorOutput = ({ output }: QrCodeGeneratorOutputProps): JSX.Elem
       </CardContent>
     </Card>
   );
-};
-
-export default QRCodeGeneratorOutput;
+}

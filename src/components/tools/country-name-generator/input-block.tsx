@@ -9,6 +9,13 @@ import { Input } from '@/components/ui/input';
 
 /**
  * Interface for the CountryNameGeneratorInput component props.
+ *
+ * @type {InputBlockProps}
+ * @property {number} count - The number of names to generate
+ * @property {(value: number) => void} setCount - Callback to update generation count
+ * @property {() => void} onGenerate - Callback to trigger name generation
+ * @property {() => void} onClear - Callback to clear the output
+ * @property {string} [error] - Current error message, if any
  */
 interface InputBlockProps {
   count: number;
@@ -25,7 +32,7 @@ interface InputBlockProps {
  *
  * @returns {JSX.Element} The CountryNameGeneratorInput component.
  */
-const InputBlock = ({ count, setCount, onGenerate, onClear, error }: InputBlockProps): JSX.Element => {
+export default function InputBlock({ count, setCount, onGenerate, onClear, error }: InputBlockProps): JSX.Element {
   /**
    * Handles the form submission event.
    *
@@ -70,6 +77,4 @@ const InputBlock = ({ count, setCount, onGenerate, onClear, error }: InputBlockP
       </CardContent>
     </Card>
   );
-};
-
-export default InputBlock;
+}

@@ -10,7 +10,12 @@ import { Select } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
 
 /**
- * Interface for the minification options.
+ * Interface for the CSS minification options.
+ *
+ * @type {MinificationOptions}
+ * @property {number} level - The optimization level
+ * @property {boolean} compress - Whether to enable compression
+ * @property {{ spaces: { aroundSelectorRelation: boolean; beforeBlockBegins: boolean; beforeValue: boolean } }} format - Formatting configuration
  */
 interface MinificationOptions {
   level: number;
@@ -20,6 +25,18 @@ interface MinificationOptions {
 
 /**
  * Interface for the CssMinifierInput component props.
+ *
+ * @type {InputBlockProps}
+ * @property {string} input - The CSS input string
+ * @property {(value: string) => void} setInput - Callback to update the input string
+ * @property {MinificationOptions} options - The current minification options
+ * @property {(key: string, value: unknown) => void} updateOption - Callback to update a specific option
+ * @property {(key: string, value: boolean) => void} updateSpacesOption - Callback to update a spacing option
+ * @property {() => void} onSubmit - Callback to trigger minification
+ * @property {() => void} onClear - Callback to clear input and output
+ * @property {() => void} onReset - Callback to reset all options
+ * @property {boolean} isLoading - Whether a minification request is in progress
+ * @property {string} [error] - Current error message, if any
  */
 interface InputBlockProps {
   input: string;
@@ -42,7 +59,7 @@ interface InputBlockProps {
  *
  * @returns {JSX.Element} The rendered CssMinifierInput component.
  */
-const InputBlock = ({
+export default function InputBlock({
   input,
   setInput,
   options,
@@ -53,7 +70,7 @@ const InputBlock = ({
   onReset,
   isLoading,
   error,
-}: InputBlockProps): JSX.Element => {
+}: InputBlockProps): JSX.Element {
   /**
    * Handles the form submission event.
    * Prevents the default form submission and triggers the onSubmit callback.
@@ -153,6 +170,4 @@ const InputBlock = ({
       </CardContent>
     </Card>
   );
-};
-
-export default InputBlock;
+}

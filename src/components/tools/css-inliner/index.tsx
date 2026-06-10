@@ -13,7 +13,7 @@ import OutputBlock from './output-block';
  *
  * @returns {JSX.Element} The rendered CssInlinerTool component.
  */
-const CssInliner = (): JSX.Element => {
+export default function CssInliner(): JSX.Element {
   const [htmlInput, setHtmlInput] = useState<string>('');
   const [cssInput, setCssInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
@@ -83,6 +83,4 @@ const CssInliner = (): JSX.Element => {
       </div>
     </>
   );
-};
-
-export default CssInliner;
+}

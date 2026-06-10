@@ -11,6 +11,17 @@ import { Textarea } from '@/components/ui/textarea';
 
 /**
  * Interface for the JavaScript Minifier input component props.
+ *
+ * @type {InputBlockProps}
+ * @property {string} input - The JavaScript input string
+ * @property {(value: string) => void} setInput - Callback to update the input string
+ * @property {MinifyOptions} options - The current minification options
+ * @property {(key: keyof MinifyOptions, value: boolean) => void} updateOption - Callback to update a specific option
+ * @property {() => void} onSubmit - Callback to trigger minification
+ * @property {() => void} onClear - Callback to clear input and output
+ * @property {() => void} onReset - Callback to reset all options
+ * @property {boolean} isLoading - Whether a minification request is in progress
+ * @property {string} [error] - Current error message, if any
  */
 interface InputBlockProps {
   input: string;
@@ -31,7 +42,7 @@ interface InputBlockProps {
  *
  * @returns {JSX.Element} The JsMinifierInput component.
  */
-const InputBlock = ({
+export default function InputBlock({
   input,
   setInput,
   options,
@@ -41,7 +52,7 @@ const InputBlock = ({
   onReset,
   isLoading,
   error,
-}: InputBlockProps): JSX.Element => {
+}: InputBlockProps): JSX.Element {
   /**
    * Handles form submission and triggers JavaScript minification.
    *
@@ -123,6 +134,4 @@ const InputBlock = ({
       </CardContent>
     </Card>
   );
-};
-
-export default InputBlock;
+}

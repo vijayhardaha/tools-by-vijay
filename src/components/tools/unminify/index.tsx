@@ -13,7 +13,7 @@ import OutputBlock from './output-block';
  *
  * @returns {JSX.Element} The rendered UnminifyTool component.
  */
-const Unminify = (): JSX.Element => {
+export default function Unminify(): JSX.Element {
   const [input, setInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
   const [codeType, setCodeType] = useState<string>('javascript');
@@ -85,6 +85,4 @@ const Unminify = (): JSX.Element => {
       </div>
     </>
   );
-};
-
-export default Unminify;
+}
