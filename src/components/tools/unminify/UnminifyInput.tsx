@@ -1,6 +1,5 @@
-'use client';
-
-import type { FormEvent } from 'react';
+import type { JSX, FormEvent } from 'react';
+('use client');
 
 import { Alert } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
@@ -27,9 +26,9 @@ interface UnminifyInputProps {
  *
  *  @param {UnminifyInputProps} props - The props for the component.
  *
- * @returns {React.JSX.Element} The rendered UnminifyInput component.
+ * @returns {JSX.Element} The rendered UnminifyInput component.
  */
-const UnminifyInput: React.FC<UnminifyInputProps> = ({
+const UnminifyInput = ({
   input,
   setInput,
   codeType,
@@ -38,7 +37,7 @@ const UnminifyInput: React.FC<UnminifyInputProps> = ({
   onClear,
   isLoading,
   error,
-}: UnminifyInputProps): React.JSX.Element => {
+}: UnminifyInputProps): JSX.Element => {
   /**
    * Handles the form submission event.
    *
