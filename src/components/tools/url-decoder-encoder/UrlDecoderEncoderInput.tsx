@@ -1,6 +1,5 @@
-'use client';
-
-import type { FormEvent } from 'react';
+import type { JSX, FormEvent } from 'react';
+('use client');
 
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
@@ -26,9 +25,9 @@ interface UrlDecoderEncoderInputProps {
  *
  *  @param {UrlDecoderEncoderInputProps} props - The props for the component.
  *
- * @returns {React.JSX.Element} The rendered input component.
+ * @returns {JSX.Element} The rendered input component.
  */
-const UrlDecoderEncoderInput: React.FC<UrlDecoderEncoderInputProps> = ({
+const UrlDecoderEncoderInput = ({
   input,
   setInput,
   isEncoding,
@@ -36,7 +35,7 @@ const UrlDecoderEncoderInput: React.FC<UrlDecoderEncoderInputProps> = ({
   onProcess,
   onClear,
   onReset,
-}: UrlDecoderEncoderInputProps): React.JSX.Element => {
+}: UrlDecoderEncoderInputProps): JSX.Element => {
   /**
    * Handles the form submission to process the input.
    *
