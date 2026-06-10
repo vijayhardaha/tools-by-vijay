@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import { notFound } from 'next/navigation';
 
 import EntryWithSidebar from '@/components/page/EntryWithSidebar';
@@ -32,9 +34,9 @@ export const metadata: PageMeta = generateMeta({
  * Character Count tool page component.
  * Renders the page layout with header and the Character Count tool.
  *
- * @returns {React.JSX.Element} The rendered Character Count tool page component.
+ * @returns {JSX.Element} The rendered Character Count tool page component.
  */
-const CharacterCount = (): React.JSX.Element => {
+const CharacterCount = (): JSX.Element => {
   if (!tool) {
     notFound(); // Render a 404 page if the tool is null
   }
