@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
 import { CopyButton } from '@/components/ui/copyButton';
 import { Textarea } from '@/components/ui/textarea';
@@ -15,11 +17,9 @@ interface UrlDecoderEncoderOutputProps {
  *
  *  @param {UrlDecoderEncoderOutputProps} props - The props for the component.
  *
- * @returns {React.JSX.Element} The rendered component.
+ * @returns {JSX.Element} The rendered component.
  */
-const UrlDecoderEncoderOutput: React.FC<UrlDecoderEncoderOutputProps> = ({
-  output,
-}: UrlDecoderEncoderOutputProps): React.JSX.Element => {
+const UrlDecoderEncoderOutput = ({ output }: UrlDecoderEncoderOutputProps): JSX.Element => {
   return (
     <Card>
       <CardHeader>
