@@ -1,4 +1,5 @@
-'use client';
+import type { JSX } from 'react';
+('use client');
 
 import { useState } from 'react';
 
@@ -38,9 +39,9 @@ const defaultOptions: MinificationOptions = {
  * A tool for minifying CSS code. It provides input fields for CSS, options for customization,
  * and displays the minified output.
  *
- * @returns {React.JSX.Element} The rendered CssMinifierTool component.
+ * @returns {JSX.Element} The rendered CssMinifierTool component.
  */
-const CssMinifierTool = (): React.JSX.Element => {
+const CssMinifierTool = (): JSX.Element => {
   const [input, setInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
