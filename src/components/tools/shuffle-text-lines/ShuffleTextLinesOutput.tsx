@@ -5,20 +5,20 @@ import { Textarea } from '@/components/ui/textarea';
 /**
  * Interface for the JsonSorterOutput component props.
  */
-interface IShuffleTextLinesOutputProps {
+interface ShuffleTextLinesOutputProps {
   output: string;
 }
 
 /**
  * Displays the shuffled text output in a card with a copy button.
  *
- * @param {IShuffleTextLinesOutputProps} props - The component props.
+ *  @param {ShuffleTextLinesOutputProps} props - The component props.
  *
  * @returns {React.JSX.Element} The rendered card with output display and copy functionality.
  */
-const ShuffleTextLinesOutput: React.FC<IShuffleTextLinesOutputProps> = ({
+const ShuffleTextLinesOutput: React.FC<ShuffleTextLinesOutputProps> = ({
   output,
-}: IShuffleTextLinesOutputProps): React.JSX.Element => {
+}: ShuffleTextLinesOutputProps): React.JSX.Element => {
   return (
     <Card>
       <CardHeader>
