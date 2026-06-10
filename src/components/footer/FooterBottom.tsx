@@ -3,7 +3,7 @@
  *
  * @returns {React.JSX.Element} The rendered footer bottom section.
  */
-const FooterBottom: React.FC = (): React.JSX.Element => {
+const FooterBottom = (): React.JSX.Element => {
   const currentYear = new Date().getFullYear();
 
   return (
