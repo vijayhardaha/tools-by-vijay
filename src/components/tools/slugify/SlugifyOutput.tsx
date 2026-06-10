@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
 import { CopyButton } from '@/components/ui/copyButton';
 import { Input } from '@/components/ui/input';
@@ -14,9 +16,9 @@ interface SlugifyOutputProps {
  *
  *  @param {SlugifyOutputProps} props - The component props.
  *
- * @returns {React.JSX.Element} The rendered slugified output component.
+ * @returns {JSX.Element} The rendered slugified output component.
  */
-const SlugifyOutput = ({ output }: SlugifyOutputProps): React.JSX.Element => {
+const SlugifyOutput = ({ output }: SlugifyOutputProps): JSX.Element => {
   return (
     <Card>
       <CardHeader>
