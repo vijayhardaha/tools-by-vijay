@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
 import { CopyButton } from '@/components/ui/copyButton';
 import { Textarea } from '@/components/ui/textarea';
@@ -15,9 +17,9 @@ interface CssInlinerOutputProps {
  *
  * @param {CssInlinerOutputProps} props - The props for the component.
  *
- * @returns {React.JSX.Element} The rendered CssInlinerOutput component.
+ * @returns {JSX.Element} The rendered CssInlinerOutput component.
  */
-const CssInlinerOutput: React.FC<CssInlinerOutputProps> = ({ output }: CssInlinerOutputProps): React.JSX.Element => {
+const CssInlinerOutput = ({ output }: CssInlinerOutputProps): JSX.Element => {
   return (
     <Card>
       <CardHeader>
