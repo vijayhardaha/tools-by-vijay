@@ -34,7 +34,7 @@ export const metadata: PageMeta = generateMeta({
  *
  * @returns {React.JSX.Element} The rendered Css Inliner tool page component.
  */
-const CssInliner: React.FC = (): React.JSX.Element => {
+const CssInliner = (): React.JSX.Element => {
   if (!tool) {
     notFound(); // Render a 404 page if the tool is null
   }
