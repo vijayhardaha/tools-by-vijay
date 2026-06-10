@@ -1,10 +1,11 @@
+import type { JSX } from 'react';
 /**
  * Provides information about the Dropdown to Array Converter tool, including its purpose,
  * usage instructions, and examples.
  *
- * @returns {React.JSX.Element} The rendered component displaying tool information
+ * @returns {JSX.Element} The rendered component displaying tool information
  */
-const DropdownToArrayInfo = (): React.JSX.Element => {
+const DropdownToArrayInfo = (): JSX.Element => {
   return (
     <div className="max-w-none space-y-8">
       <section>
