@@ -1,4 +1,5 @@
-'use client';
+import type { JSX } from 'react';
+('use client');
 
 import React from 'react';
 
@@ -20,13 +21,13 @@ interface PasswordStrengthCheckerInputProps {
  *
  *  @param {PasswordStrengthCheckerInputProps} props - Component props
  *
- * @returns {React.JSX.Element} Password input with visibility toggle and clear button
+ * @returns {JSX.Element} Password input with visibility toggle and clear button
  */
-const PasswordStrengthCheckerInput: React.FC<PasswordStrengthCheckerInputProps> = ({
+const PasswordStrengthCheckerInput = ({
   password,
   onSubmit,
   onClear,
-}: PasswordStrengthCheckerInputProps): React.JSX.Element => {
+}: PasswordStrengthCheckerInputProps): JSX.Element => {
   /**
    * Handles password input changes
    *
