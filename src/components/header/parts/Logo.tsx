@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -13,9 +15,9 @@ type LogoProps = { className?: string };
  *
  * @param {LogoProps} props - Component props.
  *
- * @returns {React.JSX.Element} A link to the homepage containing the site logo.
+ * @returns {JSX.Element} A link to the homepage containing the site logo.
  */
-const Logo: React.FC<LogoProps> = ({ className }: LogoProps): React.JSX.Element => (
+const Logo = ({ className }: LogoProps): JSX.Element => (
   <Link href="/">
     <Image
       src="/images/site-logo.svg"
