@@ -1,10 +1,11 @@
+import type { JSX } from 'react';
 /**
  * Provides detailed information about the Barcode Tool,
  * including its purpose, benefits, usage instructions, and practical examples.
  *
- * @returns {React.JSX.Element} The rendered component displaying tool information
+ * @returns {JSX.Element} The rendered component displaying tool information
  */
-const BarcodeGeneratorInfo = (): React.JSX.Element => {
+const BarcodeGeneratorInfo = (): JSX.Element => {
   return (
     <div className="max-w-none space-y-8">
       <section>
