@@ -6,7 +6,7 @@ import { cn } from '@/utils/classNameUtils';
 /**
  * Props for the Logo component.
  */
-type ILogoProps = { className?: string };
+type LogoProps = { className?: string };
 
 /**
  * Logo component that displays the site logo with next/image.
@@ -15,7 +15,7 @@ type ILogoProps = { className?: string };
  *
  * @returns {React.JSX.Element} A link to the homepage containing the site logo.
  */
-const Logo: React.FC<ILogoProps> = ({ className }: ILogoProps): React.JSX.Element => (
+const Logo: React.FC<LogoProps> = ({ className }: LogoProps): React.JSX.Element => (
   <Link href="/">
     <Image
       src="/images/site-logo.svg"
