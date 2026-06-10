@@ -1,5 +1,4 @@
 import type { JSX } from 'react';
-import React from 'react';
 
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
 import { CopyButton } from '@/components/ui/copyButton';

@@ -1,7 +1,6 @@
 'use client';
 
 import type { JSX } from 'react';
-import React from 'react';
 
 import { LuCheck as CheckIcon, LuX as XIcon } from 'react-icons/lu';
 
