@@ -5,7 +5,7 @@ import { cn } from '@/utils/classNameUtils';
 /**
  * Props for the Card component.
  */
-interface ICardProps extends React.HTMLAttributes<HTMLDivElement> {
+interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
   children: ReactNode;
   component?: ElementType;
@@ -14,12 +14,11 @@ interface ICardProps extends React.HTMLAttributes<HTMLDivElement> {
 /**
  * A flexible card component with customizable styles and structure.
  *
- * @param root0
- * @param root0.className
- * @param root0.children
- * @param root0.component
+ * @param {CardProps} props - The component props
+ *
+ * @returns {React.JSX.Element} The rendered card component
  */
-function Card({ className, children, component, ...props }: ICardProps) {
+function Card({ className, children, component, ...props }: CardProps): React.JSX.Element {
   const Tag = component || 'div';
   return (
     <Tag
@@ -38,7 +37,7 @@ function Card({ className, children, component, ...props }: ICardProps) {
 /**
  * Props for the CardHeader component.
  */
-interface ICardHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
+interface CardHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
   children: ReactNode;
   component?: ElementType;
@@ -47,12 +46,11 @@ interface ICardHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
 /**
  * A header section for the card, typically used for titles or actions.
  *
- * @param root0
- * @param root0.className
- * @param root0.children
- * @param root0.component
+ * @param {CardHeaderProps} props - The component props
+ *
+ * @returns {React.JSX.Element} The rendered card header
  */
-function CardHeader({ className, children, component, ...props }: ICardHeaderProps) {
+function CardHeader({ className, children, component, ...props }: CardHeaderProps): React.JSX.Element {
   const Tag = component || 'div';
   return (
     <Tag
@@ -73,7 +71,7 @@ function CardHeader({ className, children, component, ...props }: ICardHeaderPro
 /**
  * Props for the CardTitle component.
  */
-interface ICardTitleProps extends React.HTMLAttributes<HTMLHeadingElement> {
+interface CardTitleProps extends React.HTMLAttributes<HTMLHeadingElement> {
   className?: string;
   children: ReactNode;
   component?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
@@ -82,12 +80,11 @@ interface ICardTitleProps extends React.HTMLAttributes<HTMLHeadingElement> {
 /**
  * A title section for the card, typically used for headings.
  *
- * @param root0
- * @param root0.className
- * @param root0.children
- * @param root0.component
+ * @param {CardTitleProps} props - The component props
+ *
+ * @returns {React.JSX.Element} The rendered card title
  */
-function CardTitle({ className, children, component, ...props }: ICardTitleProps) {
+function CardTitle({ className, children, component, ...props }: CardTitleProps): React.JSX.Element {
   const Tag = component || 'h2';
   return (
     <Tag data-slot="card-title" className={cn('text-lg leading-none font-bold', className)} {...props}>
@@ -99,7 +96,7 @@ function CardTitle({ className, children, component, ...props }: ICardTitleProps
 /**
  * Props for the CardDescription component.
  */
-interface ICardDescriptionProps extends React.HTMLAttributes<HTMLParagraphElement> {
+interface CardDescriptionProps extends React.HTMLAttributes<HTMLParagraphElement> {
   /** Additional class names for the card description. */
   className?: string;
   /** Content to be rendered inside the card description. */
@@ -111,12 +108,11 @@ interface ICardDescriptionProps extends React.HTMLAttributes<HTMLParagraphElemen
 /**
  * A description section for the card, typically used for supplementary text.
  *
- * @param root0
- * @param root0.className
- * @param root0.children
- * @param root0.component
+ * @param {CardDescriptionProps} props - The component props
+ *
+ * @returns {React.JSX.Element} The rendered card description
  */
-function CardDescription({ className, children, component, ...props }: ICardDescriptionProps) {
+function CardDescription({ className, children, component, ...props }: CardDescriptionProps): React.JSX.Element {
   const Tag = component || 'p';
   return (
     <Tag data-slot="card-description" className={cn('text-muted-foreground text-sm', className)} {...props}>
@@ -128,7 +124,7 @@ function CardDescription({ className, children, component, ...props }: ICardDesc
 /**
  * Props for the CardAction component.
  */
-interface ICardActionProps extends React.HTMLAttributes<HTMLDivElement> {
+interface CardActionProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
   children: ReactNode;
   component?: ElementType;
@@ -137,12 +133,11 @@ interface ICardActionProps extends React.HTMLAttributes<HTMLDivElement> {
 /**
  * An action section for the card, typically used for buttons or links.
  *
- * @param root0
- * @param root0.className
- * @param root0.children
- * @param root0.component
+ * @param {CardActionProps} props - The component props
+ *
+ * @returns {React.JSX.Element} The rendered card action
  */
-function CardAction({ className, children, component, ...props }: ICardActionProps) {
+function CardAction({ className, children, component, ...props }: CardActionProps): React.JSX.Element {
   const Tag = component || 'div';
   return (
     <Tag
@@ -158,7 +153,7 @@ function CardAction({ className, children, component, ...props }: ICardActionPro
 /**
  * Props for the CardContent component.
  */
-interface ICardContentProps extends React.HTMLAttributes<HTMLDivElement> {
+interface CardContentProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
   children: ReactNode;
   component?: ElementType;
@@ -167,12 +162,11 @@ interface ICardContentProps extends React.HTMLAttributes<HTMLDivElement> {
 /**
  * A content section for the card, typically used for the main body.
  *
- * @param root0
- * @param root0.className
- * @param root0.children
- * @param root0.component
+ * @param {CardContentProps} props - The component props
+ *
+ * @returns {React.JSX.Element} The rendered card content
  */
-function CardContent({ className, children, component, ...props }: ICardContentProps) {
+function CardContent({ className, children, component, ...props }: CardContentProps): React.JSX.Element {
   const Tag = component || 'div';
   return (
     <Tag data-slot="card-content" className={cn('px-4 md:px-6', className)} {...props}>
@@ -184,7 +178,7 @@ function CardContent({ className, children, component, ...props }: ICardContentP
 /**
  * Props for the CardFooter component.
  */
-interface ICardFooterProps extends React.HTMLAttributes<HTMLDivElement> {
+interface CardFooterProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
   children: ReactNode;
   component?: ElementType;
@@ -193,12 +187,11 @@ interface ICardFooterProps extends React.HTMLAttributes<HTMLDivElement> {
 /**
  * A footer section for the card, typically used for additional actions or information.
  *
- * @param root0
- * @param root0.className
- * @param root0.children
- * @param root0.component
+ * @param {CardFooterProps} props - The component props
+ *
+ * @returns {React.JSX.Element} The rendered card footer
  */
-function CardFooter({ className, children, component, ...props }: ICardFooterProps) {
+function CardFooter({ className, children, component, ...props }: CardFooterProps): React.JSX.Element {
   const Tag = component || 'div';
   return (
     <Tag
