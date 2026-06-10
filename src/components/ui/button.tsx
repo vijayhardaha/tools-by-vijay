@@ -1,46 +1,11 @@
 'use client';
 
-import React, { forwardRef, isValidElement, cloneElement } from 'react';
+import { forwardRef } from 'react';
 
+import { Slot } from '@radix-ui/react-slot';
 import { cva } from 'class-variance-authority';
 
 import { cn } from '@/utils/classNameUtils';
-
-/**
- * Slot component for polymorphic prop forwarding.
- */
-type ISlotProps = {
-  children: React.ReactNode; // Allow any valid ReactNode (string, ReactElement, etc.)
-} & React.HTMLAttributes<HTMLElement>;
-
-const Slot = forwardRef<HTMLElement, ISlotProps>(({ children, ...props }, ref) => {
-  if (!isValidElement(children)) {
-    return null;
-  }
-
-  // Ensure children.props is always an object before spreading
-  const childProps = children.props && typeof children.props === 'object' ? children.props : {};
-
-  return cloneElement(children, {
-    ...props,
-    ...childProps, // Spread props and ensure children.props is valid
-    ref: (childRef: HTMLElement | null) => {
-      if (typeof ref === 'function') {
-        ref(childRef);
-      } else if (ref && childRef) {
-        (ref as React.RefObject<HTMLElement>).current = childRef;
-      }
-
-      // Handle the child's original ref separately
-      const { ref: childOriginalRef } = children as React.ReactElement & { ref?: React.Ref<HTMLElement> };
-      if (typeof childOriginalRef === 'function') {
-        childOriginalRef(childRef);
-      } else if (childOriginalRef && childRef) {
-        (childOriginalRef as React.RefObject<HTMLElement>).current = childRef;
-      }
-    },
-  } as any); // Use `as any` to bypass TypeScript's type checking for `ref`
-});
 
 /**
  * Button component with multiple variants and sizes.
@@ -106,7 +71,7 @@ const buttonVariants = cva(
 /**
  * Button component with various styles and sizes.
  */
-type IButtonProps = {
+type ButtonProps = {
   className?: string;
   variant?: 'default' | 'primary' | 'destructive' | 'success' | 'outline' | 'secondary' | 'ghost' | 'link';
   size?: 'default' | 'sm' | 'lg' | 'icon';
@@ -114,7 +79,7 @@ type IButtonProps = {
   children: React.ReactNode; // Allow any valid ReactNode (string, ReactElement, etc.)
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
-const Button = forwardRef<HTMLButtonElement, IButtonProps>(
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant = 'default', size = 'default', asChild = false, children, ...props }, ref) => {
     const Comp = asChild ? Slot : 'button';
 
