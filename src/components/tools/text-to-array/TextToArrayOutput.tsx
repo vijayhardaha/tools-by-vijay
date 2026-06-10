@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
 import { CopyButton } from '@/components/ui/copyButton';
 import { Textarea } from '@/components/ui/textarea';
@@ -15,9 +17,9 @@ interface TextToArrayOutputProps {
  *
  *  @param {TextToArrayOutputProps} props - The props for the component.
  *
- * @returns {React.JSX.Element} The rendered component.
+ * @returns {JSX.Element} The rendered component.
  */
-const TextToArrayOutput: React.FC<TextToArrayOutputProps> = ({ output }: TextToArrayOutputProps): React.JSX.Element => {
+const TextToArrayOutput = ({ output }: TextToArrayOutputProps): JSX.Element => {
   return (
     <Card>
       <CardHeader>
