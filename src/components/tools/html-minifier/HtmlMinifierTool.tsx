@@ -1,4 +1,5 @@
-'use client';
+import type { JSX } from 'react';
+('use client');
 
 import React, { useState } from 'react';
 
@@ -56,9 +57,9 @@ const defaultOptions: HtmlMinifierOptions = {
  * Main component for the HTML Minifier tool
  * Handles state management and minification logic
  *
- * @returns {React.JSX.Element} The HTML Minifier tool interface
+ * @returns {JSX.Element} The HTML Minifier tool interface
  */
-const HtmlMinifierTool = (): React.JSX.Element => {
+const HtmlMinifierTool = (): JSX.Element => {
   const [input, setInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
