@@ -11,7 +11,7 @@ import { Textarea } from '@/components/ui/textarea';
 /**
  * Interface for the TextToPhpVariablesInput component props.
  */
-interface ITextToPhpVariablesInputProps {
+interface TextToPhpVariablesInputProps {
   input: string;
   setInput: (value: string) => void;
   variableCase: string;
@@ -29,7 +29,7 @@ interface ITextToPhpVariablesInputProps {
  *
  * @returns {React.JSX.Element} The rendered input component.
  */
-const TextToPhpVariablesInput: React.FC<ITextToPhpVariablesInputProps> = ({
+const TextToPhpVariablesInput: React.FC<TextToPhpVariablesInputProps> = ({
   input,
   setInput,
   variableCase,
@@ -38,7 +38,7 @@ const TextToPhpVariablesInput: React.FC<ITextToPhpVariablesInputProps> = ({
   onClear,
   onReset,
   error,
-}: ITextToPhpVariablesInputProps): React.JSX.Element => {
+}: TextToPhpVariablesInputProps): React.JSX.Element => {
   /**
    * Handles form submission.
    *
