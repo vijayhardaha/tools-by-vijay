@@ -1,4 +1,5 @@
-'use client';
+import type { JSX } from 'react';
+('use client');
 
 import { useState } from 'react';
 
@@ -10,9 +11,9 @@ import UnminifyOutput from './UnminifyOutput';
  * A tool for unminifying code. It provides input fields for code, options for customization,
  * and displays the unminified output.
  *
- * @returns {React.JSX.Element} The rendered UnminifyTool component.
+ * @returns {JSX.Element} The rendered UnminifyTool component.
  */
-const UnminifyTool = (): React.JSX.Element => {
+const UnminifyTool = (): JSX.Element => {
   const [input, setInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
   const [codeType, setCodeType] = useState<string>('javascript');
