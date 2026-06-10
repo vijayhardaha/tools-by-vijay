@@ -1,4 +1,5 @@
-'use client';
+import type { JSX } from 'react';
+('use client');
 
 import { useState } from 'react';
 
@@ -9,9 +10,9 @@ import ShuffleTextLinesOutput from './ShuffleTextLinesOutput';
 /**
  * A tool for shuffling lines of text with options to remove duplicates.
  *
- * @returns {React.JSX.Element} The ShuffleTextLinesTool component.
+ * @returns {JSX.Element} The ShuffleTextLinesTool component.
  */
-const ShuffleTextLinesTool = (): React.JSX.Element => {
+const ShuffleTextLinesTool = (): JSX.Element => {
   const [input, setInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
   const [removeDuplicates, setRemoveDuplicates] = useState<boolean>(false);
