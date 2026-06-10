@@ -1,4 +1,5 @@
-'use client';
+import type { JSX } from 'react';
+('use client');
 
 import { useState } from 'react';
 
@@ -10,9 +11,9 @@ import CssInlinerOutput from './CssInlinerOutput';
  * A tool for inlining CSS into HTML. It provides input fields for HTML and CSS,
  * displays the inlined output, and handles API communication for processing.
  *
- * @returns {React.JSX.Element} The rendered CssInlinerTool component.
+ * @returns {JSX.Element} The rendered CssInlinerTool component.
  */
-const CssInlinerTool = (): React.JSX.Element => {
+const CssInlinerTool = (): JSX.Element => {
   const [htmlInput, setHtmlInput] = useState<string>('');
   const [cssInput, setCssInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
