@@ -1,6 +1,5 @@
-'use client';
-
-import type { FormEvent } from 'react';
+import type { JSX, FormEvent } from 'react';
+('use client');
 
 import { Alert } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
@@ -39,9 +38,9 @@ interface TextToArrayInputProps {
  *
  *  @param {TextToArrayInputProps} props - The props for the component.
  *
- * @returns {React.JSX.Element} The rendered TextToArrayInput component.
+ * @returns {JSX.Element} The rendered TextToArrayInput component.
  */
-const TextToArrayInput: React.FC<TextToArrayInputProps> = ({
+const TextToArrayInput = ({
   input,
   setInput,
   outputFormat,
@@ -58,7 +57,7 @@ const TextToArrayInput: React.FC<TextToArrayInputProps> = ({
   onClear,
   onReset,
   error,
-}: TextToArrayInputProps): React.JSX.Element => {
+}: TextToArrayInputProps): JSX.Element => {
   /**
    * Handles form submission by preventing default behavior and triggering conversion
    *
