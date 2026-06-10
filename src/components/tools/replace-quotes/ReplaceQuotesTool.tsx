@@ -12,7 +12,7 @@ import ReplaceQuotesOutput from './ReplaceQuotesOutput';
  *
  * @returns {React.JSX.Element} The complete Replace Quotes tool with input options, output display, and information
  */
-const ReplaceQuotesTool: React.FC = (): React.JSX.Element => {
+const ReplaceQuotesTool = (): React.JSX.Element => {
   const [input, setInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
   const [replaceType, setReplaceType] = useState<'simple-to-curly' | 'curly-to-simple'>('simple-to-curly');
@@ -25,6 +25,7 @@ const ReplaceQuotesTool: React.FC = (): React.JSX.Element => {
    * @returns {void}
    *
    * @function
+   * @throws {Error} If an invalid replace type is provided
    */
   const handleSubmit = (): void => {
     let replacedText: string = input;
