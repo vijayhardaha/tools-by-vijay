@@ -1,10 +1,11 @@
+import type { JSX } from 'react';
 /**
  * Fully expanded version of the Slugify Tool information for SEO purposes.
  * Includes in-depth explanations, keyword-rich content, and added sections.
  *
- * @returns {React.JSX.Element} The rendered component displaying tool information
+ * @returns {JSX.Element} The rendered component displaying tool information
  */
-const SlugifyInfo = (): React.JSX.Element => {
+const SlugifyInfo = (): JSX.Element => {
   return (
     <div className="mt-12 space-y-12">
       <section>
