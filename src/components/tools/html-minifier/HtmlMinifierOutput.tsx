@@ -6,7 +6,7 @@ import { Textarea } from '@/components/ui/textarea';
 /**
  * Interface for the HtmlMinifierOutput component props.
  */
-interface IHtmlMinifierOutputProps {
+interface HtmlMinifierOutputProps {
   output: string;
   input: string;
 }
@@ -15,14 +15,14 @@ interface IHtmlMinifierOutputProps {
  * A React component that displays the minified HTML output along with compression information.
  * Includes a copy button to copy the output and a readonly textarea to view the minified HTML.
  *
- * @param {IHtmlMinifierOutputProps} props - The props for the component.
+ *  @param {HtmlMinifierOutputProps} props - The props for the component.
  *
  * @returns {React.JSX.Element} The rendered component.
  */
-const HtmlMinifierOutput: React.FC<IHtmlMinifierOutputProps> = ({
+const HtmlMinifierOutput: React.FC<HtmlMinifierOutputProps> = ({
   output,
   input,
-}: IHtmlMinifierOutputProps): React.JSX.Element => {
+}: HtmlMinifierOutputProps): React.JSX.Element => {
   return (
     <Card>
       <CardHeader>
