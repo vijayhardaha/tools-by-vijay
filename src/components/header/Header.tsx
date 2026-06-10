@@ -2,14 +2,9 @@
 
 import React, { useState } from 'react';
 
-import Link from 'next/link';
-import { PiTextAa as AaIcon } from 'react-icons/pi';
-
 import Logo from '@/components/header/parts/Logo';
 import MenuButton from '@/components/header/parts/MenuButton';
 import Sidebar from '@/components/header/sidebar/Sidebar';
-import { Button } from '@/components/ui/button';
-import { cn } from '@/utils/classNameUtils';
 
 /**
  * Header component that displays the app logo and menu button
@@ -17,7 +12,7 @@ import { cn } from '@/utils/classNameUtils';
  *
  * @returns {React.JSX.Element} Header component with logo, menu button and sidebar
  */
-const Header: React.FC = (): React.JSX.Element => {
+const Header = (): React.JSX.Element => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDrawer = () => setIsOpen(!isOpen);
