@@ -7,7 +7,7 @@ import SidebarHeader from './SidebarHeader';
 /**
  * Props for the Sidebar component.
  */
-type ISidebarProps = { isOpen: boolean; onClose: () => void };
+type SidebarProps = { isOpen: boolean; onClose: () => void };
 
 /**
  * Sidebar component that displays a sliding panel from the right side of the screen.
@@ -17,7 +17,7 @@ type ISidebarProps = { isOpen: boolean; onClose: () => void };
  *
  * @returns {React.JSX.Element} Sidebar component.
  */
-const Sidebar: React.FC<ISidebarProps> = ({ isOpen, onClose }: ISidebarProps): React.JSX.Element => (
+const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }: SidebarProps): React.JSX.Element => (
   <Sheet open={isOpen} onOpenChange={onClose}>
     <SheetContent
       side="right"
