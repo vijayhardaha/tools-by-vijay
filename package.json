@@ -16,6 +16,8 @@
   "dependencies": {
     "@putout/minify": "^5.0.1",
     "@radix-ui/react-slot": "^1.2.5",
+    "@vercel/analytics": "^2.0.1",
+    "@vijayhardaha/schema-builder": "^1.1.0",
     "class-variance-authority": "^0.7.1",
     "clean-css": "^5.3.3",
     "clsx": "^2.1.1",
