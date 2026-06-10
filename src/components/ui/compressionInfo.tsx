@@ -1,11 +1,12 @@
+import type { JSX } from 'react';
 /**
  * Utility function to wrap text in a <code> tag.
  *
  * @param {string} text - The text to wrap.
  *
- * @returns {React.JSX.Element} The text wrapped in a <code> tag.
+ * @returns {JSX.Element} The text wrapped in a <code> tag.
  */
-const wrapInCode = (text: string): React.JSX.Element => {
+const wrapInCode = (text: string): JSX.Element => {
   return <code className="bg-muted rounded px-1 py-0.5 text-xs font-medium text-pink-500">{text}</code>;
 };
 
@@ -22,9 +23,9 @@ interface CompressionInfoProps {
  *
  * @param {CompressionInfoProps} props - The component props
  *
- * @returns {React.JSX.Element | null} The formatted compression info
+ * @returns {JSX.Element | null} The formatted compression info
  */
-export const CompressionInfo = ({ input, output }: CompressionInfoProps): React.JSX.Element | null => {
+export const CompressionInfo = ({ input, output }: CompressionInfoProps): JSX.Element | null => {
   if (!output) return wrapInCode('Output is empty');
 
   const formatSize = (size: number): string => {
