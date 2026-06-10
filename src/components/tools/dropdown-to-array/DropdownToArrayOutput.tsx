@@ -5,7 +5,7 @@ import { Textarea } from '@/components/ui/textarea';
 /**
  * Interface for the CountryNameGeneratorOutput component props.
  */
-interface IDropdownToArrayOutputProps {
+interface DropdownToArrayOutputProps {
   output: string;
 }
 
@@ -18,9 +18,9 @@ interface IDropdownToArrayOutputProps {
  *
  * @returns {React.JSX.Element} The rendered component.
  */
-const DropdownToArrayOutput: React.FC<IDropdownToArrayOutputProps> = ({
+const DropdownToArrayOutput: React.FC<DropdownToArrayOutputProps> = ({
   output,
-}: IDropdownToArrayOutputProps): React.JSX.Element => {
+}: DropdownToArrayOutputProps): React.JSX.Element => {
   return (
     <Card>
       <CardHeader>
