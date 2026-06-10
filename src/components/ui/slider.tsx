@@ -1,13 +1,13 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import { cn } from '@/utils/classNameUtils';
 
 /**
  * Props for the Slider component
  */
-interface ISliderProps extends React.HTMLAttributes<HTMLDivElement> {
+interface SliderProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
   min?: number;
   max?: number;
@@ -20,14 +20,9 @@ interface ISliderProps extends React.HTMLAttributes<HTMLDivElement> {
 /**
  * A simplified slider component that allows users to select a value by moving a handle along a track.
  *
- * @param root0
- * @param root0.className
- * @param root0.min
- * @param root0.max
- * @param root0.step
- * @param root0.value
- * @param root0.onValueChange
- * @param root0.disabled
+ * @param {SliderProps} props - The component props
+ *
+ * @returns {React.JSX.Element} The rendered slider component
  */
 function Slider({
   className,
@@ -38,16 +33,15 @@ function Slider({
   onValueChange,
   disabled = false,
   ...props
-}: ISliderProps) {
-  const [currentValue, setCurrentValue] = useState(value);
+}: SliderProps): React.JSX.Element {
+  const [localValue, setLocalValue] = useState(value);
 
-  useEffect(() => {
-    setCurrentValue(value);
-  }, [value]);
+  // Derive the effective value during render (fixes set-state-in-effect)
+  const currentValue = value !== undefined ? value : localValue;
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = Number(event.target.value);
-    setCurrentValue(newValue);
+    setLocalValue(newValue);
     onValueChange?.(newValue);
   };
 
