@@ -1,4 +1,4 @@
-interface IPageContentProps {
+interface PageContentProps {
   children: React.ReactNode;
 }
 
@@ -12,7 +12,7 @@ interface IPageContentProps {
  *
  * @returns {React.JSX.Element} The rendered component
  */
-const PageContent: React.FC<IPageContentProps> = ({ children }: IPageContentProps): React.JSX.Element => {
+const PageContent: React.FC<PageContentProps> = ({ children }: PageContentProps): React.JSX.Element => {
   return <div className="relative">{children}</div>;
 };
 
