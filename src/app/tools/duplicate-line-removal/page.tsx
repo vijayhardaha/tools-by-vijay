@@ -34,7 +34,7 @@ export const metadata: PageMeta = generateMeta({
  *
  * @returns {React.JSX.Element} The rendered Duplicate Line Removal tool page component.
  */
-const DuplicateLineRemoval: React.FC = (): React.JSX.Element => {
+const DuplicateLineRemoval = (): React.JSX.Element => {
   if (!tool) {
     notFound(); // Render a 404 page if the tool is null
   }
