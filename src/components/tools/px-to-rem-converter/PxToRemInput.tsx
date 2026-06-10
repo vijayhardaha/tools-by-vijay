@@ -7,7 +7,7 @@ import { Label } from '@/components/ui/label';
 /**
  * Interface for the PxToRemInput component props.
  */
-interface IPxToRemInputProps {
+interface PxToRemInputProps {
   pxValue: string;
   setPxValue: (value: string) => void;
   baseFontSize: number;
@@ -17,16 +17,16 @@ interface IPxToRemInputProps {
 /**
  * Component for inputting px value and base font size.
  *
- * @param {IPxToRemInputProps} props - Component props.
+ *  @param {PxToRemInputProps} props - Component props.
  *
  * @returns {React.JSX.Element} The rendered input form.
  */
-const PxToRemInput: React.FC<IPxToRemInputProps> = ({
+const PxToRemInput: React.FC<PxToRemInputProps> = ({
   pxValue,
   setPxValue,
   baseFontSize,
   setBaseFontSize,
-}: IPxToRemInputProps): React.JSX.Element => {
+}: PxToRemInputProps): React.JSX.Element => {
   return (
     <Card>
       <CardHeader>
