@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
 import { CopyButton } from '@/components/ui/copyButton';
 import { Textarea } from '@/components/ui/textarea';
@@ -14,11 +16,9 @@ interface RandomUsernameGeneratorOutputProps {
  *
  * @param {RandomUsernameGeneratorOutputProps} props - The component props
  *
- * @returns {React.JSX.Element} The rendered component
+ * @returns {JSX.Element} The rendered component
  */
-const RandomUsernameGeneratorOutput: React.FC<RandomUsernameGeneratorOutputProps> = ({
-  output,
-}: RandomUsernameGeneratorOutputProps): React.JSX.Element => {
+const RandomUsernameGeneratorOutput = ({ output }: RandomUsernameGeneratorOutputProps): JSX.Element => {
   return (
     <Card>
       <CardHeader>
