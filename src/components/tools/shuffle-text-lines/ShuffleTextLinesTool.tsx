@@ -11,7 +11,7 @@ import ShuffleTextLinesOutput from './ShuffleTextLinesOutput';
  *
  * @returns {React.JSX.Element} The ShuffleTextLinesTool component.
  */
-const ShuffleTextLinesTool: React.FC = (): React.JSX.Element => {
+const ShuffleTextLinesTool = (): React.JSX.Element => {
   const [input, setInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
   const [removeDuplicates, setRemoveDuplicates] = useState<boolean>(false);
