@@ -1,7 +1,7 @@
-'use client';
+import type { JSX, ChangeEvent, ReactNode } from 'react';
+('use client');
 
 import { useState } from 'react';
-import type { ChangeEvent, ReactNode } from 'react';
 
 import { LuCheck as CheckIcon } from 'react-icons/lu';
 
@@ -26,7 +26,7 @@ interface RadioBoxProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
  *
  * @param {RadioBoxProps} props - The component props
  *
- * @returns {React.JSX.Element} The rendered radio box component
+ * @returns {JSX.Element} The rendered radio box component
  */
 function RadioBox({
   className,
@@ -38,7 +38,7 @@ function RadioBox({
   id,
   name,
   ...props
-}: RadioBoxProps): React.JSX.Element {
+}: RadioBoxProps): JSX.Element {
   const [internalChecked, setInternalChecked] = useState(controlledChecked || false);
 
   const isControlled = controlledChecked !== undefined;
