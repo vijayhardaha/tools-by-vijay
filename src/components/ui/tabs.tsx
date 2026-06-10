@@ -1,7 +1,7 @@
-'use client';
+import type { JSX, ReactNode } from 'react';
+('use client');
 
 import { useCallback, useContext, createContext, useState } from 'react';
-import type { ReactNode } from 'react';
 
 import { cn } from '@/utils/classNameUtils';
 
@@ -33,9 +33,9 @@ interface TabsProps extends React.HTMLAttributes<HTMLDivElement> {
  * @param {(value: string) => void} [props.onValueChange] - Callback when tab changes
  * @param {ReactNode} props.children - Tab elements
  *
- * @returns {React.JSX.Element} Tabs component
+ * @returns {JSX.Element} Tabs component
  */
-function Tabs({ className, defaultValue, value, onValueChange, children, ...props }: TabsProps): React.JSX.Element {
+function Tabs({ className, defaultValue, value, onValueChange, children, ...props }: TabsProps): JSX.Element {
   const [localTab, setLocalTab] = useState(value || defaultValue || '');
 
   // Derive the effective tab during render (fixes set-state-in-effect)
@@ -73,9 +73,9 @@ interface TabsListProps extends React.HTMLAttributes<HTMLDivElement> {
  * @param {string} [props.className] - Additional CSS classes
  * @param {ReactNode} props.children - Tab trigger elements
  *
- * @returns {React.JSX.Element} TabsList component
+ * @returns {JSX.Element} TabsList component
  */
-function TabsList({ className, children, ...props }: TabsListProps): React.JSX.Element {
+function TabsList({ className, children, ...props }: TabsListProps): JSX.Element {
   return (
     <div
       data-slot="tabs-list"
@@ -110,9 +110,9 @@ interface TabsTriggerProps extends React.ButtonHTMLAttributes<HTMLButtonElement>
  * @param {boolean} [props.disabled] - Whether the tab is disabled
  * @param {ReactNode} props.children - Tab content
  *
- * @returns {React.JSX.Element} TabsTrigger component
+ * @returns {JSX.Element} TabsTrigger component
  */
-function TabsTrigger({ className, value, disabled, children, ...props }: TabsTriggerProps): React.JSX.Element {
+function TabsTrigger({ className, value, disabled, children, ...props }: TabsTriggerProps): JSX.Element {
   const { selectedTab, setSelectedTab } = useContext(TabsContext);
   const isActive = selectedTab === value;
 
@@ -159,9 +159,9 @@ interface TabsContentProps extends React.HTMLAttributes<HTMLDivElement> {
  * @param {ReactNode} props.children - Content to display when this tab is active
  * @param {object} [props.rest] - Additional props to pass to the div element
  *
- * @returns {React.JSX.Element | null} The tab content when active, or null when inactive
+ * @returns {JSX.Element | null} The tab content when active, or null when inactive
  */
-function TabsContent({ className, value, children, ...props }: TabsContentProps): React.JSX.Element | null {
+function TabsContent({ className, value, children, ...props }: TabsContentProps): JSX.Element | null {
   const { selectedTab } = useContext(TabsContext);
   const isSelected = selectedTab === value;
 
