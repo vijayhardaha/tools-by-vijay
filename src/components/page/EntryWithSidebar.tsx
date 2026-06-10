@@ -1,3 +1,4 @@
+import type { JSX } from 'react';
 import { useRef, useEffect, useState } from 'react';
 
 import ToolsListWidget from '@/components/page/ToolsListWidget';
@@ -16,12 +17,9 @@ interface EntryWithSidebarProps {
  *
  * @param {EntryWithSidebarProps} props - The component props.
  *
- * @returns {React.JSX.Element} The rendered component.
+ * @returns {JSX.Element} The rendered component.
  */
-const EntryWithSidebar: React.FC<EntryWithSidebarProps> = ({
-  tool,
-  children,
-}: EntryWithSidebarProps): React.JSX.Element => {
+const EntryWithSidebar = ({ tool, children }: EntryWithSidebarProps): JSX.Element => {
   const categories = getAllCategorySlugs().filter((category) => category !== tool.category);
 
   const [category1, setCategory1] = useState('');
