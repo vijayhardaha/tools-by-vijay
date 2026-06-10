@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
 import { CopyButton } from '@/components/ui/copyButton';
 import { Textarea } from '@/components/ui/textarea';
@@ -14,9 +16,9 @@ interface UnminifyOutputProps {
  *
  *  @param {UnminifyOutputProps} props - The props for the component.
  *
- * @returns {React.JSX.Element} The rendered UnminifyOutput component.
+ * @returns {JSX.Element} The rendered UnminifyOutput component.
  */
-const UnminifyOutput: React.FC<UnminifyOutputProps> = ({ output }: UnminifyOutputProps): React.JSX.Element => {
+const UnminifyOutput = ({ output }: UnminifyOutputProps): JSX.Element => {
   return (
     <Card>
       <CardHeader>
