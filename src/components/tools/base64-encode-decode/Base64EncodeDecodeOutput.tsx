@@ -5,7 +5,7 @@ import { Textarea } from '@/components/ui/textarea';
 /**
  * Props for the Base64EncodeDecodeOutput component.
  */
-interface IBase64EncodeDecodeOutputProps {
+interface Base64EncodeDecodeOutputProps {
   output: string;
 }
 
@@ -13,13 +13,13 @@ interface IBase64EncodeDecodeOutputProps {
  * A component that displays the result of a Base64 encoding or decoding operation.
  * It includes a textarea to show the output and a button to copy the output to the clipboard.
  *
- * @param {IBase64EncodeDecodeOutputProps} props - The props for the component.
+ *  @param {Base64EncodeDecodeOutputProps} props - The props for the component.
  *
  * @returns {React.JSX.Element} The rendered component.
  */
-const Base64EncodeDecodeOutput: React.FC<IBase64EncodeDecodeOutputProps> = ({
+const Base64EncodeDecodeOutput: React.FC<Base64EncodeDecodeOutputProps> = ({
   output,
-}: IBase64EncodeDecodeOutputProps): React.JSX.Element => {
+}: Base64EncodeDecodeOutputProps): React.JSX.Element => {
   return (
     <Card>
       <CardHeader>
