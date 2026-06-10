@@ -43,7 +43,7 @@ const SocialButton: React.FC<SocialButtonProps> = ({
  *
  * @returns {React.JSX.Element} The rendered footer about section.
  */
-const FooterAbout: React.FC = (): React.JSX.Element => {
+const FooterAbout = (): React.JSX.Element => {
   return (
     <div className="mb-6 flex flex-col gap-4">
       <div className="space-y-2">
