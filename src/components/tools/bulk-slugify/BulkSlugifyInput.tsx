@@ -1,6 +1,5 @@
-'use client';
-
-import type { FormEvent } from 'react';
+import type { JSX, FormEvent } from 'react';
+('use client');
 
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
@@ -38,9 +37,9 @@ interface BulkSlugifyInputProps {
  *
  * @param {BulkSlugifyInputProps} props - The props for the component.
  *
- * @returns {React.JSX.Element} The rendered barcode input component.
+ * @returns {JSX.Element} The rendered barcode input component.
  */
-const BulkSlugifyInput: React.FC<BulkSlugifyInputProps> = ({
+const BulkSlugifyInput = ({
   input = '',
   useUnderscore = false,
   setInput,
@@ -56,7 +55,7 @@ const BulkSlugifyInput: React.FC<BulkSlugifyInputProps> = ({
   onReset,
   keepEmptyLines = false,
   setKeepEmptyLines,
-}: BulkSlugifyInputProps): React.JSX.Element => {
+}: BulkSlugifyInputProps): JSX.Element => {
   /**
    * Handles form submission to generate slugs
    *
