@@ -1,6 +1,5 @@
-'use client';
-
-import type { FormEvent } from 'react';
+import type { JSX, FormEvent } from 'react';
+('use client');
 
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
@@ -22,14 +21,9 @@ interface BarcodeGeneratorInputProps {
  *
  *  @param {BarcodeGeneratorInputProps} props - The props for the component.
  *
- * @returns {React.JSX.Element} The rendered barcode input component.
+ * @returns {JSX.Element} The rendered barcode input component.
  */
-const BarcodeGeneratorInput: React.FC<BarcodeGeneratorInputProps> = ({
-  input,
-  setInput,
-  onSubmit,
-  onClear,
-}: BarcodeGeneratorInputProps): React.JSX.Element => {
+const BarcodeGeneratorInput = ({ input, setInput, onSubmit, onClear }: BarcodeGeneratorInputProps): JSX.Element => {
   /**
    * Handles the form submission to generate the barcode.
    *
