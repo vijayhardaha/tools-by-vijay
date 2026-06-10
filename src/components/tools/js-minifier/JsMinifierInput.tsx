@@ -12,7 +12,7 @@ import { Textarea } from '@/components/ui/textarea';
 /**
  * Interface for the JavaScript Minifier input component props.
  */
-interface IJsMinifierInputProps {
+interface JsMinifierInputProps {
   input: string;
   setInput: (value: string) => void;
   options: MinifyOptions;
@@ -27,11 +27,11 @@ interface IJsMinifierInputProps {
 /**
  * Component for JavaScript minifier input and options.
  *
- * @param {IJsMinifierInputProps} props - Component props.
+ *  @param {JsMinifierInputProps} props - Component props.
  *
  * @returns {React.JSX.Element} The JsMinifierInput component.
  */
-const JsMinifierInput: React.FC<IJsMinifierInputProps> = ({
+const JsMinifierInput: React.FC<JsMinifierInputProps> = ({
   input,
   setInput,
   options,
@@ -41,7 +41,7 @@ const JsMinifierInput: React.FC<IJsMinifierInputProps> = ({
   onReset,
   isLoading,
   error,
-}: IJsMinifierInputProps): React.JSX.Element => {
+}: JsMinifierInputProps): React.JSX.Element => {
   /**
    * Handles form submission and triggers JavaScript minification.
    *
