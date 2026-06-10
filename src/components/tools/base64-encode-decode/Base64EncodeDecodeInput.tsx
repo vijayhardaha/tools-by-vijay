@@ -1,6 +1,5 @@
-'use client';
-
-import type { FormEvent } from 'react';
+import type { JSX, FormEvent } from 'react';
+('use client');
 
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
@@ -26,9 +25,9 @@ interface Base64EncodeDecodeInputProps {
  *
  *  @param {Base64EncodeDecodeInputProps} props - The props for the component.
  *
- * @returns {React.JSX.Element} The rendered input component.
+ * @returns {JSX.Element} The rendered input component.
  */
-const Base64EncodeDecodeInput: React.FC<Base64EncodeDecodeInputProps> = ({
+const Base64EncodeDecodeInput = ({
   input,
   setInput,
   isEncoding,
@@ -36,7 +35,7 @@ const Base64EncodeDecodeInput: React.FC<Base64EncodeDecodeInputProps> = ({
   onProcess,
   onClear,
   onReset,
-}: Base64EncodeDecodeInputProps): React.JSX.Element => {
+}: Base64EncodeDecodeInputProps): JSX.Element => {
   /**
    * Handles the form submission to process the input.
    *
