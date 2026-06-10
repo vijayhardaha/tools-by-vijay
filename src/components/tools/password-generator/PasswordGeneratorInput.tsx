@@ -1,7 +1,7 @@
-'use client';
+import type { JSX, FormEvent } from 'react';
+('use client');
 
 import React from 'react';
-import type { FormEvent } from 'react';
 
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
@@ -36,9 +36,9 @@ interface PasswordGeneratorInputProps {
  *
  *  @param {PasswordGeneratorInputProps} props - Component props.
  *
- * @returns {React.JSX.Element} The rendered form with password generation options.
+ * @returns {JSX.Element} The rendered form with password generation options.
  */
-const PasswordGeneratorInput: React.FC<PasswordGeneratorInputProps> = ({
+const PasswordGeneratorInput = ({
   length,
   setLength,
   useUppercase,
@@ -53,7 +53,7 @@ const PasswordGeneratorInput: React.FC<PasswordGeneratorInputProps> = ({
   setExcludeSimilar,
   onSubmit,
   onReset,
-}: PasswordGeneratorInputProps): React.JSX.Element => {
+}: PasswordGeneratorInputProps): JSX.Element => {
   const handleSubmit = (e: FormEvent): void => {
     e.preventDefault();
     onSubmit();
