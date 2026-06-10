@@ -3,7 +3,7 @@ import type { JSX } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { cn } from '@/utils/classNameUtils';
+import { cn } from '@/utils/classnames';
 
 /**
  * Props for the Logo component.

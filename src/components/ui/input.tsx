@@ -1,6 +1,6 @@
 import type { JSX, InputHTMLAttributes } from 'react';
 
-import { cn } from '@/utils/classNameUtils';
+import { cn } from '@/utils/classnames';
 
 /**
  * Props for the Input component.

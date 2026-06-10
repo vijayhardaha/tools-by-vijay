@@ -3,7 +3,7 @@
 import type { JSX, HTMLAttributes, ChangeEvent } from 'react';
 import { useState } from 'react';
 
-import { cn } from '@/utils/classNameUtils';
+import { cn } from '@/utils/classnames';
 
 export { Slider };
 

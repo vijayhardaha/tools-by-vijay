@@ -5,7 +5,7 @@ import { forwardRef } from 'react';
 
 import { cva } from 'class-variance-authority';
 
-import { cn } from '@/utils/classNameUtils';
+import { cn } from '@/utils/classnames';
 
 /**
  * Props for the Label component.

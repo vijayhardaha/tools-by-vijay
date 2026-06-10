@@ -4,7 +4,7 @@ import type { JSX, ReactNode } from 'react';
 import { useRef, useEffect, useState } from 'react';
 
 import ToolsListWidget from '@/components/page/ToolsListWidget';
-import { getAllCategorySlugs } from '@/utils/categoryUtils';
+import { getAllCategorySlugs } from '@/utils/categories';
 
 /**
  * Props for the EntryWithSidebar component.

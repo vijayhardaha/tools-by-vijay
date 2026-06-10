@@ -6,7 +6,7 @@ import { forwardRef } from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import { cva } from 'class-variance-authority';
 
-import { cn } from '@/utils/classNameUtils';
+import { cn } from '@/utils/classnames';
 
 /**
  * Variant and size styles for the Button component.

@@ -2,7 +2,7 @@ import type { JSX, HTMLAttributes, ReactNode } from 'react';
 
 import { cva } from 'class-variance-authority';
 
-import { cn } from '@/utils/classNameUtils';
+import { cn } from '@/utils/classnames';
 
 const badgeVariants = cva('inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset', {
   variants: {

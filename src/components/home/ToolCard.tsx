@@ -4,8 +4,8 @@ import Link from 'next/link';
 
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import type { Tool } from '@/types';
-import { cn } from '@/utils/classNameUtils';
-import { findToolBySlug, getIconForTool } from '@/utils/toolUtils';
+import { cn } from '@/utils/classnames';
+import { findToolBySlug, getIconForTool } from '@/utils/tools';
 
 /**
  * Props for the ToolCard component.

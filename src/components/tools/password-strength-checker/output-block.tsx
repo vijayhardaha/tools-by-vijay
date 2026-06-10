@@ -6,7 +6,7 @@ import { LuCheck as CheckIcon, LuX as XIcon } from 'react-icons/lu';
 
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
-import { cn } from '@/utils/classNameUtils';
+import { cn } from '@/utils/classnames';
 
 /**
  * Interface for the password strength analysis result.

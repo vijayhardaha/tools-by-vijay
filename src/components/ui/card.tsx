@@ -1,6 +1,6 @@
 import type { JSX, ReactNode, ElementType, HTMLAttributes } from 'react';
 
-import { cn } from '@/utils/classNameUtils';
+import { cn } from '@/utils/classnames';
 
 /**
  * Props for the Card component.

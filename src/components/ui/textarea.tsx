@@ -1,6 +1,6 @@
 import type { JSX, TextareaHTMLAttributes } from 'react';
 
-import { cn } from '@/utils/classNameUtils';
+import { cn } from '@/utils/classnames';
 
 export { Textarea };
 

@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { LuCopy as CopyIcon, LuCheck as CheckIcon } from 'react-icons/lu';
 
 import { Button } from '@/components/ui/button';
-import { cn } from '@/utils/classNameUtils';
+import { cn } from '@/utils/classnames';
 
 /**
  * Props for the CopyButton component.

@@ -3,7 +3,7 @@ import type { JSX, HTMLAttributes, ReactElement, ReactNode } from 'react';
 import { cva } from 'class-variance-authority';
 import { LuCircleAlert, LuInfo, LuTriangleAlert, LuCircleCheck, LuCircleX } from 'react-icons/lu';
 
-import { cn } from '@/utils/classNameUtils';
+import { cn } from '@/utils/classnames';
 
 // Define variants using shadcn-like styling
 const alertVariants = cva(

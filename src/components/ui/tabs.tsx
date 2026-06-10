@@ -3,7 +3,7 @@
 import type { JSX, ReactNode, HTMLAttributes, ButtonHTMLAttributes } from 'react';
 import { useCallback, useContext, createContext, useState } from 'react';
 
-import { cn } from '@/utils/classNameUtils';
+import { cn } from '@/utils/classnames';
 
 /**
  * Type for the Tabs context value.

@@ -4,8 +4,8 @@ import { useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { Scrollbars } from 'react-custom-scrollbars-4';
 
-import { getAllCategories } from '@/utils/categoryUtils';
-import { getToolsByCategories } from '@/utils/toolUtils';
+import { getAllCategories } from '@/utils/categories';
+import { getToolsByCategories } from '@/utils/tools';
 
 /**
  * Props for the NavLink component.

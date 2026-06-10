@@ -4,9 +4,9 @@ import Link from 'next/link';
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import type { Category, Tool } from '@/types';
-import { getCategoryBySlug } from '@/utils/categoryUtils';
-import { cn } from '@/utils/classNameUtils';
-import { getToolsByCategory } from '@/utils/toolUtils';
+import { getCategoryBySlug } from '@/utils/categories';
+import { cn } from '@/utils/classnames';
+import { getToolsByCategory } from '@/utils/tools';
 
 /**
  * Props for the ToolsListWidget component.

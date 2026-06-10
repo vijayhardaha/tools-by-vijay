@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 import { LuCheck as CheckIcon } from 'react-icons/lu';
 
-import { cn } from '@/utils/classNameUtils';
+import { cn } from '@/utils/classnames';
 
 export { RadioBox };
 

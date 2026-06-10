@@ -5,7 +5,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { LuCheck as CheckIcon, LuChevronDown as ChevronDownIcon } from 'react-icons/lu';
 
-import { cn } from '@/utils/classNameUtils';
+import { cn } from '@/utils/classnames';
 
 export { Select };
 

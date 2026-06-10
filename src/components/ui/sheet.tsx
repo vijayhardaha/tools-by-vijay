@@ -7,7 +7,7 @@ import { createPortal } from 'react-dom';
 import { RiCloseFill } from 'react-icons/ri';
 
 import { Button } from '@/components/ui/button';
-import { cn } from '@/utils/classNameUtils';
+import { cn } from '@/utils/classnames';
 
 /**
  * Type for the Sheet context value.
