@@ -11,7 +11,7 @@ import { Textarea } from '@/components/ui/textarea';
 /**
  * Interface for the TextCaseChangerInput component props.
  */
-interface ITextCaseChangerInputProps {
+interface TextCaseChangerInputProps {
   input: string;
   setInput: (value: string) => void;
   textCase: string;
@@ -25,11 +25,11 @@ interface ITextCaseChangerInputProps {
 /**
  * Component for accepting text input and selecting a text case transformation.
  *
- * @param {ITextCaseChangerInputProps} props - The props for the TextCaseChangerInput component.
+ * @param {TextCaseChangerInputProps} props - The props for the TextCaseChangerInput component.
  *
  * @returns {React.JSX.Element} The TextCaseChangerInput component.
  */
-const TextCaseChangerInput: React.FC<ITextCaseChangerInputProps> = ({
+const TextCaseChangerInput: React.FC<TextCaseChangerInputProps> = ({
   input,
   setInput,
   textCase,
@@ -38,7 +38,7 @@ const TextCaseChangerInput: React.FC<ITextCaseChangerInputProps> = ({
   onClear,
   onReset,
   error,
-}: ITextCaseChangerInputProps): React.JSX.Element => {
+}: TextCaseChangerInputProps): React.JSX.Element => {
   /**
    * Handles the form submission event.
    *
