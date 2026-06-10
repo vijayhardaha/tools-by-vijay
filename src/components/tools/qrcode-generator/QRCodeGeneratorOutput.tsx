@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import Image from 'next/image';
 
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
@@ -16,9 +18,9 @@ interface QrCodeGeneratorOutputProps {
  *  @param {QrCodeGeneratorOutputProps} props - The props for the component.
  * @param {string} props.output - The URL of the generated QR code image.
  *
- * @returns {React.JSX.Element} The rendered QR code output component.
+ * @returns {JSX.Element} The rendered QR code output component.
  */
-const QRCodeGeneratorOutput: React.FC<QrCodeGeneratorOutputProps> = ({ output }): React.JSX.Element => {
+const QRCodeGeneratorOutput = ({ output }: QrCodeGeneratorOutputProps): JSX.Element => {
   return (
     <Card>
       <CardHeader>
