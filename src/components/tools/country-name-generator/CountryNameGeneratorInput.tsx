@@ -1,6 +1,5 @@
-'use client';
-
-import type { FormEvent } from 'react';
+import type { JSX, FormEvent } from 'react';
+('use client');
 
 import { Alert } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
@@ -23,15 +22,15 @@ interface CountryNameGeneratorInputProps {
  *
  * @param {CountryNameGeneratorInputProps}props - The props for the CountryNameGeneratorInput component.
  *
- * @returns {React.JSX.Element} The CountryNameGeneratorInput component.
+ * @returns {JSX.Element} The CountryNameGeneratorInput component.
  */
-const CountryNameGeneratorInput: React.FC<CountryNameGeneratorInputProps> = ({
+const CountryNameGeneratorInput = ({
   count,
   setCount,
   onGenerate,
   onClear,
   error,
-}: CountryNameGeneratorInputProps): React.JSX.Element => {
+}: CountryNameGeneratorInputProps): JSX.Element => {
   /**
    * Handles the form submission event.
    *
