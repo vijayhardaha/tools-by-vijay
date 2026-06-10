@@ -1,6 +1,6 @@
-'use client';
+import type { JSX, FormEvent } from 'react';
+('use client');
 import React from 'react';
-import type { FormEvent } from 'react';
 
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
@@ -29,9 +29,9 @@ interface DuplicateLineRemovalInputProps {
  *
  *  @param {DuplicateLineRemovalInputProps} props - The props for the component.
  *
- * @returns {React.JSX.Element} The rendered component.
+ * @returns {JSX.Element} The rendered component.
  */
-const DuplicateLineRemovalInput: React.FC<DuplicateLineRemovalInputProps> = ({
+const DuplicateLineRemovalInput = ({
   input,
   setInput,
   sortType,
@@ -41,7 +41,7 @@ const DuplicateLineRemovalInput: React.FC<DuplicateLineRemovalInputProps> = ({
   onSubmit,
   onReset,
   onClear,
-}: DuplicateLineRemovalInputProps): React.JSX.Element => {
+}: DuplicateLineRemovalInputProps): JSX.Element => {
   /**
    * Handles form submission by preventing default behavior and triggering conversion.
    *
