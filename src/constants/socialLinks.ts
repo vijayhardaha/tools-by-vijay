@@ -6,7 +6,7 @@ import type { SocialMediaLink } from '@/types';
 /**
  * A list of social media links with metadata and icons.
  *
- * @type {SocialMediaLinkItem[]}
+ * @type {SocialMediaLink[]}
  */
 export const socialMediaLinks: SocialMediaLink[] = [
   {
