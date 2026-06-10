@@ -1,4 +1,4 @@
-import type { ReactNode, ElementType } from 'react';
+import type { JSX, ReactNode, ElementType } from 'react';
 
 import { cn } from '@/utils/classNameUtils';
 
@@ -16,9 +16,9 @@ interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
  *
  * @param {CardProps} props - The component props
  *
- * @returns {React.JSX.Element} The rendered card component
+ * @returns {JSX.Element} The rendered card component
  */
-function Card({ className, children, component, ...props }: CardProps): React.JSX.Element {
+function Card({ className, children, component, ...props }: CardProps): JSX.Element {
   const Tag = component || 'div';
   return (
     <Tag
@@ -48,9 +48,9 @@ interface CardHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
  *
  * @param {CardHeaderProps} props - The component props
  *
- * @returns {React.JSX.Element} The rendered card header
+ * @returns {JSX.Element} The rendered card header
  */
-function CardHeader({ className, children, component, ...props }: CardHeaderProps): React.JSX.Element {
+function CardHeader({ className, children, component, ...props }: CardHeaderProps): JSX.Element {
   const Tag = component || 'div';
   return (
     <Tag
@@ -82,9 +82,9 @@ interface CardTitleProps extends React.HTMLAttributes<HTMLHeadingElement> {
  *
  * @param {CardTitleProps} props - The component props
  *
- * @returns {React.JSX.Element} The rendered card title
+ * @returns {JSX.Element} The rendered card title
  */
-function CardTitle({ className, children, component, ...props }: CardTitleProps): React.JSX.Element {
+function CardTitle({ className, children, component, ...props }: CardTitleProps): JSX.Element {
   const Tag = component || 'h2';
   return (
     <Tag data-slot="card-title" className={cn('text-lg leading-none font-bold', className)} {...props}>
@@ -110,9 +110,9 @@ interface CardDescriptionProps extends React.HTMLAttributes<HTMLParagraphElement
  *
  * @param {CardDescriptionProps} props - The component props
  *
- * @returns {React.JSX.Element} The rendered card description
+ * @returns {JSX.Element} The rendered card description
  */
-function CardDescription({ className, children, component, ...props }: CardDescriptionProps): React.JSX.Element {
+function CardDescription({ className, children, component, ...props }: CardDescriptionProps): JSX.Element {
   const Tag = component || 'p';
   return (
     <Tag data-slot="card-description" className={cn('text-muted-foreground text-sm', className)} {...props}>
@@ -135,9 +135,9 @@ interface CardActionProps extends React.HTMLAttributes<HTMLDivElement> {
  *
  * @param {CardActionProps} props - The component props
  *
- * @returns {React.JSX.Element} The rendered card action
+ * @returns {JSX.Element} The rendered card action
  */
-function CardAction({ className, children, component, ...props }: CardActionProps): React.JSX.Element {
+function CardAction({ className, children, component, ...props }: CardActionProps): JSX.Element {
   const Tag = component || 'div';
   return (
     <Tag
@@ -164,9 +164,9 @@ interface CardContentProps extends React.HTMLAttributes<HTMLDivElement> {
  *
  * @param {CardContentProps} props - The component props
  *
- * @returns {React.JSX.Element} The rendered card content
+ * @returns {JSX.Element} The rendered card content
  */
-function CardContent({ className, children, component, ...props }: CardContentProps): React.JSX.Element {
+function CardContent({ className, children, component, ...props }: CardContentProps): JSX.Element {
   const Tag = component || 'div';
   return (
     <Tag data-slot="card-content" className={cn('px-4 md:px-6', className)} {...props}>
@@ -189,9 +189,9 @@ interface CardFooterProps extends React.HTMLAttributes<HTMLDivElement> {
  *
  * @param {CardFooterProps} props - The component props
  *
- * @returns {React.JSX.Element} The rendered card footer
+ * @returns {JSX.Element} The rendered card footer
  */
-function CardFooter({ className, children, component, ...props }: CardFooterProps): React.JSX.Element {
+function CardFooter({ className, children, component, ...props }: CardFooterProps): JSX.Element {
   const Tag = component || 'div';
   return (
     <Tag
