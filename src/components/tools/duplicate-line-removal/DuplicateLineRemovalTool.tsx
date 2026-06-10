@@ -12,7 +12,7 @@ import DuplicateLineRemovalOutput from './DuplicateLineRemovalOutput';
  *
  * @returns {React.JSX.Element} The complete Duplicate Line Removal tool with input options, output display, and functionality
  */
-const DuplicateLineRemovalTool: React.FC = (): React.JSX.Element => {
+const DuplicateLineRemovalTool = (): React.JSX.Element => {
   const [input, setInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
   const [sortType, setSortType] = useState<'none' | 'alphabetical' | 'ascii'>('none');
