@@ -1,4 +1,4 @@
-import type { FormEvent } from 'react';
+import type { JSX, FormEvent } from 'react';
 
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
@@ -29,9 +29,9 @@ interface AlphabeticalLineSorterInputProps {
  *
  * @param {AlphabeticalLineSorterInputProps} props - Component props
  *
- * @returns {React.JSX.Element} The rendered input form
+ * @returns {JSX.Element} The rendered input form
  */
-const AlphabeticalLineSorterInput: React.FC<AlphabeticalLineSorterInputProps> = ({
+const AlphabeticalLineSorterInput = ({
   input,
   setInput,
   reverseSort,
@@ -43,7 +43,7 @@ const AlphabeticalLineSorterInput: React.FC<AlphabeticalLineSorterInputProps> = 
   onSubmit,
   onReset,
   onClear,
-}: AlphabeticalLineSorterInputProps): React.JSX.Element => {
+}: AlphabeticalLineSorterInputProps): JSX.Element => {
   /**
    * Handles form submission to sort lines alphabetically
    *
