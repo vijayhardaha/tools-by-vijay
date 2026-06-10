@@ -34,7 +34,7 @@ export const metadata: PageMeta = generateMeta({
  *
  * @returns {React.JSX.Element} The rendered JSON Sorter tool page component.
  */
-const JsonSorter: React.FC = (): React.JSX.Element => {
+const JsonSorter = (): React.JSX.Element => {
   if (!tool) {
     notFound(); // Render a 404 page if the tool is null
   }
