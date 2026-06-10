@@ -11,7 +11,7 @@ import { Textarea } from '@/components/ui/textarea';
 /**
  * Interface for the UnminifyInput component props.
  */
-interface IUnminifyInputProps {
+interface UnminifyInputProps {
   input: string;
   setInput: (value: string) => void;
   codeType: string;
@@ -25,11 +25,11 @@ interface IUnminifyInputProps {
 /**
  * Component for accepting code input and triggering unminification.
  *
- * @param {IUnminifyInputProps} props - The props for the component.
+ *  @param {UnminifyInputProps} props - The props for the component.
  *
  * @returns {React.JSX.Element} The rendered UnminifyInput component.
  */
-const UnminifyInput: React.FC<IUnminifyInputProps> = ({
+const UnminifyInput: React.FC<UnminifyInputProps> = ({
   input,
   setInput,
   codeType,
@@ -38,7 +38,7 @@ const UnminifyInput: React.FC<IUnminifyInputProps> = ({
   onClear,
   isLoading,
   error,
-}: IUnminifyInputProps): React.JSX.Element => {
+}: UnminifyInputProps): React.JSX.Element => {
   /**
    * Handles the form submission event.
    *
