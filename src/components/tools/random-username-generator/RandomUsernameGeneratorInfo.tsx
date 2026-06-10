@@ -4,7 +4,7 @@
  *
  * @returns {React.JSX.Element} The rendered component displaying tool information
  */
-const RandomUsernameGeneratorInfo: React.FC = (): React.JSX.Element => {
+const RandomUsernameGeneratorInfo = (): React.JSX.Element => {
   return (
     <div className="max-w-none space-y-8">
       <section>
