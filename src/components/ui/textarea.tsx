@@ -1,11 +1,11 @@
-import type { JSX } from 'react';
+import type { JSX, TextareaHTMLAttributes } from 'react';
 
 import { cn } from '@/utils/classNameUtils';
 
 /**
  * Props for the Textarea component
  */
-interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   className?: string;
 }
 

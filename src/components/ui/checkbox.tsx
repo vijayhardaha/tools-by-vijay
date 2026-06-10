@@ -1,6 +1,6 @@
-import type { JSX, ChangeEvent, ReactNode } from 'react';
-('use client');
+'use client';
 
+import type { JSX, ChangeEvent, ReactNode, LabelHTMLAttributes } from 'react';
 import { useState } from 'react';
 
 import { LuCheck as CheckIcon } from 'react-icons/lu';
@@ -10,7 +10,7 @@ import { cn } from '@/utils/classNameUtils';
 /**
  * Props for the Checkbox component.
  */
-interface CheckboxProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
+interface CheckboxProps extends LabelHTMLAttributes<HTMLLabelElement> {
   className?: string;
   checked?: boolean;
   onCheckedChange?: (checked: boolean) => void;
@@ -45,7 +45,7 @@ function Checkbox({
   /**
    * Handles the checkbox state change event.
    *
-   * @param {React.ChangeEvent<HTMLInputElement>} event - The change event
+   * @param {ChangeEvent<HTMLInputElement>} event - The change event
    */
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (!isControlled) {

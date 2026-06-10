@@ -1,6 +1,6 @@
-import type { JSX, ReactNode } from 'react';
-('use client');
+'use client';
 
+import type { JSX, ReactNode, HTMLAttributes, ButtonHTMLAttributes } from 'react';
 import { useState, useEffect, useContext, createContext, useCallback, useRef } from 'react';
 
 import { createPortal } from 'react-dom';
@@ -21,7 +21,7 @@ const SheetContext = createContext<SheetContextType>({ open: false, onOpenChange
 /**
  * Props for the Sheet component
  */
-interface SheetProps extends React.HTMLAttributes<HTMLDivElement> {
+interface SheetProps extends HTMLAttributes<HTMLDivElement> {
   open?: boolean;
   onOpenChange?: (value: boolean) => void;
   children: ReactNode;
@@ -60,7 +60,7 @@ function Sheet({ open: controlledOpen, onOpenChange, children, ...props }: Sheet
 /**
  * Props for the SheetClose component
  */
-interface SheetCloseProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface SheetCloseProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
   children: ReactNode;
 }
@@ -130,7 +130,7 @@ function SheetPortal({ children, ...props }: SheetPortalProps): JSX.Element | nu
 /**
  * Props for the SheetOverlay component
  */
-interface SheetOverlayProps extends React.HTMLAttributes<HTMLDivElement> {
+interface SheetOverlayProps extends HTMLAttributes<HTMLDivElement> {
   className?: string;
 }
 
@@ -166,7 +166,7 @@ function SheetOverlay({ className = '', ...props }: SheetOverlayProps): JSX.Elem
 /**
  * Props for the SheetContent component
  */
-interface SheetContentProps extends React.HTMLAttributes<HTMLDivElement> {
+interface SheetContentProps extends HTMLAttributes<HTMLDivElement> {
   className?: string;
   children: ReactNode;
   side?: 'right' | 'left' | 'top' | 'bottom';
@@ -258,7 +258,7 @@ function SheetContent({ className = '', children, side = 'right', ...props }: Sh
 /**
  * Props for the SheetHeader component
  */
-interface SheetHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
+interface SheetHeaderProps extends HTMLAttributes<HTMLDivElement> {
   className?: string;
   children: ReactNode;
 }
@@ -289,7 +289,7 @@ function SheetHeader({ className, children, ...props }: SheetHeaderProps): JSX.E
 /**
  * Props for the SheetFooter component
  */
-interface SheetFooterProps extends React.HTMLAttributes<HTMLDivElement> {
+interface SheetFooterProps extends HTMLAttributes<HTMLDivElement> {
   className?: string;
 }
 

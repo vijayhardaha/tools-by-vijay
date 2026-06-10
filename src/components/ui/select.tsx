@@ -1,6 +1,6 @@
-import type { JSX } from 'react';
-('use client');
+'use client';
 
+import type { JSX, HTMLAttributes } from 'react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { LuCheck as CheckIcon, LuChevronDown as ChevronDownIcon } from 'react-icons/lu';
@@ -10,7 +10,7 @@ import { cn } from '@/utils/classNameUtils';
 /**
  * Option type for the Select component
  */
-interface SelectOption extends React.HTMLAttributes<HTMLDivElement> {
+interface SelectOption extends HTMLAttributes<HTMLDivElement> {
   value: string;
   label: string;
   disabled?: boolean;
@@ -19,7 +19,7 @@ interface SelectOption extends React.HTMLAttributes<HTMLDivElement> {
 /**
  * Props for the Select component
  */
-interface SelectProps extends React.HTMLAttributes<HTMLDivElement> {
+interface SelectProps extends HTMLAttributes<HTMLDivElement> {
   value?: string;
   defaultValue?: string;
   onValueChange?: (value: string) => void;

@@ -1,5 +1,5 @@
 'use client';
-
+import type { HTMLAttributes } from 'react';
 import { forwardRef } from 'react';
 
 import { cn } from '@/utils/classNameUtils';
@@ -7,7 +7,7 @@ import { cn } from '@/utils/classNameUtils';
 /**
  * Props for the Progress component
  */
-interface ProgressProps extends React.HTMLAttributes<HTMLDivElement> {
+interface ProgressProps extends HTMLAttributes<HTMLDivElement> {
   value?: number;
   className?: string;
   indicatorClassName?: string;

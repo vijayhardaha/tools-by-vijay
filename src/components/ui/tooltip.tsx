@@ -1,6 +1,6 @@
-import type { JSX, ReactNode } from 'react';
-('use client');
+'use client';
 
+import type { JSX, ReactNode, HTMLAttributes } from 'react';
 import { useId } from 'react';
 
 import { Tooltip as ReactTooltip } from 'react-tooltip';
@@ -11,7 +11,7 @@ import { cn } from '@/utils/classNameUtils';
 /**
  * Props for the Tooltip component
  */
-interface TooltipProps extends React.HTMLAttributes<HTMLDivElement> {
+interface TooltipProps extends HTMLAttributes<HTMLDivElement> {
   text: string;
   children: ReactNode;
   className?: string;

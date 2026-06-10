@@ -1,4 +1,4 @@
-import type { JSX } from 'react';
+import type { JSX, HTMLAttributes, ReactNode } from 'react';
 
 import { cva } from 'class-variance-authority';
 
@@ -19,10 +19,10 @@ const badgeVariants = cva('inline-flex items-center rounded-md px-2 py-1 text-xs
 });
 
 // Define TypeScript types for the Badge component props
-interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
+interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
   className?: string;
   variant?: 'default' | 'secondary' | 'success' | 'warning' | 'danger' | 'info';
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 /**

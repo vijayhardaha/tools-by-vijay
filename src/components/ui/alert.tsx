@@ -1,4 +1,4 @@
-import type { JSX } from 'react';
+import type { JSX, HTMLAttributes, ReactElement, ReactNode } from 'react';
 
 import { cva } from 'class-variance-authority';
 import { LuCircleAlert, LuInfo, LuTriangleAlert, LuCircleCheck, LuCircleX } from 'react-icons/lu';
@@ -35,7 +35,7 @@ const alertVariants = cva(
 );
 
 // Default icons for each variant
-const defaultIcons: Record<string, React.ReactElement> = {
+const defaultIcons: Record<string, ReactElement> = {
   default: <LuCircleAlert />,
   info: <LuInfo />,
   warning: <LuTriangleAlert />,
@@ -44,13 +44,13 @@ const defaultIcons: Record<string, React.ReactElement> = {
 };
 
 // Define TypeScript types for the Alert component props
-interface AlertProps extends React.HTMLAttributes<HTMLDivElement> {
+interface AlertProps extends HTMLAttributes<HTMLDivElement> {
   className?: string;
   variant?: 'default' | 'info' | 'warning' | 'success' | 'danger';
   title?: string;
-  text?: React.ReactNode;
-  icon?: React.ReactNode | null;
-  children?: React.ReactNode;
+  text?: ReactNode;
+  icon?: ReactNode | null;
+  children?: ReactNode;
 }
 
 /**

@@ -1,9 +1,9 @@
-import type { JSX } from 'react';
+import type { JSX, InputHTMLAttributes } from 'react';
 
 import { cn } from '@/utils/classNameUtils';
 
 // Define TypeScript types for the component props
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   className?: string;
   type?: string;
 }

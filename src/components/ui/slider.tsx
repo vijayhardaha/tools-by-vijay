@@ -1,6 +1,6 @@
-import type { JSX } from 'react';
-('use client');
+'use client';
 
+import type { JSX, HTMLAttributes, ChangeEvent } from 'react';
 import { useState } from 'react';
 
 import { cn } from '@/utils/classNameUtils';
@@ -8,7 +8,7 @@ import { cn } from '@/utils/classNameUtils';
 /**
  * Props for the Slider component
  */
-interface SliderProps extends React.HTMLAttributes<HTMLDivElement> {
+interface SliderProps extends HTMLAttributes<HTMLDivElement> {
   className?: string;
   min?: number;
   max?: number;
@@ -40,7 +40,7 @@ function Slider({
   // Derive the effective value during render (fixes set-state-in-effect)
   const currentValue = value !== undefined ? value : localValue;
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const newValue = Number(event.target.value);
     setLocalValue(newValue);
     onValueChange?.(newValue);

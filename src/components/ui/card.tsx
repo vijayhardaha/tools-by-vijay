@@ -1,11 +1,11 @@
-import type { JSX, ReactNode, ElementType } from 'react';
+import type { JSX, ReactNode, ElementType, HTMLAttributes } from 'react';
 
 import { cn } from '@/utils/classNameUtils';
 
 /**
  * Props for the Card component.
  */
-interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
+interface CardProps extends HTMLAttributes<HTMLDivElement> {
   className?: string;
   children: ReactNode;
   component?: ElementType;
@@ -37,7 +37,7 @@ function Card({ className, children, component, ...props }: CardProps): JSX.Elem
 /**
  * Props for the CardHeader component.
  */
-interface CardHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
+interface CardHeaderProps extends HTMLAttributes<HTMLDivElement> {
   className?: string;
   children: ReactNode;
   component?: ElementType;
@@ -71,7 +71,7 @@ function CardHeader({ className, children, component, ...props }: CardHeaderProp
 /**
  * Props for the CardTitle component.
  */
-interface CardTitleProps extends React.HTMLAttributes<HTMLHeadingElement> {
+interface CardTitleProps extends HTMLAttributes<HTMLHeadingElement> {
   className?: string;
   children: ReactNode;
   component?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
@@ -96,7 +96,7 @@ function CardTitle({ className, children, component, ...props }: CardTitleProps)
 /**
  * Props for the CardDescription component.
  */
-interface CardDescriptionProps extends React.HTMLAttributes<HTMLParagraphElement> {
+interface CardDescriptionProps extends HTMLAttributes<HTMLParagraphElement> {
   /** Additional class names for the card description. */
   className?: string;
   /** Content to be rendered inside the card description. */
@@ -124,7 +124,7 @@ function CardDescription({ className, children, component, ...props }: CardDescr
 /**
  * Props for the CardAction component.
  */
-interface CardActionProps extends React.HTMLAttributes<HTMLDivElement> {
+interface CardActionProps extends HTMLAttributes<HTMLDivElement> {
   className?: string;
   children: ReactNode;
   component?: ElementType;
@@ -153,7 +153,7 @@ function CardAction({ className, children, component, ...props }: CardActionProp
 /**
  * Props for the CardContent component.
  */
-interface CardContentProps extends React.HTMLAttributes<HTMLDivElement> {
+interface CardContentProps extends HTMLAttributes<HTMLDivElement> {
   className?: string;
   children: ReactNode;
   component?: ElementType;
@@ -178,7 +178,7 @@ function CardContent({ className, children, component, ...props }: CardContentPr
 /**
  * Props for the CardFooter component.
  */
-interface CardFooterProps extends React.HTMLAttributes<HTMLDivElement> {
+interface CardFooterProps extends HTMLAttributes<HTMLDivElement> {
   className?: string;
   children: ReactNode;
   component?: ElementType;

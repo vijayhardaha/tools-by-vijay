@@ -1,5 +1,6 @@
-('use client');
+'use client';
 
+import type { LabelHTMLAttributes, ReactNode } from 'react';
 import { forwardRef } from 'react';
 
 import { cva } from 'class-variance-authority';
@@ -7,9 +8,9 @@ import { cva } from 'class-variance-authority';
 import { cn } from '@/utils/classNameUtils';
 
 // Define TypeScript types for the component props
-interface LabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
+interface LabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
   className?: string;
-  children: React.ReactNode;
+  children: ReactNode;
   htmlFor: string;
 }
 

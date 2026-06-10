@@ -1,5 +1,6 @@
 'use client';
 
+import type { ReactNode, ButtonHTMLAttributes } from 'react';
 import { forwardRef } from 'react';
 
 import { Slot } from '@radix-ui/react-slot';
@@ -76,8 +77,8 @@ type ButtonProps = {
   variant?: 'default' | 'primary' | 'destructive' | 'success' | 'outline' | 'secondary' | 'ghost' | 'link';
   size?: 'default' | 'sm' | 'lg' | 'icon';
   asChild?: boolean;
-  children: React.ReactNode; // Allow any valid ReactNode (string, ReactElement, etc.)
-} & React.ButtonHTMLAttributes<HTMLButtonElement>;
+  children: ReactNode; // Allow any valid ReactNode (string, ReactElement, etc.)
+} & ButtonHTMLAttributes<HTMLButtonElement>;
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant = 'default', size = 'default', asChild = false, children, ...props }, ref) => {
