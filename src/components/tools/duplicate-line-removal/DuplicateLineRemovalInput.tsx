@@ -11,7 +11,7 @@ import { Textarea } from '@/components/ui/textarea';
 /**
  * Interface for the DuplicateLineRemovalInput component props.
  */
-interface IDuplicateLineRemovalInputProps {
+interface DuplicateLineRemovalInputProps {
   input: string;
   setInput: (value: string) => void;
   sortType: string;
@@ -27,11 +27,11 @@ interface IDuplicateLineRemovalInputProps {
  * Input component for the Duplicate Line Removal tool.
  * Provides a form for text input, sorting options, and reverse sorting.
  *
- * @param {IDuplicateLineRemovalInputProps} props - The props for the component.
+ *  @param {DuplicateLineRemovalInputProps} props - The props for the component.
  *
  * @returns {React.JSX.Element} The rendered component.
  */
-const DuplicateLineRemovalInput: React.FC<IDuplicateLineRemovalInputProps> = ({
+const DuplicateLineRemovalInput: React.FC<DuplicateLineRemovalInputProps> = ({
   input,
   setInput,
   sortType,
@@ -41,7 +41,7 @@ const DuplicateLineRemovalInput: React.FC<IDuplicateLineRemovalInputProps> = ({
   onSubmit,
   onReset,
   onClear,
-}: IDuplicateLineRemovalInputProps): React.JSX.Element => {
+}: DuplicateLineRemovalInputProps): React.JSX.Element => {
   /**
    * Handles form submission by preventing default behavior and triggering conversion.
    *
