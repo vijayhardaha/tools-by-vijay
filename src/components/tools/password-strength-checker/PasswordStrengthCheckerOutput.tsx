@@ -1,4 +1,5 @@
-'use client';
+import type { JSX } from 'react';
+('use client');
 
 import React from 'react';
 
@@ -36,9 +37,9 @@ interface PasswordStrengthCheckerOutputProps {
  * @param {boolean} isMet - Indicates if the criteria is met
  * @param {string} label - The label for the criteria
  *
- * @returns {React.JSX.Element} - A div containing the icon and label
+ * @returns {JSX.Element} - A div containing the icon and label
  */
-const renderCriteria = (isMet: boolean, label: string): React.JSX.Element => (
+const renderCriteria = (isMet: boolean, label: string): JSX.Element => (
   <div className="flex items-center gap-2">
     {isMet ? <CheckIcon className="h-4 w-4 text-green-500" /> : <XIcon className="h-4 w-4 text-red-500" />}
     <span className="text-sm">{label}</span>
@@ -50,11 +51,9 @@ const renderCriteria = (isMet: boolean, label: string): React.JSX.Element => (
  *
  * @param {PasswordStrengthCheckerOutputProps} props - Component props
  *
- * @returns {React.JSX.Element} The rendered password strength analysis
+ * @returns {JSX.Element} The rendered password strength analysis
  */
-const PasswordStrengthCheckerOutput: React.FC<PasswordStrengthCheckerOutputProps> = ({
-  strength,
-}: PasswordStrengthCheckerOutputProps): React.JSX.Element => {
+const PasswordStrengthCheckerOutput = ({ strength }: PasswordStrengthCheckerOutputProps): JSX.Element => {
   // Strength level names
   const strengthLevels: string[] = ['Very Weak', 'Weak', 'Fair', 'Good', 'Strong'];
 
