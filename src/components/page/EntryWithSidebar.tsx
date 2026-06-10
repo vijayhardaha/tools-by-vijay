@@ -1,10 +1,12 @@
+import { useRef, useEffect, useState } from 'react';
+
 import ToolsListWidget from '@/components/page/ToolsListWidget';
 import { getAllCategorySlugs } from '@/utils/categoryUtils';
 
 /**
  * Props for the EntryWithSidebar component.
  */
-interface IEntryWithSidebarProps {
+interface EntryWithSidebarProps {
   tool: { category: string; slug: string };
   children: React.ReactNode;
 }
@@ -16,24 +18,36 @@ interface IEntryWithSidebarProps {
  *
  * @returns {React.JSX.Element} The rendered component.
  */
-const EntryWithSidebar: React.FC<IEntryWithSidebarProps> = ({
+const EntryWithSidebar: React.FC<EntryWithSidebarProps> = ({
   tool,
   children,
-}: IEntryWithSidebarProps): React.JSX.Element => {
+}: EntryWithSidebarProps): React.JSX.Element => {
   const categories = getAllCategorySlugs().filter((category) => category !== tool.category);
 
-  const getRandomCategories = (categories: string[], count: number): string[] => {
-    const selected: string[] = [];
-    while (selected.length < count) {
-      const category = categories[Math.floor(Math.random() * categories.length)];
-      if (!selected.includes(category)) {
-        selected.push(category);
-      }
-    }
-    return selected;
-  };
+  const [category1, setCategory1] = useState('');
+  const [category2, setCategory2] = useState('');
+  const initialRender = useRef(true);
 
-  const [category1, category2] = getRandomCategories(categories, 2);
+  useEffect(() => {
+    if (!initialRender.current) return;
+    initialRender.current = false;
+
+    const getRandomCategories = (cats: string[], count: number): string[] => {
+      const selected: string[] = [];
+      while (selected.length < count) {
+        const randomIndex = Math.floor(Math.random() * cats.length);
+        const category = cats[randomIndex];
+        if (!selected.includes(category)) {
+          selected.push(category);
+        }
+      }
+      return selected;
+    };
+
+    const [c1, c2] = getRandomCategories(categories, 2);
+    setCategory1(c1);
+    setCategory2(c2);
+  }, [categories]);
 
   return (
     <div className="grid grid-cols-1 gap-6 lg:grid-cols-6">
