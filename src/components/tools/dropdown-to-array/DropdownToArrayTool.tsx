@@ -1,4 +1,5 @@
-'use client';
+import type { JSX } from 'react';
+('use client');
 
 import { useState } from 'react';
 
@@ -22,9 +23,9 @@ interface Option {
  *
  * A tool for converting HTML dropdown/select content into various array formats.
  *
- * @returns {React.JSX.Element} The rendered component.
+ * @returns {JSX.Element} The rendered component.
  */
-const DropdownToArrayTool = (): React.JSX.Element => {
+const DropdownToArrayTool = (): JSX.Element => {
   const [input, setInput] = useState<string>('');
   const [outputFormat, setOutputFormat] = useState<string>('json');
   const [arrayType, setArrayType] = useState<string>('associative');
