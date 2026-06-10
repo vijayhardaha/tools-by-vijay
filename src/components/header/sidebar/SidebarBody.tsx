@@ -1,3 +1,4 @@
+import type { JSX } from 'react';
 import React, { useRef, useEffect } from 'react';
 
 import Link from 'next/link';
@@ -16,9 +17,9 @@ type NavLinkProps = { href: string; children: React.ReactNode; className?: strin
  *
  * @param {NavLinkProps} props - Component props.
  *
- * @returns {React.JSX.Element} Styled navigation link.
+ * @returns {JSX.Element} Styled navigation link.
  */
-const NavLink: React.FC<NavLinkProps> = ({ href, children, className = '' }: NavLinkProps): React.JSX.Element => (
+const NavLink = ({ href, children, className = '' }: NavLinkProps): JSX.Element => (
   <Link
     href={href}
     className={`text-muted-foreground hover:text-primary transition-colors hover:underline ${className}`}
@@ -37,9 +38,9 @@ type CategorySectionProps = { title: string; tools: { slug: string; name: string
  *
  * @param {CategorySectionProps} props - Component props.
  *
- * @returns {React.JSX.Element} Category section with tool links.
+ * @returns {JSX.Element} Category section with tool links.
  */
-const CategorySection: React.FC<CategorySectionProps> = ({ title, tools }: CategorySectionProps): React.JSX.Element => (
+const CategorySection = ({ title, tools }: CategorySectionProps): JSX.Element => (
   <div className="mb-6">
     <h3 className="text-foreground mb-3 text-sm font-bold uppercase">{title}</h3>
     <ul className="space-y-3">
@@ -55,9 +56,9 @@ const CategorySection: React.FC<CategorySectionProps> = ({ title, tools }: Categ
 /**
  * SidebarBody component containing navigation links and tool categories.
  *
- * @returns {React.JSX.Element} The sidebar body content.
+ * @returns {JSX.Element} The sidebar body content.
  */
-const SidebarBody = (): React.JSX.Element => {
+const SidebarBody = (): JSX.Element => {
   // Group tools by category
   const categorizedTools = getToolsByCategories();
   const scrollbarsRef = useRef<Scrollbars>(null);
