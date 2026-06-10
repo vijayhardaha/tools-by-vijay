@@ -4,7 +4,7 @@
  *
  * @returns {React.JSX.Element} The rendered component displaying tool information
  */
-const CountryNameGeneratorInfo: React.FC = (): React.JSX.Element => {
+const CountryNameGeneratorInfo = (): React.JSX.Element => {
   return (
     <div className="max-w-none space-y-8">
       <section>
