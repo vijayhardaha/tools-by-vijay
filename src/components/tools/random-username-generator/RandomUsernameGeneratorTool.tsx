@@ -1,4 +1,5 @@
-'use client';
+import type { JSX } from 'react';
+('use client');
 
 import { useState } from 'react';
 
@@ -9,9 +10,9 @@ import UsernameGeneratorOutput from './RandomUsernameGeneratorOutput';
 /**
  * A tool for generating random usernames.
  *
- * @returns {React.JSX.Element} The RandomUsernameGeneratorTool component.
+ * @returns {JSX.Element} The RandomUsernameGeneratorTool component.
  */
-const RandomUsernameGeneratorTool = (): React.JSX.Element => {
+const RandomUsernameGeneratorTool = (): JSX.Element => {
   const [count, setCount] = useState<number>(1);
   const [output, setOutput] = useState<string[]>([]);
   const [error, setError] = useState<string>('');
