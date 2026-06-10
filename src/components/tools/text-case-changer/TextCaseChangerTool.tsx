@@ -21,9 +21,9 @@ export type TextCase =
 /**
  * A tool for changing the case of text input into various formats.
  *
- * @returns The TextCaseChangerTool component.
+ * @returns {React.JSX.Element} The rendered TextCaseChangerTool component.
  */
-const TextCaseChangerTool: React.FC = (): React.JSX.Element => {
+const TextCaseChangerTool = (): React.JSX.Element => {
   const [input, setInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
   const [textCase, setTextCase] = useState<TextCase>('Sentence case');
@@ -32,9 +32,9 @@ const TextCaseChangerTool: React.FC = (): React.JSX.Element => {
   /**
    * Converts the given text to the selected text case.
    *
-   * @param text - The input text to be transformed.
+   * @param {string} text - The input text to be transformed
    *
-   * @returns The transformed text in the selected case.
+   * @returns {string} The transformed text in the selected case
    */
   const convertToTextCase = (text: string): string => {
     switch (textCase) {
