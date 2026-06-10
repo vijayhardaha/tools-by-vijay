@@ -10,7 +10,7 @@ import { Input } from '@/components/ui/input';
 /**
  * Interface for the CountryNameGeneratorInput component props.
  */
-interface IRandomUsernameGeneratorInputProps {
+interface RandomUsernameGeneratorInputProps {
   count: number;
   setCount: (value: number) => void;
   onGenerate: () => void;
@@ -21,17 +21,17 @@ interface IRandomUsernameGeneratorInputProps {
 /**
  * A component for accepting input to generate usernames.
  *
- * @param {IRandomUsernameGeneratorInputProps} props - The props for the RandomUsernameGeneratorInput component.
+ *  @param {RandomUsernameGeneratorInputProps} props - The props for the RandomUsernameGeneratorInput component.
  *
  * @returns {React.JSX.Element} The RandomUsernameGeneratorInput component.
  */
-const RandomUsernameGeneratorInput: React.FC<IRandomUsernameGeneratorInputProps> = ({
+const RandomUsernameGeneratorInput: React.FC<RandomUsernameGeneratorInputProps> = ({
   count,
   setCount,
   onGenerate,
   onClear,
   error,
-}: IRandomUsernameGeneratorInputProps): React.JSX.Element => {
+}: RandomUsernameGeneratorInputProps): React.JSX.Element => {
   /**
    * Handles the form submission event.
    *
