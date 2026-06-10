@@ -1,4 +1,5 @@
-'use client';
+import type { JSX } from 'react';
+('use client');
 
 import { useState } from 'react';
 
@@ -21,9 +22,9 @@ export type TextCase =
 /**
  * A tool for changing the case of text input into various formats.
  *
- * @returns {React.JSX.Element} The rendered TextCaseChangerTool component.
+ * @returns {JSX.Element} The rendered TextCaseChangerTool component.
  */
-const TextCaseChangerTool = (): React.JSX.Element => {
+const TextCaseChangerTool = (): JSX.Element => {
   const [input, setInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
   const [textCase, setTextCase] = useState<TextCase>('Sentence case');
