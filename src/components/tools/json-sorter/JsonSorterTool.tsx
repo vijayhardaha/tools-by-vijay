@@ -1,4 +1,5 @@
-'use client';
+import type { JSX } from 'react';
+('use client');
 
 import React, { useState } from 'react';
 
@@ -12,9 +13,9 @@ import JsonSorterOutput from './JsonSorterOutput';
  * Main component for the JSON Sorter tool.
  * Manages the state and functionality for sorting JSON objects alphabetically.
  *
- * @returns {React.JSX.Element} The complete JSON sorter tool with input options, output display, and information
+ * @returns {JSX.Element} The complete JSON sorter tool with input options, output display, and information
  */
-const JsonSorterTool = (): React.JSX.Element => {
+const JsonSorterTool = (): JSX.Element => {
   const [input, setInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
   const [spareArrays, setSpareArrays] = useState<boolean>(true);
