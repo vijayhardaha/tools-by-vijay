@@ -1,4 +1,5 @@
-'use client';
+import type { JSX } from 'react';
+('use client');
 
 import { useState } from 'react';
 
@@ -11,9 +12,9 @@ import QRCodeOutput from './QRCodeGeneratorOutput';
  * for generating QR codes based on user input. It includes input fields for
  * data and size, and displays the generated QR code.
  *
- * @returns {React.JSX.Element} The rendered QR code generator tool component.
+ * @returns {JSX.Element} The rendered QR code generator tool component.
  */
-const QRCodeGeneratorTool = (): React.JSX.Element => {
+const QRCodeGeneratorTool = (): JSX.Element => {
   const [input, setInput] = useState<string>('');
   const [size, setSize] = useState<number>(256);
   const [output, setOutput] = useState<string>('');
