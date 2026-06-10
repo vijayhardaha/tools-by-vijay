@@ -5,7 +5,7 @@ import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/com
 /**
  * Interface for the QRCodeGeneratorOutput component props.
  */
-interface IQrCodeGeneratorOutputProps {
+interface QrCodeGeneratorOutputProps {
   output: string;
 }
 
@@ -13,12 +13,12 @@ interface IQrCodeGeneratorOutputProps {
  * QRCodeGeneratorOutput is a React functional component that displays the
  * generated QR code along with a download link.
  *
- * @param {IQrCodeGeneratorOutputProps} props - The props for the component.
+ *  @param {QrCodeGeneratorOutputProps} props - The props for the component.
  * @param {string} props.output - The URL of the generated QR code image.
  *
  * @returns {React.JSX.Element} The rendered QR code output component.
  */
-const QRCodeGeneratorOutput: React.FC<IQrCodeGeneratorOutputProps> = ({ output }): React.JSX.Element => {
+const QRCodeGeneratorOutput: React.FC<QrCodeGeneratorOutputProps> = ({ output }): React.JSX.Element => {
   return (
     <Card>
       <CardHeader>
