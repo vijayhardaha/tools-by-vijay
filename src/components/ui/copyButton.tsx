@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/utils/classNameUtils';
 
 // Define TypeScript types for the component props
-interface ICopyButtonProps {
+interface CopyButtonProps {
   text: string;
   copyText?: string;
   copiedText?: string;
@@ -27,7 +27,7 @@ export const CopyButton = ({
   copyText = 'Copy',
   copiedText = 'Copied!',
   className = '',
-}: ICopyButtonProps): React.JSX.Element => {
+}: CopyButtonProps): React.JSX.Element => {
   const [copied, setCopied] = useState(false);
 
   /**
