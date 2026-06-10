@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import { notFound } from 'next/navigation';
 
 import EntryWithSidebar from '@/components/page/EntryWithSidebar';
@@ -32,9 +34,9 @@ export const metadata: PageMeta = generateMeta({
  * Bulk Slugify tool page component.
  * Renders the page layout with header and the Bulk Slugify tool.
  *
- * @returns {React.JSX.Element} The rendered Bulk Slugify tool page component.
+ * @returns {JSX.Element} The rendered Bulk Slugify tool page component.
  */
-const BulkSlugify = (): React.JSX.Element => {
+const BulkSlugify = (): JSX.Element => {
   if (!tool) {
     notFound(); // Render a 404 page if the tool is null
   }
