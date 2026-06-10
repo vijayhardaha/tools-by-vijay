@@ -1,6 +1,5 @@
-'use client';
-
-import type { FormEvent } from 'react';
+import type { JSX, FormEvent } from 'react';
+('use client');
 
 import { Alert } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
@@ -36,9 +35,9 @@ interface DropdownToArrayInputProps {
  *
  *  @param {DropdownToArrayInputProps} props - The props for the component.
  *
- * @returns {React.JSX.Element} The rendered component.
+ * @returns {JSX.Element} The rendered component.
  */
-const DropdownToArrayInput: React.FC<DropdownToArrayInputProps> = ({
+const DropdownToArrayInput = ({
   input,
   setInput,
   outputFormat,
@@ -51,7 +50,7 @@ const DropdownToArrayInput: React.FC<DropdownToArrayInputProps> = ({
   onClear,
   onReset,
   error,
-}: DropdownToArrayInputProps): React.JSX.Element => {
+}: DropdownToArrayInputProps): JSX.Element => {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     onSubmit();
