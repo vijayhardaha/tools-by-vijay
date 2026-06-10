@@ -1,5 +1,6 @@
 import type { JSX } from 'react';
 
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 import EntryWithSidebar from '@/components/page/EntryWithSidebar';
@@ -9,7 +10,6 @@ import PageLayout from '@/components/page/PageLayout';
 import DuplicateLineRemovalTool from '@/components/tools/duplicate-line-removal';
 import type { Tool } from '@/types';
 import { generateMeta } from '@/utils/seoUtils';
-import type { PageMeta } from '@/utils/seoUtils';
 import { findToolBySlug, getIconForTool } from '@/utils/toolUtils';
 
 /**
@@ -22,9 +22,9 @@ const tool: Tool | null = findToolBySlug('duplicate-line-removal');
 /**
  * SEO metadata for the Duplicate Line Removal tool page.
  *
- * @type {PageMeta}
+ * @type {Metadata}
  */
-export const metadata: PageMeta = generateMeta({
+export const metadata: Metadata = generateMeta({
   title: tool?.seoTitle || '',
   description: tool?.seoDescription || '',
   slug: tool?.slug || '',
@@ -36,7 +36,7 @@ export const metadata: PageMeta = generateMeta({
  *
  * @returns {JSX.Element} The rendered Duplicate Line Removal tool page component.
  */
-const DuplicateLineRemoval = (): JSX.Element => {
+export default function DuplicateLineRemoval(): JSX.Element {
   if (!tool) {
     notFound(); // Render a 404 page if the tool is null
   }
@@ -51,6 +51,4 @@ const DuplicateLineRemoval = (): JSX.Element => {
       </PageContent>
     </PageLayout>
   );
-};
-
-export default DuplicateLineRemoval;
+}

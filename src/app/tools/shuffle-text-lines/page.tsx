@@ -1,5 +1,6 @@
 import type { JSX } from 'react';
 
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 import EntryWithSidebar from '@/components/page/EntryWithSidebar';
@@ -9,7 +10,6 @@ import PageLayout from '@/components/page/PageLayout';
 import ShuffleTextLinesTool from '@/components/tools/shuffle-text-lines';
 import type { Tool } from '@/types';
 import { generateMeta } from '@/utils/seoUtils';
-import type { PageMeta } from '@/utils/seoUtils';
 import { findToolBySlug, getIconForTool } from '@/utils/toolUtils';
 
 /**
@@ -22,9 +22,9 @@ const tool: Tool | null = findToolBySlug('shuffle-text-lines');
 /**
  * SEO metadata for the Shuffle Text Lines page.
  *
- * @type {PageMeta}
+ * @type {Metadata}
  */
-export const metadata: PageMeta = generateMeta({
+export const metadata: Metadata = generateMeta({
   title: tool?.seoTitle || '',
   description: tool?.seoDescription || '',
   slug: tool?.slug || '',
@@ -36,7 +36,7 @@ export const metadata: PageMeta = generateMeta({
  *
  * @returns {JSX.Element} The rendered Shuffle Text Lines tool page component.
  */
-const ShuffleTextLines = (): JSX.Element => {
+export default function ShuffleTextLines(): JSX.Element {
   if (!tool) {
     notFound(); // Render a 404 page if the tool is null
   }
@@ -51,6 +51,4 @@ const ShuffleTextLines = (): JSX.Element => {
       </PageContent>
     </PageLayout>
   );
-};
-
-export default ShuffleTextLines;
+}

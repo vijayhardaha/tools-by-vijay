@@ -1,5 +1,6 @@
 import type { JSX } from 'react';
 
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 import EntryWithSidebar from '@/components/page/EntryWithSidebar';
@@ -8,8 +9,7 @@ import PageHeader from '@/components/page/PageHeader';
 import PageLayout from '@/components/page/PageLayout';
 import SlugifyTool from '@/components/tools/slugify';
 import type { Tool } from '@/types';
-import { generateMeta } from '@/utils/seoUtils';
-import type { PageMeta } from '@/utils/seoUtils';
+import { buildMetadata } from '@/utils/meta';
 import { findToolBySlug, getIconForTool } from '@/utils/toolUtils';
 
 /**
@@ -22,12 +22,12 @@ const tool: Tool | null = findToolBySlug('slugify');
 /**
  * SEO metadata for the Slugify page.
  *
- * @type {PageMeta}
+ * @type {Metadata}
  */
-export const metadata: PageMeta = generateMeta({
+export const metadata: Metadata = buildMetadata({
   title: tool?.seoTitle || '',
   description: tool?.seoDescription || '',
-  slug: tool?.slug || '',
+  path: `/tools/${tool?.slug || ''}`,
 });
 
 /**
@@ -36,7 +36,7 @@ export const metadata: PageMeta = generateMeta({
  *
  * @returns {JSX.Element} The rendered Slugify tool page component.
  */
-const Slugify = (): JSX.Element => {
+export default function Slugify(): JSX.Element {
   if (!tool) {
     notFound(); // Render a 404 page if the tool is null
   }
@@ -51,6 +51,4 @@ const Slugify = (): JSX.Element => {
       </PageContent>
     </PageLayout>
   );
-};
-
-export default Slugify;
+}
