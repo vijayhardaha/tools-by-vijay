@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import Logo from '@/components/header/parts/Logo';
 import { Button } from '@/components/ui/button';
 import { socialMediaLinks } from '@/constants/socialLinks';
@@ -17,14 +19,9 @@ type SocialMediaLinkItem = { key: string; icon: React.ElementType; url: string; 
  *
  * @param {SocialButtonProps} props - Props for the SocialButton component.
  *
- * @returns {React.JSX.Element} The rendered social button.
+ * @returns {JSX.Element} The rendered social button.
  */
-const SocialButton: React.FC<SocialButtonProps> = ({
-  icon: Icon,
-  href,
-  label,
-  color,
-}: SocialButtonProps): React.JSX.Element => (
+const SocialButton = ({ icon: Icon, href, label, color }: SocialButtonProps): JSX.Element => (
   <Button
     variant="primary"
     size="icon"
@@ -41,9 +38,9 @@ const SocialButton: React.FC<SocialButtonProps> = ({
 /**
  * Footer about section component that displays the website logo and description.
  *
- * @returns {React.JSX.Element} The rendered footer about section.
+ * @returns {JSX.Element} The rendered footer about section.
  */
-const FooterAbout = (): React.JSX.Element => {
+const FooterAbout = (): JSX.Element => {
   return (
     <div className="mb-6 flex flex-col gap-4">
       <div className="space-y-2">
