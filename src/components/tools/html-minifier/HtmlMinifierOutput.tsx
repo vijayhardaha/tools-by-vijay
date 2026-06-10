@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
 import { CompressionInfo } from '@/components/ui/compressionInfo';
 import { CopyButton } from '@/components/ui/copyButton';
@@ -17,12 +19,9 @@ interface HtmlMinifierOutputProps {
  *
  *  @param {HtmlMinifierOutputProps} props - The props for the component.
  *
- * @returns {React.JSX.Element} The rendered component.
+ * @returns {JSX.Element} The rendered component.
  */
-const HtmlMinifierOutput: React.FC<HtmlMinifierOutputProps> = ({
-  output,
-  input,
-}: HtmlMinifierOutputProps): React.JSX.Element => {
+const HtmlMinifierOutput = ({ output, input }: HtmlMinifierOutputProps): JSX.Element => {
   return (
     <Card>
       <CardHeader>
