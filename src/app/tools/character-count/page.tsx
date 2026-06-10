@@ -34,7 +34,7 @@ export const metadata: PageMeta = generateMeta({
  *
  * @returns {React.JSX.Element} The rendered Character Count tool page component.
  */
-const CharacterCount: React.FC = (): React.JSX.Element => {
+const CharacterCount = (): React.JSX.Element => {
   if (!tool) {
     notFound(); // Render a 404 page if the tool is null
   }
