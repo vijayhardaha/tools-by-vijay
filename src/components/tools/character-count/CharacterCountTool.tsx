@@ -12,7 +12,7 @@ import CharacterCountOutput from './CharacterCountOutput';
  *
  * @returns {React.JSX.Element} The complete Character Count tool with input options, output display, and information.
  */
-const CharacterCountTool: React.FC = (): React.JSX.Element => {
+const CharacterCountTool = (): React.JSX.Element => {
   const [text, setText] = useState<string>('');
 
   /**
