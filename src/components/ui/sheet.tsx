@@ -10,18 +10,18 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/utils/classNameUtils';
 
 // Create context for state management
-interface ISheetContextType {
+interface SheetContextType {
   open: boolean;
   onOpenChange: (value: boolean) => void;
   side: 'right' | 'left' | 'top' | 'bottom';
 }
 
-const SheetContext = createContext<ISheetContextType>({ open: false, onOpenChange: () => {}, side: 'right' });
+const SheetContext = createContext<SheetContextType>({ open: false, onOpenChange: () => {}, side: 'right' });
 
 /**
  * Props for the Sheet component
  */
-interface ISheetProps extends React.HTMLAttributes<HTMLDivElement> {
+interface SheetProps extends React.HTMLAttributes<HTMLDivElement> {
   open?: boolean;
   onOpenChange?: (value: boolean) => void;
   children: ReactNode;
@@ -30,12 +30,11 @@ interface ISheetProps extends React.HTMLAttributes<HTMLDivElement> {
 /**
  * Sheet component to manage state and provide context.
  *
- * @param root0
- * @param root0.open
- * @param root0.onOpenChange
- * @param root0.children
+ * @param {SheetProps} props - The component props
+ *
+ * @returns {React.JSX.Element} The rendered sheet component
  */
-function Sheet({ open: controlledOpen, onOpenChange, children, ...props }: ISheetProps) {
+function Sheet({ open: controlledOpen, onOpenChange, children, ...props }: SheetProps): React.JSX.Element {
   const [uncontrolledOpen, setUncontrolledOpen] = useState(false);
 
   const open = controlledOpen !== undefined ? controlledOpen : uncontrolledOpen;
@@ -61,7 +60,7 @@ function Sheet({ open: controlledOpen, onOpenChange, children, ...props }: IShee
 /**
  * Props for the SheetClose component
  */
-interface ISheetCloseProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface SheetCloseProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
   children: ReactNode;
 }
@@ -69,11 +68,11 @@ interface ISheetCloseProps extends React.ButtonHTMLAttributes<HTMLButtonElement>
 /**
  * Button to close the sheet.
  *
- * @param root0
- * @param root0.className
- * @param root0.children
+ * @param {SheetCloseProps} props - The component props
+ *
+ * @returns {React.JSX.Element} The rendered sheet close button
  */
-function SheetClose({ className = '', children, ...props }: ISheetCloseProps) {
+function SheetClose({ className = '', children, ...props }: SheetCloseProps): React.JSX.Element {
   const { onOpenChange } = useContext(SheetContext);
 
   return (
@@ -93,22 +92,29 @@ function SheetClose({ className = '', children, ...props }: ISheetCloseProps) {
 /**
  * Props for the SheetPortal component
  */
-interface ISheetPortalProps {
+interface SheetPortalProps {
   children: ReactNode;
 }
 
 /**
  * Portal for rendering sheet content outside the DOM hierarchy.
  *
- * @param root0
- * @param root0.children
+ * @param {SheetPortalProps} props - The component props
+ *
+ * @returns {React.JSX.Element | null} The portal element or null if not mounted
  */
-function SheetPortal({ children, ...props }: ISheetPortalProps) {
+function SheetPortal({ children, ...props }: SheetPortalProps): React.JSX.Element | null {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
-    return () => setMounted(false);
+    // Use queueMicrotask to defer the state update to avoid cascading renders
+    const timer = setTimeout(() => {
+      setMounted(true);
+    }, 0);
+    return () => {
+      clearTimeout(timer);
+      setMounted(false);
+    };
   }, []);
 
   if (!mounted) return null;
@@ -124,17 +130,18 @@ function SheetPortal({ children, ...props }: ISheetPortalProps) {
 /**
  * Props for the SheetOverlay component
  */
-interface ISheetOverlayProps extends React.HTMLAttributes<HTMLDivElement> {
+interface SheetOverlayProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
 }
 
 /**
  * Overlay for the sheet, used as a backdrop.
  *
- * @param root0
- * @param root0.className
+ * @param {SheetOverlayProps} props - The component props
+ *
+ * @returns {React.JSX.Element} The rendered sheet overlay
  */
-function SheetOverlay({ className = '', ...props }: ISheetOverlayProps) {
+function SheetOverlay({ className = '', ...props }: SheetOverlayProps): React.JSX.Element {
   const { open, onOpenChange } = useContext(SheetContext);
 
   return (
@@ -159,7 +166,7 @@ function SheetOverlay({ className = '', ...props }: ISheetOverlayProps) {
 /**
  * Props for the SheetContent component
  */
-interface ISheetContentProps extends React.HTMLAttributes<HTMLDivElement> {
+interface SheetContentProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
   children: ReactNode;
   side?: 'right' | 'left' | 'top' | 'bottom';
@@ -168,12 +175,11 @@ interface ISheetContentProps extends React.HTMLAttributes<HTMLDivElement> {
 /**
  * Main content area of the sheet.
  *
- * @param root0
- * @param root0.className
- * @param root0.children
- * @param root0.side
+ * @param {SheetContentProps} props - The component props
+ *
+ * @returns {React.JSX.Element} The rendered sheet content
  */
-function SheetContent({ className = '', children, side = 'right', ...props }: ISheetContentProps) {
+function SheetContent({ className = '', children, side = 'right', ...props }: SheetContentProps): React.JSX.Element {
   const { open, onOpenChange } = useContext(SheetContext);
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -252,7 +258,7 @@ function SheetContent({ className = '', children, side = 'right', ...props }: IS
 /**
  * Props for the SheetHeader component
  */
-interface ISheetHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
+interface SheetHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
   children: ReactNode;
 }
@@ -260,11 +266,11 @@ interface ISheetHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
 /**
  * Header section of the sheet.
  *
- * @param root0
- * @param root0.className
- * @param root0.children
+ * @param {SheetHeaderProps} props - The component props
+ *
+ * @returns {React.JSX.Element} The rendered sheet header
  */
-function SheetHeader({ className, children, ...props }: ISheetHeaderProps) {
+function SheetHeader({ className, children, ...props }: SheetHeaderProps): React.JSX.Element {
   return (
     <div
       data-slot="sheet-header"
@@ -283,17 +289,18 @@ function SheetHeader({ className, children, ...props }: ISheetHeaderProps) {
 /**
  * Props for the SheetFooter component
  */
-interface ISheetFooterProps extends React.HTMLAttributes<HTMLDivElement> {
+interface SheetFooterProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
 }
 
 /**
  * Footer section of the sheet.
  *
- * @param root0
- * @param root0.className
+ * @param {SheetFooterProps} props - The component props
+ *
+ * @returns {React.JSX.Element} The rendered sheet footer
  */
-function SheetFooter({ className, ...props }: ISheetFooterProps) {
+function SheetFooter({ className, ...props }: SheetFooterProps): React.JSX.Element {
   return (
     <div
       data-slot="sheet-footer"
