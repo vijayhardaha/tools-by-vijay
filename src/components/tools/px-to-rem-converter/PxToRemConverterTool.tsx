@@ -12,7 +12,7 @@ import PxToRemOutput from './PxToRemOutput';
  *
  * @returns {React.JSX.Element} The complete Px to Rem Converter tool with input options, output display, and information.
  */
-const PxToRemConverterTool: React.FC = (): React.JSX.Element => {
+const PxToRemConverterTool = (): React.JSX.Element => {
   const [pxValue, setPxValue] = useState<string>('');
   const [baseFontSize, setBaseFontSize] = useState<number>(16);
 
