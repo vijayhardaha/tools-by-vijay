@@ -6,7 +6,7 @@ import { Textarea } from '@/components/ui/textarea';
 /**
  * Interface for the BulkSlugifyOutput component props.
  */
-interface IBulkSlugifyOutputProps {
+interface BulkSlugifyOutputProps {
   output: string;
 }
 
@@ -17,13 +17,11 @@ interface IBulkSlugifyOutputProps {
  * copy individual slugs or all slugs at once. It shows visual feedback when
  * content is copied to the clipboard.
  *
- * @param {IBulkSlugifyOutputProps} props - The props for the component.
+ *  @param {BulkSlugifyOutputProps} props - The props for the component.
  *
  * @returns {React.JSX.Element} The rendered component.
  */
-const BulkSlugifyOutput: React.FC<IBulkSlugifyOutputProps> = ({
-  output,
-}: IBulkSlugifyOutputProps): React.JSX.Element => {
+const BulkSlugifyOutput: React.FC<BulkSlugifyOutputProps> = ({ output }: BulkSlugifyOutputProps): React.JSX.Element => {
   // Split the output into individual lines and filter out empty lines
   const lines: string[] = output.split('\n').filter((line) => line.trim() !== '');
 
