@@ -1,4 +1,5 @@
-'use client';
+import type { JSX } from 'react';
+('use client');
 
 import { useState } from 'react';
 
@@ -9,9 +10,9 @@ import UrlDecoderEncoderOutput from './UrlDecoderEncoderOutput';
 /**
  * A tool for encoding and decoding URLs. It provides input, output, and informational components.
  *
- * @returns {React.JSX.Element} The rendered URL Decoder/Encoder Tool component.
+ * @returns {JSX.Element} The rendered URL Decoder/Encoder Tool component.
  */
-const UrlDecoderEncoderTool = (): React.JSX.Element => {
+const UrlDecoderEncoderTool = (): JSX.Element => {
   const [input, setInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
   const [isEncoding, setIsEncoding] = useState<boolean>(true);
