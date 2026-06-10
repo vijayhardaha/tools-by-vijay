@@ -6,7 +6,7 @@ import EntryWithSidebar from '@/components/page/EntryWithSidebar';
 import PageContent from '@/components/page/PageContent';
 import PageHeader from '@/components/page/PageHeader';
 import PageLayout from '@/components/page/PageLayout';
-import CssInlinerTool from '@/components/tools/css-inliner/CssInlinerTool';
+import CssInlinerTool from '@/components/tools/css-inliner';
 import type { Tool } from '@/types';
 import { generateMeta } from '@/utils/seoUtils';
 import type { PageMeta } from '@/utils/seoUtils';

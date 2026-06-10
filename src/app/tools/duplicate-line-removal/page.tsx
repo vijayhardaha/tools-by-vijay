@@ -6,7 +6,7 @@ import EntryWithSidebar from '@/components/page/EntryWithSidebar';
 import PageContent from '@/components/page/PageContent';
 import PageHeader from '@/components/page/PageHeader';
 import PageLayout from '@/components/page/PageLayout';
-import DuplicateLineRemovalTool from '@/components/tools/duplicate-line-removal/DuplicateLineRemovalTool';
+import DuplicateLineRemovalTool from '@/components/tools/duplicate-line-removal';
 import type { Tool } from '@/types';
 import { generateMeta } from '@/utils/seoUtils';
 import type { PageMeta } from '@/utils/seoUtils';

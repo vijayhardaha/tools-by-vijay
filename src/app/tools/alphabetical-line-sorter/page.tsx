@@ -6,7 +6,7 @@ import EntryWithSidebar from '@/components/page/EntryWithSidebar';
 import PageContent from '@/components/page/PageContent';
 import PageHeader from '@/components/page/PageHeader';
 import PageLayout from '@/components/page/PageLayout';
-import AlphabeticalLineSorterTool from '@/components/tools/alphabetical-line-sorter/AlphabeticalLineSorterTool';
+import AlphabeticalLineSorterTool from '@/components/tools/alphabetical-line-sorter';
 import type { Tool } from '@/types';
 import { generateMeta } from '@/utils/seoUtils';
 import type { PageMeta } from '@/utils/seoUtils';
