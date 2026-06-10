@@ -1,6 +1,5 @@
-'use client';
-
-import type { FormEvent } from 'react';
+import type { JSX, FormEvent } from 'react';
+('use client');
 
 import { Alert } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
@@ -27,9 +26,9 @@ interface TextCaseChangerInputProps {
  *
  * @param {TextCaseChangerInputProps} props - The props for the TextCaseChangerInput component.
  *
- * @returns {React.JSX.Element} The TextCaseChangerInput component.
+ * @returns {JSX.Element} The TextCaseChangerInput component.
  */
-const TextCaseChangerInput: React.FC<TextCaseChangerInputProps> = ({
+const TextCaseChangerInput = ({
   input,
   setInput,
   textCase,
@@ -38,7 +37,7 @@ const TextCaseChangerInput: React.FC<TextCaseChangerInputProps> = ({
   onClear,
   onReset,
   error,
-}: TextCaseChangerInputProps): React.JSX.Element => {
+}: TextCaseChangerInputProps): JSX.Element => {
   /**
    * Handles the form submission event.
    *
