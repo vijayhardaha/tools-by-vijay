@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import { notFound } from 'next/navigation';
 
 import EntryWithSidebar from '@/components/page/EntryWithSidebar';
@@ -32,9 +34,9 @@ export const metadata: PageMeta = generateMeta({
  * Base64 Encode/Decode tool page component.
  * Renders the page layout with header and the Base64 Encode/Decode tool.
  *
- * @returns {React.JSX.Element} The rendered Base64 Encode/Decode tool page component.
+ * @returns {JSX.Element} The rendered Base64 Encode/Decode tool page component.
  */
-const Base64EncodeDecode = (): React.JSX.Element => {
+const Base64EncodeDecode = (): JSX.Element => {
   if (!tool) {
     notFound(); // Render a 404 page if the tool is null
   }
