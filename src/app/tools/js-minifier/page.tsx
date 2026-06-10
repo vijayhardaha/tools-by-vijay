@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import { notFound } from 'next/navigation';
 
 import EntryWithSidebar from '@/components/page/EntryWithSidebar';
@@ -32,9 +34,9 @@ export const metadata: PageMeta = generateMeta({
  * JavaScript Minifier tool page component.
  * Renders the page layout with header and the JS Minifier tool.
  *
- * @returns {React.JSX.Element} The rendered JavaScript Minifier tool page component.
+ * @returns {JSX.Element} The rendered JavaScript Minifier tool page component.
  */
-const JsMinifier = (): React.JSX.Element => {
+const JsMinifier = (): JSX.Element => {
   if (!tool) {
     notFound(); // Render a 404 page if the tool is null
   }
