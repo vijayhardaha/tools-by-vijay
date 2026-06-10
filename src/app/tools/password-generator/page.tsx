@@ -32,9 +32,9 @@ export const metadata: PageMeta = generateMeta({
  * Password Generator tool page component.
  * Renders the page layout with header and the Password Generator tool.
  *
- * @returns {ReactElement} The rendered Password Generator tool page component.
+ * @returns {React.JSX.Element} The rendered Password Generator tool page component.
  */
-const PasswordGenerator: React.FC = (): React.JSX.Element => {
+const PasswordGenerator = (): React.JSX.Element => {
   if (!tool) {
     notFound(); // Render a 404 page if the tool is null
   }
