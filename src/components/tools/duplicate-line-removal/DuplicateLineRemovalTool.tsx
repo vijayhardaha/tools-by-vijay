@@ -1,4 +1,5 @@
-'use client';
+import type { JSX } from 'react';
+('use client');
 
 import React, { useState } from 'react';
 
@@ -10,9 +11,9 @@ import DuplicateLineRemovalOutput from './DuplicateLineRemovalOutput';
  * Main component for the Duplicate Line Removal tool.
  * Manages the state and functionality for removing duplicate lines and sorting.
  *
- * @returns {React.JSX.Element} The complete Duplicate Line Removal tool with input options, output display, and functionality
+ * @returns {JSX.Element} The complete Duplicate Line Removal tool with input options, output display, and functionality
  */
-const DuplicateLineRemovalTool = (): React.JSX.Element => {
+const DuplicateLineRemovalTool = (): JSX.Element => {
   const [input, setInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
   const [sortType, setSortType] = useState<'none' | 'alphabetical' | 'ascii'>('none');
