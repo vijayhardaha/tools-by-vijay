@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import { notFound } from 'next/navigation';
 
 import EntryWithSidebar from '@/components/page/EntryWithSidebar';
@@ -32,9 +34,9 @@ export const metadata: PageMeta = generateMeta({
  * Country Name Generator tool page component.
  * Renders the page layout with header and the Country Name Generator tool.
  *
- * @returns {React.JSX.Element} The rendered Country Name Generator tool page component.
+ * @returns {JSX.Element} The rendered Country Name Generator tool page component.
  */
-const CountryNameGenerator = (): React.JSX.Element => {
+const CountryNameGenerator = (): JSX.Element => {
   if (!tool) {
     notFound(); // Render a 404 page if the tool is null
   }
