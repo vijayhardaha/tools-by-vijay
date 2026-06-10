@@ -1,4 +1,5 @@
-'use client';
+import type { JSX } from 'react';
+('use client');
 
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
 import { Textarea } from '@/components/ui/textarea';
@@ -16,12 +17,9 @@ interface CharacterCountInputProps {
  *
  * @param {CharacterCountInputProps} props - Component props.
  *
- * @returns {React.JSX.Element} The rendered input form.
+ * @returns {JSX.Element} The rendered input form.
  */
-const CharacterCountInput: React.FC<CharacterCountInputProps> = ({
-  text,
-  setText,
-}: CharacterCountInputProps): React.JSX.Element => {
+const CharacterCountInput = ({ text, setText }: CharacterCountInputProps): JSX.Element => {
   return (
     <Card>
       <CardHeader>
