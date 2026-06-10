@@ -1,5 +1,6 @@
+import type { JSX } from 'react';
 /// <reference path="./tinyurl.d.ts" />
-'use client';
+('use client');
 
 import React, { useState } from 'react';
 
@@ -22,9 +23,9 @@ interface UrlResult {
  * This component manages the state and functionality of the URL shortener tool,
  * allowing users to shorten multiple URLs in bulk using the TinyURL API.
  *
- * @returns {React.JSX.Element} The rendered URL Shortener Tool component.
+ * @returns {JSX.Element} The rendered URL Shortener Tool component.
  */
-const UrlShortenerTool = (): React.JSX.Element => {
+const UrlShortenerTool = (): JSX.Element => {
   const [input, setInput] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [results, setResults] = useState<UrlResult[]>([]);
