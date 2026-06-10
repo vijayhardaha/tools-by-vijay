@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import Link from 'next/link';
 
 /**
@@ -10,9 +12,9 @@ type FooterWidgetProps = { title: string; links: { name: string; href: string }[
  *
  *  @param {FooterWidgetProps} props - Component props.
  *
- * @returns {React.JSX.Element} The rendered footer widget.
+ * @returns {JSX.Element} The rendered footer widget.
  */
-const FooterWidget: React.FC<FooterWidgetProps> = ({ title, links }: FooterWidgetProps): React.JSX.Element => {
+const FooterWidget = ({ title, links }: FooterWidgetProps): JSX.Element => {
   /**
    * Check if a URL is external (starts with http:// or https://)
    *
