@@ -9,7 +9,7 @@ import CssMinifierOutput from './CssMinifierOutput';
 /**
  * Interface for the minification options.
  */
-interface IMinificationOptions {
+interface MinificationOptions {
   level: number;
   compress: boolean;
   format: {
@@ -23,7 +23,7 @@ interface IMinificationOptions {
 /**
  * Default minification options.
  */
-const defaultOptions: IMinificationOptions = {
+const defaultOptions: MinificationOptions = {
   level: 1,
   compress: true,
   format: {
@@ -40,11 +40,11 @@ const defaultOptions: IMinificationOptions = {
  *
  * @returns {React.JSX.Element} The rendered CssMinifierTool component.
  */
-const CssMinifierTool: React.FC = (): React.JSX.Element => {
+const CssMinifierTool = (): React.JSX.Element => {
   const [input, setInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [options, setOptions] = useState<IMinificationOptions>(defaultOptions);
+  const [options, setOptions] = useState<MinificationOptions>(defaultOptions);
   const [error, setError] = useState<string>('');
 
   /**
@@ -117,12 +117,12 @@ const CssMinifierTool: React.FC = (): React.JSX.Element => {
   /**
    * Updates a specific option in the options state.
    *
-   * @param {string} key - The option key to update.
-   * @param {any} value - The new value for the option.
+   * @param {string} key - The option key to update
+   * @param {unknown} value - The new value for the option (must match the option type)
    *
    * @function
    */
-  const updateOption = (key: string, value: any) => {
+  const updateOption = (key: string, value: unknown) => {
     setOptions((prevOptions) => ({ ...prevOptions, [key]: value }));
   };
 
