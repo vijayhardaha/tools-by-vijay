@@ -1,3 +1,4 @@
+import type { JSX } from 'react';
 /**
  * Props for the PageHeader component.
  *
@@ -12,13 +13,9 @@ type PageHeaderProps = { title: string; description?: string; icon?: React.React
  *
  * @param {PageHeaderProps} props - The props for the component.
  *
- * @returns {React.JSX.Element} The rendered component.
+ * @returns {JSX.Element} The rendered component.
  */
-const PageHeader: React.FC<PageHeaderProps> = ({
-  title,
-  description,
-  icon = null,
-}: PageHeaderProps): React.JSX.Element => {
+const PageHeader = ({ title, description, icon = null }: PageHeaderProps): JSX.Element => {
   return (
     <div
       className="relative left-1/2 -mt-8 mb-8 w-screen -translate-x-1/2 text-white"
