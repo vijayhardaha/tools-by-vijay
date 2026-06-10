@@ -1,4 +1,5 @@
-'use client';
+import type { JSX } from 'react';
+('use client');
 
 import React, { useState } from 'react';
 
@@ -49,9 +50,9 @@ const defaultStengthOptions: PasswordStrength = {
  * Main component that handles password strength checking logic and renders
  * the input, output, and information components.
  *
- * @returns {React.JSX.Element} Complete password strength checker tool interface
+ * @returns {JSX.Element} Complete password strength checker tool interface
  */
-const PasswordStrengthCheckerTool = (): React.JSX.Element => {
+const PasswordStrengthCheckerTool = (): JSX.Element => {
   const [password, setPassword] = useState<string>('');
   const [strength, setStrength] = useState<PasswordStrength>(defaultStengthOptions);
 
