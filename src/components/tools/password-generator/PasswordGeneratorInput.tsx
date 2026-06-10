@@ -13,7 +13,7 @@ import { Slider } from '@/components/ui/slider';
 /**
  * Interface for the password generation input component props.
  */
-interface IPasswordGeneratorInputProps {
+interface PasswordGeneratorInputProps {
   length: number;
   setLength: (value: number) => void;
   useUppercase: boolean;
@@ -34,11 +34,11 @@ interface IPasswordGeneratorInputProps {
  * Component for configuring password generation options.
  * Provides a form with controls for password length, character types, and other settings.
  *
- * @param {IPasswordGeneratorInputProps} props - Component props.
+ *  @param {PasswordGeneratorInputProps} props - Component props.
  *
  * @returns {React.JSX.Element} The rendered form with password generation options.
  */
-const PasswordGeneratorInput: React.FC<IPasswordGeneratorInputProps> = ({
+const PasswordGeneratorInput: React.FC<PasswordGeneratorInputProps> = ({
   length,
   setLength,
   useUppercase,
@@ -53,7 +53,7 @@ const PasswordGeneratorInput: React.FC<IPasswordGeneratorInputProps> = ({
   setExcludeSimilar,
   onSubmit,
   onReset,
-}: IPasswordGeneratorInputProps): React.JSX.Element => {
+}: PasswordGeneratorInputProps): React.JSX.Element => {
   const handleSubmit = (e: FormEvent): void => {
     e.preventDefault();
     onSubmit();
