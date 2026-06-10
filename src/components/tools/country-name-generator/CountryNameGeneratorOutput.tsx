@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
 import { CopyButton } from '@/components/ui/copyButton';
 import { Textarea } from '@/components/ui/textarea';
@@ -14,11 +16,9 @@ interface CountryNameGeneratorOutputProps {
  *
  * @param {CountryNameGeneratorOutputProps} props - The props for the CountryNameGeneratorOutput component.
  *
- * @returns {React.JSX.Element} The CountryNameGeneratorOutput component.
+ * @returns {JSX.Element} The CountryNameGeneratorOutput component.
  */
-const CountryNameGeneratorOutput: React.FC<CountryNameGeneratorOutputProps> = ({
-  output,
-}: CountryNameGeneratorOutputProps): React.JSX.Element => {
+const CountryNameGeneratorOutput = ({ output }: CountryNameGeneratorOutputProps): JSX.Element => {
   return (
     <Card>
       <CardHeader>
