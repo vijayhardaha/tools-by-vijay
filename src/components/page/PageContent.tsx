@@ -1,3 +1,4 @@
+import type { JSX } from 'react';
 interface PageContentProps {
   children: React.ReactNode;
 }
@@ -10,9 +11,9 @@ interface PageContentProps {
  *
  * @param {PageContentProps} props - Component props
  *
- * @returns {React.JSX.Element} The rendered component
+ * @returns {JSX.Element} The rendered component
  */
-const PageContent: React.FC<PageContentProps> = ({ children }: PageContentProps): React.JSX.Element => {
+const PageContent = ({ children }: PageContentProps): JSX.Element => {
   return <div className="relative">{children}</div>;
 };
 
