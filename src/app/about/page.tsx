@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import PageContent from '@/components/page/PageContent';
 import PageHeader from '@/components/page/PageHeader';
 import PageLayout from '@/components/page/PageLayout';
@@ -20,9 +22,9 @@ export const metadata: PageMeta = generateMeta({
  * About page component.
  * Provides detailed info about Vijay, the developer behind the platform.
  *
- * @returns {React.JSX.Element} The rendered About page.
+ * @returns {JSX.Element} The rendered About page.
  */
-const About = (): React.JSX.Element => {
+const About = (): JSX.Element => {
   return (
     <PageLayout>
       <PageHeader
