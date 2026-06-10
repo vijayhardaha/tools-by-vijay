@@ -7,7 +7,7 @@ import { cva } from 'class-variance-authority';
 import { cn } from '@/utils/classNameUtils';
 
 // Define TypeScript types for the component props
-interface ILabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
+interface LabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
   className?: string;
   children: React.ReactNode;
   htmlFor: string;
@@ -25,7 +25,7 @@ const labelVariants = cva('text-sm font-medium leading-none peer-disabled:cursor
  *
  * @returns {React.JSX.Element} The Label component
  */
-const Label = forwardRef<HTMLLabelElement, ILabelProps>(({ className = '', children, htmlFor, ...props }, ref) => (
+const Label = forwardRef<HTMLLabelElement, LabelProps>(({ className = '', children, htmlFor, ...props }, ref) => (
   <label ref={ref} className={cn(labelVariants(), className)} htmlFor={htmlFor} {...props}>
     {children}
   </label>
