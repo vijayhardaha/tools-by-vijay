@@ -1,10 +1,11 @@
+import type { JSX } from 'react';
 /**
  * Expanded and SEO-optimized version of the Bulk Slugify Tool description.
  * Covers use cases, examples, instructions, and keyword-rich context.
  *
- * @returns {React.JSX.Element} The rendered component displaying tool information
+ * @returns {JSX.Element} The rendered component displaying tool information
  */
-const BulkSlugifyInfo = (): React.JSX.Element => {
+const BulkSlugifyInfo = (): JSX.Element => {
   return (
     <div className="mt-12 space-y-12">
       <section>
