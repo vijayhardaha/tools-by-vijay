@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import Link from 'next/link';
 
 /**
@@ -15,9 +17,9 @@ interface PageBreadcrumbProps {
  *
  * @param {PageBreadcrumbProps} props - The props for the component.
  *
- * @returns {React.JSX.Element} The rendered breadcrumb navigation.
+ * @returns {JSX.Element} The rendered breadcrumb navigation.
  */
-const PageBreadcrumb = ({ pageName }: PageBreadcrumbProps): React.JSX.Element => {
+const PageBreadcrumb = ({ pageName }: PageBreadcrumbProps): JSX.Element => {
   return (
     <nav aria-label="breadcrumb">
       <ol className="flex flex-wrap items-center text-sm">
