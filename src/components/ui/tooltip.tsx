@@ -22,14 +22,18 @@ interface TooltipProps extends React.HTMLAttributes<HTMLDivElement> {
 /**
  * Tooltip component to display a tooltip with customizable content and styles.
  *
- * @param root0
- * @param root0.text
- * @param root0.children
- * @param root0.className
- * @param root0.sideOffset
- * @param root0.delayDuration
+ * @param {TooltipProps} props - The component props
+ *
+ * @returns {React.JSX.Element} The rendered tooltip component
  */
-function Tooltip({ text, children, className, sideOffset = 4, delayDuration = 300, ...props }: TooltipProps) {
+function Tooltip({
+  text,
+  children,
+  className,
+  sideOffset = 4,
+  delayDuration = 300,
+  ...props
+}: TooltipProps): React.JSX.Element {
   const tooltipId = useId();
 
   return (
