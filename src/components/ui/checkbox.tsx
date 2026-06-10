@@ -10,7 +10,7 @@ import { cn } from '@/utils/classNameUtils';
 /**
  * Props for the Checkbox component.
  */
-interface ICheckboxProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
+interface CheckboxProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
   className?: string;
   checked?: boolean;
   onCheckedChange?: (checked: boolean) => void;
@@ -23,14 +23,9 @@ interface ICheckboxProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
 /**
  * Checkbox component for selecting options.
  *
- * @param root0
- * @param root0.className
- * @param root0.children
- * @param root0.checked
- * @param root0.onCheckedChange
- * @param root0.disabled
- * @param root0.required
- * @param root0.id
+ * @param {CheckboxProps} props - The component props
+ *
+ * @returns {React.JSX.Element} The rendered checkbox component
  */
 function Checkbox({
   className = '',
@@ -41,7 +36,7 @@ function Checkbox({
   required,
   id,
   ...props
-}: ICheckboxProps) {
+}: CheckboxProps): React.JSX.Element {
   const [internalChecked, setInternalChecked] = useState(controlledChecked || false);
 
   const isControlled = controlledChecked !== undefined;
@@ -50,7 +45,7 @@ function Checkbox({
   /**
    * Handles the checkbox state change event.
    *
-   * @param event
+   * @param {React.ChangeEvent<HTMLInputElement>} event - The change event
    */
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (!isControlled) {
