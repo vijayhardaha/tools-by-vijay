@@ -14,7 +14,7 @@ import { getToolsByCategories } from '@/utils/toolUtils';
  *
  * @returns {JSX.Element} The rendered Home component with categorized tools.
  */
-const Home = (): JSX.Element => {
+export default function Home(): JSX.Element {
   const toolsByCategory: Record<string, Tool[]> = getToolsByCategories();
 
   return (
@@ -193,6 +193,4 @@ const Home = (): JSX.Element => {
       </div>
     </PageLayout>
   );
-};
-
-export default Home;
+}

@@ -1,5 +1,6 @@
 import type { JSX } from 'react';
 
+import type { Metadata } from 'next';
 import { FaFacebookF, FaXTwitter, FaGithub, FaInstagram } from 'react-icons/fa6';
 import { TbWorldWww } from 'react-icons/tb';
 
@@ -7,14 +8,13 @@ import PageContent from '@/components/page/PageContent';
 import PageHeader from '@/components/page/PageHeader';
 import PageLayout from '@/components/page/PageLayout';
 import { generateMeta } from '@/utils/seoUtils';
-import type { PageMeta } from '@/utils/seoUtils';
 
 /**
  * SEO metadata for the Contact page.
  *
- * @type {PageMeta}
+ * @type {Metadata}
  */
-export const metadata: PageMeta = generateMeta({
+export const metadata: Metadata = generateMeta({
   title: 'Contact Vijay Hardaha',
   description:
     'Get in touch with Vijay, a skilled freelance web developer specializing in WordPress, WooCommerce, and Next.js. Explore his open-source projects on GitHub and hire him for your next web development project. Based in India, working globally.',
@@ -27,7 +27,7 @@ export const metadata: PageMeta = generateMeta({
  *
  * @returns {JSX.Element} The rendered Contact page.
  */
-const Contact = (): JSX.Element => {
+export default function Contact(): JSX.Element {
   return (
     <PageLayout>
       <PageHeader
@@ -162,6 +162,4 @@ const Contact = (): JSX.Element => {
       </PageContent>
     </PageLayout>
   );
-};
-
-export default Contact;
+}

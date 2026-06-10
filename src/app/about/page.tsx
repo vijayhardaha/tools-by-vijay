@@ -1,17 +1,18 @@
 import type { JSX } from 'react';
 
+import type { Metadata } from 'next';
+
 import PageContent from '@/components/page/PageContent';
 import PageHeader from '@/components/page/PageHeader';
 import PageLayout from '@/components/page/PageLayout';
 import { generateMeta } from '@/utils/seoUtils';
-import type { PageMeta } from '@/utils/seoUtils';
 
 /**
  * SEO metadata for the About page.
  *
- * @type {PageMeta}
+ * @type {Metadata}
  */
-export const metadata: PageMeta = generateMeta({
+export const metadata: Metadata = generateMeta({
   title: 'About Vijay Hardaha',
   description:
     'Discover Vijay, a passionate web developer and vegan, who built this fast, privacy-focused tool platform. Learn about the motivation, technology stack, and commitment to user experience.',
@@ -24,7 +25,7 @@ export const metadata: PageMeta = generateMeta({
  *
  * @returns {JSX.Element} The rendered About page.
  */
-const About = (): JSX.Element => {
+export default function About(): JSX.Element {
   return (
     <PageLayout>
       <PageHeader
@@ -88,6 +89,4 @@ const About = (): JSX.Element => {
       </PageContent>
     </PageLayout>
   );
-};
-
-export default About;
+}

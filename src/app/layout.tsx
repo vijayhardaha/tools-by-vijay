@@ -1,55 +1,34 @@
 import type { JSX, ReactNode } from 'react';
 
 import { GoogleAnalytics } from '@next/third-parties/google';
-import type { NextFontWithVariable } from 'next/dist/compiled/@next/font/dist/types';
-import { Work_Sans, Geist_Mono } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/next';
+import type { Metadata } from 'next';
 
-/**
- * Configuration for the League Spartan font.
- */
-const sansFont: NextFontWithVariable = Work_Sans({
-  subsets: ['latin'],
-  display: 'swap',
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-app-sans',
-});
-
-/**
- * Configuration for the Geist Mono font.
- */
-const monoFont: NextFontWithVariable = Geist_Mono({
-  subsets: ['latin'],
-  display: 'swap',
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-app-mono',
-});
-
-import { baseMetadata } from '@/constants/seo';
-import type { BaseMetadata } from '@/constants/seo';
+import { GOOGLE_ANALYTICS_ID, SITE_METADATA } from '@/constants/seo';
+import { fontClassNames } from '@/lib/utils/fonts';
 
 import '../styles/globals.css';
 
 /**
- * Metadata for the application.
+ * Global metadata for the application.
  */
-export const metadata: BaseMetadata = baseMetadata;
+export const metadata: Metadata = SITE_METADATA;
 
 /**
- * Root layout component for the application.
+ * Root layout component that wraps the application.
  *
  * @param {{ children: ReactNode }} props - The props for the RootLayout component.
  *
  * @returns {JSX.Element} The root layout structure.
  */
-const RootLayout = ({ children }: { children: ReactNode }): JSX.Element => {
+export default function RootLayout({ children }: { children: ReactNode }): JSX.Element {
   return (
-    <html lang="en" className={`${sansFont.variable} ${monoFont.variable}`}>
-      <head>
-        <GoogleAnalytics gaId="G-FM8D1WPKM7" />
-      </head>
-      <body>{children}</body>
+    <html lang="en" className={fontClassNames}>
+      <body>
+        <GoogleAnalytics gaId={GOOGLE_ANALYTICS_ID} />
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
-};
-
-export default RootLayout;
+}
