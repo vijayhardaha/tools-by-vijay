@@ -10,7 +10,7 @@ import { Textarea } from '@/components/ui/textarea';
 /**
  * Interface for the Shuffle Text Lines input component props.
  */
-interface IShuffleTextLinesInputProps {
+interface ShuffleTextLinesInputProps {
   input: string;
   setInput: (value: string) => void;
   removeDuplicates: boolean;
@@ -28,11 +28,11 @@ interface IShuffleTextLinesInputProps {
  * Input component for the Shuffle Text Lines tool.
  * Provides a form for text input and options to shuffle lines randomly.
  *
- * @param {IShuffleTextLinesInputProps} props - The props for the component.
+ *  @param {ShuffleTextLinesInputProps} props - The props for the component.
  *
  * @returns {React.JSX.Element} The input component for the Shuffle Text Lines tool.
  */
-const ShuffleTextLinesInput: React.FC<IShuffleTextLinesInputProps> = ({
+const ShuffleTextLinesInput: React.FC<ShuffleTextLinesInputProps> = ({
   input,
   setInput,
   removeDuplicates,
@@ -44,7 +44,7 @@ const ShuffleTextLinesInput: React.FC<IShuffleTextLinesInputProps> = ({
   onSubmit,
   onReset,
   onClear,
-}: IShuffleTextLinesInputProps): React.JSX.Element => {
+}: ShuffleTextLinesInputProps): React.JSX.Element => {
   /**
    * Handles form submission to shuffle lines.
    *
