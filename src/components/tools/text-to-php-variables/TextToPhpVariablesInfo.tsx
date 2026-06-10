@@ -4,7 +4,7 @@
  *
  * @returns {React.JSX.Element} The rendered component displaying tool information
  */
-const TextToPhpVariablesInfo: React.FC = (): React.JSX.Element => {
+const TextToPhpVariablesInfo = (): React.JSX.Element => {
   return (
     <div className="max-w-none space-y-8">
       <section>
