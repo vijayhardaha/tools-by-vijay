@@ -12,7 +12,7 @@ import CssInlinerOutput from './CssInlinerOutput';
  *
  * @returns {React.JSX.Element} The rendered CssInlinerTool component.
  */
-const CssInlinerTool: React.FC = (): React.JSX.Element => {
+const CssInlinerTool = (): React.JSX.Element => {
   const [htmlInput, setHtmlInput] = useState<string>('');
   const [cssInput, setCssInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
