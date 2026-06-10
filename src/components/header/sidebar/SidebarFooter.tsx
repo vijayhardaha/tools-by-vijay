@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import { Button } from '@/components/ui/button';
 import { SheetFooter } from '@/components/ui/sheet';
 import { socialMediaLinks } from '@/constants/socialLinks';
@@ -17,9 +19,9 @@ interface SocialButtonProps {
  *
  * @param {SocialButtonProps} props - Component props
  *
- * @returns {React.JSX.Element} A button with social media icon
+ * @returns {JSX.Element} A button with social media icon
  */
-const SocialButton = ({ icon: Icon, href, label, color }: SocialButtonProps): React.JSX.Element => (
+const SocialButton = ({ icon: Icon, href, label, color }: SocialButtonProps): JSX.Element => (
   <Button
     variant="outline"
     size="icon"
@@ -36,9 +38,9 @@ const SocialButton = ({ icon: Icon, href, label, color }: SocialButtonProps): Re
 /**
  * Footer component for the sidebar with social media links
  *
- * @returns {React.JSX.Element} The sidebar footer component
+ * @returns {JSX.Element} The sidebar footer component
  */
-const SidebarFooter = (): React.JSX.Element => (
+const SidebarFooter = (): JSX.Element => (
   <SheetFooter>
     <div className="flex justify-center space-x-2">
       {socialMediaLinks.map(({ key, icon, url, name, color }) => (
