@@ -9,8 +9,8 @@ import PageHeader from '@/components/page/PageHeader';
 import PageLayout from '@/components/page/PageLayout';
 import DropdownToArrayTool from '@/components/tools/dropdown-to-array';
 import type { Tool } from '@/types';
-import { generateMeta } from '@/utils/seoUtils';
-import { findToolBySlug, getIconForTool } from '@/utils/toolUtils';
+import { buildMetadata } from '@/utils/meta';
+import { findToolBySlug, getIconForTool } from '@/utils/tools';
 
 /**
  * Retrieves tool data for the Dropdown to Array tool.
@@ -24,10 +24,10 @@ const tool: Tool | null = findToolBySlug('dropdown-to-array');
  *
  * @type {Metadata}
  */
-export const metadata: Metadata = generateMeta({
+export const metadata: Metadata = buildMetadata({
   title: tool?.seoTitle || '',
   description: tool?.seoDescription || '',
-  slug: tool?.slug || '',
+  path: `/tools/${tool?.slug || ''}`,
 });
 
 /**

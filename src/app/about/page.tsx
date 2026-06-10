@@ -5,18 +5,18 @@ import type { Metadata } from 'next';
 import PageContent from '@/components/page/PageContent';
 import PageHeader from '@/components/page/PageHeader';
 import PageLayout from '@/components/page/PageLayout';
-import { generateMeta } from '@/utils/seoUtils';
+import { buildMetadata } from '@/utils/meta';
 
 /**
  * SEO metadata for the About page.
  *
  * @type {Metadata}
  */
-export const metadata: Metadata = generateMeta({
+export const metadata: Metadata = buildMetadata({
   title: 'About Vijay Hardaha',
   description:
     'Discover Vijay, a passionate web developer and vegan, who built this fast, privacy-focused tool platform. Learn about the motivation, technology stack, and commitment to user experience.',
-  slug: 'about',
+  path: '/about',
 });
 
 /**

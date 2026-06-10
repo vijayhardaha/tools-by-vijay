@@ -3,8 +3,8 @@ import type { JSX } from 'react';
 import ToolCard from '@/components/home/ToolCard';
 import PageLayout from '@/components/page/PageLayout';
 import type { Tool, Category } from '@/types';
-import { getCategoryBySlug } from '@/utils/categoryUtils';
-import { getToolsByCategories } from '@/utils/toolUtils';
+import { getCategoryBySlug } from '@/utils/categories';
+import { getToolsByCategories } from '@/utils/tools';
 
 /**
  * Home component that renders tool cards organized by categories.

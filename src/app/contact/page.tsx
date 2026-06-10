@@ -7,18 +7,18 @@ import { TbWorldWww } from 'react-icons/tb';
 import PageContent from '@/components/page/PageContent';
 import PageHeader from '@/components/page/PageHeader';
 import PageLayout from '@/components/page/PageLayout';
-import { generateMeta } from '@/utils/seoUtils';
+import { buildMetadata } from '@/utils/meta';
 
 /**
  * SEO metadata for the Contact page.
  *
  * @type {Metadata}
  */
-export const metadata: Metadata = generateMeta({
+export const metadata: Metadata = buildMetadata({
   title: 'Contact Vijay Hardaha',
   description:
     'Get in touch with Vijay, a skilled freelance web developer specializing in WordPress, WooCommerce, and Next.js. Explore his open-source projects on GitHub and hire him for your next web development project. Based in India, working globally.',
-  slug: 'contact',
+  path: '/contact',
 });
 
 /**

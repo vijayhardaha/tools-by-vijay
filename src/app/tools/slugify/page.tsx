@@ -1,5 +1,7 @@
 import type { JSX } from 'react';
 
+import { webPageSchema, breadcrumbSchema } from '@vijayhardaha/schema-builder';
+import { JsonLd } from '@vijayhardaha/schema-builder/react';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
@@ -10,7 +12,9 @@ import PageLayout from '@/components/page/PageLayout';
 import SlugifyTool from '@/components/tools/slugify';
 import type { Tool } from '@/types';
 import { buildMetadata } from '@/utils/meta';
-import { findToolBySlug, getIconForTool } from '@/utils/toolUtils';
+import { globalSchema, buildBreadcrumbs } from '@/utils/schema';
+import { siteUrl } from '@/utils/seo';
+import { findToolBySlug, getIconForTool } from '@/utils/tools';
 
 /**
  * Retrieves tool data for the Slugify tool.
@@ -19,16 +23,26 @@ import { findToolBySlug, getIconForTool } from '@/utils/toolUtils';
  */
 const tool: Tool | null = findToolBySlug('slugify');
 
+const title = tool?.seoTitle || '';
+const description = tool?.seoDescription || '';
+const path = `/tools/${tool?.slug || ''}`;
+const rootUrl = siteUrl();
+
 /**
  * SEO metadata for the Slugify page.
  *
  * @type {Metadata}
  */
-export const metadata: Metadata = buildMetadata({
-  title: tool?.seoTitle || '',
-  description: tool?.seoDescription || '',
-  path: `/tools/${tool?.slug || ''}`,
-});
+export const metadata: Metadata = buildMetadata({ title, description, path });
+
+/**
+ * Schema.org structured data for the Slugify page.
+ */
+const schemaData = [
+  ...globalSchema(),
+  webPageSchema({ rootUrl, path, breadcrumb: true }, { name: title, description }),
+  breadcrumbSchema({ rootUrl, items: buildBreadcrumbs(path, 'Slugify Tool') }),
+];
 
 /**
  * Slugify tool page component.
@@ -42,13 +56,16 @@ export default function Slugify(): JSX.Element {
   }
 
   return (
-    <PageLayout>
-      <PageHeader title={tool.name} description={tool.description} icon={getIconForTool(tool.slug)} />
-      <PageContent>
-        <EntryWithSidebar tool={tool}>
-          <SlugifyTool />
-        </EntryWithSidebar>
-      </PageContent>
-    </PageLayout>
+    <>
+      <JsonLd data={schemaData} />
+      <PageLayout>
+        <PageHeader title={tool.name} description={tool.description} icon={getIconForTool(tool.slug)} />
+        <PageContent>
+          <EntryWithSidebar tool={tool}>
+            <SlugifyTool />
+          </EntryWithSidebar>
+        </PageContent>
+      </PageLayout>
+    </>
   );
 }

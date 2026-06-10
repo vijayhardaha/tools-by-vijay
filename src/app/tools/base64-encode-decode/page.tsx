@@ -9,8 +9,8 @@ import PageHeader from '@/components/page/PageHeader';
 import PageLayout from '@/components/page/PageLayout';
 import Base64EncodeDecodeTool from '@/components/tools/base64-encode-decode';
 import type { Tool } from '@/types';
-import { generateMeta } from '@/utils/seoUtils';
-import { findToolBySlug, getIconForTool } from '@/utils/toolUtils';
+import { buildMetadata } from '@/utils/meta';
+import { findToolBySlug, getIconForTool } from '@/utils/tools';
 
 /**
  * Retrieves tool data for the Base64 Encode/Decode tool.
@@ -24,10 +24,10 @@ const tool: Tool | null = findToolBySlug('base64-encode-decode');
  *
  * @type {Metadata}
  */
-export const metadata: Metadata = generateMeta({
+export const metadata: Metadata = buildMetadata({
   title: tool?.seoTitle || '',
   description: tool?.seoDescription || '',
-  slug: tool?.slug || '',
+  path: `/tools/${tool?.slug || ''}`,
 });
 
 /**

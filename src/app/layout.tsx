@@ -1,11 +1,11 @@
 import type { JSX, ReactNode } from 'react';
 
 import { GoogleAnalytics } from '@next/third-parties/google';
-import { Analytics } from '@vercel/analytics/next';
 import type { Metadata } from 'next';
 
+import { VercelAnalytics } from '@/components/shared/VercelAnalytics';
 import { GOOGLE_ANALYTICS_ID, SITE_METADATA } from '@/constants/seo';
-import { fontClassNames } from '@/lib/utils/fonts';
+import { fontClassNames } from '@/utils/fonts';
 
 import '../styles/globals.css';
 
@@ -27,7 +27,7 @@ export default function RootLayout({ children }: { children: ReactNode }): JSX.E
       <body>
         <GoogleAnalytics gaId={GOOGLE_ANALYTICS_ID} />
         {children}
-        <Analytics />
+        <VercelAnalytics />
       </body>
     </html>
   );
