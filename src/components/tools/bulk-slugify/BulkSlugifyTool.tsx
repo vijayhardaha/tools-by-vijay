@@ -1,4 +1,5 @@
-'use client';
+import type { JSX } from 'react';
+('use client');
 
 import React, { useState } from 'react';
 
@@ -16,9 +17,9 @@ import BulkSlugifyOutput from './BulkSlugifyOutput';
  * allowing users to convert multiple text strings into URL-friendly slugs
  * with various configuration options.
  *
- * @returns {React.JSX.Element} The complete Bulk Slugify Tool interface
+ * @returns {JSX.Element} The complete Bulk Slugify Tool interface
  */
-const BulkSlugifyTool = (): React.JSX.Element => {
+const BulkSlugifyTool = (): JSX.Element => {
   const [input, setInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
   const [useUnderscore, setUseUnderscore] = useState<boolean>(false);
