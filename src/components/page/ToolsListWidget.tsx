@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import Link from 'next/link';
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -22,12 +24,9 @@ interface ToolsListWidgetProps {
  *
  * @param {ToolsListWidgetProps} props - The props for the component.
  *
- * @returns {React.JSX.Element} The rendered component.
+ * @returns {JSX.Element} The rendered component.
  */
-const ToolsListWidget: React.FC<ToolsListWidgetProps> = ({
-  category,
-  hideTool = '',
-}: ToolsListWidgetProps): React.JSX.Element => {
+const ToolsListWidget = ({ category, hideTool = '' }: ToolsListWidgetProps): JSX.Element => {
   const toolsInCategory: Tool[] = getToolsByCategory(category).filter((categoryTool) => categoryTool.slug !== hideTool);
 
   const categoryData: Category | null = getCategoryBySlug(category);
