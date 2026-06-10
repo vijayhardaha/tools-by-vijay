@@ -1,4 +1,5 @@
-'use client';
+import type { JSX } from 'react';
+('use client');
 
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -19,14 +20,9 @@ interface PxToRemInputProps {
  *
  *  @param {PxToRemInputProps} props - Component props.
  *
- * @returns {React.JSX.Element} The rendered input form.
+ * @returns {JSX.Element} The rendered input form.
  */
-const PxToRemInput: React.FC<PxToRemInputProps> = ({
-  pxValue,
-  setPxValue,
-  baseFontSize,
-  setBaseFontSize,
-}: PxToRemInputProps): React.JSX.Element => {
+const PxToRemInput = ({ pxValue, setPxValue, baseFontSize, setBaseFontSize }: PxToRemInputProps): JSX.Element => {
   return (
     <Card>
       <CardHeader>
