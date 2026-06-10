@@ -14,7 +14,7 @@ import { Textarea } from '@/components/ui/textarea';
 /**
  * Interface for the TextToArrayInput component props.
  */
-interface ITextToArrayInputProps {
+interface TextToArrayInputProps {
   input: string;
   setInput: (value: string) => void;
   outputFormat: string;
@@ -37,11 +37,11 @@ interface ITextToArrayInputProps {
  * Component for inputting multiline text and configuring conversion options.
  * Provides a form with controls for text input, output format, and array structure.
  *
- * @param {ITextToArrayInputProps} props - The props for the component.
+ *  @param {TextToArrayInputProps} props - The props for the component.
  *
  * @returns {React.JSX.Element} The rendered TextToArrayInput component.
  */
-const TextToArrayInput: React.FC<ITextToArrayInputProps> = ({
+const TextToArrayInput: React.FC<TextToArrayInputProps> = ({
   input,
   setInput,
   outputFormat,
@@ -58,7 +58,7 @@ const TextToArrayInput: React.FC<ITextToArrayInputProps> = ({
   onClear,
   onReset,
   error,
-}: ITextToArrayInputProps): React.JSX.Element => {
+}: TextToArrayInputProps): React.JSX.Element => {
   /**
    * Handles form submission by preventing default behavior and triggering conversion
    *
