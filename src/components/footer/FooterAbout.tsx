@@ -1,4 +1,4 @@
-import type { JSX } from 'react';
+import type { JSX, ElementType } from 'react';
 
 import Logo from '@/components/header/parts/Logo';
 import { Button } from '@/components/ui/button';
@@ -7,12 +7,12 @@ import { socialMediaLinks } from '@/constants/socialLinks';
 /**
  * Props for the SocialButton component.
  */
-type SocialButtonProps = { icon: React.ElementType; href: string; label: string; color?: string };
+type SocialButtonProps = { icon: ElementType; href: string; label: string; color?: string };
 
 /**
  * Represents a social media link.
  */
-type SocialMediaLinkItem = { key: string; icon: React.ElementType; url: string; name: string; color?: string };
+type SocialMediaLinkItem = { key: string; icon: ElementType; url: string; name: string; color?: string };
 
 /**
  * Button component for social media links.

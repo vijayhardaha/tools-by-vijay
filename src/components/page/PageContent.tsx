@@ -1,6 +1,6 @@
-import type { JSX } from 'react';
+import type { JSX, ReactNode } from 'react';
 interface PageContentProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 /**

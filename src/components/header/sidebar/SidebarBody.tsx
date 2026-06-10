@@ -1,5 +1,5 @@
-import type { JSX } from 'react';
-import React, { useRef, useEffect } from 'react';
+import type { JSX, ReactNode } from 'react';
+import { useRef, useEffect } from 'react';
 
 import Link from 'next/link';
 import { Scrollbars } from 'react-custom-scrollbars-4';
@@ -10,7 +10,7 @@ import { getToolsByCategories } from '@/utils/toolUtils';
 /**
  * Props for the NavLink component.
  */
-type NavLinkProps = { href: string; children: React.ReactNode; className?: string };
+type NavLinkProps = { href: string; children: ReactNode; className?: string };
 
 /**
  * NavLink component for consistent link styling in the sidebar using Shadcn classes.

@@ -1,4 +1,4 @@
-import type { JSX } from 'react';
+import type { JSX, ElementType } from 'react';
 
 import { Button } from '@/components/ui/button';
 import { SheetFooter } from '@/components/ui/sheet';
@@ -8,7 +8,7 @@ import { socialMediaLinks } from '@/constants/socialLinks';
  * Props for the SocialButton component
  */
 interface SocialButtonProps {
-  icon: React.ElementType;
+  icon: ElementType;
   href: string;
   label: string;
   color?: string;

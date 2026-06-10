@@ -1,12 +1,12 @@
-import type { JSX } from 'react';
+import type { JSX, ReactNode } from 'react';
 /**
  * Props for the PageHeader component.
  *
  * @property {string} title - The title of the page.
  * @property {string} [description] - Optional description text for the page.
- * @property {React.ReactNode | null} [icon] - Optional icon element to display next to the title.
+ * @property {ReactNode | null} [icon] - Optional icon element to display next to the title.
  */
-type PageHeaderProps = { title: string; description?: string; icon?: React.ReactNode | null };
+type PageHeaderProps = { title: string; description?: string; icon?: ReactNode | null };
 
 /**
  * PageHeader component for displaying page titles and descriptions.

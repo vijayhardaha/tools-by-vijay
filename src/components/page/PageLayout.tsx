@@ -1,4 +1,4 @@
-import type { JSX } from 'react';
+import type { JSX, ReactNode } from 'react';
 
 import Footer from '@/components/footer/Footer';
 import Header from '@/components/header/Header';
@@ -6,9 +6,9 @@ import Header from '@/components/header/Header';
 /**
  * Props for the PageLayout component.
  *
- * @property {React.ReactNode} children - The content to be displayed within the layout.
+ * @property {ReactNode} children - The content to be displayed within the layout.
  */
-type PageLayoutProps = { children: React.ReactNode };
+type PageLayoutProps = { children: ReactNode };
 
 /**
  * PageLayout component that provides a consistent layout structure
