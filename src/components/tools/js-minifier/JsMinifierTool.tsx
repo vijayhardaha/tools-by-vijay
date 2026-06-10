@@ -1,4 +1,5 @@
-'use client';
+import type { JSX } from 'react';
+('use client');
 
 import { useState } from 'react';
 
@@ -19,9 +20,9 @@ export interface MinifyOptions {
 /**
  * Main component for the JavaScript Minifier tool.
  *
- * @returns {React.JSX.Element} The JavaScript Minifier tool interface.
+ * @returns {JSX.Element} The JavaScript Minifier tool interface.
  */
-const JsMinifierTool = (): React.JSX.Element => {
+const JsMinifierTool = (): JSX.Element => {
   const [input, setInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
