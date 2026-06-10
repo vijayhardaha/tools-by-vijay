@@ -5,7 +5,7 @@ import { Textarea } from '@/components/ui/textarea';
 /**
  * Interface for the CountryNameGeneratorOutput component props.
  */
-interface IUrlDecoderEncoderOutputProps {
+interface UrlDecoderEncoderOutputProps {
   output: string;
 }
 
@@ -13,13 +13,13 @@ interface IUrlDecoderEncoderOutputProps {
  * A component that displays the result of a URL encoding or decoding operation.
  * It includes a textarea to show the output and a button to copy the output to the clipboard.
  *
- * @param {IUrlDecoderEncoderOutputProps} props - The props for the component.
+ *  @param {UrlDecoderEncoderOutputProps} props - The props for the component.
  *
  * @returns {React.JSX.Element} The rendered component.
  */
-const UrlDecoderEncoderOutput: React.FC<IUrlDecoderEncoderOutputProps> = ({
+const UrlDecoderEncoderOutput: React.FC<UrlDecoderEncoderOutputProps> = ({
   output,
-}: IUrlDecoderEncoderOutputProps): React.JSX.Element => {
+}: UrlDecoderEncoderOutputProps): React.JSX.Element => {
   return (
     <Card>
       <CardHeader>
