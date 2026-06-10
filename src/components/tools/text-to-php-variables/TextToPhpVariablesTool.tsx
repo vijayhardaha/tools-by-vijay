@@ -17,7 +17,7 @@ export type VariableCase = 'camelCase' | 'snake_case' | 'PascalCase';
  *
  * @returns {React.JSX.Element} The complete text to PHP variables tool with input options and output display.
  */
-const TextToPhpVariablesTool: React.FC = (): React.JSX.Element => {
+const TextToPhpVariablesTool = (): React.JSX.Element => {
   const [input, setInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
   const [variableCase, setVariableCase] = useState<VariableCase>('snake_case');
