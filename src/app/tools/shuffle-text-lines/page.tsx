@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import { notFound } from 'next/navigation';
 
 import EntryWithSidebar from '@/components/page/EntryWithSidebar';
@@ -32,9 +34,9 @@ export const metadata: PageMeta = generateMeta({
  * Shuffle Text Lines tool page component.
  * Renders the page layout with header and the Shuffle Text Lines tool.
  *
- * @returns {React.JSX.Element} The rendered Shuffle Text Lines tool page component.
+ * @returns {JSX.Element} The rendered Shuffle Text Lines tool page component.
  */
-const ShuffleTextLines = (): React.JSX.Element => {
+const ShuffleTextLines = (): JSX.Element => {
   if (!tool) {
     notFound(); // Render a 404 page if the tool is null
   }
