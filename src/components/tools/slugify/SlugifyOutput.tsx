@@ -5,18 +5,18 @@ import { Input } from '@/components/ui/input';
 /**
  * Interface for the SlugifyOutput component props.
  */
-interface ISlugifyOutputProps {
+interface SlugifyOutputProps {
   output: string;
 }
 
 /**
  * Component that displays the slugified output.
  *
- * @param {ISlugifyOutputProps} props - The component props.
+ *  @param {SlugifyOutputProps} props - The component props.
  *
  * @returns {React.JSX.Element} The rendered slugified output component.
  */
-const SlugifyOutput = ({ output }: ISlugifyOutputProps): React.JSX.Element => {
+const SlugifyOutput = ({ output }: SlugifyOutputProps): React.JSX.Element => {
   return (
     <Card>
       <CardHeader>
