@@ -7,18 +7,18 @@ import { Input } from '@/components/ui/input';
 /**
  * Interface for the PxToRemOutput component props.
  */
-interface IPxToRemOutputProps {
+interface PxToRemOutputProps {
   remValue: string;
 }
 
 /**
  * Displays the calculated rem value.
  *
- * @param {IPxToRemOutputProps} props - Component props.
+ *  @param {PxToRemOutputProps} props - Component props.
  *
  * @returns {React.JSX.Element} The rendered card with the rem value.
  */
-const PxToRemOutput: React.FC<IPxToRemOutputProps> = ({ remValue }: IPxToRemOutputProps): React.JSX.Element => {
+const PxToRemOutput: React.FC<PxToRemOutputProps> = ({ remValue }: PxToRemOutputProps): React.JSX.Element => {
   return (
     <Card>
       <CardHeader>
