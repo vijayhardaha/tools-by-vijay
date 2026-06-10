@@ -5,18 +5,18 @@ import { Textarea } from '@/components/ui/textarea';
 /**
  * Interface for the CountryNameGeneratorOutput component props.
  */
-interface IUnminifyOutputProps {
+interface UnminifyOutputProps {
   output: string;
 }
 
 /**
  * Component that displays the unminified code output.
  *
- * @param {IUnminifyOutputProps} props - The props for the component.
+ *  @param {UnminifyOutputProps} props - The props for the component.
  *
  * @returns {React.JSX.Element} The rendered UnminifyOutput component.
  */
-const UnminifyOutput: React.FC<IUnminifyOutputProps> = ({ output }: IUnminifyOutputProps): React.JSX.Element => {
+const UnminifyOutput: React.FC<UnminifyOutputProps> = ({ output }: UnminifyOutputProps): React.JSX.Element => {
   return (
     <Card>
       <CardHeader>
