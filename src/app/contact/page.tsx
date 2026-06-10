@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import { FaFacebookF, FaXTwitter, FaGithub, FaInstagram } from 'react-icons/fa6';
 import { TbWorldWww } from 'react-icons/tb';
 
@@ -23,9 +25,9 @@ export const metadata: PageMeta = generateMeta({
  * Contact page component
  * Displays social links and ways to connect, collaborate, or hire Vijay.
  *
- * @returns {React.JSX.Element} The rendered Contact page.
+ * @returns {JSX.Element} The rendered Contact page.
  */
-const Contact = (): React.JSX.Element => {
+const Contact = (): JSX.Element => {
   return (
     <PageLayout>
       <PageHeader
