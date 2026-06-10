@@ -1,10 +1,11 @@
+import type { JSX } from 'react';
 /**
  * Provides information about the Country Name Generator Tool, including its purpose,
  * usage instructions, and benefits.
  *
- * @returns {React.JSX.Element} The rendered component displaying tool information
+ * @returns {JSX.Element} The rendered component displaying tool information
  */
-const CountryNameGeneratorInfo = (): React.JSX.Element => {
+const CountryNameGeneratorInfo = (): JSX.Element => {
   return (
     <div className="max-w-none space-y-8">
       <section>
