@@ -11,7 +11,7 @@ import { Textarea } from '@/components/ui/textarea';
 /**
  * Interface for the Replace Quotes input component props.
  */
-interface IReplaceQuotesInputProps {
+interface ReplaceQuotesInputProps {
   input: string;
   setInput: (value: string) => void;
   replaceType: 'simple-to-curly' | 'curly-to-simple';
@@ -29,11 +29,11 @@ interface IReplaceQuotesInputProps {
  * Input component for the Replace Quotes tool.
  * Handles user input and actions for replacing quotes.
  *
- * @param {IReplaceQuotesInputProps} props - Component props
+ * @param {ReplaceQuotesInputProps} props - Component props
  *
  * @returns {React.JSX.Element} The input component for the Replace Quotes tool.
  */
-const ReplaceQuotesInput: React.FC<IReplaceQuotesInputProps> = ({
+const ReplaceQuotesInput: React.FC<ReplaceQuotesInputProps> = ({
   input,
   setInput,
   replaceType,
@@ -45,7 +45,7 @@ const ReplaceQuotesInput: React.FC<IReplaceQuotesInputProps> = ({
   onSubmit,
   onClear,
   onReset,
-}: IReplaceQuotesInputProps): React.JSX.Element => {
+}: ReplaceQuotesInputProps): React.JSX.Element => {
   /**
    * Handles form submission by preventing default behavior and triggering the replace action.
    *
