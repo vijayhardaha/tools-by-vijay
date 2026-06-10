@@ -1,4 +1,5 @@
-'use client';
+import type { JSX } from 'react';
+('use client');
 
 import { useState } from 'react';
 
@@ -11,9 +12,9 @@ import BarcodeOutput from './BarcodeGeneratorOutput';
  * for generating barcodes based on user input. It includes input fields for
  * data and size, and displays the generated barcode.
  *
- * @returns {React.JSX.Element} The rendered barcode generator tool component.
+ * @returns {JSX.Element} The rendered barcode generator tool component.
  */
-const BarcodeGeneratorTool = (): React.JSX.Element => {
+const BarcodeGeneratorTool = (): JSX.Element => {
   const [input, setInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
 
