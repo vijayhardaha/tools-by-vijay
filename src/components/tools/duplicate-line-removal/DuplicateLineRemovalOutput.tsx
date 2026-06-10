@@ -1,3 +1,4 @@
+import type { JSX } from 'react';
 import React from 'react';
 
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
@@ -17,11 +18,9 @@ interface DuplicateLineRemovalOutputProps {
  *
  *  @param {DuplicateLineRemovalOutputProps} props - Component props
  *
- * @returns {React.JSX.Element} The rendered output display
+ * @returns {JSX.Element} The rendered output display
  */
-const DuplicateLineRemovalOutput: React.FC<DuplicateLineRemovalOutputProps> = ({
-  output,
-}: DuplicateLineRemovalOutputProps): React.JSX.Element => {
+const DuplicateLineRemovalOutput = ({ output }: DuplicateLineRemovalOutputProps): JSX.Element => {
   return (
     <Card>
       <CardHeader>
