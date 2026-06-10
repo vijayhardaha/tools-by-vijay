@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import { notFound } from 'next/navigation';
 
 import EntryWithSidebar from '@/components/page/EntryWithSidebar';
@@ -32,9 +34,9 @@ export const metadata: PageMeta = generateMeta({
  * Alphabetical Line Sorter tool page component.
  * Renders the page layout with header and the Alphabetical Line Sorter tool.
  *
- * @returns {React.JSX.Element} The rendered Alphabetical Line Sorter tool page component.
+ * @returns {JSX.Element} The rendered Alphabetical Line Sorter tool page component.
  */
-const AlphabeticalLineSorter = (): React.JSX.Element => {
+const AlphabeticalLineSorter = (): JSX.Element => {
   if (!tool) {
     notFound(); // Render a 404 page if the tool is null
   }
