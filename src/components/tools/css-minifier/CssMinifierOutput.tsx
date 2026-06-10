@@ -1,10 +1,11 @@
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
-import { CompressionInfo } from "@/components/ui/compressionInfo";
-import { CopyButton } from "@/components/ui/copyButton";
-import { Textarea } from "@/components/ui/textarea";
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { CompressionInfo } from '@/components/ui/compressionInfo';
+import { CopyButton } from '@/components/ui/copyButton';
+import { Textarea } from '@/components/ui/textarea';
 
 /**
  * Props for the CssMinifierOutput component.
+ *
  * @property {string} output - The minified CSS output.
  * @property {string} input - The original CSS input.
  */
@@ -18,6 +19,7 @@ interface CssMinifierOutputProps {
  * It includes a card layout with compression statistics, a copy button, and a read-only textarea.
  *
  * @param {CssMinifierOutputProps} props - The props for the component.
+ *
  * @returns {React.JSX.Element} The rendered CssMinifierOutput component.
  */
 const CssMinifierOutput: React.FC<CssMinifierOutputProps> = ({

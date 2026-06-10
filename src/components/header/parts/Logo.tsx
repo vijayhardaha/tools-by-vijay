@@ -1,19 +1,18 @@
-import Image from "next/image";
-import Link from "next/link";
+import Image from 'next/image';
+import Link from 'next/link';
 
-import { cn } from "@/utils/classNameUtils";
+import { cn } from '@/utils/classNameUtils';
 
 /**
  * Props for the Logo component.
  */
-type ILogoProps = {
-  className?: string;
-};
+type ILogoProps = { className?: string };
 
 /**
  * Logo component that displays the site logo with next/image.
  *
  * @param {LogoProps} props - Component props.
+ *
  * @returns {React.JSX.Element} A link to the homepage containing the site logo.
  */
 const Logo: React.FC<ILogoProps> = ({ className }: ILogoProps): React.JSX.Element => (
@@ -24,7 +23,7 @@ const Logo: React.FC<ILogoProps> = ({ className }: ILogoProps): React.JSX.Elemen
       aria-label="Site logo for Tools by Vijay Hardaha"
       width={791}
       height={160}
-      className={cn("h-10 w-auto", className)}
+      className={cn('h-10 w-auto', className)}
       priority
     />
     <span className="sr-only">Tools by Vijay Hardaha</span>

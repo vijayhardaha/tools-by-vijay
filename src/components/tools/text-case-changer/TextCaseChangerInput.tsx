@@ -1,10 +1,12 @@
-"use client";
+'use client';
 
-import { Alert } from "@/components/ui/alert";
-import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
-import { Select } from "@/components/ui/select";
-import { Textarea } from "@/components/ui/textarea";
+import type { FormEvent } from 'react';
+
+import { Alert } from '@/components/ui/alert';
+import { Button } from '@/components/ui/button';
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { Select } from '@/components/ui/select';
+import { Textarea } from '@/components/ui/textarea';
 
 /**
  * Interface for the TextCaseChangerInput component props.
@@ -24,6 +26,7 @@ interface ITextCaseChangerInputProps {
  * Component for accepting text input and selecting a text case transformation.
  *
  * @param {ITextCaseChangerInputProps} props - The props for the TextCaseChangerInput component.
+ *
  * @returns {React.JSX.Element} The TextCaseChangerInput component.
  */
 const TextCaseChangerInput: React.FC<ITextCaseChangerInputProps> = ({
@@ -38,9 +41,10 @@ const TextCaseChangerInput: React.FC<ITextCaseChangerInputProps> = ({
 }: ITextCaseChangerInputProps): React.JSX.Element => {
   /**
    * Handles the form submission event.
-   * @param {React.FormEvent} e - The form submission event.
+   *
+   * @param {FormEvent} e - The form submission event.
    */
-  const handleSubmit = (e: React.FormEvent): void => {
+  const handleSubmit = (e: FormEvent): void => {
     e.preventDefault();
     onSubmit();
   };
@@ -66,13 +70,13 @@ const TextCaseChangerInput: React.FC<ITextCaseChangerInputProps> = ({
             value={textCase}
             onValueChange={setTextCase}
             options={[
-              { value: "Sentence case", label: "Sentence Case" },
-              { value: "lower case", label: "Lower Case" },
-              { value: "UPPER CASE", label: "UPPER CASE" },
-              { value: "Capitalized Case", label: "Capitalized Case" },
-              { value: "aLtErNaTiNg cAsE", label: "Alternating Case" },
-              { value: "Title Case", label: "Title Case" },
-              { value: "InVeRsE CaSe", label: "Inverse Case" },
+              { value: 'Sentence case', label: 'Sentence Case' },
+              { value: 'lower case', label: 'Lower Case' },
+              { value: 'UPPER CASE', label: 'UPPER CASE' },
+              { value: 'Capitalized Case', label: 'Capitalized Case' },
+              { value: 'aLtErNaTiNg cAsE', label: 'Alternating Case' },
+              { value: 'Title Case', label: 'Title Case' },
+              { value: 'InVeRsE CaSe', label: 'Inverse Case' },
             ]}
           />
 

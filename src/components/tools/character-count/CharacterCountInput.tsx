@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
-import { Textarea } from "@/components/ui/textarea";
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { Textarea } from '@/components/ui/textarea';
 
 /**
  * Interface for the CharacterCountInput component props.
@@ -15,6 +15,7 @@ interface CharacterCountInputProps {
  * Component for inputting text to analyze character count statistics.
  *
  * @param {CharacterCountInputProps} props - Component props.
+ *
  * @returns {React.JSX.Element} The rendered input form.
  */
 const CharacterCountInput: React.FC<CharacterCountInputProps> = ({

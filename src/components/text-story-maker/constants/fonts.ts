@@ -1,75 +1,37 @@
-import { Comfortaa as ComfortaaFont } from "next/font/google";
-import { Montserrat_Alternates as MontserratAlternatesFont } from "next/font/google";
-import { Nerko_One as NerkoOneFont } from "next/font/google";
-import { Hind as HindFont } from "next/font/google";
-import { Teko as TekoFont } from "next/font/google";
-import { Kalam as KalamFont } from "next/font/google";
-import { Anonymous_Pro as AnonymousProFont } from "next/font/google";
-import { EB_Garamond as EBGaramondFont } from "next/font/google";
-import { Caveat as CaveatFont } from "next/font/google";
-import { Fresca as FrescaFont } from "next/font/google";
-const Comfortaa = ComfortaaFont({
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["400", "700"],
-});
-const Montserrat_Alternates = MontserratAlternatesFont({
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["400", "700"],
-});
-const Nerko_One = NerkoOneFont({
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["400"],
-});
-const Hind = HindFont({
-  subsets: ["latin", "devanagari"],
-  display: "swap",
-  weight: ["400", "700"],
-});
-const Teko = TekoFont({
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["400", "700"],
-});
-const Kalam = KalamFont({
-  subsets: ["latin", "devanagari"],
-  display: "swap",
-  weight: ["400", "700"],
-});
-const Anonymous_Pro = AnonymousProFont({
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["400", "700"],
-});
-const EB_Garamond = EBGaramondFont({
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["400", "700"],
-});
-const Caveat = CaveatFont({
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["400", "700"],
-});
-const Fresca = FrescaFont({
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["400"],
-});
+import {
+  Comfortaa as ComfortaaFont,
+  Montserrat_Alternates as MontserratAlternatesFont,
+  Nerko_One as NerkoOneFont,
+  Hind as HindFont,
+  Teko as TekoFont,
+  Kalam as KalamFont,
+  Anonymous_Pro as AnonymousProFont,
+  EB_Garamond as EBGaramondFont,
+  Caveat as CaveatFont,
+  Fresca as FrescaFont,
+} from 'next/font/google';
+const Comfortaa = ComfortaaFont({ subsets: ['latin'], display: 'swap', weight: ['400', '700'] });
+const Montserrat_Alternates = MontserratAlternatesFont({ subsets: ['latin'], display: 'swap', weight: ['400', '700'] });
+const Nerko_One = NerkoOneFont({ subsets: ['latin'], display: 'swap', weight: ['400'] });
+const Hind = HindFont({ subsets: ['latin', 'devanagari'], display: 'swap', weight: ['400', '700'] });
+const Teko = TekoFont({ subsets: ['latin'], display: 'swap', weight: ['400', '700'] });
+const Kalam = KalamFont({ subsets: ['latin', 'devanagari'], display: 'swap', weight: ['400', '700'] });
+const Anonymous_Pro = AnonymousProFont({ subsets: ['latin'], display: 'swap', weight: ['400', '700'] });
+const EB_Garamond = EBGaramondFont({ subsets: ['latin'], display: 'swap', weight: ['400', '700'] });
+const Caveat = CaveatFont({ subsets: ['latin'], display: 'swap', weight: ['400', '700'] });
+const Fresca = FrescaFont({ subsets: ['latin'], display: 'swap', weight: ['400'] });
 
 /**
  * Interface for font options.
  */
-export interface IFont {
+export interface Font {
   key: string;
   label: string;
   class: string;
 }
 
 // prettier-ignore
-export const fonts: IFont[] = [
+export const fonts: Font[] = [
   { key: "comfortaa", label: "Comfortaa", class: Comfortaa.className },
   { key: "montserrat_alternates", label: "Montserrat (Alt)", class: Montserrat_Alternates.className},
   { key: "nerko_one", label: "Nerko", class: Nerko_One.className },

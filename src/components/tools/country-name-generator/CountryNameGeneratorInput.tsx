@@ -1,9 +1,11 @@
-"use client";
+'use client';
 
-import { Alert } from "@/components/ui/alert";
-import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
+import type { FormEvent } from 'react';
+
+import { Alert } from '@/components/ui/alert';
+import { Button } from '@/components/ui/button';
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
 
 /**
  * Interface for the CountryNameGeneratorInput component props.
@@ -20,6 +22,7 @@ interface CountryNameGeneratorInputProps {
  * A component for accepting input to generate country names.
  *
  * @param {CountryNameGeneratorInputProps}props - The props for the CountryNameGeneratorInput component.
+ *
  * @returns {React.JSX.Element} The CountryNameGeneratorInput component.
  */
 const CountryNameGeneratorInput: React.FC<CountryNameGeneratorInputProps> = ({
@@ -31,9 +34,10 @@ const CountryNameGeneratorInput: React.FC<CountryNameGeneratorInputProps> = ({
 }: CountryNameGeneratorInputProps): React.JSX.Element => {
   /**
    * Handles the form submission event.
-   * @param {React.FormEvent} e - The form submission event.
+   *
+   * @param {FormEvent} e - The form submission event.
    */
-  const handleSubmit = (e: React.FormEvent): void => {
+  const handleSubmit = (e: FormEvent): void => {
     e.preventDefault();
     onGenerate();
   };

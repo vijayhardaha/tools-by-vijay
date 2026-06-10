@@ -2,7 +2,6 @@
  * Provides information about the CSS Minifier Tool, including its purpose,
  * usage instructions, and examples.
  *
- * @component
  * @returns {React.JSX.Element} The rendered component displaying tool information
  */
 const CssMinifierInfo: React.FC = (): React.JSX.Element => {
@@ -17,7 +16,7 @@ const CssMinifierInfo: React.FC = (): React.JSX.Element => {
           and potentially better search engine rankings.
         </p>
         <p className="mb-4">
-          We use the <code className="bg-muted rounded px-1 py-0.5 text-sm font-medium text-pink-500">clean-css</code>{" "}
+          We use the <code className="bg-muted rounded px-1 py-0.5 text-sm font-medium text-pink-500">clean-css</code>{' '}
           package under the hood, which provides powerful and configurable CSS minification capabilities. With our tool,
           you can customize the minification process to suit your specific needs, whether you’re working on a small
           website or a large web application.
@@ -48,7 +47,7 @@ const CssMinifierInfo: React.FC = (): React.JSX.Element => {
       <section>
         <h3 className="text-primary mb-4 text-lg font-bold">Credits & Source</h3>
         <p>
-          Maintained by{" "}
+          Maintained by{' '}
           <a
             href="https://x.com/vijayhardaha"
             className="font-medium text-pink-500 underline hover:no-underline"
@@ -57,7 +56,7 @@ const CssMinifierInfo: React.FC = (): React.JSX.Element => {
           >
             Vijay Hardaha
           </a>
-          . This tool uses the open-source library{" "}
+          . This tool uses the open-source library{' '}
           <a
             href="https://www.npmjs.com/package/clean-css"
             className="font-medium text-pink-500 underline hover:no-underline"
@@ -65,7 +64,7 @@ const CssMinifierInfo: React.FC = (): React.JSX.Element => {
             rel="noreferrer"
           >
             clean-css
-          </a>{" "}
+          </a>{' '}
           for CSS minification.
         </p>
       </section>

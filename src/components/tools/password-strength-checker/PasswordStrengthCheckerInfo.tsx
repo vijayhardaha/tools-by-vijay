@@ -2,7 +2,6 @@
  * Provides information about the Password Strength Checker Tool, including its purpose,
  * usage instructions, and examples.
  *
- * @component
  * @returns {React.JSX.Element} The rendered component displaying tool information
  */
 const PasswordStrengthCheckerInfo: React.FC = (): React.JSX.Element => {
@@ -85,7 +84,7 @@ const PasswordStrengthCheckerInfo: React.FC = (): React.JSX.Element => {
       <section>
         <h3 className="text-primary mb-4 text-lg font-bold">Credits & Source</h3>
         <p>
-          Maintained by{" "}
+          Maintained by{' '}
           <a
             href="https://x.com/vijayhardaha"
             className="font-medium text-pink-500 underline hover:no-underline"

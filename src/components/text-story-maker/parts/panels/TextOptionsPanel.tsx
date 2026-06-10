@@ -1,15 +1,17 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-import { PiTextAa as AaIcon } from "react-icons/pi";
-import { PiTextAlignCenter as AlignCenterIcon } from "react-icons/pi";
-import { PiTextAlignLeft as AlignLeftIcon } from "react-icons/pi";
-import { PiTextAlignRight as AlignRightIcon } from "react-icons/pi";
-import { TiThLargeOutline as TextSettingsIcon } from "react-icons/ti";
+import {
+  PiTextAa as AaIcon,
+  PiTextAlignCenter as AlignCenterIcon,
+  PiTextAlignLeft as AlignLeftIcon,
+  PiTextAlignRight as AlignRightIcon,
+} from 'react-icons/pi';
+import { TiThLargeOutline as TextSettingsIcon } from 'react-icons/ti';
 
-import { btnBaseStyles } from "@/components/text-story-maker/constants/btnBaseStyles";
-import { IOptions } from "@/components/text-story-maker/constants/options";
-import { textColors } from "@/components/text-story-maker/constants/textColors";
-import ColorSelectPanel from "@/components/text-story-maker/parts/panels/ColorSelectPanel";
+import { btnBaseStyles } from '@/components/text-story-maker/constants/btnBaseStyles';
+import type { StoryOptions } from '@/components/text-story-maker/constants/options';
+import { textColors } from '@/components/text-story-maker/constants/textColors';
+import ColorSelectPanel from '@/components/text-story-maker/parts/panels/ColorSelectPanel';
 import {
   ControlPanel,
   ControlBox,
@@ -17,25 +19,29 @@ import {
   ControlSlider,
   ToggleOptions,
   ToggleColors,
-} from "@/components/text-story-maker/parts/panels/PanelHelper";
-import { IUpdateOptionProps } from "@/components/text-story-maker/TextStoryMakerTool";
-import FontSlider from "@/components/text-story-maker/ui/FontSlider";
-import { cn } from "@/utils/classNameUtils";
+} from '@/components/text-story-maker/parts/panels/PanelHelper';
+import type { UpdateOptionProps } from '@/components/text-story-maker/TextStoryMakerTool';
+import FontSlider from '@/components/text-story-maker/ui/FontSlider';
+import { cn } from '@/utils/classNameUtils';
 
 /**
  * Interface for the TextOptionsPanel component props.
  */
-interface ITextOptionsPanelProps extends IUpdateOptionProps {}
+interface TextOptionsPanelProps extends UpdateOptionProps {}
 
 /**
  * TextOptionsPanel component for managing text-related options.
+ *
+ * @param root0
+ * @param root0.options
+ * @param root0.updateOption
  */
-const TextOptionsPanel = ({ options, updateOption }: ITextOptionsPanelProps) => {
-  const [activeTool, setActiveTool] = useState<string>("font-family");
+const TextOptionsPanel = ({ options, updateOption }: TextOptionsPanelProps) => {
+  const [activeTool, setActiveTool] = useState<string>('font-family');
   const [showSettingsDropdown, setShowSettingsDropdown] = useState<boolean>(false);
-  const [activeSettingsTab, setActiveSettingsTab] = useState<string>("text");
+  const [activeSettingsTab, setActiveSettingsTab] = useState<string>('text');
 
-  const textAlignments: Array<"center" | "left" | "right"> = ["center", "left", "right"];
+  const textAlignments: Array<'center' | 'left' | 'right'> = ['center', 'left', 'right'];
 
   /**
    * Handles changes to the active tool.
@@ -54,18 +60,18 @@ const TextOptionsPanel = ({ options, updateOption }: ITextOptionsPanelProps) => 
    * @param {Array<number>} values - Array containing the value.
    */
   const handleSliderChange = (key: string, values: Array<number>): void =>
-    updateOption(key as keyof IOptions, parseFloat(values[0].toString()));
+    updateOption(key as keyof StoryOptions, parseFloat(values[0].toString()));
 
   /**
    * Toggles the text alignment option in sequence.
    */
   const handleAlignmentChange = (): void => {
-    const currentAlignment = options.textAlign || "left";
-    const currentIndex = textAlignments.indexOf(currentAlignment as "center" | "left" | "right");
+    const currentAlignment = options.textAlign || 'left';
+    const currentIndex = textAlignments.indexOf(currentAlignment as 'center' | 'left' | 'right');
     const nextIndex = (currentIndex + 1) % textAlignments.length;
-    handleActiveToolChange("");
+    handleActiveToolChange('');
     setShowSettingsDropdown(false);
-    updateOption("textAlign", textAlignments[nextIndex]);
+    updateOption('textAlign', textAlignments[nextIndex]);
   };
 
   /**
@@ -73,7 +79,7 @@ const TextOptionsPanel = ({ options, updateOption }: ITextOptionsPanelProps) => 
    */
   const handleBoldToggle = (): void => {
     const newBoldStatus = !options.textBold;
-    updateOption("textBold", newBoldStatus);
+    updateOption('textBold', newBoldStatus);
   };
 
   /**
@@ -81,7 +87,7 @@ const TextOptionsPanel = ({ options, updateOption }: ITextOptionsPanelProps) => 
    */
   const handleItalicToggle = (): void => {
     const newItalicStatus = !options.textItalic;
-    updateOption("textItalic", newItalicStatus);
+    updateOption('textItalic', newItalicStatus);
   };
 
   /**
@@ -89,7 +95,7 @@ const TextOptionsPanel = ({ options, updateOption }: ITextOptionsPanelProps) => 
    */
   const handleUppercaseToggle = (): void => {
     const newUppercaseStatus = !options.textUppercase;
-    updateOption("textUppercase", newUppercaseStatus);
+    updateOption('textUppercase', newUppercaseStatus);
   };
 
   /**
@@ -99,9 +105,9 @@ const TextOptionsPanel = ({ options, updateOption }: ITextOptionsPanelProps) => 
    */
   const getAlignmentIcon = (): React.ElementType => {
     switch (options.textAlign) {
-      case "left":
+      case 'left':
         return AlignLeftIcon;
-      case "right":
+      case 'right':
         return AlignRightIcon;
       default:
         return AlignCenterIcon;
@@ -109,13 +115,13 @@ const TextOptionsPanel = ({ options, updateOption }: ITextOptionsPanelProps) => 
   };
 
   // Define the class names for the tab buttons
-  const tabButtonClass = "bg-neutral-900 text-sm shadow-none font-normal py-2";
+  const tabButtonClass = 'bg-neutral-900 text-sm shadow-none font-normal py-2';
 
   return (
     <ControlPanel>
-      {activeTool === "font-family" && <FontSlider options={options} updateOption={updateOption} />}
+      {activeTool === 'font-family' && <FontSlider options={options} updateOption={updateOption} />}
 
-      {activeTool === "text-color" && (
+      {activeTool === 'text-color' && (
         <ColorSelectPanel
           optionKey="textColor"
           options={options}
@@ -124,45 +130,41 @@ const TextOptionsPanel = ({ options, updateOption }: ITextOptionsPanelProps) => 
         />
       )}
 
-      {activeTool === "text-settings" && showSettingsDropdown && (
+      {activeTool === 'text-settings' && showSettingsDropdown && (
         <ControlBox
           className="flex w-full flex-col items-start gap-4 rounded-xl bg-neutral-900/85 p-4 text-left"
           aria-label="Text Settings"
         >
           {/* Tabs */}
           <div className="flex w-full items-center justify-evenly rounded-xl bg-neutral-900 p-1">
-            {Object.entries({
-              "Text Controls": "text",
-              "Box Controls": "box",
-              "Effects Controls": "effects",
-            }).map(([label, tab]) => (
-              <button
-                key={tab}
-                type="button"
-                className={cn(
-                  btnBaseStyles.join(" "),
-                  "flex-1 rounded-xl px-4 py-2 shadow-none",
-                  "text-sm font-medium",
-                  {
-                    "bg-white text-neutral-900": activeSettingsTab === tab,
-                  }
-                )}
-                onClick={() => setActiveSettingsTab(tab)}
-              >
-                {label}
-              </button>
-            ))}
+            {Object.entries({ 'Text Controls': 'text', 'Box Controls': 'box', 'Effects Controls': 'effects' }).map(
+              ([label, tab]) => (
+                <button
+                  key={tab}
+                  type="button"
+                  className={cn(
+                    btnBaseStyles.join(' '),
+                    'flex-1 rounded-xl px-4 py-2 shadow-none',
+                    'text-sm font-medium',
+                    { 'bg-white text-neutral-900': activeSettingsTab === tab }
+                  )}
+                  onClick={() => setActiveSettingsTab(tab)}
+                >
+                  {label}
+                </button>
+              )
+            )}
           </div>
 
           {/* Text Settings Tab Content */}
-          {activeSettingsTab === "text" && (
+          {activeSettingsTab === 'text' && (
             <div className="w-full space-y-4">
               <div className="flex flex-wrap gap-2">
                 <ControlBtn
                   type="text"
                   active={options.textBold}
                   onClick={handleBoldToggle}
-                  className={cn(tabButtonClass, "font-extrabold")}
+                  className={cn(tabButtonClass, 'font-extrabold')}
                 >
                   Bold
                 </ControlBtn>
@@ -170,7 +172,7 @@ const TextOptionsPanel = ({ options, updateOption }: ITextOptionsPanelProps) => 
                   type="text"
                   active={options.textItalic}
                   onClick={handleItalicToggle}
-                  className={cn(tabButtonClass, "italic")}
+                  className={cn(tabButtonClass, 'italic')}
                 >
                   Italic
                 </ControlBtn>
@@ -178,7 +180,7 @@ const TextOptionsPanel = ({ options, updateOption }: ITextOptionsPanelProps) => 
                   type="text"
                   active={options.textUppercase}
                   onClick={handleUppercaseToggle}
-                  className={cn(tabButtonClass, "uppercase")}
+                  className={cn(tabButtonClass, 'uppercase')}
                 >
                   Uppercase
                 </ControlBtn>
@@ -217,7 +219,7 @@ const TextOptionsPanel = ({ options, updateOption }: ITextOptionsPanelProps) => 
           )}
 
           {/* Box Settings Tab Content */}
-          {activeSettingsTab === "box" && (
+          {activeSettingsTab === 'box' && (
             <div className="w-full space-y-4">
               <ToggleColors
                 label="Background"
@@ -274,7 +276,7 @@ const TextOptionsPanel = ({ options, updateOption }: ITextOptionsPanelProps) => 
                 <>
                   <ToggleOptions
                     label="Glossy Background"
-                    options={{ Disabled: "", Enabled: "enabled" }}
+                    options={{ Disabled: '', Enabled: 'enabled' }}
                     selected={options.boxGlossy}
                     onChangeKey="boxGlossy"
                     onChangeHandler={updateOption}
@@ -308,7 +310,7 @@ const TextOptionsPanel = ({ options, updateOption }: ITextOptionsPanelProps) => 
           )}
 
           {/* Effects Settings Tab Content */}
-          {activeSettingsTab === "effects" && (
+          {activeSettingsTab === 'effects' && (
             <div className="w-full space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-4">
@@ -361,13 +363,13 @@ const TextOptionsPanel = ({ options, updateOption }: ITextOptionsPanelProps) => 
       <ControlBox>
         <ControlBtn
           icon={AaIcon}
-          active={activeTool === "font-family"}
-          onClick={() => handleActiveToolChange("font-family")}
+          active={activeTool === 'font-family'}
+          onClick={() => handleActiveToolChange('font-family')}
           screenReaderText="Change Font Family"
         />
         <ControlBtn
-          active={activeTool === "text-color"}
-          onClick={() => handleActiveToolChange("text-color")}
+          active={activeTool === 'text-color'}
+          onClick={() => handleActiveToolChange('text-color')}
           screenReaderText="Change Text Color"
           className="p-0"
         >
@@ -388,9 +390,9 @@ const TextOptionsPanel = ({ options, updateOption }: ITextOptionsPanelProps) => 
         />
         <ControlBtn
           icon={TextSettingsIcon}
-          active={activeTool === "text-settings"}
+          active={activeTool === 'text-settings'}
           onClick={() => {
-            setActiveTool("text-settings");
+            setActiveTool('text-settings');
             setShowSettingsDropdown((prev) => !prev);
           }}
           screenReaderText="Text and Style Settings"

@@ -1,5 +1,5 @@
-import FooterBottom from "@/components/footer/FooterBottom";
-import FooterTop from "@/components/footer/FooterTop";
+import FooterBottom from '@/components/footer/FooterBottom';
+import FooterTop from '@/components/footer/FooterTop';
 
 /**
  * Footer component that provides a consistent footer structure

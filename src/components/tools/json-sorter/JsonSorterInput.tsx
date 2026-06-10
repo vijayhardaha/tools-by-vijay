@@ -1,12 +1,14 @@
-"use client";
+'use client';
 
-import { Alert } from "@/components/ui/alert";
-import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
-import { Checkbox } from "@/components/ui/checkbox";
-import { HelpTip } from "@/components/ui/helptip";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
+import type { FormEvent } from 'react';
+
+import { Alert } from '@/components/ui/alert';
+import { Button } from '@/components/ui/button';
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { Checkbox } from '@/components/ui/checkbox';
+import { HelpTip } from '@/components/ui/helptip';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
 
 /**
  * Interface for the JSON sorter input component props.
@@ -26,6 +28,7 @@ interface IJsonSorterInputProps {
  * Component for inputting JSON and configuring sorting options.
  *
  * @param {IJsonSorterInputProps} props - Component props.
+ *
  * @returns {React.JSX.Element} The rendered form with sorting options.
  */
 const JsonSorterInput: React.FC<IJsonSorterInputProps> = ({
@@ -43,7 +46,7 @@ const JsonSorterInput: React.FC<IJsonSorterInputProps> = ({
    *
    * @param {FormEvent} e - Form event object.
    */
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     onSubmit();
   };

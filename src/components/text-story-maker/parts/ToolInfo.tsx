@@ -1,5 +1,5 @@
-import { getFontClassByName } from "@/components/text-story-maker/utils/styleUtils";
-import { cn } from "@/utils/classNameUtils";
+import { getFontClassByName } from '@/components/text-story-maker/utils/styleUtils';
+import { cn } from '@/utils/classNameUtils';
 
 /**
  * ToolInfo Component
@@ -20,14 +20,14 @@ const ToolInfo: React.FC = (): React.JSX.Element => {
       <div className="flex flex-col items-start">
         <h1
           className={cn(
-            "mb-0 text-2xl leading-normal font-semibold tracking-wide",
-            getFontClassByName("nerko_one") as string
+            'mb-0 text-2xl leading-normal font-semibold tracking-wide',
+            getFontClassByName('nerko_one') as string
           )}
         >
           Text Story Maker
         </h1>
         <p
-          className={cn("text-accent-foreground -mt-2 text-lg leading-normal", getFontClassByName("caveat") as string)}
+          className={cn('text-accent-foreground -mt-2 text-lg leading-normal', getFontClassByName('caveat') as string)}
         >
           A tool by Vijay Hardaha
         </p>

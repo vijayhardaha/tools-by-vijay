@@ -2,7 +2,6 @@
  * Provides information about the JSON Sorter Tool, including its purpose,
  * usage instructions, and examples.
  *
- * @component
  * @returns {React.JSX.Element} The rendered component displaying tool information
  */
 const JsonSorterInfo: React.FC = (): React.JSX.Element => {
@@ -78,7 +77,7 @@ const JsonSorterInfo: React.FC = (): React.JSX.Element => {
       <section>
         <h3 className="text-primary mb-4 text-lg font-bold">Credits & Source</h3>
         <p>
-          Maintained by{" "}
+          Maintained by{' '}
           <a
             href="https://x.com/vijayhardaha"
             className="font-medium text-pink-500 underline hover:no-underline"
@@ -87,7 +86,7 @@ const JsonSorterInfo: React.FC = (): React.JSX.Element => {
           >
             Vijay Hardaha
           </a>
-          . This tool uses{" "}
+          . This tool uses{' '}
           <a
             href="https://github.com/ShivrajRath/jsonabc"
             className="font-medium text-pink-500 underline hover:no-underline"
@@ -95,7 +94,7 @@ const JsonSorterInfo: React.FC = (): React.JSX.Element => {
             target="_blank"
           >
             jsonabc
-          </a>{" "}
+          </a>{' '}
           for JSON sorting functionality.
         </p>
       </section>

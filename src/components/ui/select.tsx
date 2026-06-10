@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from 'react';
 
-import { LuCheck as CheckIcon, LuChevronDown as ChevronDownIcon } from "react-icons/lu";
+import { LuCheck as CheckIcon, LuChevronDown as ChevronDownIcon } from 'react-icons/lu';
 
-import { cn } from "@/utils/classNameUtils";
+import { cn } from '@/utils/classNameUtils';
 
 /**
  * Option type for the Select component
@@ -26,11 +26,21 @@ interface ISelectProps extends React.HTMLAttributes<HTMLDivElement> {
   options: ISelectOption[];
   placeholder?: string;
   className?: string;
-  size?: "default" | "sm";
+  size?: 'default' | 'sm';
 }
 
 /**
  * Simplified Select component that handles all dropdown functionality internally
+ *
+ * @param root0
+ * @param root0.value
+ * @param root0.defaultValue
+ * @param root0.onValueChange
+ * @param root0.disabled
+ * @param root0.options
+ * @param root0.placeholder
+ * @param root0.className
+ * @param root0.size
  */
 function Select({
   value,
@@ -38,17 +48,17 @@ function Select({
   onValueChange,
   disabled = false,
   options = [],
-  placeholder = "Select an option",
-  className = "",
-  size = "default",
+  placeholder = 'Select an option',
+  className = '',
+  size = 'default',
   ...props
 }: ISelectProps) {
-  const [selectedValue, setSelectedValue] = useState(defaultValue || value || "");
+  const [selectedValue, setSelectedValue] = useState(defaultValue || value || '');
   const [open, setOpen] = useState(false);
   const selectRef = useRef<HTMLDivElement>(null);
 
   // Get the label of the selected option
-  const selectedLabel = options.find((opt) => opt.value === selectedValue)?.label || "";
+  const selectedLabel = options.find((opt) => opt.value === selectedValue)?.label || '';
 
   useEffect(() => {
     if (value !== undefined && value !== selectedValue) {
@@ -77,11 +87,11 @@ function Select({
     };
 
     if (open) {
-      document.addEventListener("mousedown", handleOutsideClick);
+      document.addEventListener('mousedown', handleOutsideClick);
     }
 
     return () => {
-      document.removeEventListener("mousedown", handleOutsideClick);
+      document.removeEventListener('mousedown', handleOutsideClick);
     };
   }, [open]);
 
@@ -97,35 +107,35 @@ function Select({
         aria-expanded={open}
         className={cn(
           // Layout & Flex
-          "flex w-fit items-center justify-between gap-2",
-          "rounded-lg border bg-transparent px-3 py-2 text-sm whitespace-nowrap",
+          'flex w-fit items-center justify-between gap-2',
+          'rounded-lg border bg-transparent px-3 py-2 text-sm whitespace-nowrap',
 
           // Borders & Shadows
-          "border-input shadow-xs",
+          'border-input shadow-xs',
 
           // State Styles
-          "focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]",
-          "aria-invalid:border-destructive aria-invalid:ring-destructive/20",
+          'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
+          'aria-invalid:border-destructive aria-invalid:ring-destructive/20',
 
           // Transitions & Effects
-          "transition-[color,box-shadow] outline-none",
+          'transition-[color,box-shadow] outline-none',
 
           // Disabled state
-          "disabled:cursor-not-allowed disabled:opacity-50",
+          'disabled:cursor-not-allowed disabled:opacity-50',
 
           // Data attributes
-          "data-[placeholder]:text-muted-foreground",
-          "data-[size=default]:h-9 data-[size=sm]:h-8",
+          'data-[placeholder]:text-muted-foreground',
+          'data-[size=default]:h-9 data-[size=sm]:h-8',
 
           // Slot-based styles
-          "*:data-[slot=select-value]:line-clamp-1",
-          "*:data-[slot=select-value]:flex",
-          "*:data-[slot=select-value]:items-center",
-          "*:data-[slot=select-value]:gap-2",
+          '*:data-[slot=select-value]:line-clamp-1',
+          '*:data-[slot=select-value]:flex',
+          '*:data-[slot=select-value]:items-center',
+          '*:data-[slot=select-value]:gap-2',
 
           // SVG-specific
-          "[&_svg]:pointer-events-none",
-          "[&_svg]:shrink-0",
+          '[&_svg]:pointer-events-none',
+          '[&_svg]:shrink-0',
           "[&_svg:not([class*='size-'])]:size-4",
           "[&_svg:not([class*='text-'])]:text-muted-foreground",
           className
@@ -158,14 +168,14 @@ function Select({
                   data-slot="select-item"
                   data-selected={isSelected}
                   className={cn(
-                    "relative flex w-full items-center gap-2",
-                    "py-1.5 pr-8 pl-2",
-                    "rounded-lg text-sm outline-hidden select-none",
-                    "hover:bg-muted focus:bg-muted aria-disabled:opacity-50",
+                    'relative flex w-full items-center gap-2',
+                    'py-1.5 pr-8 pl-2',
+                    'rounded-lg text-sm outline-hidden select-none',
+                    'hover:bg-muted focus:bg-muted aria-disabled:opacity-50',
                     "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
                     "[&_svg:not([class*='text-'])]:text-muted-foreground",
-                    isSelected && "bg-muted",
-                    isDisabled ? "cursor-not-allowed opacity-50" : "cursor-pointer"
+                    isSelected && 'bg-muted',
+                    isDisabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'
                   )}
                   onClick={(e) => {
                     e.preventDefault();
@@ -175,7 +185,7 @@ function Select({
                     }
                   }}
                   onKeyDown={(e) => {
-                    if (!isDisabled && (e.key === "Enter" || e.key === " ")) {
+                    if (!isDisabled && (e.key === 'Enter' || e.key === ' ')) {
                       e.preventDefault();
                       handleValueChange(option.value);
                     }

@@ -1,40 +1,30 @@
-import Logo from "@/components/header/parts/Logo";
-import { Button } from "@/components/ui/button";
-import { socialMediaLinks } from "@/constants/socialLinks";
+import Logo from '@/components/header/parts/Logo';
+import { Button } from '@/components/ui/button';
+import { socialMediaLinks } from '@/constants/socialLinks';
 
 /**
  * Props for the SocialButton component.
  */
-type ISocialButtonProps = {
-  icon: React.ElementType;
-  href: string;
-  label: string;
-  color?: string;
-};
+type SocialButtonProps = { icon: React.ElementType; href: string; label: string; color?: string };
 
 /**
  * Represents a social media link.
  */
-type ISocialMediaLink = {
-  key: string;
-  icon: React.ElementType;
-  url: string;
-  name: string;
-  color?: string;
-};
+type SocialMediaLinkItem = { key: string; icon: React.ElementType; url: string; name: string; color?: string };
 
 /**
  * Button component for social media links.
  *
- * @param {ISocialButtonProps} props - Props for the SocialButton component.
+ * @param {SocialButtonProps} props - Props for the SocialButton component.
+ *
  * @returns {React.JSX.Element} The rendered social button.
  */
-const SocialButton: React.FC<ISocialButtonProps> = ({
+const SocialButton: React.FC<SocialButtonProps> = ({
   icon: Icon,
   href,
   label,
   color,
-}: ISocialButtonProps): React.JSX.Element => (
+}: SocialButtonProps): React.JSX.Element => (
   <Button
     variant="primary"
     size="icon"
@@ -70,7 +60,7 @@ const FooterAbout: React.FC = (): React.JSX.Element => {
       </div>
 
       <div className="flex space-x-2">
-        {socialMediaLinks.map(({ key, icon, url, name, color }: ISocialMediaLink) => (
+        {socialMediaLinks.map(({ key, icon, url, name, color }: SocialMediaLinkItem) => (
           <SocialButton key={key} icon={icon} href={url} label={name} color={color} />
         ))}
       </div>

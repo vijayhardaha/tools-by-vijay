@@ -1,25 +1,29 @@
-import categories from "@/constants/toolsCategories";
-import { ICategory } from "@/types";
+import categories from '@/constants/toolsCategories';
+import type { Category } from '@/types';
 
 /**
  * Get all categores
- * @returns {ICategory[]} Array of all categories
+ *
+ * @returns {Category[]} Array of all categories
  */
-export const getAllCategories = (): ICategory[] => {
+export const getAllCategories = (): Category[] => {
   return categories;
 };
 
 /**
  * Get a category by its slug
+ *
  * @param {string} slug - The slug of the category to find
- * @returns {ICategory|null} The category object or null if not found
+ *
+ * @returns {Category|null} The category object or null if not found
  */
-export const getCategoryBySlug = (slug: string): ICategory | null => {
+export const getCategoryBySlug = (slug: string): Category | null => {
   return categories.find((category) => category.slug === slug) || null;
 };
 
 /**
  * Get all category slugs
+ *
  * @returns {string[]} Array of all category slugs
  */
 export const getAllCategorySlugs = (): string[] => {
@@ -28,7 +32,9 @@ export const getAllCategorySlugs = (): string[] => {
 
 /**
  * Check if a category exists by slug
+ *
  * @param {string} slug - The slug to check
+ *
  * @returns {boolean} Whether the category exists
  */
 export const categoryExists = (slug: string): boolean => {
@@ -37,10 +43,12 @@ export const categoryExists = (slug: string): boolean => {
 
 /**
  * Filter categories by a search term (matches against label or description)
+ *
  * @param {string} searchTerm - The term to search for
- * @returns {ICategory[]} Filtered array of categories
+ *
+ * @returns {Category[]} Filtered array of categories
  */
-export const filterCategories = (searchTerm: string): ICategory[] => {
+export const filterCategories = (searchTerm: string): Category[] => {
   if (!searchTerm) return categories;
 
   const term = searchTerm.toLowerCase();
@@ -51,9 +59,11 @@ export const filterCategories = (searchTerm: string): ICategory[] => {
 
 /**
  * Sort categories alphabetically by label
- * @param {ICategory[]} categoriesToSort - Array of categories to sort
- * @returns {ICategory[]} Sorted array of categories
+ *
+ * @param {Category[]} categoriesToSort - Array of categories to sort
+ *
+ * @returns {Category[]} Sorted array of categories
  */
-export const sortCategoriesAlphabetically = (categoriesToSort: ICategory[]): ICategory[] => {
+export const sortCategoriesAlphabetically = (categoriesToSort: Category[]): Category[] => {
   return [...categoriesToSort].sort((a, b) => a.label.localeCompare(b.label));
 };

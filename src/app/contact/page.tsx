@@ -1,27 +1,28 @@
-import { FaFacebookF, FaXTwitter, FaGithub, FaInstagram } from "react-icons/fa6";
-import { TbWorldWww } from "react-icons/tb";
+import { FaFacebookF, FaXTwitter, FaGithub, FaInstagram } from 'react-icons/fa6';
+import { TbWorldWww } from 'react-icons/tb';
 
-import PageContent from "@/components/page/PageContent";
-import PageHeader from "@/components/page/PageHeader";
-import PageLayout from "@/components/page/PageLayout";
-import { generateMeta, IMetadata } from "@/utils/seoUtils";
+import PageContent from '@/components/page/PageContent';
+import PageHeader from '@/components/page/PageHeader';
+import PageLayout from '@/components/page/PageLayout';
+import { generateMeta } from '@/utils/seoUtils';
+import type { PageMeta } from '@/utils/seoUtils';
 
 /**
  * SEO metadata for the Contact page.
- * @type {IMetadata}
+ *
+ * @type {PageMeta}
  */
-export const metadata: IMetadata = generateMeta({
-  title: "Contact Vijay Hardaha",
+export const metadata: PageMeta = generateMeta({
+  title: 'Contact Vijay Hardaha',
   description:
-    "Get in touch with Vijay, a skilled freelance web developer specializing in WordPress, WooCommerce, and Next.js. Explore his open-source projects on GitHub and hire him for your next web development project. Based in India, working globally.",
-  slug: "contact",
+    'Get in touch with Vijay, a skilled freelance web developer specializing in WordPress, WooCommerce, and Next.js. Explore his open-source projects on GitHub and hire him for your next web development project. Based in India, working globally.',
+  slug: 'contact',
 });
 
 /**
  * Contact page component
  * Displays social links and ways to connect, collaborate, or hire Vijay.
  *
- * @component
  * @returns {React.JSX.Element} The rendered Contact page.
  */
 const Contact: React.FC = (): React.JSX.Element => {
@@ -35,7 +36,7 @@ const Contact: React.FC = (): React.JSX.Element => {
         <div className="space-y-6 text-base leading-relaxed text-gray-800">
           <p>
             Hello! I’m Vijay, a professional <strong>freelance web developer</strong> based in India with extensive
-            experience in building websites and applications using technologies like <strong>WordPress</strong>,{" "}
+            experience in building websites and applications using technologies like <strong>WordPress</strong>,{' '}
             <strong>WooCommerce</strong>, and <strong>Next.js</strong>. I collaborate remotely with clients from around
             the world to deliver clean, efficient, and scalable web solutions.
           </p>

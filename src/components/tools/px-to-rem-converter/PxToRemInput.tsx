@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
 /**
  * Interface for the PxToRemInput component props.
@@ -18,6 +18,7 @@ interface IPxToRemInputProps {
  * Component for inputting px value and base font size.
  *
  * @param {IPxToRemInputProps} props - Component props.
+ *
  * @returns {React.JSX.Element} The rendered input form.
  */
 const PxToRemInput: React.FC<IPxToRemInputProps> = ({

@@ -2,7 +2,6 @@
  * Expanded and SEO-optimized version of the Bulk Slugify Tool description.
  * Covers use cases, examples, instructions, and keyword-rich context.
  *
- * @component
  * @returns {React.JSX.Element} The rendered component displaying tool information
  */
 const BulkSlugifyInfo: React.FC = (): React.JSX.Element => {
@@ -23,9 +22,9 @@ const BulkSlugifyInfo: React.FC = (): React.JSX.Element => {
           now paste or upload dozens—or even hundreds—of titles and convert them all in one batch.
         </p>
         <p className="mb-4">
-          It uses the robust{" "}
+          It uses the robust{' '}
           <code className="bg-muted rounded px-1 py-0.5 text-sm font-medium text-pink-500">slugify</code> package in
-          combination with{" "}
+          combination with{' '}
           <code className="bg-muted rounded px-1 py-0.5 text-sm font-medium text-pink-500">latinize</code> to handle
           international characters and accents, ensuring that your output slugs are universally compatible and
           web-ready.
@@ -127,7 +126,7 @@ const BulkSlugifyInfo: React.FC = (): React.JSX.Element => {
       <section>
         <h2 className="text-primary mb-4 text-2xl font-bold">Credits & Source Libraries</h2>
         <p className="mb-4">
-          Built and maintained by{" "}
+          Built and maintained by{' '}
           <a
             href="https://x.com/vijayhardaha"
             className="font-medium text-pink-500 underline hover:no-underline"
@@ -147,7 +146,7 @@ const BulkSlugifyInfo: React.FC = (): React.JSX.Element => {
               rel="noreferrer"
             >
               slugify
-            </a>{" "}
+            </a>{' '}
             – A lightweight JavaScript library for creating slugs from strings.
           </li>
           <li>
@@ -158,7 +157,7 @@ const BulkSlugifyInfo: React.FC = (): React.JSX.Element => {
               rel="noreferrer"
             >
               latinize
-            </a>{" "}
+            </a>{' '}
             – Helps normalize Unicode and accented characters into basic Latin.
           </li>
         </ul>

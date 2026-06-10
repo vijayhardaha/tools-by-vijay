@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
-import { CopyButton } from "@/components/ui/copyButton";
-import { Textarea } from "@/components/ui/textarea";
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { CopyButton } from '@/components/ui/copyButton';
+import { Textarea } from '@/components/ui/textarea';
 
 /**
  * Interface for the DuplicateLineRemovalOutput component props.
@@ -15,8 +15,8 @@ interface IDuplicateLineRemovalOutputProps {
  * Output component for the Duplicate Line Removal tool.
  * Displays the processed text in a readonly textarea with a copy button.
  *
- * @component
  * @param {IDuplicateLineRemovalOutputProps} props - Component props
+ *
  * @returns {React.JSX.Element} The rendered output display
  */
 const DuplicateLineRemovalOutput: React.FC<IDuplicateLineRemovalOutputProps> = ({

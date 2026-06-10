@@ -1,36 +1,37 @@
-import { notFound } from "next/navigation";
+import { notFound } from 'next/navigation';
 
-import EntryWithSidebar from "@/components/page/EntryWithSidebar";
-import PageContent from "@/components/page/PageContent";
-import PageHeader from "@/components/page/PageHeader";
-import PageLayout from "@/components/page/PageLayout";
-import ReplaceQuotesTool from "@/components/tools/replace-quotes/ReplaceQuotesTool";
-import { ITool } from "@/types";
-import { generateMeta, IMetadata } from "@/utils/seoUtils";
-import { findToolBySlug } from "@/utils/toolUtils";
-import { getIconForTool } from "@/utils/toolUtils";
+import EntryWithSidebar from '@/components/page/EntryWithSidebar';
+import PageContent from '@/components/page/PageContent';
+import PageHeader from '@/components/page/PageHeader';
+import PageLayout from '@/components/page/PageLayout';
+import ReplaceQuotesTool from '@/components/tools/replace-quotes/ReplaceQuotesTool';
+import type { Tool } from '@/types';
+import { generateMeta } from '@/utils/seoUtils';
+import type { PageMeta } from '@/utils/seoUtils';
+import { findToolBySlug, getIconForTool } from '@/utils/toolUtils';
 
 /**
  * Retrieves tool data for the Replace Quotes tool.
- * @constant {ITool|null} tool - The tool object containing metadata and configuration.
+ *
+ * @constant {Tool|null} tool - The tool object containing metadata and configuration.
  */
-const tool: ITool | null = findToolBySlug("replace-quotes");
+const tool: Tool | null = findToolBySlug('replace-quotes');
 
 /**
  * SEO metadata for the Replace Quotes tool page.
- * @type {IMetadata}
+ *
+ * @type {PageMeta}
  */
-export const metadata: IMetadata = generateMeta({
-  title: tool?.seoTitle || "",
-  description: tool?.seoDescription || "",
-  slug: tool?.slug || "",
+export const metadata: PageMeta = generateMeta({
+  title: tool?.seoTitle || '',
+  description: tool?.seoDescription || '',
+  slug: tool?.slug || '',
 });
 
 /**
  * Replace Quotes tool page component.
  * Renders the page layout with header and the Replace Quotes tool.
  *
- * @component
  * @returns {React.JSX.Element} The rendered Replace Quotes tool page component.
  */
 const ReplaceQuotes: React.FC = (): React.JSX.Element => {

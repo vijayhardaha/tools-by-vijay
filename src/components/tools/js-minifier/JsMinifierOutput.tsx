@@ -1,7 +1,7 @@
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
-import { CompressionInfo } from "@/components/ui/compressionInfo";
-import { CopyButton } from "@/components/ui/copyButton";
-import { Textarea } from "@/components/ui/textarea";
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { CompressionInfo } from '@/components/ui/compressionInfo';
+import { CopyButton } from '@/components/ui/copyButton';
+import { Textarea } from '@/components/ui/textarea';
 
 /**
  * Interface for the JsMinifierOutput component props.
@@ -15,6 +15,7 @@ interface IJsMinifierOutputProps {
  * Component that displays the minified JavaScript output and provides copy functionality.
  *
  * @param {IJsMinifierOutputProps} props - The component props.
+ *
  * @returns {React.JSX.Element} The JsMinifierOutput component.
  */
 const JsMinifierOutput: React.FC<IJsMinifierOutputProps> = ({

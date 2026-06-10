@@ -1,41 +1,43 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import { bgColors } from "@/components/text-story-maker/constants/bgColors";
-import ColorSelectPanel from "@/components/text-story-maker/parts/panels/ColorSelectPanel";
-import { ControlPanel, ControlBox, ControlBtn } from "@/components/text-story-maker/parts/panels/PanelHelper";
-import { IUpdateOptionProps } from "@/components/text-story-maker/TextStoryMakerTool";
+import { bgColors } from '@/components/text-story-maker/constants/bgColors';
+import ColorSelectPanel from '@/components/text-story-maker/parts/panels/ColorSelectPanel';
+import { ControlPanel, ControlBox, ControlBtn } from '@/components/text-story-maker/parts/panels/PanelHelper';
+import type { UpdateOptionProps } from '@/components/text-story-maker/TextStoryMakerTool';
 
 /**
  * Interface for the BgOptionsPanel component props.
  */
-interface IBgOptionsPanelProps extends IUpdateOptionProps {}
+interface BgOptionsPanelProps extends UpdateOptionProps {}
 
 /**
  * BgOptionsPanel component provides a toolbar for selecting background types.
  *
- * @param {IBgOptionsPanelProps} props - Component props.
+ * @param {BgOptionsPanelProps} props - Component props.
+ *
  * @returns {React.JSX.Element} The rendered BgOptionsPanel component.
  */
-const BgOptionsPanel: React.FC<IBgOptionsPanelProps> = ({
+const BgOptionsPanel: React.FC<BgOptionsPanelProps> = ({
   options,
   updateOption,
-}: IBgOptionsPanelProps): React.JSX.Element => {
+}: BgOptionsPanelProps): React.JSX.Element => {
   const [activeTool, setActiveTool] = useState<string>(options.bgType);
 
   const tools: { name: string; label: string }[] = [
-    { name: "solid", label: "Solid" },
-    { name: "gradient", label: "Gradient" },
+    { name: 'solid', label: 'Solid' },
+    { name: 'gradient', label: 'Gradient' },
   ];
 
   /**
    * Handles the change of the active background tool.
    *
    * @param {string} tool - The selected background tool type.
+   *
    * @returns {void}
    */
   const handleToolChange = (tool: string): void => {
     if (activeTool === tool) {
-      setActiveTool("");
+      setActiveTool('');
     } else {
       setActiveTool(tool);
     }
@@ -43,23 +45,23 @@ const BgOptionsPanel: React.FC<IBgOptionsPanelProps> = ({
 
   return (
     <ControlPanel>
-      {activeTool === "gradient" && (
+      {activeTool === 'gradient' && (
         <ColorSelectPanel
           optionKey="bgColor"
           options={options}
           updateOption={updateOption}
           colors={bgColors.gradient}
-          onSelect={() => updateOption("bgType", "gradient")}
+          onSelect={() => updateOption('bgType', 'gradient')}
         />
       )}
 
-      {activeTool === "solid" && (
+      {activeTool === 'solid' && (
         <ColorSelectPanel
           optionKey="bgColor"
           options={options}
           updateOption={updateOption}
           colors={bgColors.solid}
-          onSelect={() => updateOption("bgType", "solid")}
+          onSelect={() => updateOption('bgType', 'solid')}
         />
       )}
 

@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import { useState } from "react";
+import { useState } from 'react';
 
-import latinize from "latinize";
-import slugify from "slugify";
+import latinize from 'latinize';
+import slugify from 'slugify';
 
-import SlugifyInfo from "./SlugifyInfo";
-import SlugifyInput from "./SlugifyInput";
-import SlugifyOutput from "./SlugifyOutput";
+import SlugifyInfo from './SlugifyInfo';
+import SlugifyInput from './SlugifyInput';
+import SlugifyOutput from './SlugifyOutput';
 
 /**
  * Main component for the Slugify Tool.
@@ -15,8 +15,8 @@ import SlugifyOutput from "./SlugifyOutput";
  * @returns {React.JSX.Element} The complete Slugify Tool interface.
  */
 const SlugifyTool: React.FC = (): React.JSX.Element => {
-  const [input, setInput] = useState<string>("");
-  const [output, setOutput] = useState<string>("");
+  const [input, setInput] = useState<string>('');
+  const [output, setOutput] = useState<string>('');
   const [useUnderscore, setUseUnderscore] = useState<boolean>(false);
   const [removeNumbers, setRemoveNumbers] = useState<boolean>(false);
   const [useLowercase, setUseLowercase] = useState<boolean>(true);
@@ -37,7 +37,7 @@ const SlugifyTool: React.FC = (): React.JSX.Element => {
 
     // Use slugify package
     let slug = slugify(processedText, {
-      replacement: useUnderscore ? "_" : "-",
+      replacement: useUnderscore ? '_' : '-',
       remove: removeNumbers ? /[0-9]/g : undefined,
       lower: useLowercase,
       strict: true,
@@ -52,8 +52,8 @@ const SlugifyTool: React.FC = (): React.JSX.Element => {
   };
 
   const handleClear = (): void => {
-    setInput("");
-    setOutput("");
+    setInput('');
+    setOutput('');
   };
 
   const handleReset = (): void => {

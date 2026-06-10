@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { useState } from "react";
+import { useState } from 'react';
 
-import CssInlinerInfo from "./CssInlinerInfo";
-import CssInlinerInput from "./CssInlinerInput";
-import CssInlinerOutput from "./CssInlinerOutput";
+import CssInlinerInfo from './CssInlinerInfo';
+import CssInlinerInput from './CssInlinerInput';
+import CssInlinerOutput from './CssInlinerOutput';
 
 /**
  * A tool for inlining CSS into HTML. It provides input fields for HTML and CSS,
@@ -13,10 +13,10 @@ import CssInlinerOutput from "./CssInlinerOutput";
  * @returns {React.JSX.Element} The rendered CssInlinerTool component.
  */
 const CssInlinerTool: React.FC = (): React.JSX.Element => {
-  const [htmlInput, setHtmlInput] = useState<string>("");
-  const [cssInput, setCssInput] = useState<string>("");
-  const [output, setOutput] = useState<string>("");
-  const [error, setError] = useState<string>("");
+  const [htmlInput, setHtmlInput] = useState<string>('');
+  const [cssInput, setCssInput] = useState<string>('');
+  const [output, setOutput] = useState<string>('');
+  const [error, setError] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   /**
@@ -26,26 +26,24 @@ const CssInlinerTool: React.FC = (): React.JSX.Element => {
    */
   const handleSubmit = async () => {
     try {
-      setError("");
+      setError('');
       setIsLoading(true);
 
-      const response = await fetch("/api/inline-css", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+      const response = await fetch('/api/inline-css', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ html: htmlInput, css: cssInput }),
       });
 
       if (!response.ok) {
-        throw new Error("Failed to inline CSS");
+        throw new Error('Failed to inline CSS');
       }
 
       const data = await response.json();
       setOutput(data.formattedHtml);
     } catch (error) {
-      console.error("Error inlining CSS:", error);
-      setError("Error inlining CSS. Please check your input.");
+      console.error('Error inlining CSS:', error);
+      setError('Error inlining CSS. Please check your input.');
     } finally {
       setIsLoading(false);
     }
@@ -56,10 +54,10 @@ const CssInlinerTool: React.FC = (): React.JSX.Element => {
    * Resets the HTML input, CSS input, output, and error states to their initial values.
    */
   const handleClear = () => {
-    setHtmlInput("");
-    setCssInput("");
-    setOutput("");
-    setError("");
+    setHtmlInput('');
+    setCssInput('');
+    setOutput('');
+    setError('');
   };
 
   return (

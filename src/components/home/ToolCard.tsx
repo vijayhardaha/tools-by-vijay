@@ -1,25 +1,27 @@
-import Link from "next/link";
+import Link from 'next/link';
 
-import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { ITool } from "@/types";
-import { cn } from "@/utils/classNameUtils";
-import { findToolBySlug, getIconForTool } from "@/utils/toolUtils";
+import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import type { Tool } from '@/types';
+import { cn } from '@/utils/classNameUtils';
+import { findToolBySlug, getIconForTool } from '@/utils/toolUtils';
 
 /**
  * Props for the ToolCard component.
  */
-interface IToolCardProps {
+interface ToolCardProps {
   slug: string;
   className?: string;
 }
 
 /**
  * ToolCard component that renders a card for a specific tool.
+ *
  * @param {ToolCardProps} props - The component props.
- * @returns {JSX.Element | null} The rendered ToolCard component.
+ *
+ * @returns {React.JSX.Element | null} The rendered ToolCard component.
  */
-const ToolCard = ({ slug, className = "" }: IToolCardProps): React.JSX.Element | null => {
-  const tool: ITool | null = findToolBySlug(slug);
+const ToolCard = ({ slug, className = '' }: ToolCardProps): React.JSX.Element | null => {
+  const tool: Tool | null = findToolBySlug(slug);
 
   if (!tool) return null;
 
@@ -27,7 +29,7 @@ const ToolCard = ({ slug, className = "" }: IToolCardProps): React.JSX.Element |
     <Link href={`/tools/${tool.slug}`}>
       <Card
         className={cn(
-          "relative top-0 flex h-full flex-col gap-4 transition-all duration-200 ease-in-out hover:-top-0.5 hover:shadow-md",
+          'relative top-0 flex h-full flex-col gap-4 transition-all duration-200 ease-in-out hover:-top-0.5 hover:shadow-md',
           className
         )}
       >

@@ -2,7 +2,6 @@
  * Fully expanded version of the Slugify Tool information for SEO purposes.
  * Includes in-depth explanations, keyword-rich content, and added sections.
  *
- * @component
  * @returns {React.JSX.Element}
  */
 const SlugifyInfo: React.FC = (): React.JSX.Element => {
@@ -14,11 +13,11 @@ const SlugifyInfo: React.FC = (): React.JSX.Element => {
           A <strong>slug</strong> is the part of a URL that identifies a particular page in a format that’s easy to read
           for both humans and search engines. Typically found at the end of a URL, slugs are derived from page titles
           and contain keywords separated by hyphens or underscores. For example, a blog titled “10 Best JavaScript
-          Frameworks in 2025” might generate a slug like{" "}
+          Frameworks in 2025” might generate a slug like{' '}
           <code className="text-sm">10-best-javascript-frameworks-2025</code>.
         </p>
         <p className="mb-4">
-          Clean slugs improve user experience, help with site navigation, and play a critical role in{" "}
+          Clean slugs improve user experience, help with site navigation, and play a critical role in{' '}
           <strong>on-page SEO</strong>. Search engines like Google use slugs to understand the context of a page, while
           users are more likely to click on links that look readable and relevant.
         </p>
@@ -128,8 +127,8 @@ const SlugifyInfo: React.FC = (): React.JSX.Element => {
       <section>
         <h2 className="text-primary mb-4 text-2xl font-bold">How It Works (Under the Hood)</h2>
         <p className="mb-4">
-          This tool is built using the open-source <code className="text-sm font-medium text-pink-500">slugify</code>{" "}
-          package, which provides advanced string manipulation capabilities. We’ve also integrated{" "}
+          This tool is built using the open-source <code className="text-sm font-medium text-pink-500">slugify</code>{' '}
+          package, which provides advanced string manipulation capabilities. We’ve also integrated{' '}
           <code className="text-sm font-medium text-pink-500">latinize</code> to handle special characters and accents.
           Here's what happens behind the scenes:
         </p>
@@ -145,7 +144,7 @@ const SlugifyInfo: React.FC = (): React.JSX.Element => {
       <section>
         <h2 className="text-primary mb-4 text-2xl font-bold">Credits & Source Libraries</h2>
         <p className="mb-4">
-          This project is developed and maintained by{" "}
+          This project is developed and maintained by{' '}
           <a
             href="https://x.com/vijayhardaha"
             className="font-medium text-pink-500 underline hover:no-underline"
@@ -165,7 +164,7 @@ const SlugifyInfo: React.FC = (): React.JSX.Element => {
               rel="noreferrer"
             >
               slugify
-            </a>{" "}
+            </a>{' '}
             – For converting strings into slugs
           </li>
           <li>
@@ -176,7 +175,7 @@ const SlugifyInfo: React.FC = (): React.JSX.Element => {
               rel="noreferrer"
             >
               latinize
-            </a>{" "}
+            </a>{' '}
             – For replacing accented characters with ASCII equivalents
           </li>
         </ul>

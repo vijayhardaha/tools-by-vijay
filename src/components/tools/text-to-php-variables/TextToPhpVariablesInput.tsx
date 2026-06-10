@@ -1,10 +1,12 @@
-"use client";
+'use client';
 
-import { Alert } from "@/components/ui/alert";
-import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
-import { Select } from "@/components/ui/select";
-import { Textarea } from "@/components/ui/textarea";
+import type { FormEvent } from 'react';
+
+import { Alert } from '@/components/ui/alert';
+import { Button } from '@/components/ui/button';
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { Select } from '@/components/ui/select';
+import { Textarea } from '@/components/ui/textarea';
 
 /**
  * Interface for the TextToPhpVariablesInput component props.
@@ -23,8 +25,8 @@ interface ITextToPhpVariablesInputProps {
 /**
  * Input component for the Text to PHP Variables tool.
  *
- * @component
  * @param {TextToPhpVariablesInputProps} props - The props for the component.
+ *
  * @returns {React.JSX.Element} The rendered input component.
  */
 const TextToPhpVariablesInput: React.FC<ITextToPhpVariablesInputProps> = ({
@@ -39,9 +41,10 @@ const TextToPhpVariablesInput: React.FC<ITextToPhpVariablesInputProps> = ({
 }: ITextToPhpVariablesInputProps): React.JSX.Element => {
   /**
    * Handles form submission.
-   * @param {React.FormEvent} e - The form submission event.
+   *
+   * @param {FormEvent} e - The form submission event.
    */
-  const handleSubmit = (e: React.FormEvent): void => {
+  const handleSubmit = (e: FormEvent): void => {
     e.preventDefault();
     onSubmit();
   };
@@ -67,9 +70,9 @@ const TextToPhpVariablesInput: React.FC<ITextToPhpVariablesInputProps> = ({
             value={variableCase}
             onValueChange={setVariableCase}
             options={[
-              { value: "camelCase", label: "Camel Case" },
-              { value: "snake_case", label: "Snake Case" },
-              { value: "PascalCase", label: "Pascal Case" },
+              { value: 'camelCase', label: 'Camel Case' },
+              { value: 'snake_case', label: 'Snake Case' },
+              { value: 'PascalCase', label: 'Pascal Case' },
             ]}
           />
 

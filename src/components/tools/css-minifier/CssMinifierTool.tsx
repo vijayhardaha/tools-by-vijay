@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { useState } from "react";
+import { useState } from 'react';
 
-import CssMinifierInfo from "./CssMinifierInfo";
-import CssMinifierInput from "./CssMinifierInput";
-import CssMinifierOutput from "./CssMinifierOutput";
+import CssMinifierInfo from './CssMinifierInfo';
+import CssMinifierInput from './CssMinifierInput';
+import CssMinifierOutput from './CssMinifierOutput';
 
 /**
  * Interface for the minification options.
@@ -15,11 +15,7 @@ interface IMinificationOptions {
   format: {
     indentBy: number;
     indentWith: string;
-    spaces: {
-      aroundSelectorRelation: boolean;
-      beforeBlockBegins: boolean;
-      beforeValue: boolean;
-    };
+    spaces: { aroundSelectorRelation: boolean; beforeBlockBegins: boolean; beforeValue: boolean };
     wrapAt: boolean | number;
   };
 }
@@ -32,12 +28,8 @@ const defaultOptions: IMinificationOptions = {
   compress: true,
   format: {
     indentBy: 0,
-    indentWith: "space",
-    spaces: {
-      aroundSelectorRelation: false,
-      beforeBlockBegins: false,
-      beforeValue: false,
-    },
+    indentWith: 'space',
+    spaces: { aroundSelectorRelation: false, beforeBlockBegins: false, beforeValue: false },
     wrapAt: false,
   },
 };
@@ -49,11 +41,11 @@ const defaultOptions: IMinificationOptions = {
  * @returns {React.JSX.Element} The rendered CssMinifierTool component.
  */
 const CssMinifierTool: React.FC = (): React.JSX.Element => {
-  const [input, setInput] = useState<string>("");
-  const [output, setOutput] = useState<string>("");
+  const [input, setInput] = useState<string>('');
+  const [output, setOutput] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [options, setOptions] = useState<IMinificationOptions>(defaultOptions);
-  const [error, setError] = useState<string>("");
+  const [error, setError] = useState<string>('');
 
   /**
    * Handles the minification process when the "Minify" button is clicked.
@@ -66,35 +58,30 @@ const CssMinifierTool: React.FC = (): React.JSX.Element => {
     if (!input.trim()) return;
 
     setIsLoading(true);
-    setError("");
+    setError('');
 
     try {
       // Call the API endpoint for minification
-      const response = await fetch("/api/minify-css", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          css: input,
-          options: options,
-        }),
+      const response = await fetch('/api/minify-css', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ css: input, options: options }),
       });
 
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || "Failed to minify CSS");
+        throw new Error(data.error || 'Failed to minify CSS');
       }
 
       if (!data.minifiedCss) {
-        throw new Error("Minified CSS is empty");
+        throw new Error('Minified CSS is empty');
       }
 
       setOutput(data.minifiedCss);
     } catch (error) {
-      console.error("CSS minification error:", error);
-      setError(error instanceof Error ? error.message : "An error occurred");
+      console.error('CSS minification error:', error);
+      setError(error instanceof Error ? error.message : 'An error occurred');
     } finally {
       setIsLoading(false);
     }
@@ -104,21 +91,23 @@ const CssMinifierTool: React.FC = (): React.JSX.Element => {
    * Clears the input and output fields.
    * Resets the input, output, and error states to their initial values.
    *
-   * @function
    * @returns {void}
+   *
+   * @function
    */
   const handleClear = (): void => {
-    setInput("");
-    setOutput("");
-    setError("");
+    setInput('');
+    setOutput('');
+    setError('');
   };
 
   /**
    * Resets all options to their default values.
    * Resets the options state to its initial values and clears input and output fields.
    *
-   * @function
    * @returns {void}
+   *
+   * @function
    */
   const handleReset = (): void => {
     handleClear();
@@ -128,34 +117,27 @@ const CssMinifierTool: React.FC = (): React.JSX.Element => {
   /**
    * Updates a specific option in the options state.
    *
-   * @function
    * @param {string} key - The option key to update.
    * @param {any} value - The new value for the option.
+   *
+   * @function
    */
   const updateOption = (key: string, value: any) => {
-    setOptions((prevOptions) => ({
-      ...prevOptions,
-      [key]: value,
-    }));
+    setOptions((prevOptions) => ({ ...prevOptions, [key]: value }));
   };
 
   /**
    * Updates a spaces option in the format options.
    *
-   * @function
    * @param {string} key - The spaces option key to update.
    * @param {boolean} value - The new value for the spaces option.
+   *
+   * @function
    */
   const updateSpacesOption = (key: string, value: boolean) => {
     setOptions((prevOptions) => ({
       ...prevOptions,
-      format: {
-        ...prevOptions.format,
-        spaces: {
-          ...prevOptions.format.spaces,
-          [key]: value,
-        },
-      },
+      format: { ...prevOptions.format, spaces: { ...prevOptions.format.spaces, [key]: value } },
     }));
   };
 

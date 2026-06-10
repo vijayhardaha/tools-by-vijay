@@ -2,7 +2,6 @@
  * Provides detailed information about the Barcode Tool,
  * including its purpose, benefits, usage instructions, and practical examples.
  *
- * @component
  * @returns {React.JSX.Element} The rendered component displaying tool information
  */
 const BarcodeGeneratorInfo: React.FC = (): React.JSX.Element => {
@@ -82,7 +81,7 @@ const BarcodeGeneratorInfo: React.FC = (): React.JSX.Element => {
       <section>
         <h2 className="mb-4 text-xl font-bold">Credits & Source</h2>
         <p>
-          Maintained by{" "}
+          Maintained by{' '}
           <a
             href="https://x.com/vijayhardaha"
             className="font-medium text-pink-500 underline hover:no-underline"

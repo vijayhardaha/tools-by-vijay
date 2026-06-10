@@ -1,36 +1,37 @@
-import { notFound } from "next/navigation";
+import { notFound } from 'next/navigation';
 
-import EntryWithSidebar from "@/components/page/EntryWithSidebar";
-import PageContent from "@/components/page/PageContent";
-import PageHeader from "@/components/page/PageHeader";
-import PageLayout from "@/components/page/PageLayout";
-import PasswordStrengthCheckerTool from "@/components/tools/password-strength-checker/PasswordStrengthCheckerTool";
-import { ITool } from "@/types";
-import { generateMeta, IMetadata } from "@/utils/seoUtils";
-import { findToolBySlug } from "@/utils/toolUtils";
-import { getIconForTool } from "@/utils/toolUtils";
+import EntryWithSidebar from '@/components/page/EntryWithSidebar';
+import PageContent from '@/components/page/PageContent';
+import PageHeader from '@/components/page/PageHeader';
+import PageLayout from '@/components/page/PageLayout';
+import PasswordStrengthCheckerTool from '@/components/tools/password-strength-checker/PasswordStrengthCheckerTool';
+import type { Tool } from '@/types';
+import { generateMeta } from '@/utils/seoUtils';
+import type { PageMeta } from '@/utils/seoUtils';
+import { findToolBySlug, getIconForTool } from '@/utils/toolUtils';
 
 /**
  * Retrieves tool data for the Password Strength Checker tool.
- * @constant {ITool|null} tool - The tool object containing metadata and configuration.
+ *
+ * @constant {Tool|null} tool - The tool object containing metadata and configuration.
  */
-const tool: ITool | null = findToolBySlug("password-strength-checker");
+const tool: Tool | null = findToolBySlug('password-strength-checker');
 
 /**
  * SEO metadata for the Password Strength Checker tool page.
- * @type {IMetadata}
+ *
+ * @type {PageMeta}
  */
-export const metadata: IMetadata = generateMeta({
-  title: tool?.seoTitle || "",
-  description: tool?.seoDescription || "",
-  slug: tool?.slug || "",
+export const metadata: PageMeta = generateMeta({
+  title: tool?.seoTitle || '',
+  description: tool?.seoDescription || '',
+  slug: tool?.slug || '',
 });
 
 /**
  * Password Strength Checker tool page component.
  * Renders the page layout with header and the Password Strength Checker tool.
  *
- * @component
  * @returns {React.JSX.Element} The rendered Password Strength Checker tool page component.
  */
 const PasswordStrengthChecker: React.FC = (): React.JSX.Element => {

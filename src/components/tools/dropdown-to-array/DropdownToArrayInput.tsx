@@ -1,13 +1,15 @@
-"use client";
+'use client';
 
-import { Alert } from "@/components/ui/alert";
-import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
-import { Checkbox } from "@/components/ui/checkbox";
-import { HelpTip } from "@/components/ui/helptip";
-import { Label } from "@/components/ui/label";
-import { Select } from "@/components/ui/select";
-import { Textarea } from "@/components/ui/textarea";
+import type { FormEvent } from 'react';
+
+import { Alert } from '@/components/ui/alert';
+import { Button } from '@/components/ui/button';
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { Checkbox } from '@/components/ui/checkbox';
+import { HelpTip } from '@/components/ui/helptip';
+import { Label } from '@/components/ui/label';
+import { Select } from '@/components/ui/select';
+import { Textarea } from '@/components/ui/textarea';
 
 /**
  * Interface for the DropdownToArrayInput component props.
@@ -33,6 +35,7 @@ interface IDropdownToArrayInputProps {
  * A form component that allows users to paste HTML dropdown content and convert it into various array formats.
  *
  * @param {IDropdownToArrayInputProps} props - The props for the component.
+ *
  * @returns {React.JSX.Element} The rendered component.
  */
 const DropdownToArrayInput: React.FC<IDropdownToArrayInputProps> = ({
@@ -49,7 +52,7 @@ const DropdownToArrayInput: React.FC<IDropdownToArrayInputProps> = ({
   onReset,
   error,
 }: IDropdownToArrayInputProps): React.JSX.Element => {
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     onSubmit();
   };
@@ -87,11 +90,11 @@ const DropdownToArrayInput: React.FC<IDropdownToArrayInputProps> = ({
                 value={outputFormat}
                 onValueChange={setOutputFormat}
                 options={[
-                  { value: "json", label: "JSON" },
-                  { value: "jsArray", label: "JavaScript Array" },
-                  { value: "jsObject", label: "JavaScript Object" },
-                  { value: "php", label: "PHP Array" },
-                  { value: "wordpress", label: "WordPress Select Options" },
+                  { value: 'json', label: 'JSON' },
+                  { value: 'jsArray', label: 'JavaScript Array' },
+                  { value: 'jsObject', label: 'JavaScript Object' },
+                  { value: 'php', label: 'PHP Array' },
+                  { value: 'wordpress', label: 'WordPress Select Options' },
                 ]}
               />
             </div>
@@ -106,9 +109,9 @@ const DropdownToArrayInput: React.FC<IDropdownToArrayInputProps> = ({
                 value={arrayType}
                 onValueChange={setArrayType}
                 options={[
-                  { value: "associative", label: "Associative (Key-Value)" },
-                  { value: "numeric", label: "Numeric (ID & Value)" },
-                  { value: "simple", label: "Simple (Values Only)" },
+                  { value: 'associative', label: 'Associative (Key-Value)' },
+                  { value: 'numeric', label: 'Numeric (ID & Value)' },
+                  { value: 'simple', label: 'Simple (Values Only)' },
                 ]}
               />
             </div>

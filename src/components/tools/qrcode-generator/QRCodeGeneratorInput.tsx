@@ -1,10 +1,12 @@
-"use client";
+'use client';
 
-import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Slider } from "@/components/ui/slider";
+import type { FormEvent } from 'react';
+
+import { Button } from '@/components/ui/button';
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Slider } from '@/components/ui/slider';
 
 /**
  * Interface for the QR code generator input component props.
@@ -24,6 +26,7 @@ interface IQrCodeGeneratorInputProps {
  * input fields and controls for generating a QR code.
  *
  * @param {IQrCodeGeneratorInputProps} props - The props for the component.
+ *
  * @returns {React.JSX.Element} The rendered QR code input component.
  */
 const QRCodeGeneratorInput: React.FC<IQrCodeGeneratorInputProps> = ({
@@ -37,9 +40,10 @@ const QRCodeGeneratorInput: React.FC<IQrCodeGeneratorInputProps> = ({
 }): React.JSX.Element => {
   /**
    * Handles the form submission to generate the QR code.
-   * @param {React.FormEvent} e - The form submission event.
+   *
+   * @param {FormEvent} e - The form submission event.
    */
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     onSubmit();
   };
@@ -62,7 +66,7 @@ const QRCodeGeneratorInput: React.FC<IQrCodeGeneratorInputProps> = ({
 
           <div className="flex flex-col gap-2">
             <Label htmlFor="qr-size">
-              QR Code Size:{" "}
+              QR Code Size:{' '}
               <span className="text-muted-foreground text-sm">
                 <code className="bg-muted px-1 font-medium text-pink-500">{size}px</code>
               </span>

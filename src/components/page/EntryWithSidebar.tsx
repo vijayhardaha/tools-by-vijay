@@ -1,14 +1,11 @@
-import ToolsListWidget from "@/components/page/ToolsListWidget";
-import { getAllCategorySlugs } from "@/utils/categoryUtils";
+import ToolsListWidget from '@/components/page/ToolsListWidget';
+import { getAllCategorySlugs } from '@/utils/categoryUtils';
 
 /**
  * Props for the EntryWithSidebar component.
  */
 interface IEntryWithSidebarProps {
-  tool: {
-    category: string;
-    slug: string;
-  };
+  tool: { category: string; slug: string };
   children: React.ReactNode;
 }
 
@@ -16,6 +13,7 @@ interface IEntryWithSidebarProps {
  * A layout component that displays a page entry with a sidebar.
  *
  * @param {EntryWithSidebarProps} props - The component props.
+ *
  * @returns {React.JSX.Element} The rendered component.
  */
 const EntryWithSidebar: React.FC<IEntryWithSidebarProps> = ({

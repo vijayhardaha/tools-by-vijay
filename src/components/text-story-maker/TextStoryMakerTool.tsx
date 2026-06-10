@@ -1,49 +1,46 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
-import { PiNotePencilBold as EditIcon } from "react-icons/pi";
+import { PiNotePencilBold as EditIcon } from 'react-icons/pi';
 
-import { defaultOptions, IOptions } from "@/components/text-story-maker/constants/options";
-import Content from "@/components/text-story-maker/parts/Content";
-import Footer from "@/components/text-story-maker/parts/Footer";
-import Header from "@/components/text-story-maker/parts/Header";
-import Button from "@/components/text-story-maker/parts/header/HeaderIconBtn";
-import ToolInfo from "@/components/text-story-maker/parts/ToolInfo";
-import { cn } from "@/utils/classNameUtils";
+import { defaultOptions } from '@/components/text-story-maker/constants/options';
+import type { StoryOptions } from '@/components/text-story-maker/constants/options';
+import Content from '@/components/text-story-maker/parts/Content';
+import Footer from '@/components/text-story-maker/parts/Footer';
+import Header from '@/components/text-story-maker/parts/Header';
+import Button from '@/components/text-story-maker/parts/header/HeaderIconBtn';
+import ToolInfo from '@/components/text-story-maker/parts/ToolInfo';
+import { cn } from '@/utils/classNameUtils';
 
 /**
  * Interface for the update options function.
  */
-export interface IUpdateOptionProps {
-  options: IOptions;
-  updateOption: (key: keyof IOptions, value: IOptions[keyof IOptions]) => void;
+export interface UpdateOptionProps {
+  options: StoryOptions;
+  updateOption: (key: keyof StoryOptions, value: StoryOptions[keyof StoryOptions]) => void;
 }
 
 /**
  * TextStoryMakerTool component serves as the main container for the text story maker tool.
  * It manages the state of options and passes them to child components.
  *
- * @component
  * @returns {React.JSX.Element} The rendered TextStoryMakerTool component.
  */
 const TextStoryMakerTool: React.FC = (): React.JSX.Element => {
-  const [options, setOptions] = useState<IOptions>(defaultOptions);
-  const [activeTool, setActiveTool] = useState<string>("");
+  const [options, setOptions] = useState<StoryOptions>(defaultOptions);
+  const [activeTool, setActiveTool] = useState<string>('');
   const [showConfirm, setShowConfirm] = useState<boolean>(false);
 
   // Fetch options from local storage on load and merge with default options
   useEffect(() => {
-    const savedOptions = localStorage.getItem("textStoryMakerOptions");
+    const savedOptions = localStorage.getItem('textStoryMakerOptions');
     if (savedOptions) {
       try {
         const parsedOptions = JSON.parse(savedOptions);
-        setOptions(() => ({
-          ...defaultOptions,
-          ...parsedOptions,
-        }));
+        setOptions(() => ({ ...defaultOptions, ...parsedOptions }));
       } catch (error) {
-        console.error("Failed to parse options from local storage:", error);
+        console.error('Failed to parse options from local storage:', error);
       }
     }
   }, []);
@@ -54,23 +51,20 @@ const TextStoryMakerTool: React.FC = (): React.JSX.Element => {
    * @param {string} key - The key of the option to update.
    * @param {*} value - The new value for the option.
    */
-  const updateOption = (key: keyof IOptions, value: IOptions[keyof IOptions]) => {
+  const updateOption = (key: keyof StoryOptions, value: StoryOptions[keyof StoryOptions]) => {
     setOptions((prevOptions) => {
-      const updatedOptions = {
-        ...prevOptions,
-        [key]: value,
-      };
+      const updatedOptions = { ...prevOptions, [key]: value };
       try {
-        localStorage.setItem("textStoryMakerOptions", JSON.stringify(updatedOptions));
+        localStorage.setItem('textStoryMakerOptions', JSON.stringify(updatedOptions));
       } catch (error) {
-        console.error("Failed to save options to local storage:", error);
+        console.error('Failed to save options to local storage:', error);
       }
       return updatedOptions;
     });
   };
 
   return (
-    <div className={cn("relative h-screen w-full bg-black/85", "flex flex-col")}>
+    <div className={cn('relative h-screen w-full bg-black/85', 'flex flex-col')}>
       <Header options={options} updateOption={updateOption} activeTool={activeTool} setActiveTool={setActiveTool} />
       <Footer options={options} updateOption={updateOption} activeTool={activeTool} />
       <Content options={options} updateOption={updateOption} activeTool={activeTool} setActiveTool={setActiveTool} />
@@ -113,7 +107,7 @@ const TextStoryMakerTool: React.FC = (): React.JSX.Element => {
               <button
                 onClick={() => {
                   setOptions(defaultOptions);
-                  updateOption("text", "");
+                  updateOption('text', '');
                   setShowConfirm(false);
                 }}
                 className="cursor-pointer rounded-xl bg-red-600 px-4 py-2 text-white transition-colors hover:bg-red-500"

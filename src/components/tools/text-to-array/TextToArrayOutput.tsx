@@ -1,6 +1,6 @@
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
-import { CopyButton } from "@/components/ui/copyButton";
-import { Textarea } from "@/components/ui/textarea";
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { CopyButton } from '@/components/ui/copyButton';
+import { Textarea } from '@/components/ui/textarea';
 
 /**
  * Interface for the CountryNameGeneratorOutput component props.
@@ -13,8 +13,8 @@ interface ITextToArrayOutputProps {
  * Text To Array Output component displays the converted array output in a card.
  * It includes a readonly textarea for the output and a copy button for convenience.
  *
- * @component
  * @param {ITextToArrayOutputProps} props - The props for the component.
+ *
  * @returns {React.JSX.Element} The rendered component.
  */
 const TextToArrayOutput: React.FC<ITextToArrayOutputProps> = ({

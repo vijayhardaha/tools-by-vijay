@@ -1,7 +1,7 @@
-import { Alert } from "@/components/ui/alert";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
-import { CopyButton } from "@/components/ui/copyButton";
+import { Alert } from '@/components/ui/alert';
+import { Badge } from '@/components/ui/badge';
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { CopyButton } from '@/components/ui/copyButton';
 
 /**
  * Interface for the URL shortener result.
@@ -26,6 +26,7 @@ interface IUrlShortenerOutputProps {
  * validity status, and options to copy individual or all valid shortened URLs.
  *
  * @param {IUrlShortenerOutputProps} props - The props for the component.
+ *
  * @returns {React.JSX.Element} The rendered component.
  */
 const UrlShortenerOutput: React.FC<IUrlShortenerOutputProps> = ({
@@ -40,7 +41,7 @@ const UrlShortenerOutput: React.FC<IUrlShortenerOutputProps> = ({
     return results
       .filter((result) => result.isValid)
       .map((result) => result.shortenedUrl)
-      .join("\n");
+      .join('\n');
   };
 
   return (
@@ -66,8 +67,8 @@ const UrlShortenerOutput: React.FC<IUrlShortenerOutputProps> = ({
                 <div className="flex-1">
                   <div className="mb-2 flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <Badge variant={result.isValid ? "success" : "danger"} className="font-medium">
-                        {result.isValid ? "Valid" : "Invalid URL"}
+                      <Badge variant={result.isValid ? 'success' : 'danger'} className="font-medium">
+                        {result.isValid ? 'Valid' : 'Invalid URL'}
                       </Badge>
                       <span className="text-muted-foreground max-w-60 truncate font-mono text-sm">
                         {result.originalUrl}

@@ -1,6 +1,6 @@
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
-import { CopyButton } from "@/components/ui/copyButton";
-import { Textarea } from "@/components/ui/textarea";
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { CopyButton } from '@/components/ui/copyButton';
+import { Textarea } from '@/components/ui/textarea';
 
 /**
  * Interface for the CountryNameGeneratorOutput component props.
@@ -13,6 +13,7 @@ interface IUnminifyOutputProps {
  * Component that displays the unminified code output.
  *
  * @param {IUnminifyOutputProps} props - The props for the component.
+ *
  * @returns {React.JSX.Element} The rendered UnminifyOutput component.
  */
 const UnminifyOutput: React.FC<IUnminifyOutputProps> = ({ output }: IUnminifyOutputProps): React.JSX.Element => {

@@ -1,10 +1,11 @@
-"use client";
+'use client';
 
-import { useState, ChangeEvent, ReactNode } from "react";
+import { useState } from 'react';
+import type { ChangeEvent, ReactNode } from 'react';
 
-import { LuCheck as CheckIcon } from "react-icons/lu";
+import { LuCheck as CheckIcon } from 'react-icons/lu';
 
-import { cn } from "@/utils/classNameUtils";
+import { cn } from '@/utils/classNameUtils';
 
 /**
  * Props for the Checkbox component.
@@ -21,9 +22,18 @@ interface ICheckboxProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
 
 /**
  * Checkbox component for selecting options.
+ *
+ * @param root0
+ * @param root0.className
+ * @param root0.children
+ * @param root0.checked
+ * @param root0.onCheckedChange
+ * @param root0.disabled
+ * @param root0.required
+ * @param root0.id
  */
 function Checkbox({
-  className = "",
+  className = '',
   children,
   checked: controlledChecked,
   onCheckedChange,
@@ -39,6 +49,8 @@ function Checkbox({
 
   /**
    * Handles the checkbox state change event.
+   *
+   * @param event
    */
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (!isControlled) {
@@ -54,16 +66,16 @@ function Checkbox({
       data-slot="checkbox"
       className={cn(
         // Layout & base appearance
-        "inline-flex items-center",
+        'inline-flex items-center',
 
         // Colors & background
-        "text-foreground",
+        'text-foreground',
 
         // Disabled state
-        "disabled:cursor-not-allowed disabled:opacity-50",
+        'disabled:cursor-not-allowed disabled:opacity-50',
 
         // Transition & outline
-        "transition-shadow outline-none",
+        'transition-shadow outline-none',
 
         className
       )}
@@ -82,8 +94,8 @@ function Checkbox({
       <span
         data-slot="checkbox-indicator"
         className={cn(
-          "flex h-4 w-4 cursor-pointer items-center justify-center rounded border",
-          isChecked ? "bg-primary border-primary text-primary-foreground" : "border-input"
+          'flex h-4 w-4 cursor-pointer items-center justify-center rounded border',
+          isChecked ? 'bg-primary border-primary text-primary-foreground' : 'border-input'
         )}
       >
         {isChecked && <CheckIcon className="h-3 w-3" />}

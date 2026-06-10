@@ -2,7 +2,6 @@
  * Provides information about the URL Decoder/Encoder Tool, including its purpose,
  * usage instructions, and examples.
  *
- * @component
  * @returns {React.JSX.Element} The rendered component displaying tool information
  */
 const UrlDecoderEncoderInfo: React.FC = (): React.JSX.Element => {
@@ -16,9 +15,9 @@ const UrlDecoderEncoderInfo: React.FC = (): React.JSX.Element => {
           encoded URLs back to their original form.
         </p>
         <p className="mb-4">
-          We use the{" "}
-          <code className="bg-muted rounded px-1 py-0.5 text-sm font-medium text-pink-500">encodeURIComponent</code> and{" "}
-          <code className="bg-muted rounded px-1 py-0.5 text-sm font-medium text-pink-500">decodeURIComponent</code>{" "}
+          We use the{' '}
+          <code className="bg-muted rounded px-1 py-0.5 text-sm font-medium text-pink-500">encodeURIComponent</code> and{' '}
+          <code className="bg-muted rounded px-1 py-0.5 text-sm font-medium text-pink-500">decodeURIComponent</code>{' '}
           functions under the hood to ensure accurate and reliable encoding and decoding of URLs.
         </p>
       </section>
@@ -36,7 +35,7 @@ const UrlDecoderEncoderInfo: React.FC = (): React.JSX.Element => {
       <section>
         <h3 className="text-primary mb-4 text-lg font-bold">Credits & Source</h3>
         <p>
-          Maintained by{" "}
+          Maintained by{' '}
           <a
             href="https://x.com/vijayhardaha"
             className="font-medium text-pink-500 underline hover:no-underline"
@@ -45,7 +44,7 @@ const UrlDecoderEncoderInfo: React.FC = (): React.JSX.Element => {
           >
             Vijay Hardaha
           </a>
-          . This tool leverages built-in JavaScript functions like{" "}
+          . This tool leverages built-in JavaScript functions like{' '}
           <a
             href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent"
             className="font-medium text-pink-500 underline hover:no-underline"
@@ -53,8 +52,8 @@ const UrlDecoderEncoderInfo: React.FC = (): React.JSX.Element => {
             rel="noreferrer"
           >
             encodeURIComponent
-          </a>{" "}
-          and{" "}
+          </a>{' '}
+          and{' '}
           <a
             href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/decodeURIComponent"
             className="font-medium text-pink-500 underline hover:no-underline"
@@ -62,7 +61,7 @@ const UrlDecoderEncoderInfo: React.FC = (): React.JSX.Element => {
             rel="noreferrer"
           >
             decodeURIComponent
-          </a>{" "}
+          </a>{' '}
           for its functionality.
         </p>
       </section>

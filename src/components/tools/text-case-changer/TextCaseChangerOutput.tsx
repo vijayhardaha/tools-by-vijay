@@ -1,6 +1,6 @@
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
-import { CopyButton } from "@/components/ui/copyButton";
-import { Textarea } from "@/components/ui/textarea";
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { CopyButton } from '@/components/ui/copyButton';
+import { Textarea } from '@/components/ui/textarea';
 
 /**
  * Interface for the CountryNameGeneratorOutput component props.
@@ -13,6 +13,7 @@ interface ITextCaseChangerOutputProps {
  * Component for displaying the transformed text and providing a copy button.
  *
  * @param {ITextCaseChangerOutputProps} props - The props for the TextCaseChangerOutput component.
+ *
  * @returns {React.JSX.Element} The TextCaseChangerOutput component.
  */
 const TextCaseChangerOutput: React.FC<ITextCaseChangerOutputProps> = ({

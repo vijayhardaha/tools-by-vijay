@@ -2,7 +2,6 @@
  * Provides information about the HTML Minifier Tool, including its purpose,
  * usage instructions, and examples.
  *
- * @component
  * @returns {React.JSX.Element} The rendered component displaying tool information
  */
 const HtmlMinifierInfo: React.FC = (): React.JSX.Element => {
@@ -17,8 +16,8 @@ const HtmlMinifierInfo: React.FC = (): React.JSX.Element => {
           and potentially better search engine rankings.
         </p>
         <p className="mb-4">
-          We use the{" "}
-          <code className="bg-muted rounded px-1 py-0.5 text-sm font-medium text-pink-500">html-minifier-terser</code>{" "}
+          We use the{' '}
+          <code className="bg-muted rounded px-1 py-0.5 text-sm font-medium text-pink-500">html-minifier-terser</code>{' '}
           package under the hood, which provides powerful and configurable HTML minification capabilities. With our
           tool, you can customize the minification process to suit your specific needs, whether you’re working on a
           small website or a large web application.
@@ -49,7 +48,7 @@ const HtmlMinifierInfo: React.FC = (): React.JSX.Element => {
       <section>
         <h3 className="text-primary mb-4 text-lg font-bold">Credits & Source</h3>
         <p>
-          Maintained by{" "}
+          Maintained by{' '}
           <a
             href="https://x.com/vijayhardaha"
             className="font-medium text-pink-500 underline hover:no-underline"
@@ -58,7 +57,7 @@ const HtmlMinifierInfo: React.FC = (): React.JSX.Element => {
           >
             Vijay Hardaha
           </a>
-          . This tool uses the open-source library{" "}
+          . This tool uses the open-source library{' '}
           <a
             href="https://www.npmjs.com/package/html-minifier-terser"
             className="font-medium text-pink-500 underline hover:no-underline"
@@ -66,7 +65,7 @@ const HtmlMinifierInfo: React.FC = (): React.JSX.Element => {
             rel="noreferrer"
           >
             html-minifier-terser
-          </a>{" "}
+          </a>{' '}
           for HTML minification.
         </p>
       </section>

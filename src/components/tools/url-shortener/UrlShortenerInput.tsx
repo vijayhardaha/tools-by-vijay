@@ -1,14 +1,16 @@
-"use client";
+'use client';
 
-import { Alert } from "@/components/ui/alert";
-import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
-import { Textarea } from "@/components/ui/textarea";
+import type { FormEvent } from 'react';
+
+import { Alert } from '@/components/ui/alert';
+import { Button } from '@/components/ui/button';
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { Textarea } from '@/components/ui/textarea';
 
 /**
  * Interface for the UrlShortenerInput component props.
  */
-interface IUrlShortenerInputProps {
+interface UrlShortenerInputProps {
   input: string;
   setInput: (value: string) => void;
   onSubmit: () => void;
@@ -25,22 +27,23 @@ interface IUrlShortenerInputProps {
  * messages and handles the loading state.
  *
  * @param {IUrlShortenerInputProps} props - Props for the component
+ *
  * @returns {React.JSX.Element} The rendered component
  */
-const UrlShortenerInput: React.FC<IUrlShortenerInputProps> = ({
-  input = "",
+const UrlShortenerInput: React.FC<UrlShortenerInputProps> = ({
+  input = '',
   setInput,
   onSubmit,
   onClear,
   isLoading = false,
-  error = "",
-}: IUrlShortenerInputProps): React.JSX.Element => {
+  error = '',
+}: UrlShortenerInputProps): React.JSX.Element => {
   /**
    * Handles form submission to shorten URLs
    *
-   * @param {React.FormEvent} e - Event object
+   * @param {FormEvent} e - Event object
    */
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     onSubmit();
   };
@@ -65,7 +68,7 @@ const UrlShortenerInput: React.FC<IUrlShortenerInputProps> = ({
 
           <div className="flex flex-wrap gap-2">
             <Button type="submit" variant="default" disabled={!input.trim() || isLoading}>
-              {isLoading ? "Shortening..." : "Shorten URLs"}
+              {isLoading ? 'Shortening...' : 'Shorten URLs'}
             </Button>
 
             <Button type="button" variant="outline" onClick={onClear} disabled={isLoading}>

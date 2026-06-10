@@ -1,6 +1,6 @@
-import FooterAbout from "@/components/footer/FooterAbout";
-import FooterWidget from "@/components/footer/FooterWidget";
-import footerLinks from "@/constants/footerLinks";
+import FooterAbout from '@/components/footer/FooterAbout';
+import FooterWidget from '@/components/footer/FooterWidget';
+import footerLinks from '@/constants/footerLinks';
 
 /**
  * Top section of the footer containing about information and navigation widgets

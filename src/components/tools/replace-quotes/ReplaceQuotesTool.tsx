@@ -1,57 +1,57 @@
-"use client";
+'use client';
 
-import { useState } from "react";
+import { useState } from 'react';
 
-import ReplaceQuotesInfo from "./ReplaceQuotesInfo";
-import ReplaceQuotesInput from "./ReplaceQuotesInput";
-import ReplaceQuotesOutput from "./ReplaceQuotesOutput";
+import ReplaceQuotesInfo from './ReplaceQuotesInfo';
+import ReplaceQuotesInput from './ReplaceQuotesInput';
+import ReplaceQuotesOutput from './ReplaceQuotesOutput';
 
 /**
  * Main component for the Replace Quotes tool.
  * Manages the state and functionality for replacing quotes in text.
  *
- * @component
  * @returns {React.JSX.Element} The complete Replace Quotes tool with input options, output display, and information
  */
 const ReplaceQuotesTool: React.FC = (): React.JSX.Element => {
-  const [input, setInput] = useState<string>("");
-  const [output, setOutput] = useState<string>("");
-  const [replaceType, setReplaceType] = useState<"simple-to-curly" | "curly-to-simple">("simple-to-curly");
+  const [input, setInput] = useState<string>('');
+  const [output, setOutput] = useState<string>('');
+  const [replaceType, setReplaceType] = useState<'simple-to-curly' | 'curly-to-simple'>('simple-to-curly');
   const [replaceApostrophes, setReplaceApostrophes] = useState<boolean>(true);
   const [replaceStandaloneQuotes, setReplaceStandaloneQuotes] = useState<boolean>(false);
 
   /**
    * Handles the quote replacement process
    *
-   * @function
    * @returns {void}
+   *
+   * @function
    */
   const handleSubmit = (): void => {
     let replacedText: string = input;
 
     switch (replaceType) {
-      case "simple-to-curly":
+      case 'simple-to-curly':
         if (replaceApostrophes) {
           replacedText = replacedText
             // Replace apostrophes in contractions (e.g., isn't → isn’t)
-            .replace(/\b(\w+)'(\w+)\b/g, "$1’$2");
+            .replace(/\b(\w+)'(\w+)\b/g, '$1’$2');
         }
 
         replacedText = replacedText
           // Replace double quotes used for quoting (e.g., "text" → “text”)
-          .replace(/"([^"]*)"/g, "“$1”")
+          .replace(/"([^"]*)"/g, '“$1”')
           // Replace single quotes used for quoting (e.g., 'text' → ‘text’)
-          .replace(/'([^']*)'/g, "‘$1’");
+          .replace(/'([^']*)'/g, '‘$1’');
 
         if (replaceStandaloneQuotes) {
           replacedText = replacedText
             // Replace remaining standalone double quotes → “
-            .replace(/"/g, "“")
+            .replace(/"/g, '“')
             // Replace remaining standalone single quotes → ‘
-            .replace(/'/g, "‘");
+            .replace(/'/g, '‘');
         }
         break;
-      case "curly-to-simple":
+      case 'curly-to-simple':
         replacedText = replacedText
           // Replace curly single quotes with straight quotes
           .replace(/[‘’]/g, "'")
@@ -59,7 +59,7 @@ const ReplaceQuotesTool: React.FC = (): React.JSX.Element => {
           .replace(/[“”]/g, '"');
         break;
       default:
-        throw new Error("Invalid replace type");
+        throw new Error('Invalid replace type');
     }
 
     setOutput(replacedText);
@@ -68,23 +68,25 @@ const ReplaceQuotesTool: React.FC = (): React.JSX.Element => {
   /**
    * Clears the output while keeping the input and other states intact
    *
-   * @function
    * @returns {void}
+   *
+   * @function
    */
   const handleClear = (): void => {
-    setInput("");
-    setOutput("");
+    setInput('');
+    setOutput('');
   };
 
   /**
    * Resets all input fields, output, and options
    *
-   * @function
    * @returns {void}
+   *
+   * @function
    */
   const handleReset = (): void => {
     handleClear();
-    setReplaceType("simple-to-curly");
+    setReplaceType('simple-to-curly');
     setReplaceApostrophes(true);
     setReplaceStandaloneQuotes(false);
   };

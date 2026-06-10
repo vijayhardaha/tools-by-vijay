@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { useState } from "react";
+import { useState } from 'react';
 
-import UnminifyInfo from "./UnminifyInfo";
-import UnminifyInput from "./UnminifyInput";
-import UnminifyOutput from "./UnminifyOutput";
+import UnminifyInfo from './UnminifyInfo';
+import UnminifyInput from './UnminifyInput';
+import UnminifyOutput from './UnminifyOutput';
 
 /**
  * A tool for unminifying code. It provides input fields for code, options for customization,
@@ -13,11 +13,11 @@ import UnminifyOutput from "./UnminifyOutput";
  * @returns {React.JSX.Element} The rendered UnminifyTool component.
  */
 const UnminifyTool: React.FC = (): React.JSX.Element => {
-  const [input, setInput] = useState<string>("");
-  const [output, setOutput] = useState<string>("");
-  const [codeType, setCodeType] = useState<string>("javascript");
+  const [input, setInput] = useState<string>('');
+  const [output, setOutput] = useState<string>('');
+  const [codeType, setCodeType] = useState<string>('javascript');
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [error, setError] = useState<string>("");
+  const [error, setError] = useState<string>('');
 
   /**
    * Handles the unminification process when the "Unminify" button is clicked.
@@ -28,14 +28,12 @@ const UnminifyTool: React.FC = (): React.JSX.Element => {
     if (!input.trim()) return;
 
     setIsLoading(true);
-    setError("");
+    setError('');
 
     try {
-      const response = await fetch("/api/unminify-code", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+      const response = await fetch('/api/unminify-code', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ code: input.trim(), codeType }),
       });
 
@@ -46,8 +44,8 @@ const UnminifyTool: React.FC = (): React.JSX.Element => {
       const data = await response.json();
       setOutput(data.unminifiedCode);
     } catch (error) {
-      console.error("Unminification error:", error);
-      setError(error instanceof Error ? error.message : "An error occurred");
+      console.error('Unminification error:', error);
+      setError(error instanceof Error ? error.message : 'An error occurred');
     } finally {
       setIsLoading(false);
     }
@@ -59,9 +57,9 @@ const UnminifyTool: React.FC = (): React.JSX.Element => {
    * @function
    */
   const handleClear = (): void => {
-    setInput("");
-    setOutput("");
-    setError("");
+    setInput('');
+    setOutput('');
+    setError('');
   };
 
   return (

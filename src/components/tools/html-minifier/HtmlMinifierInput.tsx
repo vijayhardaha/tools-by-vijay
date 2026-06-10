@@ -1,13 +1,14 @@
-"use client";
+'use client';
 
-import React from "react";
+import React from 'react';
+import type { FormEvent } from 'react';
 
-import { HtmlMinifierOptions } from "@/components/tools/html-minifier/HtmlMinifierTool";
-import { Alert } from "@/components/ui/alert";
-import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Textarea } from "@/components/ui/textarea";
+import type { HtmlMinifierOptions } from '@/components/tools/html-minifier/HtmlMinifierTool';
+import { Alert } from '@/components/ui/alert';
+import { Button } from '@/components/ui/button';
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Textarea } from '@/components/ui/textarea';
 
 /**
  * Interface for the HTML Minifier input component props.
@@ -29,10 +30,11 @@ interface IHtmlMinifierInputProps {
  * Allows users to input HTML, configure minification options, and trigger actions like minify, clear, or reset.
  *
  * @param {IHtmlMinifierInputProps} props - The props for the component.
+ *
  * @returns {React.JSX.Element} The rendered HTML Minifier input component.
  */
 const HtmlMinifierInput: React.FC<IHtmlMinifierInputProps> = ({
-  input = "",
+  input = '',
   setInput,
   options,
   updateOption,
@@ -48,7 +50,7 @@ const HtmlMinifierInput: React.FC<IHtmlMinifierInputProps> = ({
    *
    * @param {FormEvent} e - The form submission event.
    */
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     onSubmit();
   };
@@ -76,7 +78,7 @@ const HtmlMinifierInput: React.FC<IHtmlMinifierInputProps> = ({
                 <Checkbox
                   id="remove-comments"
                   checked={options.removeComments}
-                  onCheckedChange={(checked) => updateOption("removeComments", checked)}
+                  onCheckedChange={(checked) => updateOption('removeComments', checked)}
                 >
                   Remove comments
                 </Checkbox>
@@ -84,7 +86,7 @@ const HtmlMinifierInput: React.FC<IHtmlMinifierInputProps> = ({
                 <Checkbox
                   id="collapse-whitespace"
                   checked={options.collapseWhitespace}
-                  onCheckedChange={(checked) => updateOption("collapseWhitespace", checked)}
+                  onCheckedChange={(checked) => updateOption('collapseWhitespace', checked)}
                 >
                   Collapse whitespace
                 </Checkbox>
@@ -92,7 +94,7 @@ const HtmlMinifierInput: React.FC<IHtmlMinifierInputProps> = ({
                 <Checkbox
                   id="conservative-collapse"
                   checked={options.conservativeCollapse}
-                  onCheckedChange={(checked) => updateOption("conservativeCollapse", checked)}
+                  onCheckedChange={(checked) => updateOption('conservativeCollapse', checked)}
                 >
                   Conservative whitespace collapse
                 </Checkbox>
@@ -100,7 +102,7 @@ const HtmlMinifierInput: React.FC<IHtmlMinifierInputProps> = ({
                 <Checkbox
                   id="minify-css"
                   checked={options.minifyCSS}
-                  onCheckedChange={(checked) => updateOption("minifyCSS", checked)}
+                  onCheckedChange={(checked) => updateOption('minifyCSS', checked)}
                 >
                   Minify CSS
                 </Checkbox>
@@ -108,7 +110,7 @@ const HtmlMinifierInput: React.FC<IHtmlMinifierInputProps> = ({
                 <Checkbox
                   id="minify-js"
                   checked={options.minifyJS}
-                  onCheckedChange={(checked) => updateOption("minifyJS", checked)}
+                  onCheckedChange={(checked) => updateOption('minifyJS', checked)}
                 >
                   Minify JavaScript
                 </Checkbox>
@@ -116,7 +118,7 @@ const HtmlMinifierInput: React.FC<IHtmlMinifierInputProps> = ({
                 <Checkbox
                   id="minify-urls"
                   checked={options.minifyURLs}
-                  onCheckedChange={(checked) => updateOption("minifyURLs", checked)}
+                  onCheckedChange={(checked) => updateOption('minifyURLs', checked)}
                 >
                   Minify URLs
                 </Checkbox>
@@ -130,7 +132,7 @@ const HtmlMinifierInput: React.FC<IHtmlMinifierInputProps> = ({
                 <Checkbox
                   id="remove-empty-elements"
                   checked={options.removeEmptyElements}
-                  onCheckedChange={(checked) => updateOption("removeEmptyElements", checked)}
+                  onCheckedChange={(checked) => updateOption('removeEmptyElements', checked)}
                 >
                   Remove empty elements
                 </Checkbox>
@@ -138,7 +140,7 @@ const HtmlMinifierInput: React.FC<IHtmlMinifierInputProps> = ({
                 <Checkbox
                   id="remove-empty-attributes"
                   checked={options.removeEmptyAttributes}
-                  onCheckedChange={(checked) => updateOption("removeEmptyAttributes", checked)}
+                  onCheckedChange={(checked) => updateOption('removeEmptyAttributes', checked)}
                 >
                   Remove empty attributes
                 </Checkbox>
@@ -146,7 +148,7 @@ const HtmlMinifierInput: React.FC<IHtmlMinifierInputProps> = ({
                 <Checkbox
                   id="collapse-boolean-attributes"
                   checked={options.collapseBooleanAttributes}
-                  onCheckedChange={(checked) => updateOption("collapseBooleanAttributes", checked)}
+                  onCheckedChange={(checked) => updateOption('collapseBooleanAttributes', checked)}
                 >
                   Collapse boolean attributes
                 </Checkbox>
@@ -154,7 +156,7 @@ const HtmlMinifierInput: React.FC<IHtmlMinifierInputProps> = ({
                 <Checkbox
                   id="remove-attribute-quotes"
                   checked={options.removeAttributeQuotes}
-                  onCheckedChange={(checked) => updateOption("removeAttributeQuotes", checked)}
+                  onCheckedChange={(checked) => updateOption('removeAttributeQuotes', checked)}
                 >
                   Remove attribute quotes
                 </Checkbox>
@@ -162,7 +164,7 @@ const HtmlMinifierInput: React.FC<IHtmlMinifierInputProps> = ({
                 <Checkbox
                   id="remove-redundant-attributes"
                   checked={options.removeRedundantAttributes}
-                  onCheckedChange={(checked) => updateOption("removeRedundantAttributes", checked)}
+                  onCheckedChange={(checked) => updateOption('removeRedundantAttributes', checked)}
                 >
                   Remove redundant attributes
                 </Checkbox>
@@ -176,7 +178,7 @@ const HtmlMinifierInput: React.FC<IHtmlMinifierInputProps> = ({
                 <Checkbox
                   id="remove-script-type-attributes"
                   checked={options.removeScriptTypeAttributes}
-                  onCheckedChange={(checked) => updateOption("removeScriptTypeAttributes", checked)}
+                  onCheckedChange={(checked) => updateOption('removeScriptTypeAttributes', checked)}
                 >
                   Remove script type attributes
                 </Checkbox>
@@ -184,7 +186,7 @@ const HtmlMinifierInput: React.FC<IHtmlMinifierInputProps> = ({
                 <Checkbox
                   id="remove-style-link-type-attributes"
                   checked={options.removeStyleLinkTypeAttributes}
-                  onCheckedChange={(checked) => updateOption("removeStyleLinkTypeAttributes", checked)}
+                  onCheckedChange={(checked) => updateOption('removeStyleLinkTypeAttributes', checked)}
                 >
                   Remove style/link type attributes
                 </Checkbox>
@@ -192,7 +194,7 @@ const HtmlMinifierInput: React.FC<IHtmlMinifierInputProps> = ({
                 <Checkbox
                   id="sort-attributes"
                   checked={options.sortAttributes}
-                  onCheckedChange={(checked) => updateOption("sortAttributes", checked)}
+                  onCheckedChange={(checked) => updateOption('sortAttributes', checked)}
                 >
                   Sort attributes
                 </Checkbox>
@@ -200,7 +202,7 @@ const HtmlMinifierInput: React.FC<IHtmlMinifierInputProps> = ({
                 <Checkbox
                   id="sort-class-name"
                   checked={options.sortClassName}
-                  onCheckedChange={(checked) => updateOption("sortClassName", checked)}
+                  onCheckedChange={(checked) => updateOption('sortClassName', checked)}
                 >
                   Sort class names
                 </Checkbox>
@@ -208,7 +210,7 @@ const HtmlMinifierInput: React.FC<IHtmlMinifierInputProps> = ({
                 <Checkbox
                   id="decode-entities"
                   checked={options.decodeEntities}
-                  onCheckedChange={(checked) => updateOption("decodeEntities", checked)}
+                  onCheckedChange={(checked) => updateOption('decodeEntities', checked)}
                 >
                   Decode entities
                 </Checkbox>
@@ -216,7 +218,7 @@ const HtmlMinifierInput: React.FC<IHtmlMinifierInputProps> = ({
                 <Checkbox
                   id="use-short-doctype"
                   checked={options.useShortDoctype}
-                  onCheckedChange={(checked) => updateOption("useShortDoctype", checked)}
+                  onCheckedChange={(checked) => updateOption('useShortDoctype', checked)}
                 >
                   Use short doctype
                 </Checkbox>
@@ -225,7 +227,7 @@ const HtmlMinifierInput: React.FC<IHtmlMinifierInputProps> = ({
           </div>
           <div className="flex flex-wrap gap-2">
             <Button type="submit" variant="default" disabled={!input || isLoading}>
-              {isLoading ? "Minifying..." : "Minify"}
+              {isLoading ? 'Minifying...' : 'Minify'}
             </Button>
 
             <Button type="button" variant="outline" onClick={onClear} disabled={isLoading}>

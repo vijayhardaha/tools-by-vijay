@@ -2,7 +2,6 @@
  * Provides information about the URL Shortener Tool, including its purpose,
  * usage instructions, and examples.
  *
- * @component
  * @returns {React.JSX.Element} The rendered component displaying tool information
  */
 const UrlShortenerInfo: React.FC = (): React.JSX.Element => {
@@ -47,7 +46,7 @@ const UrlShortenerInfo: React.FC = (): React.JSX.Element => {
       <section>
         <h3 className="text-primary mb-4 text-lg font-bold">Credits & Source</h3>
         <p>
-          Maintained by{" "}
+          Maintained by{' '}
           <a
             href="https://x.com/vijayhardaha"
             className="font-medium text-pink-500 underline hover:no-underline"
@@ -56,7 +55,7 @@ const UrlShortenerInfo: React.FC = (): React.JSX.Element => {
           >
             Vijay Hardaha
           </a>
-          . This tool uses the{" "}
+          . This tool uses the{' '}
           <a
             href="https://tinyurl.com/"
             className="font-medium text-pink-500 underline hover:no-underline"
@@ -64,8 +63,8 @@ const UrlShortenerInfo: React.FC = (): React.JSX.Element => {
             rel="noreferrer"
           >
             TinyURL
-          </a>{" "}
-          service for URL shortening and the{" "}
+          </a>{' '}
+          service for URL shortening and the{' '}
           <a
             href="https://www.npmjs.com/package/valid-url"
             className="font-medium text-pink-500 underline hover:no-underline"
@@ -73,7 +72,7 @@ const UrlShortenerInfo: React.FC = (): React.JSX.Element => {
             rel="noreferrer"
           >
             valid-url
-          </a>{" "}
+          </a>{' '}
           package for URL validation.
         </p>
       </section>

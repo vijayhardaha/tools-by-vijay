@@ -1,8 +1,10 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
-import { Checkbox } from "@/components/ui/checkbox";
-import { RadioBox } from "@/components/ui/radiobox";
-import { Textarea } from "@/components/ui/textarea";
+import type { FormEvent } from 'react';
+
+import { Button } from '@/components/ui/button';
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { Checkbox } from '@/components/ui/checkbox';
+import { RadioBox } from '@/components/ui/radiobox';
+import { Textarea } from '@/components/ui/textarea';
 
 /**
  * Props for the AlphabeticalLineSorterInput component.
@@ -25,8 +27,8 @@ interface IAlphabeticalLineSorterInputProps {
  * Input component for the Alphabetical Line Sorter tool.
  * Provides a form for text input, sorting type, reverse sorting option, and duplicate removal.
  *
- * @component
  * @param {IAlphabeticalLineSorterInputProps} props - Component props
+ *
  * @returns {React.JSX.Element} The rendered input form
  */
 const AlphabeticalLineSorterInput: React.FC<IAlphabeticalLineSorterInputProps> = ({
@@ -44,9 +46,10 @@ const AlphabeticalLineSorterInput: React.FC<IAlphabeticalLineSorterInputProps> =
 }: IAlphabeticalLineSorterInputProps): React.JSX.Element => {
   /**
    * Handles form submission to sort lines alphabetically
+   *
    * @param {*} e - Event object
    */
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     onSubmit();
   };
@@ -71,16 +74,16 @@ const AlphabeticalLineSorterInput: React.FC<IAlphabeticalLineSorterInputProps> =
             <RadioBox
               id="sort-standard"
               name="sortType"
-              checked={sortType === "standard"}
-              onCheckedChange={() => setSortType("standard")}
+              checked={sortType === 'standard'}
+              onCheckedChange={() => setSortType('standard')}
             >
               Standard Alphabetical Order
             </RadioBox>
             <RadioBox
               id="sort-ascii"
               name="sortType"
-              checked={sortType === "ascii"}
-              onCheckedChange={() => setSortType("ascii")}
+              checked={sortType === 'ascii'}
+              onCheckedChange={() => setSortType('ascii')}
             >
               ASCII Sorting
             </RadioBox>

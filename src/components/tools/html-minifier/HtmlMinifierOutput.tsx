@@ -1,7 +1,7 @@
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
-import { CompressionInfo } from "@/components/ui/compressionInfo";
-import { CopyButton } from "@/components/ui/copyButton";
-import { Textarea } from "@/components/ui/textarea";
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { CompressionInfo } from '@/components/ui/compressionInfo';
+import { CopyButton } from '@/components/ui/copyButton';
+import { Textarea } from '@/components/ui/textarea';
 
 /**
  * Interface for the HtmlMinifierOutput component props.
@@ -16,6 +16,7 @@ interface IHtmlMinifierOutputProps {
  * Includes a copy button to copy the output and a readonly textarea to view the minified HTML.
  *
  * @param {IHtmlMinifierOutputProps} props - The props for the component.
+ *
  * @returns {React.JSX.Element} The rendered component.
  */
 const HtmlMinifierOutput: React.FC<IHtmlMinifierOutputProps> = ({

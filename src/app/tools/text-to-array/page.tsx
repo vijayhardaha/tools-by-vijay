@@ -1,36 +1,37 @@
-import { notFound } from "next/navigation";
+import { notFound } from 'next/navigation';
 
-import EntryWithSidebar from "@/components/page/EntryWithSidebar";
-import PageContent from "@/components/page/PageContent";
-import PageHeader from "@/components/page/PageHeader";
-import PageLayout from "@/components/page/PageLayout";
-import TextToArrayTool from "@/components/tools/text-to-array/TextToArrayTool";
-import { ITool } from "@/types";
-import { generateMeta, IMetadata } from "@/utils/seoUtils";
-import { findToolBySlug } from "@/utils/toolUtils";
-import { getIconForTool } from "@/utils/toolUtils";
+import EntryWithSidebar from '@/components/page/EntryWithSidebar';
+import PageContent from '@/components/page/PageContent';
+import PageHeader from '@/components/page/PageHeader';
+import PageLayout from '@/components/page/PageLayout';
+import TextToArrayTool from '@/components/tools/text-to-array/TextToArrayTool';
+import type { Tool } from '@/types';
+import { generateMeta } from '@/utils/seoUtils';
+import type { PageMeta } from '@/utils/seoUtils';
+import { findToolBySlug, getIconForTool } from '@/utils/toolUtils';
 
 /**
  * Retrieves tool data for the Text to Array tool.
- * @constant {ITool|null} tool - The tool object containing metadata and configuration.
+ *
+ * @constant {Tool|null} tool - The tool object containing metadata and configuration.
  */
-const tool: ITool | null = findToolBySlug("text-to-array");
+const tool: Tool | null = findToolBySlug('text-to-array');
 
 /**
  * SEO metadata for the Text to Array tool page.
- * @type {IMetadata}
+ *
+ * @type {PageMeta}
  */
-export const metadata: IMetadata = generateMeta({
-  title: tool?.seoTitle || "",
-  description: tool?.seoDescription || "",
-  slug: tool?.slug || "",
+export const metadata: PageMeta = generateMeta({
+  title: tool?.seoTitle || '',
+  description: tool?.seoDescription || '',
+  slug: tool?.slug || '',
 });
 
 /**
  * Text to Array tool page component.
  * Renders the page layout with header and the Text to Array tool.
  *
- * @component
  * @returns {React.JSX.Element} The rendered Text to Array tool page component.
  */
 const TextToArray: React.FC = (): React.JSX.Element => {

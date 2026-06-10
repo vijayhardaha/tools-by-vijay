@@ -1,6 +1,6 @@
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
-import { CopyButton } from "@/components/ui/copyButton";
-import { Textarea } from "@/components/ui/textarea";
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { CopyButton } from '@/components/ui/copyButton';
+import { Textarea } from '@/components/ui/textarea';
 
 /**
  * Interface for the JsonSorterOutput component props.
@@ -12,8 +12,8 @@ interface ITextToPhpVariablesOutputProps {
 /**
  * Output component for the Text to PHP Variables tool.
  *
- * @component
  * @param {ITextToPhpVariablesOutputProps} props - The props for the component.
+ *
  * @returns {React.JSX.Element} The rendered output component.
  */
 const TextToPhpVariablesOutput: React.FC<ITextToPhpVariablesOutputProps> = ({

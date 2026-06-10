@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import HtmlMinifierInfo from "./HtmlMinifierInfo";
-import HtmlMinifierInput from "./HtmlMinifierInput";
-import HtmlMinifierOutput from "./HtmlMinifierOutput";
+import HtmlMinifierInfo from './HtmlMinifierInfo';
+import HtmlMinifierInput from './HtmlMinifierInput';
+import HtmlMinifierOutput from './HtmlMinifierOutput';
 
 /**
  * Type definition for the HTML Minifier options.
@@ -59,49 +59,45 @@ const defaultOptions: HtmlMinifierOptions = {
  * @returns {React.JSX.Element} The HTML Minifier tool interface
  */
 const HtmlMinifierTool: React.FC = (): React.JSX.Element => {
-  const [input, setInput] = useState<string>("");
-  const [output, setOutput] = useState<string>("");
+  const [input, setInput] = useState<string>('');
+  const [output, setOutput] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [options, setOptions] = useState<HtmlMinifierOptions>(defaultOptions);
-  const [error, setError] = useState<string>("");
+  const [error, setError] = useState<string>('');
 
   /**
    * Handles the minification process when the "Minify" button is clicked
    * Makes an API call to the server-side minification endpoint
    *
+   * @returns {void}
+   *
    * @async
    * @function
-   * @returns {void}
    */
   const handleSubmit = async (): Promise<void> => {
     if (!input.trim()) return;
 
     setIsLoading(true);
-    setError("");
+    setError('');
 
     try {
       // Call the API endpoint for minification
-      const response = await fetch("/api/minify-html", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          html: input,
-          options: options,
-        }),
+      const response = await fetch('/api/minify-html', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ html: input, options: options }),
       });
 
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || "Failed to minify HTML");
+        throw new Error(data.error || 'Failed to minify HTML');
       }
 
       setOutput(data.minifiedHtml);
     } catch (error) {
-      console.error("HTML minification error:", error);
-      setError(error instanceof Error ? error.message : "An error occurred");
+      console.error('HTML minification error:', error);
+      setError(error instanceof Error ? error.message : 'An error occurred');
     } finally {
       setIsLoading(false);
     }
@@ -110,20 +106,22 @@ const HtmlMinifierTool: React.FC = (): React.JSX.Element => {
   /**
    * Clears the input and output fields
    *
-   * @function
    * @returns {void}
+   *
+   * @function
    */
   const handleClear = (): void => {
-    setInput("");
-    setOutput("");
-    setError("");
+    setInput('');
+    setOutput('');
+    setError('');
   };
 
   /**
    * Resets all options to their default values
    *
-   * @function
    * @returns {void}
+   *
+   * @function
    */
   const handleReset = (): void => {
     handleClear();
@@ -133,15 +131,13 @@ const HtmlMinifierTool: React.FC = (): React.JSX.Element => {
   /**
    * Updates a specific option in the options state
    *
-   * @function
    * @param {string} key - The option key to update
    * @param {boolean} value - The new value for the option
+   *
+   * @function
    */
   const updateOption = (key: keyof HtmlMinifierOptions, value: boolean): void => {
-    setOptions((prevOptions) => ({
-      ...prevOptions,
-      [key]: value,
-    }));
+    setOptions((prevOptions) => ({ ...prevOptions, [key]: value }));
   };
 
   return (

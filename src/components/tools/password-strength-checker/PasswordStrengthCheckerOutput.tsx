@@ -1,22 +1,19 @@
-"use client";
+'use client';
 
-import React from "react";
+import React from 'react';
 
-import { LuCheck as CheckIcon, LuX as XIcon } from "react-icons/lu";
+import { LuCheck as CheckIcon, LuX as XIcon } from 'react-icons/lu';
 
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
-import { cn } from "@/utils/classNameUtils";
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { Progress } from '@/components/ui/progress';
+import { cn } from '@/utils/classNameUtils';
 
 /**
  * Interface for the password strength analysis result.
  */
 interface PasswordStrength {
   score: number;
-  feedback: {
-    warning: string;
-    suggestions: string[];
-  };
+  feedback: { warning: string; suggestions: string[] };
   criteria: {
     length: boolean;
     hasUppercase: boolean;
@@ -38,6 +35,7 @@ interface PasswordStrengthCheckerOutputProps {
  *
  * @param {boolean} isMet - Indicates if the criteria is met
  * @param {string} label - The label for the criteria
+ *
  * @returns {React.JSX.Element} - A div containing the icon and label
  */
 const renderCriteria = (isMet: boolean, label: string): React.JSX.Element => (
@@ -50,32 +48,32 @@ const renderCriteria = (isMet: boolean, label: string): React.JSX.Element => (
 /**
  * Component to display password strength analysis results
  *
- * @component
  * @param {PasswordStrengthCheckerOutputProps} props - Component props
+ *
  * @returns {React.JSX.Element} The rendered password strength analysis
  */
 const PasswordStrengthCheckerOutput: React.FC<PasswordStrengthCheckerOutputProps> = ({
   strength,
 }: PasswordStrengthCheckerOutputProps): React.JSX.Element => {
   // Strength level names
-  const strengthLevels: string[] = ["Very Weak", "Weak", "Fair", "Good", "Strong"];
+  const strengthLevels: string[] = ['Very Weak', 'Weak', 'Fair', 'Good', 'Strong'];
 
   // Colors for different strength levels
   const strengthColors: string[] = [
-    "bg-red-500", // Very Weak
-    "bg-orange-500", // Weak
-    "bg-yellow-500", // Fair
-    "bg-green-400", // Good
-    "bg-green-600", // Strong
+    'bg-red-500', // Very Weak
+    'bg-orange-500', // Weak
+    'bg-yellow-500', // Fair
+    'bg-green-400', // Good
+    'bg-green-600', // Strong
   ];
 
   // Text colors for strength levels
   const strengthTextColors: string[] = [
-    "text-red-500", // Very Weak
-    "text-orange-500", // Weak
-    "text-yellow-500", // Fair
-    "text-green-400", // Good
-    "text-green-600", // Strong
+    'text-red-500', // Very Weak
+    'text-orange-500', // Weak
+    'text-yellow-500', // Fair
+    'text-green-400', // Good
+    'text-green-600', // Strong
   ];
 
   return (
@@ -89,7 +87,7 @@ const PasswordStrengthCheckerOutput: React.FC<PasswordStrengthCheckerOutputProps
           <div className="space-y-2">
             <div className="flex items-center justify-between">
               <span className="text-sm font-medium">Strength</span>
-              <span className={cn("text-sm font-bold", strengthTextColors[strength.score])}>
+              <span className={cn('text-sm font-bold', strengthTextColors[strength.score])}>
                 {strengthLevels[strength.score]}
               </span>
             </div>
@@ -120,11 +118,11 @@ const PasswordStrengthCheckerOutput: React.FC<PasswordStrengthCheckerOutputProps
           <div className="space-y-2">
             <h3 className="text-sm font-bold">Password criteria:</h3>
             <div className="space-y-1 pl-2">
-              {renderCriteria(strength.criteria.length, "At least 8 characters")}
-              {renderCriteria(strength.criteria.hasUppercase, "Contains uppercase letters")}
-              {renderCriteria(strength.criteria.hasLowercase, "Contains lowercase letters")}
-              {renderCriteria(strength.criteria.hasDigit, "Contains numbers")}
-              {renderCriteria(strength.criteria.hasSpecialChar, "Contains special characters")}
+              {renderCriteria(strength.criteria.length, 'At least 8 characters')}
+              {renderCriteria(strength.criteria.hasUppercase, 'Contains uppercase letters')}
+              {renderCriteria(strength.criteria.hasLowercase, 'Contains lowercase letters')}
+              {renderCriteria(strength.criteria.hasDigit, 'Contains numbers')}
+              {renderCriteria(strength.criteria.hasSpecialChar, 'Contains special characters')}
             </div>
           </div>
         </>

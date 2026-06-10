@@ -1,7 +1,7 @@
 /**
  * Default configuration options for the text story maker.
  */
-export interface IOptions {
+export interface StoryOptions {
   textFont: number;
   textSize: number;
   textLineHeight: number;
@@ -31,45 +31,45 @@ export interface IOptions {
   downloadSize: string;
 }
 
-export const defaultOptions: IOptions = {
+export const defaultOptions: StoryOptions = {
   // Typography
   textFont: 0,
   textSize: 1.5,
   textLineHeight: 1.3,
   textLetterSpacing: 0,
   textColor: 0,
-  textAlign: "center",
+  textAlign: 'center',
   textBold: false,
   textItalic: false,
   textUppercase: false,
-  textEffect: "",
+  textEffect: '',
 
   // Text Effect
-  textStroke: "",
+  textStroke: '',
   textStrokeSize: 1,
-  textShadow: "",
+  textShadow: '',
   textShadowSize: 0.1,
 
   // Content
-  text: "",
+  text: '',
 
   // Box
-  boxBackground: "",
+  boxBackground: '',
   boxOuterPadding: 10,
   boxInnerPadding: 0,
   boxBorderRadius: 0,
   boxBackgroundOpacity: 0.15,
-  boxGlossy: "",
+  boxGlossy: '',
   boxGlossyBlur: 4,
   boxGlossyShadow: 4,
 
   // Layout
-  cardRatio: "9/16",
+  cardRatio: '9/16',
 
   // Background
-  bgType: "gradient",
+  bgType: 'gradient',
   bgColor: 0,
 
   // Download
-  downloadSize: "2k",
+  downloadSize: '2k',
 };

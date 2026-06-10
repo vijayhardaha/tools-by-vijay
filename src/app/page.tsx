@@ -1,8 +1,8 @@
-import ToolCard from "@/components/home/ToolCard";
-import PageLayout from "@/components/page/PageLayout";
-import { ITool, ICategory } from "@/types";
-import { getCategoryBySlug } from "@/utils/categoryUtils";
-import { getToolsByCategories } from "@/utils/toolUtils";
+import ToolCard from '@/components/home/ToolCard';
+import PageLayout from '@/components/page/PageLayout';
+import type { Tool, Category } from '@/types';
+import { getCategoryBySlug } from '@/utils/categoryUtils';
+import { getToolsByCategories } from '@/utils/toolUtils';
 
 /**
  * Home component that renders tool cards organized by categories.
@@ -10,11 +10,10 @@ import { getToolsByCategories } from "@/utils/toolUtils";
  * Each category section displays a title, description, and a grid of tools
  * that belong to that category.
  *
- * @component
  * @returns {React.JSX.Element} The rendered Home component with categorized tools.
  */
 const Home: React.FC = (): React.JSX.Element => {
-  const toolsByCategory: Record<string, ITool[]> = getToolsByCategories();
+  const toolsByCategory: Record<string, Tool[]> = getToolsByCategories();
 
   return (
     <PageLayout>
@@ -28,8 +27,8 @@ const Home: React.FC = (): React.JSX.Element => {
       </p>
 
       {/* Categorized Tools */}
-      {Object.entries(toolsByCategory).map(([categorySlug, categoryTools]: [string, ITool[]]) => {
-        const category: ICategory | null = getCategoryBySlug(categorySlug);
+      {Object.entries(toolsByCategory).map(([categorySlug, categoryTools]: [string, Tool[]]) => {
+        const category: Category | null = getCategoryBySlug(categorySlug);
         if (!category) return null;
 
         return (
@@ -40,7 +39,7 @@ const Home: React.FC = (): React.JSX.Element => {
             </div>
 
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-6">
-              {categoryTools.map((tool: ITool) => (
+              {categoryTools.map((tool: Tool) => (
                 <ToolCard key={tool.slug} slug={tool.slug} />
               ))}
             </div>
@@ -76,13 +75,13 @@ const Home: React.FC = (): React.JSX.Element => {
             <p>
               This website offers a growing collection of categorized developer utilities designed to simplify everyday
               tasks. Whether you're cleaning up content, transforming data formats, or optimizing code, our tools are
-              built for speed and ease of use. Popular options include{" "}
-              <strong className="font-bold italic">JSON Sorter</strong>,{" "}
-              <strong className="font-bold italic">Base64 Encoder/Decoder</strong>,{" "}
-              <strong className="font-bold italic">Dropdown to Array Converter</strong>, and{" "}
+              built for speed and ease of use. Popular options include{' '}
+              <strong className="font-bold italic">JSON Sorter</strong>,{' '}
+              <strong className="font-bold italic">Base64 Encoder/Decoder</strong>,{' '}
+              <strong className="font-bold italic">Dropdown to Array Converter</strong>, and{' '}
               <strong className="font-bold italic">Alphabetical Line Sorter</strong>. We also provide
-              productivity-focused tools like <strong className="font-bold italic">Duplicate Line Remover</strong>,{" "}
-              <strong className="font-bold italic">CSS Inliner</strong>, and{" "}
+              productivity-focused tools like <strong className="font-bold italic">Duplicate Line Remover</strong>,{' '}
+              <strong className="font-bold italic">CSS Inliner</strong>, and{' '}
               <strong className="font-bold italic">Code Minifiers</strong>. Each tool is crafted to solve real developer
               pain points with zero distractions.
             </p>

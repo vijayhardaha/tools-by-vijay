@@ -1,28 +1,33 @@
-import { ButtonHTMLAttributes, ReactNode } from "react";
+import type { ButtonHTMLAttributes, ReactNode } from 'react';
 
-import { btnBaseStyles } from "@/components/text-story-maker/constants/btnBaseStyles";
-import { cn } from "@/utils/classNameUtils";
+import { btnBaseStyles } from '@/components/text-story-maker/constants/btnBaseStyles';
+import { cn } from '@/utils/classNameUtils';
 
 interface TextButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   icon?: React.ElementType;
   className?: string;
   children: ReactNode;
-  "aria-label"?: string;
+  'aria-label'?: string;
 }
 
 /**
  * A reusable button component for text-based actions.
+ *
+ * @param root0
+ * @param root0.className
+ * @param root0.children
+ * @param root0.'aria-label'
  */
 export const TextButton: React.FC<TextButtonProps> = ({
   className,
   children,
-  "aria-label": ariaLabel,
+  'aria-label': ariaLabel,
   ...props
 }: TextButtonProps): React.JSX.Element => {
   return (
     <button
       type="button"
-      className={cn(btnBaseStyles.join(" "), "bg-neutral-800 p-3 px-5 text-white", className)}
+      className={cn(btnBaseStyles.join(' '), 'bg-neutral-800 p-3 px-5 text-white', className)}
       aria-label={ariaLabel || undefined}
       {...props}
     >

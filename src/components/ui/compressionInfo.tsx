@@ -2,6 +2,7 @@
  * Utility function to wrap text in a <code> tag.
  *
  * @param {string} text - The text to wrap.
+ *
  * @returns {React.JSX.Element} The text wrapped in a <code> tag.
  */
 const wrapInCode = (text: string): React.JSX.Element => {
@@ -18,9 +19,13 @@ interface ICompressionInfoProps {
 
 /**
  * Displays compression information based on input and output data.
+ *
+ * @param root0
+ * @param root0.input
+ * @param root0.output
  */
 export const CompressionInfo = ({ input, output }: ICompressionInfoProps): React.JSX.Element | null => {
-  if (!output) return wrapInCode("Output is empty");
+  if (!output) return wrapInCode('Output is empty');
 
   const formatSize = (size: number): string => {
     if (size >= 1024 * 1024) {
@@ -33,7 +38,7 @@ export const CompressionInfo = ({ input, output }: ICompressionInfoProps): React
   };
 
   const outputSize = new Blob([output]).size;
-  if (outputSize === 0) return <>Compressed size: {wrapInCode("0 bytes")}</>;
+  if (outputSize === 0) return <>Compressed size: {wrapInCode('0 bytes')}</>;
 
   const compressedSize = formatSize(outputSize);
   let stats = null;
@@ -48,7 +53,7 @@ export const CompressionInfo = ({ input, output }: ICompressionInfoProps): React
 
       stats = (
         <>
-          Original size: {wrapInCode(originalSize)} • Compressed size: {wrapInCode(compressedSize)} • Saving:{" "}
+          Original size: {wrapInCode(originalSize)} • Compressed size: {wrapInCode(compressedSize)} • Saving:{' '}
           {wrapInCode(formatSize(saved))} • Compression: {wrapInCode(`${percent}%`)}
         </>
       );

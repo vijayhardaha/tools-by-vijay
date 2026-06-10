@@ -1,6 +1,6 @@
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
-import { CopyButton } from "@/components/ui/copyButton";
-import { Textarea } from "@/components/ui/textarea";
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { CopyButton } from '@/components/ui/copyButton';
+import { Textarea } from '@/components/ui/textarea';
 
 /**
  * Interface for the CountryNameGeneratorOutput component props.
@@ -14,6 +14,7 @@ interface IUrlDecoderEncoderOutputProps {
  * It includes a textarea to show the output and a button to copy the output to the clipboard.
  *
  * @param {IUrlDecoderEncoderOutputProps} props - The props for the component.
+ *
  * @returns {React.JSX.Element} The rendered component.
  */
 const UrlDecoderEncoderOutput: React.FC<IUrlDecoderEncoderOutputProps> = ({

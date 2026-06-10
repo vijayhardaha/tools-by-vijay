@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import Link from "next/link";
-import { PiTextAa as AaIcon } from "react-icons/pi";
+import Link from 'next/link';
+import { PiTextAa as AaIcon } from 'react-icons/pi';
 
-import Logo from "@/components/header/parts/Logo";
-import MenuButton from "@/components/header/parts/MenuButton";
-import Sidebar from "@/components/header/sidebar/Sidebar";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/utils/classNameUtils";
+import Logo from '@/components/header/parts/Logo';
+import MenuButton from '@/components/header/parts/MenuButton';
+import Sidebar from '@/components/header/sidebar/Sidebar';
+import { Button } from '@/components/ui/button';
+import { cn } from '@/utils/classNameUtils';
 
 /**
  * Header component that displays the app logo and menu button
@@ -34,9 +34,9 @@ const Header: React.FC = (): React.JSX.Element => {
                 asChild
                 variant="default"
                 className={cn(
-                  "w-12 border-none md:w-auto md:px-6",
-                  "to-line-500 bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500 text-white md:inline-flex",
-                  "hover:from-pink-500 hover:via-red-500 hover:to-purple-500"
+                  'w-12 border-none md:w-auto md:px-6',
+                  'to-line-500 bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500 text-white md:inline-flex',
+                  'hover:from-pink-500 hover:via-red-500 hover:to-purple-500'
                 )}
               >
                 <Link href="/text-story-maker">

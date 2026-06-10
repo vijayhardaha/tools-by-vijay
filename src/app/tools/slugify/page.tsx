@@ -1,36 +1,37 @@
-import { notFound } from "next/navigation";
+import { notFound } from 'next/navigation';
 
-import EntryWithSidebar from "@/components/page/EntryWithSidebar";
-import PageContent from "@/components/page/PageContent";
-import PageHeader from "@/components/page/PageHeader";
-import PageLayout from "@/components/page/PageLayout";
-import SlugifyTool from "@/components/tools/slugify/SlugifyTool";
-import { ITool } from "@/types";
-import { generateMeta, IMetadata } from "@/utils/seoUtils";
-import { findToolBySlug } from "@/utils/toolUtils";
-import { getIconForTool } from "@/utils/toolUtils";
+import EntryWithSidebar from '@/components/page/EntryWithSidebar';
+import PageContent from '@/components/page/PageContent';
+import PageHeader from '@/components/page/PageHeader';
+import PageLayout from '@/components/page/PageLayout';
+import SlugifyTool from '@/components/tools/slugify/SlugifyTool';
+import type { Tool } from '@/types';
+import { generateMeta } from '@/utils/seoUtils';
+import type { PageMeta } from '@/utils/seoUtils';
+import { findToolBySlug, getIconForTool } from '@/utils/toolUtils';
 
 /**
  * Retrieves tool data for the Slugify tool.
- * @constant {ITool|null} tool - The tool object containing metadata and configuration.
+ *
+ * @constant {Tool|null} tool - The tool object containing metadata and configuration.
  */
-const tool: ITool | null = findToolBySlug("slugify");
+const tool: Tool | null = findToolBySlug('slugify');
 
 /**
  * SEO metadata for the Slugify page.
- * @type {IMetadata}
+ *
+ * @type {PageMeta}
  */
-export const metadata: IMetadata = generateMeta({
-  title: tool?.seoTitle || "",
-  description: tool?.seoDescription || "",
-  slug: tool?.slug || "",
+export const metadata: PageMeta = generateMeta({
+  title: tool?.seoTitle || '',
+  description: tool?.seoDescription || '',
+  slug: tool?.slug || '',
 });
 
 /**
  * Slugify tool page component.
  * Renders the page layout with header and the Slugify tool.
  *
- * @component
  * @returns {React.JSX.Element} The rendered Slugify tool page component.
  */
 const Slugify: React.FC = (): React.JSX.Element => {

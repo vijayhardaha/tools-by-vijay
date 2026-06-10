@@ -1,10 +1,12 @@
-"use client";
+'use client';
 
-import { Alert } from "@/components/ui/alert";
-import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
-import { RadioBox } from "@/components/ui/radiobox";
-import { Textarea } from "@/components/ui/textarea";
+import type { FormEvent } from 'react';
+
+import { Alert } from '@/components/ui/alert';
+import { Button } from '@/components/ui/button';
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { RadioBox } from '@/components/ui/radiobox';
+import { Textarea } from '@/components/ui/textarea';
 
 /**
  * Interface for the UnminifyInput component props.
@@ -24,6 +26,7 @@ interface IUnminifyInputProps {
  * Component for accepting code input and triggering unminification.
  *
  * @param {IUnminifyInputProps} props - The props for the component.
+ *
  * @returns {React.JSX.Element} The rendered UnminifyInput component.
  */
 const UnminifyInput: React.FC<IUnminifyInputProps> = ({
@@ -39,9 +42,9 @@ const UnminifyInput: React.FC<IUnminifyInputProps> = ({
   /**
    * Handles the form submission event.
    *
-   * @param {React.FormEvent} e - The form event.
+   * @param {FormEvent} e - The form event.
    */
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     onSubmit();
   };
@@ -65,35 +68,35 @@ const UnminifyInput: React.FC<IUnminifyInputProps> = ({
             <RadioBox
               name="codeType"
               id="javascript"
-              checked={codeType === "javascript"}
-              onCheckedChange={() => setCodeType("javascript")}
+              checked={codeType === 'javascript'}
+              onCheckedChange={() => setCodeType('javascript')}
             >
               JavaScript
             </RadioBox>
             <RadioBox
               name="codeType"
               id="json"
-              checked={codeType === "json"}
-              onCheckedChange={() => setCodeType("json")}
+              checked={codeType === 'json'}
+              onCheckedChange={() => setCodeType('json')}
             >
               JSON
             </RadioBox>
             <RadioBox
               name="codeType"
               id="html"
-              checked={codeType === "html"}
-              onCheckedChange={() => setCodeType("html")}
+              checked={codeType === 'html'}
+              onCheckedChange={() => setCodeType('html')}
             >
               HTML/XML
             </RadioBox>
-            <RadioBox name="codeType" id="css" checked={codeType === "css"} onCheckedChange={() => setCodeType("css")}>
+            <RadioBox name="codeType" id="css" checked={codeType === 'css'} onCheckedChange={() => setCodeType('css')}>
               CSS
             </RadioBox>
           </div>
 
           <div className="flex flex-wrap gap-2">
             <Button type="submit" variant="default" disabled={!input || isLoading}>
-              {isLoading ? "Unminifying..." : "Unminify"}
+              {isLoading ? 'Unminifying...' : 'Unminify'}
             </Button>
 
             <Button type="button" variant="outline" onClick={onClear} disabled={isLoading}>

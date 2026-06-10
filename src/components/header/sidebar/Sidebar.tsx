@@ -1,22 +1,20 @@
-import { Sheet, SheetContent } from "@/components/ui/sheet";
+import { Sheet, SheetContent } from '@/components/ui/sheet';
 
-import SidebarBody from "./SidebarBody";
-import SidebarFooter from "./SidebarFooter";
-import SidebarHeader from "./SidebarHeader";
+import SidebarBody from './SidebarBody';
+import SidebarFooter from './SidebarFooter';
+import SidebarHeader from './SidebarHeader';
 
 /**
  * Props for the Sidebar component.
  */
-type ISidebarProps = {
-  isOpen: boolean;
-  onClose: () => void;
-};
+type ISidebarProps = { isOpen: boolean; onClose: () => void };
 
 /**
  * Sidebar component that displays a sliding panel from the right side of the screen.
  * Contains header, body, and footer sections.
  *
  * @param {SidebarProps} props - Component props.
+ *
  * @returns {React.JSX.Element} Sidebar component.
  */
 const Sidebar: React.FC<ISidebarProps> = ({ isOpen, onClose }: ISidebarProps): React.JSX.Element => (

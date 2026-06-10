@@ -1,9 +1,11 @@
-"use client";
+'use client';
 
-import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
-import { RadioBox } from "@/components/ui/radiobox";
-import { Textarea } from "@/components/ui/textarea";
+import type { FormEvent } from 'react';
+
+import { Button } from '@/components/ui/button';
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { RadioBox } from '@/components/ui/radiobox';
+import { Textarea } from '@/components/ui/textarea';
 
 /**
  * Props for the Base64EncodeDecodeInput component.
@@ -23,6 +25,7 @@ interface IBase64EncodeDecodeInputProps {
  * It includes a textarea for input, radio buttons to select the mode, and action buttons.
  *
  * @param {IBase64EncodeDecodeInputProps} props - The props for the component.
+ *
  * @returns {React.JSX.Element} The rendered input component.
  */
 const Base64EncodeDecodeInput: React.FC<IBase64EncodeDecodeInputProps> = ({
@@ -36,9 +39,10 @@ const Base64EncodeDecodeInput: React.FC<IBase64EncodeDecodeInputProps> = ({
 }: IBase64EncodeDecodeInputProps): React.JSX.Element => {
   /**
    * Handles the form submission to process the input.
-   * @param {React.FormEvent} e - The form submission event.
+   *
+   * @param {FormEvent} e - The form submission event.
    */
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     onProcess();
   };

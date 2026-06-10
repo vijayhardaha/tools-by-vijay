@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { useState } from "react";
+import { useState } from 'react';
 
-import ShuffleTextLinesInfo from "./ShuffleTextLinesInfo";
-import ShuffleTextLinesInput from "./ShuffleTextLinesInput";
-import ShuffleTextLinesOutput from "./ShuffleTextLinesOutput";
+import ShuffleTextLinesInfo from './ShuffleTextLinesInfo';
+import ShuffleTextLinesInput from './ShuffleTextLinesInput';
+import ShuffleTextLinesOutput from './ShuffleTextLinesOutput';
 
 /**
  * A tool for shuffling lines of text with options to remove duplicates.
@@ -12,8 +12,8 @@ import ShuffleTextLinesOutput from "./ShuffleTextLinesOutput";
  * @returns {React.JSX.Element} The ShuffleTextLinesTool component.
  */
 const ShuffleTextLinesTool: React.FC = (): React.JSX.Element => {
-  const [input, setInput] = useState<string>("");
-  const [output, setOutput] = useState<string>("");
+  const [input, setInput] = useState<string>('');
+  const [output, setOutput] = useState<string>('');
   const [removeDuplicates, setRemoveDuplicates] = useState<boolean>(false);
   const [removeEmptyLines, setRemoveEmptyLines] = useState<boolean>(true);
   const [trimLines, setTrimLines] = useState<boolean>(true);
@@ -22,7 +22,7 @@ const ShuffleTextLinesTool: React.FC = (): React.JSX.Element => {
    * Handles the submission of the input text, shuffles the lines, and updates the output.
    */
   const handleSubmit = (): void => {
-    let lines: string[] = input.split("\n");
+    let lines: string[] = input.split('\n');
 
     if (removeDuplicates) {
       lines = Array.from(new Set(lines));
@@ -33,7 +33,7 @@ const ShuffleTextLinesTool: React.FC = (): React.JSX.Element => {
     }
 
     if (removeEmptyLines) {
-      lines = lines.filter((line) => line !== "").filter((line) => line.length > 0);
+      lines = lines.filter((line) => line !== '').filter((line) => line.length > 0);
     }
 
     for (let i = lines.length - 1; i > 0; i--) {
@@ -41,15 +41,15 @@ const ShuffleTextLinesTool: React.FC = (): React.JSX.Element => {
       [lines[i], lines[j]] = [lines[j], lines[i]];
     }
 
-    setOutput(lines.join("\n"));
+    setOutput(lines.join('\n'));
   };
 
   /**
    * Clears the input and output fields.
    */
   const handleClear = (): void => {
-    setInput("");
-    setOutput("");
+    setInput('');
+    setOutput('');
   };
 
   /**

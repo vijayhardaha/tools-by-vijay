@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
-import { CopyButton } from "@/components/ui/copyButton";
-import { Input } from "@/components/ui/input";
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { CopyButton } from '@/components/ui/copyButton';
+import { Input } from '@/components/ui/input';
 
 /**
  * Interface for the PxToRemOutput component props.
@@ -15,6 +15,7 @@ interface IPxToRemOutputProps {
  * Displays the calculated rem value.
  *
  * @param {IPxToRemOutputProps} props - Component props.
+ *
  * @returns {React.JSX.Element} The rendered card with the rem value.
  */
 const PxToRemOutput: React.FC<IPxToRemOutputProps> = ({ remValue }: IPxToRemOutputProps): React.JSX.Element => {
@@ -28,12 +29,12 @@ const PxToRemOutput: React.FC<IPxToRemOutputProps> = ({ remValue }: IPxToRemOutp
         <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
           <Input
             type="text"
-            value={remValue ? `${remValue}rem` : ""}
+            value={remValue ? `${remValue}rem` : ''}
             readOnly
             placeholder="Enter valid values to see the result"
             data-output
           />
-          <CopyButton text={remValue ? `${remValue}rem` : ""} />
+          <CopyButton text={remValue ? `${remValue}rem` : ''} />
         </div>
       </CardContent>
     </Card>

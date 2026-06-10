@@ -1,20 +1,19 @@
-"use client";
+'use client';
 
-import { RiMenu3Fill } from "react-icons/ri";
+import { RiMenu3Fill } from 'react-icons/ri';
 
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
 
 /**
  * Props for the MenuButton component.
  */
-type IMenuButtonProps = {
-  onClick: () => void;
-};
+type IMenuButtonProps = { onClick: () => void };
 
 /**
  * MenuButton component renders a button that toggles the sidebar menu.
  *
  * @param {MenuButtonProps} props - The component props.
+ *
  * @returns {React.JSX.Element} A button component with "Menu" text and hamburger icon.
  */
 const MenuButton: React.FC<IMenuButtonProps> = ({ onClick }: IMenuButtonProps): React.JSX.Element => (

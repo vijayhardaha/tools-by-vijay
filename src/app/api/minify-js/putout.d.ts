@@ -1,4 +1,4 @@
-declare module "@putout/minify" {
+declare module '@putout/minify' {
   export interface MinifyOptions {
     mangle?: boolean;
     removeConsole?: boolean;

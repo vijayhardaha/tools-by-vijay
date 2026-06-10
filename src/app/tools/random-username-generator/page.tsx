@@ -1,36 +1,37 @@
-import { notFound } from "next/navigation";
+import { notFound } from 'next/navigation';
 
-import EntryWithSidebar from "@/components/page/EntryWithSidebar";
-import PageContent from "@/components/page/PageContent";
-import PageHeader from "@/components/page/PageHeader";
-import PageLayout from "@/components/page/PageLayout";
-import RandomUsernameGeneratorTool from "@/components/tools/random-username-generator/RandomUsernameGeneratorTool";
-import { ITool } from "@/types";
-import { generateMeta, IMetadata } from "@/utils/seoUtils";
-import { findToolBySlug } from "@/utils/toolUtils";
-import { getIconForTool } from "@/utils/toolUtils";
+import EntryWithSidebar from '@/components/page/EntryWithSidebar';
+import PageContent from '@/components/page/PageContent';
+import PageHeader from '@/components/page/PageHeader';
+import PageLayout from '@/components/page/PageLayout';
+import RandomUsernameGeneratorTool from '@/components/tools/random-username-generator/RandomUsernameGeneratorTool';
+import type { Tool } from '@/types';
+import { generateMeta } from '@/utils/seoUtils';
+import type { PageMeta } from '@/utils/seoUtils';
+import { findToolBySlug, getIconForTool } from '@/utils/toolUtils';
 
 /**
  * Retrieves tool data for the Random Username Generator tool.
- * @constant {ITool|null} tool - The tool object containing metadata and configuration.
+ *
+ * @constant {Tool|null} tool - The tool object containing metadata and configuration.
  */
-const tool: ITool | null = findToolBySlug("random-username-generator");
+const tool: Tool | null = findToolBySlug('random-username-generator');
 
 /**
  * SEO metadata for the Random Username Generator tool page.
- * @type {IMetadata}
+ *
+ * @type {PageMeta}
  */
-export const metadata: IMetadata = generateMeta({
-  title: tool?.seoTitle || "",
-  description: tool?.seoDescription || "",
-  slug: tool?.slug || "",
+export const metadata: PageMeta = generateMeta({
+  title: tool?.seoTitle || '',
+  description: tool?.seoDescription || '',
+  slug: tool?.slug || '',
 });
 
 /**
  * Random Username Generator tool page component.
  * Renders the page layout with header and the Random Username Generator tool.
  *
- * @component
  * @returns {React.JSX.Element} The rendered Random Username Generator tool page component.
  */
 const RandomUsernameGenerator: React.FC = (): React.JSX.Element => {

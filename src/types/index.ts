@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
 /**
  * Interface representing a tool.
  */
-export interface ITool {
+export interface Tool {
   name: string;
   slug: string;
   description: string;
@@ -15,7 +15,7 @@ export interface ITool {
 /**
  * Interface representing a tool category.
  */
-export interface ICategory {
+export interface Category {
   label: string;
   slug: string;
   description: string;
@@ -26,7 +26,7 @@ export interface ICategory {
 /**
  * Interface representing a tool icon.
  */
-export interface ISocialMediaLink {
+export interface SocialMediaLink {
   name: string;
   key: string;
   url: string;

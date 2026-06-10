@@ -1,23 +1,23 @@
-"use client";
+'use client';
 
-import React from "react";
+import React from 'react';
 
-import { useRouter } from "next/navigation";
-import { CgArrowLongLeft as ArrowLeftIcon } from "react-icons/cg";
-import { LuCheck as CheckIcon } from "react-icons/lu";
-import { MdHideSource as PreviewIcon } from "react-icons/md";
+import { useRouter } from 'next/navigation';
+import { CgArrowLongLeft as ArrowLeftIcon } from 'react-icons/cg';
+import { LuCheck as CheckIcon } from 'react-icons/lu';
+import { MdHideSource as PreviewIcon } from 'react-icons/md';
 
-import BackgroundFillOptions from "@/components/text-story-maker/parts/header/BackgroundFillOptions";
-import DownloadImageTool from "@/components/text-story-maker/parts/header/DownloadImageTool";
-import FrameSizeTool from "@/components/text-story-maker/parts/header/FrameSizeTool";
-import Button from "@/components/text-story-maker/parts/header/HeaderIconBtn";
-import TextOptionsTool from "@/components/text-story-maker/parts/header/TextOptionsTool";
-import { IUpdateOptionProps } from "@/components/text-story-maker/TextStoryMakerTool";
+import BackgroundFillOptions from '@/components/text-story-maker/parts/header/BackgroundFillOptions';
+import DownloadImageTool from '@/components/text-story-maker/parts/header/DownloadImageTool';
+import FrameSizeTool from '@/components/text-story-maker/parts/header/FrameSizeTool';
+import Button from '@/components/text-story-maker/parts/header/HeaderIconBtn';
+import TextOptionsTool from '@/components/text-story-maker/parts/header/TextOptionsTool';
+import type { UpdateOptionProps } from '@/components/text-story-maker/TextStoryMakerTool';
 
 /**
  * Interface for the Header component props.
  */
-interface IHeaderProps extends IUpdateOptionProps {
+interface HeaderProps extends UpdateOptionProps {
   activeTool: string;
   setActiveTool: (tool: string) => void;
 }
@@ -25,15 +25,16 @@ interface IHeaderProps extends IUpdateOptionProps {
 /**
  * Header component for the text story maker.
  *
- * @param {IHeaderProps} props - Component props.
+ * @param {HeaderProps} props - Component props.
+ *
  * @returns {React.JSX.Element} The rendered Header component.
  */
-const Header: React.FC<IHeaderProps> = ({
+const Header: React.FC<HeaderProps> = ({
   options,
   updateOption,
   activeTool,
   setActiveTool,
-}: IHeaderProps): React.JSX.Element => {
+}: HeaderProps): React.JSX.Element => {
   const router = useRouter();
 
   return (
@@ -43,7 +44,7 @@ const Header: React.FC<IHeaderProps> = ({
           <Button
             icon={CheckIcon}
             screenReaderText="Save changes and close active tool panel"
-            onClick={() => setActiveTool("")}
+            onClick={() => setActiveTool('')}
           />
         </div>
       ) : (
@@ -52,7 +53,7 @@ const Header: React.FC<IHeaderProps> = ({
             <Button
               icon={ArrowLeftIcon}
               screenReaderText="Return to main application page"
-              onClick={() => router.push("/")}
+              onClick={() => router.push('/')}
             />
             <div className="ml-auto flex items-center gap-1.5" aria-label="Story editing tools">
               <TextOptionsTool activeTool={activeTool} setActiveTool={setActiveTool} />
@@ -62,7 +63,7 @@ const Header: React.FC<IHeaderProps> = ({
               <Button
                 icon={PreviewIcon}
                 screenReaderText="Show preview of your story without editing controls"
-                onClick={() => setActiveTool("preview")}
+                onClick={() => setActiveTool('preview')}
               />
             </div>
           </div>

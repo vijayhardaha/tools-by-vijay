@@ -1,9 +1,9 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from 'react';
 
-import sanitizeHtml from "sanitize-html";
+import sanitizeHtml from 'sanitize-html';
 
-import { IBgColors } from "@/components/text-story-maker/constants/bgColors";
-import { IUpdateOptionProps } from "@/components/text-story-maker/TextStoryMakerTool";
+import type { BgColorPalette } from '@/components/text-story-maker/constants/bgColors';
+import type { UpdateOptionProps } from '@/components/text-story-maker/TextStoryMakerTool';
 import {
   getAlignmentClass,
   getBgColorClass,
@@ -12,43 +12,44 @@ import {
   getRatioClass,
   getTextColorClass,
   isEmptyText,
-} from "@/components/text-story-maker/utils/styleUtils";
-import { cn } from "@/utils/classNameUtils";
+} from '@/components/text-story-maker/utils/styleUtils';
+import { cn } from '@/utils/classNameUtils';
 
 /**
  * Interface for the Content component props.
  */
-interface IContentProps extends IUpdateOptionProps {
+interface ContentProps extends UpdateOptionProps {
   activeTool: string;
   setActiveTool: (tool: string) => void;
 }
 
 /**
  * Sanitizes the provided HTML string by allowing only specific tags and removing attributes.
+ *
  * @param {string} html - The HTML string to sanitize.
+ *
  * @returns {string} - The sanitized HTML string.
  */
 const sanitize = (html: string): string => {
-  return sanitizeHtml(textToHtmlLines(html.trim()), {
-    allowedTags: ["br", "div", "p", "span"],
-    allowedAttributes: {},
-  });
+  return sanitizeHtml(textToHtmlLines(html.trim()), { allowedTags: ['br', 'div', 'p', 'span'], allowedAttributes: {} });
 };
 
 /**
  * Converts plain text with newlines into HTML with <div> tags.
+ *
  * @param {string} text - The plain text to convert.
+ *
  * @returns {string} - The HTML string with <div> tags.
  */
 const textToHtmlLines = (text: string): string => {
-  if (typeof text !== "string") return "";
+  if (typeof text !== 'string') return '';
 
   return text
     .split(/(?:\r\n|\r|\n)/)
     .map((line) => {
       const trimmedLine = line.trim();
-      if (trimmedLine === "") {
-        return "<div><br/></div>";
+      if (trimmedLine === '') {
+        return '<div><br/></div>';
       }
 
       // If the line looks like an HTML tag, don't wrap it
@@ -58,27 +59,31 @@ const textToHtmlLines = (text: string): string => {
 
       return `<div>${line}</div>`;
     })
-    .join("");
+    .join('');
 };
 
 /**
  * Converts plain text with newlines into HTML with <br><br> tags.
+ *
  * @param {string} text - The plain text to convert.
+ *
  * @returns {string} - The HTML string with <br><br> tags.
  */
 const renderHtml = (text: string): string => text.trim();
 
 /**
  * Content component for rendering editable text content with various styles and options.
+ *
  * @param {ContentProps} props - The component props.
+ *
  * @returns {React.JSX.Element} - The rendered Content component.
  */
-const Content: React.FC<IContentProps> = ({
+const Content: React.FC<ContentProps> = ({
   options,
   updateOption,
   activeTool,
   setActiveTool,
-}: IContentProps): React.JSX.Element => {
+}: ContentProps): React.JSX.Element => {
   const [focused, setFocused] = useState<boolean>(false);
   const contentRef = useRef<HTMLDivElement | null>(null);
   const isFallbackNeeded: boolean = false;
@@ -102,39 +107,37 @@ const Content: React.FC<IContentProps> = ({
       }
     };
 
-    window.addEventListener("mousedown", handleWindowClick);
-    window.addEventListener("touchstart", handleWindowClick);
+    window.addEventListener('mousedown', handleWindowClick);
+    window.addEventListener('touchstart', handleWindowClick);
 
     return () => {
-      window.removeEventListener("mousedown", handleWindowClick);
-      window.removeEventListener("touchstart", handleWindowClick);
+      window.removeEventListener('mousedown', handleWindowClick);
+      window.removeEventListener('touchstart', handleWindowClick);
     };
   }, []);
 
   return (
     <div
       className={cn({
-        "flex h-full flex-col justify-center": options.cardRatio === "1/1" || options.cardRatio === "4/5",
+        'flex h-full flex-col justify-center': options.cardRatio === '1/1' || options.cardRatio === '4/5',
       })}
     >
       <main
         aria-label="Story content area"
         id="main-content"
         role="main"
-        className={cn("relative z-10", "h-auto w-full", "origin-top-left transform")}
+        className={cn('relative z-10', 'h-auto w-full', 'origin-top-left transform')}
       >
         <div
           aria-label={`Story canvas with ${options.cardRatio} aspect ratio`}
           className={cn(
-            "relative z-10",
-            "w-full overflow-hidden p-10",
-            "flex flex-col items-center justify-center",
-            getBgColorClass(options.bgType as keyof IBgColors, options.bgColor),
+            'relative z-10',
+            'w-full overflow-hidden p-10',
+            'flex flex-col items-center justify-center',
+            getBgColorClass(options.bgType as keyof BgColorPalette, options.bgColor),
             getRatioClass(options.cardRatio)
           )}
-          style={{
-            padding: `calc(var(--spacing) * ${options.boxOuterPadding})`,
-          }}
+          style={{ padding: `calc(var(--spacing) * ${options.boxOuterPadding})` }}
         >
           <div
             ref={contentRef}
@@ -150,7 +153,7 @@ const Content: React.FC<IContentProps> = ({
               // Only set focus if it was user-initiated
               if (userInitiatedFocus.current) {
                 setFocused(true);
-                setActiveTool("text-editing");
+                setActiveTool('text-editing');
               } else {
                 // Programmatically blur to prevent unwanted focus
                 e.target.blur();
@@ -158,18 +161,18 @@ const Content: React.FC<IContentProps> = ({
             }}
             onBlur={(e) => {
               if (focused) {
-                console.log("blurred");
+                console.log('blurred');
                 setFocused(false);
-                updateOption("text", sanitize(e.target.innerHTML).trim());
-                if (activeTool === "text-editing") {
-                  setActiveTool("");
+                updateOption('text', sanitize(e.target.innerHTML).trim());
+                if (activeTool === 'text-editing') {
+                  setActiveTool('');
                 }
               }
             }}
             onPaste={(e) => {
               e.preventDefault();
 
-              const pastedText = e.clipboardData.getData("text/html") || e.clipboardData.getData("text/plain");
+              const pastedText = e.clipboardData.getData('text/html') || e.clipboardData.getData('text/plain');
 
               const cleanHtml = renderHtml(sanitize(pastedText).trim());
 
@@ -181,7 +184,7 @@ const Content: React.FC<IContentProps> = ({
               const range = selection.getRangeAt(0);
               range.deleteContents();
 
-              const tempDiv = document.createElement("div");
+              const tempDiv = document.createElement('div');
               tempDiv.innerHTML = cleanHtml;
 
               const fragment = document.createDocumentFragment();
@@ -194,14 +197,14 @@ const Content: React.FC<IContentProps> = ({
               selection.collapseToEnd();
             }}
             className={cn(
-              "min-h-10 w-full min-w-1 [&>*]:min-w-1",
-              "flex flex-col items-center justify-center outline-none",
+              'min-h-10 w-full min-w-1 [&>*]:min-w-1',
+              'flex flex-col items-center justify-center outline-none',
               {
-                "![&>*]:font-bold !font-bold": options.textBold,
-                "![&>*]:italic !italic": options.textItalic,
-                "![&>*]:uppercase !uppercase": options.textUppercase,
-                "user-select-none": !focused,
-                "h-full": isEmptyText(options.text) && !focused,
+                '![&>*]:font-bold !font-bold': options.textBold,
+                '![&>*]:italic !italic': options.textItalic,
+                '![&>*]:uppercase !uppercase': options.textUppercase,
+                'user-select-none': !focused,
+                'h-full': isEmptyText(options.text) && !focused,
               },
               getAlignmentClass(options.textAlign) as string,
               getFontClass(options.textFont) as string,
@@ -217,7 +220,7 @@ const Content: React.FC<IContentProps> = ({
             <textarea
               className="sr-only"
               value={options.text}
-              onChange={(e) => updateOption("text", e.target.value)}
+              onChange={(e) => updateOption('text', e.target.value)}
               aria-label="Fallback text input for story content"
             />
           )}

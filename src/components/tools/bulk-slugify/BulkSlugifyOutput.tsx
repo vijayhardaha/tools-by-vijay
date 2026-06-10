@@ -1,7 +1,7 @@
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
-import { CopyButton } from "@/components/ui/copyButton";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { CopyButton } from '@/components/ui/copyButton';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 
 /**
  * Interface for the BulkSlugifyOutput component props.
@@ -18,13 +18,14 @@ interface IBulkSlugifyOutputProps {
  * content is copied to the clipboard.
  *
  * @param {IBulkSlugifyOutputProps} props - The props for the component.
+ *
  * @returns {React.JSX.Element} The rendered component.
  */
 const BulkSlugifyOutput: React.FC<IBulkSlugifyOutputProps> = ({
   output,
 }: IBulkSlugifyOutputProps): React.JSX.Element => {
   // Split the output into individual lines and filter out empty lines
-  const lines: string[] = output.split("\n").filter((line) => line.trim() !== "");
+  const lines: string[] = output.split('\n').filter((line) => line.trim() !== '');
 
   return (
     <Card>

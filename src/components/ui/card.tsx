@@ -1,6 +1,6 @@
-import { ReactNode, ElementType } from "react";
+import type { ReactNode, ElementType } from 'react';
 
-import { cn } from "@/utils/classNameUtils";
+import { cn } from '@/utils/classNameUtils';
 
 /**
  * Props for the Card component.
@@ -13,14 +13,19 @@ interface ICardProps extends React.HTMLAttributes<HTMLDivElement> {
 
 /**
  * A flexible card component with customizable styles and structure.
+ *
+ * @param root0
+ * @param root0.className
+ * @param root0.children
+ * @param root0.component
  */
 function Card({ className, children, component, ...props }: ICardProps) {
-  const Tag = component || "div";
+  const Tag = component || 'div';
   return (
     <Tag
       data-slot="card"
       className={cn(
-        "bg-card text-card-foreground border-border flex flex-col gap-4 rounded-xl border py-4 md:gap-6 md:py-6",
+        'bg-card text-card-foreground border-border flex flex-col gap-4 rounded-xl border py-4 md:gap-6 md:py-6',
         className
       )}
       {...props}
@@ -41,16 +46,21 @@ interface ICardHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
 
 /**
  * A header section for the card, typically used for titles or actions.
+ *
+ * @param root0
+ * @param root0.className
+ * @param root0.children
+ * @param root0.component
  */
 function CardHeader({ className, children, component, ...props }: ICardHeaderProps) {
-  const Tag = component || "div";
+  const Tag = component || 'div';
   return (
     <Tag
       data-slot="card-header"
       className={cn(
-        "flex w-full flex-col items-start",
-        "gap-1.5 px-4 md:px-6 [.border-b]:pb-4 md:[.border-b]:pb-6",
-        "has-data-[slot=card-action]:grid-cols-[1fr_auto]",
+        'flex w-full flex-col items-start',
+        'gap-1.5 px-4 md:px-6 [.border-b]:pb-4 md:[.border-b]:pb-6',
+        'has-data-[slot=card-action]:grid-cols-[1fr_auto]',
         className
       )}
       {...props}
@@ -66,16 +76,21 @@ function CardHeader({ className, children, component, ...props }: ICardHeaderPro
 interface ICardTitleProps extends React.HTMLAttributes<HTMLHeadingElement> {
   className?: string;
   children: ReactNode;
-  component?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+  component?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 }
 
 /**
  * A title section for the card, typically used for headings.
+ *
+ * @param root0
+ * @param root0.className
+ * @param root0.children
+ * @param root0.component
  */
 function CardTitle({ className, children, component, ...props }: ICardTitleProps) {
-  const Tag = component || "h2";
+  const Tag = component || 'h2';
   return (
-    <Tag data-slot="card-title" className={cn("text-lg leading-none font-bold", className)} {...props}>
+    <Tag data-slot="card-title" className={cn('text-lg leading-none font-bold', className)} {...props}>
       {children}
     </Tag>
   );
@@ -95,11 +110,16 @@ interface ICardDescriptionProps extends React.HTMLAttributes<HTMLParagraphElemen
 
 /**
  * A description section for the card, typically used for supplementary text.
+ *
+ * @param root0
+ * @param root0.className
+ * @param root0.children
+ * @param root0.component
  */
 function CardDescription({ className, children, component, ...props }: ICardDescriptionProps) {
-  const Tag = component || "p";
+  const Tag = component || 'p';
   return (
-    <Tag data-slot="card-description" className={cn("text-muted-foreground text-sm", className)} {...props}>
+    <Tag data-slot="card-description" className={cn('text-muted-foreground text-sm', className)} {...props}>
       {children}
     </Tag>
   );
@@ -116,13 +136,18 @@ interface ICardActionProps extends React.HTMLAttributes<HTMLDivElement> {
 
 /**
  * An action section for the card, typically used for buttons or links.
+ *
+ * @param root0
+ * @param root0.className
+ * @param root0.children
+ * @param root0.component
  */
 function CardAction({ className, children, component, ...props }: ICardActionProps) {
-  const Tag = component || "div";
+  const Tag = component || 'div';
   return (
     <Tag
       data-slot="card-action"
-      className={cn("col-start-2 row-span-2 row-start-1 self-start justify-self-end", className)}
+      className={cn('col-start-2 row-span-2 row-start-1 self-start justify-self-end', className)}
       {...props}
     >
       {children}
@@ -141,11 +166,16 @@ interface ICardContentProps extends React.HTMLAttributes<HTMLDivElement> {
 
 /**
  * A content section for the card, typically used for the main body.
+ *
+ * @param root0
+ * @param root0.className
+ * @param root0.children
+ * @param root0.component
  */
 function CardContent({ className, children, component, ...props }: ICardContentProps) {
-  const Tag = component || "div";
+  const Tag = component || 'div';
   return (
-    <Tag data-slot="card-content" className={cn("px-4 md:px-6", className)} {...props}>
+    <Tag data-slot="card-content" className={cn('px-4 md:px-6', className)} {...props}>
       {children}
     </Tag>
   );
@@ -162,13 +192,18 @@ interface ICardFooterProps extends React.HTMLAttributes<HTMLDivElement> {
 
 /**
  * A footer section for the card, typically used for additional actions or information.
+ *
+ * @param root0
+ * @param root0.className
+ * @param root0.children
+ * @param root0.component
  */
 function CardFooter({ className, children, component, ...props }: ICardFooterProps) {
-  const Tag = component || "div";
+  const Tag = component || 'div';
   return (
     <Tag
       data-slot="card-footer"
-      className={cn("flex items-center px-4 md:px-6 [.border-t]:pt-4 md:[.border-t]:pt-6", className)}
+      className={cn('flex items-center px-4 md:px-6 [.border-t]:pt-4 md:[.border-t]:pt-6', className)}
       {...props}
     >
       {children}

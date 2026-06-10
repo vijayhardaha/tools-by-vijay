@@ -1,13 +1,15 @@
-"use client";
+'use client';
 
-import { Alert } from "@/components/ui/alert";
-import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
-import { Checkbox } from "@/components/ui/checkbox";
-import { HelpTip } from "@/components/ui/helptip";
-import { Label } from "@/components/ui/label";
-import { Select } from "@/components/ui/select";
-import { Textarea } from "@/components/ui/textarea";
+import type { FormEvent } from 'react';
+
+import { Alert } from '@/components/ui/alert';
+import { Button } from '@/components/ui/button';
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { Checkbox } from '@/components/ui/checkbox';
+import { HelpTip } from '@/components/ui/helptip';
+import { Label } from '@/components/ui/label';
+import { Select } from '@/components/ui/select';
+import { Textarea } from '@/components/ui/textarea';
 
 /**
  * Interface for the TextToArrayInput component props.
@@ -35,8 +37,8 @@ interface ITextToArrayInputProps {
  * Component for inputting multiline text and configuring conversion options.
  * Provides a form with controls for text input, output format, and array structure.
  *
- * @component
  * @param {ITextToArrayInputProps} props - The props for the component.
+ *
  * @returns {React.JSX.Element} The rendered TextToArrayInput component.
  */
 const TextToArrayInput: React.FC<ITextToArrayInputProps> = ({
@@ -59,9 +61,10 @@ const TextToArrayInput: React.FC<ITextToArrayInputProps> = ({
 }: ITextToArrayInputProps): React.JSX.Element => {
   /**
    * Handles form submission by preventing default behavior and triggering conversion
-   * @param {React.FormEvent} e - Form event object
+   *
+   * @param {FormEvent} e - Form event object
    */
-  const handleSubmit = (e: React.FormEvent): void => {
+  const handleSubmit = (e: FormEvent): void => {
     e.preventDefault();
     onSubmit();
   };
@@ -100,11 +103,11 @@ const TextToArrayInput: React.FC<ITextToArrayInputProps> = ({
                 value={outputFormat}
                 onValueChange={setOutputFormat}
                 options={[
-                  { value: "json", label: "JSON" },
-                  { value: "jsArray", label: "JavaScript Array" },
-                  { value: "jsObject", label: "JavaScript Object" },
-                  { value: "php", label: "PHP Array" },
-                  { value: "wordpress", label: "WordPress Array" },
+                  { value: 'json', label: 'JSON' },
+                  { value: 'jsArray', label: 'JavaScript Array' },
+                  { value: 'jsObject', label: 'JavaScript Object' },
+                  { value: 'php', label: 'PHP Array' },
+                  { value: 'wordpress', label: 'WordPress Array' },
                 ]}
               />
             </div>
@@ -119,9 +122,9 @@ const TextToArrayInput: React.FC<ITextToArrayInputProps> = ({
                 value={arrayType}
                 onValueChange={setArrayType}
                 options={[
-                  { value: "simple", label: "Simple (Values Only)" },
-                  { value: "numeric", label: "Numeric (ID & Value)" },
-                  { value: "associative", label: "Associative (Key-Value)" },
+                  { value: 'simple', label: 'Simple (Values Only)' },
+                  { value: 'numeric', label: 'Numeric (ID & Value)' },
+                  { value: 'associative', label: 'Associative (Key-Value)' },
                 ]}
               />
             </div>

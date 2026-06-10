@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { useState } from "react";
+import { useState } from 'react';
 
-import UrlDecoderEncoderInfo from "./UrlDecoderEncoderInfo";
-import UrlDecoderEncoderInput from "./UrlDecoderEncoderInput";
-import UrlDecoderEncoderOutput from "./UrlDecoderEncoderOutput";
+import UrlDecoderEncoderInfo from './UrlDecoderEncoderInfo';
+import UrlDecoderEncoderInput from './UrlDecoderEncoderInput';
+import UrlDecoderEncoderOutput from './UrlDecoderEncoderOutput';
 
 /**
  * A tool for encoding and decoding URLs. It provides input, output, and informational components.
@@ -12,8 +12,8 @@ import UrlDecoderEncoderOutput from "./UrlDecoderEncoderOutput";
  * @returns {React.JSX.Element} The rendered URL Decoder/Encoder Tool component.
  */
 const UrlDecoderEncoderTool: React.FC = (): React.JSX.Element => {
-  const [input, setInput] = useState<string>("");
-  const [output, setOutput] = useState<string>("");
+  const [input, setInput] = useState<string>('');
+  const [output, setOutput] = useState<string>('');
   const [isEncoding, setIsEncoding] = useState<boolean>(true);
 
   /**
@@ -28,8 +28,8 @@ const UrlDecoderEncoderTool: React.FC = (): React.JSX.Element => {
    * Clears the input and output fields.
    */
   const handleClear = (): void => {
-    setInput("");
-    setOutput("");
+    setInput('');
+    setOutput('');
   };
 
   /**

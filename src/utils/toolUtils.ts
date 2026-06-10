@@ -1,33 +1,41 @@
-import { toolIcons } from "@/constants/toolIcons";
-import tools from "@/constants/tools";
-import { ITool } from "@/types";
+import type { ReactElement } from 'react';
+
+import { toolIcons } from '@/constants/toolIcons';
+import tools from '@/constants/tools';
+import type { Tool } from '@/types';
 
 /**
  * Get all available tools
- * @returns {ITool[]} Array of all tool objects
+ *
+ * @returns {Tool[]} Array of all tool objects
  */
-export const getAllTools = (): ITool[] => tools;
+export const getAllTools = (): Tool[] => tools;
 
 /**
  * Find a tool by its slug
+ *
  * @param {string} slug - The slug to search for
- * @returns {ITool | null} The tool object if found, null otherwise
+ *
+ * @returns {Tool | null} The tool object if found, null otherwise
  */
-export const findToolBySlug = (slug: string): ITool | null => {
+export const findToolBySlug = (slug: string): Tool | null => {
   return tools.find((tool) => tool.slug === slug) || null;
 };
 
 /**
  * Get all tools that belong to a specific category
+ *
  * @param {string} category - The category slug to filter by
- * @returns {ITool[]} Array of tool objects in the category
+ *
+ * @returns {Tool[]} Array of tool objects in the category
  */
-export const getToolsByCategory = (category: string): ITool[] => {
+export const getToolsByCategory = (category: string): Tool[] => {
   return tools.filter((tool) => tool.category === category);
 };
 
 /**
  * Get a list of all unique categories from the tools
+ *
  * @returns {string[]} Array of unique category slugs
  */
 export const getUniqueCategories = (): string[] => {
@@ -37,11 +45,13 @@ export const getUniqueCategories = (): string[] => {
 
 /**
  * Get related tools based on the same category
+ *
  * @param {string} toolSlug - The slug of the current tool
  * @param {number} limit - Maximum number of related tools to return
- * @returns {ITool[]} Array of related tool objects
+ *
+ * @returns {Tool[]} Array of related tool objects
  */
-export const getRelatedTools = (toolSlug: string, limit = 3): ITool[] => {
+export const getRelatedTools = (toolSlug: string, limit = 3): Tool[] => {
   const currentTool = findToolBySlug(toolSlug);
   if (!currentTool) return [];
 
@@ -50,11 +60,13 @@ export const getRelatedTools = (toolSlug: string, limit = 3): ITool[] => {
 
 /**
  * Search tools by name or description
+ *
  * @param {string} query - The search query
- * @returns {ITool[]} Array of matching tool objects
+ *
+ * @returns {Tool[]} Array of matching tool objects
  */
-export const searchTools = (query: string): ITool[] => {
-  if (!query || query.trim() === "") return [];
+export const searchTools = (query: string): Tool[] => {
+  if (!query || query.trim() === '') return [];
 
   const searchTerm = query.toLowerCase().trim();
   return tools.filter((tool) => {
@@ -64,9 +76,10 @@ export const searchTools = (query: string): ITool[] => {
 
 /**
  * Group tools by their categories
- * @returns {Record<string, ITool[]>} An object with category slugs as keys and arrays of tools as values
+ *
+ * @returns {Record<string, Tool[]>} An object with category slugs as keys and arrays of tools as values
  */
-export const getToolsByCategories = (): Record<string, ITool[]> => {
+export const getToolsByCategories = (): Record<string, Tool[]> => {
   return tools.reduce(
     (grouped, tool) => {
       if (!grouped[tool.category]) {
@@ -75,15 +88,17 @@ export const getToolsByCategories = (): Record<string, ITool[]> => {
       grouped[tool.category].push(tool);
       return grouped;
     },
-    {} as Record<string, ITool[]>
+    {} as Record<string, Tool[]>
   );
 };
 
 /**
  * Get the icon for a specific tool
+ *
  * @param {string} slug - The tool slug to get the icon for
- * @returns {React.ReactElement | null} The icon for the tool, or null if not found
+ *
+ * @returns {ReactElement | null} The icon for the tool, or null if not found
  */
-export const getIconForTool = (slug: string): React.ReactElement | null => {
+export const getIconForTool = (slug: string): ReactElement | null => {
   return toolIcons[slug] || null;
 };

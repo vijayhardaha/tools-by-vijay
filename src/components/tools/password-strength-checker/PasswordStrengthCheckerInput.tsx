@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import React from "react";
+import React from 'react';
 
-import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
+import { Button } from '@/components/ui/button';
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
 
 /**
  * Interface for the PasswordStrengthCheckerInput component props.
@@ -18,8 +18,8 @@ interface IPasswordStrengthCheckerInputProps {
 /**
  * Password Strength Checker Input Component
  *
- * @component
  * @param {IPasswordStrengthCheckerInputProps} props - Component props
+ *
  * @returns {React.JSX.Element} Password input with visibility toggle and clear button
  */
 const PasswordStrengthCheckerInput: React.FC<IPasswordStrengthCheckerInputProps> = ({

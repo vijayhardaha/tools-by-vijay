@@ -1,14 +1,14 @@
 /// <reference path="./tinyurl.d.ts" />
-"use client";
+'use client';
 
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import TinyURL from "tinyurl";
-import validUrl from "valid-url";
+import TinyURL from 'tinyurl';
+import validUrl from 'valid-url';
 
-import UrlShortenerInfo from "./UrlShortenerInfo";
-import UrlShortenerInput from "./UrlShortenerInput";
-import UrlShortenerOutput from "./UrlShortenerOutput";
+import UrlShortenerInfo from './UrlShortenerInfo';
+import UrlShortenerInput from './UrlShortenerInput';
+import UrlShortenerOutput from './UrlShortenerOutput';
 
 interface UrlResult {
   originalUrl: string;
@@ -25,15 +25,16 @@ interface UrlResult {
  * @returns {React.JSX.Element} The rendered URL Shortener Tool component.
  */
 const UrlShortenerTool: React.FC = (): React.JSX.Element => {
-  const [input, setInput] = useState<string>("");
+  const [input, setInput] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [results, setResults] = useState<UrlResult[]>([]);
-  const [error, setError] = useState<string>("");
+  const [error, setError] = useState<string>('');
 
   /**
    * Validates a URL
    *
    * @param {string} url - URL to validate
+   *
    * @returns {boolean} Whether the URL is valid
    */
   const isValidUrl = (url: string): boolean => validUrl.isWebUri(url) !== undefined;
@@ -42,17 +43,18 @@ const UrlShortenerTool: React.FC = (): React.JSX.Element => {
    * Shortens a single URL using TinyURL API
    *
    * @param {string} url - URL to shorten
+   *
    * @returns {Promise<string>} Shortened URL or error message
    */
   const shortenUrl = async (url: string): Promise<string> => {
-    if (!url || url.trim() === "") return "";
+    if (!url || url.trim() === '') return '';
 
     try {
       const shortenedUrl = await TinyURL.shorten(url);
       return shortenedUrl;
     } catch (err) {
       console.error(`Error shortening URL ${url}:`, err);
-      return "Error: Failed to shorten URL";
+      return 'Error: Failed to shorten URL';
     }
   };
 
@@ -65,14 +67,14 @@ const UrlShortenerTool: React.FC = (): React.JSX.Element => {
    * @returns {Promise<void>} Resolves when processing is complete
    */
   const handleSubmit = async (): Promise<void> => {
-    setError("");
+    setError('');
     setIsLoading(true);
 
     try {
-      const urls = input.split("\n").filter((url) => url.trim() !== "");
+      const urls = input.split('\n').filter((url) => url.trim() !== '');
 
       if (urls.length === 0) {
-        setError("Please enter at least one URL");
+        setError('Please enter at least one URL');
         setIsLoading(false);
         return;
       }
@@ -84,7 +86,7 @@ const UrlShortenerTool: React.FC = (): React.JSX.Element => {
 
           return {
             originalUrl: trimmedUrl,
-            shortenedUrl: isValid ? await shortenUrl(trimmedUrl) : "Invalid URL",
+            shortenedUrl: isValid ? await shortenUrl(trimmedUrl) : 'Invalid URL',
             isValid: isValid,
           };
         })
@@ -92,8 +94,8 @@ const UrlShortenerTool: React.FC = (): React.JSX.Element => {
 
       setResults(processedResults);
     } catch (err) {
-      console.error("Error processing URLs:", err);
-      setError("An error occurred while processing your URLs");
+      console.error('Error processing URLs:', err);
+      setError('An error occurred while processing your URLs');
     } finally {
       setIsLoading(false);
     }
@@ -105,9 +107,9 @@ const UrlShortenerTool: React.FC = (): React.JSX.Element => {
    * Resets the input field, results, and error message to their initial states.
    */
   const handleClear = (): void => {
-    setInput("");
+    setInput('');
     setResults([]);
-    setError("");
+    setError('');
   };
 
   return (

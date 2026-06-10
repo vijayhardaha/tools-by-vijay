@@ -1,13 +1,14 @@
-"use client";
+'use client';
 
-import React from "react";
+import React from 'react';
+import type { FormEvent } from 'react';
 
-import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
-import { Checkbox } from "@/components/ui/checkbox";
-import { HelpTip } from "@/components/ui/helptip";
-import { Label } from "@/components/ui/label";
-import { Slider } from "@/components/ui/slider";
+import { Button } from '@/components/ui/button';
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { Checkbox } from '@/components/ui/checkbox';
+import { HelpTip } from '@/components/ui/helptip';
+import { Label } from '@/components/ui/label';
+import { Slider } from '@/components/ui/slider';
 
 /**
  * Interface for the password generation input component props.
@@ -34,6 +35,7 @@ interface IPasswordGeneratorInputProps {
  * Provides a form with controls for password length, character types, and other settings.
  *
  * @param {IPasswordGeneratorInputProps} props - Component props.
+ *
  * @returns {React.JSX.Element} The rendered form with password generation options.
  */
 const PasswordGeneratorInput: React.FC<IPasswordGeneratorInputProps> = ({
@@ -52,7 +54,7 @@ const PasswordGeneratorInput: React.FC<IPasswordGeneratorInputProps> = ({
   onSubmit,
   onReset,
 }: IPasswordGeneratorInputProps): React.JSX.Element => {
-  const handleSubmit = (e: React.FormEvent): void => {
+  const handleSubmit = (e: FormEvent): void => {
     e.preventDefault();
     onSubmit();
   };
@@ -67,7 +69,7 @@ const PasswordGeneratorInput: React.FC<IPasswordGeneratorInputProps> = ({
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <div className="space-y-2">
             <Label htmlFor="password-length">
-              Password Length:{" "}
+              Password Length:{' '}
               <span className="text-muted-foreground text-sm">
                 <code className="bg-muted px-1 font-medium text-pink-500">{length}</code> characters
               </span>

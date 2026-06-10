@@ -1,24 +1,25 @@
-import PageContent from "@/components/page/PageContent";
-import PageHeader from "@/components/page/PageHeader";
-import PageLayout from "@/components/page/PageLayout";
-import { generateMeta, IMetadata } from "@/utils/seoUtils";
+import PageContent from '@/components/page/PageContent';
+import PageHeader from '@/components/page/PageHeader';
+import PageLayout from '@/components/page/PageLayout';
+import { generateMeta } from '@/utils/seoUtils';
+import type { PageMeta } from '@/utils/seoUtils';
 
 /**
  * SEO metadata for the About page.
- * @type {IMetadata}
+ *
+ * @type {PageMeta}
  */
-export const metadata: IMetadata = generateMeta({
-  title: "About Vijay Hardaha",
+export const metadata: PageMeta = generateMeta({
+  title: 'About Vijay Hardaha',
   description:
-    "Discover Vijay, a passionate web developer and vegan, who built this fast, privacy-focused tool platform. Learn about the motivation, technology stack, and commitment to user experience.",
-  slug: "about",
+    'Discover Vijay, a passionate web developer and vegan, who built this fast, privacy-focused tool platform. Learn about the motivation, technology stack, and commitment to user experience.',
+  slug: 'about',
 });
 
 /**
  * About page component.
  * Provides detailed info about Vijay, the developer behind the platform.
  *
- * @component
  * @returns {React.JSX.Element} The rendered About page.
  */
 const About: React.FC = (): React.JSX.Element => {
@@ -49,7 +50,7 @@ const About: React.FC = (): React.JSX.Element => {
           </p>
 
           <p>
-            The platform is built with modern technologies such as <strong>Next.js</strong> and{" "}
+            The platform is built with modern technologies such as <strong>Next.js</strong> and{' '}
             <strong>Tailwind CSS</strong>, ensuring fast load times, responsive design, and accessibility across
             devices. I prioritize a clean interface free from trackers, popups, or unnecessary distractions, so users
             can focus solely on their work.
@@ -69,7 +70,7 @@ const About: React.FC = (): React.JSX.Element => {
 
           <p>
             I welcome feedback, ideas, and collaboration. If you have a suggestion for a new tool or just want to
-            connect, please don’t hesitate to reach out to me on{" "}
+            connect, please don’t hesitate to reach out to me on{' '}
             <a
               href="https://x.com/vijayhardaha"
               className="font-medium text-pink-500 underline hover:no-underline"

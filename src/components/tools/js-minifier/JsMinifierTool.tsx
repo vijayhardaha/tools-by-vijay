@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import { useState } from "react";
+import { useState } from 'react';
 
-import JsMinifierInfo from "./JsMinifierInfo";
-import JsMinifierInput from "./JsMinifierInput";
-import JsMinifierOutput from "./JsMinifierOutput";
+import JsMinifierInfo from './JsMinifierInfo';
+import JsMinifierInput from './JsMinifierInput';
+import JsMinifierOutput from './JsMinifierOutput';
 
 /**
  * Interface for the minification options.
  */
-export interface IMinifyOptions {
+export interface MinifyOptions {
   mangle: boolean;
   removeConsole: boolean;
   removeDebugger: boolean;
@@ -22,16 +22,16 @@ export interface IMinifyOptions {
  * @returns {React.JSX.Element} The JavaScript Minifier tool interface.
  */
 const JsMinifierTool: React.FC = (): React.JSX.Element => {
-  const [input, setInput] = useState<string>("");
-  const [output, setOutput] = useState<string>("");
+  const [input, setInput] = useState<string>('');
+  const [output, setOutput] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [options, setOptions] = useState<IMinifyOptions>({
+  const [options, setOptions] = useState<MinifyOptions>({
     mangle: true,
     removeConsole: false,
     removeDebugger: true,
     removeComments: true,
   });
-  const [error, setError] = useState<string>("");
+  const [error, setError] = useState<string>('');
 
   /**
    * Handles the minification process when the "Minify" button is clicked.
@@ -40,31 +40,26 @@ const JsMinifierTool: React.FC = (): React.JSX.Element => {
     if (!input.trim()) return;
 
     setIsLoading(true);
-    setError("");
+    setError('');
 
     try {
       // Call the API endpoint for minification
-      const response = await fetch("/api/minify-js", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          js: input,
-          options: options,
-        }),
+      const response = await fetch('/api/minify-js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ js: input, options: options }),
       });
 
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || "Failed to minify JavaScript");
+        throw new Error(data.error || 'Failed to minify JavaScript');
       }
 
       setOutput(data.minifiedJs);
     } catch (error) {
-      console.error("JavaScript minification error:", error);
-      setError(error instanceof Error ? error.message : "An error occurred");
+      console.error('JavaScript minification error:', error);
+      setError(error instanceof Error ? error.message : 'An error occurred');
     } finally {
       setIsLoading(false);
     }
@@ -74,9 +69,9 @@ const JsMinifierTool: React.FC = (): React.JSX.Element => {
    * Clears the input and output fields.
    */
   const handleClear = () => {
-    setInput("");
-    setOutput("");
-    setError("");
+    setInput('');
+    setOutput('');
+    setError('');
   };
 
   /**
@@ -84,22 +79,17 @@ const JsMinifierTool: React.FC = (): React.JSX.Element => {
    */
   const handleReset = () => {
     handleClear();
-    setOptions({
-      mangle: true,
-      removeConsole: false,
-      removeDebugger: true,
-      removeComments: true,
-    });
+    setOptions({ mangle: true, removeConsole: false, removeDebugger: true, removeComments: true });
   };
 
   /**
    * Updates an option in the options state.
+   *
+   * @param key
+   * @param value
    */
-  const updateOption = (key: keyof IMinifyOptions, value: boolean) => {
-    setOptions((prev) => ({
-      ...prev,
-      [key]: value,
-    }));
+  const updateOption = (key: keyof MinifyOptions, value: boolean) => {
+    setOptions((prev) => ({ ...prev, [key]: value }));
   };
 
   return (

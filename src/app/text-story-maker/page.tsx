@@ -1,21 +1,22 @@
-import TextStoryMakerContent from "@/components/text-story-maker/TextStoryMakerTool";
-import { generateMeta, IMetadata } from "@/utils/seoUtils";
+import TextStoryMakerContent from '@/components/text-story-maker/TextStoryMakerTool';
+import { generateMeta } from '@/utils/seoUtils';
+import type { PageMeta } from '@/utils/seoUtils';
 
 /**
  * SEO metadata for the Text Story Maker page.
- * @type {IMetadata}
+ *
+ * @type {PageMeta}
  */
-export const metadata: IMetadata = generateMeta({
-  title: "Text Story Maker",
+export const metadata: PageMeta = generateMeta({
+  title: 'Text Story Maker',
   description:
-    "Text Story Maker is a powerful tool to create engaging and customized text stories with ease. Crafted by Vijay Hardaha, it lets you personalize fonts, colors, and backgrounds to make your stories truly stand out.",
-  slug: "text-story-maker",
+    'Text Story Maker is a powerful tool to create engaging and customized text stories with ease. Crafted by Vijay Hardaha, it lets you personalize fonts, colors, and backgrounds to make your stories truly stand out.',
+  slug: 'text-story-maker',
 });
 
 /**
  * TextStoryMaker page component renders the main layout for the text story maker tool.
  *
- * @component
  * @returns {React.JSX.Element} The rendered TextStoryMaker page.
  */
 const TextStoryMaker: React.FC = (): React.JSX.Element => {

@@ -1,11 +1,13 @@
-import React, { cloneElement, useState, useEffect, useRef, ReactNode, ReactElement } from "react";
+import React, { cloneElement, useState, useEffect, useRef } from 'react';
+import type { ReactNode, ReactElement } from 'react';
 
 /**
  * Dropdown component for displaying a toggleable menu.
  *
- * @param {Object} props - Component props.
- * @param {React.ReactNode} props.children - The dropdown content, including DropdownTrigger and DropdownContent.
+ * @param {object} props - Component props.
+ * @param {ReactNode} props.children - The dropdown content, including DropdownTrigger and DropdownContent.
  * @param {string} props.label - Accessible label for the dropdown menu.
+ *
  * @returns {React.JSX.Element} The rendered Dropdown component.
  */
 interface DropdownProps {
@@ -13,7 +15,13 @@ interface DropdownProps {
   label?: string;
 }
 
-export const Dropdown = ({ children, label = "Menu" }: DropdownProps) => {
+/**
+ *
+ * @param root0
+ * @param root0.children
+ * @param root0.label
+ */
+export const Dropdown = ({ children, label = 'Menu' }: DropdownProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
   const menuId = useRef(`dropdown-menu-${Math.random().toString(36).slice(2, 9)}`).current;
@@ -37,9 +45,9 @@ export const Dropdown = ({ children, label = "Menu" }: DropdownProps) => {
       }
     };
 
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutside);
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
 
@@ -48,14 +56,14 @@ export const Dropdown = ({ children, label = "Menu" }: DropdownProps) => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (!isOpen) return;
 
-      if (event.key === "Escape") {
+      if (event.key === 'Escape') {
         setIsOpen(false);
       }
     };
 
-    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener('keydown', handleKeyDown);
     return () => {
-      document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener('keydown', handleKeyDown);
     };
   }, [isOpen]);
 
@@ -73,6 +81,14 @@ interface DropdownTriggerProps {
   menuId?: string;
 }
 
+/**
+ *
+ * @param root0
+ * @param root0.onClick
+ * @param root0.children
+ * @param root0.isOpen
+ * @param root0.menuId
+ */
 export const DropdownTrigger = ({ onClick, children, isOpen = false, menuId }: DropdownTriggerProps) => {
   // Ensure children is a valid ReactElement before calling cloneElement
   if (React.isValidElement(children)) {
@@ -80,9 +96,9 @@ export const DropdownTrigger = ({ onClick, children, isOpen = false, menuId }: D
       <>
         {cloneElement(children as ReactElement<any>, {
           onClick,
-          "aria-expanded": isOpen,
-          "aria-haspopup": true,
-          "aria-controls": isOpen ? menuId : undefined,
+          'aria-expanded': isOpen,
+          'aria-haspopup': true,
+          'aria-controls': isOpen ? menuId : undefined,
         })}
       </>
     );
@@ -98,11 +114,19 @@ interface DropdownContentProps {
   label?: string;
 }
 
+/**
+ *
+ * @param root0
+ * @param root0.isOpen
+ * @param root0.children
+ * @param root0.menuId
+ * @param root0.label
+ */
 export const DropdownContent = ({
   isOpen,
   children,
-  menuId = "dropdown-menu",
-  label = "Dropdown menu",
+  menuId = 'dropdown-menu',
+  label = 'Dropdown menu',
 }: DropdownContentProps) => {
   if (!isOpen) return null;
 

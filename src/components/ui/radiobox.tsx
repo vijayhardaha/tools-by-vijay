@@ -1,10 +1,11 @@
-"use client";
+'use client';
 
-import { useState, ChangeEvent, ReactNode } from "react";
+import { useState } from 'react';
+import type { ChangeEvent, ReactNode } from 'react';
 
-import { LuCheck as CheckIcon } from "react-icons/lu";
+import { LuCheck as CheckIcon } from 'react-icons/lu';
 
-import { cn } from "@/utils/classNameUtils";
+import { cn } from '@/utils/classNameUtils';
 
 /**
  * Props for the RadioBox component
@@ -22,6 +23,16 @@ interface IRadioBoxProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
 
 /**
  * RadioBox component for selecting a single option from a group.
+ *
+ * @param root0
+ * @param root0.className
+ * @param root0.children
+ * @param root0.checked
+ * @param root0.onCheckedChange
+ * @param root0.disabled
+ * @param root0.required
+ * @param root0.id
+ * @param root0.name
  */
 function RadioBox({
   className,
@@ -41,6 +52,8 @@ function RadioBox({
 
   /**
    * Handles the radio box state change event
+   *
+   * @param event
    */
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (!isControlled) {
@@ -56,16 +69,16 @@ function RadioBox({
       data-slot="radiobox"
       className={cn(
         // Layout & base appearance
-        "inline-flex items-center",
+        'inline-flex items-center',
 
         // Colors & background
-        "text-foreground",
+        'text-foreground',
 
         // Disabled state
-        "disabled:cursor-not-allowed disabled:opacity-50",
+        'disabled:cursor-not-allowed disabled:opacity-50',
 
         // Transition & outline
-        "transition-shadow outline-none",
+        'transition-shadow outline-none',
 
         className
       )}
@@ -85,8 +98,8 @@ function RadioBox({
       <span
         data-slot="radiobox-indicator"
         className={cn(
-          "flex h-4 w-4 cursor-pointer items-center justify-center rounded-full border",
-          isChecked ? "bg-primary border-primary text-primary-foreground" : "border-input"
+          'flex h-4 w-4 cursor-pointer items-center justify-center rounded-full border',
+          isChecked ? 'bg-primary border-primary text-primary-foreground' : 'border-input'
         )}
       >
         {isChecked && <CheckIcon className="h-3 w-3" />}

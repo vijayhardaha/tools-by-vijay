@@ -2,7 +2,6 @@
  * Provides detailed information about the Alphabetical Line Sorter tool,
  * including its purpose, benefits, usage instructions, and practical examples.
  *
- * @component
  * @returns {React.JSX.Element} The rendered component displaying tool information
  */
 const AlphabeticalLineSorterInfo: React.FC = (): React.JSX.Element => {
@@ -128,7 +127,7 @@ const AlphabeticalLineSorterInfo: React.FC = (): React.JSX.Element => {
       <section>
         <h2 className="mb-4 text-2xl font-bold">Credits & Source</h2>
         <p>
-          This tool is maintained by{" "}
+          This tool is maintained by{' '}
           <a
             href="https://x.com/vijayhardaha"
             className="font-medium text-pink-500 underline hover:no-underline"

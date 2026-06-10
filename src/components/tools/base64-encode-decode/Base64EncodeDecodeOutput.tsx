@@ -1,6 +1,6 @@
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
-import { CopyButton } from "@/components/ui/copyButton";
-import { Textarea } from "@/components/ui/textarea";
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { CopyButton } from '@/components/ui/copyButton';
+import { Textarea } from '@/components/ui/textarea';
 
 /**
  * Props for the Base64EncodeDecodeOutput component.
@@ -14,6 +14,7 @@ interface IBase64EncodeDecodeOutputProps {
  * It includes a textarea to show the output and a button to copy the output to the clipboard.
  *
  * @param {IBase64EncodeDecodeOutputProps} props - The props for the component.
+ *
  * @returns {React.JSX.Element} The rendered component.
  */
 const Base64EncodeDecodeOutput: React.FC<IBase64EncodeDecodeOutputProps> = ({

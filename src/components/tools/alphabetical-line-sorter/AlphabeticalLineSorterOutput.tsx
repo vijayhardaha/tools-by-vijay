@@ -1,6 +1,6 @@
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
-import { CopyButton } from "@/components/ui/copyButton";
-import { Textarea } from "@/components/ui/textarea";
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { CopyButton } from '@/components/ui/copyButton';
+import { Textarea } from '@/components/ui/textarea';
 
 /**
  * Props for the AlphabeticalLineSorterOutput component.
@@ -13,8 +13,8 @@ interface IAlphabeticalLineSorterOutputProps {
  * Output component for the Alphabetical Line Sorter tool.
  * Displays the sorted text in a readonly textarea with a copy button.
  *
- * @component
  * @param {IAlphabeticalLineSorterOutputProps} props - Component props
+ *
  * @returns {React.JSX.Element} The rendered output display
  */
 const AlphabeticalLineSorterOutput: React.FC<IAlphabeticalLineSorterOutputProps> = ({

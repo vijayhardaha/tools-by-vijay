@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { useState } from "react";
+import { useState } from 'react';
 
-import BarcodeInfo from "./BarcodeGeneratorInfo";
-import BarcodeInput from "./BarcodeGeneratorInput";
-import BarcodeOutput from "./BarcodeGeneratorOutput";
+import BarcodeInfo from './BarcodeGeneratorInfo';
+import BarcodeInput from './BarcodeGeneratorInput';
+import BarcodeOutput from './BarcodeGeneratorOutput';
 
 /**
  * BarcodeGeneratorTool is a React functional component that provides a tool
@@ -14,8 +14,8 @@ import BarcodeOutput from "./BarcodeGeneratorOutput";
  * @returns {React.JSX.Element} The rendered barcode generator tool component.
  */
 const BarcodeGeneratorTool: React.FC = (): React.JSX.Element => {
-  const [input, setInput] = useState<string>("");
-  const [output, setOutput] = useState<string>("");
+  const [input, setInput] = useState<string>('');
+  const [output, setOutput] = useState<string>('');
 
   /**
    * Generates a barcode URL based on the input data.
@@ -31,8 +31,8 @@ const BarcodeGeneratorTool: React.FC = (): React.JSX.Element => {
    * Clears the input and output states.
    */
   const handleClear = (): void => {
-    setInput("");
-    setOutput("");
+    setInput('');
+    setOutput('');
   };
 
   return (

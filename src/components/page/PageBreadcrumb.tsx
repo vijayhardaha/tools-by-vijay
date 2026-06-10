@@ -1,10 +1,11 @@
-import Link from "next/link";
+import Link from 'next/link';
 
 /**
  * Props for the PageBreadcrumb component.
+ *
  * @property {string} pageName - The name of the current page to display in the breadcrumb.
  */
-interface IPageBreadcrumbProps {
+interface PageBreadcrumbProps {
   pageName: string;
 }
 
@@ -12,10 +13,11 @@ interface IPageBreadcrumbProps {
  * PageBreadcrumb component displays a simple breadcrumb navigation
  * with Home as a link and the current page name without a link.
  *
- * @param {IPageBreadcrumbProps} props - The props for the component.
+ * @param {PageBreadcrumbProps} props - The props for the component.
+ *
  * @returns {React.JSX.Element} The rendered breadcrumb navigation.
  */
-const PageBreadcrumb: React.FC = ({ pageName }: IPageBreadcrumbProps): React.JSX.Element => {
+const PageBreadcrumb = ({ pageName }: PageBreadcrumbProps): React.JSX.Element => {
   return (
     <nav aria-label="breadcrumb">
       <ol className="flex flex-wrap items-center text-sm">

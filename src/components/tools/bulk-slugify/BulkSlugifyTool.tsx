@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import latinize from "latinize";
-import slugify from "slugify";
+import latinize from 'latinize';
+import slugify from 'slugify';
 
-import BulkSlugifyInfo from "./BulkSlugifyInfo";
-import BulkSlugifyInput from "./BulkSlugifyInput";
-import BulkSlugifyOutput from "./BulkSlugifyOutput";
+import BulkSlugifyInfo from './BulkSlugifyInfo';
+import BulkSlugifyInput from './BulkSlugifyInput';
+import BulkSlugifyOutput from './BulkSlugifyOutput';
 
 /**
  * Main component for the Bulk Slugify Tool
@@ -19,8 +19,8 @@ import BulkSlugifyOutput from "./BulkSlugifyOutput";
  * @returns {React.JSX.Element} The complete Bulk Slugify Tool interface
  */
 const BulkSlugifyTool: React.FC = (): React.JSX.Element => {
-  const [input, setInput] = useState<string>("");
-  const [output, setOutput] = useState<string>("");
+  const [input, setInput] = useState<string>('');
+  const [output, setOutput] = useState<string>('');
   const [useUnderscore, setUseUnderscore] = useState<boolean>(false);
   const [removeNumbers, setRemoveNumbers] = useState<boolean>(false);
   const [useLowercase, setUseLowercase] = useState<boolean>(true);
@@ -31,12 +31,13 @@ const BulkSlugifyTool: React.FC = (): React.JSX.Element => {
    * Generates slugs from the input text based on configuration options
    *
    * @param {string} text - The input text to convert to slugs
+   *
    * @returns {string} The processed slugs as a newline-separated string
    */
   const generateSlugs = (text: string): string => {
     return text
-      .split("\n")
-      .filter((line) => keepEmptyLines || line.trim() !== "")
+      .split('\n')
+      .filter((line) => keepEmptyLines || line.trim() !== '')
       .map((line) => {
         let processedText = line;
 
@@ -49,13 +50,13 @@ const BulkSlugifyTool: React.FC = (): React.JSX.Element => {
         }
 
         return slugify(processedText, {
-          replacement: useUnderscore ? "_" : "-",
+          replacement: useUnderscore ? '_' : '-',
           remove: removeNumbers ? /[0-9]/g : undefined,
           lower: useLowercase,
           strict: true,
         });
       })
-      .join("\n");
+      .join('\n');
   };
 
   /**
@@ -70,8 +71,8 @@ const BulkSlugifyTool: React.FC = (): React.JSX.Element => {
    * Clears the input and output fields
    */
   const handleClear = () => {
-    setInput("");
-    setOutput("");
+    setInput('');
+    setOutput('');
   };
 
   /**

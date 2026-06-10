@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { useState } from "react";
+import { useState } from 'react';
 
-import UsernameGeneratorInfo from "./RandomUsernameGeneratorInfo";
-import UsernameGeneratorInput from "./RandomUsernameGeneratorInput";
-import UsernameGeneratorOutput from "./RandomUsernameGeneratorOutput";
+import UsernameGeneratorInfo from './RandomUsernameGeneratorInfo';
+import UsernameGeneratorInput from './RandomUsernameGeneratorInput';
+import UsernameGeneratorOutput from './RandomUsernameGeneratorOutput';
 
 /**
  * A tool for generating random usernames.
@@ -14,85 +14,85 @@ import UsernameGeneratorOutput from "./RandomUsernameGeneratorOutput";
 const RandomUsernameGeneratorTool: React.FC = (): React.JSX.Element => {
   const [count, setCount] = useState<number>(1);
   const [output, setOutput] = useState<string[]>([]);
-  const [error, setError] = useState<string>("");
+  const [error, setError] = useState<string>('');
 
   /**
    * Generates random usernames.
    */
   const generateUsernames = (): void => {
-    setError("");
+    setError('');
 
     if (count <= 0 || count > 200) {
-      setError("Please enter a number between 1 and 200.");
+      setError('Please enter a number between 1 and 200.');
       setOutput([]);
       return;
     }
 
     const adjectives = [
-      "Cool",
-      "Fast",
-      "Smart",
-      "Brave",
-      "Happy",
-      "Lucky",
-      "Clever",
-      "Strong",
-      "Bold",
-      "Bright",
-      "Fierce",
-      "Gentle",
-      "Kind",
-      "Loyal",
-      "Quick",
-      "Sharp",
-      "Witty",
-      "Zesty",
-      "Charming",
-      "Daring",
-      "Energetic",
-      "Fearless",
-      "Graceful",
-      "Humble",
-      "Jolly",
-      "Mighty",
-      "Noble",
-      "Playful",
-      "Radiant",
-      "Savvy",
-      "Vivid",
+      'Cool',
+      'Fast',
+      'Smart',
+      'Brave',
+      'Happy',
+      'Lucky',
+      'Clever',
+      'Strong',
+      'Bold',
+      'Bright',
+      'Fierce',
+      'Gentle',
+      'Kind',
+      'Loyal',
+      'Quick',
+      'Sharp',
+      'Witty',
+      'Zesty',
+      'Charming',
+      'Daring',
+      'Energetic',
+      'Fearless',
+      'Graceful',
+      'Humble',
+      'Jolly',
+      'Mighty',
+      'Noble',
+      'Playful',
+      'Radiant',
+      'Savvy',
+      'Vivid',
     ];
     const nouns = [
-      "Tiger",
-      "Eagle",
-      "Shark",
-      "Wizard",
-      "Ninja",
-      "Hero",
-      "Phoenix",
-      "Dragon",
-      "Knight",
-      "Samurai",
-      "Pirate",
-      "Ranger",
-      "Warrior",
-      "Falcon",
-      "Wolf",
-      "Panther",
-      "Lion",
-      "Bear",
-      "Hawk",
-      "Cheetah",
-      "Leopard",
-      "Fox",
-      "Dolphin",
-      "Stallion",
-      "Viper",
-      "Cobra",
-      "Jaguar",
-      "Otter",
-      "Penguin",
-      "Raven",
-      "Swan",
+      'Tiger',
+      'Eagle',
+      'Shark',
+      'Wizard',
+      'Ninja',
+      'Hero',
+      'Phoenix',
+      'Dragon',
+      'Knight',
+      'Samurai',
+      'Pirate',
+      'Ranger',
+      'Warrior',
+      'Falcon',
+      'Wolf',
+      'Panther',
+      'Lion',
+      'Bear',
+      'Hawk',
+      'Cheetah',
+      'Leopard',
+      'Fox',
+      'Dolphin',
+      'Stallion',
+      'Viper',
+      'Cobra',
+      'Jaguar',
+      'Otter',
+      'Penguin',
+      'Raven',
+      'Swan',
     ];
 
     const generated = Array.from({ length: count }, () => {
@@ -110,7 +110,7 @@ const RandomUsernameGeneratorTool: React.FC = (): React.JSX.Element => {
    */
   const handleClear = (): void => {
     setOutput([]);
-    setError("");
+    setError('');
   };
 
   return (

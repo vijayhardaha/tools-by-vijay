@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { useState } from "react";
+import { useState } from 'react';
 
-import Base64EncodeDecodeInfo from "./Base64EncodeDecodeInfo";
-import Base64EncodeDecodeInput from "./Base64EncodeDecodeInput";
-import Base64EncodeDecodeOutput from "./Base64EncodeDecodeOutput";
+import Base64EncodeDecodeInfo from './Base64EncodeDecodeInfo';
+import Base64EncodeDecodeInput from './Base64EncodeDecodeInput';
+import Base64EncodeDecodeOutput from './Base64EncodeDecodeOutput';
 
 /**
  * A tool for encoding and decoding Base64 strings. It provides input, output, and informational components.
@@ -12,8 +12,8 @@ import Base64EncodeDecodeOutput from "./Base64EncodeDecodeOutput";
  * @returns {React.JSX.Element} The rendered Base64 Encode/Decode Tool component.
  */
 const Base64EncodeDecodeTool: React.FC = (): React.JSX.Element => {
-  const [input, setInput] = useState<string>("");
-  const [output, setOutput] = useState<string>("");
+  const [input, setInput] = useState<string>('');
+  const [output, setOutput] = useState<string>('');
   const [isEncoding, setIsEncoding] = useState<boolean>(true);
 
   /**
@@ -24,8 +24,8 @@ const Base64EncodeDecodeTool: React.FC = (): React.JSX.Element => {
       const result = isEncoding ? btoa(input) : atob(input);
       setOutput(result);
     } catch (error) {
-      console.error("Error processing Base64:", error);
-      setOutput("Error: Invalid input for the selected mode.");
+      console.error('Error processing Base64:', error);
+      setOutput('Error: Invalid input for the selected mode.');
     }
   };
 
@@ -33,8 +33,8 @@ const Base64EncodeDecodeTool: React.FC = (): React.JSX.Element => {
    * Clears the input and output fields.
    */
   const handleClear = (): void => {
-    setInput("");
-    setOutput("");
+    setInput('');
+    setOutput('');
   };
 
   /**

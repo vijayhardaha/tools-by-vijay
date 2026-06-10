@@ -1,24 +1,19 @@
-import React from "react";
+import React from 'react';
 
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 
 /**
  * Interface for the CharacterCountOutput component props.
  */
 interface CharacterCountOutputProps {
-  stats: {
-    characters: number;
-    words: number;
-    sentences: number;
-    paragraphs: number;
-    spaces: number;
-  };
+  stats: { characters: number; words: number; sentences: number; paragraphs: number; spaces: number };
 }
 
 /**
  * Displays the calculated text statistics.
  *
  * @param {CharacterCountOutputProps} props - Component props.
+ *
  * @returns {React.JSX.Element} The rendered card with text statistics.
  */
 const CharacterCountOutput: React.FC<CharacterCountOutputProps> = ({
@@ -28,10 +23,11 @@ const CharacterCountOutput: React.FC<CharacterCountOutputProps> = ({
    * Renders a code block with specific styling.
    *
    * @param {string|number} code - The code to be displayed.
+   *
    * @returns {React.JSX.Element} The rendered code block.
    */
   const codeBlock = (code: string | number): React.JSX.Element | null =>
-    typeof code === "string" || typeof code === "number" ? (
+    typeof code === 'string' || typeof code === 'number' ? (
       <code className="bg-muted rounded px-1 py-0.5 text-sm font-medium text-pink-500">{code}</code>
     ) : null;
 

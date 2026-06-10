@@ -1,28 +1,29 @@
-import React from "react";
+import React from 'react';
 
-import BgOptionsPanel from "@/components/text-story-maker/parts/panels/BgOptionsPanel";
-import TextOptionsPanel from "@/components/text-story-maker/parts/panels/TextOptionsPanel";
-import { IUpdateOptionProps } from "@/components/text-story-maker/TextStoryMakerTool";
+import BgOptionsPanel from '@/components/text-story-maker/parts/panels/BgOptionsPanel';
+import TextOptionsPanel from '@/components/text-story-maker/parts/panels/TextOptionsPanel';
+import type { UpdateOptionProps } from '@/components/text-story-maker/TextStoryMakerTool';
 
 /**
  * Interface for the Footer component props.
  */
-interface IFooterProps extends IUpdateOptionProps {
+interface FooterProps extends UpdateOptionProps {
   activeTool: string;
 }
 
 /**
  * Footer component for the text story maker.
  *
- * @param {IFooterProps} props - Component props.
+ * @param {FooterProps} props - Component props.
+ *
  * @returns {React.JSX.Element} The rendered Footer component.
  */
-const Footer: React.FC<IFooterProps> = ({ options, updateOption, activeTool }: IFooterProps): React.JSX.Element => (
+const Footer: React.FC<FooterProps> = ({ options, updateOption, activeTool }: FooterProps): React.JSX.Element => (
   <footer aria-label="Story formatting options" role="region">
-    {activeTool === "text" && (
+    {activeTool === 'text' && (
       <TextOptionsPanel options={options} updateOption={updateOption} aria-label="Text formatting options panel" />
     )}
-    {activeTool === "background" && (
+    {activeTool === 'background' && (
       <BgOptionsPanel options={options} updateOption={updateOption} aria-label="Background formatting options panel" />
     )}
   </footer>

@@ -1,11 +1,11 @@
-import { Button } from "@/components/ui/button";
-import { SheetFooter } from "@/components/ui/sheet";
-import { socialMediaLinks } from "@/constants/socialLinks";
+import { Button } from '@/components/ui/button';
+import { SheetFooter } from '@/components/ui/sheet';
+import { socialMediaLinks } from '@/constants/socialLinks';
 
 /**
  * Props for the SocialButton component
  */
-interface ISocialButtonProps {
+interface SocialButtonProps {
   icon: React.ElementType;
   href: string;
   label: string;
@@ -14,10 +14,12 @@ interface ISocialButtonProps {
 
 /**
  * SocialButton component for social media links
+ *
  * @param {SocialButtonProps} props - Component props
+ *
  * @returns {React.JSX.Element} A button with social media icon
  */
-const SocialButton = ({ icon: Icon, href, label, color }: ISocialButtonProps): React.JSX.Element => (
+const SocialButton = ({ icon: Icon, href, label, color }: SocialButtonProps): React.JSX.Element => (
   <Button
     variant="outline"
     size="icon"
@@ -33,6 +35,7 @@ const SocialButton = ({ icon: Icon, href, label, color }: ISocialButtonProps): R
 
 /**
  * Footer component for the sidebar with social media links
+ *
  * @returns {React.JSX.Element} The sidebar footer component
  */
 const SidebarFooter = (): React.JSX.Element => (

@@ -1,6 +1,6 @@
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
-import { CopyButton } from "@/components/ui/copyButton";
-import { Textarea } from "@/components/ui/textarea";
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { CopyButton } from '@/components/ui/copyButton';
+import { Textarea } from '@/components/ui/textarea';
 
 /**
  * Interface for the CountryNameGeneratorOutput component props.
@@ -14,6 +14,7 @@ interface CssInlinerOutputProps {
  * It includes a card layout with a copy button and a read-only textarea to show the inlined HTML.
  *
  * @param {CssInlinerOutputProps} props - The props for the component.
+ *
  * @returns {React.JSX.Element} The rendered CssInlinerOutput component.
  */
 const CssInlinerOutput: React.FC<CssInlinerOutputProps> = ({ output }: CssInlinerOutputProps): React.JSX.Element => {

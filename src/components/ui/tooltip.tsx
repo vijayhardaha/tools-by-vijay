@@ -1,18 +1,17 @@
-"use client";
+'use client';
 
-import { useId, ReactNode } from "react";
+import { useId } from 'react';
+import type { ReactNode } from 'react';
 
-import { Tooltip as ReactTooltip } from "react-tooltip";
+import { Tooltip as ReactTooltip } from 'react-tooltip';
+import 'react-tooltip/dist/react-tooltip.css';
 
-import { cn } from "@/utils/classNameUtils";
-
-// eslint-disable-next-line import/order
-import "react-tooltip/dist/react-tooltip.css";
+import { cn } from '@/utils/classNameUtils';
 
 /**
  * Props for the Tooltip component
  */
-interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement> {
+interface TooltipProps extends React.HTMLAttributes<HTMLDivElement> {
   text: string;
   children: ReactNode;
   className?: string;
@@ -22,8 +21,15 @@ interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement> {
 
 /**
  * Tooltip component to display a tooltip with customizable content and styles.
+ *
+ * @param root0
+ * @param root0.text
+ * @param root0.children
+ * @param root0.className
+ * @param root0.sideOffset
+ * @param root0.delayDuration
  */
-function Tooltip({ text, children, className, sideOffset = 4, delayDuration = 300, ...props }: ITooltipProps) {
+function Tooltip({ text, children, className, sideOffset = 4, delayDuration = 300, ...props }: TooltipProps) {
   const tooltipId = useId();
 
   return (
@@ -38,7 +44,7 @@ function Tooltip({ text, children, className, sideOffset = 4, delayDuration = 30
         offset={sideOffset}
         style={{ zIndex: 9999 }}
         className={cn(
-          "!text-primary-foreground !-mt-0.5 !max-w-60 !rounded-md !bg-black !px-3 !py-1.5 !text-xs !leading-4 !font-normal !shadow-sm",
+          '!text-primary-foreground !-mt-0.5 !max-w-60 !rounded-md !bg-black !px-3 !py-1.5 !text-xs !leading-4 !font-normal !shadow-sm',
           className
         )}
       />

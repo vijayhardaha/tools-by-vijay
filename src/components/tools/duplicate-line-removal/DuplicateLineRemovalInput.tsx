@@ -1,11 +1,12 @@
-"use client";
-import React from "react";
+'use client';
+import React from 'react';
+import type { FormEvent } from 'react';
 
-import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
-import { Checkbox } from "@/components/ui/checkbox";
-import { RadioBox } from "@/components/ui/radiobox";
-import { Textarea } from "@/components/ui/textarea";
+import { Button } from '@/components/ui/button';
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { Checkbox } from '@/components/ui/checkbox';
+import { RadioBox } from '@/components/ui/radiobox';
+import { Textarea } from '@/components/ui/textarea';
 
 /**
  * Interface for the DuplicateLineRemovalInput component props.
@@ -26,8 +27,8 @@ interface IDuplicateLineRemovalInputProps {
  * Input component for the Duplicate Line Removal tool.
  * Provides a form for text input, sorting options, and reverse sorting.
  *
- * @component
  * @param {IDuplicateLineRemovalInputProps} props - The props for the component.
+ *
  * @returns {React.JSX.Element} The rendered component.
  */
 const DuplicateLineRemovalInput: React.FC<IDuplicateLineRemovalInputProps> = ({
@@ -43,9 +44,10 @@ const DuplicateLineRemovalInput: React.FC<IDuplicateLineRemovalInputProps> = ({
 }: IDuplicateLineRemovalInputProps): React.JSX.Element => {
   /**
    * Handles form submission by preventing default behavior and triggering conversion.
-   * @param {React.FormEvent} e - Form event object.
+   *
+   * @param {FormEvent} e - Form event object.
    */
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     onSubmit();
   };
@@ -72,24 +74,24 @@ const DuplicateLineRemovalInput: React.FC<IDuplicateLineRemovalInputProps> = ({
             <RadioBox
               id="sort-none"
               name="sortType"
-              checked={sortType === "none"}
-              onCheckedChange={() => setSortType("none")}
+              checked={sortType === 'none'}
+              onCheckedChange={() => setSortType('none')}
             >
               Don’t Sort Results
             </RadioBox>
             <RadioBox
               id="sort-alphabetical"
               name="sortType"
-              checked={sortType === "alphabetical"}
-              onCheckedChange={() => setSortType("alphabetical")}
+              checked={sortType === 'alphabetical'}
+              onCheckedChange={() => setSortType('alphabetical')}
             >
               Alphabetical Sort
             </RadioBox>
             <RadioBox
               id="sort-ascii"
               name="sortType"
-              checked={sortType === "ascii"}
-              onCheckedChange={() => setSortType("ascii")}
+              checked={sortType === 'ascii'}
+              onCheckedChange={() => setSortType('ascii')}
             >
               ASCII Sort
             </RadioBox>

@@ -1,6 +1,6 @@
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
-import { CopyButton } from "@/components/ui/copyButton";
-import { Textarea } from "@/components/ui/textarea";
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { CopyButton } from '@/components/ui/copyButton';
+import { Textarea } from '@/components/ui/textarea';
 
 /**
  * Interface for the CountryNameGeneratorOutput component props.
@@ -11,7 +11,10 @@ interface IRandomUsernameGeneratorOutputProps {
 
 /**
  * A component for displaying the generated usernames.
+ *
  * @param props - The props for the RandomUsernameGeneratorOutput component.
+ * @param props.output
+ *
  * @returns The RandomUsernameGeneratorOutput component.
  */
 const RandomUsernameGeneratorOutput: React.FC<IRandomUsernameGeneratorOutputProps> = ({
@@ -26,12 +29,12 @@ const RandomUsernameGeneratorOutput: React.FC<IRandomUsernameGeneratorOutputProp
             <CardDescription>Copy the generated usernames for use</CardDescription>
           </div>
           <div className="inline-flex">
-            <CopyButton text={output.join("\n")} />
+            <CopyButton text={output.join('\n')} />
           </div>
         </div>
       </CardHeader>
       <CardContent>
-        <Textarea rows={8} value={output.join("\n")} readOnly data-output />
+        <Textarea rows={8} value={output.join('\n')} readOnly data-output />
       </CardContent>
     </Card>
   );

@@ -2,7 +2,6 @@
  * Provides information about the Base64 Encode/Decode Tool, including its purpose,
  * usage instructions, and examples.
  *
- * @component
  * @returns {React.JSX.Element} The rendered component displaying tool information
  */
 const Base64EncodeDecodeInfo: React.FC = (): React.JSX.Element => {
@@ -15,7 +14,7 @@ const Base64EncodeDecodeInfo: React.FC = (): React.JSX.Element => {
           decoding reverses this process to retrieve the original data.
         </p>
         <p className="mb-4">
-          We use the <code className="bg-muted rounded px-1 py-0.5 text-sm font-medium text-pink-500">btoa</code> and{" "}
+          We use the <code className="bg-muted rounded px-1 py-0.5 text-sm font-medium text-pink-500">btoa</code> and{' '}
           <code className="bg-muted rounded px-1 py-0.5 text-sm font-medium text-pink-500">atob</code> functions under
           the hood to ensure accurate and reliable encoding and decoding of Base64 strings.
         </p>

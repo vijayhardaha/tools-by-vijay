@@ -1,16 +1,15 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import PasswordGeneratorInfo from "./PasswordGeneratorInfo";
-import PasswordGeneratorInput from "./PasswordGeneratorInput";
-import PasswordGeneratorOutput from "./PasswordGeneratorOutput";
+import PasswordGeneratorInfo from './PasswordGeneratorInfo';
+import PasswordGeneratorInput from './PasswordGeneratorInput';
+import PasswordGeneratorOutput from './PasswordGeneratorOutput';
 
 /**
  * Main component for the Password Generator tool.
  * Manages the state and functionality for generating secure passwords based on user preferences.
  *
- * @component
  * @returns {React.JSX.Element} The complete password generator tool with input options, output display, and information
  */
 const PasswordGeneratorTool: React.FC = (): React.JSX.Element => {
@@ -20,26 +19,27 @@ const PasswordGeneratorTool: React.FC = (): React.JSX.Element => {
   const [useNumbers, setUseNumbers] = useState<boolean>(true);
   const [useSymbols, setUseSymbols] = useState<boolean>(true);
   const [excludeSimilar, setExcludeSimilar] = useState<boolean>(false);
-  const [password, setPassword] = useState<string>("");
+  const [password, setPassword] = useState<string>('');
 
   /**
    * Generates a password based on the current settings
    *
-   * @function
    * @returns {string} The generated password or an error message
+   *
+   * @function
    */
   const generatePassword = (): string => {
     // Character sets
-    const uppercaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    const lowercaseChars = "abcdefghijklmnopqrstuvwxyz";
-    const numberChars = "0123456789";
-    const symbolChars = "!@#$%^&*()_+~`|}{[]:;?><,./-=";
+    const uppercaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const lowercaseChars = 'abcdefghijklmnopqrstuvwxyz';
+    const numberChars = '0123456789';
+    const symbolChars = '!@#$%^&*()_+~`|}{[]:;?><,./-=';
 
     // Characters to exclude if excludeSimilar is true
-    const similarChars = "il1Lo0O";
+    const similarChars = 'il1Lo0O';
 
     // Build character pool based on selected options
-    let charPool = "";
+    let charPool = '';
     if (useUppercase) charPool += uppercaseChars;
     if (useLowercase) charPool += lowercaseChars;
     if (useNumbers) charPool += numberChars;
@@ -48,17 +48,17 @@ const PasswordGeneratorTool: React.FC = (): React.JSX.Element => {
     // Remove similar characters if option is selected
     if (excludeSimilar) {
       for (const char of similarChars) {
-        charPool = charPool.replace(new RegExp(char, "g"), "");
+        charPool = charPool.replace(new RegExp(char, 'g'), '');
       }
     }
 
     // Make sure at least one character set is selected
     if (charPool.length === 0) {
-      return "Select at least one character type";
+      return 'Select at least one character type';
     }
 
     // Generate password
-    let password = "";
+    let password = '';
     for (let i = 0; i < length; i++) {
       const randomIndex = Math.floor(Math.random() * charPool.length);
       password += charPool[randomIndex];
@@ -70,8 +70,9 @@ const PasswordGeneratorTool: React.FC = (): React.JSX.Element => {
   /**
    * Handles the password generation action and updates state
    *
-   * @function
    * @returns {void}
+   *
+   * @function
    */
   const handleSubmit = (): void => {
     const password = generatePassword();
@@ -81,8 +82,9 @@ const PasswordGeneratorTool: React.FC = (): React.JSX.Element => {
   /**
    * Resets all password generation options to their default values
    *
-   * @function
    * @returns {void}
+   *
+   * @function
    */
   const handleReset = (): void => {
     setLength(12);
@@ -91,7 +93,7 @@ const PasswordGeneratorTool: React.FC = (): React.JSX.Element => {
     setUseNumbers(true);
     setUseSymbols(true);
     setExcludeSimilar(false);
-    setPassword("");
+    setPassword('');
   };
 
   return (

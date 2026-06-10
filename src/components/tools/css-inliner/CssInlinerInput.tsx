@@ -1,10 +1,12 @@
-"use client";
+'use client';
 
-import { Alert } from "@/components/ui/alert";
-import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
+import type { FormEvent } from 'react';
+
+import { Alert } from '@/components/ui/alert';
+import { Button } from '@/components/ui/button';
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
 
 /**
  * Interface for the CssInlinerInput component props.
@@ -24,6 +26,7 @@ interface ICssInlinerInputProps {
  * Component for inputting HTML and CSS to inline styles.
  *
  * @param {ICssInlinerInputProps} props - The props for the CssInlinerInput component.
+ *
  * @returns {React.JSX.Element} The CssInlinerInput component.
  */
 const CssInlinerInput: React.FC<ICssInlinerInputProps> = ({
@@ -39,9 +42,9 @@ const CssInlinerInput: React.FC<ICssInlinerInputProps> = ({
   /**
    * Handles form submission to inline CSS.
    *
-   * @param {Object} e - Event object
+   * @param {object} e - Event object
    */
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     onSubmit();
   };
@@ -74,7 +77,7 @@ const CssInlinerInput: React.FC<ICssInlinerInputProps> = ({
           </div>
           <div className="mt-2 flex gap-2">
             <Button type="submit" variant="default" disabled={!htmlInput || !cssInput || isLoading}>
-              {isLoading ? "Processing..." : "Inline CSS"}
+              {isLoading ? 'Processing...' : 'Inline CSS'}
             </Button>
 
             <Button type="button" variant="outline" onClick={onClear} disabled={isLoading}>

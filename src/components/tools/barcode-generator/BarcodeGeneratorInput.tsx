@@ -1,8 +1,10 @@
-"use client";
+'use client';
 
-import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
+import type { FormEvent } from 'react';
+
+import { Button } from '@/components/ui/button';
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
 
 /**
  * Props for the BarcodeGeneratorInput component.
@@ -19,6 +21,7 @@ interface IBarcodeGeneratorInputProps {
  * input fields and controls for generating a barcode.
  *
  * @param {IBarcodeGeneratorInputProps} props - The props for the component.
+ *
  * @returns {React.JSX.Element} The rendered barcode input component.
  */
 const BarcodeGeneratorInput: React.FC<IBarcodeGeneratorInputProps> = ({
@@ -29,9 +32,10 @@ const BarcodeGeneratorInput: React.FC<IBarcodeGeneratorInputProps> = ({
 }: IBarcodeGeneratorInputProps): React.JSX.Element => {
   /**
    * Handles the form submission to generate the barcode.
-   * @param {React.FormEvent} e - The form submission event.
+   *
+   * @param {FormEvent} e - The form submission event.
    */
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     onSubmit();
   };

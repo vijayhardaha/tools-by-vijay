@@ -1,23 +1,23 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-import domToImage from "dom-to-image";
-import { saveAs } from "file-saver";
-import { TbCloudDownload as DownloadToolIcon } from "react-icons/tb";
+import domToImage from 'dom-to-image';
+import { saveAs } from 'file-saver';
+import { TbCloudDownload as DownloadToolIcon } from 'react-icons/tb';
 
-import Button from "@/components/text-story-maker/parts/header/HeaderIconBtn";
-import { IUpdateOptionProps } from "@/components/text-story-maker/TextStoryMakerTool";
-import { Dropdown, DropdownTrigger, DropdownContent } from "@/components/text-story-maker/ui";
-import { cn } from "@/utils/classNameUtils";
+import Button from '@/components/text-story-maker/parts/header/HeaderIconBtn';
+import type { UpdateOptionProps } from '@/components/text-story-maker/TextStoryMakerTool';
+import { Dropdown, DropdownTrigger, DropdownContent } from '@/components/text-story-maker/ui';
+import { cn } from '@/utils/classNameUtils';
 
 /**
  * Interface for the DownloadImageTool component props.
  */
-interface IDownloadImageToolProps extends IUpdateOptionProps {}
+interface DownloadImageToolProps extends UpdateOptionProps {}
 
 /**
  * Type definition for available sizes.
  */
-type SizeKey = "fhd" | "2k" | "4k";
+type SizeKey = 'fhd' | '2k' | '4k';
 
 /**
  * Type definition for the size object.
@@ -32,18 +32,22 @@ interface Size {
  * Each size has a width and a label for display.
  */
 const sizes: Record<SizeKey, Size> = {
-  fhd: { width: 1080, label: "FHD" },
-  "2k": { width: 1440, label: "2K" },
-  "4k": { width: 2160, label: "4K" },
+  fhd: { width: 1080, label: 'FHD' },
+  '2k': { width: 1440, label: '2K' },
+  '4k': { width: 2160, label: '4K' },
 };
 
 /**
  * DownloadImageTool component allows users to download the main content as an image
  * in various formats (JPEG, PNG) and resolutions (HD, FHD, 2K, 4K).
+ *
+ * @param root0
+ * @param root0.options
+ * @param root0.updateOption
  */
-const DownloadImageTool = ({ options, updateOption }: IDownloadImageToolProps) => {
+const DownloadImageTool = ({ options, updateOption }: DownloadImageToolProps) => {
   const [isDownloading, setIsDownloading] = useState(false);
-  const [downloadError, setDownloadError] = useState("");
+  const [downloadError, setDownloadError] = useState('');
 
   /**
    * Handles the change of the selected size option.
@@ -51,7 +55,7 @@ const DownloadImageTool = ({ options, updateOption }: IDownloadImageToolProps) =
    * @param {string} size - The selected size key (e.g., "hd", "fhd").
    */
   const handleSizeChange = (size: string) => {
-    updateOption("downloadSize", size);
+    updateOption('downloadSize', size);
   };
 
   /**
@@ -61,7 +65,7 @@ const DownloadImageTool = ({ options, updateOption }: IDownloadImageToolProps) =
    * @param {Function} toggleDropdown - Function to toggle the dropdown visibility.
    */
   const handleDownload = (size: SizeKey, toggleDropdown: (isOpen: boolean) => void) => {
-    const node = document.querySelector("#main-content");
+    const node = document.querySelector('#main-content');
     if (!node) return;
 
     const getSizeWidth = (size: SizeKey) => parseInt(sizes[size].width.toString(), 10) || 1080;
@@ -73,13 +77,11 @@ const DownloadImageTool = ({ options, updateOption }: IDownloadImageToolProps) =
       quality: 1,
       width: rect.width * scale,
       height: rect.height * scale,
-      style: {
-        scale: `${scale}`,
-      },
+      style: { scale: `${scale}` },
     };
 
     setIsDownloading(true);
-    setDownloadError("");
+    setDownloadError('');
 
     const downloadFn = domToImage.toPng(node, options);
 
@@ -89,7 +91,7 @@ const DownloadImageTool = ({ options, updateOption }: IDownloadImageToolProps) =
         toggleDropdown(false);
       })
       .catch(() => {
-        setDownloadError("Download failed");
+        setDownloadError('Download failed');
       })
       .finally(() => {
         setIsDownloading(false);
@@ -111,9 +113,7 @@ const DownloadImageTool = ({ options, updateOption }: IDownloadImageToolProps) =
             </DropdownTrigger>
             <DropdownContent isOpen={isOpen}>
               <div
-                className={cn("pt-1 pb-2 text-white", {
-                  "pointer-events-none": isDownloading,
-                })}
+                className={cn('pt-1 pb-2 text-white', { 'pointer-events-none': isDownloading })}
                 role="menu"
                 aria-label="Download options"
               >
@@ -129,13 +129,13 @@ const DownloadImageTool = ({ options, updateOption }: IDownloadImageToolProps) =
                         onClick={() => handleSizeChange(size)}
                         disabled={isDownloading}
                         className={cn(
-                          "relatve flex flex-1 shrink-0 items-center justify-center",
-                          "rounded-lg px-2 py-1 text-base font-medium",
-                          "cursor-pointer outline-none focus-visible:outline-none",
-                          "transition-transform duration-300 ease-in-out active:scale-97",
+                          'relatve flex flex-1 shrink-0 items-center justify-center',
+                          'rounded-lg px-2 py-1 text-base font-medium',
+                          'cursor-pointer outline-none focus-visible:outline-none',
+                          'transition-transform duration-300 ease-in-out active:scale-97',
                           options.downloadSize === size
-                            ? "bg-accent-foreground text-neutral-900"
-                            : "bg-white text-neutral-900 hover:bg-neutral-200"
+                            ? 'bg-accent-foreground text-neutral-900'
+                            : 'bg-white text-neutral-900 hover:bg-neutral-200'
                         )}
                         role="radio"
                         aria-checked={options.downloadSize === size}
@@ -150,12 +150,12 @@ const DownloadImageTool = ({ options, updateOption }: IDownloadImageToolProps) =
                   <button
                     type="button"
                     className={cn(
-                      "relatve flex w-full shrink-0 items-center justify-center",
-                      "rounded-lg px-3 py-2 text-sm font-semibold",
-                      "cursor-pointer outline-none focus-visible:outline-none",
-                      "transition-transform duration-300 ease-in-out active:scale-97",
-                      "bg-white text-neutral-900",
-                      "hover:bg-accent-foreground hover:text-neutral-900"
+                      'relatve flex w-full shrink-0 items-center justify-center',
+                      'rounded-lg px-3 py-2 text-sm font-semibold',
+                      'cursor-pointer outline-none focus-visible:outline-none',
+                      'transition-transform duration-300 ease-in-out active:scale-97',
+                      'bg-white text-neutral-900',
+                      'hover:bg-accent-foreground hover:text-neutral-900'
                     )}
                     onClick={() => handleDownload(options.downloadSize as SizeKey, toggleDropdown)}
                     disabled={isDownloading}

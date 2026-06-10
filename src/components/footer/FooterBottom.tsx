@@ -9,7 +9,7 @@ const FooterBottom: React.FC = (): React.JSX.Element => {
   return (
     <div className="mt-10">
       <p className="text-foreground text-sm">
-        © {currentYear} Tools by Vijay. All rights reserved by{" "}
+        © {currentYear} Tools by Vijay. All rights reserved by{' '}
         <a
           href="https://x.com/vijayhardaha"
           rel="noopener noreferrer"

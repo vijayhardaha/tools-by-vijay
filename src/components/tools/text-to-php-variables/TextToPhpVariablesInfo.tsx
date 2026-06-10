@@ -2,7 +2,6 @@
  * Provides information about the Text to PHP Variables Tool, including its purpose,
  * usage instructions, and examples.
  *
- * @component
  * @returns {React.JSX.Element} The rendered component displaying tool information
  */
 const TextToPhpVariablesInfo: React.FC = (): React.JSX.Element => {
@@ -72,7 +71,7 @@ const TextToPhpVariablesInfo: React.FC = (): React.JSX.Element => {
       <section>
         <h3 className="text-primary mb-4 text-lg font-bold">Credits & Source</h3>
         <p>
-          Maintained by{" "}
+          Maintained by{' '}
           <a
             href="https://x.com/vijayhardaha"
             className="font-medium text-pink-500 underline hover:no-underline"

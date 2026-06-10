@@ -1,6 +1,6 @@
-import Image from "next/image";
+import Image from 'next/image';
 
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
 
 /**
  * Props for the BarcodeGeneratorOutput component.
@@ -15,6 +15,7 @@ interface IBarcodeGeneratorOutputProps {
  *
  * @param {IBarcodeGeneratorOutputProps} props - The props for the component.
  * @param {string} props.output - The URL of the generated barcode image.
+ *
  * @returns {React.JSX.Element} The rendered barcode output component.
  */
 const BarcodeGeneratorOutput: React.FC<IBarcodeGeneratorOutputProps> = ({

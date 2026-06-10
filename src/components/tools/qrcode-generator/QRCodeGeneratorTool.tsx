@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { useState } from "react";
+import { useState } from 'react';
 
-import QRCodeInfo from "./QRCodeGeneratorInfo";
-import QRCodeInput from "./QRCodeGeneratorInput";
-import QRCodeOutput from "./QRCodeGeneratorOutput";
+import QRCodeInfo from './QRCodeGeneratorInfo';
+import QRCodeInput from './QRCodeGeneratorInput';
+import QRCodeOutput from './QRCodeGeneratorOutput';
 
 /**
  * QRCodeGeneratorTool is a React functional component that provides a tool
@@ -14,9 +14,9 @@ import QRCodeOutput from "./QRCodeGeneratorOutput";
  * @returns {React.JSX.Element} The rendered QR code generator tool component.
  */
 const QRCodeGeneratorTool: React.FC = (): React.JSX.Element => {
-  const [input, setInput] = useState<string>("");
+  const [input, setInput] = useState<string>('');
   const [size, setSize] = useState<number>(256);
-  const [output, setOutput] = useState<string>("");
+  const [output, setOutput] = useState<string>('');
 
   /**
    * Generates a QR code URL based on the input data and size.
@@ -34,8 +34,8 @@ const QRCodeGeneratorTool: React.FC = (): React.JSX.Element => {
    * Clears the input and output states.
    */
   const handleClear = (): void => {
-    setInput("");
-    setOutput("");
+    setInput('');
+    setOutput('');
   };
 
   /**

@@ -1,34 +1,33 @@
-import { useKeenSlider } from "keen-slider/react";
+import 'keen-slider/keen-slider.min.css';
+import { useKeenSlider } from 'keen-slider/react';
 
-import { btnBaseStyles } from "@/components/text-story-maker/constants/btnBaseStyles";
-import { fonts } from "@/components/text-story-maker/constants/fonts";
-import { IUpdateOptionProps } from "@/components/text-story-maker/TextStoryMakerTool";
-import { getFontClass } from "@/components/text-story-maker/utils/styleUtils";
-import { cn } from "@/utils/classNameUtils";
+import { btnBaseStyles } from '@/components/text-story-maker/constants/btnBaseStyles';
+import { fonts } from '@/components/text-story-maker/constants/fonts';
+import type { UpdateOptionProps } from '@/components/text-story-maker/TextStoryMakerTool';
+import { getFontClass } from '@/components/text-story-maker/utils/styleUtils';
+import { cn } from '@/utils/classNameUtils';
 
-// eslint-disable-next-line import/order
-import "keen-slider/keen-slider.min.css";
-
-interface IFontSliderProps extends IUpdateOptionProps {}
+interface FontSliderProps extends UpdateOptionProps {}
 
 /**
  * FontSlider component for selecting font family.
  *
- * @param {Object} props - Component props.
- * @param {Object} props.options - Current text options.
+ * @param {object} props - Component props.
+ * @param {object} props.options - Current text options.
  * @param {Function} props.updateOption - Function to update the font option.
+ *
  * @returns {React.JSX.Element} The rendered FontSlider component.
  */
-const FontSlider: React.FC<IFontSliderProps> = ({ options, updateOption }: IFontSliderProps): React.JSX.Element => {
+const FontSlider: React.FC<FontSliderProps> = ({ options, updateOption }: FontSliderProps): React.JSX.Element => {
   const [sliderRef] = useKeenSlider({
     loop: false,
-    mode: "free-snap",
-    renderMode: "performance",
+    mode: 'free-snap',
+    renderMode: 'performance',
     initial: parseInt(options.textFont.toString(), 10) || 0,
-    slides: { perView: "auto", spacing: 0, origin: "center" },
+    slides: { perView: 'auto', spacing: 0, origin: 'center' },
     slideChanged: (slider) => {
       const currentIndex = slider.track.details.rel;
-      updateOption("textFont", currentIndex);
+      updateOption('textFont', currentIndex);
     },
   });
 
@@ -46,17 +45,15 @@ const FontSlider: React.FC<IFontSliderProps> = ({ options, updateOption }: IFont
               <button
                 type="button"
                 className={cn(
-                  btnBaseStyles.join(" "),
-                  "rounded-md p-1.5 px-3",
-                  "text-sm leading-relaxed font-medium",
-                  "bg-neutral-800 text-white",
-                  {
-                    "bg-white text-neutral-900": options.textFont === font,
-                  },
+                  btnBaseStyles.join(' '),
+                  'rounded-md p-1.5 px-3',
+                  'text-sm leading-relaxed font-medium',
+                  'bg-neutral-800 text-white',
+                  { 'bg-white text-neutral-900': options.textFont === font },
                   getFontClass(font) as string
                 )}
                 onClick={() => {
-                  updateOption("textFont", font);
+                  updateOption('textFont', font);
                 }}
                 aria-label={`Select ${label} font`}
                 aria-pressed={options.textFont === font}

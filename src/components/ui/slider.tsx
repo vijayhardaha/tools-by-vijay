@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-import { cn } from "@/utils/classNameUtils";
+import { cn } from '@/utils/classNameUtils';
 
 /**
  * Props for the Slider component
@@ -19,6 +19,15 @@ interface ISliderProps extends React.HTMLAttributes<HTMLDivElement> {
 
 /**
  * A simplified slider component that allows users to select a value by moving a handle along a track.
+ *
+ * @param root0
+ * @param root0.className
+ * @param root0.min
+ * @param root0.max
+ * @param root0.step
+ * @param root0.value
+ * @param root0.onValueChange
+ * @param root0.disabled
  */
 function Slider({
   className,
@@ -43,7 +52,7 @@ function Slider({
   };
 
   return (
-    <div className={cn("relative flex w-full items-center py-3 data-[disabled]:opacity-50", className)}>
+    <div className={cn('relative flex w-full items-center py-3 data-[disabled]:opacity-50', className)}>
       <input
         type="range"
         min={min}
@@ -53,12 +62,12 @@ function Slider({
         onChange={handleChange}
         disabled={disabled}
         className={cn(
-          "bg-input m-0 h-[1px] flex-1 appearance-none border-none outline-none",
-          "focus:outline-none",
-          "active:[&::-webkit-slider-thumb]:ring-primary/15 active:[&::-webkit-slider-thumb]:h-6 active:[&::-webkit-slider-thumb]:w-6 active:[&::-webkit-slider-thumb]:ring-4",
-          "active:[&::-moz-range-thumb]:ring-primary/15 active:[&::-moz-range-thumb]:h-6 active:[&::-moz-range-thumb]:w-6 active:[&::-moz-range-thumb]:ring-4",
-          "[&::-webkit-slider-thumb]:bg-primary [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:cursor-move [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:transition-[width,height] [&::-webkit-slider-thumb]:duration-100",
-          "[&::-moz-range-thumb]:bg-primary [&::-moz-range-thumb]:h-4 [&::-moz-range-thumb]:w-4 [&::-moz-range-thumb]:cursor-move [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:transition-[width,height] [&::-moz-range-thumb]:duration-100"
+          'bg-input m-0 h-[1px] flex-1 appearance-none border-none outline-none',
+          'focus:outline-none',
+          'active:[&::-webkit-slider-thumb]:ring-primary/15 active:[&::-webkit-slider-thumb]:h-6 active:[&::-webkit-slider-thumb]:w-6 active:[&::-webkit-slider-thumb]:ring-4',
+          'active:[&::-moz-range-thumb]:ring-primary/15 active:[&::-moz-range-thumb]:h-6 active:[&::-moz-range-thumb]:w-6 active:[&::-moz-range-thumb]:ring-4',
+          '[&::-webkit-slider-thumb]:bg-primary [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:cursor-move [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:transition-[width,height] [&::-webkit-slider-thumb]:duration-100',
+          '[&::-moz-range-thumb]:bg-primary [&::-moz-range-thumb]:h-4 [&::-moz-range-thumb]:w-4 [&::-moz-range-thumb]:cursor-move [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:transition-[width,height] [&::-moz-range-thumb]:duration-100'
         )}
         {...props}
       />

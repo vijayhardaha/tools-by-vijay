@@ -1,11 +1,13 @@
-"use client";
+'use client';
 
-import { IMinifyOptions } from "@/components/tools/js-minifier/JsMinifierTool";
-import { Alert } from "@/components/ui/alert";
-import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Textarea } from "@/components/ui/textarea";
+import type { FormEvent } from 'react';
+
+import type { MinifyOptions } from '@/components/tools/js-minifier/JsMinifierTool';
+import { Alert } from '@/components/ui/alert';
+import { Button } from '@/components/ui/button';
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Textarea } from '@/components/ui/textarea';
 
 /**
  * Interface for the JavaScript Minifier input component props.
@@ -13,8 +15,8 @@ import { Textarea } from "@/components/ui/textarea";
 interface IJsMinifierInputProps {
   input: string;
   setInput: (value: string) => void;
-  options: IMinifyOptions;
-  updateOption: (key: keyof IMinifyOptions, value: boolean) => void;
+  options: MinifyOptions;
+  updateOption: (key: keyof MinifyOptions, value: boolean) => void;
   onSubmit: () => void;
   onClear: () => void;
   onReset: () => void;
@@ -26,6 +28,7 @@ interface IJsMinifierInputProps {
  * Component for JavaScript minifier input and options.
  *
  * @param {IJsMinifierInputProps} props - Component props.
+ *
  * @returns {React.JSX.Element} The JsMinifierInput component.
  */
 const JsMinifierInput: React.FC<IJsMinifierInputProps> = ({
@@ -44,7 +47,7 @@ const JsMinifierInput: React.FC<IJsMinifierInputProps> = ({
    *
    * @param {FormEvent} e - The form event.
    */
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     onSubmit();
   };
@@ -71,7 +74,7 @@ const JsMinifierInput: React.FC<IJsMinifierInputProps> = ({
               <Checkbox
                 id="mangle"
                 checked={options.mangle}
-                onCheckedChange={(checked) => updateOption("mangle", checked)}
+                onCheckedChange={(checked) => updateOption('mangle', checked)}
               >
                 Mangle variable names
               </Checkbox>
@@ -79,7 +82,7 @@ const JsMinifierInput: React.FC<IJsMinifierInputProps> = ({
               <Checkbox
                 id="removeComments"
                 checked={options.removeComments}
-                onCheckedChange={(checked) => updateOption("removeComments", checked)}
+                onCheckedChange={(checked) => updateOption('removeComments', checked)}
               >
                 Remove comments
               </Checkbox>
@@ -87,7 +90,7 @@ const JsMinifierInput: React.FC<IJsMinifierInputProps> = ({
               <Checkbox
                 id="removeConsole"
                 checked={options.removeConsole}
-                onCheckedChange={(checked) => updateOption("removeConsole", checked)}
+                onCheckedChange={(checked) => updateOption('removeConsole', checked)}
               >
                 Remove console statements
               </Checkbox>
@@ -95,7 +98,7 @@ const JsMinifierInput: React.FC<IJsMinifierInputProps> = ({
               <Checkbox
                 id="removeDebugger"
                 checked={options.removeDebugger}
-                onCheckedChange={(checked) => updateOption("removeDebugger", checked)}
+                onCheckedChange={(checked) => updateOption('removeDebugger', checked)}
               >
                 Remove debugger statements
               </Checkbox>
@@ -103,7 +106,7 @@ const JsMinifierInput: React.FC<IJsMinifierInputProps> = ({
           </div>
           <div className="flex flex-wrap gap-2">
             <Button type="submit" variant="default" disabled={!input || isLoading}>
-              {isLoading ? "Minifying..." : "Minify"}
+              {isLoading ? 'Minifying...' : 'Minify'}
             </Button>
 
             <Button type="button" variant="outline" onClick={onClear} disabled={isLoading}>

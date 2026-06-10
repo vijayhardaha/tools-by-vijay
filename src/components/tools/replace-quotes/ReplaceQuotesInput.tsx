@@ -1,10 +1,12 @@
-"use client";
+'use client';
 
-import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
-import { Checkbox } from "@/components/ui/checkbox";
-import { RadioBox } from "@/components/ui/radiobox";
-import { Textarea } from "@/components/ui/textarea";
+import type { FormEvent } from 'react';
+
+import { Button } from '@/components/ui/button';
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { Checkbox } from '@/components/ui/checkbox';
+import { RadioBox } from '@/components/ui/radiobox';
+import { Textarea } from '@/components/ui/textarea';
 
 /**
  * Interface for the Replace Quotes input component props.
@@ -12,8 +14,8 @@ import { Textarea } from "@/components/ui/textarea";
 interface IReplaceQuotesInputProps {
   input: string;
   setInput: (value: string) => void;
-  replaceType: "simple-to-curly" | "curly-to-simple";
-  setReplaceType: (value: "simple-to-curly" | "curly-to-simple") => void;
+  replaceType: 'simple-to-curly' | 'curly-to-simple';
+  setReplaceType: (value: 'simple-to-curly' | 'curly-to-simple') => void;
   replaceApostrophes: boolean;
   setReplaceApostrophes: (value: boolean) => void;
   replaceStandaloneQuotes: boolean;
@@ -27,8 +29,8 @@ interface IReplaceQuotesInputProps {
  * Input component for the Replace Quotes tool.
  * Handles user input and actions for replacing quotes.
  *
- * @component
  * @param {IReplaceQuotesInputProps} props - Component props
+ *
  * @returns {React.JSX.Element} The input component for the Replace Quotes tool.
  */
 const ReplaceQuotesInput: React.FC<IReplaceQuotesInputProps> = ({
@@ -46,9 +48,10 @@ const ReplaceQuotesInput: React.FC<IReplaceQuotesInputProps> = ({
 }: IReplaceQuotesInputProps): React.JSX.Element => {
   /**
    * Handles form submission by preventing default behavior and triggering the replace action.
-   * @param {React.FormEvent} e - Form event object
+   *
+   * @param {FormEvent} e - Form event object
    */
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     onSubmit();
   };
@@ -73,16 +76,16 @@ const ReplaceQuotesInput: React.FC<IReplaceQuotesInputProps> = ({
             <RadioBox
               id="simple-to-curly"
               name="replace-type"
-              checked={replaceType === "simple-to-curly"}
-              onCheckedChange={() => setReplaceType("simple-to-curly")}
+              checked={replaceType === 'simple-to-curly'}
+              onCheckedChange={() => setReplaceType('simple-to-curly')}
             >
               Simple to Curly Quotes
             </RadioBox>
             <RadioBox
               id="curly-to-simple"
               name="replace-type"
-              checked={replaceType === "curly-to-simple"}
-              onCheckedChange={() => setReplaceType("curly-to-simple")}
+              checked={replaceType === 'curly-to-simple'}
+              onCheckedChange={() => setReplaceType('curly-to-simple')}
             >
               Curly to Simple Quotes
             </RadioBox>

@@ -1,10 +1,12 @@
-"use client";
+'use client';
 
-import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Textarea } from "@/components/ui/textarea";
-import { cn } from "@/utils/classNameUtils";
+import type { FormEvent } from 'react';
+
+import { Button } from '@/components/ui/button';
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Textarea } from '@/components/ui/textarea';
+import { cn } from '@/utils/classNameUtils';
 
 /**
  * Interface for the BulkSlugifyInput component props.
@@ -35,10 +37,11 @@ interface IBulkSlugifyInputProps {
  * type, case conversion, number removal, and character normalization.
  *
  * @param {IBulkSlugifyInputProps} props - The props for the component.
+ *
  * @returns {React.JSX.Element} The rendered barcode input component.
  */
 const BulkSlugifyInput: React.FC<IBulkSlugifyInputProps> = ({
-  input = "",
+  input = '',
   useUnderscore = false,
   setInput,
   removeNumbers = false,
@@ -57,9 +60,9 @@ const BulkSlugifyInput: React.FC<IBulkSlugifyInputProps> = ({
   /**
    * Handles form submission to generate slugs
    *
-   * @param {Object} e - Event object
+   * @param {object} e - Event object
    */
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     onSubmit();
   };
@@ -82,26 +85,26 @@ const BulkSlugifyInput: React.FC<IBulkSlugifyInputProps> = ({
 
           <div className="flex flex-col gap-2">
             <p className="text-muted-foreground text-sm">
-              Currently separating with:{" "}
-              <span className="font-bold">{useUnderscore ? "Underscore (_)" : "Dash (-)"}</span>
+              Currently separating with:{' '}
+              <span className="font-bold">{useUnderscore ? 'Underscore (_)' : 'Dash (-)'}</span>
             </p>
 
             <div className="flex flex-wrap gap-2">
               <Button
                 size="sm"
-                variant={!useUnderscore ? "default" : "outline"}
+                variant={!useUnderscore ? 'default' : 'outline'}
                 onClick={() => setUseUnderscore(false)}
                 disabled={!useUnderscore}
-                className={cn("!opacity-100")}
+                className={cn('!opacity-100')}
               >
                 <span className="text-xs">With dash (-)</span>
               </Button>
               <Button
                 size="sm"
-                variant={useUnderscore ? "default" : "outline"}
+                variant={useUnderscore ? 'default' : 'outline'}
                 onClick={() => setUseUnderscore(true)}
                 disabled={useUnderscore}
-                className={cn("!opacity-100")}
+                className={cn('!opacity-100')}
               >
                 <span className="text-xs">With underscore (_)</span>
               </Button>

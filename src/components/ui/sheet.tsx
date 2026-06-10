@@ -1,25 +1,22 @@
-"use client";
+'use client';
 
-import { useState, useEffect, useContext, createContext, useCallback, useRef, ReactNode } from "react";
+import { useState, useEffect, useContext, createContext, useCallback, useRef } from 'react';
+import type { ReactNode } from 'react';
 
-import { createPortal } from "react-dom";
-import { RiCloseFill } from "react-icons/ri";
+import { createPortal } from 'react-dom';
+import { RiCloseFill } from 'react-icons/ri';
 
-import { Button } from "@/components/ui/button";
-import { cn } from "@/utils/classNameUtils";
+import { Button } from '@/components/ui/button';
+import { cn } from '@/utils/classNameUtils';
 
 // Create context for state management
 interface ISheetContextType {
   open: boolean;
   onOpenChange: (value: boolean) => void;
-  side: "right" | "left" | "top" | "bottom";
+  side: 'right' | 'left' | 'top' | 'bottom';
 }
 
-const SheetContext = createContext<ISheetContextType>({
-  open: false,
-  onOpenChange: () => {},
-  side: "right",
-});
+const SheetContext = createContext<ISheetContextType>({ open: false, onOpenChange: () => {}, side: 'right' });
 
 /**
  * Props for the Sheet component
@@ -32,6 +29,11 @@ interface ISheetProps extends React.HTMLAttributes<HTMLDivElement> {
 
 /**
  * Sheet component to manage state and provide context.
+ *
+ * @param root0
+ * @param root0.open
+ * @param root0.onOpenChange
+ * @param root0.children
  */
 function Sheet({ open: controlledOpen, onOpenChange, children, ...props }: ISheetProps) {
   const [uncontrolledOpen, setUncontrolledOpen] = useState(false);
@@ -48,13 +50,7 @@ function Sheet({ open: controlledOpen, onOpenChange, children, ...props }: IShee
   );
 
   return (
-    <SheetContext.Provider
-      value={{
-        open,
-        onOpenChange: handleOpenChange,
-        side: "right",
-      }}
-    >
+    <SheetContext.Provider value={{ open, onOpenChange: handleOpenChange, side: 'right' }}>
       <div data-slot="sheet" {...props}>
         {children}
       </div>
@@ -72,8 +68,12 @@ interface ISheetCloseProps extends React.ButtonHTMLAttributes<HTMLButtonElement>
 
 /**
  * Button to close the sheet.
+ *
+ * @param root0
+ * @param root0.className
+ * @param root0.children
  */
-function SheetClose({ className = "", children, ...props }: ISheetCloseProps) {
+function SheetClose({ className = '', children, ...props }: ISheetCloseProps) {
   const { onOpenChange } = useContext(SheetContext);
 
   return (
@@ -81,7 +81,7 @@ function SheetClose({ className = "", children, ...props }: ISheetCloseProps) {
       type="button"
       data-slot="sheet-close"
       variant="secondary"
-      className={cn("h-10 w-10", className)}
+      className={cn('h-10 w-10', className)}
       onClick={() => onOpenChange(false)}
       {...props}
     >
@@ -99,6 +99,9 @@ interface ISheetPortalProps {
 
 /**
  * Portal for rendering sheet content outside the DOM hierarchy.
+ *
+ * @param root0
+ * @param root0.children
  */
 function SheetPortal({ children, ...props }: ISheetPortalProps) {
   const [mounted, setMounted] = useState(false);
@@ -127,8 +130,11 @@ interface ISheetOverlayProps extends React.HTMLAttributes<HTMLDivElement> {
 
 /**
  * Overlay for the sheet, used as a backdrop.
+ *
+ * @param root0
+ * @param root0.className
  */
-function SheetOverlay({ className = "", ...props }: ISheetOverlayProps) {
+function SheetOverlay({ className = '', ...props }: ISheetOverlayProps) {
   const { open, onOpenChange } = useContext(SheetContext);
 
   return (
@@ -136,12 +142,12 @@ function SheetOverlay({ className = "", ...props }: ISheetOverlayProps) {
       role="presentation"
       aria-hidden={!open}
       data-slot="sheet-overlay"
-      data-state={open ? "open" : "closed"}
+      data-state={open ? 'open' : 'closed'}
       className={cn(
-        "fixed inset-0 z-50 bg-black/50 transition-opacity duration-300",
-        "data-[state=open]:animate-in data-[state=closed]:animate-out",
-        "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
-        open ? "opacity-100" : "pointer-events-none opacity-0",
+        'fixed inset-0 z-50 bg-black/50 transition-opacity duration-300',
+        'data-[state=open]:animate-in data-[state=closed]:animate-out',
+        'data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0',
+        open ? 'opacity-100' : 'pointer-events-none opacity-0',
         className
       )}
       onClick={() => onOpenChange(false)}
@@ -156,13 +162,18 @@ function SheetOverlay({ className = "", ...props }: ISheetOverlayProps) {
 interface ISheetContentProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
   children: ReactNode;
-  side?: "right" | "left" | "top" | "bottom";
+  side?: 'right' | 'left' | 'top' | 'bottom';
 }
 
 /**
  * Main content area of the sheet.
+ *
+ * @param root0
+ * @param root0.className
+ * @param root0.children
+ * @param root0.side
  */
-function SheetContent({ className = "", children, side = "right", ...props }: ISheetContentProps) {
+function SheetContent({ className = '', children, side = 'right', ...props }: ISheetContentProps) {
   const { open, onOpenChange } = useContext(SheetContext);
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -171,25 +182,25 @@ function SheetContent({ className = "", children, side = "right", ...props }: IS
     if (!open) return;
 
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
+      if (e.key === 'Escape') {
         onOpenChange(false);
       }
     };
 
-    document.addEventListener("keydown", handleKeyDown);
-    return () => document.removeEventListener("keydown", handleKeyDown);
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
   }, [open, onOpenChange]);
 
   // Prevent scroll when open
   useEffect(() => {
     if (open) {
-      document.body.style.overflow = "hidden";
+      document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = "";
+      document.body.style.overflow = '';
     }
 
     return () => {
-      document.body.style.overflow = "";
+      document.body.style.overflow = '';
     };
   }, [open]);
 
@@ -199,34 +210,34 @@ function SheetContent({ className = "", children, side = "right", ...props }: IS
       <div
         ref={contentRef}
         data-slot="sheet-content"
-        data-state={open ? "open" : "closed"}
+        data-state={open ? 'open' : 'closed'}
         className={cn(
-          "bg-background border-border/50 fixed z-50 flex flex-col gap-4 shadow-lg",
-          "transition-all duration-300 ease-in-out",
-          !open && "pointer-events-none",
-          side === "right" && [
-            "inset-y-0 right-0 h-full w-3/4 border-l sm:max-w-sm",
+          'bg-background border-border/50 fixed z-50 flex flex-col gap-4 shadow-lg',
+          'transition-all duration-300 ease-in-out',
+          !open && 'pointer-events-none',
+          side === 'right' && [
+            'inset-y-0 right-0 h-full w-3/4 border-l sm:max-w-sm',
             open
-              ? "data-[state=open]:animate-in data-[state=open]:slide-in-from-right translate-x-0"
-              : "data-[state=closed]:animate-out data-[state=closed]:slide-out-to-right translate-x-full",
+              ? 'data-[state=open]:animate-in data-[state=open]:slide-in-from-right translate-x-0'
+              : 'data-[state=closed]:animate-out data-[state=closed]:slide-out-to-right translate-x-full',
           ],
-          side === "left" && [
-            "inset-y-0 left-0 h-full w-3/4 border-r sm:max-w-sm",
+          side === 'left' && [
+            'inset-y-0 left-0 h-full w-3/4 border-r sm:max-w-sm',
             open
-              ? "data-[state=open]:animate-in data-[state=open]:slide-in-from-left translate-x-0"
-              : "data-[state=closed]:animate-out data-[state=closed]:slide-out-to-left translate-x-[-100%]",
+              ? 'data-[state=open]:animate-in data-[state=open]:slide-in-from-left translate-x-0'
+              : 'data-[state=closed]:animate-out data-[state=closed]:slide-out-to-left translate-x-[-100%]',
           ],
-          side === "top" && [
-            "inset-x-0 top-0 h-auto border-b",
+          side === 'top' && [
+            'inset-x-0 top-0 h-auto border-b',
             open
-              ? "data-[state=open]:animate-in data-[state=open]:slide-in-from-top translate-y-0"
-              : "data-[state=closed]:animate-out data-[state=closed]:slide-out-to-top translate-y-[-100%]",
+              ? 'data-[state=open]:animate-in data-[state=open]:slide-in-from-top translate-y-0'
+              : 'data-[state=closed]:animate-out data-[state=closed]:slide-out-to-top translate-y-[-100%]',
           ],
-          side === "bottom" && [
-            "inset-x-0 bottom-0 h-auto border-t",
+          side === 'bottom' && [
+            'inset-x-0 bottom-0 h-auto border-t',
             open
-              ? "data-[state=open]:animate-in data-[state=open]:slide-in-from-bottom translate-y-0"
-              : "data-[state=closed]:animate-out data-[state=closed]:slide-out-to-bottom translate-y-full",
+              ? 'data-[state=open]:animate-in data-[state=open]:slide-in-from-bottom translate-y-0'
+              : 'data-[state=closed]:animate-out data-[state=closed]:slide-out-to-bottom translate-y-full',
           ],
           className
         )}
@@ -248,12 +259,16 @@ interface ISheetHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
 
 /**
  * Header section of the sheet.
+ *
+ * @param root0
+ * @param root0.className
+ * @param root0.children
  */
 function SheetHeader({ className, children, ...props }: ISheetHeaderProps) {
   return (
     <div
       data-slot="sheet-header"
-      className={cn("flex flex-row items-center justify-between gap-4", className)}
+      className={cn('flex flex-row items-center justify-between gap-4', className)}
       {...props}
     >
       <div className="flex flex-col gap-1.5">{children}</div>
@@ -274,12 +289,15 @@ interface ISheetFooterProps extends React.HTMLAttributes<HTMLDivElement> {
 
 /**
  * Footer section of the sheet.
+ *
+ * @param root0
+ * @param root0.className
  */
 function SheetFooter({ className, ...props }: ISheetFooterProps) {
   return (
     <div
       data-slot="sheet-footer"
-      className={cn("border-border mt-auto flex flex-col gap-2 border-t p-4", className)}
+      className={cn('border-border mt-auto flex flex-col gap-2 border-t p-4', className)}
       {...props}
     />
   );

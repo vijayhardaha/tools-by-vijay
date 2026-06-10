@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
-import { CopyButton } from "@/components/ui/copyButton";
-import { Input } from "@/components/ui/input";
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { CopyButton } from '@/components/ui/copyButton';
+import { Input } from '@/components/ui/input';
 
 /**
  * Interface for the PasswordGeneratorOutput component props.
@@ -17,6 +17,7 @@ interface IPasswordGeneratorOutputProps {
  * to the clipboard with visual feedback when copied.
  *
  * @param {IPasswordGeneratorOutputProps} props - Component props.
+ *
  * @returns {React.JSX.Element} The rendered card with password display and copy functionality.
  */
 const PasswordGeneratorOutput: React.FC<IPasswordGeneratorOutputProps> = ({
