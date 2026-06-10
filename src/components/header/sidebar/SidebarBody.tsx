@@ -57,7 +57,7 @@ const CategorySection: React.FC<CategorySectionProps> = ({ title, tools }: Categ
  *
  * @returns {React.JSX.Element} The sidebar body content.
  */
-const SidebarBody: React.FC = (): React.JSX.Element => {
+const SidebarBody = (): React.JSX.Element => {
   // Group tools by category
   const categorizedTools = getToolsByCategories();
   const scrollbarsRef = useRef<Scrollbars>(null);
