@@ -1,6 +1,5 @@
-'use client';
-
-import type { FormEvent } from 'react';
+import type { JSX, FormEvent } from 'react';
+('use client');
 
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
@@ -31,9 +30,9 @@ interface ReplaceQuotesInputProps {
  *
  * @param {ReplaceQuotesInputProps} props - Component props
  *
- * @returns {React.JSX.Element} The input component for the Replace Quotes tool.
+ * @returns {JSX.Element} The input component for the Replace Quotes tool.
  */
-const ReplaceQuotesInput: React.FC<ReplaceQuotesInputProps> = ({
+const ReplaceQuotesInput = ({
   input,
   setInput,
   replaceType,
@@ -45,7 +44,7 @@ const ReplaceQuotesInput: React.FC<ReplaceQuotesInputProps> = ({
   onSubmit,
   onClear,
   onReset,
-}: ReplaceQuotesInputProps): React.JSX.Element => {
+}: ReplaceQuotesInputProps): JSX.Element => {
   /**
    * Handles form submission by preventing default behavior and triggering the replace action.
    *
