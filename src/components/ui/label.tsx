@@ -1,4 +1,4 @@
-'use client';
+('use client');
 
 import { forwardRef } from 'react';
 
@@ -23,7 +23,7 @@ const labelVariants = cva('text-sm font-medium leading-none peer-disabled:cursor
  *
  * @param {LabelProps} props - Component props
  *
- * @returns {React.JSX.Element} The Label component
+ * @returns {JSX.Element} The Label component
  */
 const Label = forwardRef<HTMLLabelElement, LabelProps>(({ className = '', children, htmlFor, ...props }, ref) => (
   <label ref={ref} className={cn(labelVariants(), className)} htmlFor={htmlFor} {...props}>
