@@ -1,4 +1,5 @@
-'use client';
+import type { JSX } from 'react';
+('use client');
 
 import React, { useState } from 'react';
 
@@ -10,9 +11,9 @@ import AlphabeticalLineSorterOutput from './AlphabeticalLineSorterOutput';
  * Main component for the Alphabetical Line Sorter tool.
  * Manages the state and functionality for sorting lines alphabetically.
  *
- * @returns {React.JSX.Element} The complete Alphabetical Line Sorter tool with input options, output display, and functionality
+ * @returns {JSX.Element} The complete Alphabetical Line Sorter tool with input options, output display, and functionality
  */
-const AlphabeticalLineSorterTool = (): React.JSX.Element => {
+const AlphabeticalLineSorterTool = (): JSX.Element => {
   const [input, setInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
   const [reverseSort, setReverseSort] = useState<boolean>(false);
