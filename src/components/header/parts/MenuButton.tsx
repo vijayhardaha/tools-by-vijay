@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 /**
  * Props for the MenuButton component.
  */
-type IMenuButtonProps = { onClick: () => void };
+type MenuButtonProps = { onClick: () => void };
 
 /**
  * MenuButton component renders a button that toggles the sidebar menu.
@@ -16,7 +16,7 @@ type IMenuButtonProps = { onClick: () => void };
  *
  * @returns {React.JSX.Element} A button component with "Menu" text and hamburger icon.
  */
-const MenuButton: React.FC<IMenuButtonProps> = ({ onClick }: IMenuButtonProps): React.JSX.Element => (
+const MenuButton: React.FC<MenuButtonProps> = ({ onClick }: MenuButtonProps): React.JSX.Element => (
   <Button onClick={onClick} variant="primary" className="w-12 md:w-auto" aria-label="Menu">
     <span className="hidden md:inline-flex">Menu</span>
     <span className="sr-only">Menu</span>
