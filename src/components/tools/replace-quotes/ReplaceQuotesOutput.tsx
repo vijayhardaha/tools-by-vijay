@@ -7,7 +7,7 @@ import { Textarea } from '@/components/ui/textarea';
 /**
  * Interface for the Replace Quotes output component props.
  */
-interface IReplaceQuotesOutputProps {
+interface ReplaceQuotesOutputProps {
   output: string;
 }
 
@@ -20,9 +20,9 @@ interface IReplaceQuotesOutputProps {
  *
  * @returns {React.JSX.Element} The rendered card with output display and copy functionality
  */
-const ReplaceQuotesOutput: React.FC<IReplaceQuotesOutputProps> = ({
+const ReplaceQuotesOutput: React.FC<ReplaceQuotesOutputProps> = ({
   output,
-}: IReplaceQuotesOutputProps): React.JSX.Element => {
+}: ReplaceQuotesOutputProps): React.JSX.Element => {
   return (
     <Card>
       <CardHeader>
