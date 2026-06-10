@@ -1,20 +1,22 @@
-/** @type {import('next-sitemap').IConfig} */
-const config = {
-  siteUrl: "https://toolsbyvijay.vercel.app",
-  generateRobotsTxt: true,
-  sitemapBaseFileName: "sitemap",
-  changefreq: "weekly",
-  priority: 0.7,
-  trailingSlash: false,
-  exclude: ["/404", "/500"],
-  robotsTxtOptions: {
-    policies: [{ userAgent: "*", allow: "/" }],
-    transformRobotsTxt: async (_, robotsTxt) => {
-      const withoutHost = robotsTxt.replace(`# Host\nHost: https://toolsbyvijay.vercel.app\n\n`, "");
+/**
+ * ======================================================================
+ * Next Sitemap Configuration
+ * ======================================================================
+ * Purpose: Generate sitemaps and robots.txt to help search engines
+ *          discover and index site content.
+ *          Use `npx next-sitemap` for local testing.
+ * Docs:    https://github.com/iamvishnusankar/next-sitemap
+ * ======================================================================
+ */
 
-      return withoutHost;
-    },
-  },
-};
+const { createSitemapConfig } = require('@vijayhardaha/dev-config/next-sitemap');
+
+const siteDomain = 'https://toolsbyvijay.vercel.app';
+
+/** @type {import('next-sitemap').IConfig} */
+const config = createSitemapConfig({
+  siteUrl: siteDomain,
+  outDir: process.env.NODE_ENV === 'production' ? '/vercel/output/static' : './public',
+});
 
 module.exports = config;

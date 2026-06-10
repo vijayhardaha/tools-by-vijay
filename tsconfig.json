@@ -1,30 +1,49 @@
+// =======================================================================
+// Typescript Configuration
+// =======================================================================
+// Purpose: Static type-checking and module resolution strategy for the
+//          repository, ensuring predictable behavior and strong typing
+//          across code.
+// Docs:    https://www.typescriptlang.org/tsconfig
+// =======================================================================
 {
+  "extends": "@vijayhardaha/dev-config/tsconfig",
   "compilerOptions": {
-    "allowJs": true,
-    "baseUrl": ".",
-    "downlevelIteration": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "incremental": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "lib": ["dom", "dom.iterable"],
-    "module": "esnext",
-    "moduleResolution": "node",
-    "noEmit": true,
-    "paths": {
-      "@/*": ["./src/*"]
-    },
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "target": "ES2024"
+    "paths": { "@/*": ["./src/*"] },
+    // ----------------------------------------------------------------------
+    // Plugins & extras
+    // ----------------------------------------------------------------------
+    "plugins": [{ "name": "next" }],
+    "jsx": "preserve"
   },
-  "exclude": ["node_modules"],
-  "include": ["**/*.{js,jsx,ts,tsx,mjs,cjs}", "*.config.mjs", "next-env.d.ts", "*.d.ts", ".next/types/**/*.ts"]
+  // ---- Includes ----
+  // Files to include in the project type-checking scope
+  "include": [
+    ".next/dev/types/**/*.ts",
+    ".next/types/**/*.ts",
+    "*.config.mjs",
+    "*.config.ts",
+    "*.d.ts",
+    "**/*.js",
+    "**/*.jsx",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.mjs",
+    "**/*.cjs",
+    "next-env.d.ts"
+  ],
+  // ---- Excludes ----
+  "exclude": [
+    "node_modules",
+    "output",
+    "build",
+    "coverage",
+    "dist",
+    ".git",
+    ".github",
+    ".fallow",
+    ".tmp",
+    "docs",
+    "ublic"
+  ]
 }
