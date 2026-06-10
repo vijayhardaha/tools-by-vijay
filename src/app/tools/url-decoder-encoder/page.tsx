@@ -34,7 +34,7 @@ export const metadata: PageMeta = generateMeta({
  *
  * @returns {React.JSX.Element} The rendered URL Decoder/Encoder tool page component.
  */
-const UrlDecoderEncoder: React.FC = (): React.JSX.Element => {
+const UrlDecoderEncoder = (): React.JSX.Element => {
   if (!tool) {
     notFound(); // Render a 404 page if the tool is null
   }
