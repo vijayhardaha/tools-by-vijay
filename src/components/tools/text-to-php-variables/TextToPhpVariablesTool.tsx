@@ -1,4 +1,5 @@
-'use client';
+import type { JSX } from 'react';
+('use client');
 
 import { useState } from 'react';
 
@@ -15,9 +16,9 @@ export type VariableCase = 'camelCase' | 'snake_case' | 'PascalCase';
  * Main component for the Text to PHP Variables tool.
  * Manages the state and functionality for converting multiline text to PHP variables.
  *
- * @returns {React.JSX.Element} The complete text to PHP variables tool with input options and output display.
+ * @returns {JSX.Element} The complete text to PHP variables tool with input options and output display.
  */
-const TextToPhpVariablesTool = (): React.JSX.Element => {
+const TextToPhpVariablesTool = (): JSX.Element => {
   const [input, setInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
   const [variableCase, setVariableCase] = useState<VariableCase>('snake_case');
