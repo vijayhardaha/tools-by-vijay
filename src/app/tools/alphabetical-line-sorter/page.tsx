@@ -34,7 +34,7 @@ export const metadata: PageMeta = generateMeta({
  *
  * @returns {React.JSX.Element} The rendered Alphabetical Line Sorter tool page component.
  */
-const AlphabeticalLineSorter: React.FC = (): React.JSX.Element => {
+const AlphabeticalLineSorter = (): React.JSX.Element => {
   if (!tool) {
     notFound(); // Render a 404 page if the tool is null
   }
