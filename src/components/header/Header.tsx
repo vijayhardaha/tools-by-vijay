@@ -30,23 +30,6 @@ const Header: React.FC = (): React.JSX.Element => {
           <div className="flex items-center justify-between gap-4 py-4">
             <Logo />
             <div className="flex items-center gap-2">
-              <Button
-                asChild
-                variant="default"
-                className={cn(
-                  'w-12 border-none md:w-auto md:px-6',
-                  'to-line-500 bg-gradient-to-r from-purple-500 via-pink-500 to-yellow-500 text-white md:inline-flex',
-                  'hover:from-pink-500 hover:via-red-500 hover:to-purple-500'
-                )}
-              >
-                <Link href="/text-story-maker">
-                  <span className="inline-flex md:hidden">
-                    <span className="sr-only">Text Story Maker</span>
-                    <AaIcon className="size-5" />
-                  </span>
-                  <span className="hidden md:inline-flex"> Text Story Maker</span>
-                </Link>
-              </Button>
               <MenuButton onClick={toggleDrawer} />
             </div>
           </div>
