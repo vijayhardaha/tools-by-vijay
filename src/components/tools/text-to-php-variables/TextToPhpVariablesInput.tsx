@@ -1,6 +1,5 @@
-'use client';
-
-import type { FormEvent } from 'react';
+import type { JSX, FormEvent } from 'react';
+('use client');
 
 import { Alert } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
@@ -27,9 +26,9 @@ interface TextToPhpVariablesInputProps {
  *
  * @param {TextToPhpVariablesInputProps} props - The props for the component.
  *
- * @returns {React.JSX.Element} The rendered input component.
+ * @returns {JSX.Element} The rendered input component.
  */
-const TextToPhpVariablesInput: React.FC<TextToPhpVariablesInputProps> = ({
+const TextToPhpVariablesInput = ({
   input,
   setInput,
   variableCase,
@@ -38,7 +37,7 @@ const TextToPhpVariablesInput: React.FC<TextToPhpVariablesInputProps> = ({
   onClear,
   onReset,
   error,
-}: TextToPhpVariablesInputProps): React.JSX.Element => {
+}: TextToPhpVariablesInputProps): JSX.Element => {
   /**
    * Handles form submission.
    *
