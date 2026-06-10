@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
 import { CopyButton } from '@/components/ui/copyButton';
 import { Textarea } from '@/components/ui/textarea';
@@ -14,11 +16,9 @@ interface TextCaseChangerOutputProps {
  *
  *  @param {TextCaseChangerOutputProps} props - The props for the TextCaseChangerOutput component.
  *
- * @returns {React.JSX.Element} The TextCaseChangerOutput component.
+ * @returns {JSX.Element} The TextCaseChangerOutput component.
  */
-const TextCaseChangerOutput: React.FC<TextCaseChangerOutputProps> = ({
-  output,
-}: TextCaseChangerOutputProps): React.JSX.Element => {
+const TextCaseChangerOutput = ({ output }: TextCaseChangerOutputProps): JSX.Element => {
   return (
     <Card>
       <CardHeader>
