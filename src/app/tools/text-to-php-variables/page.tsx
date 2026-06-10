@@ -34,7 +34,7 @@ export const metadata: PageMeta = generateMeta({
  *
  * @returns {React.JSX.Element} The rendered Text to PHP Variables tool page component.
  */
-const TextToPhpVariables: React.FC = (): React.JSX.Element => {
+const TextToPhpVariables = (): React.JSX.Element => {
   if (!tool) {
     notFound(); // Render a 404 page if the tool is null
   }
