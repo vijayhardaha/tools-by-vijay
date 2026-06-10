@@ -1,6 +1,5 @@
-'use client';
-
-import type { FormEvent } from 'react';
+import type { JSX, FormEvent } from 'react';
+('use client');
 
 import type { MinifyOptions } from '@/components/tools/js-minifier/JsMinifierTool';
 import { Alert } from '@/components/ui/alert';
@@ -29,9 +28,9 @@ interface JsMinifierInputProps {
  *
  *  @param {JsMinifierInputProps} props - Component props.
  *
- * @returns {React.JSX.Element} The JsMinifierInput component.
+ * @returns {JSX.Element} The JsMinifierInput component.
  */
-const JsMinifierInput: React.FC<JsMinifierInputProps> = ({
+const JsMinifierInput = ({
   input,
   setInput,
   options,
@@ -41,7 +40,7 @@ const JsMinifierInput: React.FC<JsMinifierInputProps> = ({
   onReset,
   isLoading,
   error,
-}: JsMinifierInputProps): React.JSX.Element => {
+}: JsMinifierInputProps): JSX.Element => {
   /**
    * Handles form submission and triggers JavaScript minification.
    *
