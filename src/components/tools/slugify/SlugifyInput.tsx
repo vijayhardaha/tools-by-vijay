@@ -1,6 +1,5 @@
-'use client';
-
-import type { FormEvent } from 'react';
+import type { JSX, FormEvent } from 'react';
+('use client');
 
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
@@ -32,9 +31,9 @@ interface SlugifyInputProps {
  *
  *  @param {SlugifyInputProps} props - The props for the component.
  *
- * @returns {React.JSX.Element} The rendered SlugifyInput component.
+ * @returns {JSX.Element} The rendered SlugifyInput component.
  */
-const SlugifyInput: React.FC<SlugifyInputProps> = ({
+const SlugifyInput = ({
   input = '',
   setInput,
   useUnderscore = false,
@@ -48,7 +47,7 @@ const SlugifyInput: React.FC<SlugifyInputProps> = ({
   onSubmit,
   onClear,
   onReset,
-}: SlugifyInputProps): React.JSX.Element => {
+}: SlugifyInputProps): JSX.Element => {
   /**
    * Handles form submission and triggers slug generation.
    *
