@@ -1,3 +1,4 @@
+import type { JSX } from 'react';
 import React from 'react';
 
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
@@ -16,9 +17,9 @@ interface PxToRemOutputProps {
  *
  *  @param {PxToRemOutputProps} props - Component props.
  *
- * @returns {React.JSX.Element} The rendered card with the rem value.
+ * @returns {JSX.Element} The rendered card with the rem value.
  */
-const PxToRemOutput: React.FC<PxToRemOutputProps> = ({ remValue }: PxToRemOutputProps): React.JSX.Element => {
+const PxToRemOutput = ({ remValue }: PxToRemOutputProps): JSX.Element => {
   return (
     <Card>
       <CardHeader>
