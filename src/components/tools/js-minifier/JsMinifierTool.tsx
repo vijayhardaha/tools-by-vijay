@@ -21,7 +21,7 @@ export interface MinifyOptions {
  *
  * @returns {React.JSX.Element} The JavaScript Minifier tool interface.
  */
-const JsMinifierTool: React.FC = (): React.JSX.Element => {
+const JsMinifierTool = (): React.JSX.Element => {
   const [input, setInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -85,8 +85,8 @@ const JsMinifierTool: React.FC = (): React.JSX.Element => {
   /**
    * Updates an option in the options state.
    *
-   * @param key
-   * @param value
+   * @param {keyof MinifyOptions} key - The option key to update
+   * @param {boolean} value - The new value for the option
    */
   const updateOption = (key: keyof MinifyOptions, value: boolean) => {
     setOptions((prev) => ({ ...prev, [key]: value }));
