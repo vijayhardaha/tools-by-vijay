@@ -34,7 +34,7 @@ export const metadata: PageMeta = generateMeta({
  *
  * @returns {React.JSX.Element} The rendered Text Case Changer tool page component.
  */
-const TextCaseChanger: React.FC = (): React.JSX.Element => {
+const TextCaseChanger = (): React.JSX.Element => {
   if (!tool) {
     notFound(); // Render a 404 page if the tool is null
   }
