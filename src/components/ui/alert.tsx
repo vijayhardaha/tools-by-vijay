@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import { cva } from 'class-variance-authority';
 import { LuCircleAlert, LuInfo, LuTriangleAlert, LuCircleCheck, LuCircleX } from 'react-icons/lu';
 
@@ -56,7 +58,7 @@ interface AlertProps extends React.HTMLAttributes<HTMLDivElement> {
  *
  * @param {AlertProps} props - The component props
  *
- * @returns {React.JSX.Element} The rendered Alert component
+ * @returns {JSX.Element} The rendered Alert component
  */
 function Alert({
   className,
@@ -66,7 +68,7 @@ function Alert({
   icon,
   children,
   ...props
-}: AlertProps): React.JSX.Element {
+}: AlertProps): JSX.Element {
   // Use provided icon or default for the variant
   const iconToRender = icon || defaultIcons[variant];
 
