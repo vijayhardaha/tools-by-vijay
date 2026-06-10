@@ -12,7 +12,7 @@ import { Textarea } from '@/components/ui/textarea';
 /**
  * Interface for the minification options.
  */
-interface IMinificationOptions {
+interface MinificationOptions {
   level: number;
   compress: boolean;
   format: { spaces: { aroundSelectorRelation: boolean; beforeBlockBegins: boolean; beforeValue: boolean } };
@@ -21,10 +21,10 @@ interface IMinificationOptions {
 /**
  * Interface for the CssMinifierInput component props.
  */
-interface ICssMinifierInputProps {
+interface CssMinifierInputProps {
   input: string;
   setInput: (value: string) => void;
-  options: IMinificationOptions;
+  options: MinificationOptions;
   updateOption: (key: string, value: any) => void;
   updateSpacesOption: (key: string, value: boolean) => void;
   onSubmit: () => void;
@@ -38,11 +38,11 @@ interface ICssMinifierInputProps {
  * A component for accepting CSS input and configuring minification options.
  * It includes a form with input fields, checkboxes, and buttons for customization and actions.
  *
- * @param {ICssMinifierInputProps} props - The props for the component.
+ *  @param {CssMinifierInputProps} props - The props for the component.
  *
  * @returns {React.JSX.Element} The rendered CssMinifierInput component.
  */
-const CssMinifierInput: React.FC<ICssMinifierInputProps> = ({
+const CssMinifierInput: React.FC<CssMinifierInputProps> = ({
   input,
   setInput,
   options,
@@ -53,7 +53,7 @@ const CssMinifierInput: React.FC<ICssMinifierInputProps> = ({
   onReset,
   isLoading,
   error,
-}: ICssMinifierInputProps): React.JSX.Element => {
+}: CssMinifierInputProps): React.JSX.Element => {
   /**
    * Handles the form submission event.
    * Prevents the default form submission and triggers the onSubmit callback.
