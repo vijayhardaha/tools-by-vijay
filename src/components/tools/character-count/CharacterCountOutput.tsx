@@ -1,3 +1,4 @@
+import type { JSX } from 'react';
 import React from 'react';
 
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
@@ -14,19 +15,17 @@ interface CharacterCountOutputProps {
  *
  * @param {CharacterCountOutputProps} props - Component props.
  *
- * @returns {React.JSX.Element} The rendered card with text statistics.
+ * @returns {JSX.Element} The rendered card with text statistics.
  */
-const CharacterCountOutput: React.FC<CharacterCountOutputProps> = ({
-  stats,
-}: CharacterCountOutputProps): React.JSX.Element => {
+const CharacterCountOutput = ({ stats }: CharacterCountOutputProps): JSX.Element => {
   /**
    * Renders a code block with specific styling.
    *
    * @param {string|number} code - The code to be displayed.
    *
-   * @returns {React.JSX.Element} The rendered code block.
+   * @returns {JSX.Element} The rendered code block.
    */
-  const codeBlock = (code: string | number): React.JSX.Element | null =>
+  const codeBlock = (code: string | number): JSX.Element | null =>
     typeof code === 'string' || typeof code === 'number' ? (
       <code className="bg-muted rounded px-1 py-0.5 text-sm font-medium text-pink-500">{code}</code>
     ) : null;
