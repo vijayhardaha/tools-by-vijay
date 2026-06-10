@@ -1,4 +1,5 @@
-'use client';
+import type { JSX } from 'react';
+('use client');
 
 import React, { useState } from 'react';
 
@@ -10,9 +11,9 @@ import PasswordGeneratorOutput from './PasswordGeneratorOutput';
  * Main component for the Password Generator tool.
  * Manages the state and functionality for generating secure passwords based on user preferences.
  *
- * @returns {React.JSX.Element} The complete password generator tool with input options, output display, and information
+ * @returns {JSX.Element} The complete password generator tool with input options, output display, and information
  */
-const PasswordGeneratorTool = (): React.JSX.Element => {
+const PasswordGeneratorTool = (): JSX.Element => {
   const [length, setLength] = useState<number>(12);
   const [useUppercase, setUseUppercase] = useState<boolean>(true);
   const [useLowercase, setUseLowercase] = useState<boolean>(true);
