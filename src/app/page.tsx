@@ -12,7 +12,7 @@ import { getToolsByCategories } from '@/utils/toolUtils';
  *
  * @returns {React.JSX.Element} The rendered Home component with categorized tools.
  */
-const Home: React.FC = (): React.JSX.Element => {
+const Home = (): React.JSX.Element => {
   const toolsByCategory: Record<string, Tool[]> = getToolsByCategories();
 
   return (
@@ -62,7 +62,7 @@ const Home: React.FC = (): React.JSX.Element => {
               anytime you need it.
             </p>
             <p>
-              These tools can be accessible from any device with a web browser, making them perfect for. on-the-go
+              These tools can be accessible from any device with a web browser, making them perfect for on-the-go
               developers or those who prefer not to install software. Whether you’re at your desk, on a laptop, or using
               a mobile device, you can quickly access the tools you need without any hassle.
             </p>
@@ -74,8 +74,8 @@ const Home: React.FC = (): React.JSX.Element => {
           <div className="space-y-4">
             <p>
               This website offers a growing collection of categorized developer utilities designed to simplify everyday
-              tasks. Whether you're cleaning up content, transforming data formats, or optimizing code, our tools are
-              built for speed and ease of use. Popular options include{' '}
+              tasks. Whether you&apos;re cleaning up content, transforming data formats, or optimizing code, our tools
+              are built for speed and ease of use. Popular options include{' '}
               <strong className="font-bold italic">JSON Sorter</strong>,{' '}
               <strong className="font-bold italic">Base64 Encoder/Decoder</strong>,{' '}
               <strong className="font-bold italic">Dropdown to Array Converter</strong>, and{' '}
