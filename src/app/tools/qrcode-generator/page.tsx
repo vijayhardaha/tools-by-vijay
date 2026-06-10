@@ -34,7 +34,7 @@ export const metadata: PageMeta = generateMeta({
  *
  * @returns {React.JSX.Element} The rendered QR Code Generator tool page component.
  */
-const QRCodeGenerator: React.FC = (): React.JSX.Element => {
+const QRCodeGenerator = (): React.JSX.Element => {
   if (!tool) {
     notFound(); // Render a 404 page if the tool is null
   }
