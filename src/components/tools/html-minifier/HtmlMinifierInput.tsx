@@ -1,6 +1,6 @@
-import type { JSX, FormEvent } from 'react';
-('use client');
+'use client';
 
+import type { JSX, FormEvent } from 'react';
 import React from 'react';
 
 import type { HtmlMinifierOptions } from '@/components/tools/html-minifier/HtmlMinifierTool';

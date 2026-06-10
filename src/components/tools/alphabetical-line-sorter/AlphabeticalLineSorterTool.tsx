@@ -1,6 +1,6 @@
-import type { JSX } from 'react';
-('use client');
+'use client';
 
+import type { JSX } from 'react';
 import React, { useState } from 'react';
 
 import AlphabeticalLineSorterInfo from './AlphabeticalLineSorterInfo';

@@ -1,7 +1,8 @@
-import type { JSX } from 'react';
 /// <reference path="./tinyurl.d.ts" />
-('use client');
 
+'use client';
+
+import type { JSX } from 'react';
 import React, { useState } from 'react';
 
 import TinyURL from 'tinyurl';
