@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
 import { CopyButton } from '@/components/ui/copyButton';
 import { Textarea } from '@/components/ui/textarea';
@@ -15,11 +17,9 @@ interface Base64EncodeDecodeOutputProps {
  *
  *  @param {Base64EncodeDecodeOutputProps} props - The props for the component.
  *
- * @returns {React.JSX.Element} The rendered component.
+ * @returns {JSX.Element} The rendered component.
  */
-const Base64EncodeDecodeOutput: React.FC<Base64EncodeDecodeOutputProps> = ({
-  output,
-}: Base64EncodeDecodeOutputProps): React.JSX.Element => {
+const Base64EncodeDecodeOutput = ({ output }: Base64EncodeDecodeOutputProps): JSX.Element => {
   return (
     <Card>
       <CardHeader>
