@@ -3,16 +3,16 @@ import Link from 'next/link';
 /**
  * Interface representing the props for the FooterWidget component.
  */
-type IFooterWidgetProps = { title: string; links: { name: string; href: string }[] };
+type FooterWidgetProps = { title: string; links: { name: string; href: string }[] };
 
 /**
  * Footer widget component that displays a list of links with a title
  *
- * @param {IFooterWidgetProps} props - Component props.
+ *  @param {FooterWidgetProps} props - Component props.
  *
  * @returns {React.JSX.Element} The rendered footer widget.
  */
-const FooterWidget: React.FC<IFooterWidgetProps> = ({ title, links }: IFooterWidgetProps): React.JSX.Element => {
+const FooterWidget: React.FC<FooterWidgetProps> = ({ title, links }: FooterWidgetProps): React.JSX.Element => {
   /**
    * Check if a URL is external (starts with http:// or https://)
    *
