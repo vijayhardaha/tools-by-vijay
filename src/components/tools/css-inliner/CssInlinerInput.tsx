@@ -1,6 +1,5 @@
-'use client';
-
-import type { FormEvent } from 'react';
+import type { JSX, FormEvent } from 'react';
+('use client');
 
 import { Alert } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
@@ -27,9 +26,9 @@ interface CssInlinerInputProps {
  *
  *  @param {CssInlinerInputProps} props - The props for the CssInlinerInput component.
  *
- * @returns {React.JSX.Element} The CssInlinerInput component.
+ * @returns {JSX.Element} The CssInlinerInput component.
  */
-const CssInlinerInput: React.FC<CssInlinerInputProps> = ({
+const CssInlinerInput = ({
   htmlInput,
   setHtmlInput,
   cssInput,
@@ -38,7 +37,7 @@ const CssInlinerInput: React.FC<CssInlinerInputProps> = ({
   onClear,
   isLoading,
   error,
-}: CssInlinerInputProps): React.JSX.Element => {
+}: CssInlinerInputProps): JSX.Element => {
   /**
    * Handles form submission to inline CSS.
    *
