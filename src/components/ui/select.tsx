@@ -9,7 +9,7 @@ import { cn } from '@/utils/classNameUtils';
 /**
  * Option type for the Select component
  */
-interface ISelectOption extends React.HTMLAttributes<HTMLDivElement> {
+interface SelectOption extends React.HTMLAttributes<HTMLDivElement> {
   value: string;
   label: string;
   disabled?: boolean;
@@ -18,12 +18,12 @@ interface ISelectOption extends React.HTMLAttributes<HTMLDivElement> {
 /**
  * Props for the Select component
  */
-interface ISelectProps extends React.HTMLAttributes<HTMLDivElement> {
+interface SelectProps extends React.HTMLAttributes<HTMLDivElement> {
   value?: string;
   defaultValue?: string;
   onValueChange?: (value: string) => void;
   disabled?: boolean;
-  options: ISelectOption[];
+  options: SelectOption[];
   placeholder?: string;
   className?: string;
   size?: 'default' | 'sm';
@@ -32,15 +32,9 @@ interface ISelectProps extends React.HTMLAttributes<HTMLDivElement> {
 /**
  * Simplified Select component that handles all dropdown functionality internally
  *
- * @param root0
- * @param root0.value
- * @param root0.defaultValue
- * @param root0.onValueChange
- * @param root0.disabled
- * @param root0.options
- * @param root0.placeholder
- * @param root0.className
- * @param root0.size
+ * @param {SelectProps} props - The component props
+ *
+ * @returns {React.JSX.Element} The rendered select component
  */
 function Select({
   value,
@@ -52,24 +46,21 @@ function Select({
   className = '',
   size = 'default',
   ...props
-}: ISelectProps) {
-  const [selectedValue, setSelectedValue] = useState(defaultValue || value || '');
+}: SelectProps): React.JSX.Element {
+  const [localValue, setLocalValue] = useState<string>(defaultValue || value || '');
   const [open, setOpen] = useState(false);
   const selectRef = useRef<HTMLDivElement>(null);
+
+  // Derive the effective value during render (fixes set-state-in-effect)
+  const selectedValue = value !== undefined ? value : localValue;
 
   // Get the label of the selected option
   const selectedLabel = options.find((opt) => opt.value === selectedValue)?.label || '';
 
-  useEffect(() => {
-    if (value !== undefined && value !== selectedValue) {
-      setSelectedValue(value);
-    }
-  }, [value, selectedValue]);
-
   const handleValueChange = useCallback(
     (newValue: string) => {
       // Always update internal state regardless of controlled/uncontrolled mode
-      setSelectedValue(newValue);
+      setLocalValue(newValue);
 
       // Call the callback if provided
       onValueChange?.(newValue);
