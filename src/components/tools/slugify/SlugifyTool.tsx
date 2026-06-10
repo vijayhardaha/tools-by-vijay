@@ -1,4 +1,5 @@
-'use client';
+import type { JSX } from 'react';
+('use client');
 
 import { useState } from 'react';
 
@@ -12,9 +13,9 @@ import SlugifyOutput from './SlugifyOutput';
 /**
  * Main component for the Slugify Tool.
  *
- * @returns {React.JSX.Element} The complete Slugify Tool interface.
+ * @returns {JSX.Element} The complete Slugify Tool interface.
  */
-const SlugifyTool = (): React.JSX.Element => {
+const SlugifyTool = (): JSX.Element => {
   const [input, setInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
   const [useUnderscore, setUseUnderscore] = useState<boolean>(false);
