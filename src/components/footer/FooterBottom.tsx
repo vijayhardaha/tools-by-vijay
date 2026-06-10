@@ -1,9 +1,10 @@
+import type { JSX } from 'react';
 /**
  * Bottom section of the footer containing copyright information
  *
- * @returns {React.JSX.Element} The rendered footer bottom section.
+ * @returns {JSX.Element} The rendered footer bottom section.
  */
-const FooterBottom = (): React.JSX.Element => {
+const FooterBottom = (): JSX.Element => {
   const currentYear = new Date().getFullYear();
 
   return (
