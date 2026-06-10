@@ -1,4 +1,5 @@
-'use client';
+import type { JSX } from 'react';
+('use client');
 
 import { useState } from 'react';
 
@@ -20,14 +21,14 @@ interface CopyButtonProps {
  *
  * @param {CopyButtonProps} props - The component props
  *
- * @returns {React.JSX.Element} The CopyButton component
+ * @returns {JSX.Element} The CopyButton component
  */
 export const CopyButton = ({
   text,
   copyText = 'Copy',
   copiedText = 'Copied!',
   className = '',
-}: CopyButtonProps): React.JSX.Element => {
+}: CopyButtonProps): JSX.Element => {
   const [copied, setCopied] = useState(false);
 
   /**
