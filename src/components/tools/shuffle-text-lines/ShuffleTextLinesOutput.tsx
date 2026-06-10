@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
 import { CopyButton } from '@/components/ui/copyButton';
 import { Textarea } from '@/components/ui/textarea';
@@ -14,11 +16,9 @@ interface ShuffleTextLinesOutputProps {
  *
  *  @param {ShuffleTextLinesOutputProps} props - The component props.
  *
- * @returns {React.JSX.Element} The rendered card with output display and copy functionality.
+ * @returns {JSX.Element} The rendered card with output display and copy functionality.
  */
-const ShuffleTextLinesOutput: React.FC<ShuffleTextLinesOutputProps> = ({
-  output,
-}: ShuffleTextLinesOutputProps): React.JSX.Element => {
+const ShuffleTextLinesOutput = ({ output }: ShuffleTextLinesOutputProps): JSX.Element => {
   return (
     <Card>
       <CardHeader>
