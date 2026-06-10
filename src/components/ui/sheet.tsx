@@ -1,7 +1,7 @@
-'use client';
+import type { JSX, ReactNode } from 'react';
+('use client');
 
 import { useState, useEffect, useContext, createContext, useCallback, useRef } from 'react';
-import type { ReactNode } from 'react';
 
 import { createPortal } from 'react-dom';
 import { RiCloseFill } from 'react-icons/ri';
@@ -32,9 +32,9 @@ interface SheetProps extends React.HTMLAttributes<HTMLDivElement> {
  *
  * @param {SheetProps} props - The component props
  *
- * @returns {React.JSX.Element} The rendered sheet component
+ * @returns {JSX.Element} The rendered sheet component
  */
-function Sheet({ open: controlledOpen, onOpenChange, children, ...props }: SheetProps): React.JSX.Element {
+function Sheet({ open: controlledOpen, onOpenChange, children, ...props }: SheetProps): JSX.Element {
   const [uncontrolledOpen, setUncontrolledOpen] = useState(false);
 
   const open = controlledOpen !== undefined ? controlledOpen : uncontrolledOpen;
@@ -70,9 +70,9 @@ interface SheetCloseProps extends React.ButtonHTMLAttributes<HTMLButtonElement> 
  *
  * @param {SheetCloseProps} props - The component props
  *
- * @returns {React.JSX.Element} The rendered sheet close button
+ * @returns {JSX.Element} The rendered sheet close button
  */
-function SheetClose({ className = '', children, ...props }: SheetCloseProps): React.JSX.Element {
+function SheetClose({ className = '', children, ...props }: SheetCloseProps): JSX.Element {
   const { onOpenChange } = useContext(SheetContext);
 
   return (
@@ -101,9 +101,9 @@ interface SheetPortalProps {
  *
  * @param {SheetPortalProps} props - The component props
  *
- * @returns {React.JSX.Element | null} The portal element or null if not mounted
+ * @returns {JSX.Element | null} The portal element or null if not mounted
  */
-function SheetPortal({ children, ...props }: SheetPortalProps): React.JSX.Element | null {
+function SheetPortal({ children, ...props }: SheetPortalProps): JSX.Element | null {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -139,9 +139,9 @@ interface SheetOverlayProps extends React.HTMLAttributes<HTMLDivElement> {
  *
  * @param {SheetOverlayProps} props - The component props
  *
- * @returns {React.JSX.Element} The rendered sheet overlay
+ * @returns {JSX.Element} The rendered sheet overlay
  */
-function SheetOverlay({ className = '', ...props }: SheetOverlayProps): React.JSX.Element {
+function SheetOverlay({ className = '', ...props }: SheetOverlayProps): JSX.Element {
   const { open, onOpenChange } = useContext(SheetContext);
 
   return (
@@ -177,9 +177,9 @@ interface SheetContentProps extends React.HTMLAttributes<HTMLDivElement> {
  *
  * @param {SheetContentProps} props - The component props
  *
- * @returns {React.JSX.Element} The rendered sheet content
+ * @returns {JSX.Element} The rendered sheet content
  */
-function SheetContent({ className = '', children, side = 'right', ...props }: SheetContentProps): React.JSX.Element {
+function SheetContent({ className = '', children, side = 'right', ...props }: SheetContentProps): JSX.Element {
   const { open, onOpenChange } = useContext(SheetContext);
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -268,9 +268,9 @@ interface SheetHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
  *
  * @param {SheetHeaderProps} props - The component props
  *
- * @returns {React.JSX.Element} The rendered sheet header
+ * @returns {JSX.Element} The rendered sheet header
  */
-function SheetHeader({ className, children, ...props }: SheetHeaderProps): React.JSX.Element {
+function SheetHeader({ className, children, ...props }: SheetHeaderProps): JSX.Element {
   return (
     <div
       data-slot="sheet-header"
@@ -298,9 +298,9 @@ interface SheetFooterProps extends React.HTMLAttributes<HTMLDivElement> {
  *
  * @param {SheetFooterProps} props - The component props
  *
- * @returns {React.JSX.Element} The rendered sheet footer
+ * @returns {JSX.Element} The rendered sheet footer
  */
-function SheetFooter({ className, ...props }: SheetFooterProps): React.JSX.Element {
+function SheetFooter({ className, ...props }: SheetFooterProps): JSX.Element {
   return (
     <div
       data-slot="sheet-footer"
