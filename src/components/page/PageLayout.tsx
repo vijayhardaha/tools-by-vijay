@@ -6,17 +6,17 @@ import Header from '@/components/header/Header';
  *
  * @property {React.ReactNode} children - The content to be displayed within the layout.
  */
-type IPageLayoutProps = { children: React.ReactNode };
+type PageLayoutProps = { children: React.ReactNode };
 
 /**
  * PageLayout component that provides a consistent layout structure
  * with a header, main content area, and footer.
  *
- * @param {IPageLayoutProps} props - The props for the component.
+ *  @param {PageLayoutProps} props - The props for the component.
  *
  * @returns {React.JSX.Element} The rendered layout component.
  */
-const PageLayout = ({ children }: IPageLayoutProps): React.JSX.Element => {
+const PageLayout = ({ children }: PageLayoutProps): React.JSX.Element => {
   return (
     <div>
       <Header />
