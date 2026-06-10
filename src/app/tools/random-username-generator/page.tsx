@@ -34,7 +34,7 @@ export const metadata: PageMeta = generateMeta({
  *
  * @returns {React.JSX.Element} The rendered Random Username Generator tool page component.
  */
-const RandomUsernameGenerator: React.FC = (): React.JSX.Element => {
+const RandomUsernameGenerator = (): React.JSX.Element => {
   if (!tool) {
     notFound(); // Render a 404 page if the tool is null
   }
