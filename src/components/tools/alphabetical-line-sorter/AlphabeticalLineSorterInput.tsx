@@ -47,7 +47,7 @@ const AlphabeticalLineSorterInput = ({
   /**
    * Handles form submission to sort lines alphabetically
    *
-   * @param {React.FormEvent} e - Event object
+   * @param {FormEvent} e - Event object
    */
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();

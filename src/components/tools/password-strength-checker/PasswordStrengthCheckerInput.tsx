@@ -1,7 +1,5 @@
-import type { JSX } from 'react';
+import type { JSX, ChangeEvent } from 'react';
 ('use client');
-
-import React from 'react';
 
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
@@ -31,9 +29,9 @@ const PasswordStrengthCheckerInput = ({
   /**
    * Handles password input changes
    *
-   * @param {React.ChangeEvent<HTMLInputElement>} e - Input change event
+   * @param {ChangeEvent<HTMLInputElement>} e - Input change event
    */
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
     onSubmit(e.target.value);
   };
 
