@@ -39,7 +39,7 @@ export default function ToolsListWidget({ category, hideTool = '' }: ToolsListWi
   return (
     <Card className="md:gap-4 md:py-4">
       <CardHeader className="border-secondary border-b border-dashed md:px-4 md:[.border-b]:pb-4">
-        <CardTitle component="h4">{`${categoryData?.label} Tool`}</CardTitle>
+        <CardTitle component="h4">{categoryData?.label}</CardTitle>
       </CardHeader>
       <CardContent className="md:px-4">
         <ul className="flex flex-col gap-2">
