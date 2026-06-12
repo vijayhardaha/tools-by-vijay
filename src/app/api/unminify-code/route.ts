@@ -5,6 +5,8 @@ import parserHtml from 'prettier/plugins/html';
 import parserCss from 'prettier/plugins/postcss';
 import prettier from 'prettier/standalone';
 
+export const runtime = 'edge';
+
 // Define the expected input structure
 type UnminifyCodeRequest = { code: string; codeType: 'html' | 'json' | 'css' | 'babel' };
 
