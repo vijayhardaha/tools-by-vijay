@@ -4,7 +4,7 @@ import type { JSX, SubmitEvent } from 'react';
 
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
-import { Checkbox } from '@/components/ui/checkbox';
+import Checkbox from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
 import { cn } from '@/utils/classnames';
 
