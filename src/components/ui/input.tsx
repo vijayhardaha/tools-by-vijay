@@ -33,10 +33,13 @@ export default function Input({ className, type = 'text', ...props }: InputProps
         'flex h-10 w-full min-w-0 items-center',
 
         // Spacing
-        'rounded-lg px-3 py-1',
+        'rounded-xs px-3 py-1',
 
         // Typography
         'font-mono text-sm',
+
+        // Border
+        'border',
 
         // Colors & borders
         'border-input text-foreground bg-transparent',

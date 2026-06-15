@@ -32,13 +32,16 @@ export default function Textarea({ className, ...props }: TextareaProps): JSX.El
         'flex h-auto min-h-16 w-full items-center',
 
         // Spacing
-        'rounded-md px-3 py-2',
+        'rounded-xs px-3 py-2',
 
         // Typography
         'font-mono text-sm',
 
         // Placeholder
         'placeholder:text-muted-foreground/50',
+
+        // Border
+        'border',
 
         // Colors & borders
         'border-input text-foreground bg-transparent',

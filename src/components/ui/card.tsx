@@ -33,10 +33,10 @@ export default function Card({ className, children, component, ...props }: CardP
         'bg-card text-card-foreground',
 
         // Layout
-        'flex flex-col gap-4 rounded-xl border',
+        'border-border flex flex-col rounded-xl border',
 
         // Spacing
-        'p-4',
+        'gap-4 py-4',
 
         // Responsive
         'md:gap-6 md:py-6',

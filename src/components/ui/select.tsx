@@ -119,7 +119,7 @@ export default function Select({
           'flex w-fit items-center justify-between gap-2',
 
           // Spacing
-          'rounded-md border bg-transparent px-3 py-2 text-sm whitespace-nowrap',
+          'rounded-xs border bg-transparent px-3 py-2 text-sm whitespace-nowrap',
 
           // Colors & shadows
           'border-input text-foreground shadow-xs',
@@ -162,10 +162,10 @@ export default function Select({
             'absolute left-0 z-50 mt-1',
 
             // Sizing
-            'max-h-60 w-full min-w-32',
+            'max-h-60 w-auto min-w-32',
 
             // Appearance
-            'bg-popover text-popover-foreground rounded-xl border shadow-md',
+            'bg-popover text-popover-foreground border-input rounded-xs border shadow-md',
 
             // Overflow
             'overflow-x-hidden overflow-y-auto'
@@ -190,7 +190,7 @@ export default function Select({
                     'relative flex w-full items-center gap-2',
 
                     // Spacing
-                    'rounded-xl py-1.5 pr-8 pl-2 text-sm',
+                    'rounded-xs py-1.5 pr-8 pl-2 text-sm',
 
                     // Outline
                     'outline-hidden select-none',
