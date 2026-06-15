@@ -85,7 +85,7 @@ export default function AlphabeticalLineSorter(): JSX.Element {
 
   return (
     <>
-      <div className="grid grid-cols-1 gap-6">
+      <div className="grid grid-cols-1 gap-4 md:gap-6">
         <InputBlock
           input={input}
           setInput={setInput}
