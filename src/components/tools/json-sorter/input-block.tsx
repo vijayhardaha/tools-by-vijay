@@ -2,9 +2,10 @@
 
 import type { JSX, SubmitEvent } from 'react';
 
+import ToolInputHeader from '@/components/tools/tool-input-header';
 import Alert from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import Checkbox from '@/components/ui/checkbox';
 import { HelpTip } from '@/components/ui/helptip';
 import { Label } from '@/components/ui/label';
@@ -64,8 +65,12 @@ export default function InputBlock({
   return (
     <Card>
       <CardHeader>
-        <CardTitle>JSON Input</CardTitle>
-        <CardDescription>Paste your JSON and sort keys alphabetically</CardDescription>
+        <ToolInputHeader
+          title="JSON Input"
+          desc="Paste your JSON and sort keys alphabetically"
+          onClear={onClear}
+          onReset={onReset}
+        />
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4 md:gap-6">
@@ -94,14 +99,6 @@ export default function InputBlock({
           <div className="flex flex-wrap gap-2">
             <Button type="submit" variant="default" disabled={!input}>
               Sort JSON
-            </Button>
-
-            <Button type="button" variant="outline" onClick={onClear}>
-              Clear
-            </Button>
-
-            <Button type="button" variant="destructive" onClick={onReset}>
-              Reset
             </Button>
           </div>
 

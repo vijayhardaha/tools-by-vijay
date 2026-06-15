@@ -2,8 +2,9 @@
 
 import type { JSX, SubmitEvent } from 'react';
 
+import ToolInputHeader from '@/components/tools/tool-input-header';
 import { Button } from '@/components/ui/button';
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import Checkbox from '@/components/ui/checkbox';
 import { RadioBox } from '@/components/ui/radiobox';
 import { Textarea } from '@/components/ui/textarea';
@@ -72,8 +73,12 @@ export default function InputBlock({
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Replace Quotes</CardTitle>
-        <CardDescription>Enter text and choose the type of quote replacement</CardDescription>
+        <ToolInputHeader
+          title="Replace Quotes"
+          desc="Enter text and choose the type of quote replacement"
+          onClear={onClear}
+          onReset={onReset}
+        />
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4 md:gap-6">
@@ -124,14 +129,6 @@ export default function InputBlock({
           <div className="flex flex-wrap gap-2">
             <Button type="submit" variant="default" disabled={!input}>
               Replace Quotes
-            </Button>
-
-            <Button type="button" variant="outline" onClick={onClear}>
-              Clear
-            </Button>
-
-            <Button type="button" variant="destructive" onClick={onReset}>
-              Reset
             </Button>
           </div>
         </form>

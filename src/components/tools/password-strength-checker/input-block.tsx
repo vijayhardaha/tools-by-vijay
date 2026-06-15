@@ -2,8 +2,8 @@
 
 import type { JSX, ChangeEvent } from 'react';
 
-import { Button } from '@/components/ui/button';
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import ToolInputHeader from '@/components/tools/tool-input-header';
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 
 /**
@@ -40,8 +40,11 @@ export default function InputBlock({ password, onSubmit, onClear }: InputBlockPr
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Check Password Strength</CardTitle>
-        <CardDescription>Enter a password to check its strength</CardDescription>
+        <ToolInputHeader
+          title="Check Password Strength"
+          desc="Enter a password to check its strength"
+          onClear={onClear}
+        />
       </CardHeader>
       <CardContent>
         <form className="flex flex-col gap-4 md:gap-6">
@@ -52,12 +55,6 @@ export default function InputBlock({ password, onSubmit, onClear }: InputBlockPr
             value={password}
             onChange={handleChange}
           />
-
-          <div className="flex justify-start gap-2">
-            <Button type="button" variant="destructive" onClick={onClear}>
-              Clear
-            </Button>
-          </div>
         </form>
       </CardContent>
     </Card>

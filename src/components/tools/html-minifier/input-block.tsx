@@ -3,9 +3,10 @@
 import type { JSX, SubmitEvent } from 'react';
 
 import type { HtmlMinifierOptions } from '@/components/tools/html-minifier';
+import ToolInputHeader from '@/components/tools/tool-input-header';
 import Alert from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import Checkbox from '@/components/ui/checkbox';
 import { Textarea } from '@/components/ui/textarea';
 
@@ -68,8 +69,12 @@ export default function InputBlock({
   return (
     <Card>
       <CardHeader>
-        <CardTitle>HTML Input</CardTitle>
-        <CardDescription>Paste your HTML code and customize minification options</CardDescription>
+        <ToolInputHeader
+          title="HTML Input"
+          desc="Paste your HTML code and customize minification options"
+          onClear={onClear}
+          onReset={onReset}
+        />
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4 md:gap-6">
@@ -238,14 +243,6 @@ export default function InputBlock({
           <div className="flex flex-wrap gap-2">
             <Button type="submit" variant="default" disabled={!input || isLoading}>
               {isLoading ? 'Minifying...' : 'Minify'}
-            </Button>
-
-            <Button type="button" variant="outline" onClick={onClear} disabled={isLoading}>
-              Clear
-            </Button>
-
-            <Button type="reset" variant="destructive" onClick={onReset} disabled={isLoading}>
-              Reset
             </Button>
           </div>
 

@@ -2,8 +2,9 @@
 
 import type { JSX, SubmitEvent } from 'react';
 
+import ToolInputHeader from '@/components/tools/tool-input-header';
 import { Button } from '@/components/ui/button';
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 
 /**
@@ -44,8 +45,7 @@ export default function InputBlock({ input, setInput, onSubmit, onClear }: Input
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Input Data</CardTitle>
-        <CardDescription>Enter the text to generate a barcode</CardDescription>
+        <ToolInputHeader title="Input Data" desc="Enter the text to generate a barcode" onClear={onClear} />
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4 md:gap-6">
@@ -60,10 +60,6 @@ export default function InputBlock({ input, setInput, onSubmit, onClear }: Input
           <div className="flex flex-wrap gap-2">
             <Button type="submit" variant="default" disabled={!input}>
               Generate
-            </Button>
-
-            <Button type="button" variant="outline" onClick={onClear}>
-              Clear
             </Button>
           </div>
         </form>

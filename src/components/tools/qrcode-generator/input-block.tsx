@@ -2,8 +2,9 @@
 
 import type { JSX, SubmitEvent } from 'react';
 
+import ToolInputHeader from '@/components/tools/tool-input-header';
 import { Button } from '@/components/ui/button';
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Slider } from '@/components/ui/slider';
@@ -60,8 +61,12 @@ export default function QRCodeGeneratorInput({
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Input Data</CardTitle>
-        <CardDescription>Enter the text or URL to generate a QR code</CardDescription>
+        <ToolInputHeader
+          title="Input Data"
+          desc="Enter the text or URL to generate a QR code"
+          onClear={onClear}
+          onReset={onReset}
+        />
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4 md:gap-6">
@@ -86,14 +91,6 @@ export default function QRCodeGeneratorInput({
           <div className="flex flex-wrap gap-2">
             <Button type="submit" variant="default" disabled={!input}>
               Generate
-            </Button>
-
-            <Button type="button" variant="outline" onClick={onClear}>
-              Clear
-            </Button>
-
-            <Button type="reset" variant="destructive" onClick={onReset}>
-              Reset
             </Button>
           </div>
         </form>

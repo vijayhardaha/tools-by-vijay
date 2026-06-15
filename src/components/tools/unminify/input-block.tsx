@@ -2,9 +2,10 @@
 
 import type { JSX, SubmitEvent } from 'react';
 
+import ToolInputHeader from '@/components/tools/tool-input-header';
 import Alert from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { RadioBox } from '@/components/ui/radiobox';
 import { Textarea } from '@/components/ui/textarea';
 
@@ -18,6 +19,7 @@ import { Textarea } from '@/components/ui/textarea';
  * @property {(value: string) => void} setCodeType - Callback to update code type
  * @property {() => void} onSubmit - Callback to trigger unminification
  * @property {() => void} onClear - Callback to clear input and output
+ * @property {() => void} onReset - Callback to reset all options
  * @property {boolean} isLoading - Whether an unminification request is in progress
  * @property {string} [error] - Current error message, if any
  */
@@ -28,6 +30,7 @@ interface InputBlockProps {
   setCodeType: (value: string) => void;
   onSubmit: () => void;
   onClear: () => void;
+  onReset: () => void;
   isLoading: boolean;
   error?: string;
 }
@@ -46,6 +49,7 @@ export default function InputBlock({
   setCodeType,
   onSubmit,
   onClear,
+  onReset,
   isLoading,
   error,
 }: InputBlockProps): JSX.Element {
@@ -62,8 +66,12 @@ export default function InputBlock({
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Code Input</CardTitle>
-        <CardDescription>Paste your code to unminify and select the code type</CardDescription>
+        <ToolInputHeader
+          title="Code Input"
+          desc="Paste your code to unminify and select the code type"
+          onClear={onClear}
+          onReset={onReset}
+        />
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4 md:gap-6">
@@ -107,10 +115,6 @@ export default function InputBlock({
           <div className="flex flex-wrap gap-2">
             <Button type="submit" variant="default" disabled={!input || isLoading}>
               {isLoading ? 'Unminifying...' : 'Unminify'}
-            </Button>
-
-            <Button type="button" variant="outline" onClick={onClear} disabled={isLoading}>
-              Clear
             </Button>
           </div>
 

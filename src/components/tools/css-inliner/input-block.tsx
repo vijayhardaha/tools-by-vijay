@@ -2,9 +2,10 @@
 
 import type { JSX, SubmitEvent } from 'react';
 
+import ToolInputHeader from '@/components/tools/tool-input-header';
 import Alert from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 
@@ -62,8 +63,11 @@ export default function InputBlock({
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Input HTML and CSS</CardTitle>
-        <CardDescription>Provide your HTML and CSS below to inline the styles into the HTML.</CardDescription>
+        <ToolInputHeader
+          title="Input HTML and CSS"
+          desc="Provide your HTML and CSS below to inline the styles into the HTML."
+          onClear={onClear}
+        />
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4 md:gap-6">
@@ -88,10 +92,6 @@ export default function InputBlock({
           <div className="mt-2 flex gap-2">
             <Button type="submit" variant="default" disabled={!htmlInput || !cssInput || isLoading}>
               {isLoading ? 'Processing...' : 'Inline CSS'}
-            </Button>
-
-            <Button type="button" variant="outline" onClick={onClear} disabled={isLoading}>
-              Clear
             </Button>
           </div>
 

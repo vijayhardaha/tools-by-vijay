@@ -1,7 +1,10 @@
+'use client';
+
 import type { JSX, SubmitEvent } from 'react';
 
+import ToolInputHeader from '@/components/tools/tool-input-header';
 import { Button } from '@/components/ui/button';
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import Checkbox from '@/components/ui/checkbox';
 import { RadioBox } from '@/components/ui/radiobox';
 import { Textarea } from '@/components/ui/textarea';
@@ -70,8 +73,12 @@ export default function InputBlock({
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Alphabetical Line Sorter Input</CardTitle>
-        <CardDescription>Enter your text and configure options to sort lines alphabetically.</CardDescription>
+        <ToolInputHeader
+          title="Alphabetical Line Sorter Input"
+          desc="Enter your text and configure options to sort lines alphabetically."
+          onClear={onClear}
+          onReset={onReset}
+        />
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4 md:gap-6">
@@ -115,14 +122,6 @@ export default function InputBlock({
           <div className="flex flex-wrap gap-2">
             <Button type="submit" variant="default">
               Process
-            </Button>
-
-            <Button type="button" variant="outline" onClick={onClear}>
-              Clear
-            </Button>
-
-            <Button type="button" variant="destructive" onClick={onReset}>
-              Reset
             </Button>
           </div>
         </form>

@@ -2,7 +2,8 @@
 
 import type { JSX } from 'react';
 
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import ToolInputHeader from '@/components/tools/tool-input-header';
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 
@@ -14,12 +15,16 @@ import { Label } from '@/components/ui/label';
  * @property {(value: string) => void} setPxValue - Callback to update the pixel value
  * @property {number} baseFontSize - The base font size in pixels
  * @property {(value: number) => void} setBaseFontSize - Callback to update the base font size
+ * @property {() => void} onClear - Callback to clear input and output
+ * @property {() => void} onReset - Callback to reset all options
  */
 interface InputBlockProps {
   pxValue: string;
   setPxValue: (value: string) => void;
   baseFontSize: number;
   setBaseFontSize: (value: number) => void;
+  onClear: () => void;
+  onReset: () => void;
 }
 
 /**
@@ -34,12 +39,18 @@ export default function InputBlock({
   setPxValue,
   baseFontSize,
   setBaseFontSize,
+  onClear,
+  onReset,
 }: InputBlockProps): JSX.Element {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Px to Rem Input</CardTitle>
-        <CardDescription>Enter pixel value and base font size</CardDescription>
+        <ToolInputHeader
+          title="Px to Rem Input"
+          desc="Enter pixel value and base font size"
+          onClear={onClear}
+          onReset={onReset}
+        />
       </CardHeader>
       <CardContent>
         <div className="grid grid-cols-2 gap-4">

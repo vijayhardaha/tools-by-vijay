@@ -2,9 +2,10 @@
 
 import type { JSX, SubmitEvent } from 'react';
 
+import ToolInputHeader from '@/components/tools/tool-input-header';
 import Alert from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 
 /**
@@ -46,8 +47,7 @@ export default function InputBlock({ count, setCount, onGenerate, onClear, error
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Username Generator</CardTitle>
-        <CardDescription>Generate random usernames</CardDescription>
+        <ToolInputHeader title="Username Generator" desc="Generate random usernames" onClear={onClear} />
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4 md:gap-6">
@@ -65,10 +65,6 @@ export default function InputBlock({ count, setCount, onGenerate, onClear, error
           <div className="flex flex-wrap gap-2">
             <Button type="submit" variant="default">
               Generate
-            </Button>
-
-            <Button type="button" variant="outline" onClick={onClear}>
-              Clear
             </Button>
           </div>
 

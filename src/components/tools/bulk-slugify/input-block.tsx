@@ -2,8 +2,9 @@
 
 import type { JSX, SubmitEvent } from 'react';
 
+import ToolInputHeader from '@/components/tools/tool-input-header';
 import { Button } from '@/components/ui/button';
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import Checkbox from '@/components/ui/checkbox';
 import { Textarea } from '@/components/ui/textarea';
 import { cn } from '@/utils/classnames';
@@ -87,8 +88,12 @@ export default function InputBlock({
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Input Strings</CardTitle>
-        <CardDescription>(Article titles, tutorial titles or any web page titles)</CardDescription>
+        <ToolInputHeader
+          title="Input Strings"
+          desc="(Article titles, tutorial titles or any web page titles)"
+          onClear={onClear}
+          onReset={onReset}
+        />
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4 md:gap-6">
@@ -149,14 +154,6 @@ export default function InputBlock({
           <div className="flex flex-wrap gap-2">
             <Button type="submit" variant="default" disabled={!input}>
               Generate
-            </Button>
-
-            <Button type="button" variant="outline" onClick={onClear}>
-              Clear
-            </Button>
-
-            <Button type="button" variant="destructive" onClick={onReset}>
-              Reset
             </Button>
           </div>
         </form>
