@@ -39,6 +39,14 @@
   --color-border: var(--color-neutral-200);
   --color-input: var(--color-neutral-300);
   --color-ring: var(--color-neutral-300);
+
+  --radius: 1rem;
+
+  --radius-xs: calc(var(--radius) - 4px);
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+  --radius-xl: calc(var(--radius) + 4px);
 }
 
 @layer base {
