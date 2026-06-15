@@ -31,6 +31,7 @@ export default function Contact(): JSX.Element {
   return (
     <PageLayout>
       <PageHeader
+        pageName="Contact"
         title="Contact"
         description="Reach out to Vijay for freelance web development, open source collaboration, or general inquiries."
       />
