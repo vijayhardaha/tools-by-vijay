@@ -1,66 +1,70 @@
 'use client';
 
-import type { JSX, ReactNode, HTMLAttributes } from 'react';
-import { useId } from 'react';
+import * as React from 'react';
+import { forwardRef } from 'react';
+import type { ComponentRef, ForwardedRef, JSX, ReactNode } from 'react';
 
-import { Tooltip as ReactTooltip } from 'react-tooltip';
-import 'react-tooltip/dist/react-tooltip.css';
+import * as TooltipPrimitive from '@radix-ui/react-tooltip';
 
 import { cn } from '@/utils/classnames';
 
-export { Tooltip };
-
 /**
- * Props for the Tooltip component.
+ * Props for the TooltipContent component.
  *
- * @type {TooltipProps}
- * @property {string} text - The tooltip content text
- * @property {ReactNode} children - The element that triggers the tooltip
- * @property {string} [className] - Additional CSS classes
- * @property {number} [sideOffset] - Offset from the trigger element, defaults to 4
- * @property {number} [delayDuration] - Delay before showing the tooltip in ms, defaults to 300
+ * @type {TooltipContentProps}
+ * @property {string} [className] - Additional CSS classes to apply to the tooltip
+ * @property {number} [sideOffset] - Distance in pixels from the trigger element
+ * @property {ReactNode} children - The content to display inside the tooltip
  */
-interface TooltipProps extends HTMLAttributes<HTMLDivElement> {
-  text: string;
-  children: ReactNode;
+interface TooltipContentProps {
   className?: string;
   sideOffset?: number;
-  delayDuration?: number;
+  children: ReactNode;
 }
 
 /**
- * Tooltip component to display a tooltip with customizable content and styles.
+ * TooltipContent component that displays the tooltip content.
  *
- * @param {TooltipProps} props - The component props
+ * This component contains the actual content that appears when the tooltip is open.
+ * It automatically positions itself relative to the trigger and includes proper
+ * accessibility features.
  *
- * @returns {JSX.Element} The rendered tooltip component
+ * @param {object} props - The component props
+ * @param {string} [props.className] - Additional CSS classes to apply
+ * @param {number} [props.sideOffset] - Distance in pixels from the trigger element
+ * @param {ReactNode} props.children - The content to display in the tooltip
+ * @param {ForwardedRef<ComponentRef<typeof TooltipPrimitive.Content>>} ref - Ref forwarded to the content element
+ *
+ * @returns {JSX.Element} The rendered TooltipContent component
  */
-export default function Tooltip({
-  text,
-  children,
-  className,
-  sideOffset = 4,
-  delayDuration = 300,
-  ...props
-}: TooltipProps): JSX.Element {
-  const tooltipId = useId();
-
+function TooltipContent(
+  props: TooltipContentProps,
+  ref: ForwardedRef<ComponentRef<typeof TooltipPrimitive.Content>>
+): JSX.Element {
   return (
-    <>
-      <span data-tooltip-id={tooltipId} data-tooltip-content={text} role="button" tabIndex={0} {...props}>
-        {children}
-      </span>
-
-      <ReactTooltip
-        id={tooltipId}
-        delayShow={delayDuration}
-        offset={sideOffset}
-        style={{ zIndex: 9999 }}
+    <TooltipPrimitive.Portal>
+      <TooltipPrimitive.Content
+        ref={ref}
         className={cn(
-          'text-primary-foreground! -mt-0.5! max-w-60! rounded-md! bg-black! px-3! py-1.5! text-xs! leading-4! font-normal! shadow-sm!',
-          className
+          'bg-primary text-primary-foreground animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 max-w-80 overflow-hidden rounded-md px-3 py-1.5 text-xs',
+          props.className
         )}
+        {...(props.sideOffset ? { sideOffset: props.sideOffset } : {})}
+        {...props}
       />
-    </>
+    </TooltipPrimitive.Portal>
   );
 }
+
+const TooltipContentWithRef = forwardRef(TooltipContent);
+TooltipContentWithRef.displayName = TooltipPrimitive.Content.displayName;
+
+// Tooltip primitive components
+const Tooltip = TooltipPrimitive.Root;
+const TooltipTrigger = TooltipPrimitive.Trigger;
+
+// TooltipProvider for tooltip context setup
+const TooltipProvider = TooltipPrimitive.Provider;
+
+export type { TooltipContentProps };
+export { Tooltip, TooltipTrigger, TooltipContentWithRef as TooltipContent, TooltipProvider };

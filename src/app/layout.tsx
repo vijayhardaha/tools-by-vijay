@@ -3,7 +3,9 @@ import type { JSX, ReactNode } from 'react';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import type { Metadata } from 'next';
 
+import OSDetectionScript from '@/components/shared/OSDetectionScript';
 import { VercelAnalytics } from '@/components/shared/VercelAnalytics';
+import { TooltipProvider } from '@/components/ui/tooltip';
 import { GOOGLE_ANALYTICS_ID, SITE_METADATA } from '@/constants/seo';
 import { fontClassNames } from '@/utils/fonts';
 
@@ -25,21 +27,14 @@ export default function RootLayout({ children }: { children: ReactNode }): JSX.E
   return (
     <html lang="en" className={fontClassNames}>
       <body>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                var d = document.documentElement;
-                if (navigator.userAgent.includes('Mac OS X') || navigator.platform.includes('Mac')) {
-                  d.classList.add('os-macos');
-                }
-              })();
-            `,
-          }}
-        />
-        <GoogleAnalytics gaId={GOOGLE_ANALYTICS_ID} />
-        {children}
-        <VercelAnalytics />
+        <TooltipProvider>{children}</TooltipProvider>
+        <OSDetectionScript />
+        {process.env.NODE_ENV === 'production' && (
+          <>
+            <GoogleAnalytics gaId={GOOGLE_ANALYTICS_ID} />
+            <VercelAnalytics />
+          </>
+        )}
       </body>
     </html>
   );

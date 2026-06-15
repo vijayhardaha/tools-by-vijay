@@ -1,8 +1,12 @@
+'use client';
+
 import type { JSX } from 'react';
+import * as React from 'react';
 
 import { FiInfo } from 'react-icons/fi';
 
-import { Tooltip } from '@/components/ui/tooltip';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
+import { cn } from '@/utils/classnames';
 
 /**
  * Props for the HelpTip component.
@@ -17,14 +21,28 @@ interface HelpTipProps {
 /**
  * HelpTip component displays an informational icon with a tooltip.
  *
+ * Implements shadcn-like tooltip behavior with proper accessibility and styling.
+ * Uses semantic HTML attributes and matches shadcn's design patterns.
+ *
  *  @param {HelpTipProps} props - Component props.
  *
  * @returns {JSX.Element} The rendered HelpTip component.
  */
 export default function HelpTip({ text }: HelpTipProps): JSX.Element {
   return (
-    <Tooltip text={text} className="max-w-80!">
-      <FiInfo className="text-muted-foreground h-4 w-4 cursor-help" />
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <div className="group relative inline-flex items-center justify-center">
+          <FiInfo
+            className={cn('text-muted-foreground group-hover:text-foreground h-4 w-4 cursor-help transition-colors')}
+            aria-label={text}
+            data-testid="helptip-icon"
+          />
+        </div>
+      </TooltipTrigger>
+      <TooltipContent>
+        <p className="text-xs">{text}</p>
+      </TooltipContent>
     </Tooltip>
   );
 }
