@@ -139,40 +139,6 @@ function CardDescription({ className, children, component, ...props }: CardDescr
 }
 
 /**
- * Props for the CardAction component.
- *
- * @type {CardActionProps}
- * @property {string} [className] - Additional CSS classes
- * @property {ReactNode} children - Action content
- * @property {ElementType} [component] - Custom root element type
- */
-interface CardActionProps extends HTMLAttributes<HTMLDivElement> {
-  className?: string;
-  children: ReactNode;
-  component?: ElementType;
-}
-
-/**
- * An action section for the card, typically used for buttons or links.
- *
- * @param {CardActionProps} props - The component props
- *
- * @returns {JSX.Element} The rendered card action
- */
-function CardAction({ className, children, component, ...props }: CardActionProps): JSX.Element {
-  const Tag = component || 'div';
-  return (
-    <Tag
-      data-slot="card-action"
-      className={cn('col-start-2 row-span-2 row-start-1 self-start justify-self-end', className)}
-      {...props}
-    >
-      {children}
-    </Tag>
-  );
-}
-
-/**
  * Props for the CardContent component.
  *
  * @type {CardContentProps}
@@ -202,38 +168,4 @@ function CardContent({ className, children, component, ...props }: CardContentPr
   );
 }
 
-/**
- * Props for the CardFooter component.
- *
- * @type {CardFooterProps}
- * @property {string} [className] - Additional CSS classes
- * @property {ReactNode} children - Footer content
- * @property {ElementType} [component] - Custom root element type
- */
-interface CardFooterProps extends HTMLAttributes<HTMLDivElement> {
-  className?: string;
-  children: ReactNode;
-  component?: ElementType;
-}
-
-/**
- * A footer section for the card, typically used for additional actions or information.
- *
- * @param {CardFooterProps} props - The component props
- *
- * @returns {JSX.Element} The rendered card footer
- */
-function CardFooter({ className, children, component, ...props }: CardFooterProps): JSX.Element {
-  const Tag = component || 'div';
-  return (
-    <Tag
-      data-slot="card-footer"
-      className={cn('flex items-center px-4 md:px-6 [.border-t]:pt-4 md:[.border-t]:pt-6', className)}
-      {...props}
-    >
-      {children}
-    </Tag>
-  );
-}
-
-export { Card, CardHeader, CardFooter, CardTitle, CardAction, CardDescription, CardContent };
+export { Card, CardHeader, CardTitle, CardDescription, CardContent };
