@@ -35,6 +35,8 @@ export interface ToolIcons {
  *
  * @type {ToolIcons}
  */
+export { PiCaretRightBold } from 'react-icons/pi';
+
 export const toolIcons: ToolIcons = {
   slugify: <PiFadersHorizontalBold />,
   'bulk-slugify': <PiFadersBold />,
