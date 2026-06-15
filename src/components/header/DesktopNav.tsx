@@ -84,7 +84,7 @@ export default function DesktopNav(): JSX.Element {
                 'transition-colors',
 
                 // States
-                activeMenu === category.slug && 'text-foreground bg-neutral-100'
+                activeMenu === category.slug && 'text-foreground bg-muted'
               )}
               aria-expanded={activeMenu === category.slug}
               aria-haspopup="true"
@@ -107,12 +107,12 @@ export default function DesktopNav(): JSX.Element {
                 onMouseLeave={handleMouseLeave}
               >
                 {/* Rounded box */}
-                <div className="min-w-56 rounded-xl border border-neutral-200 bg-white py-2 shadow-xl">
+                <div className="border-border min-w-56 rounded-xl border bg-white py-2 shadow-xl">
                   {tools.map((tool) => (
                     <Link
                       key={tool.slug}
                       href={`/tools/${tool.slug}`}
-                      className="text-muted-foreground hover:text-foreground flex items-center px-4 py-2 text-sm transition-colors hover:bg-neutral-50"
+                      className="text-muted-foreground hover:text-foreground hover:bg-muted flex items-center px-4 py-2 text-sm transition-colors"
                     >
                       {tool.name}
                     </Link>

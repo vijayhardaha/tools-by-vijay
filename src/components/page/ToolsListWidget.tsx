@@ -53,15 +53,14 @@ export default function ToolsListWidget({ category, hideTool = '' }: ToolsListWi
                 className={cn(
                   'group',
                   'flex flex-col gap-0.5',
-                  'transition-colors duration-200 ease-in-out',
+                  'rounded-xl px-4 py-2',
                   'text-foreground bg-muted',
                   'border border-transparent',
-                  'hover:bg-accent',
-                  'hover:border-accent-foreground',
-                  'rounded-xl px-4 py-2'
+                  'hover:bg-accent hover:border-accent-foreground',
+                  'transition-colors duration-200 ease-in-out'
                 )}
               >
-                <span className="text-base font-semibold transition-colors">{categoryTool.name}</span>
+                <span className="text-sm font-semibold transition-colors">{categoryTool.name}</span>
                 <span className="text-muted-foreground truncate text-xs">{categoryTool.description}</span>
               </Link>
             </li>
