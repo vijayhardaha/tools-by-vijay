@@ -105,7 +105,7 @@ export default function OutputBlock({ strength }: OutputBlockProps): JSX.Element
           </div>
 
           {strength.feedback.warning && (
-            <div className="rounded-lg border border-amber-200 bg-amber-50 p-4 text-amber-500">
+            <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-amber-500">
               <p className="text-sm font-medium">{strength.feedback.warning}</p>
             </div>
           )}
