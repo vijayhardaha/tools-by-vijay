@@ -18,6 +18,21 @@ export default function PxToRemConverter(): JSX.Element {
   const [baseFontSize, setBaseFontSize] = useState<number>(16);
 
   /**
+   * Clears the input value and rem output.
+   */
+  const handleClear = (): void => {
+    setPxValue('');
+  };
+
+  /**
+   * Resets the input value and base font size to defaults.
+   */
+  const handleReset = (): void => {
+    setPxValue('');
+    setBaseFontSize(16);
+  };
+
+  /**
    * Converts px to rem based on the base font size.
    *
    * @param {string} px - The pixel value.
@@ -40,6 +55,8 @@ export default function PxToRemConverter(): JSX.Element {
           setPxValue={setPxValue}
           baseFontSize={baseFontSize}
           setBaseFontSize={setBaseFontSize}
+          onClear={handleClear}
+          onReset={handleReset}
         />
         <OutputBlock remValue={remValue} />
       </div>

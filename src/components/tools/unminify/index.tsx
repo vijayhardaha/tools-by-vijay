@@ -63,6 +63,18 @@ export default function Unminify(): JSX.Element {
     setError('');
   };
 
+  /**
+   * Resets all fields to their default values.
+   *
+   * @function
+   */
+  const handleReset = (): void => {
+    setInput('');
+    setOutput('');
+    setCodeType('javascript');
+    setError('');
+  };
+
   return (
     <>
       <div className="grid grid-cols-1 gap-4 md:gap-6">
@@ -73,6 +85,7 @@ export default function Unminify(): JSX.Element {
           setCodeType={setCodeType}
           onSubmit={handleSubmit}
           onClear={handleClear}
+          onReset={handleReset}
           isLoading={isLoading}
           error={error}
         />
