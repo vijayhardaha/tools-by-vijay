@@ -59,7 +59,7 @@ const buttonVariants = cva(
         link: ['border-transparent text-primary underline-offset-4', 'hover:underline'].join(' '),
       },
       size: {
-        default: 'h-10 px-6 rounded-lg py-2 text-sm has-[>svg]:px-4',
+        default: 'h-10 px-6 rounded-xl py-2 text-sm has-[>svg]:px-4',
         sm: 'h-8 rounded-md gap-1.5 px-4 text-xs has-[>svg]:px-3.5',
         lg: 'h-12 rounded-xl px-8 text-base has-[>svg]:px-5',
         icon: 'size-10',
