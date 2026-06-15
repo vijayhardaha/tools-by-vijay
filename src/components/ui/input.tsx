@@ -29,35 +29,40 @@ export default function Input({ className, type = 'text', ...props }: InputProps
       spellCheck="false"
       data-slot="input"
       className={cn(
-        // Core layout and sizing
-        'flex h-10 w-full min-w-0 rounded-lg px-3 py-1',
+        // Layout & sizing
+        'flex h-10 w-full min-w-0 items-center',
 
-        // Font and text
-        'font-mono text-sm file:text-sm file:font-medium',
+        // Spacing
+        'rounded-lg px-3 py-1',
 
         // Typography
-        'placeholder:text-muted-foreground/50 file:text-foreground',
+        'font-mono text-sm',
 
-        // Colors and borders
-        'border-input text-foreground border bg-transparent',
-        'selection:bg-primary selection:text-primary-foreground',
+        // Colors & borders
+        'border-input text-foreground bg-transparent',
 
-        // File input styling
-        'file:inline-flex file:h-7 file:border-0 file:bg-transparent',
+        // Placeholder
+        'placeholder:text-muted-foreground/50',
 
-        // Focus and validation states
+        // File styling
+        'file:inline-flex file:h-7 file:border-0 file:bg-transparent file:px-3 file:py-1.5 file:font-medium',
+
+        // Focus & validation
         'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
         'aria-invalid:border-destructive aria-invalid:ring-destructive/20',
 
-        // Disabled states
+        // States
         'disabled:cursor-not-allowed disabled:opacity-50',
 
-        // Transitions and outline
+        // Transitions
         'transition-[color,box-shadow] outline-none',
 
-        // Data output
-        'data-output:outline-none data-output:focus-visible:ring-0 data-output:focus-visible:outline-none',
-        'data-output:focus-visible:border-input',
+        // Data attributes
+        'data-slot=input',
+
+        // Selection
+        'selection:bg-primary selection:text-primary-foreground',
+
         className
       )}
       {...props}

@@ -115,38 +115,35 @@ export default function Select({
         disabled={disabled}
         aria-expanded={open}
         className={cn(
-          // Layout & Flex
+          // Layout & flex
           'flex w-fit items-center justify-between gap-2',
+
+          // Spacing
           'rounded-md border bg-transparent px-3 py-2 text-sm whitespace-nowrap',
 
-          // Borders & Shadows
-          'border-input shadow-xs',
+          // Colors & shadows
+          'border-input text-foreground shadow-xs',
 
-          // State Styles
+          // Focus & validation
           'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
           'aria-invalid:border-destructive aria-invalid:ring-destructive/20',
 
-          // Transitions & Effects
+          // Transitions
           'transition-[color,box-shadow] outline-none',
 
-          // Disabled state
+          // States
           'disabled:cursor-not-allowed disabled:opacity-50',
 
           // Data attributes
+          'data-slot=select-trigger',
           'data-placeholder:text-muted-foreground',
           'data-[size=default]:h-9 data-[size=sm]:h-8',
 
           // Slot-based styles
-          '*:data-[slot=select-value]:line-clamp-1',
-          '*:data-[slot=select-value]:flex',
-          '*:data-[slot=select-value]:items-center',
-          '*:data-[slot=select-value]:gap-2',
+          '*:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2',
 
-          // SVG-specific
-          '[&_svg]:pointer-events-none',
-          '[&_svg]:shrink-0',
-          "[&_svg:not([class*='size-'])]:size-4",
-          "[&_svg:not([class*='text-'])]:text-muted-foreground",
+          // SVG
+          '[&_svg:not([class*="text-"])]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*="size-"])]:size-4',
           className
         )}
       >
@@ -160,7 +157,19 @@ export default function Select({
       {open && (
         <div
           data-slot="select-content"
-          className="bg-popover text-popover-foreground border-input absolute left-0 z-50 mt-1 max-h-60 min-w-32 overflow-x-hidden overflow-y-auto rounded-xl border shadow-md"
+          className={cn(
+            // Position
+            'absolute left-0 z-50 mt-1',
+
+            // Sizing
+            'max-h-60 w-full min-w-32',
+
+            // Appearance
+            'bg-popover text-popover-foreground rounded-xl border shadow-md',
+
+            // Overflow
+            'overflow-x-hidden overflow-y-auto'
+          )}
         >
           <div className="flex flex-col gap-0.5 p-1">
             {options.map((option) => {
@@ -177,13 +186,29 @@ export default function Select({
                   data-slot="select-item"
                   data-selected={isSelected}
                   className={cn(
+                    // Layout & flex
                     'relative flex w-full items-center gap-2',
-                    'py-1.5 pr-8 pl-2',
-                    'rounded-xl text-sm outline-hidden select-none',
-                    'hover:bg-muted focus:bg-muted aria-disabled:opacity-50',
-                    "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
-                    "[&_svg:not([class*='text-'])]:text-muted-foreground",
+
+                    // Spacing
+                    'rounded-xl py-1.5 pr-8 pl-2 text-sm',
+
+                    // Outline
+                    'outline-hidden select-none',
+
+                    // Hover & focus
+                    'hover:bg-muted focus:bg-muted',
+
+                    // Disabled
+                    'aria-disabled:opacity-50',
+
+                    // SVG
+                    '[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*="size-"])]:size-4',
+                    '[&_svg:not([class*="text-"])]:text-muted-foreground',
+
+                    // Selected
                     isSelected && 'bg-muted',
+
+                    // Cursor
                     isDisabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'
                   )}
                   onClick={(e) => {
