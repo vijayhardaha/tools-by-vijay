@@ -9,7 +9,7 @@ import { cn } from '@/utils/classnames';
 const alertVariants = cva(
   [
     // Layout & Box
-    'relative w-full rounded-lg border px-4 py-3 text-sm',
+    'relative w-full rounded-xl border px-4 py-3 text-sm',
 
     // Grid layout based on presence of SVG
     'grid grid-cols-[0_1fr] has-[>svg]:grid-cols-[16px_1fr]',
