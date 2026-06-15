@@ -71,7 +71,7 @@ export default function DesktopNav(): JSX.Element {
             <button
               type="button"
               className={cn(
-                'text-muted-foreground hover:text-foreground focus-visible:ring-ring/50 inline-flex cursor-pointer items-center gap-1 rounded-lg px-2 py-2 text-sm font-medium transition-colors outline-none focus-visible:ring-[3px]',
+                'text-muted-foreground hover:text-foreground focus-visible:ring-ring/50 inline-flex cursor-pointer items-center gap-1 rounded-xl px-2 py-2 text-sm font-medium transition-colors outline-none focus-visible:ring-[3px]',
                 activeMenu === category.slug && 'text-foreground bg-neutral-100'
               )}
               aria-expanded={activeMenu === category.slug}
