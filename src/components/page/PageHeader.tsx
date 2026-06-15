@@ -42,26 +42,9 @@ export default function PageHeader({ title, description, icon = null, pageName }
   const blendModes = ['overlay', 'hard-light', 'overlay', 'normal'].join(', ');
 
   return (
-    <div
-      className={cn(
-        // position
-        'relative left-1/2 -translate-x-1/2',
-        // layout
-        'w-screen',
-        // spacing
-        '-mt-8 mb-8',
-        // visual
-        'overflow-hidden text-white'
-      )}
-      style={{ background: gradients, backgroundBlendMode: blendModes }}
-    >
+    <div className={cn('-mt-8 mb-8', 'text-white')} style={{ background: gradients, backgroundBlendMode: blendModes }}>
       <Container className="mb-4">
-        <div
-          className={cn(
-            // layout
-            'py-10'
-          )}
-        >
+        <div className={cn('py-10')}>
           {pageName && <PageBreadcrumb pageName={pageName} />}
           <h1 className={cn('inline-flex items-center space-x-2 text-2xl font-bold md:text-3xl')}>
             {icon && <span className="mr-2 inline-block">{icon}</span>}
