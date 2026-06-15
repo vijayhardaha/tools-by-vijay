@@ -11,12 +11,12 @@ import footerLinks from '@/constants/footerLinks';
  */
 export default function FooterTop(): JSX.Element {
   return (
-    <div className="mb-6 flex flex-col gap-6">
+    <div className="mb-6 flex flex-col gap-4 md:gap-6">
       {/* About section - takes 2 columns on large screens */}
       <FooterAbout />
 
       {/* Footer widgets - each takes 1 column */}
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4 md:gap-6">
         <FooterWidget title="Dev Tools" links={footerLinks.devTools} />
         <FooterWidget title="Code Minifiers" links={footerLinks.minifiersTools} />
         <FooterWidget title="Text Tools" links={footerLinks.textTools} />
