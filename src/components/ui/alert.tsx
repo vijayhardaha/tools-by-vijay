@@ -8,18 +8,18 @@ import { cn } from '@/utils/classnames';
 // Define variants using shadcn-like styling
 const alertVariants = cva(
   [
-    // Layout & Box
+    // Position & sizing
     'relative w-full rounded-xl border px-4 py-3 text-sm',
 
-    // Grid layout based on presence of SVG
+    // Grid layout
     'grid grid-cols-[0_1fr] has-[>svg]:grid-cols-[16px_1fr]',
     'has-[>svg]:gap-x-3 gap-y-0.5 items-start',
 
-    // SVG-specific styling
+    // Icon styling
     '[&>svg]:size-4',
     '[&>svg]:translate-y-0.5',
     '[&>svg]:text-current',
-  ].join(' '),
+  ],
   {
     variants: {
       variant: {

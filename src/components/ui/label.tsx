@@ -24,7 +24,13 @@ interface LabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
 /**
  * Styling variants for the Label component
  */
-const labelVariants = cva('text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70');
+const labelVariants = cva([
+  // Typography
+  'text-sm font-medium leading-none',
+
+  // Disabled state
+  'peer-disabled:cursor-not-allowed peer-disabled:opacity-70',
+]);
 
 /**
  * Label component for form elements with accessibility features

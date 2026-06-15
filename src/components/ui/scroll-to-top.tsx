@@ -40,7 +40,19 @@ export default function ScrollToTop(): JSX.Element {
       onClick={scrollToTop}
       aria-label="Scroll to top"
       className={cn(
-        'fixed right-6 bottom-6 z-50 h-12 w-12 rounded-full p-0 shadow-lg transition-all duration-300',
+        // Position
+        'fixed right-6 bottom-6 z-50',
+
+        // Size
+        'h-12 w-12 rounded-full p-0',
+
+        // Appearance
+        'shadow-lg',
+
+        // Transitions
+        'transition-all duration-300',
+
+        // Visibility states
         visible ? 'translate-y-0 opacity-100' : 'pointer-events-none translate-y-4 opacity-0'
       )}
     >

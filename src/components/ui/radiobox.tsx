@@ -77,13 +77,13 @@ export default function RadioBox({
         // Layout & base appearance
         'inline-flex items-center',
 
-        // Colors & background
+        // Colors
         'text-foreground',
 
-        // Disabled state
+        // Disabled
         'disabled:cursor-not-allowed disabled:opacity-50',
 
-        // Transition & outline
+        // Transitions
         'transition-shadow outline-none',
 
         className

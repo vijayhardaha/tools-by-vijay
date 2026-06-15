@@ -58,7 +58,20 @@ export default function Slider({
   };
 
   return (
-    <div className={cn('relative flex w-full items-center py-3 data-[disabled]:opacity-50', className)}>
+    <div
+      className={cn(
+        // Layout
+        'relative flex w-full items-center',
+
+        // Spacing
+        'py-3',
+
+        // Disabled
+        'data-disabled:opacity-50',
+
+        className
+      )}
+    >
       <input
         type="range"
         min={min}
@@ -68,11 +81,20 @@ export default function Slider({
         onChange={handleChange}
         disabled={disabled}
         className={cn(
-          'bg-input m-0 h-[1px] flex-1 appearance-none border-none outline-none',
+          // Layout & appearance
+          'bg-input m-0 h-px flex-1 appearance-none border-none',
+
+          // Focus
           'focus:outline-none',
+
+          // Active states
           'active:[&::-webkit-slider-thumb]:ring-primary/15 active:[&::-webkit-slider-thumb]:h-6 active:[&::-webkit-slider-thumb]:w-6 active:[&::-webkit-slider-thumb]:ring-4',
           'active:[&::-moz-range-thumb]:ring-primary/15 active:[&::-moz-range-thumb]:h-6 active:[&::-moz-range-thumb]:w-6 active:[&::-moz-range-thumb]:ring-4',
+
+          // Webkit styling
           '[&::-webkit-slider-thumb]:bg-primary [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:cursor-move [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:transition-[width,height] [&::-webkit-slider-thumb]:duration-100',
+
+          // Mozilla styling
           '[&::-moz-range-thumb]:bg-primary [&::-moz-range-thumb]:h-4 [&::-moz-range-thumb]:w-4 [&::-moz-range-thumb]:cursor-move [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:transition-[width,height] [&::-moz-range-thumb]:duration-100'
         )}
         {...props}

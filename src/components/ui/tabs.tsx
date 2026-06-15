@@ -106,7 +106,15 @@ function TabsList({ className, children, ...props }: TabsListProps): JSX.Element
       data-slot="tabs-list"
       role="tablist"
       className={cn(
-        'bg-muted text-muted-foreground inline-flex h-9 w-fit items-center justify-center rounded-xl p-[3px]',
+        // Colors
+        'bg-muted text-muted-foreground',
+
+        // Layout
+        'inline-flex h-9 w-fit items-center justify-center',
+
+        // Spacing
+        'rounded-xl p-0.75',
+
         className
       )}
       {...props}
@@ -157,7 +165,35 @@ function TabsTrigger({ className, value, disabled, children, ...props }: TabsTri
       data-slot="tabs-trigger"
       onClick={() => setSelectedTab(value)}
       className={cn(
-        "data-[state=active]:bg-background focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:outline-ring text-foreground inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center gap-1.5 rounded-md border border-transparent px-2 py-1 text-sm font-medium whitespace-nowrap transition-[color,box-shadow] focus-visible:ring-[3px] focus-visible:outline-1 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:shadow-sm [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        // State styles
+        'data-[state=active]:bg-background',
+        'data-[state=active]:shadow-sm',
+
+        // Focus styles
+        'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:outline-ring',
+        'focus-visible:ring-[3px] focus-visible:outline-1',
+
+        // Layout
+        'inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center',
+
+        // Typography
+        'text-foreground',
+
+        // Spacing
+        'gap-1.5 rounded-md border border-transparent',
+
+        // Typography
+        'px-2 py-1 text-sm font-medium whitespace-nowrap',
+
+        // Transitions
+        'transition-[color,box-shadow]',
+
+        // States
+        'disabled:pointer-events-none disabled:opacity-50',
+
+        // SVG
+        '[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*="size-"])]:size-4',
+
         className
       )}
       {...props}

@@ -29,7 +29,18 @@ export default function Card({ className, children, component, ...props }: CardP
     <Tag
       data-slot="card"
       className={cn(
-        'bg-card text-card-foreground border-border flex flex-col gap-4 rounded-xl border py-4 md:gap-6 md:py-6',
+        // Display & layout
+        'bg-card text-card-foreground',
+
+        // Layout
+        'flex flex-col gap-4 rounded-xl border',
+
+        // Spacing
+        'p-4',
+
+        // Responsive
+        'md:gap-6 md:py-6',
+
         className
       )}
       {...props}
@@ -66,9 +77,21 @@ function CardHeader({ className, children, component, ...props }: CardHeaderProp
     <Tag
       data-slot="card-header"
       className={cn(
+        // Display & layout
         'flex w-full flex-col items-start',
-        'gap-1.5 px-4 md:px-6 [.border-b]:pb-4 md:[.border-b]:pb-6',
+
+        // Spacing
+        'gap-1.5 px-4 pb-4',
+
+        // Responsive
+        'md:px-6',
+
+        // Border interaction
+        '[.border-b]:pb-4 md:[.border-b]:pb-6',
+
+        // Grid
         'has-data-[slot=card-action]:grid-cols-[1fr_auto]',
+
         className
       )}
       {...props}
@@ -102,7 +125,15 @@ interface CardTitleProps extends HTMLAttributes<HTMLHeadingElement> {
 function CardTitle({ className, children, component, ...props }: CardTitleProps): JSX.Element {
   const Tag = component || 'h2';
   return (
-    <Tag data-slot="card-title" className={cn('text-lg leading-none font-bold', className)} {...props}>
+    <Tag
+      data-slot="card-title"
+      className={cn(
+        // Display
+        'text-lg leading-none font-bold',
+        className
+      )}
+      {...props}
+    >
       {children}
     </Tag>
   );
@@ -132,7 +163,15 @@ interface CardDescriptionProps extends HTMLAttributes<HTMLParagraphElement> {
 function CardDescription({ className, children, component, ...props }: CardDescriptionProps): JSX.Element {
   const Tag = component || 'p';
   return (
-    <Tag data-slot="card-description" className={cn('text-muted-foreground text-sm', className)} {...props}>
+    <Tag
+      data-slot="card-description"
+      className={cn(
+        // Display
+        'text-muted-foreground text-sm',
+        className
+      )}
+      {...props}
+    >
       {children}
     </Tag>
   );
@@ -162,7 +201,15 @@ interface CardContentProps extends HTMLAttributes<HTMLDivElement> {
 function CardContent({ className, children, component, ...props }: CardContentProps): JSX.Element {
   const Tag = component || 'div';
   return (
-    <Tag data-slot="card-content" className={cn('px-4 md:px-6', className)} {...props}>
+    <Tag
+      data-slot="card-content"
+      className={cn(
+        // Spacing
+        'px-4 md:px-6',
+        className
+      )}
+      {...props}
+    >
       {children}
     </Tag>
   );
