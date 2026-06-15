@@ -222,7 +222,7 @@ export default function SearchModal({ data, maxResults = 5, open, onOpenChange }
                       role="option"
                       aria-selected={idx === activeIndex}
                       className={cn(
-                        'flex cursor-pointer items-center gap-3 rounded-lg px-3 py-2.5 text-sm transition-colors',
+                        'flex cursor-pointer items-center gap-3 rounded-xl px-3 py-2.5 text-sm transition-colors',
                         idx === activeIndex ? 'bg-neutral-100' : 'hover:bg-neutral-50'
                       )}
                       onMouseEnter={() => setActiveIndex(idx)}
@@ -231,7 +231,7 @@ export default function SearchModal({ data, maxResults = 5, open, onOpenChange }
                       {/* Tool icon */}
                       <span
                         className={cn(
-                          'flex size-9 shrink-0 items-center justify-center rounded-lg border text-base',
+                          'flex size-9 shrink-0 items-center justify-center rounded-xl border text-base',
                           idx === activeIndex
                             ? 'text-foreground border-neutral-300 bg-white'
                             : 'border-neutral-200 bg-neutral-50 text-neutral-500'
