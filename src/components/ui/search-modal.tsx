@@ -180,7 +180,8 @@ export default function SearchModal({ data, maxResults = 5, open, onOpenChange }
         >
           {/* Screen-reader description */}
           <Dialog.Description className="sr-only">
-            Use the search field below to find a tool. Start typing to see results, then use arrow keys to navigate and press Enter to open a tool.
+            Use the search field below to find a tool. Start typing to see results, then use arrow keys to navigate and
+            press Enter to open a tool.
           </Dialog.Description>
 
           {/* Search input area */}
