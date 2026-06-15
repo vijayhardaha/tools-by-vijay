@@ -47,4 +47,4 @@ export default function Badge({ className, variant = 'default', children, ...pro
   );
 }
 
-export { Badge, badgeVariants };
+export { Badge };
