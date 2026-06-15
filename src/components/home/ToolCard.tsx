@@ -2,7 +2,7 @@ import type { JSX } from 'react';
 
 import Link from 'next/link';
 
-import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { PiCaretRightBold } from '@/constants/toolIcons';
 import type { Tool } from '@/types';
 import { cn } from '@/utils/classnames';
 import { findToolBySlug, getIconForTool } from '@/utils/tools';
@@ -21,6 +21,7 @@ interface ToolCardProps {
 
 /**
  * ToolCard component that renders a card for a specific tool.
+ * Layout: icon | heading + description (truncated) | caret right icon
  *
  * @param {ToolCardProps} props - The component props.
  *
@@ -33,23 +34,29 @@ export default function ToolCard({ slug, className = '' }: ToolCardProps): JSX.E
 
   return (
     <Link href={`/tools/${tool.slug}`}>
-      <Card
+      <div
         className={cn(
-          'relative top-0 flex h-full flex-col gap-4 transition-all duration-200 ease-in-out hover:-top-0.5 hover:shadow-md',
+          'group border-border bg-card text-card-foreground relative top-0 flex items-center gap-4 rounded-xl border px-4 py-4 transition-all duration-200 ease-in-out md:px-6 md:py-5',
+          'hover:-top-0.5 hover:shadow-md',
           className
         )}
       >
-        <CardHeader>
-          <div className="flex w-full flex-col gap-4 lg:relative lg:top-5 lg:-mt-4 lg:flex-row-reverse lg:items-start lg:justify-between">
-            <div className="bg-accent-foreground text-primary inline-flex size-10 items-center justify-center rounded-2xl text-xl">
-              {getIconForTool(tool.slug)}
-            </div>
-            <CardTitle component="h3">{tool.name}</CardTitle>
-          </div>
+        {/* Column 1: Tool Icon */}
+        <div className="bg-accent-foreground text-primary inline-flex size-11 shrink-0 items-center justify-center rounded-2xl text-xl">
+          {getIconForTool(tool.slug)}
+        </div>
 
-          <CardDescription className="lg:pr-14">{tool.description}</CardDescription>
-        </CardHeader>
-      </Card>
+        {/* Column 2: Heading + Description (truncated) */}
+        <div className="min-w-0 flex-1">
+          <h3 className="truncate text-base font-bold">{tool.name}</h3>
+          <p className="text-muted-foreground truncate text-sm">{tool.description}</p>
+        </div>
+
+        {/* Column 3: Caret Right Icon */}
+        <div className="text-muted-foreground shrink-0 transition-transform duration-200 group-hover:translate-x-0.5">
+          <PiCaretRightBold className="size-5" />
+        </div>
+      </div>
     </Link>
   );
 }
