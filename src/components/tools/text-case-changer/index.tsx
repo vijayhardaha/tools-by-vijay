@@ -10,7 +10,7 @@ import OutputBlock from './output-block';
 /**
  * Type representing the various text case options available for transformation.
  */
-export type TextCase =
+type TextCase =
   | 'Sentence case'
   | 'lower case'
   | 'UPPER CASE'
