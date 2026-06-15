@@ -344,4 +344,4 @@ function SheetFooter({ className, ...props }: SheetFooterProps): JSX.Element {
   );
 }
 
-export { Sheet, SheetClose, SheetContent, SheetHeader, SheetFooter };
+export { Sheet, SheetContent, SheetHeader, SheetFooter };
