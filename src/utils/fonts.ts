@@ -1,9 +1,9 @@
-import { Geist_Mono, Work_Sans } from 'next/font/google';
+import { Geist_Mono, Instrument_Sans } from 'next/font/google';
 
 /**
  * Primary sans-serif font for body text.
  */
-const sansFont = Work_Sans({
+const sansFont = Instrument_Sans({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
   style: ['normal', 'italic'],
