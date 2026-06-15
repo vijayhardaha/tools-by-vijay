@@ -10,7 +10,7 @@ import InfoBlock from './info-block';
 import InputBlock from './input-block';
 import OutputBlock from './output-block';
 
-export type VariableCase = 'camelCase' | 'snake_case' | 'PascalCase';
+type VariableCase = 'camelCase' | 'snake_case' | 'PascalCase';
 
 /**
  * Main component for the Text to PHP Variables tool.
