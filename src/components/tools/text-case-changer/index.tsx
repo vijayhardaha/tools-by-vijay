@@ -48,9 +48,14 @@ export default function TextCaseChanger(): JSX.Element {
       case 'Capitalized Case':
         return text
           .toLowerCase()
-          .split(/\s+/)
-          .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-          .join(' ');
+          .split('\n')
+          .map((line) =>
+            line
+              .split(/\s+/)
+              .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+              .join(' ')
+          )
+          .join('\n');
       case 'aLtErNaTiNg cAsE':
         return text
           .split('')
@@ -59,9 +64,14 @@ export default function TextCaseChanger(): JSX.Element {
       case 'Title Case':
         return text
           .toLowerCase()
-          .split(/\s+/)
-          .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-          .join(' ');
+          .split('\n')
+          .map((line) =>
+            line
+              .split(/\s+/)
+              .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+              .join(' ')
+          )
+          .join('\n');
       case 'InVeRsE CaSe':
         return text
           .split('')
