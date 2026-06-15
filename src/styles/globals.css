@@ -2,10 +2,6 @@
 @import "tw-animate-css";
 @plugin "../../corner-shape.config.mjs";
 
-@theme {
-  --breakpoint-xs: 30rem; /* 480px */
-}
-
 @theme inline {
   --font-sans: var(--font-app-sans);
   --font-mono: var(--font-app-mono);
@@ -13,7 +9,7 @@
   --base-color-black: var(--color-neutral-900);
   --base-color-primary: var(--color-neutral-900);
 
-  --color-background: var(--color-white);
+  --color-background: var(--color-neutral-50);
   --color-foreground: var(--base-color-black);
 
   --color-card: var(--color-white);
