@@ -117,7 +117,7 @@ export default function Select({
         className={cn(
           // Layout & Flex
           'flex w-fit items-center justify-between gap-2',
-          'rounded-lg border bg-transparent px-3 py-2 text-sm whitespace-nowrap',
+          'rounded-xl border bg-transparent px-3 py-2 text-sm whitespace-nowrap',
 
           // Borders & Shadows
           'border-input shadow-xs',
@@ -160,7 +160,7 @@ export default function Select({
       {open && (
         <div
           data-slot="select-content"
-          className="bg-popover text-popover-foreground border-input absolute left-0 z-50 mt-1 max-h-60 min-w-[8rem] overflow-x-hidden overflow-y-auto rounded-lg border shadow-md"
+          className="bg-popover text-popover-foreground border-input absolute left-0 z-50 mt-1 max-h-60 min-w-[8rem] overflow-x-hidden overflow-y-auto rounded-xl border shadow-md"
         >
           <div className="flex flex-col gap-0.5 p-1">
             {options.map((option) => {
@@ -179,7 +179,7 @@ export default function Select({
                   className={cn(
                     'relative flex w-full items-center gap-2',
                     'py-1.5 pr-8 pl-2',
-                    'rounded-lg text-sm outline-hidden select-none',
+                    'rounded-xl text-sm outline-hidden select-none',
                     'hover:bg-muted focus:bg-muted aria-disabled:opacity-50',
                     "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
                     "[&_svg:not([class*='text-'])]:text-muted-foreground",
