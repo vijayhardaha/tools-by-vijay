@@ -266,3 +266,4 @@ tmp/
 # Project-level instruction files should be COMMITTED, not ignored.
 # CLAUDE.md, AGENTS.md, .cursorrules, .kilocode/, .qoder/ (config only)
 # Do NOT add these to .gitignore.
+.vercel
