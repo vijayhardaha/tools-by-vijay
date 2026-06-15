@@ -5,25 +5,25 @@ import Image from 'next/image';
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
 
 /**
- * Interface for the QRCodeGeneratorOutput component props.
+ * Interface for the OutputBlock component props.
  *
- * @type {QrCodeGeneratorOutputProps}
+ * @type {OutputBlockProps}
  * @property {string} output - The URL of the generated QR code image
  */
-interface QrCodeGeneratorOutputProps {
+interface OutputBlockProps {
   output: string;
 }
 
 /**
- * QRCodeGeneratorOutput is a React functional component that displays the
+ * OutputBlock is a React functional component that displays the
  * generated QR code along with a download link.
  *
- *  @param {QrCodeGeneratorOutputProps} props - The props for the component.
+ *  @param {OutputBlockProps} props - The props for the component.
  * @param {string} props.output - The URL of the generated QR code image.
  *
  * @returns {JSX.Element} The rendered QR code output component.
  */
-export function QRCodeGeneratorOutput({ output }: QrCodeGeneratorOutputProps): JSX.Element {
+export function OutputBlock({ output }: OutputBlockProps): JSX.Element {
   return (
     <Card>
       <CardHeader>

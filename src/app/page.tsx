@@ -1,7 +1,7 @@
 import type { JSX } from 'react';
 
-import { ToolCard } from '@/components/home/ToolCard';
 import { PageLayout } from '@/components/page/PageLayout';
+import { ToolCard } from '@/components/tool/tool-card';
 import { Container } from '@/components/ui/container';
 import type { Tool } from '@/constants/tools';
 import type { Category } from '@/constants/tools-categories';

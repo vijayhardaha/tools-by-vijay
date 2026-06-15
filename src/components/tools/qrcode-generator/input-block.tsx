@@ -2,7 +2,7 @@
 
 import type { JSX, SubmitEvent } from 'react';
 
-import { ToolInputHeader } from '@/components/tools/tool-input-header';
+import { ToolInputHeader } from '@/components/tool/tool-input-header';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -12,7 +12,7 @@ import { Slider } from '@/components/ui/slider';
 /**
  * Interface for the QR code generator input component props.
  *
- * @type {QrCodeGeneratorInputProps}
+ * @type {InputBlockProps}
  * @property {string} input - The text or URL to encode in the QR code
  * @property {(value: string) => void} setInput - Callback to update the input
  * @property {number} size - The QR code size in pixels
@@ -21,7 +21,7 @@ import { Slider } from '@/components/ui/slider';
  * @property {() => void} onClear - Callback to clear input and output
  * @property {() => void} onReset - Callback to reset all options
  */
-interface QrCodeGeneratorInputProps {
+interface InputBlockProps {
   input: string;
   setInput: (value: string) => void;
   size: number;
@@ -32,14 +32,14 @@ interface QrCodeGeneratorInputProps {
 }
 
 /**
- * QRCodeGeneratorInput is a React functional component that provides
+ * InputBlock is a React functional component that provides
  * input fields and controls for generating a QR code.
  *
- *  @param {QrCodeGeneratorInputProps} props - The props for the component.
+ *  @param {InputBlockProps} props - The props for the component.
  *
  * @returns {JSX.Element} The rendered QR code input component.
  */
-export function QRCodeGeneratorInput({
+export function InputBlock({
   input,
   setInput,
   size,
@@ -47,7 +47,7 @@ export function QRCodeGeneratorInput({
   onSubmit,
   onClear,
   onReset,
-}: QrCodeGeneratorInputProps): JSX.Element {
+}: InputBlockProps): JSX.Element {
   /**
    * Handles the form submission to generate the QR code.
    *

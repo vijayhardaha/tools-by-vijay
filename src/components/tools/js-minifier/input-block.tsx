@@ -2,8 +2,8 @@
 
 import type { JSX, SubmitEvent } from 'react';
 
+import { ToolInputHeader } from '@/components/tool/tool-input-header';
 import type { MinifyOptions } from '@/components/tools/js-minifier';
-import { ToolInputHeader } from '@/components/tools/tool-input-header';
 import { Alert } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';

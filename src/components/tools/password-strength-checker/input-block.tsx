@@ -2,7 +2,7 @@
 
 import type { JSX, ChangeEvent } from 'react';
 
-import { ToolInputHeader } from '@/components/tools/tool-input-header';
+import { ToolInputHeader } from '@/components/tool/tool-input-header';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 
