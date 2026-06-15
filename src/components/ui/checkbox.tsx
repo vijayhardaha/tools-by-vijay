@@ -7,8 +7,6 @@ import { LuCheck as CheckIcon } from 'react-icons/lu';
 
 import { cn } from '@/utils/classnames';
 
-export { Checkbox };
-
 /**
  * Props for the Checkbox component.
  *
