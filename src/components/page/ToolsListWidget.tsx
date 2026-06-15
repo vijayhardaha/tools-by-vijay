@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import type { Tool } from '@/constants/tools';
-import type { Category } from '@/constants/toolsCategories';
+import type { Category } from '@/constants/tools-categories';
 import { getCategoryBySlug } from '@/utils/categories';
 import { cn } from '@/utils/classnames';
 import { getToolsByCategory } from '@/utils/tools';

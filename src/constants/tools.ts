@@ -28,220 +28,271 @@ const tools: Tool[] = [
     name: 'Slugify',
     slug: 'slugify',
     description:
-      'Quickly convert any string into clean, SEO-optimized slugs that are perfect for readable and shareable URLs.',
-    seoTitle: 'Slugify Tool – Instantly Create SEO-Friendly URL Slugs',
+      'Convert any string into clean, SEO-optimized URL slugs. Perfect for creating readable, search-engine-friendly permalinks for blogs and websites.',
+    seoTitle: 'Slugify Tool – Generate SEO-Friendly URL Slugs Instantly',
     seoDescription:
-      'Easily generate clean and readable URL slugs from any text. Improve your website’s SEO with optimized links.',
-    category: 'text-transformation-tools',
+      'Convert text into clean, SEO-optimized URL slugs. Improve your website search rankings with readable and shareable permalinks.',
+    category: 'writing-editing',
   },
   {
     name: 'Bulk Slugify',
     slug: 'bulk-slugify',
-    description: 'Convert multiple lines of text into SEO-friendly slugs in bulk, perfect for batch URL processing.',
-    seoTitle: 'Bulk Slugify Tool – Batch Convert Strings into URL Slugs',
+    description:
+      'Transform multiple lines of text into SEO-friendly slugs simultaneously. Ideal for batch processing large sets of URLs for e-commerce or migrations.',
+    seoTitle: 'Bulk Slugify Tool – Batch Convert Text to URL Slugs',
     seoDescription:
-      'Slugify many lines of text at once for optimized URLs. Great for SEO-focused content creation and automation.',
-    category: 'text-transformation-tools',
+      'Generate multiple SEO-friendly URL slugs at once. The fastest way to batch-process permalinks for large-scale content updates.',
+    category: 'writing-editing',
   },
   {
     name: 'Password Generator',
     slug: 'password-generator',
-    description: 'Generate strong, complex passwords instantly to secure your personal and professional accounts.',
-    seoTitle: 'Password Generator – Create Strong & Secure Passwords Online',
-    seoDescription: 'Create complex and highly secure passwords quickly. Ideal for all your security needs.',
-    category: 'security-tools',
+    description:
+      'Create strong, high-entropy passwords instantly. Customize length and complexity to secure your professional and personal accounts against breaches.',
+    seoTitle: 'Strong Password Generator – Create Secure Random Passwords',
+    seoDescription:
+      'Generate complex, secure passwords instantly to protect your accounts. Customizable length and character sets for maximum security.',
+    category: 'security-privacy',
   },
   {
     name: 'Password Strength Checker',
     slug: 'password-strength-checker',
-    description: 'Instantly assess the strength of your password and receive actionable security tips.',
-    seoTitle: 'Password Strength Checker – Analyze Password Security',
-    seoDescription: 'Evaluate your password strength in real-time and get expert recommendations to enhance security.',
-    category: 'security-tools',
+    description:
+      'Analyze your password strength in real-time. Receive instant security feedback and actionable tips to protect yourself from brute-force attacks.',
+    seoTitle: 'Password Strength Checker – Analyze & Test Password Security',
+    seoDescription:
+      'Test your password strength instantly. Get expert security recommendations to make your passwords unhackable.',
+    category: 'security-privacy',
   },
   {
     name: 'HTML Minifier',
     slug: 'html-minifier',
-    description: 'Minify HTML files to reduce size and speed up your website load times effectively.',
-    seoTitle: 'HTML Minifier – Compress HTML for Better Performance',
-    seoDescription: 'Shrink HTML files by removing unnecessary whitespace for faster loading and better SEO.',
-    category: 'code-optimization-tools',
+    description:
+      'Compress HTML files by removing unnecessary whitespace, comments, and characters. Reduce page size to significantly improve website load speed.',
+    seoTitle: 'HTML Minifier – Compress HTML Code for Faster Page Load',
+    seoDescription:
+      'Minify HTML code to reduce file size and boost page speed. Optimize your website performance and Core Web Vitals today.',
+    category: 'developer-suite',
   },
   {
     name: 'CSS Minifier',
     slug: 'css-minifier',
-    description: 'Compress and optimize your CSS files quickly without changing their functionality.',
-    seoTitle: 'CSS Minifier – Optimize CSS for Faster Load Times',
-    seoDescription: 'Reduce CSS file size efficiently to enhance page speed and performance.',
-    category: 'code-optimization-tools',
+    description:
+      'Optimize your stylesheets by removing redundant spaces and comments. Achieve faster CSS rendering and improved overall site performance.',
+    seoTitle: 'CSS Minifier – Compress CSS Files for Web Performance',
+    seoDescription:
+      'Reduce CSS file size instantly. Minify your stylesheets to ensure faster rendering and a better user experience.',
+    category: 'developer-suite',
   },
   {
     name: 'JS Minifier',
     slug: 'js-minifier',
-    description: 'Minify JavaScript code to improve loading speed and website performance.',
-    seoTitle: 'JavaScript Minifier – Compress JS Code Instantly',
-    seoDescription: 'Speed up your site by compressing JavaScript files easily and quickly.',
-    category: 'code-optimization-tools',
+    description:
+      'Compress JavaScript files to minimize payload size. Improve browser execution speed and reduce bandwidth consumption for your web applications.',
+    seoTitle: 'JavaScript Minifier – Compress JS Code for Faster Loading',
+    seoDescription:
+      'Shrink your JavaScript files with our JS minifier. Improve site speed and performance by removing unnecessary code bloat.',
+    category: 'developer-suite',
   },
   {
     name: 'URL Shortener',
     slug: 'url-shortener',
-    description: 'Shorten multiple URLs efficiently in bulk using the TinyURL API for convenience.',
-    seoTitle: 'URL Shortener – Bulk Short URL Generator with TinyURL',
-    seoDescription: 'Create short links in bulk for easy sharing and marketing campaigns.',
-    category: 'web-utility-tools',
+    description:
+      'Convert long, cumbersome URLs into short, manageable links using the TinyURL API. Perfect for social media and clean marketing campaigns.',
+    seoTitle: 'Bulk URL Shortener – Create Short Links via TinyURL',
+    seoDescription:
+      'Shorten multiple URLs instantly. Create clean, clickable links for social media and marketing using the TinyURL API.',
+    category: 'web-url-tools',
   },
   {
     name: 'Dropdown to Array',
     slug: 'dropdown-to-array',
-    description: 'Convert HTML dropdown options into usable PHP or JavaScript arrays instantly.',
-    seoTitle: 'Dropdown to Array – Convert HTML Options to Code',
-    seoDescription: 'Easily transform dropdown <select> options into clean PHP or JS arrays for coding.',
-    category: 'data-conversion-tools',
+    description:
+      'Quickly transform HTML `<select>` dropdown options into structured PHP or JavaScript arrays. Eliminate manual coding for data migration.',
+    seoTitle: 'Dropdown to Array Converter – HTML Options to PHP/JS Array',
+    seoDescription:
+      'Convert HTML dropdown menus into usable PHP or JS arrays instantly. Save time on manual data entry and coding.',
+    category: 'developer-suite',
   },
   {
     name: 'Text to Array',
     slug: 'text-to-array',
-    description: 'Transform plain text lists into structured PHP or JavaScript arrays with auto-generated keys.',
-    seoTitle: 'Text to Array – Instantly Generate PHP/JS Arrays',
-    seoDescription: 'Convert text into organized arrays for efficient programming use.',
-    category: 'data-conversion-tools',
+    description:
+      'Convert plain text lists into valid PHP or JavaScript arrays with auto-generated keys. Streamline your development workflow for configuration files.',
+    seoTitle: 'Text to Array Tool – Generate PHP & JS Arrays from Text',
+    seoDescription:
+      'Transform plain text lists into structured PHP or JavaScript arrays. Quickly generate code-ready arrays for your projects.',
+    category: 'developer-suite',
   },
   {
     name: 'JSON Sorter',
     slug: 'json-sorter',
-    description: 'Alphabetically sort JSON object keys for improved readability and data consistency.',
-    seoTitle: 'JSON Sorter – Organize JSON Keys Alphabetically',
-    seoDescription: 'Sort your JSON data keys to enhance clarity and structure for development.',
-    category: 'code-optimization-tools',
+    description:
+      'Alphabetically sort JSON keys to make complex data structures readable. Perfect for debugging API responses and ensuring data consistency.',
+    seoTitle: 'JSON Sorter – Alphabetize and Organize JSON Keys',
+    seoDescription:
+      'Sort JSON object keys alphabetically. Improve data readability and make comparing JSON files easier for developers.',
+    category: 'developer-suite',
   },
   {
     name: 'Duplicate Line Removal',
     slug: 'duplicate-line-removal',
-    description: 'Remove duplicate lines from your text automatically while preserving the original order.',
-    seoTitle: 'Duplicate Line Remover – Eliminate Repeated Lines',
-    seoDescription: 'Clean up your content by quickly removing repeated lines to ensure uniqueness.',
-    category: 'text-transformation-tools',
+    description:
+      'Clean your datasets by removing duplicate lines of text. Maintain original order while ensuring every entry is unique.',
+    seoTitle: 'Duplicate Line Remover – Remove Repeated Lines from Text',
+    seoDescription:
+      'Instantly remove duplicate lines from your text. Clean up lists and datasets while preserving original line order.',
+    category: 'writing-editing',
   },
   {
     name: 'Alphabetical Line Sorter',
     slug: 'alphabetical-line-sorter',
-    description: 'Sort lines of text alphabetically, in reverse, or numerically to organize your data.',
+    description:
+      'Organize text lines alphabetically, numerically, or in reverse order. Efficiently manage lists, logs, and data sets.',
     seoTitle: 'Text Line Sorter – Sort Lines Alphabetically or Numerically',
-    seoDescription: 'Arrange your text lines in various orders to improve readability and workflow.',
-    category: 'text-transformation-tools',
+    seoDescription:
+      'Easily sort lines of text in ascending or descending order. A powerful tool for organizing lists and data sets quickly.',
+    category: 'writing-editing',
   },
   {
     name: 'CSS Inliner',
     slug: 'css-inliner',
-    description: 'Convert CSS rules into inline styles within HTML tags, perfect for emails and simple documents.',
-    seoTitle: 'CSS Inliner – Convert CSS into Inline HTML Styles',
-    seoDescription: 'Inline CSS to enhance email compatibility and simplify HTML delivery.',
-    category: 'code-optimization-tools',
+    description:
+      'Transform external or internal CSS rules into inline HTML styles. Essential for maximizing email template compatibility across all clients.',
+    seoTitle: 'CSS Inliner – Convert CSS to Inline HTML Styles for Email',
+    seoDescription:
+      'Convert CSS to inline styles to ensure your HTML emails look perfect across all mail clients and devices.',
+    category: 'developer-suite',
   },
   {
     name: 'Replace Quotes',
     slug: 'replace-quotes',
-    description: 'Toggle between curly and straight quotes for clean and professional typography.',
-    seoTitle: 'Replace Quotes Tool – Toggle Between Curly and Straight Quotes',
-    seoDescription: 'Convert straight quotes to smart curly quotes or vice versa to improve text presentation.',
-    category: 'text-transformation-tools',
+    description:
+      'Easily toggle between "smart" curly quotes and straight quotes. Ensure professional typography for publishing or clean code for development.',
+    seoTitle: 'Replace Quotes Tool – Convert Curly and Straight Quotes',
+    seoDescription:
+      'Switch between smart curly quotes and straight quotes instantly. Perfect for cleaning text for code or refining typography.',
+    category: 'writing-editing',
   },
   {
     name: 'Shuffle Text Lines',
     slug: 'shuffle-text-lines',
-    description: 'Randomly reorder lines of text for creative or practical uses like contests or presentations.',
-    seoTitle: 'Shuffle Text Lines – Randomize Line Order Online',
-    seoDescription: 'Shuffle the order of your text lines quickly and easily for varied output.',
-    category: 'text-transformation-tools',
+    description:
+      'Randomize the order of your text lines instantly. Useful for creating fair lists, randomized test data, or creative brainstorming.',
+    seoTitle: 'Shuffle Text Lines – Randomize Order of Text Lines Online',
+    seoDescription:
+      'Randomly shuffle lines of text with one click. Ideal for contests, randomized lists, and data sampling.',
+    category: 'writing-editing',
   },
   {
     name: 'Character Count',
     slug: 'character-count',
-    description: 'Count the number of characters, words, and spaces in any text instantly.',
-    seoTitle: 'Character Counter – Count Words, Characters & Spaces',
-    seoDescription: 'Track text length and composition in real-time for writing and editing purposes.',
-    category: 'text-transformation-tools',
+    description:
+      'Get a detailed analysis of your text, including character count, word count, and space count. Perfect for meeting strict social media or academic limits.',
+    seoTitle: 'Character Counter – Word & Character Count Tool',
+    seoDescription:
+      'Count words, characters, and spaces in real-time. Ensure your content fits perfectly within SEO and social media limits.',
+    category: 'writing-editing',
   },
   {
     name: 'URL Decoder/Encoder',
     slug: 'url-decoder-encoder',
-    description: 'Encode or decode URLs quickly to ensure they work across different browsers and platforms.',
-    seoTitle: 'URL Decoder & Encoder – Convert URLs with Ease',
-    seoDescription: 'Effortlessly encode or decode URLs for clean and functional web links.',
-    category: 'web-utility-tools',
+    description:
+      'Encode or decode URL components to ensure special characters are handled correctly across different web browsers and servers.',
+    seoTitle: 'URL Encoder & Decoder – Convert URL Special Characters',
+    seoDescription:
+      'Easily encode or decode URL strings. Ensure your web links are functional and free of character-encoding errors.',
+    category: 'web-url-tools',
   },
   {
     name: 'Base64 Encode/Decode',
     slug: 'base64-encode-decode',
-    description: 'Easily convert files or text to and from Base64 format for secure data handling.',
-    seoTitle: 'Base64 Converter – Encode or Decode Text and Files',
-    seoDescription: 'Quickly encode or decode Base64 to support secure transmission of data.',
-    category: 'data-conversion-tools',
+    description:
+      'Convert text or files to Base64 format and back again. Essential for embedding images in CSS/HTML or transmitting binary data via text.',
+    seoTitle: 'Base64 Converter – Encode and Decode Text & Files',
+    seoDescription:
+      'Quickly encode or decode Base64 strings and files. The ideal tool for secure data transmission and web embedding.',
+    category: 'web-url-tools',
   },
   {
     name: 'Country Name Generator',
     slug: 'country-name-generator',
-    description: 'Generate fictional country names randomly for creative writing, games, or simulations.',
-    seoTitle: 'Country Name Generator – Random Country Name Creator',
-    seoDescription: 'Create unique and imaginative country names instantly for various projects.',
-    category: 'web-utility-tools',
+    description:
+      'Generate unique, fictional country names for world-building. Ideal for authors, RPG game masters, and creative simulation projects.',
+    seoTitle: 'Country Name Generator – Random Fictional Country Creator',
+    seoDescription:
+      'Create imaginative and unique country names instantly. Perfect for creative writing, gaming, and fantasy world-building.',
+    category: 'creative-generators',
   },
   {
     name: 'Random Username Generator',
     slug: 'random-username-generator',
-    description: 'Generate unique and creative usernames instantly for accounts or entertainment.',
-    seoTitle: 'Username Generator – Create Random & Unique Usernames',
-    seoDescription: 'Find fresh and interesting usernames quickly for your online profiles and apps.',
-    category: 'web-utility-tools',
+    description:
+      'Generate creative and unique usernames based on your preferences. Stop struggling to find available handles for social media or gaming.',
+    seoTitle: 'Username Generator – Create Unique & Random Usernames',
+    seoDescription:
+      'Find the perfect unique username instantly. Generate creative handles for gaming, social media, and online profiles.',
+    category: 'creative-generators',
   },
   {
     name: 'Text Case Changer',
     slug: 'text-case-changer',
-    description: 'Convert text between uppercase, lowercase, and title case styles instantly.',
-    seoTitle: 'Text Case Converter – Change Case Instantly',
-    seoDescription: 'Switch text case easily for writing, editing, and formatting needs.',
-    category: 'text-transformation-tools',
+    description:
+      'Instantly convert text between UPPERCASE, lowercase, Title Case, and Sentence case. Quickly fix formatting errors in large blocks of text.',
+    seoTitle: 'Text Case Converter – Change Case of Text Instantly',
+    seoDescription:
+      'Convert text to uppercase, lowercase, or title case in one click. The fastest way to fix text formatting errors.',
+    category: 'writing-editing',
   },
   {
     name: 'Text to PHP Variables',
     slug: 'text-to-php-variables',
-    description: 'Automatically convert lines of text into PHP variable declarations for coding.',
-    seoTitle: 'Text to PHP Variables – Generate PHP Code from Text',
-    seoDescription: 'Transform plain text into PHP variables quickly for seamless development.',
-    category: 'data-conversion-tools',
+    description:
+      'Automatically wrap lines of text into PHP variable declarations. Streamline the process of creating configuration lists and arrays.',
+    seoTitle: 'Text to PHP Variables – Generate PHP Code from Text Lists',
+    seoDescription:
+      'Convert plain text lists into PHP variable declarations instantly. Speed up your backend development workflow.',
+    category: 'developer-suite',
   },
   {
     name: 'PX to REM Converter',
     slug: 'px-to-rem-converter',
-    description: 'Convert pixel values to REM units for responsive and scalable web design.',
-    seoTitle: 'PX to REM Converter – Convert CSS Units Easily',
-    seoDescription: 'Easily translate PX to REM units to improve your site’s responsiveness.',
-    category: 'code-optimization-tools',
+    description:
+      'Convert pixel (PX) values to REM units for scalable web typography. Essential for building accessible, responsive designs that adapt to user settings.',
+    seoTitle: 'PX to REM Converter – Convert CSS Pixels to REM',
+    seoDescription:
+      'Translate PX to REM units instantly for responsive web design. Improve accessibility and scalability in your CSS.',
+    category: 'developer-suite',
   },
   {
     name: 'Unminify',
     slug: 'unminify',
-    description: 'Beautify minified HTML, CSS, or JavaScript code to restore readability.',
-    seoTitle: 'Unminify Code – Beautify Minified HTML, CSS, JS',
-    seoDescription: 'Convert compressed code back into a readable format quickly and easily.',
-    category: 'code-optimization-tools',
+    description:
+      'Reverse minification for HTML, CSS, and JavaScript. Beautify compressed code to make it readable for debugging and auditing.',
+    seoTitle: 'Unminify Code – Beautify Minified HTML, CSS & JS',
+    seoDescription:
+      'Convert compressed, minified code back into a readable, indented format. Perfect for debugging and code analysis.',
+    category: 'developer-suite',
   },
   {
     name: 'Barcode Generator',
     slug: 'barcode-generator',
-    description: 'Create standard barcodes quickly for products, inventory, or business use.',
-    seoTitle: 'Barcode Generator – Create Product Barcodes Instantly',
-    seoDescription: 'Generate professional barcodes easily to aid in product labeling and tracking.',
-    category: 'web-utility-tools',
+    description:
+      'Create industry-standard barcodes for product tracking and inventory management. Generate high-quality images ready for printing.',
+    seoTitle: 'Barcode Generator – Create Custom Product Barcodes',
+    seoDescription:
+      'Generate professional barcodes instantly for inventory, shipping, and retail. Fast, free, and ready to print.',
+    category: 'creative-generators',
   },
   {
     name: 'QRCode Generator',
     slug: 'qrcode-generator',
-    description: 'Generate QR codes from text, URLs, or contact info easily and efficiently.',
-    seoTitle: 'QR Code Generator – Make Custom QR Codes Online',
-    seoDescription: 'Create personalized QR codes quickly for sharing data or URLs.',
-    category: 'web-utility-tools',
+    description:
+      'Generate high-resolution QR codes from URLs, text, or contact information. Bridge the gap between physical media and digital content.',
+    seoTitle: 'QR Code Generator – Create Custom QR Codes Online',
+    seoDescription:
+      'Generate personalized QR codes for URLs, text, or WiFi passwords. Create high-quality, scannable codes in seconds.',
+    category: 'creative-generators',
   },
 ];
 

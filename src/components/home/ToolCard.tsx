@@ -2,7 +2,7 @@ import type { JSX } from 'react';
 
 import Link from 'next/link';
 
-import { PiCaretRightBold } from '@/constants/toolIcons';
+import { PiCaretRightBold } from '@/constants/tool-icons';
 import type { Tool } from '@/constants/tools';
 import { cn } from '@/utils/classnames';
 import { findToolBySlug, getToolIcon } from '@/utils/tools';

@@ -4,7 +4,7 @@ import ToolCard from '@/components/home/ToolCard';
 import PageLayout from '@/components/page/PageLayout';
 import Container from '@/components/ui/container';
 import type { Tool } from '@/constants/tools';
-import type { Category } from '@/constants/toolsCategories';
+import type { Category } from '@/constants/tools-categories';
 import { getCategoryBySlug } from '@/utils/categories';
 import { getToolsByCategories } from '@/utils/tools';
 
@@ -45,7 +45,7 @@ export default function Home(): JSX.Element {
                 <p className="text-muted-foreground">{category.description}</p>
               </div>
 
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-4 md:gap-6">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-6">
                 {categoryTools.map((tool: Tool) => (
                   <ToolCard key={tool.slug} slug={tool.slug} />
                 ))}

@@ -2,7 +2,7 @@ import type { JSX, ElementType } from 'react';
 
 import { Button } from '@/components/ui/button';
 import { SheetFooter } from '@/components/ui/sheet';
-import { socialMediaLinks } from '@/constants/socialLinks';
+import { socialMediaLinks } from '@/constants/social-links';
 
 /**
  * Props for the SocialButton component.
