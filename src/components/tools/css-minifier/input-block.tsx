@@ -96,7 +96,7 @@ export default function InputBlock({
             value={input}
             onChange={(e) => setInput(e.target.value)}
           />
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
             <div className="space-y-4">
               <h3 className="text-base font-semibold">Optimization Level</h3>
               <div className="flex flex-col gap-4">
