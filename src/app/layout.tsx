@@ -3,7 +3,7 @@ import type { JSX, ReactNode } from 'react';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import type { Metadata } from 'next';
 
-import OSDetectionScript from '@/components/shared/OSDetectionScript';
+import { OSDetectionScript } from '@/components/shared/OSDetectionScript';
 import { VercelAnalytics } from '@/components/shared/VercelAnalytics';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { GOOGLE_ANALYTICS_ID, SITE_METADATA } from '@/constants/seo';

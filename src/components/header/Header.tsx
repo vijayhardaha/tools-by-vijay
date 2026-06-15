@@ -5,12 +5,12 @@ import { useEffect, useRef, useState } from 'react';
 
 import { PiMagnifyingGlassBold } from 'react-icons/pi';
 
-import DesktopNav from '@/components/header/DesktopNav';
-import Logo from '@/components/header/parts/Logo';
-import MenuButton from '@/components/header/parts/MenuButton';
-import Sidebar from '@/components/header/sidebar/Sidebar';
-import Container from '@/components/ui/container';
-import SearchModal from '@/components/ui/search-modal';
+import { DesktopNav } from '@/components/header/DesktopNav';
+import { Logo } from '@/components/header/parts/Logo';
+import { MenuButton } from '@/components/header/parts/MenuButton';
+import { Sidebar } from '@/components/header/sidebar/Sidebar';
+import { Container } from '@/components/ui/container';
+import { SearchModal } from '@/components/ui/search-modal';
 import tools from '@/constants/tools';
 import { cn } from '@/utils/classnames';
 
@@ -20,7 +20,7 @@ import { cn } from '@/utils/classnames';
  *
  * @returns {JSX.Element} Header component with navigation
  */
-export default function Header(): JSX.Element {
+export function Header(): JSX.Element {
   const [isOpen, setIsOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [visible, setVisible] = useState(true);

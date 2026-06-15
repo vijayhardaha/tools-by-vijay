@@ -54,12 +54,10 @@ interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
  *
  * @returns {JSX.Element} The rendered Badge component
  */
-export default function Badge({ className, variant = 'default', children, ...props }: BadgeProps): JSX.Element {
+export function Badge({ className, variant = 'default', children, ...props }: BadgeProps): JSX.Element {
   return (
     <span className={cn(badgeVariants({ variant }), className)} {...props}>
       {children}
     </span>
   );
 }
-
-export { Badge };

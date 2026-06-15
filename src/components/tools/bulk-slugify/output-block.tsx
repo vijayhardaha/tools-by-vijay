@@ -26,7 +26,7 @@ interface OutputBlockProps {
  *
  * @returns {JSX.Element} The rendered component.
  */
-export default function OutputBlock({ output }: OutputBlockProps): JSX.Element {
+export function OutputBlock({ output }: OutputBlockProps): JSX.Element {
   // Split the output into individual lines and filter out empty lines
   const lines: string[] = output.split('\n').filter((line) => line.trim() !== '');
 

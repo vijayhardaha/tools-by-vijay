@@ -4,9 +4,9 @@ import type { Metadata } from 'next';
 import { FaFacebookF, FaXTwitter, FaGithub, FaInstagram } from 'react-icons/fa6';
 import { TbWorldWww } from 'react-icons/tb';
 
-import PageContent from '@/components/page/PageContent';
-import PageHeader from '@/components/page/PageHeader';
-import PageLayout from '@/components/page/PageLayout';
+import { PageContent } from '@/components/page/PageContent';
+import { PageHeader } from '@/components/page/PageHeader';
+import { PageLayout } from '@/components/page/PageLayout';
 import { buildMetadata } from '@/utils/meta';
 
 /**

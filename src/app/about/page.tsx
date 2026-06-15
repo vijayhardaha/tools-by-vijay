@@ -2,9 +2,9 @@ import type { JSX } from 'react';
 
 import type { Metadata } from 'next';
 
-import PageContent from '@/components/page/PageContent';
-import PageHeader from '@/components/page/PageHeader';
-import PageLayout from '@/components/page/PageLayout';
+import { PageContent } from '@/components/page/PageContent';
+import { PageHeader } from '@/components/page/PageHeader';
+import { PageLayout } from '@/components/page/PageLayout';
 import { buildMetadata } from '@/utils/meta';
 
 /**

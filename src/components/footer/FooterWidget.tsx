@@ -23,7 +23,7 @@ interface FooterWidgetProps {
  *
  * @returns {JSX.Element} The rendered footer widget.
  */
-export default function FooterWidget({ title, links }: FooterWidgetProps): JSX.Element {
+export function FooterWidget({ title, links }: FooterWidgetProps): JSX.Element {
   /**
    * Check if a URL is external (starts with http:// or https://)
    *

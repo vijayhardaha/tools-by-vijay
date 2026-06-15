@@ -2,8 +2,8 @@
 
 import type { JSX, SubmitEvent } from 'react';
 
-import ToolInputHeader from '@/components/tools/tool-input-header';
-import Alert from '@/components/ui/alert';
+import { ToolInputHeader } from '@/components/tools/tool-input-header';
+import { Alert } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { RadioBox } from '@/components/ui/radiobox';
@@ -42,7 +42,7 @@ interface InputBlockProps {
  *
  * @returns {JSX.Element} The rendered UnminifyInput component.
  */
-export default function InputBlock({
+export function InputBlock({
   input,
   setInput,
   codeType,

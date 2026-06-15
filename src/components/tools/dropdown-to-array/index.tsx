@@ -6,9 +6,9 @@ import { useState } from 'react';
 import latinize from 'latinize';
 import slugify from 'slugify';
 
-import InfoBlock from './info-block';
-import InputBlock from './input-block';
-import OutputBlock from './output-block';
+import { InfoBlock } from './info-block';
+import { InputBlock } from './input-block';
+import { OutputBlock } from './output-block';
 
 /**
  * Interface for the option elements.
@@ -25,7 +25,7 @@ interface Option {
  *
  * @returns {JSX.Element} The rendered component.
  */
-export default function DropdownToArray(): JSX.Element {
+export function DropdownToArray(): JSX.Element {
   const [input, setInput] = useState<string>('');
   const [outputFormat, setOutputFormat] = useState<string>('json');
   const [arrayType, setArrayType] = useState<string>('associative');

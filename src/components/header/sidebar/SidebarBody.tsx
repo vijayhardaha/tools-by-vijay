@@ -74,7 +74,7 @@ const CategorySection = ({ title, tools }: CategorySectionProps): JSX.Element =>
  *
  * @returns {JSX.Element} The sidebar body content.
  */
-export default function SidebarBody(): JSX.Element {
+export function SidebarBody(): JSX.Element {
   // Group tools by category
   const categorizedTools = getToolsByCategories();
   const scrollbarsRef = useRef<Scrollbars>(null);

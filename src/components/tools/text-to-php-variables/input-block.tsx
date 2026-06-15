@@ -2,7 +2,7 @@
 
 import type { JSX, SubmitEvent } from 'react';
 
-import Alert from '@/components/ui/alert';
+import { Alert } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
 import { Select } from '@/components/ui/select';
@@ -39,7 +39,7 @@ interface InputBlockProps {
  *
  * @returns {JSX.Element} The rendered input component.
  */
-export default function InputBlock({
+export function InputBlock({
   input,
   setInput,
   variableCase,

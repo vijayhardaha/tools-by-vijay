@@ -2,8 +2,8 @@
 
 import type { JSX, SubmitEvent } from 'react';
 
-import ToolInputHeader from '@/components/tools/tool-input-header';
-import Alert from '@/components/ui/alert';
+import { ToolInputHeader } from '@/components/tools/tool-input-header';
+import { Alert } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -33,7 +33,7 @@ interface InputBlockProps {
  *
  * @returns {JSX.Element} The RandomUsernameGeneratorInput component.
  */
-export default function InputBlock({ count, setCount, onGenerate, onClear, error }: InputBlockProps): JSX.Element {
+export function InputBlock({ count, setCount, onGenerate, onClear, error }: InputBlockProps): JSX.Element {
   /**
    * Handles the form submission event.
    *

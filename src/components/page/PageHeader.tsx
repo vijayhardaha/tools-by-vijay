@@ -1,7 +1,7 @@
 import type { JSX, ReactNode } from 'react';
 
-import PageBreadcrumb from '@/components/page/PageBreadcrumb';
-import Container from '@/components/ui/container';
+import { PageBreadcrumb } from '@/components/page/PageBreadcrumb';
+import { Container } from '@/components/ui/container';
 import { cn } from '@/utils/classnames';
 
 /**
@@ -27,7 +27,7 @@ interface PageHeaderProps {
  *
  * @returns {JSX.Element} The rendered component.
  */
-export default function PageHeader({ title, description, icon = null, pageName }: PageHeaderProps): JSX.Element {
+export function PageHeader({ title, description, icon = null, pageName }: PageHeaderProps): JSX.Element {
   const gradients = [
     // radial
     'radial-gradient(100% 225% at 100% 0%, #FAFF00 0%, #000000 100%)',

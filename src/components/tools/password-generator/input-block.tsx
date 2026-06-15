@@ -2,10 +2,10 @@
 
 import type { JSX, SubmitEvent } from 'react';
 
-import ToolInputHeader from '@/components/tools/tool-input-header';
+import { ToolInputHeader } from '@/components/tools/tool-input-header';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
-import Checkbox from '@/components/ui/checkbox';
+import { Checkbox } from '@/components/ui/checkbox';
 import { HelpTip } from '@/components/ui/helptip';
 import { Label } from '@/components/ui/label';
 import { Slider } from '@/components/ui/slider';
@@ -54,7 +54,7 @@ interface InputBlockProps {
  *
  * @returns {JSX.Element} The rendered form with password generation options.
  */
-export default function InputBlock({
+export function InputBlock({
   length,
   setLength,
   useUppercase,

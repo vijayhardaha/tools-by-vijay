@@ -1,8 +1,8 @@
 import type { JSX, ReactNode } from 'react';
 
-import Footer from '@/components/footer/Footer';
-import Header from '@/components/header/Header';
-import ScrollToTop from '@/components/ui/scroll-to-top';
+import { Footer } from '@/components/footer/Footer';
+import { Header } from '@/components/header/Header';
+import { ScrollToTop } from '@/components/ui/scroll-to-top';
 
 /**
  * Props for the PageLayout component.
@@ -22,7 +22,7 @@ interface PageLayoutProps {
  *
  * @returns {JSX.Element} The rendered layout component.
  */
-export default function PageLayout({ children }: PageLayoutProps): JSX.Element {
+export function PageLayout({ children }: PageLayoutProps): JSX.Element {
   return (
     <div>
       {/* Skip to main content link for keyboard and screen reader users */}

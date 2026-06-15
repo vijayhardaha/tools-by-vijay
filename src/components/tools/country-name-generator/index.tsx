@@ -3,16 +3,16 @@
 import type { JSX } from 'react';
 import { useState } from 'react';
 
-import InfoBlock from './info-block';
-import InputBlock from './input-block';
-import OutputBlock from './output-block';
+import { InfoBlock } from './info-block';
+import { InputBlock } from './input-block';
+import { OutputBlock } from './output-block';
 
 /**
  * A tool for generating random country names.
  *
  * @returns {JSX.Element} The CountryNameGeneratorTool component.
  */
-export default function CountryNameGenerator(): JSX.Element {
+export function CountryNameGenerator(): JSX.Element {
   const [count, setCount] = useState<number>(1);
   const [output, setOutput] = useState<string[]>([]);
   const [error, setError] = useState<string>('');

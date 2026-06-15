@@ -3,9 +3,9 @@
 import type { JSX } from 'react';
 import { useState } from 'react';
 
-import InfoBlock from './info-block';
-import InputBlock from './input-block';
-import OutputBlock from './output-block';
+import { InfoBlock } from './info-block';
+import { InputBlock } from './input-block';
+import { OutputBlock } from './output-block';
 
 /**
  * Main component for the Password Generator tool.
@@ -13,7 +13,7 @@ import OutputBlock from './output-block';
  *
  * @returns {JSX.Element} The complete password generator tool with input options, output display, and information
  */
-export default function PasswordGenerator(): JSX.Element {
+export function PasswordGenerator(): JSX.Element {
   const [length, setLength] = useState<number>(12);
   const [useUppercase, setUseUppercase] = useState<boolean>(true);
   const [useLowercase, setUseLowercase] = useState<boolean>(true);

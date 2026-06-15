@@ -46,7 +46,7 @@ const SocialButton = ({ icon: Icon, href, label, color }: SocialButtonProps): JS
  *
  * @returns {JSX.Element} The sidebar footer component
  */
-export default function SidebarFooter(): JSX.Element {
+export function SidebarFooter(): JSX.Element {
   return (
     <SheetFooter>
       <div className="flex justify-start space-x-2">

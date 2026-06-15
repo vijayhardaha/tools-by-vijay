@@ -23,7 +23,7 @@ interface QrCodeGeneratorOutputProps {
  *
  * @returns {JSX.Element} The rendered QR code output component.
  */
-export default function QRCodeGeneratorOutput({ output }: QrCodeGeneratorOutputProps): JSX.Element {
+export function QRCodeGeneratorOutput({ output }: QrCodeGeneratorOutputProps): JSX.Element {
   return (
     <Card>
       <CardHeader>

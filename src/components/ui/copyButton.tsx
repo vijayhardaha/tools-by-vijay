@@ -31,7 +31,7 @@ interface CopyButtonProps {
  *
  * @returns {JSX.Element} The CopyButton component
  */
-export default function CopyButton({
+export function CopyButton({
   text,
   copyText = 'Copy',
   copiedText = 'Copied!',
@@ -57,5 +57,3 @@ export default function CopyButton({
     </Button>
   );
 }
-
-export { CopyButton };

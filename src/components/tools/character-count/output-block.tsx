@@ -19,7 +19,7 @@ interface OutputBlockProps {
  *
  * @returns {JSX.Element} The rendered card with text statistics.
  */
-export default function OutputBlock({ stats }: OutputBlockProps): JSX.Element {
+export function OutputBlock({ stats }: OutputBlockProps): JSX.Element {
   /**
    * Renders a code block with specific styling.
    *

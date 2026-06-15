@@ -21,7 +21,7 @@ interface OutputBlockProps {
  *
  * @returns {JSX.Element} The rendered card with output display and copy functionality.
  */
-export default function OutputBlock({ output }: OutputBlockProps): JSX.Element {
+export function OutputBlock({ output }: OutputBlockProps): JSX.Element {
   return (
     <Card>
       <CardHeader>

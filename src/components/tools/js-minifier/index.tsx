@@ -3,9 +3,9 @@
 import type { JSX } from 'react';
 import { useState } from 'react';
 
-import InfoBlock from './info-block';
-import InputBlock from './input-block';
-import OutputBlock from './output-block';
+import { InfoBlock } from './info-block';
+import { InputBlock } from './input-block';
+import { OutputBlock } from './output-block';
 
 /**
  * Interface for the JS minification options.
@@ -28,7 +28,7 @@ export interface MinifyOptions {
  *
  * @returns {JSX.Element} The JavaScript Minifier tool interface.
  */
-export default function JsMinifier(): JSX.Element {
+export function JsMinifier(): JSX.Element {
   const [input, setInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);

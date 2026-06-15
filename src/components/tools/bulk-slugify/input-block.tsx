@@ -2,10 +2,10 @@
 
 import type { JSX, SubmitEvent } from 'react';
 
-import ToolInputHeader from '@/components/tools/tool-input-header';
+import { ToolInputHeader } from '@/components/tools/tool-input-header';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
-import Checkbox from '@/components/ui/checkbox';
+import { Checkbox } from '@/components/ui/checkbox';
 import { Textarea } from '@/components/ui/textarea';
 import { cn } from '@/utils/classnames';
 
@@ -58,7 +58,7 @@ interface InputBlockProps {
  *
  * @returns {JSX.Element} The rendered barcode input component.
  */
-export default function InputBlock({
+export function InputBlock({
   input = '',
   useUnderscore = false,
   setInput,

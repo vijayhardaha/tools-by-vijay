@@ -3,9 +3,9 @@
 import type { JSX } from 'react';
 import { useState } from 'react';
 
-import InfoBlock from './info-block';
-import InputBlock from './input-block';
-import OutputBlock from './output-block';
+import { InfoBlock } from './info-block';
+import { InputBlock } from './input-block';
+import { OutputBlock } from './output-block';
 
 /**
  * A tool for inlining CSS into HTML. It provides input fields for HTML and CSS,
@@ -13,7 +13,7 @@ import OutputBlock from './output-block';
  *
  * @returns {JSX.Element} The rendered CssInlinerTool component.
  */
-export default function CssInliner(): JSX.Element {
+export function CssInliner(): JSX.Element {
   const [htmlInput, setHtmlInput] = useState<string>('');
   const [cssInput, setCssInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');

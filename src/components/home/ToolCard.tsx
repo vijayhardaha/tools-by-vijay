@@ -27,7 +27,7 @@ interface ToolCardProps {
  *
  * @returns {JSX.Element | null} The rendered ToolCard component.
  */
-export default function ToolCard({ slug, className = '' }: ToolCardProps): JSX.Element | null {
+export function ToolCard({ slug, className = '' }: ToolCardProps): JSX.Element | null {
   const tool: Tool | null = findToolBySlug(slug);
 
   if (!tool) return null;

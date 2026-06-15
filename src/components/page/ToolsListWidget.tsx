@@ -28,7 +28,7 @@ interface ToolsListWidgetProps {
  *
  * @returns {JSX.Element} The rendered component.
  */
-export default function ToolsListWidget({ category, hideTool = '' }: ToolsListWidgetProps): JSX.Element {
+export function ToolsListWidget({ category, hideTool = '' }: ToolsListWidgetProps): JSX.Element {
   const toolsInCategory: Tool[] = getToolsByCategory(category).filter((categoryTool) => categoryTool.slug !== hideTool);
 
   const categoryData: Category | null = getCategoryBySlug(category);

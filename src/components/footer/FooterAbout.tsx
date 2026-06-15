@@ -1,6 +1,6 @@
 import type { JSX, ElementType } from 'react';
 
-import Logo from '@/components/header/parts/Logo';
+import { Logo } from '@/components/header/parts/Logo';
 import { Button } from '@/components/ui/button';
 import { socialMediaLinks } from '@/constants/social-links';
 
@@ -64,7 +64,7 @@ const SocialButton = ({ icon: Icon, href, label, color }: SocialButtonProps): JS
  *
  * @returns {JSX.Element} The rendered footer about section.
  */
-export default function FooterAbout(): JSX.Element {
+export function FooterAbout(): JSX.Element {
   return (
     <div className="mb-6 flex flex-col gap-4 md:gap-6">
       <div className="space-y-2">

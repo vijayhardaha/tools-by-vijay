@@ -3,9 +3,9 @@
 import type { JSX } from 'react';
 import { useState } from 'react';
 
-import InfoBlock from './info-block';
-import InputBlock from './input-block';
-import OutputBlock from './output-block';
+import { InfoBlock } from './info-block';
+import { InputBlock } from './input-block';
+import { OutputBlock } from './output-block';
 
 /**
  * Type representing the various text case options available for transformation.
@@ -24,7 +24,7 @@ type TextCase =
  *
  * @returns {JSX.Element} The rendered TextCaseChangerTool component.
  */
-export default function TextCaseChanger(): JSX.Element {
+export function TextCaseChanger(): JSX.Element {
   const [input, setInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
   const [textCase, setTextCase] = useState<TextCase>('Sentence case');

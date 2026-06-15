@@ -49,14 +49,7 @@ interface TabsProps extends HTMLAttributes<HTMLDivElement> {
  *
  * @returns {JSX.Element} Tabs component
  */
-export default function Tabs({
-  className,
-  defaultValue,
-  value,
-  onValueChange,
-  children,
-  ...props
-}: TabsProps): JSX.Element {
+function Tabs({ className, defaultValue, value, onValueChange, children, ...props }: TabsProps): JSX.Element {
   const [localTab, setLocalTab] = useState(value || defaultValue || '');
 
   // Derive the effective tab during render (fixes set-state-in-effect)

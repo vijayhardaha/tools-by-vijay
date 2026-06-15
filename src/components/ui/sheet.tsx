@@ -46,7 +46,7 @@ interface SheetProps extends HTMLAttributes<HTMLDivElement> {
  *
  * @returns {JSX.Element} The rendered sheet component
  */
-export default function Sheet({ open: controlledOpen, onOpenChange, children, ...props }: SheetProps): JSX.Element {
+function Sheet({ open: controlledOpen, onOpenChange, children, ...props }: SheetProps): JSX.Element {
   const [uncontrolledOpen, setUncontrolledOpen] = useState(false);
 
   const open = controlledOpen !== undefined ? controlledOpen : uncontrolledOpen;

@@ -2,7 +2,7 @@
 
 import type { JSX, SubmitEvent } from 'react';
 
-import ToolInputHeader from '@/components/tools/tool-input-header';
+import { ToolInputHeader } from '@/components/tools/tool-input-header';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { RadioBox } from '@/components/ui/radiobox';
@@ -38,7 +38,7 @@ interface InputBlockProps {
  *
  * @returns {JSX.Element} The rendered input component.
  */
-export default function InputBlock({
+export function InputBlock({
   input,
   setInput,
   isEncoding,

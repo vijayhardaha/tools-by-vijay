@@ -1,8 +1,8 @@
 import type { JSX } from 'react';
 
-import ToolCard from '@/components/home/ToolCard';
-import PageLayout from '@/components/page/PageLayout';
-import Container from '@/components/ui/container';
+import { ToolCard } from '@/components/home/ToolCard';
+import { PageLayout } from '@/components/page/PageLayout';
+import { Container } from '@/components/ui/container';
 import type { Tool } from '@/constants/tools';
 import type { Category } from '@/constants/tools-categories';
 import { getCategoryBySlug } from '@/utils/categories';

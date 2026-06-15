@@ -3,16 +3,16 @@
 import type { JSX } from 'react';
 import { useState } from 'react';
 
-import InfoBlock from './info-block';
-import InputBlock from './input-block';
-import OutputBlock from './output-block';
+import { InfoBlock } from './info-block';
+import { InputBlock } from './input-block';
+import { OutputBlock } from './output-block';
 
 /**
  * A tool for shuffling lines of text with options to remove duplicates.
  *
  * @returns {JSX.Element} The ShuffleTextLinesTool component.
  */
-export default function ShuffleTextLines(): JSX.Element {
+export function ShuffleTextLines(): JSX.Element {
   const [input, setInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
   const [removeDuplicates, setRemoveDuplicates] = useState<boolean>(false);

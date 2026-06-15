@@ -23,7 +23,7 @@ interface OutputBlockProps {
  *
  * @returns {JSX.Element} The rendered card with password display and copy functionality.
  */
-export default function OutputBlock({ password }: OutputBlockProps): JSX.Element {
+export function OutputBlock({ password }: OutputBlockProps): JSX.Element {
   return (
     <Card>
       <CardHeader>

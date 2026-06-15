@@ -36,7 +36,7 @@ interface CheckboxProps extends LabelHTMLAttributes<HTMLLabelElement> {
  *
  * @returns {JSX.Element} The rendered checkbox component
  */
-export default function Checkbox({
+export function Checkbox({
   className = '',
   children,
   checked: controlledChecked,

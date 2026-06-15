@@ -2,7 +2,7 @@
 
 import type { JSX } from 'react';
 
-import ToolInputHeader from '@/components/tools/tool-input-header';
+import { ToolInputHeader } from '@/components/tools/tool-input-header';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -34,7 +34,7 @@ interface InputBlockProps {
  *
  * @returns {JSX.Element} The rendered input form.
  */
-export default function InputBlock({
+export function InputBlock({
   pxValue,
   setPxValue,
   baseFontSize,

@@ -7,8 +7,6 @@ import { LuCheck as CheckIcon } from 'react-icons/lu';
 
 import { cn } from '@/utils/classnames';
 
-export { RadioBox };
-
 /**
  * Props for the RadioBox component.
  *
@@ -40,7 +38,7 @@ interface RadioBoxProps extends LabelHTMLAttributes<HTMLLabelElement> {
  *
  * @returns {JSX.Element} The rendered radio box component
  */
-export default function RadioBox({
+export function RadioBox({
   className,
   children,
   checked: controlledChecked,

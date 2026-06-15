@@ -3,11 +3,11 @@ import type { JSX } from 'react';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
-import EntryWithSidebar from '@/components/page/EntryWithSidebar';
-import PageContent from '@/components/page/PageContent';
-import PageHeader from '@/components/page/PageHeader';
-import PageLayout from '@/components/page/PageLayout';
-import HtmlMinifierTool from '@/components/tools/html-minifier';
+import { EntryWithSidebar } from '@/components/page/EntryWithSidebar';
+import { PageContent } from '@/components/page/PageContent';
+import { PageHeader } from '@/components/page/PageHeader';
+import { PageLayout } from '@/components/page/PageLayout';
+import { HtmlMinifier } from '@/components/tools/html-minifier';
 import type { Tool } from '@/constants/tools';
 import { buildMetadata } from '@/utils/meta';
 import { findToolBySlug, getToolIcon } from '@/utils/tools';
@@ -36,7 +36,7 @@ export const metadata: Metadata = buildMetadata({
  *
  * @returns {JSX.Element} The rendered HTML Minifier tool page component.
  */
-export default function HtmlMinifier(): JSX.Element {
+export default function HtmlMinifierToolTool(): JSX.Element {
   if (!tool) {
     notFound(); // Render a 404 page if the tool is null
   }
@@ -46,7 +46,7 @@ export default function HtmlMinifier(): JSX.Element {
       <PageHeader pageName={tool.name} title={tool.name} description={tool.description} icon={getToolIcon(tool.slug)} />
       <PageContent>
         <EntryWithSidebar tool={tool}>
-          <HtmlMinifierTool />
+          <HtmlMinifier />
         </EntryWithSidebar>
       </PageContent>
     </PageLayout>

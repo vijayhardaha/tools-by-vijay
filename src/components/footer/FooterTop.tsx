@@ -1,7 +1,7 @@
 import type { JSX } from 'react';
 
-import FooterAbout from '@/components/footer/FooterAbout';
-import FooterWidget from '@/components/footer/FooterWidget';
+import { FooterAbout } from '@/components/footer/FooterAbout';
+import { FooterWidget } from '@/components/footer/FooterWidget';
 import footerLinks from '@/constants/footer-links';
 
 /**
@@ -9,7 +9,7 @@ import footerLinks from '@/constants/footer-links';
  *
  * @returns {JSX.Element} The rendered footer top section.
  */
-export default function FooterTop(): JSX.Element {
+export function FooterTop(): JSX.Element {
   return (
     <div className="mb-6 flex flex-col gap-4 md:gap-6">
       {/* About section - takes 2 columns on large screens */}

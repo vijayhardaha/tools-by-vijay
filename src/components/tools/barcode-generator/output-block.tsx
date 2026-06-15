@@ -23,7 +23,7 @@ interface OutputBlockProps {
  *
  * @returns {JSX.Element} The rendered barcode output component.
  */
-export default function OutputBlock({ output }: OutputBlockProps): JSX.Element {
+export function OutputBlock({ output }: OutputBlockProps): JSX.Element {
   return (
     <Card>
       <CardHeader>

@@ -8,7 +8,7 @@
  *
  * @returns {null} This component renders nothing.
  */
-export default function OSDetectionScript(): null {
+export function OSDetectionScript(): null {
   if (typeof window !== 'undefined') {
     const d = document.documentElement;
     if (navigator.userAgent.includes('Mac OS X') || navigator.platform.includes('Mac')) {

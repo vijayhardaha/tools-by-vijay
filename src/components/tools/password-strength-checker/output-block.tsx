@@ -60,7 +60,7 @@ const renderCriteria = (isMet: boolean, label: string): JSX.Element => (
  *
  * @returns {JSX.Element} The rendered password strength analysis
  */
-export default function OutputBlock({ strength }: OutputBlockProps): JSX.Element {
+export function OutputBlock({ strength }: OutputBlockProps): JSX.Element {
   // Strength level names
   const strengthLevels: string[] = ['Very Weak', 'Weak', 'Fair', 'Good', 'Strong'];
 

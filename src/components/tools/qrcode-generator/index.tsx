@@ -3,9 +3,9 @@
 import type { JSX } from 'react';
 import { useState } from 'react';
 
-import InfoBlock from './info-block';
-import InputBlock from './input-block';
-import OutputBlock from './output-block';
+import { QRCodeGeneratorInfo } from './info-block';
+import { QRCodeGeneratorInput } from './input-block';
+import { QRCodeGeneratorOutput } from './output-block';
 
 /**
  * QRCodeGeneratorTool is a React functional component that provides a tool
@@ -14,7 +14,7 @@ import OutputBlock from './output-block';
  *
  * @returns {JSX.Element} The rendered QR code generator tool component.
  */
-export default function QRCodeGenerator(): JSX.Element {
+export function QRCodeGenerator(): JSX.Element {
   const [input, setInput] = useState<string>('');
   const [size, setSize] = useState<number>(256);
   const [output, setOutput] = useState<string>('');
@@ -50,7 +50,7 @@ export default function QRCodeGenerator(): JSX.Element {
   return (
     <>
       <div className="grid grid-cols-1 gap-4 md:gap-6">
-        <InputBlock
+        <QRCodeGeneratorInput
           input={input}
           setInput={setInput}
           size={size}
@@ -60,11 +60,11 @@ export default function QRCodeGenerator(): JSX.Element {
           onReset={handleReset}
         />
 
-        {output && <OutputBlock output={output} />}
+        {output && <QRCodeGeneratorOutput output={output} />}
       </div>
 
       <div className="mt-16">
-        <InfoBlock />
+        <QRCodeGeneratorInfo />
       </div>
     </>
   );

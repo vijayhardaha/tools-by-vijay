@@ -23,7 +23,7 @@ interface MenuButtonProps {
  *
  * @returns {JSX.Element} A button component with "Menu" text and hamburger icon.
  */
-export default function MenuButton({ onClick }: MenuButtonProps): JSX.Element {
+export function MenuButton({ onClick }: MenuButtonProps): JSX.Element {
   return (
     <Button onClick={onClick} variant="primary" size="sm" className="w-9 md:w-auto" aria-label="Menu">
       <span className="hidden md:inline-flex">Menu</span>

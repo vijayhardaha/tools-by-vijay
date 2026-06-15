@@ -2,7 +2,7 @@
 
 import type { JSX, SubmitEvent } from 'react';
 
-import ToolInputHeader from '@/components/tools/tool-input-header';
+import { ToolInputHeader } from '@/components/tools/tool-input-header';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -39,7 +39,7 @@ interface QrCodeGeneratorInputProps {
  *
  * @returns {JSX.Element} The rendered QR code input component.
  */
-export default function QRCodeGeneratorInput({
+export function QRCodeGeneratorInput({
   input,
   setInput,
   size,

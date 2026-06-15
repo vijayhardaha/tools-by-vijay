@@ -2,7 +2,7 @@
 
 import type { JSX, SubmitEvent } from 'react';
 
-import ToolInputHeader from '@/components/tools/tool-input-header';
+import { ToolInputHeader } from '@/components/tools/tool-input-header';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -31,7 +31,7 @@ interface InputBlockProps {
  *
  * @returns {JSX.Element} The rendered barcode input component.
  */
-export default function InputBlock({ input, setInput, onSubmit, onClear }: InputBlockProps): JSX.Element {
+export function InputBlock({ input, setInput, onSubmit, onClear }: InputBlockProps): JSX.Element {
   /**
    * Handles the form submission to generate the barcode.
    *

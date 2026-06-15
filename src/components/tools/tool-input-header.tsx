@@ -38,7 +38,7 @@ interface ToolInputHeaderProps {
  *
  * @returns {JSX.Element | null} The rendered header or null if nothing to render.
  */
-export default function ToolInputHeader({
+export function ToolInputHeader({
   title,
   desc,
   onClear,

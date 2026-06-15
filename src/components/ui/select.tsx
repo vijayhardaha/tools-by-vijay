@@ -7,8 +7,6 @@ import { LuCheck as CheckIcon, LuChevronDown as ChevronDownIcon } from 'react-ic
 
 import { cn } from '@/utils/classnames';
 
-export { Select };
-
 /**
  * Option type for the Select component.
  *
@@ -54,7 +52,7 @@ interface SelectProps extends HTMLAttributes<HTMLDivElement> {
  *
  * @returns {JSX.Element} The rendered select component
  */
-export default function Select({
+export function Select({
   value,
   defaultValue,
   onValueChange,

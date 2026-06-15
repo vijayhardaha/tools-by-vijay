@@ -3,9 +3,9 @@
 import type { JSX } from 'react';
 import { useState } from 'react';
 
-import InfoBlock from './info-block';
-import InputBlock from './input-block';
-import OutputBlock from './output-block';
+import { InfoBlock } from './info-block';
+import { InputBlock } from './input-block';
+import { OutputBlock } from './output-block';
 
 /**
  * Main component for the Replace Quotes tool.
@@ -13,7 +13,7 @@ import OutputBlock from './output-block';
  *
  * @returns {JSX.Element} The complete Replace Quotes tool with input options, output display, and information
  */
-export default function ReplaceQuotes(): JSX.Element {
+export function ReplaceQuotes(): JSX.Element {
   const [input, setInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
   const [replaceType, setReplaceType] = useState<'simple-to-curly' | 'curly-to-simple'>('simple-to-curly');

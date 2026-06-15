@@ -14,7 +14,7 @@ import { cn } from '@/utils/classnames';
  *
  * @returns {JSX.Element} The scroll-to-top button
  */
-export default function ScrollToTop(): JSX.Element {
+export function ScrollToTop(): JSX.Element {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {

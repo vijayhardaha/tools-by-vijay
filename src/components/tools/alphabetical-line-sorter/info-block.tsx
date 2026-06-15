@@ -5,7 +5,7 @@ import type { JSX } from 'react';
  *
  * @returns {JSX.Element} The rendered component displaying tool information
  */
-export default function InfoBlock(): JSX.Element {
+export function InfoBlock(): JSX.Element {
   return (
     <div className="max-w-none space-y-10 px-4 md:px-0">
       <section>

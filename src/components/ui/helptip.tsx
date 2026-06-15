@@ -27,7 +27,7 @@ interface HelpTipProps {
  *
  * @returns {JSX.Element} The rendered HelpTip component.
  */
-export default function HelpTip({ text }: HelpTipProps): JSX.Element {
+export function HelpTip({ text }: HelpTipProps): JSX.Element {
   return (
     <Tooltip>
       <TooltipTrigger asChild>
@@ -45,5 +45,3 @@ export default function HelpTip({ text }: HelpTipProps): JSX.Element {
     </Tooltip>
   );
 }
-
-export { HelpTip };

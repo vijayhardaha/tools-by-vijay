@@ -21,7 +21,7 @@ interface OutputBlockProps {
  *
  * @returns {JSX.Element} The rendered card with the rem value.
  */
-export default function OutputBlock({ remValue }: OutputBlockProps): JSX.Element {
+export function OutputBlock({ remValue }: OutputBlockProps): JSX.Element {
   return (
     <Card>
       <CardHeader>

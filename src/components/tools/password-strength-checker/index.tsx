@@ -3,9 +3,9 @@
 import type { JSX } from 'react';
 import { useState } from 'react';
 
-import InfoBlock from './info-block';
-import InputBlock from './input-block';
-import OutputBlock from './output-block';
+import { InfoBlock } from './info-block';
+import { InputBlock } from './input-block';
+import { OutputBlock } from './output-block';
 
 /**
  * Interface for the password strength feedback.
@@ -52,7 +52,7 @@ const defaultStengthOptions: PasswordStrength = {
  *
  * @returns {JSX.Element} Complete password strength checker tool interface
  */
-export default function PasswordStrengthChecker(): JSX.Element {
+export function PasswordStrengthChecker(): JSX.Element {
   const [password, setPassword] = useState<string>('');
   const [strength, setStrength] = useState<PasswordStrength>(defaultStengthOptions);
 

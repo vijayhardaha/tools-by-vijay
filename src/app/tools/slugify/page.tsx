@@ -5,11 +5,11 @@ import { JsonLd } from '@vijayhardaha/schema-builder/react';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
-import EntryWithSidebar from '@/components/page/EntryWithSidebar';
-import PageContent from '@/components/page/PageContent';
-import PageHeader from '@/components/page/PageHeader';
-import PageLayout from '@/components/page/PageLayout';
-import SlugifyTool from '@/components/tools/slugify';
+import { EntryWithSidebar } from '@/components/page/EntryWithSidebar';
+import { PageContent } from '@/components/page/PageContent';
+import { PageHeader } from '@/components/page/PageHeader';
+import { PageLayout } from '@/components/page/PageLayout';
+import { Slugify } from '@/components/tools/slugify';
 import type { Tool } from '@/constants/tools';
 import { buildMetadata } from '@/utils/meta';
 import { globalSchema, buildBreadcrumbs } from '@/utils/schema';
@@ -50,7 +50,7 @@ const schemaData = [
  *
  * @returns {JSX.Element} The rendered Slugify tool page component.
  */
-export default function Slugify(): JSX.Element {
+export default function SlugifyToolTool(): JSX.Element {
   if (!tool) {
     notFound(); // Render a 404 page if the tool is null
   }
@@ -67,7 +67,7 @@ export default function Slugify(): JSX.Element {
         />
         <PageContent>
           <EntryWithSidebar tool={tool}>
-            <SlugifyTool />
+            <Slugify />
           </EntryWithSidebar>
         </PageContent>
       </PageLayout>

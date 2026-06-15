@@ -3,9 +3,9 @@
 import type { JSX } from 'react';
 import { useState } from 'react';
 
-import InfoBlock from './info-block';
-import InputBlock from './input-block';
-import OutputBlock from './output-block';
+import { InfoBlock } from './info-block';
+import { InputBlock } from './input-block';
+import { OutputBlock } from './output-block';
 
 /**
  * Main component for the Duplicate Line Removal tool.
@@ -13,7 +13,7 @@ import OutputBlock from './output-block';
  *
  * @returns {JSX.Element} The complete Duplicate Line Removal tool with input options, output display, and functionality
  */
-export default function DuplicateLineRemoval(): JSX.Element {
+export function DuplicateLineRemoval(): JSX.Element {
   const [input, setInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
   const [sortType, setSortType] = useState<'none' | 'alphabetical' | 'ascii'>('none');

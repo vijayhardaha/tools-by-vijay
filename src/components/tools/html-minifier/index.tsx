@@ -3,9 +3,9 @@
 import type { JSX } from 'react';
 import { useState } from 'react';
 
-import InfoBlock from './info-block';
-import InputBlock from './input-block';
-import OutputBlock from './output-block';
+import { InfoBlock } from './info-block';
+import { InputBlock } from './input-block';
+import { OutputBlock } from './output-block';
 
 /**
  * Type definition for the HTML Minifier options.
@@ -80,7 +80,7 @@ const defaultOptions: HtmlMinifierOptions = {
  *
  * @returns {JSX.Element} The HTML Minifier tool interface
  */
-export default function HtmlMinifier(): JSX.Element {
+export function HtmlMinifier(): JSX.Element {
   const [input, setInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);

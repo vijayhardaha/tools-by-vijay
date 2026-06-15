@@ -5,7 +5,7 @@ import type { JSX } from 'react';
  *
  * @returns {JSX.Element} The rendered component displaying tool information
  */
-export default function QRCodeGeneratorInfo(): JSX.Element {
+export function QRCodeGeneratorInfo(): JSX.Element {
   return (
     <div className="max-w-none space-y-8">
       <section>

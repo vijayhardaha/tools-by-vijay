@@ -22,7 +22,7 @@ interface OutputBlockProps {
  *
  * @returns {JSX.Element} The rendered CssInlinerOutput component.
  */
-export default function OutputBlock({ output }: OutputBlockProps): JSX.Element {
+export function OutputBlock({ output }: OutputBlockProps): JSX.Element {
   return (
     <Card>
       <CardHeader>

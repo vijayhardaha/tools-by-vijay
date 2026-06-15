@@ -3,11 +3,11 @@ import type { JSX } from 'react';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
-import EntryWithSidebar from '@/components/page/EntryWithSidebar';
-import PageContent from '@/components/page/PageContent';
-import PageHeader from '@/components/page/PageHeader';
-import PageLayout from '@/components/page/PageLayout';
-import TextCaseChangerTool from '@/components/tools/text-case-changer';
+import { EntryWithSidebar } from '@/components/page/EntryWithSidebar';
+import { PageContent } from '@/components/page/PageContent';
+import { PageHeader } from '@/components/page/PageHeader';
+import { PageLayout } from '@/components/page/PageLayout';
+import { TextCaseChanger } from '@/components/tools/text-case-changer';
 import type { Tool } from '@/constants/tools';
 import { buildMetadata } from '@/utils/meta';
 import { findToolBySlug, getToolIcon } from '@/utils/tools';
@@ -36,7 +36,7 @@ export const metadata: Metadata = buildMetadata({
  *
  * @returns {JSX.Element} The rendered Text Case Changer tool page component.
  */
-export default function TextCaseChanger(): JSX.Element {
+export default function TextCaseChangerToolTool(): JSX.Element {
   if (!tool) {
     notFound(); // Render a 404 page if the tool is null
   }
@@ -46,7 +46,7 @@ export default function TextCaseChanger(): JSX.Element {
       <PageHeader pageName={tool.name} title={tool.name} description={tool.description} icon={getToolIcon(tool.slug)} />
       <PageContent>
         <EntryWithSidebar tool={tool}>
-          <TextCaseChangerTool />
+          <TextCaseChanger />
         </EntryWithSidebar>
       </PageContent>
     </PageLayout>

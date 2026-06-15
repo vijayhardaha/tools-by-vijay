@@ -69,7 +69,7 @@ function HighlightMatch({ text, query }: { text: string; query: string }): JSX.E
  *
  * @returns {JSX.Element} The search modal component
  */
-export default function SearchModal({ data, maxResults = 5, open, onOpenChange }: SearchModalProps): JSX.Element {
+export function SearchModal({ data, maxResults = 5, open, onOpenChange }: SearchModalProps): JSX.Element {
   const [query, setQuery] = useState('');
   const [activeIndex, setActiveIndex] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);

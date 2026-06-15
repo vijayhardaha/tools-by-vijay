@@ -3,9 +3,9 @@
 import type { JSX } from 'react';
 import { useState } from 'react';
 
-import InfoBlock from './info-block';
-import InputBlock from './input-block';
-import OutputBlock from './output-block';
+import { InfoBlock } from './info-block';
+import { InputBlock } from './input-block';
+import { OutputBlock } from './output-block';
 
 /**
  * Main component for the Alphabetical Line Sorter tool.
@@ -13,7 +13,7 @@ import OutputBlock from './output-block';
  *
  * @returns {JSX.Element} The complete Alphabetical Line Sorter tool with input options, output display, and functionality
  */
-export default function AlphabeticalLineSorter(): JSX.Element {
+export function AlphabeticalLineSorter(): JSX.Element {
   const [input, setInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
   const [reverseSort, setReverseSort] = useState<boolean>(false);

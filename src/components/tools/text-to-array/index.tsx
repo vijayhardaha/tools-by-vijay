@@ -6,9 +6,9 @@ import { useState } from 'react';
 import latinize from 'latinize';
 import slugify from 'slugify';
 
-import InfoBlock from './info-block';
-import InputBlock from './input-block';
-import OutputBlock from './output-block';
+import { InfoBlock } from './info-block';
+import { InputBlock } from './input-block';
+import { OutputBlock } from './output-block';
 
 type OutputFormat = 'json' | 'jsArray' | 'jsObject' | 'php' | 'wordpress';
 type ArrayType = 'simple' | 'numeric' | 'associative';
@@ -19,7 +19,7 @@ type ArrayType = 'simple' | 'numeric' | 'associative';
  *
  * @returns {JSX.Element} The complete text to array tool with input options, output display, and information
  */
-export default function TextToArray(): JSX.Element {
+export function TextToArray(): JSX.Element {
   const [input, setInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
   const [outputFormat, setOutputFormat] = useState<OutputFormat>('json');

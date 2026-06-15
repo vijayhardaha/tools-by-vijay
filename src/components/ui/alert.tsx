@@ -70,7 +70,7 @@ interface AlertProps extends HTMLAttributes<HTMLDivElement> {
  *
  * @returns {JSX.Element} The rendered Alert component
  */
-export default function Alert({
+export function Alert({
   className,
   variant = 'default',
   title = '',

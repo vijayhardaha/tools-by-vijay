@@ -3,16 +3,16 @@
 import type { JSX } from 'react';
 import { useState } from 'react';
 
-import InfoBlock from './info-block';
-import InputBlock from './input-block';
-import OutputBlock from './output-block';
+import { InfoBlock } from './info-block';
+import { InputBlock } from './input-block';
+import { OutputBlock } from './output-block';
 
 /**
  * A tool for encoding and decoding Base64 strings. It provides input, output, and informational components.
  *
  * @returns {JSX.Element} The rendered Base64 Encode/Decode Tool component.
  */
-export default function Base64EncodeDecode(): JSX.Element {
+export function Base64EncodeDecode(): JSX.Element {
   const [input, setInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
   const [isEncoding, setIsEncoding] = useState<boolean>(true);

@@ -8,9 +8,9 @@ import { useState } from 'react';
 import TinyURL from 'tinyurl';
 import validUrl from 'valid-url';
 
-import InfoBlock from './info-block';
-import InputBlock from './input-block';
-import OutputBlock from './output-block';
+import { InfoBlock } from './info-block';
+import { InputBlock } from './input-block';
+import { OutputBlock } from './output-block';
 
 /**
  * Interface for a URL shortening result.
@@ -34,7 +34,7 @@ interface UrlResult {
  *
  * @returns {JSX.Element} The rendered URL Shortener Tool component.
  */
-export default function UrlShortener(): JSX.Element {
+export function UrlShortener(): JSX.Element {
   const [input, setInput] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [results, setResults] = useState<UrlResult[]>([]);

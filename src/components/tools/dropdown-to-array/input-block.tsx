@@ -2,11 +2,11 @@
 
 import type { JSX, SubmitEvent } from 'react';
 
-import ToolInputHeader from '@/components/tools/tool-input-header';
-import Alert from '@/components/ui/alert';
+import { ToolInputHeader } from '@/components/tools/tool-input-header';
+import { Alert } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
-import Checkbox from '@/components/ui/checkbox';
+import { Checkbox } from '@/components/ui/checkbox';
 import { HelpTip } from '@/components/ui/helptip';
 import { Label } from '@/components/ui/label';
 import { Select } from '@/components/ui/select';
@@ -53,7 +53,7 @@ interface InputBlockProps {
  *
  * @returns {JSX.Element} The rendered component.
  */
-export default function InputBlock({
+export function InputBlock({
   input,
   setInput,
   outputFormat,

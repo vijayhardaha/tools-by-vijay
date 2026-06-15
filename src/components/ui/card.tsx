@@ -23,7 +23,7 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
  *
  * @returns {JSX.Element} The rendered card component
  */
-export default function Card({ className, children, component, ...props }: CardProps): JSX.Element {
+function Card({ className, children, component, ...props }: CardProps): JSX.Element {
   const Tag = component || 'div';
   return (
     <Tag

@@ -1,6 +1,6 @@
 import type { JSX } from 'react';
 
-import Logo from '@/components/header/parts/Logo';
+import { Logo } from '@/components/header/parts/Logo';
 import { SheetHeader } from '@/components/ui/sheet';
 
 /**
@@ -10,7 +10,7 @@ import { SheetHeader } from '@/components/ui/sheet';
  *
  * @returns {JSX.Element} The rendered SidebarHeader component.
  */
-export default function SidebarHeader(): JSX.Element {
+export function SidebarHeader(): JSX.Element {
   return (
     <SheetHeader className="border-border border-b p-4">
       <div className="flex">

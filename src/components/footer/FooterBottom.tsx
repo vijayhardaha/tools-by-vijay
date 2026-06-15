@@ -5,7 +5,7 @@ import type { JSX } from 'react';
  *
  * @returns {JSX.Element} The rendered footer bottom section.
  */
-export default function FooterBottom(): JSX.Element {
+export function FooterBottom(): JSX.Element {
   const currentYear = new Date().getFullYear();
 
   return (

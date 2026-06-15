@@ -1,6 +1,6 @@
 import type { JSX, ReactNode } from 'react';
 
-import Container from '@/components/ui/container';
+import { Container } from '@/components/ui/container';
 
 /**
  * Props for the PageContent component.
@@ -22,6 +22,6 @@ interface PageContentProps {
  *
  * @returns {JSX.Element} The rendered component
  */
-export default function PageContent({ children }: PageContentProps): JSX.Element {
+export function PageContent({ children }: PageContentProps): JSX.Element {
   return <Container>{children}</Container>;
 }

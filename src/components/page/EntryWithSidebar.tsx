@@ -3,7 +3,7 @@
 import type { JSX, ReactNode } from 'react';
 import { useRef, useEffect, useState } from 'react';
 
-import ToolsListWidget from '@/components/page/ToolsListWidget';
+import { ToolsListWidget } from '@/components/page/ToolsListWidget';
 import { getAllCategorySlugs } from '@/utils/categories';
 
 /**
@@ -25,7 +25,7 @@ interface EntryWithSidebarProps {
  *
  * @returns {JSX.Element} The rendered component.
  */
-export default function EntryWithSidebar({ tool, children }: EntryWithSidebarProps): JSX.Element {
+export function EntryWithSidebar({ tool, children }: EntryWithSidebarProps): JSX.Element {
   const categories = getAllCategorySlugs().filter((category) => category !== tool.category);
 
   const [category1, setCategory1] = useState('');

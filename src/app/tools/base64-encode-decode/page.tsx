@@ -3,11 +3,11 @@ import type { JSX } from 'react';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
-import EntryWithSidebar from '@/components/page/EntryWithSidebar';
-import PageContent from '@/components/page/PageContent';
-import PageHeader from '@/components/page/PageHeader';
-import PageLayout from '@/components/page/PageLayout';
-import Base64EncodeDecodeTool from '@/components/tools/base64-encode-decode';
+import { EntryWithSidebar } from '@/components/page/EntryWithSidebar';
+import { PageContent } from '@/components/page/PageContent';
+import { PageHeader } from '@/components/page/PageHeader';
+import { PageLayout } from '@/components/page/PageLayout';
+import { Base64EncodeDecode } from '@/components/tools/base64-encode-decode';
 import type { Tool } from '@/constants/tools';
 import { buildMetadata } from '@/utils/meta';
 import { findToolBySlug, getToolIcon } from '@/utils/tools';
@@ -36,7 +36,7 @@ export const metadata: Metadata = buildMetadata({
  *
  * @returns {JSX.Element} The rendered Base64 Encode/Decode tool page component.
  */
-export default function Base64EncodeDecode(): JSX.Element {
+export default function Base64EncodeDecodeTool(): JSX.Element {
   if (!tool) {
     notFound(); // Render a 404 page if the tool is null
   }
@@ -46,7 +46,7 @@ export default function Base64EncodeDecode(): JSX.Element {
       <PageHeader pageName={tool.name} title={tool.name} description={tool.description} icon={getToolIcon(tool.slug)} />
       <PageContent>
         <EntryWithSidebar tool={tool}>
-          <Base64EncodeDecodeTool />
+          <Base64EncodeDecode />
         </EntryWithSidebar>
       </PageContent>
     </PageLayout>

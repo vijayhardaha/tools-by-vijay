@@ -2,9 +2,9 @@ import type { JSX } from 'react';
 
 import { Sheet, SheetContent } from '@/components/ui/sheet';
 
-import SidebarBody from './SidebarBody';
-import SidebarFooter from './SidebarFooter';
-import SidebarHeader from './SidebarHeader';
+import { SidebarBody } from './SidebarBody';
+import { SidebarFooter } from './SidebarFooter';
+import { SidebarHeader } from './SidebarHeader';
 
 /**
  * Props for the Sidebar component.
@@ -26,7 +26,7 @@ interface SidebarProps {
  *
  * @returns {JSX.Element} Sidebar component.
  */
-export default function Sidebar({ isOpen, onClose }: SidebarProps): JSX.Element {
+export function Sidebar({ isOpen, onClose }: SidebarProps): JSX.Element {
   return (
     <Sheet open={isOpen} onOpenChange={onClose}>
       <SheetContent

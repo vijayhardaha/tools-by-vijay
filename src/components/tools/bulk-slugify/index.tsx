@@ -6,9 +6,9 @@ import { useState } from 'react';
 import latinize from 'latinize';
 import slugify from 'slugify';
 
-import InfoBlock from './info-block';
-import InputBlock from './input-block';
-import OutputBlock from './output-block';
+import { InfoBlock } from './info-block';
+import { InputBlock } from './input-block';
+import { OutputBlock } from './output-block';
 
 /**
  * Main component for the Bulk Slugify Tool
@@ -19,7 +19,7 @@ import OutputBlock from './output-block';
  *
  * @returns {JSX.Element} The complete Bulk Slugify Tool interface
  */
-export default function BulkSlugify(): JSX.Element {
+export function BulkSlugify(): JSX.Element {
   const [input, setInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
   const [useUnderscore, setUseUnderscore] = useState<boolean>(false);

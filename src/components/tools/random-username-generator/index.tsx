@@ -3,16 +3,16 @@
 import type { JSX } from 'react';
 import { useState } from 'react';
 
-import InfoBlock from './info-block';
-import InputBlock from './input-block';
-import OutputBlock from './output-block';
+import { InfoBlock } from './info-block';
+import { InputBlock } from './input-block';
+import { OutputBlock } from './output-block';
 
 /**
  * A tool for generating random usernames.
  *
  * @returns {JSX.Element} The RandomUsernameGeneratorTool component.
  */
-export default function RandomUsernameGenerator(): JSX.Element {
+export function RandomUsernameGenerator(): JSX.Element {
   const [count, setCount] = useState<number>(1);
   const [output, setOutput] = useState<string[]>([]);
   const [error, setError] = useState<string>('');

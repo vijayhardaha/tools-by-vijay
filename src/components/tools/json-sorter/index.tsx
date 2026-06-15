@@ -5,9 +5,9 @@ import { useState } from 'react';
 
 import jsonabc from 'jsonabc';
 
-import InfoBlock from './info-block';
-import InputBlock from './input-block';
-import OutputBlock from './output-block';
+import { InfoBlock } from './info-block';
+import { InputBlock } from './input-block';
+import { OutputBlock } from './output-block';
 
 /**
  * Main component for the JSON Sorter tool.
@@ -15,7 +15,7 @@ import OutputBlock from './output-block';
  *
  * @returns {JSX.Element} The complete JSON sorter tool with input options, output display, and information
  */
-export default function JsonSorter(): JSX.Element {
+export function JsonSorter(): JSX.Element {
   const [input, setInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
   const [spareArrays, setSpareArrays] = useState<boolean>(true);

@@ -3,9 +3,9 @@
 import type { JSX } from 'react';
 import { useState } from 'react';
 
-import InfoBlock from './info-block';
-import InputBlock from './input-block';
-import OutputBlock from './output-block';
+import { InfoBlock } from './info-block';
+import { InputBlock } from './input-block';
+import { OutputBlock } from './output-block';
 
 /**
  * Interface for the CSS minification options.
@@ -52,7 +52,7 @@ const defaultOptions: MinificationOptions = {
  *
  * @returns {JSX.Element} The rendered CssMinifierTool component.
  */
-export default function CssMinifier(): JSX.Element {
+export function CssMinifier(): JSX.Element {
   const [input, setInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);

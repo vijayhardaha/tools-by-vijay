@@ -29,7 +29,7 @@ interface CompressionInfoProps {
  *
  * @returns {JSX.Element | null} The formatted compression info
  */
-export default function CompressionInfo({ input, output }: CompressionInfoProps): JSX.Element | null {
+export function CompressionInfo({ input, output }: CompressionInfoProps): JSX.Element | null {
   if (!output) return wrapInCode('Output is empty');
 
   const formatSize = (size: number): string => {

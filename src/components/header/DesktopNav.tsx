@@ -17,7 +17,7 @@ import { getToolsByCategory } from '@/utils/tools';
  *
  * @returns {JSX.Element} The desktop navigation component
  */
-export default function DesktopNav(): JSX.Element {
+export function DesktopNav(): JSX.Element {
   const categories = getAllCategories();
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);

@@ -6,9 +6,9 @@ import { useState } from 'react';
 import latinize from 'latinize';
 import slugify from 'slugify';
 
-import InfoBlock from './info-block';
-import InputBlock from './input-block';
-import OutputBlock from './output-block';
+import { InfoBlock } from './info-block';
+import { InputBlock } from './input-block';
+import { OutputBlock } from './output-block';
 
 type VariableCase = 'camelCase' | 'snake_case' | 'PascalCase';
 
@@ -18,7 +18,7 @@ type VariableCase = 'camelCase' | 'snake_case' | 'PascalCase';
  *
  * @returns {JSX.Element} The complete text to PHP variables tool with input options and output display.
  */
-export default function TextToPhpVariables(): JSX.Element {
+export function TextToPhpVariables(): JSX.Element {
   const [input, setInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
   const [variableCase, setVariableCase] = useState<VariableCase>('snake_case');

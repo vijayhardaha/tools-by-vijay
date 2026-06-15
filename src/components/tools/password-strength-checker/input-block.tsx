@@ -2,7 +2,7 @@
 
 import type { JSX, ChangeEvent } from 'react';
 
-import ToolInputHeader from '@/components/tools/tool-input-header';
+import { ToolInputHeader } from '@/components/tools/tool-input-header';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 
@@ -27,7 +27,7 @@ interface InputBlockProps {
  *
  * @returns {JSX.Element} Password input with visibility toggle and clear button
  */
-export default function InputBlock({ password, onSubmit, onClear }: InputBlockProps): JSX.Element {
+export function InputBlock({ password, onSubmit, onClear }: InputBlockProps): JSX.Element {
   /**
    * Handles password input changes
    *

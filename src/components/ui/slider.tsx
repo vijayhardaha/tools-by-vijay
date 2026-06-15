@@ -5,8 +5,6 @@ import { useState } from 'react';
 
 import { cn } from '@/utils/classnames';
 
-export { Slider };
-
 /**
  * Props for the Slider component.
  *
@@ -36,7 +34,7 @@ interface SliderProps extends HTMLAttributes<HTMLDivElement> {
  *
  * @returns {JSX.Element} The rendered slider component
  */
-export default function Slider({
+export function Slider({
   className,
   min = 0,
   max = 100,

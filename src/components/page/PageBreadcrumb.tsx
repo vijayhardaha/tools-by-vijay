@@ -20,7 +20,7 @@ interface PageBreadcrumbProps {
  *
  * @returns {JSX.Element} The rendered breadcrumb navigation.
  */
-export default function PageBreadcrumb({ pageName }: PageBreadcrumbProps): JSX.Element {
+export function PageBreadcrumb({ pageName }: PageBreadcrumbProps): JSX.Element {
   return (
     <nav aria-label="breadcrumb" className="mb-4">
       <ol className="flex flex-wrap items-center text-sm">

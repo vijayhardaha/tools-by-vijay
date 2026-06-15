@@ -3,9 +3,9 @@
 import type { JSX } from 'react';
 import { useState } from 'react';
 
-import InfoBlock from './info-block';
-import InputBlock from './input-block';
-import OutputBlock from './output-block';
+import { InfoBlock } from './info-block';
+import { InputBlock } from './input-block';
+import { OutputBlock } from './output-block';
 
 /**
  * Main component for the Px to Rem Converter tool.
@@ -13,7 +13,7 @@ import OutputBlock from './output-block';
  *
  * @returns {JSX.Element} The complete Px to Rem Converter tool with input options, output display, and information.
  */
-export default function PxToRemConverter(): JSX.Element {
+export function PxToRemConverter(): JSX.Element {
   const [pxValue, setPxValue] = useState<string>('');
   const [baseFontSize, setBaseFontSize] = useState<number>(16);
 

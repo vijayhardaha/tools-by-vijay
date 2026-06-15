@@ -24,7 +24,7 @@ interface InputBlockProps {
  *
  * @returns {JSX.Element} The rendered input form.
  */
-export default function InputBlock({ text, setText }: InputBlockProps): JSX.Element {
+export function InputBlock({ text, setText }: InputBlockProps): JSX.Element {
   return (
     <Card>
       <CardHeader>

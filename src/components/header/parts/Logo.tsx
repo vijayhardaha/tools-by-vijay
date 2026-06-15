@@ -22,7 +22,7 @@ interface LogoProps {
  *
  * @returns {JSX.Element} A link to the homepage containing the site logo.
  */
-export default function Logo({ className }: LogoProps): JSX.Element {
+export function Logo({ className }: LogoProps): JSX.Element {
   return (
     <Link href="/">
       <Image
