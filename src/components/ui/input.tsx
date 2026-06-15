@@ -30,7 +30,7 @@ export default function Input({ className, type = 'text', ...props }: InputProps
       data-slot="input"
       className={cn(
         // Core layout and sizing
-        'flex h-10 w-full min-w-0 rounded-xl px-3 py-1',
+        'flex h-10 w-full min-w-0 rounded-lg px-3 py-1',
 
         // Font and text
         'font-mono text-sm file:text-sm file:font-medium',
@@ -56,8 +56,8 @@ export default function Input({ className, type = 'text', ...props }: InputProps
         'transition-[color,box-shadow] outline-none',
 
         // Data output
-        'data-[output]:outline-none data-[output]:focus-visible:ring-0 data-[output]:focus-visible:outline-none',
-        'data-[output]:focus-visible:border-input',
+        'data-output:outline-none data-output:focus-visible:ring-0 data-output:focus-visible:outline-none',
+        'data-output:focus-visible:border-input',
         className
       )}
       {...props}

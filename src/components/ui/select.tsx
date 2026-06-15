@@ -117,7 +117,7 @@ export default function Select({
         className={cn(
           // Layout & Flex
           'flex w-fit items-center justify-between gap-2',
-          'rounded-xl border bg-transparent px-3 py-2 text-sm whitespace-nowrap',
+          'rounded-md border bg-transparent px-3 py-2 text-sm whitespace-nowrap',
 
           // Borders & Shadows
           'border-input shadow-xs',
@@ -133,7 +133,7 @@ export default function Select({
           'disabled:cursor-not-allowed disabled:opacity-50',
 
           // Data attributes
-          'data-[placeholder]:text-muted-foreground',
+          'data-placeholder:text-muted-foreground',
           'data-[size=default]:h-9 data-[size=sm]:h-8',
 
           // Slot-based styles
@@ -160,7 +160,7 @@ export default function Select({
       {open && (
         <div
           data-slot="select-content"
-          className="bg-popover text-popover-foreground border-input absolute left-0 z-50 mt-1 max-h-60 min-w-[8rem] overflow-x-hidden overflow-y-auto rounded-xl border shadow-md"
+          className="bg-popover text-popover-foreground border-input absolute left-0 z-50 mt-1 max-h-60 min-w-32 overflow-x-hidden overflow-y-auto rounded-xl border shadow-md"
         >
           <div className="flex flex-col gap-0.5 p-1">
             {options.map((option) => {
