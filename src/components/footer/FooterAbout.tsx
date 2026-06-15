@@ -55,7 +55,7 @@ const SocialButton = ({ icon: Icon, href, label, color }: SocialButtonProps): JS
  */
 export default function FooterAbout(): JSX.Element {
   return (
-    <div className="mb-6 flex flex-col gap-4">
+    <div className="mb-6 flex flex-col gap-4 md:gap-6">
       <div className="space-y-2">
         <div>
           <Logo className="mb-3 h-12" />
