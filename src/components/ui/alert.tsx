@@ -34,8 +34,6 @@ const alertVariants = cva(
   }
 );
 
-export { Alert };
-
 // Default icons for each variant
 const defaultIcons: Record<string, ReactElement> = {
   default: <LuCircleAlert />,
