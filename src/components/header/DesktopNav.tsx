@@ -55,7 +55,7 @@ export default function DesktopNav(): JSX.Element {
   }, []);
 
   return (
-    <nav ref={navRef} className="ml-auto hidden items-center gap-1 md:flex" aria-label="Main navigation">
+    <nav ref={navRef} className="ml-auto hidden items-center gap-1 lg:flex" aria-label="Main navigation">
       {categories.map((category) => {
         const tools = getToolsByCategory(category.slug);
         if (tools.length === 0) return null;
