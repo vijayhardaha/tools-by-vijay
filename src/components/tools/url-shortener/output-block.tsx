@@ -70,7 +70,7 @@ export default function OutputBlock({ results }: OutputBlockProps): JSX.Element 
       <CardContent>
         <div className="flex flex-col gap-2">
           {results.map((result, index) => (
-            <div key={index} className="border-border rounded-lg border p-4">
+            <div key={index} className="border-border rounded-xl border p-4">
               <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
                 <div className="flex-1">
                   <div className="mb-2 flex items-center justify-between">
