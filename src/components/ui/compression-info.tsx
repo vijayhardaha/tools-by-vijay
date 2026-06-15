@@ -67,4 +67,3 @@ export default function CompressionInfo({ input, output }: CompressionInfoProps)
 
   return stats || <>Compressed size: {wrapInCode(compressedSize)}</>;
 }
-
