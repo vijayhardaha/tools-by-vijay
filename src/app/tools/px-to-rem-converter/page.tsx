@@ -43,7 +43,12 @@ export default function PxToRemConverter(): JSX.Element {
 
   return (
     <PageLayout>
-      <PageHeader title={tool.name} description={tool.description} icon={getIconForTool(tool.slug)} />
+      <PageHeader
+        pageName={tool.name}
+        title={tool.name}
+        description={tool.description}
+        icon={getIconForTool(tool.slug)}
+      />
       <PageContent>
         <EntryWithSidebar tool={tool}>
           <PxToRemConverterTool />
