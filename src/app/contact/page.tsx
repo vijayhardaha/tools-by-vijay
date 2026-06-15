@@ -101,7 +101,7 @@ export default function Contact(): JSX.Element {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Vijay Hardaha on Twitter"
-              className="flex items-center gap-2 rounded-lg bg-[#0f1419] px-5 py-2 text-sm font-semibold text-white transition hover:opacity-90 hover:ring-2 hover:ring-[#0f1419]/30"
+              className="flex items-center gap-2 rounded-xl bg-[#0f1419] px-5 py-2 text-sm font-semibold text-white transition hover:opacity-90 hover:ring-2 hover:ring-[#0f1419]/30"
             >
               <FaXTwitter size={18} />
               Twitter / X
@@ -111,7 +111,7 @@ export default function Contact(): JSX.Element {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Vijay Hardaha on Facebook"
-              className="flex items-center gap-2 rounded-lg bg-[#145dbf] px-5 py-2 text-sm font-semibold text-white transition hover:opacity-90 hover:ring-2 hover:ring-[#145dbf]/30"
+              className="flex items-center gap-2 rounded-xl bg-[#145dbf] px-5 py-2 text-sm font-semibold text-white transition hover:opacity-90 hover:ring-2 hover:ring-[#145dbf]/30"
             >
               <FaFacebookF size={18} />
               Facebook
@@ -121,7 +121,7 @@ export default function Contact(): JSX.Element {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Vijay Hardaha on Instagram"
-              className="flex items-center gap-2 rounded-lg bg-[#ff0069] px-5 py-2 text-sm font-semibold text-white transition hover:opacity-90 hover:ring-2 hover:ring-[#ff0069]/30"
+              className="flex items-center gap-2 rounded-xl bg-[#ff0069] px-5 py-2 text-sm font-semibold text-white transition hover:opacity-90 hover:ring-2 hover:ring-[#ff0069]/30"
             >
               <FaInstagram size={18} />
               Instagram
@@ -131,7 +131,7 @@ export default function Contact(): JSX.Element {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Vijay Hardaha on GitHub"
-              className="flex items-center gap-2 rounded-lg bg-[#24292e] px-5 py-2 text-sm font-semibold text-white transition hover:opacity-90 hover:ring-2 hover:ring-[#24292e]/30"
+              className="flex items-center gap-2 rounded-xl bg-[#24292e] px-5 py-2 text-sm font-semibold text-white transition hover:opacity-90 hover:ring-2 hover:ring-[#24292e]/30"
             >
               <FaGithub size={18} />
               GitHub
@@ -141,7 +141,7 @@ export default function Contact(): JSX.Element {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Vijay Hardaha on PeoplePerHour"
-              className="flex items-center gap-2 rounded-lg bg-[#ff7300] px-5 py-2 text-sm font-semibold text-white transition hover:opacity-90 hover:ring-2 hover:ring-[#ff7300]/30"
+              className="flex items-center gap-2 rounded-xl bg-[#ff7300] px-5 py-2 text-sm font-semibold text-white transition hover:opacity-90 hover:ring-2 hover:ring-[#ff7300]/30"
             >
               <TbWorldWww size={20} />
               PeoplePerHour

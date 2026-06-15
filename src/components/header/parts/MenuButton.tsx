@@ -23,7 +23,7 @@ type MenuButtonProps = { onClick: () => void };
  */
 export default function MenuButton({ onClick }: MenuButtonProps): JSX.Element {
   return (
-    <Button onClick={onClick} variant="primary" className="w-12 md:w-auto" aria-label="Menu">
+    <Button onClick={onClick} variant="primary" size="sm" className="w-9 md:w-auto" aria-label="Menu">
       <span className="hidden md:inline-flex">Menu</span>
       <span className="sr-only">Menu</span>
       <RiMenu3Fill />
