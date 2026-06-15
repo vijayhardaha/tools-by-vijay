@@ -101,4 +101,4 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
 Button.displayName = 'Button'; // Set the display name for the Button component
 
-export { Button, buttonVariants };
+export { Button };
