@@ -59,10 +59,12 @@ const buttonVariants = cva(
         link: ['border-transparent text-primary underline-offset-4', 'hover:underline'].join(' '),
       },
       size: {
-        default: 'h-10 px-6 rounded-lg py-2 text-sm has-[>svg]:px-5',
+        default: 'h-10 px-6 rounded-lg py-2 text-sm has-[>svg]:px-4',
         sm: 'h-8 rounded-md gap-1.5 px-4 text-xs has-[>svg]:px-3.5',
-        lg: 'h-12 rounded-xl px-8 text-base has-[>svg]:px-7',
-        icon: 'size-9',
+        lg: 'h-12 rounded-xl px-8 text-base has-[>svg]:px-5',
+        icon: 'size-10',
+        'icon-sm': 'size-8',
+        'icon-lg': 'size-12',
       },
     },
     defaultVariants: { variant: 'default', size: 'default' },
@@ -77,7 +79,7 @@ const buttonVariants = cva(
 type ButtonProps = {
   className?: string;
   variant?: 'default' | 'primary' | 'destructive' | 'success' | 'outline' | 'secondary' | 'ghost' | 'link';
-  size?: 'default' | 'sm' | 'lg' | 'icon';
+  size?: 'default' | 'sm' | 'lg' | 'icon' | 'icon-sm' | 'icon-lg';
   asChild?: boolean;
   children: ReactNode; // Allow any valid ReactNode (string, ReactElement, etc.)
 } & ButtonHTMLAttributes<HTMLButtonElement>;
