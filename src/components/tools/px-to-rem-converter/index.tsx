@@ -34,7 +34,7 @@ export default function PxToRemConverter(): JSX.Element {
 
   return (
     <>
-      <div className="grid grid-cols-1 gap-6">
+      <div className="grid grid-cols-1 gap-4 md:gap-6">
         <InputBlock
           pxValue={pxValue}
           setPxValue={setPxValue}
