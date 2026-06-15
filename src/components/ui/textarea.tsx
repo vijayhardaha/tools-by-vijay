@@ -29,7 +29,7 @@ export default function Textarea({ className, ...props }: TextareaProps): JSX.El
       spellCheck="false"
       className={cn(
         // Layout & spacing
-        'flex h-auto min-h-16 w-full rounded-lg px-3 py-2',
+        'flex h-auto min-h-16 w-full rounded-xl px-3 py-2',
 
         // Font and text
         'font-mono text-sm',
