@@ -63,7 +63,7 @@ export default function InputBlock({
         <CardDescription>Enter the text to base64 encode or decode</CardDescription>
       </CardHeader>
       <CardContent>
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4 md:gap-6">
           <Textarea
             id="base64-input"
             placeholder="Text to base64 encode or decode"

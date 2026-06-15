@@ -31,7 +31,7 @@ export default function OutputBlock({ output }: OutputBlockProps): JSX.Element {
         <CardDescription>Scan or download your barcode</CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 md:gap-6">
           <Image src={output} alt="Generated Barcode" className="w-auto max-w-xs" width={250} height={100} />
         </div>
       </CardContent>

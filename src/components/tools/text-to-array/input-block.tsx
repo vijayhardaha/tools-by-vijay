@@ -94,7 +94,7 @@ export default function InputBlock({
         <CardDescription>Paste multiline text and convert to various array formats</CardDescription>
       </CardHeader>
       <CardContent>
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4 md:gap-6">
           <div className="space-y-2">
             <div className="flex items-center gap-2">
               <Label htmlFor="text-input">Multiline Text</Label>

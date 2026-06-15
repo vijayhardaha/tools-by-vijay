@@ -66,7 +66,7 @@ export default function InputBlock({
         <CardDescription>Paste your code to unminify and select the code type</CardDescription>
       </CardHeader>
       <CardContent>
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4 md:gap-6">
           <Textarea
             placeholder="Paste code here..."
             rows={15}

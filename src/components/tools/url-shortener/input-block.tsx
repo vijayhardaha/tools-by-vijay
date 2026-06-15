@@ -63,7 +63,7 @@ export default function InputBlock({
         <CardDescription>Enter one URL per line. Each URL will be shortened individually.</CardDescription>
       </CardHeader>
       <CardContent>
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4 md:gap-6">
           <Textarea
             id="url-input"
             placeholder={`https://example.com/very-long-url\nhttps://another-example.com/with/multiple/path/segments`}

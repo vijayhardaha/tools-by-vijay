@@ -66,7 +66,7 @@ export default function InputBlock({
         <CardDescription>Paste multiline text to change its case</CardDescription>
       </CardHeader>
       <CardContent>
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4 md:gap-6">
           <Textarea
             id="text-input"
             placeholder={`Item 1\nItem 2\nItem 3`}

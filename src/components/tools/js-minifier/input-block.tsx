@@ -70,7 +70,7 @@ export default function InputBlock({
         <CardDescription>Paste your JavaScript code and customize minification options</CardDescription>
       </CardHeader>
       <CardContent>
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4 md:gap-6">
           <Textarea
             id="js-input"
             placeholder="Paste JavaScript code here..."

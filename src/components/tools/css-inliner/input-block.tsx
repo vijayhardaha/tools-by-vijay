@@ -66,7 +66,7 @@ export default function InputBlock({
         <CardDescription>Provide your HTML and CSS below to inline the styles into the HTML.</CardDescription>
       </CardHeader>
       <CardContent>
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4 md:gap-6">
           <div className="flex flex-col gap-2">
             <Label htmlFor="html-input">HTML Input</Label>
             <Textarea

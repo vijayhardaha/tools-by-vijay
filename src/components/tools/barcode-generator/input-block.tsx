@@ -48,7 +48,7 @@ export default function InputBlock({ input, setInput, onSubmit, onClear }: Input
         <CardDescription>Enter the text to generate a barcode</CardDescription>
       </CardHeader>
       <CardContent>
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4 md:gap-6">
           <Input
             id="barcode-input"
             type="text"

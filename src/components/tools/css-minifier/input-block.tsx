@@ -89,7 +89,7 @@ export default function InputBlock({
         <CardDescription>Paste your CSS code and customize minification options</CardDescription>
       </CardHeader>
       <CardContent>
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4 md:gap-6">
           <Textarea
             placeholder="Paste CSS code here..."
             rows={10}
@@ -99,7 +99,7 @@ export default function InputBlock({
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
             <div className="space-y-4">
               <h3 className="text-base font-semibold">Optimization Level</h3>
-              <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-4 md:gap-6">
                 <Select
                   value={options.level.toString()}
                   onValueChange={(value) => updateOption('level', parseInt(value, 10))}

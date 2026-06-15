@@ -44,7 +44,7 @@ export default function InputBlock({ password, onSubmit, onClear }: InputBlockPr
         <CardDescription>Enter a password to check its strength</CardDescription>
       </CardHeader>
       <CardContent>
-        <form className="flex flex-col gap-4">
+        <form className="flex flex-col gap-4 md:gap-6">
           <Input
             id="password"
             type="text"

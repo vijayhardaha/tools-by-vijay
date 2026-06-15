@@ -50,7 +50,7 @@ export default function InputBlock({ count, setCount, onGenerate, onClear, error
         <CardDescription>Generate random usernames</CardDescription>
       </CardHeader>
       <CardContent>
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4 md:gap-6">
           <Input
             id="count-input"
             type="number"

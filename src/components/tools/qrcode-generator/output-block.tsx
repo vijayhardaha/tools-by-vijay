@@ -31,7 +31,7 @@ export default function QRCodeGeneratorOutput({ output }: QrCodeGeneratorOutputP
         <CardDescription>Scan or download your QR code</CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 md:gap-6">
           <Image src={output} alt="Generated QR Code" className="w-auto max-w-xs" width={250} height={250} />
         </div>
       </CardContent>

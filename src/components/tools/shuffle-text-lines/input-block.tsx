@@ -75,7 +75,7 @@ export default function InputBlock({
         <CardDescription>Enter your text and configure options to shuffle lines randomly.</CardDescription>
       </CardHeader>
       <CardContent>
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4 md:gap-6">
           <Textarea
             id="text-input"
             placeholder="Enter text to shuffle..."

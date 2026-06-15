@@ -81,7 +81,7 @@ export default function InputBlock({
         <CardDescription>(Article title, tutorial title or any web page title)</CardDescription>
       </CardHeader>
       <CardContent>
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4 md:gap-6">
           <Input
             id="text-input"
             type="text"

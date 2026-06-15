@@ -64,7 +64,7 @@ export default function QRCodeGeneratorInput({
         <CardDescription>Enter the text or URL to generate a QR code</CardDescription>
       </CardHeader>
       <CardContent>
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4 md:gap-6">
           <Input
             id="qr-input"
             type="text"

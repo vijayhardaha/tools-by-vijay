@@ -81,7 +81,7 @@ export default function InputBlock({
         <CardDescription>Customize your password settings</CardDescription>
       </CardHeader>
       <CardContent>
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4 md:gap-6">
           <div className="space-y-2">
             <Label htmlFor="password-length">
               Password Length:{' '}
