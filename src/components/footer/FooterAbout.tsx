@@ -39,7 +39,7 @@ const SocialButton = ({ icon: Icon, href, label, color }: SocialButtonProps): JS
     variant="primary"
     size="icon"
     asChild
-    className={`rounded-lg hover:border-transparent hover:text-white ${color}`}
+    className={`rounded-xl hover:border-transparent hover:text-white ${color}`}
   >
     <a href={href} aria-label={label} title={label} rel="noopener noreferrer" target="_blank">
       <Icon className="h-4 w-4" />
