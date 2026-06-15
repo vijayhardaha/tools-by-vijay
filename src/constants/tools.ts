@@ -1,4 +1,22 @@
-import type { Tool } from '@/types';
+/**
+ * Interface representing a tool.
+ *
+ * @type {Tool}
+ * @property {string} name - The display name of the tool
+ * @property {string} slug - The unique URL slug for the tool
+ * @property {string} description - A brief description of the tool's functionality
+ * @property {string} seoTitle - The SEO-optimized title for the tool page
+ * @property {string} seoDescription - The SEO-optimized description for the tool page
+ * @property {string} category - The category slug the tool belongs to
+ */
+export interface Tool {
+  name: string;
+  slug: string;
+  description: string;
+  seoTitle: string;
+  seoDescription: string;
+  category: string;
+}
 
 /**
  * Array of tool objects, each containing metadata for display and SEO purposes.

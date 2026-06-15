@@ -10,11 +10,11 @@ import PageContent from '@/components/page/PageContent';
 import PageHeader from '@/components/page/PageHeader';
 import PageLayout from '@/components/page/PageLayout';
 import SlugifyTool from '@/components/tools/slugify';
-import type { Tool } from '@/types';
+import type { Tool } from '@/constants/tools';
 import { buildMetadata } from '@/utils/meta';
 import { globalSchema, buildBreadcrumbs } from '@/utils/schema';
 import { siteUrl } from '@/utils/seo';
-import { findToolBySlug, getIconForTool } from '@/utils/tools';
+import { findToolBySlug, getToolIcon } from '@/utils/tools';
 
 /**
  * Retrieves tool data for the Slugify tool.
@@ -63,7 +63,7 @@ export default function Slugify(): JSX.Element {
           pageName={tool.name}
           title={tool.name}
           description={tool.description}
-          icon={getIconForTool(tool.slug)}
+          icon={getToolIcon(tool.slug)}
         />
         <PageContent>
           <EntryWithSidebar tool={tool}>

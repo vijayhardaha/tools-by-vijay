@@ -8,9 +8,9 @@ import PageContent from '@/components/page/PageContent';
 import PageHeader from '@/components/page/PageHeader';
 import PageLayout from '@/components/page/PageLayout';
 import PxToRemConverterTool from '@/components/tools/px-to-rem-converter';
-import type { Tool } from '@/types';
+import type { Tool } from '@/constants/tools';
 import { buildMetadata } from '@/utils/meta';
-import { findToolBySlug, getIconForTool } from '@/utils/tools';
+import { findToolBySlug, getToolIcon } from '@/utils/tools';
 
 /**
  * Retrieves tool data for the PX to REM Converter tool.
@@ -43,12 +43,7 @@ export default function PxToRemConverter(): JSX.Element {
 
   return (
     <PageLayout>
-      <PageHeader
-        pageName={tool.name}
-        title={tool.name}
-        description={tool.description}
-        icon={getIconForTool(tool.slug)}
-      />
+      <PageHeader pageName={tool.name} title={tool.name} description={tool.description} icon={getToolIcon(tool.slug)} />
       <PageContent>
         <EntryWithSidebar tool={tool}>
           <PxToRemConverterTool />

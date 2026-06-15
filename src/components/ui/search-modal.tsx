@@ -9,9 +9,9 @@ import { useRouter } from 'next/navigation';
 import { FiSearch, FiCommand } from 'react-icons/fi';
 import { PiMagnifyingGlassBold } from 'react-icons/pi';
 
-import type { Tool } from '@/types';
+import type { Tool } from '@/constants/tools';
 import { cn } from '@/utils/classnames';
-import { getIconForTool } from '@/utils/tools';
+import { getToolIcon } from '@/utils/tools';
 
 /**
  * Props for the SearchModal component.
@@ -214,7 +214,7 @@ export default function SearchModal({ data, maxResults = 5, open, onOpenChange }
             results.length > 0 ? (
               <ul ref={listRef} className="max-h-80 overflow-y-auto p-2" role="listbox" aria-label="Search results">
                 {results.map((tool, idx) => {
-                  const icon = getIconForTool(tool.slug);
+                  const icon = getToolIcon(tool.slug);
 
                   return (
                     <li

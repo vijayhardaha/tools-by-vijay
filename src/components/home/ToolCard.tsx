@@ -3,9 +3,9 @@ import type { JSX } from 'react';
 import Link from 'next/link';
 
 import { PiCaretRightBold } from '@/constants/toolIcons';
-import type { Tool } from '@/types';
+import type { Tool } from '@/constants/tools';
 import { cn } from '@/utils/classnames';
-import { findToolBySlug, getIconForTool } from '@/utils/tools';
+import { findToolBySlug, getToolIcon } from '@/utils/tools';
 
 /**
  * Props for the ToolCard component.
@@ -43,7 +43,7 @@ export default function ToolCard({ slug, className = '' }: ToolCardProps): JSX.E
       >
         {/* Column 1: Tool Icon */}
         <div className="bg-accent-foreground text-primary inline-flex size-11 shrink-0 items-center justify-center rounded-2xl text-xl">
-          {getIconForTool(tool.slug)}
+          {getToolIcon(tool.slug)}
         </div>
 
         {/* Column 2: Heading + Description (truncated) */}

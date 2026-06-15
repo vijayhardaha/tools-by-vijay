@@ -1,4 +1,20 @@
-import type { Category } from '@/types';
+/**
+ * Interface representing a tool category.
+ *
+ * @type {Category}
+ * @property {string} label - The display label for the category
+ * @property {string} slug - The unique URL slug for the category
+ * @property {string} description - A brief description of the category
+ * @property {string} seoTitle - The SEO-optimized title for the category page
+ * @property {string} seoDescription - The SEO-optimized description for the category page
+ */
+export interface Category {
+  label: string;
+  slug: string;
+  description: string;
+  seoTitle: string;
+  seoDescription: string;
+}
 
 /**
  * Array of category objects, each containing information about a tool category.

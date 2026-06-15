@@ -8,9 +8,9 @@ import PageContent from '@/components/page/PageContent';
 import PageHeader from '@/components/page/PageHeader';
 import PageLayout from '@/components/page/PageLayout';
 import ReplaceQuotesTool from '@/components/tools/replace-quotes';
-import type { Tool } from '@/types';
+import type { Tool } from '@/constants/tools';
 import { buildMetadata } from '@/utils/meta';
-import { findToolBySlug, getIconForTool } from '@/utils/tools';
+import { findToolBySlug, getToolIcon } from '@/utils/tools';
 
 /**
  * Retrieves tool data for the Replace Quotes tool.
@@ -43,12 +43,7 @@ export default function ReplaceQuotes(): JSX.Element {
 
   return (
     <PageLayout>
-      <PageHeader
-        pageName={tool.name}
-        title={tool.name}
-        description={tool.description}
-        icon={getIconForTool(tool.slug)}
-      />
+      <PageHeader pageName={tool.name} title={tool.name} description={tool.description} icon={getToolIcon(tool.slug)} />
       <PageContent>
         <EntryWithSidebar tool={tool}>
           <ReplaceQuotesTool />

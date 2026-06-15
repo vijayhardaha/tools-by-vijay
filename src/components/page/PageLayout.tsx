@@ -26,7 +26,7 @@ export default function PageLayout({ children }: PageLayoutProps): JSX.Element {
       {/* Skip to main content link for keyboard and screen reader users */}
       <a
         href="#main-content"
-        className="focus:ring-ring/50 sr-only fixed top-0 left-0 z-[100] block bg-black px-4 py-2 text-sm font-medium text-white focus:not-sr-only focus:ring-[3px] focus:outline-none"
+        className="focus:ring-ring/50 sr-only fixed top-0 left-0 z-100 block bg-black px-4 py-2 text-sm font-medium text-white focus:not-sr-only focus:ring-[3px] focus:outline-none"
       >
         Skip to main content
       </a>

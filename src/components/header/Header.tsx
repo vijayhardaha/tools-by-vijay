@@ -52,7 +52,13 @@ export default function Header(): JSX.Element {
     <>
       <header
         className={cn(
-          'sticky top-0 z-50 bg-white transition-transform duration-300',
+          // Position & stacking
+          'sticky top-0 z-50',
+
+          // Appearance
+          'bg-white transition-transform duration-300',
+
+          // States
           scrolled && 'shadow-xs',
           visible ? 'translate-y-0' : '-translate-y-full'
         )}
@@ -91,7 +97,25 @@ function SearchButton({ onClick }: { onClick: () => void }): JSX.Element {
     <button
       type="button"
       onClick={onClick}
-      className="focus-visible:ring-ring/50 inline-flex h-9 cursor-pointer items-center gap-1 rounded-xl border border-gray-950/8 bg-gray-950/2 px-2 text-sm text-neutral-500 transition-colors outline-none hover:text-neutral-700 focus-visible:ring-[3px] dark:border-white/10 dark:bg-white/5 dark:text-neutral-400 dark:hover:text-neutral-300"
+      className={cn(
+        // Focus
+        'focus-visible:ring-ring/50',
+
+        // Layout
+        'inline-flex h-9 cursor-pointer items-center gap-1 rounded-xl border px-2 text-sm',
+
+        // Appearance
+        'border-gray-950/8 bg-gray-950/2 text-neutral-500',
+
+        // Transitions
+        'transition-colors outline-none',
+
+        // Hover
+        'hover:text-neutral-700 focus-visible:ring-[3px]',
+
+        // Dark mode
+        'dark:border-white/10 dark:bg-white/5 dark:text-neutral-400 dark:hover:text-neutral-300'
+      )}
       aria-label="Search tools (Cmd+K)"
     >
       <PiMagnifyingGlassBold className="-ml-0.5 size-4 fill-gray-600 dark:fill-gray-500" />

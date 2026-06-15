@@ -3,7 +3,8 @@ import type { JSX } from 'react';
 import Link from 'next/link';
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import type { Category, Tool } from '@/types';
+import type { Tool } from '@/constants/tools';
+import type { Category } from '@/constants/toolsCategories';
 import { getCategoryBySlug } from '@/utils/categories';
 import { cn } from '@/utils/classnames';
 import { getToolsByCategory } from '@/utils/tools';

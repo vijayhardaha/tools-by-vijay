@@ -1,7 +1,25 @@
+import type { ComponentType } from 'react';
+
 import { FaFacebookF, FaXTwitter, FaGithub, FaInstagram } from 'react-icons/fa6';
 import { TbWorldWww } from 'react-icons/tb';
 
-import type { SocialMediaLink } from '@/types';
+/**
+ * Interface representing a social media link with metadata and icon.
+ *
+ * @type {SocialMediaLink}
+ * @property {string} name - The display name of the social media profile
+ * @property {string} key - The unique key identifier for the link
+ * @property {string} url - The URL to the social media profile
+ * @property {string} color - The hover color class for the social media button
+ * @property {ComponentType} icon - The icon component for the social media platform
+ */
+export interface SocialMediaLink {
+  name: string;
+  key: string;
+  url: string;
+  color: string;
+  icon: ComponentType;
+}
 
 /**
  * A list of social media links with metadata and icons.

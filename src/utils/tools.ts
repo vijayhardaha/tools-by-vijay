@@ -2,7 +2,7 @@ import type { ReactElement } from 'react';
 
 import { toolIcons } from '@/constants/toolIcons';
 import tools from '@/constants/tools';
-import type { Tool } from '@/types';
+import type { Tool } from '@/constants/tools';
 
 /**
  * Find a tool by its slug
@@ -51,6 +51,6 @@ export const getToolsByCategories = (): Record<string, Tool[]> => {
  *
  * @returns {ReactElement | null} The icon for the tool, or null if not found
  */
-export const getIconForTool = (slug: string): ReactElement | null => {
+export const getToolIcon = (slug: string): ReactElement | null => {
   return toolIcons[slug] || null;
 };

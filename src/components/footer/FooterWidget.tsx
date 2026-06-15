@@ -2,6 +2,8 @@ import type { JSX } from 'react';
 
 import Link from 'next/link';
 
+import { cn } from '@/utils/classnames';
+
 /**
  * Interface representing the props for the FooterWidget component.
  *
@@ -31,14 +33,26 @@ export default function FooterWidget({ title, links }: FooterWidgetProps): JSX.E
   };
 
   return (
-    <nav className="footer-widget" aria-label={title}>
-      <h3 className="mb-2 text-base font-bold">{title}</h3>
-      <ul className="flex flex-col gap-1">
+    <nav className={cn('footer-widget')} aria-label={title}>
+      <h3 className={cn('mb-2 text-base font-bold')}>{title}</h3>
+      <ul className={cn('flex flex-col gap-1')}>
         {links.map((link) => (
-          <li key={link.name} className="m-0 p-0">
+          <li key={link.name} className={cn('m-0 p-0')}>
             <Link
               href={link.href}
-              className="text-muted-foreground hover:text-primary text-sm transition-colors hover:underline"
+              className={cn(
+                // Text & colors
+                'text-muted-foreground hover:text-primary',
+
+                // Typography
+                'text-sm',
+
+                // Transitions
+                'transition-colors hover:underline',
+
+                // External link
+                isExternalLink(link.href) && 'underline'
+              )}
               {...(isExternalLink(link.href) && { target: '_blank', rel: 'noopener noreferrer' })}
             >
               {link.name}
