@@ -59,7 +59,12 @@ export default function Slugify(): JSX.Element {
     <>
       <JsonLd data={schemaData} />
       <PageLayout>
-        <PageHeader title={tool.name} description={tool.description} icon={getIconForTool(tool.slug)} />
+        <PageHeader
+          pageName={tool.name}
+          title={tool.name}
+          description={tool.description}
+          icon={getIconForTool(tool.slug)}
+        />
         <PageContent>
           <EntryWithSidebar tool={tool}>
             <SlugifyTool />
