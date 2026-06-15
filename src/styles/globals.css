@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@plugin "../../corner-shape.config.mjs";
 
 @theme {
   --breakpoint-xs: 30rem; /* 480px */
@@ -42,8 +43,8 @@
 
 @layer base {
   body {
-    @apply text-foreground bg-neutral-50;
-    @apply font-sans;
+    @apply bg-background text-foreground font-sans text-base font-normal leading-relaxed;
+    @apply antialiased overscroll-none;
   }
 }
 
