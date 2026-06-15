@@ -81,7 +81,7 @@ function CardHeader({ className, children, component, ...props }: CardHeaderProp
         'flex w-full flex-col items-start',
 
         // Spacing
-        'gap-1.5 px-4',
+        'gap-2 px-4',
 
         // Responsive
         'md:px-6',
