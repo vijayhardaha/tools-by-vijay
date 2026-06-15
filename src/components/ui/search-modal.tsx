@@ -22,7 +22,12 @@ import { getToolIcon } from '@/utils/tools';
  * @property {boolean} open - Whether the dialog is open
  * @property {(open: boolean) => void} onOpenChange - Callback when the dialog open state changes
  */
-type SearchModalProps = { data: Tool[]; maxResults?: number; open: boolean; onOpenChange: (open: boolean) => void };
+interface SearchModalProps {
+  data: Tool[];
+  maxResults?: number;
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+}
 
 /**
  * Component that highlights portions of text matching the search query.

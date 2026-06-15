@@ -52,11 +52,17 @@ export default function ToolsListWidget({ category, hideTool = '' }: ToolsListWi
                 href={`/tools/${categoryTool.slug}`}
                 className={cn(
                   'group',
+                  // layout
                   'flex flex-col gap-0.5',
+                  // size
                   'rounded-xl px-4 py-2',
+                  // colors
                   'text-foreground bg-muted',
+                  // border
                   'border border-transparent',
+                  // states
                   'hover:bg-accent hover:border-accent-foreground',
+                  // transition
                   'transition-colors duration-200 ease-in-out'
                 )}
               >

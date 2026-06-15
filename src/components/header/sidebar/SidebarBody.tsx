@@ -15,7 +15,11 @@ import { getToolsByCategories } from '@/utils/tools';
  * @property {ReactNode} children - Link content
  * @property {string} [className] - Additional CSS classes
  */
-type NavLinkProps = { href: string; children: ReactNode; className?: string };
+interface NavLinkProps {
+  href: string;
+  children: ReactNode;
+  className?: string;
+}
 
 /**
  * NavLink component for consistent link styling in the sidebar using Shadcn classes.
@@ -40,7 +44,10 @@ const NavLink = ({ href, children, className = '' }: NavLinkProps): JSX.Element 
  * @property {string} title - The section heading text
  * @property {{ slug: string; name: string }[]} tools - Array of tools in this category
  */
-type CategorySectionProps = { title: string; tools: { slug: string; name: string }[] };
+interface CategorySectionProps {
+  title: string;
+  tools: { slug: string; name: string }[];
+}
 
 /**
  * CategorySection component to display a group of tool links.

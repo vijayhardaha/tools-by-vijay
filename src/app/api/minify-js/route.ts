@@ -8,12 +8,16 @@ import { NextResponse } from 'next/server';
  *
  * @type {MinifyJsRequest}
  * @property {string} js - The JavaScript code to minify
- * @property {{ mangle?: boolean; removeConsole?: boolean; removeDebugger?: boolean; removeComments?: boolean }} [options] - Optional minification options
+ * @property {object} [options] - Optional minification options
+ * @property {boolean} [options.mangle] - Whether to mangle variable names
+ * @property {boolean} [options.removeConsole] - Whether to remove console statements
+ * @property {boolean} [options.removeDebugger] - Whether to remove debugger statements
+ * @property {boolean} [options.removeComments] - Whether to remove comments
  */
-type MinifyJsRequest = {
+interface MinifyJsRequest {
   js: string;
   options?: { mangle?: boolean; removeConsole?: boolean; removeDebugger?: boolean; removeComments?: boolean };
-};
+}
 
 /**
  * API route handler for JavaScript minification

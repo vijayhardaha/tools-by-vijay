@@ -13,7 +13,12 @@ import { socialMediaLinks } from '@/constants/socialLinks';
  * @property {string} label - The accessible label for the button
  * @property {string} [color] - The hover color class for the button
  */
-type SocialButtonProps = { icon: ElementType; href: string; label: string; color?: string };
+interface SocialButtonProps {
+  icon: ElementType;
+  href: string;
+  label: string;
+  color?: string;
+}
 
 /**
  * Represents a social media link with metadata.
@@ -25,7 +30,13 @@ type SocialButtonProps = { icon: ElementType; href: string; label: string; color
  * @property {string} name - The display name of the social profile
  * @property {string} [color] - The hover color class for the button
  */
-type SocialMediaLinkItem = { key: string; icon: ElementType; url: string; name: string; color?: string };
+interface SocialMediaLinkItem {
+  key: string;
+  icon: ElementType;
+  url: string;
+  name: string;
+  color?: string;
+}
 
 /**
  * Button component for social media links.

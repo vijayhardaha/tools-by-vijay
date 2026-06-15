@@ -76,13 +76,13 @@ const buttonVariants = cva(
  *
  * @type {ButtonProps}
  */
-type ButtonProps = {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
   variant?: 'default' | 'primary' | 'destructive' | 'success' | 'outline' | 'secondary' | 'ghost' | 'link';
   size?: 'default' | 'sm' | 'lg' | 'icon' | 'icon-sm' | 'icon-lg';
   asChild?: boolean;
-  children: ReactNode; // Allow any valid ReactNode (string, ReactElement, etc.)
-} & ButtonHTMLAttributes<HTMLButtonElement>;
+  children: ReactNode;
+}
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant = 'default', size = 'default', asChild = false, children, ...props }, ref) => {

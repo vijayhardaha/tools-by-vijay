@@ -11,7 +11,10 @@ import { cn } from '@/utils/classnames';
  * @property {string} title - The widget section heading
  * @property {{ name: string; href: string }[]} links - Array of navigation links
  */
-type FooterWidgetProps = { title: string; links: { name: string; href: string }[] };
+interface FooterWidgetProps {
+  title: string;
+  links: { name: string; href: string }[];
+}
 
 /**
  * Footer widget component that displays a list of links with a title

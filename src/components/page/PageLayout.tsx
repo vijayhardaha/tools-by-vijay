@@ -10,7 +10,9 @@ import ScrollToTop from '@/components/ui/scroll-to-top';
  * @type {PageLayoutProps}
  * @property {ReactNode} children - The content to display within the layout
  */
-type PageLayoutProps = { children: ReactNode };
+interface PageLayoutProps {
+  children: ReactNode;
+}
 
 /**
  * PageLayout component that provides a consistent layout structure

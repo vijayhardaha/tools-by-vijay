@@ -13,7 +13,10 @@ import SidebarHeader from './SidebarHeader';
  * @property {boolean} isOpen - Whether the sidebar is visible
  * @property {() => void} onClose - Callback to close the sidebar
  */
-type SidebarProps = { isOpen: boolean; onClose: () => void };
+interface SidebarProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
 
 /**
  * Sidebar component that displays a sliding panel from the right side of the screen.

@@ -11,7 +11,9 @@ import { cn } from '@/utils/classnames';
  * @type {LogoProps}
  * @property {string} [className] - Additional CSS classes for the logo image
  */
-type LogoProps = { className?: string };
+interface LogoProps {
+  className?: string;
+}
 
 /**
  * Logo component that displays the site logo with next/image.

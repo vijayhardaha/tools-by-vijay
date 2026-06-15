@@ -7,8 +7,17 @@ import prettier from 'prettier/standalone';
 
 export const runtime = 'edge';
 
-// Define the expected input structure
-type UnminifyCodeRequest = { code: string; codeType: 'html' | 'json' | 'css' | 'babel' };
+/**
+ * Interface for the unminify code request.
+ *
+ * @type {UnminifyCodeRequest}
+ * @property {string} code - The code to unminify
+ * @property {'html' | 'json' | 'css' | 'babel'} codeType - The type of code to format
+ */
+interface UnminifyCodeRequest {
+  code: string;
+  codeType: 'html' | 'json' | 'css' | 'babel';
+}
 
 /**
  * API route handler for unminifying code.

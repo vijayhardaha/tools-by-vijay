@@ -12,7 +12,9 @@ import { Button } from '@/components/ui/button';
  * @type {MenuButtonProps}
  * @property {() => void} onClick - Callback when the menu button is clicked
  */
-type MenuButtonProps = { onClick: () => void };
+interface MenuButtonProps {
+  onClick: () => void;
+}
 
 /**
  * MenuButton component renders a button that toggles the sidebar menu.
