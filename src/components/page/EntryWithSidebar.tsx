@@ -54,10 +54,10 @@ export default function EntryWithSidebar({ tool, children }: EntryWithSidebarPro
   }, [categories]);
 
   return (
-    <div className="grid grid-cols-1 gap-6 lg:grid-cols-6">
-      <article className="col-span-4 mb-8 lg:mb-0">{children}</article>
+    <div className="flex flex-col gap-6 lg:flex-row">
+      <article className="min-w-0 flex-1">{children}</article>
 
-      <aside className="col-span-2 flex flex-col gap-6">
+      <aside className="hidden w-full shrink-0 flex-col gap-6 lg:flex lg:w-[300px]">
         <ToolsListWidget category={tool.category} hideTool={tool.slug}></ToolsListWidget>
         <ToolsListWidget category={category1} hideTool={tool.slug}></ToolsListWidget>
         <ToolsListWidget category={category2} hideTool={tool.slug}></ToolsListWidget>
