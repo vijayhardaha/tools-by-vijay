@@ -25,7 +25,7 @@ interface ContainerProps extends HTMLAttributes<HTMLDivElement> {
  */
 export default function Container({ className, children, ...props }: ContainerProps): JSX.Element {
   return (
-    <div className={cn('mx-auto max-w-7xl px-6 lg:px-4', className)} {...props}>
+    <div className={cn('mx-auto max-w-7xl px-4 md:px-6', className)} {...props}>
       {children}
     </div>
   );
