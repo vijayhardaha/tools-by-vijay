@@ -43,8 +43,8 @@
 
 @layer base {
   body {
-    @apply bg-background text-foreground font-sans text-base font-normal leading-relaxed;
-    @apply antialiased overscroll-none;
+    @apply bg-background text-foreground font-sans text-base leading-relaxed font-normal;
+    @apply overscroll-none antialiased;
   }
 }
 
