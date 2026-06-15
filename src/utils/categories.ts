@@ -29,5 +29,3 @@ export const getCategoryBySlug = (slug: string): Category | null => {
 export const getAllCategorySlugs = (): string[] => {
   return categories.map((category) => category.slug);
 };
-
-
