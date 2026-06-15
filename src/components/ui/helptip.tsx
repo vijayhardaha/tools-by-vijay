@@ -23,7 +23,7 @@ interface HelpTipProps {
  */
 export default function HelpTip({ text }: HelpTipProps): JSX.Element {
   return (
-    <Tooltip text={text} className="!max-w-80">
+    <Tooltip text={text} className="max-w-80!">
       <FiInfo className="text-muted-foreground h-4 w-4 cursor-help" />
     </Tooltip>
   );
