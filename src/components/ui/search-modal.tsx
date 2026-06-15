@@ -178,6 +178,11 @@ export default function SearchModal({ data, maxResults = 5, open, onOpenChange }
             'duration-200'
           )}
         >
+          {/* Screen-reader description */}
+          <Dialog.Description className="sr-only">
+            Use the search field below to find a tool. Start typing to see results, then use arrow keys to navigate and press Enter to open a tool.
+          </Dialog.Description>
+
           {/* Search input area */}
           <div className="flex items-center gap-3 border-b border-neutral-200 px-4 py-3">
             <PiMagnifyingGlassBold className="size-5 shrink-0 text-neutral-400" />
