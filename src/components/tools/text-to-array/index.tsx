@@ -10,8 +10,8 @@ import InfoBlock from './info-block';
 import InputBlock from './input-block';
 import OutputBlock from './output-block';
 
-export type OutputFormat = 'json' | 'jsArray' | 'jsObject' | 'php' | 'wordpress';
-export type ArrayType = 'simple' | 'numeric' | 'associative';
+type OutputFormat = 'json' | 'jsArray' | 'jsObject' | 'php' | 'wordpress';
+type ArrayType = 'simple' | 'numeric' | 'associative';
 
 /**
  * Main component for the Text to Array tool.
