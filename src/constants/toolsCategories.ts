@@ -7,7 +7,7 @@ import type { Category } from '@/types';
  */
 const categories: Category[] = [
   {
-    label: 'Text Transformation Tools',
+    label: 'Text Transformation',
     slug: 'text-transformation-tools',
     description:
       'Easily transform, clean, and format your text for blogs, code, or documents with powerful online text editing tools.',
@@ -15,7 +15,7 @@ const categories: Category[] = [
     seoDescription: 'Use our free online tools to transform text: clean, convert, and format your content with ease.',
   },
   {
-    label: 'Security Tools',
+    label: 'Security',
     slug: 'security-tools',
     description:
       'Protect your online accounts with secure password generators and strength testers to keep your digital data safe.',
@@ -24,7 +24,7 @@ const categories: Category[] = [
       'Generate strong passwords and test their strength with our free security tools. Stay protected online.',
   },
   {
-    label: 'Code Optimization Tools',
+    label: 'Code Optimization',
     slug: 'code-optimization-tools',
     description:
       'Optimize your website’s speed and efficiency by minifying code and improving performance with easy-to-use tools.',
@@ -33,7 +33,7 @@ const categories: Category[] = [
       'Speed up your website with code minification and optimization tools. Enhance performance in one click.',
   },
   {
-    label: 'Web Utility Tools',
+    label: 'Web Utility',
     slug: 'web-utility-tools',
     description:
       'Access essential web development utilities for everyday tasks, debugging, and improving your coding workflow.',
@@ -42,7 +42,7 @@ const categories: Category[] = [
       'Simplify your daily workflow with our essential online web utilities. Built for developers and creators.',
   },
   {
-    label: 'Data Conversion Tools',
+    label: 'Data Conversion',
     slug: 'data-conversion-tools',
     description:
       'Quickly convert text, files, and data formats including JSON, CSV, XML, and more with accurate online converters.',
@@ -51,7 +51,7 @@ const categories: Category[] = [
       'Transform data between formats quickly and accurately. JSON, CSV, arrays, and more—all in one place.',
   },
   {
-    label: 'Data Formatting Tools',
+    label: 'Data Formatting',
     slug: 'data-formatting-tools',
     description:
       'Format and organize your data with powerful JSON beautifiers, table aligners, content sorters, and more.',
