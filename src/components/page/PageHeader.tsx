@@ -2,7 +2,6 @@ import type { JSX, ReactNode } from 'react';
 
 import PageBreadcrumb from '@/components/page/PageBreadcrumb';
 import Container from '@/components/ui/container';
-import NoiseOverlay from '@/components/ui/noise-overlay';
 
 /**
  * Props for the PageHeader component.
@@ -32,9 +31,6 @@ export default function PageHeader({ title, description, icon = null, pageName }
         backgroundBlendMode: 'overlay, hard-light, overlay, normal',
       }}
     >
-      {/* Noise texture overlay on top of the gradient background */}
-      <NoiseOverlay opacity={0.06} />
-
       <Container className="mb-4">
         <div className="py-10">
           {pageName && <PageBreadcrumb pageName={pageName} />}
