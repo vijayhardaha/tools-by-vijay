@@ -80,7 +80,7 @@ export default function InputBlock({
             value={input}
             onChange={(e) => setInput(e.target.value)}
           />
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-6">
             <div className="space-y-4">
               <h3 className="text-base font-bold">Content Options</h3>
 
