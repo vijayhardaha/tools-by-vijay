@@ -173,7 +173,7 @@ function SheetOverlay({ className = '', ...props }: SheetOverlayProps): JSX.Elem
       data-slot="sheet-overlay"
       data-state={open ? 'open' : 'closed'}
       className={cn(
-        'fixed inset-0 z-50 bg-black/50 transition-opacity duration-300',
+        'fixed inset-0 z-50 bg-black/50 backdrop-blur-sm transition-opacity duration-300',
         'data-[state=open]:animate-in data-[state=closed]:animate-out',
         'data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0',
         open ? 'opacity-100' : 'pointer-events-none opacity-0',
