@@ -44,7 +44,7 @@ export default function Home(): JSX.Element {
                 <p className="text-muted-foreground">{category.description}</p>
               </div>
 
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-6">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-4 md:gap-6">
                 {categoryTools.map((tool: Tool) => (
                   <ToolCard key={tool.slug} slug={tool.slug} />
                 ))}
