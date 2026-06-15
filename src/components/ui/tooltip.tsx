@@ -1,70 +1,93 @@
 'use client';
 
-import * as React from 'react';
-import { forwardRef } from 'react';
-import type { ComponentRef, ForwardedRef, JSX, ReactNode } from 'react';
+import type { ComponentProps, JSX } from 'react';
 
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';
 
 import { cn } from '@/utils/classnames';
 
 /**
- * Props for the TooltipContent component.
+ * Radix UI tooltip provider with configurable open delay.
  *
- * @type {TooltipContentProps}
- * @property {string} [className] - Additional CSS classes to apply to the tooltip
- * @property {number} [sideOffset] - Distance in pixels from the trigger element
- * @property {ReactNode} children - The content to display inside the tooltip
+ * @param {ComponentProps<typeof TooltipPrimitive.Provider>} props - Provider props including optional delay duration.
+ *
+ * @returns {JSX.Element} The rendered provider element.
  */
-interface TooltipContentProps {
-  className?: string;
-  sideOffset?: number;
-  children: ReactNode;
+function TooltipProvider({
+  delayDuration = 0,
+  ...props
+}: ComponentProps<typeof TooltipPrimitive.Provider>): JSX.Element {
+  return <TooltipPrimitive.Provider data-slot="tooltip-provider" delayDuration={delayDuration} {...props} />;
 }
 
 /**
- * TooltipContent component that displays the tooltip content.
+ * Radix UI tooltip root container component.
  *
- * This component contains the actual content that appears when the tooltip is open.
- * It automatically positions itself relative to the trigger and includes proper
- * accessibility features.
+ * @param {ComponentProps<typeof TooltipPrimitive.Root>} props - Root tooltip props.
  *
- * @param {object} props - The component props
- * @param {string} [props.className] - Additional CSS classes to apply
- * @param {number} [props.sideOffset] - Distance in pixels from the trigger element
- * @param {ReactNode} props.children - The content to display in the tooltip
- * @param {ForwardedRef<ComponentRef<typeof TooltipPrimitive.Content>>} ref - Ref forwarded to the content element
- *
- * @returns {JSX.Element} The rendered TooltipContent component
+ * @returns {JSX.Element} The rendered tooltip root element.
  */
-function TooltipContent(
-  props: TooltipContentProps,
-  ref: ForwardedRef<ComponentRef<typeof TooltipPrimitive.Content>>
-): JSX.Element {
+function Tooltip({ ...props }: ComponentProps<typeof TooltipPrimitive.Root>): JSX.Element {
+  return <TooltipPrimitive.Root data-slot="tooltip" {...props} />;
+}
+
+/**
+ * Radix UI tooltip trigger for hover and focus activation.
+ *
+ * @param {ComponentProps<typeof TooltipPrimitive.Trigger>} props - Trigger props.
+ *
+ * @returns {JSX.Element} The rendered trigger element.
+ */
+function TooltipTrigger({ ...props }: ComponentProps<typeof TooltipPrimitive.Trigger>): JSX.Element {
+  return <TooltipPrimitive.Trigger data-slot="tooltip-trigger" {...props} />;
+}
+
+/**
+ * Tooltip overlay with text content, styling, and arrow indicator.
+ *
+ * @param {ComponentProps<typeof TooltipPrimitive.Content>} props - Content props including side offset, class name, and children.
+ *
+ * @returns {JSX.Element} The rendered tooltip content element.
+ */
+function TooltipContent({
+  className,
+  sideOffset = 0,
+  children,
+  ...props
+}: ComponentProps<typeof TooltipPrimitive.Content>): JSX.Element {
   return (
     <TooltipPrimitive.Portal>
       <TooltipPrimitive.Content
-        ref={ref}
+        data-slot="tooltip-content"
+        sideOffset={sideOffset}
         className={cn(
-          'bg-primary text-primary-foreground animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 max-w-80 overflow-hidden rounded-md px-3 py-1.5 text-xs',
-          props.className
+          // Positioning
+          'z-50 origin-(--radix-tooltip-content-transform-origin)',
+          // Layout
+          'inline-flex w-fit max-w-xs items-center',
+          // Spacing
+          'gap-1.5 rounded-lg px-3 py-1.5 text-xs',
+          // Colors
+          'bg-foreground text-background',
+          // Appearance
+          'has-data-[slot=kbd]:pr-1.5 **:data-[slot=kbd]:relative **:data-[slot=kbd]:isolate **:data-[slot=kbd]:z-50 **:data-[slot=kbd]:rounded-sm',
+          // Side entrance
+          'data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2',
+          // Delayed open
+          'data-[state=delayed-open]:animate-in data-[state=delayed-open]:fade-in-0 data-[state=delayed-open]:zoom-in-95',
+          // Open
+          'data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95',
+          // Closed
+          'data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95',
+          className
         )}
-        {...(props.sideOffset ? { sideOffset: props.sideOffset } : {})}
         {...props}
-      />
+      >
+        {children}
+        <TooltipPrimitive.Arrow className="bg-foreground fill-foreground z-50 size-2.5 translate-y-[calc(-50%-2px)] rotate-45 rounded-lg" />
+      </TooltipPrimitive.Content>
     </TooltipPrimitive.Portal>
   );
 }
 
-const TooltipContentWithRef = forwardRef(TooltipContent);
-TooltipContentWithRef.displayName = TooltipPrimitive.Content.displayName;
-
-// Tooltip primitive components
-const Tooltip = TooltipPrimitive.Root;
-const TooltipTrigger = TooltipPrimitive.Trigger;
-
-// TooltipProvider for tooltip context setup
-const TooltipProvider = TooltipPrimitive.Provider;
-
-export type { TooltipContentProps };
-export { Tooltip, TooltipTrigger, TooltipContentWithRef as TooltipContent, TooltipProvider };
+export { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger };

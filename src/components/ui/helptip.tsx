@@ -1,9 +1,8 @@
 'use client';
 
 import type { JSX } from 'react';
-import * as React from 'react';
 
-import { FiInfo } from 'react-icons/fi';
+import { PiInfoFill } from 'react-icons/pi';
 
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { cn } from '@/utils/classnames';
@@ -33,8 +32,8 @@ export default function HelpTip({ text }: HelpTipProps): JSX.Element {
     <Tooltip>
       <TooltipTrigger asChild>
         <div className="group relative inline-flex items-center justify-center">
-          <FiInfo
-            className={cn('text-muted-foreground group-hover:text-foreground h-4 w-4 cursor-help transition-colors')}
+          <PiInfoFill
+            className={cn('text-foreground group-hover:text-foreground h-5 w-5 cursor-help transition-colors')}
             aria-label={text}
             data-testid="helptip-icon"
           />
