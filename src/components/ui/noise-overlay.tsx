@@ -35,7 +35,6 @@ export default function NoiseOverlay({ className, opacity = 0.05 }: NoiseOverlay
         alt=""
         fill
         className="object-fill opacity-(--noise-opacity) mix-blend-overlay"
-
         sizes="100vw"
         unoptimized
       />
