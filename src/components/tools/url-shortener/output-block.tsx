@@ -1,6 +1,6 @@
 import type { JSX } from 'react';
 
-import { Alert } from '@/components/ui/alert';
+import Alert from '@/components/ui/alert';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
 import { CopyButton } from '@/components/ui/copyButton';
