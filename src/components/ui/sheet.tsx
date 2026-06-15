@@ -245,7 +245,7 @@ function SheetContent({ className = '', children, side = 'right', ...props }: Sh
         data-slot="sheet-content"
         data-state={open ? 'open' : 'closed'}
         className={cn(
-          'bg-background border-border/50 fixed z-50 flex flex-col gap-4 shadow-lg',
+          'bg-background border-border/50 fixed z-50 flex flex-col gap-4 shadow-lg md:gap-6',
           'transition-all duration-300 ease-in-out',
           !open && 'pointer-events-none',
           side === 'right' && [
