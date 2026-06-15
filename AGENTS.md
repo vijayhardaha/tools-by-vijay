@@ -50,7 +50,7 @@ src/
     footerLinks.ts        # Footer nav link groups
     socialLinks.ts        # SocialMediaLink[]
   utils/
-    tools.ts              # Tool helpers: getAllTools, findToolBySlug, getToolsByCategory, getIconForTool, etc.
+    tools.ts              # Tool helpers: getAllTools, findToolBySlug, getToolsByCategory, getToolIcon, etc.
     categories.ts         # Category helpers: getAllCategories, getCategoryBySlug, etc.
     meta.ts               # buildMetadata() — generates Next.js Metadata with OG/Twitter card merging
     seo.ts                # siteUrl(), getPermaLink()
