@@ -39,10 +39,12 @@ export default function ToolsListWidget({ category, hideTool = '' }: ToolsListWi
   return (
     <Card className="md:gap-4 md:py-4">
       <CardHeader className="border-secondary border-b border-dashed md:px-4 md:[.border-b]:pb-4">
-        <CardTitle component="h4">{categoryData?.label}</CardTitle>
+        <CardTitle component="h4" className="text-lg">
+          {categoryData?.label}
+        </CardTitle>
       </CardHeader>
       <CardContent className="md:px-4">
-        <ul className="flex flex-col gap-2">
+        <ul className="flex flex-col gap-3">
           {toolsInCategory.map((categoryTool) => (
             <li key={categoryTool.slug}>
               <Link
@@ -58,8 +60,8 @@ export default function ToolsListWidget({ category, hideTool = '' }: ToolsListWi
                   'rounded-xl px-4 py-2'
                 )}
               >
-                <span className="text-sm font-semibold transition-colors">{categoryTool.name}</span>
-                <span className="text-muted-foreground text-xs">{categoryTool.description}</span>
+                <span className="text-base font-semibold transition-colors">{categoryTool.name}</span>
+                <span className="text-muted-foreground truncate text-xs">{categoryTool.description}</span>
               </Link>
             </li>
           ))}
