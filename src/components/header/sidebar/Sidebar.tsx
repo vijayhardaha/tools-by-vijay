@@ -28,7 +28,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps): JSX.Element 
     <Sheet open={isOpen} onOpenChange={onClose}>
       <SheetContent
         side="right"
-        className="fixed inset-y-0 right-0 m-0 h-full w-150 max-w-full rounded-none p-0 shadow-lg"
+        className="fixed inset-y-0 right-0 m-0 h-full w-150 max-w-full rounded-none p-0 shadow-lg md:hidden"
       >
         <SidebarHeader />
 
