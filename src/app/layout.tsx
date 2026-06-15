@@ -25,6 +25,18 @@ export default function RootLayout({ children }: { children: ReactNode }): JSX.E
   return (
     <html lang="en" className={fontClassNames}>
       <body>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                var d = document.documentElement;
+                if (navigator.userAgent.includes('Mac OS X') || navigator.platform.includes('Mac')) {
+                  d.classList.add('os-macos');
+                }
+              })();
+            `,
+          }}
+        />
         <GoogleAnalytics gaId={GOOGLE_ANALYTICS_ID} />
         {children}
         <VercelAnalytics />
