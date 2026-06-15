@@ -29,6 +29,7 @@ export default function About(): JSX.Element {
   return (
     <PageLayout>
       <PageHeader
+        pageName="About Me"
         title="About Me"
         description="Meet Vijay, a web developer and vegan creating fast, privacy-first online tools for developers and content creators."
       />
