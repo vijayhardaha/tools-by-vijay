@@ -98,7 +98,7 @@ export default function Checkbox({
       <span
         data-slot="checkbox-indicator"
         className={cn(
-          'flex h-4 w-4 cursor-pointer items-center justify-center rounded border',
+          'flex h-5 w-5 cursor-pointer items-center justify-center rounded-xl border',
           isChecked ? 'bg-primary border-primary text-primary-foreground' : 'border-input'
         )}
       >

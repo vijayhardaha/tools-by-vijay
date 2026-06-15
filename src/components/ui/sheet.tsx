@@ -173,20 +173,17 @@ function SheetOverlay({ className = '', ...props }: SheetOverlayProps): JSX.Elem
       data-slot="sheet-overlay"
       data-state={open ? 'open' : 'closed'}
       className={cn(
-        // Position
+        // Positioning
         'fixed inset-0 z-50',
-
+        // Colors
+        'bg-black/50',
         // Appearance
-        'bg-black/50 backdrop-blur-sm',
-
+        'backdrop-blur-sm',
         // Transitions
         'transition-opacity duration-300',
-
-        // States
         'data-[state=open]:animate-in data-[state=closed]:animate-out',
         'data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0',
         open ? 'opacity-100' : 'pointer-events-none opacity-0',
-
         className
       )}
       onClick={() => onOpenChange(false)}
@@ -255,53 +252,43 @@ function SheetContent({ className = '', children, side = 'right', ...props }: Sh
         data-slot="sheet-content"
         data-state={open ? 'open' : 'closed'}
         className={cn(
-          // Appearance
-          'bg-background border-border/50 flex flex-col gap-4 shadow-lg',
-
           // Positioning
           'fixed z-50',
-
-          // Size & responsive
-          'flex flex-col gap-4 shadow-lg md:gap-6',
-
+          // Layout
+          'flex flex-col',
+          // Spacing
+          'gap-4',
+          // Colors
+          'bg-background border-border/50',
+          // Appearance
+          'shadow-lg',
           // Transitions
           'transition-all duration-300 ease-in-out',
-
-          // States
-          'pointer-events-none!',
-
-          // Right side
+          !open && 'pointer-events-none',
           side === 'right' && [
             'inset-y-0 right-0 h-full w-3/4 border-l sm:max-w-sm',
             open
               ? 'data-[state=open]:animate-in data-[state=open]:slide-in-from-right translate-x-0'
               : 'data-[state=closed]:animate-out data-[state=closed]:slide-out-to-right translate-x-full',
           ],
-
-          // Left side
           side === 'left' && [
             'inset-y-0 left-0 h-full w-3/4 border-r sm:max-w-sm',
             open
               ? 'data-[state=open]:animate-in data-[state=open]:slide-in-from-left translate-x-0'
               : 'data-[state=closed]:animate-out data-[state=closed]:slide-out-to-left translate-x-full',
           ],
-
-          // Top side
           side === 'top' && [
             'inset-x-0 top-0 h-auto border-b',
             open
               ? 'data-[state=open]:animate-in data-[state=open]:slide-in-from-top translate-y-0'
               : 'data-[state=closed]:animate-out data-[state=closed]:slide-out-to-top translate-y-full',
           ],
-
-          // Bottom side
           side === 'bottom' && [
             'inset-x-0 bottom-0 h-auto border-t',
             open
               ? 'data-[state=open]:animate-in data-[state=open]:slide-in-from-bottom translate-y-0'
               : 'data-[state=closed]:animate-out data-[state=closed]:slide-out-to-bottom translate-y-full',
           ],
-
           className
         )}
         {...props}

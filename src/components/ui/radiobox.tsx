@@ -104,7 +104,7 @@ export default function RadioBox({
       <span
         data-slot="radiobox-indicator"
         className={cn(
-          'flex h-4 w-4 cursor-pointer items-center justify-center rounded-full border',
+          'flex h-5 w-5 cursor-pointer items-center justify-center rounded-full border',
           isChecked ? 'bg-primary border-primary text-primary-foreground' : 'border-input'
         )}
       >
