@@ -63,14 +63,14 @@ export default function Header(): JSX.Element {
             <DesktopNav />
             <div className="flex items-center gap-2">
               <SearchButton onClick={() => setSearchOpen(true)} />
-              <div className="md:hidden">
+              <div className="lg:hidden">
                 <MenuButton onClick={toggleDrawer} />
               </div>
             </div>
           </div>
         </Container>
       </header>
-      <div className="md:hidden">
+      <div className="lg:hidden">
         <Sidebar isOpen={isOpen} onClose={closeDrawer} />
       </div>
       <SearchModal data={tools} maxResults={5} open={searchOpen} onOpenChange={setSearchOpen} />
