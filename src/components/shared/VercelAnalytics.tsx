@@ -12,5 +12,5 @@ import { Analytics } from '@vercel/analytics/next';
  * @returns {JSX.Element} The Vercel Analytics component.
  */
 export function VercelAnalytics(): JSX.Element {
-  return <Analytics />;
+  return <Analytics mode="production" />;
 }
