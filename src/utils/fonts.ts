@@ -1,9 +1,9 @@
-import { Geist_Mono, Zalando_Sans } from 'next/font/google';
+import { Cascadia_Mono, Sora } from 'next/font/google';
 
 /**
  * Primary sans-serif font for body text.
  */
-const sansFont = Zalando_Sans({
+const sansFont = Sora({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
   style: ['normal'],
@@ -15,9 +15,9 @@ const sansFont = Zalando_Sans({
 /**
  * Mono font for code blocks and technical content.
  */
-const monoFont = Geist_Mono({
+const monoFont = Cascadia_Mono({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
+  weight: ['400'],
   style: ['normal'],
   variable: '--font-app-mono',
   display: 'swap',
