@@ -22,7 +22,7 @@ interface PageBreadcrumbProps {
  */
 export default function PageBreadcrumb({ pageName }: PageBreadcrumbProps): JSX.Element {
   return (
-    <nav aria-label="breadcrumb">
+    <nav aria-label="breadcrumb" className="mb-4">
       <ol className="flex flex-wrap items-center text-sm">
         <li className="flex items-center">
           <Link href="/" className="hover:underline">
