@@ -25,9 +25,9 @@ import { findToolBySlug, getToolIcon } from '@/utils/tools';
  */
 const tool: Tool | null = findToolBySlug('slugify');
 
-const title = tool?.seoTitle || '';
-const description = tool?.seoDescription || '';
-const path = `/${tool?.slug || ''}`;
+const seoTitle = tool?.seoTitle || '';
+const seoDescription = tool?.seoDescription || '';
+const seoPath = `/${tool?.slug || ''}`;
 const rootUrl = siteUrl();
 
 const categoryLabel = getCategoryBySlug(tool?.category || '')?.label || 'Tools';
@@ -49,10 +49,10 @@ const breadcrumbItems: BreadcrumbItem[] = [
  */
 const schemaData = [
   ...globalSchema(),
-  webPageSchema({ rootUrl, path, breadcrumb: true }, { name: title, description }),
+  webPageSchema({ rootUrl, path: seoPath, breadcrumb: true }, { name: seoTitle, description: seoDescription }),
   breadcrumbSchema({
     rootUrl,
-    items: buildBreadcrumbs(path, 'Slugify Tool', [{ name: categoryLabel, path: categoryPath }]),
+    items: buildBreadcrumbs(seoPath, `${tool?.name || ''} Tool`, [{ name: categoryLabel, path: categoryPath }]),
   }),
 ];
 
@@ -61,7 +61,7 @@ const schemaData = [
  *
  * @type {Metadata}
  */
-export const metadata: Metadata = buildMetadata({ title, description, path });
+export const metadata: Metadata = buildMetadata({ title: seoTitle, description: seoDescription, path: seoPath });
 
 /**
  * Slugify tool page component.
