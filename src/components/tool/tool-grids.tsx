@@ -35,7 +35,7 @@ export function ToolGridSection({ heading, tools }: ToolGridSectionProps): JSX.E
     <section>
       <hr className="border-secondary mb-8 border-t border-dashed md:mb-12" />
       <h2 className="mb-4 text-2xl font-bold md:text-3xl">{heading}</h2>
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-3">
         {tools.map((tool) => {
           const icon = getToolIcon(tool.slug);
 
