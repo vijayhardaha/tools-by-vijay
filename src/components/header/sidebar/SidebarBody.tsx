@@ -62,7 +62,7 @@ const CategorySection = ({ title, tools }: CategorySectionProps): JSX.Element =>
     <ul className="space-y-3">
       {tools.map((tool) => (
         <li key={tool.slug}>
-          <NavLink href={`/tools/${tool.slug}`}>{tool.name}</NavLink>
+          <NavLink href={`/${tool.slug}`}>{tool.name}</NavLink>
         </li>
       ))}
     </ul>

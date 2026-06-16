@@ -111,7 +111,7 @@ export function DesktopNav(): JSX.Element {
                   {tools.map((tool) => (
                     <Link
                       key={tool.slug}
-                      href={`/tools/${tool.slug}`}
+                      href={`/${tool.slug}`}
                       className="text-muted-foreground hover:text-foreground hover:bg-muted flex items-center px-4 py-2 text-sm transition-colors"
                     >
                       {tool.name}
