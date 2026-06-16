@@ -2,17 +2,7 @@ import type { JSX } from 'react';
 
 import Link from 'next/link';
 
-/**
- * A single breadcrumb item in the navigation trail.
- *
- * @type {BreadcrumbItem}
- * @property {string} label - The display text for this breadcrumb
- * @property {string} [href] - Optional URL for the breadcrumb link (last item is typically not linked)
- */
-export interface BreadcrumbItem {
-  label: string;
-  href?: string;
-}
+import type { BreadcrumbItem } from '@/utils/breadcrumb';
 
 /**
  * Props for the PageBreadcrumb component.
@@ -30,7 +20,7 @@ interface PageBreadcrumbProps {
  * PageBreadcrumb component displays a breadcrumb navigation trail.
  *
  * Supports two modes:
- * 1. Multi-level: pass an `items` array with label/href pairs for deep navigation
+ * 1. Multi-level: pass an `items` array with name/path pairs for deep navigation
  * 2. Simple: pass a `pageName` string for a basic Home / {pageName} breadcrumb
  *
  * @param {PageBreadcrumbProps} props - The props for the component.
@@ -39,7 +29,10 @@ interface PageBreadcrumbProps {
  */
 export function PageBreadcrumb({ items, pageName }: PageBreadcrumbProps): JSX.Element {
   // Derive breadcrumb items from pageName for backward compatibility
-  const breadcrumbItems: BreadcrumbItem[] = items ?? [{ label: 'Home', href: '/' }, { label: pageName || '' }];
+  const breadcrumbItems: BreadcrumbItem[] = items ?? [
+    { name: 'Home', path: '/' },
+    { name: pageName || '', path: '' },
+  ];
 
   return (
     <nav aria-label="breadcrumb" className="mb-4">
@@ -48,17 +41,17 @@ export function PageBreadcrumb({ items, pageName }: PageBreadcrumbProps): JSX.El
           const isLast = index === breadcrumbItems.length - 1;
 
           return (
-            <li key={item.label} className="mb-0 flex items-center">
-              {!isLast && item.href ? (
-                <Link href={item.href} className="hover:underline">
-                  {item.label}
+            <li key={item.name} className="mb-0 flex items-center">
+              {!isLast && item.path ? (
+                <Link href={item.path} className="hover:underline">
+                  {item.name}
                 </Link>
               ) : (
                 <span
                   className={isLast ? 'text-accent-foreground font-medium' : ''}
                   aria-current={isLast ? 'page' : undefined}
                 >
-                  {item.label}
+                  {item.name}
                 </span>
               )}
               {!isLast && <span className="mx-1 text-gray-500">/</span>}

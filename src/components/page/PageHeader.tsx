@@ -1,8 +1,8 @@
 import type { JSX, ReactNode } from 'react';
 
 import { PageBreadcrumb } from '@/components/page/PageBreadcrumb';
-import type { BreadcrumbItem } from '@/components/page/PageBreadcrumb';
 import { Container } from '@/components/ui/container';
+import type { BreadcrumbItem } from '@/utils/breadcrumb';
 import { cn } from '@/utils/classnames';
 
 /**
