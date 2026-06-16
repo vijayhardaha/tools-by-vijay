@@ -147,16 +147,7 @@ function OgImage({ title, description, path }: OgProps): JSX.Element {
         fontFamily: FONT_FAMILY,
       }}
     >
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          width: '100%',
-          maxWidth: '500px',
-          flex: 1,
-          padding: '64px 0',
-        }}
-      >
+      <div style={{ display: 'flex', flexDirection: 'column', width: '100%', flex: 1, padding: '64px' }}>
         {/* Top accent bar */}
         <div
           style={{
@@ -173,7 +164,7 @@ function OgImage({ title, description, path }: OgProps): JSX.Element {
         <div
           style={{
             display: 'flex',
-            fontSize: '44px',
+            fontSize: '54px',
             fontWeight: 700,
             lineHeight: 1.1,
             letterSpacing: '-0.02em',
@@ -188,7 +179,7 @@ function OgImage({ title, description, path }: OgProps): JSX.Element {
         <div
           style={{
             display: 'flex',
-            fontSize: '22px',
+            fontSize: '26px',
             fontWeight: 400,
             lineHeight: 1.4,
             color: '#a3a3a3',
@@ -202,24 +193,24 @@ function OgImage({ title, description, path }: OgProps): JSX.Element {
         <div
           style={{
             display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
+            alignItems: 'center',
+            justifyContent: 'space-between',
             borderTop: '1px solid #262626',
             paddingTop: '28px',
             gap: '6px',
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', lineHeight: 1 }}>
             {/* Decorative gradient dots */}
-            <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-              <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#f59e0b' }} />
-              <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#ec4899' }} />
-              <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#8b5cf6' }} />
+            <div style={{ display: 'flex', gap: '8px', alignItems: 'center', position: 'relative', top: '1px' }}>
+              <div style={{ width: '14px', height: '14px', borderRadius: '50%', background: '#f59e0b' }} />
+              <div style={{ width: '14px', height: '14px', borderRadius: '50%', background: '#ec4899' }} />
+              <div style={{ width: '14px', height: '14px', borderRadius: '50%', background: '#8b5cf6' }} />
             </div>
-            <span style={{ fontSize: '18px', fontWeight: 500, color: '#737373' }}>Tools by Vijay Hardaha</span>
+            <span style={{ fontSize: '22px', fontWeight: 500, color: '#737373' }}>Tools by Vijay Hardaha</span>
           </div>
 
-          <span style={{ fontSize: '16px', fontWeight: 400, color: '#525252' }}>
+          <span style={{ fontSize: '18px', fontWeight: 400, color: '#525252' }}>
             toolsbyvijay.vercel.app{path || '/'}
           </span>
         </div>
