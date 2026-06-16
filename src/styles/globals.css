@@ -50,6 +50,36 @@
     @apply bg-background text-foreground font-sans text-base leading-relaxed font-normal;
     @apply overscroll-none antialiased;
   }
+
+  ol {
+    @apply space-y-2;
+  }
+
+  code {
+    @apply bg-muted rounded px-1 py-0.5 font-mono text-sm;
+  }
+
+  kbd {
+    @apply bg-muted border-border rounded border px-1.5 py-0.5 font-mono text-xs shadow-sm;
+  }
+
+  samp {
+    @apply bg-muted rounded px-1 py-0.5 font-mono text-sm;
+  }
+
+  pre {
+    @apply bg-secondary overflow-x-auto rounded-xl p-4 font-mono text-sm;
+  }
+
+  pre code {
+    @apply rounded-none bg-transparent p-0;
+  }
+
+  article code,
+  article kbd,
+  article samp {
+    @apply bg-secondary;
+  }
 }
 
 @layer utilities {
