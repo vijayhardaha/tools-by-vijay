@@ -173,14 +173,14 @@ export function SearchModal({ data, maxResults = 5, open, onOpenChange }: Search
         {/* Dialog Content */}
         <Dialog.Content
           className={cn(
-            'fixed top-[15vh] left-1/2 z-50 w-full max-w-xl -translate-x-1/2',
+            'fixed top-[15vh] left-1/2 z-50 w-full max-w-[calc(100%-2rem)] -translate-x-1/2 sm:max-w-xl',
             'rounded-xl border border-neutral-200 bg-white shadow-2xl',
             'data-[state=open]:animate-in data-[state=closed]:animate-out',
             'data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0',
             'data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95',
             'data-[state=closed]:slide-out-to-top-[8%]',
             'data-[state=open]:slide-in-from-top-[8%]',
-            'duration-200'
+            'duration-100'
           )}
         >
           {/* Screen-reader description */}
