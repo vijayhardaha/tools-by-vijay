@@ -90,9 +90,9 @@ const buttonVariants = cva(
         ].join(' '),
       },
       size: {
-        default: 'h-11 px-8 rounded-xl py-3 text-sm has-[>svg]:px-4',
-        sm: 'h-9 rounded-md gap-1.5 px-4 text-xs has-[>svg]:px-3.5',
-        lg: 'h-13 rounded-xl px-10 py-3 text-base has-[>svg]:px-5',
+        default: 'h-10 px-8 rounded-xl py-3 text-sm has-[>svg]:px-4',
+        sm: 'h-8 rounded-md gap-1.5 px-4 text-xs has-[>svg]:px-3.5',
+        lg: 'h-12 rounded-xl px-10 py-3 text-base has-[>svg]:px-5',
         icon: 'size-10',
         'icon-sm': 'size-8',
         'icon-lg': 'size-12',
