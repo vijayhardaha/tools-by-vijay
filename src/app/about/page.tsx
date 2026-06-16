@@ -7,8 +7,9 @@ import type { Metadata } from 'next';
 import { PageContent } from '@/components/page/PageContent';
 import { PageHeader } from '@/components/page/PageHeader';
 import { PageLayout } from '@/components/page/PageLayout';
+import { buildBreadcrumbs } from '@/utils/breadcrumb';
 import { buildMetadata } from '@/utils/meta';
-import { globalSchema, buildBreadcrumbs } from '@/utils/schema';
+import { globalSchema } from '@/utils/schema';
 import { siteUrl, getSeoByPath } from '@/utils/seo';
 
 const rootUrl = siteUrl();

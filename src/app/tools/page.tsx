@@ -13,8 +13,9 @@ import categories from '@/constants/categories';
 import type { Category } from '@/constants/categories';
 import { categoryIcons } from '@/constants/icons';
 import tools from '@/constants/tools';
+import { buildBreadcrumbs } from '@/utils/breadcrumb';
 import { buildMetadata } from '@/utils/meta';
-import { globalSchema, buildBreadcrumbs } from '@/utils/schema';
+import { globalSchema } from '@/utils/schema';
 import { siteUrl, getSeoByPath } from '@/utils/seo';
 import { getToolsByCategory } from '@/utils/tools';
 

@@ -12,9 +12,10 @@ import { PageHeader } from '@/components/page/PageHeader';
 import { PageLayout } from '@/components/page/PageLayout';
 import { ToolCard } from '@/components/tool/tool-card';
 import { categoryIcons } from '@/constants/icons';
+import { buildBreadcrumbs } from '@/utils/breadcrumb';
 import { getCategoryBySlug } from '@/utils/categories';
 import { buildMetadata } from '@/utils/meta';
-import { globalSchema, buildBreadcrumbs } from '@/utils/schema';
+import { globalSchema } from '@/utils/schema';
 import { siteUrl, getSeoByPath } from '@/utils/seo';
 import { getToolsByCategory } from '@/utils/tools';
 
@@ -85,9 +86,9 @@ export default async function CategoryPage({ params }: CategoryPageProps): Promi
           description={category.description}
           icon={icon}
           breadcrumbItems={[
-            { label: 'Home', href: '/' },
-            { label: 'Tools', href: '/tools' },
-            { label: category.title },
+            { name: 'Home', path: '/' },
+            { name: 'Tools', path: '/tools' },
+            { name: category.title, path: '' },
           ]}
         />
         <PageContent>
