@@ -8,18 +8,15 @@ import { PageLayout } from '@/components/page/PageLayout';
 import { ToolCard } from '@/components/tool/tool-card';
 import { Container } from '@/components/ui/container';
 import type { Category } from '@/constants/categories';
-import { SITE_CONFIG } from '@/constants/seo';
 import type { Tool } from '@/constants/tools';
 import { getCategoryBySlug } from '@/utils/categories';
 import { buildMetadata } from '@/utils/meta';
 import { globalSchema } from '@/utils/schema';
-import { siteUrl } from '@/utils/seo';
+import { siteUrl, getSeoByPath } from '@/utils/seo';
 import { getToolsByCategories } from '@/utils/tools';
 
 const rootUrl = siteUrl();
-const seoPath = '/';
-const seoTitle = SITE_CONFIG.title;
-const seoDescription = SITE_CONFIG.description;
+const { seoTitle, seoDescription, path: seoPath } = getSeoByPath('/')!;
 
 const schemaData = [
   ...globalSchema(),
@@ -31,7 +28,7 @@ const schemaData = [
  *
  * @type {Metadata}
  */
-export const metadata: Metadata = buildMetadata({ title: seoTitle, description: seoDescription, postfix: true });
+export const metadata: Metadata = buildMetadata({ title: seoTitle, description: seoDescription, postfix: false });
 
 /**
  * Home component that renders tool cards organized by categories.

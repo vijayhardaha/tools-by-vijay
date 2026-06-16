@@ -15,14 +15,11 @@ import { categoryIcons } from '@/constants/category-icons';
 import tools from '@/constants/tools';
 import { buildMetadata } from '@/utils/meta';
 import { globalSchema, buildBreadcrumbs } from '@/utils/schema';
-import { siteUrl } from '@/utils/seo';
+import { siteUrl, getSeoByPath } from '@/utils/seo';
 import { getToolsByCategory } from '@/utils/tools';
 
 const rootUrl = siteUrl();
-const seoPath = '/tools';
-const seoTitle = 'All Free Online Tools';
-const seoDescription =
-  'Browse our complete collection of free online developer tools, text utilities, security tools, and creative generators. Find the right tool for your next project.';
+const { seoTitle, seoDescription, path: seoPath } = getSeoByPath('/tools')!;
 
 const schemaData = [
   ...globalSchema(),
@@ -35,7 +32,7 @@ const schemaData = [
  *
  * @type {Metadata}
  */
-export const metadata: Metadata = buildMetadata({ title: seoTitle, description: seoDescription, path: seoPath });
+export const metadata: Metadata = buildMetadata({ seoTitle, seoDescription, path: seoPath });
 
 /**
  * Tools page component.

@@ -9,13 +9,10 @@ import { PageHeader } from '@/components/page/PageHeader';
 import { PageLayout } from '@/components/page/PageLayout';
 import { buildMetadata } from '@/utils/meta';
 import { globalSchema, buildBreadcrumbs } from '@/utils/schema';
-import { siteUrl } from '@/utils/seo';
+import { siteUrl, getSeoByPath } from '@/utils/seo';
 
 const rootUrl = siteUrl();
-const seoPath = '/privacy-policy';
-const seoTitle = 'Privacy Policy';
-const seoDescription =
-  'Learn how Tools by Vijay collects, uses, and protects your data. We prioritize your privacy with minimal tracking and no storage of tool inputs.';
+const { seoTitle, seoDescription, path: seoPath } = getSeoByPath('/privacy-policy')!;
 
 const schemaData = [
   ...globalSchema(),
@@ -28,7 +25,7 @@ const schemaData = [
  *
  * @type {Metadata}
  */
-export const metadata: Metadata = buildMetadata({ title: seoTitle, description: seoDescription, path: seoPath });
+export const metadata: Metadata = buildMetadata({ seoTitle, seoDescription, path: seoPath });
 
 /**
  * Privacy Policy page component.

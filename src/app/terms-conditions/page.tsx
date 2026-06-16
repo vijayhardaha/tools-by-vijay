@@ -9,13 +9,10 @@ import { PageHeader } from '@/components/page/PageHeader';
 import { PageLayout } from '@/components/page/PageLayout';
 import { buildMetadata } from '@/utils/meta';
 import { globalSchema, buildBreadcrumbs } from '@/utils/schema';
-import { siteUrl } from '@/utils/seo';
+import { siteUrl, getSeoByPath } from '@/utils/seo';
 
 const rootUrl = siteUrl();
-const seoPath = '/terms-conditions';
-const seoTitle = 'Terms and Conditions';
-const seoDescription =
-  'Review the terms and conditions for using Tools by Vijay. Understand your rights, responsibilities, and the guidelines for using our free online developer tools.';
+const { seoTitle, seoDescription, path: seoPath } = getSeoByPath('/terms-conditions')!;
 
 const schemaData = [
   ...globalSchema(),
@@ -28,7 +25,7 @@ const schemaData = [
  *
  * @type {Metadata}
  */
-export const metadata: Metadata = buildMetadata({ title: seoTitle, description: seoDescription, path: seoPath });
+export const metadata: Metadata = buildMetadata({ seoTitle, seoDescription, path: seoPath });
 
 /**
  * Terms and Conditions page component.

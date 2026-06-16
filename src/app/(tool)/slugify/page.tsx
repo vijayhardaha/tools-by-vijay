@@ -15,7 +15,7 @@ import type { Tool } from '@/constants/tools';
 import { getCategoryBySlug } from '@/utils/categories';
 import { buildMetadata } from '@/utils/meta';
 import { globalSchema, buildBreadcrumbs } from '@/utils/schema';
-import { siteUrl } from '@/utils/seo';
+import { siteUrl, getSeoByPath } from '@/utils/seo';
 import { findToolBySlug, getToolIcon } from '@/utils/tools';
 
 /**
@@ -25,9 +25,11 @@ import { findToolBySlug, getToolIcon } from '@/utils/tools';
  */
 const tool: Tool | null = findToolBySlug('slugify');
 
-const seoTitle = tool?.seoTitle || '';
-const seoDescription = tool?.seoDescription || '';
-const seoPath = `/${tool?.slug || ''}`;
+const {
+  title: seoTitle = '',
+  description: seoDescription = '',
+  path: seoPath = '',
+} = getSeoByPath(`/${tool?.slug || ''}`) || {};
 const rootUrl = siteUrl();
 
 const categoryLabel = getCategoryBySlug(tool?.category || '')?.label || 'Tools';
@@ -61,7 +63,7 @@ const schemaData = [
  *
  * @type {Metadata}
  */
-export const metadata: Metadata = buildMetadata({ title: seoTitle, description: seoDescription, path: seoPath });
+export const metadata: Metadata = buildMetadata({ seoTitle, seoDescription, path: seoPath });
 
 /**
  * Slugify tool page component.

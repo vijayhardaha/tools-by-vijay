@@ -11,13 +11,10 @@ import { PageHeader } from '@/components/page/PageHeader';
 import { PageLayout } from '@/components/page/PageLayout';
 import { buildMetadata } from '@/utils/meta';
 import { globalSchema, buildBreadcrumbs } from '@/utils/schema';
-import { siteUrl } from '@/utils/seo';
+import { siteUrl, getSeoByPath } from '@/utils/seo';
 
 const rootUrl = siteUrl();
-const seoPath = '/contact';
-const seoTitle = 'Contact Vijay Hardaha';
-const seoDescription =
-  'Get in touch with Vijay, a skilled freelance web developer specializing in WordPress, WooCommerce, and Next.js. Explore his open-source projects on GitHub and hire him for your next web development project. Based in India, working globally.';
+const { seoTitle, seoDescription, path: seoPath } = getSeoByPath('/contact')!;
 
 const schemaData = [
   ...globalSchema(),
@@ -30,7 +27,7 @@ const schemaData = [
  *
  * @type {Metadata}
  */
-export const metadata: Metadata = buildMetadata({ title: seoTitle, description: seoDescription, path: seoPath });
+export const metadata: Metadata = buildMetadata({ seoTitle, seoDescription, path: seoPath });
 
 /**
  * Contact page component

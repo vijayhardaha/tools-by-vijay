@@ -15,7 +15,7 @@ import { categoryIcons } from '@/constants/category-icons';
 import { getCategoryBySlug } from '@/utils/categories';
 import { buildMetadata } from '@/utils/meta';
 import { globalSchema, buildBreadcrumbs } from '@/utils/schema';
-import { siteUrl } from '@/utils/seo';
+import { siteUrl, getSeoByPath } from '@/utils/seo';
 import { getToolsByCategory } from '@/utils/tools';
 
 /**
@@ -37,11 +37,11 @@ interface CategoryPageProps {
  */
 export async function generateMetadata({ params }: CategoryPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const category = getCategoryBySlug(slug);
+  const seo = getSeoByPath(`/tools/${slug}`);
 
-  if (!category) return {};
+  if (!seo) return {};
 
-  return buildMetadata({ title: category.seoTitle, description: category.seoDescription, path: `/tools/${slug}` });
+  return buildMetadata({ title: seo.title, description: seo.description, path: seo.path });
 }
 
 /**
@@ -65,8 +65,9 @@ export default async function CategoryPage({ params }: CategoryPageProps): Promi
   const toolCount = categoryTools.length;
   const rootUrl = siteUrl();
   const path = `/tools/${slug}`;
-  const title = category.seoTitle;
-  const description = category.seoDescription;
+  const seo = getSeoByPath(`/tools/${slug}`);
+  const title = seo?.title || category.seoTitle;
+  const description = seo?.description || category.seoDescription;
 
   const schemaData = [
     ...globalSchema(),

@@ -1,5 +1,7 @@
 import type { JSX } from 'react';
 
+import { webPageSchema, breadcrumbSchema } from '@vijayhardaha/schema-builder';
+import { JsonLd } from '@vijayhardaha/schema-builder/react';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
@@ -11,11 +13,9 @@ import { AlphabeticalLineSorter } from '@/components/tools/alphabetical-line-sor
 import type { Tool } from '@/constants/tools';
 import { getCategoryBySlug } from '@/utils/categories';
 import { buildMetadata } from '@/utils/meta';
-import { findToolBySlug, getToolIcon } from '@/utils/tools';
-import { webPageSchema, breadcrumbSchema } from '@vijayhardaha/schema-builder';
-import { JsonLd } from '@vijayhardaha/schema-builder/react';
 import { globalSchema, buildBreadcrumbs } from '@/utils/schema';
 import { siteUrl } from '@/utils/seo';
+import { findToolBySlug, getToolIcon } from '@/utils/tools';
 
 /**
  * Retrieves tool data for the Alphabetical Line Sorter tool.

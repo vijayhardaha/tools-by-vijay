@@ -9,13 +9,10 @@ import { PageHeader } from '@/components/page/PageHeader';
 import { PageLayout } from '@/components/page/PageLayout';
 import { buildMetadata } from '@/utils/meta';
 import { globalSchema, buildBreadcrumbs } from '@/utils/schema';
-import { siteUrl } from '@/utils/seo';
+import { siteUrl, getSeoByPath } from '@/utils/seo';
 
 const rootUrl = siteUrl();
-const seoPath = '/about';
-const seoTitle = 'About Vijay Hardaha';
-const seoDescription =
-  'Discover Vijay, a passionate web developer and vegan, who built this fast, privacy-focused tool platform. Learn about the motivation, technology stack, and commitment to user experience.';
+const { seoTitle, seoDescription, path: seoPath } = getSeoByPath('/about')!;
 
 const schemaData = [
   ...globalSchema(),
@@ -28,7 +25,7 @@ const schemaData = [
  *
  * @type {Metadata}
  */
-export const metadata: Metadata = buildMetadata({ title: seoTitle, description: seoDescription, path: seoPath });
+export const metadata: Metadata = buildMetadata({ seoTitle, seoDescription, path: seoPath });
 
 /**
  * About page component.
