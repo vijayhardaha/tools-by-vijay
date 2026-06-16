@@ -156,7 +156,7 @@ export function PasswordStrengthChecker(): JSX.Element {
 
   return (
     <>
-      <div className="grid grid-cols-1 gap-4 md:gap-6">
+      <div className="space-y-6 md:space-y-8">
         <InputBlock password={password} onSubmit={handleSubmit} onClear={handleClear} />
 
         <ExampleBlock onExample={handleExample} />
@@ -164,9 +164,7 @@ export function PasswordStrengthChecker(): JSX.Element {
         {password && <OutputBlock strength={strength} />}
       </div>
 
-      <div className="mt-16">
-        <InfoBlock />
-      </div>
+      <InfoBlock />
     </>
   );
 }

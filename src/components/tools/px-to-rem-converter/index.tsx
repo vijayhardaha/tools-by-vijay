@@ -66,7 +66,7 @@ export function PxToRemConverter(): JSX.Element {
 
   return (
     <>
-      <div className="grid grid-cols-1 gap-4 md:gap-6">
+      <div className="space-y-6 md:space-y-8">
         <InputBlock
           pxValue={pxValue}
           setPxValue={setPxValue}
@@ -80,9 +80,7 @@ export function PxToRemConverter(): JSX.Element {
         <OutputBlock remValue={remValue} />
       </div>
 
-      <div className="mt-16">
-        <InfoBlock />
-      </div>
+      <InfoBlock />
     </>
   );
 }

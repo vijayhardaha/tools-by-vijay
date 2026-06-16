@@ -114,7 +114,7 @@ export function PasswordGenerator(): JSX.Element {
 
   return (
     <>
-      <div className="grid grid-cols-1 gap-4 md:gap-6">
+      <div className="space-y-6 md:space-y-8">
         <InputBlock
           length={length}
           setLength={setLength}
@@ -136,9 +136,7 @@ export function PasswordGenerator(): JSX.Element {
         <OutputBlock password={password} />
       </div>
 
-      <div className="mt-16">
-        <InfoBlock />
-      </div>
+      <InfoBlock />
     </>
   );
 }

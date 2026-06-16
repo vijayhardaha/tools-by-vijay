@@ -97,7 +97,7 @@ export function ShuffleTextLines(): JSX.Element {
 
   return (
     <>
-      <div className="grid grid-cols-1 gap-4 md:gap-6">
+      <div className="space-y-6 md:space-y-8">
         <InputBlock
           input={input}
           setInput={setInput}
@@ -116,9 +116,7 @@ export function ShuffleTextLines(): JSX.Element {
         <OutputBlock output={output} />
       </div>
 
-      <div className="mt-16">
-        <InfoBlock />
-      </div>
+      <InfoBlock />
     </>
   );
 }
