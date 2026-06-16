@@ -1,9 +1,9 @@
-import { Cascadia_Mono, Sora } from 'next/font/google';
+import { Cascadia_Mono, Funnel_Display } from 'next/font/google';
 
 /**
  * Primary sans-serif font for body text.
  */
-const sansFont = Sora({
+const sansFont = Funnel_Display({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
   style: ['normal'],
@@ -22,6 +22,7 @@ const monoFont = Cascadia_Mono({
   variable: '--font-app-mono',
   display: 'swap',
   preload: true,
+  adjustFontFallback: false,
 });
 
 /**
