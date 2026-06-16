@@ -140,6 +140,7 @@ export function InfoBlock(): JSX.Element {
           <li>Generate WordPress-ready select option arrays with proper formatting.</li>
         </ul>
       </section>
+
       <FAQ>
         <FAQItem heading="What is a dropdown converter?" headingId="what-is-a-dropdown-converter">
           <p>

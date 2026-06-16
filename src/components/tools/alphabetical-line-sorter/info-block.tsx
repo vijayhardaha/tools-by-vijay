@@ -146,6 +146,7 @@ export function InfoBlock(): JSX.Element {
           device. This approach guarantees that sensitive or private information remains secure at all times.
         </p>
       </section>
+
       <FAQ>
         <FAQItem heading="What is alphabetical sorting?" headingId="what-is-alphabetical-sorting">
           <p>Lines are arranged in A-Z or Z-A order, useful for organizing lists and cleaning up data.</p>

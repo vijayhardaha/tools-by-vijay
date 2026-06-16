@@ -71,6 +71,7 @@ export function InfoBlock(): JSX.Element {
           </div>
         </div>
       </section>
+
       <FAQ>
         <FAQItem heading="How many countries are included?" headingId="how-many-countries-are-included">
           <p>

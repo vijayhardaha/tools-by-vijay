@@ -32,6 +32,7 @@ export function InfoBlock(): JSX.Element {
           <li>Improves the reliability of your styles in constrained environments.</li>
         </ul>
       </section>
+
       <FAQ>
         <FAQItem heading="What is CSS inlining?" headingId="what-is-css-inlining">
           <p>

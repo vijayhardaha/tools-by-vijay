@@ -53,6 +53,7 @@ export function InfoBlock(): JSX.Element {
           </li>
         </ol>
       </section>
+
       <FAQ>
         <FAQItem
           heading="What is the difference between px and rem?"

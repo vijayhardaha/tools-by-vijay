@@ -55,6 +55,7 @@ export function InfoBlock(): JSX.Element {
           <li>Copy the minified output using the “Copy to Clipboard” button</li>
         </ol>
       </section>
+
       <FAQ>
         <FAQItem heading="What is JavaScript minification?" headingId="what-is-javascript-minification">
           <p>

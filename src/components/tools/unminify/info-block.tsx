@@ -49,6 +49,7 @@ export function InfoBlock(): JSX.Element {
           <li>Copy the unminified output using the “Copy to Clipboard” button</li>
         </ol>
       </section>
+
       <FAQ>
         <FAQItem heading="What is unminification?" headingId="what-is-unminification">
           <p>

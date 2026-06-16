@@ -78,6 +78,7 @@ export function InfoBlock(): JSX.Element {
           <li>Prepare text for use in applications, scripts, or documents.</li>
         </ul>
       </section>
+
       <FAQ>
         <FAQItem heading="What text cases are supported?" headingId="what-text-cases-are-supported">
           <p>

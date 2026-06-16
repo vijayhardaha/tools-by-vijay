@@ -89,6 +89,7 @@ export function InfoBlock(): JSX.Element {
           <li>Clean up messy data with minimal effort.</li>
         </ul>
       </section>
+
       <FAQ>
         <FAQItem heading="How are duplicates detected?" headingId="how-are-duplicates-detected">
           <p>Lines are compared after trimming whitespace. Identical lines after trimming are considered duplicates.</p>

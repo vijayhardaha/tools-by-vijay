@@ -133,6 +133,7 @@ export function InfoBlock(): JSX.Element {
           <li>Process and clean up text data by trimming whitespace and removing empty lines.</li>
         </ul>
       </section>
+
       <FAQ>
         <FAQItem heading="What formats can I convert to?" headingId="what-formats-can-i-convert-to">
           <p>Convert text to JSON arrays, JavaScript arrays, PHP arrays, and WordPress-compatible PHP arrays.</p>

@@ -136,6 +136,7 @@ export function InfoBlock(): JSX.Element {
           </li>
         </ul>
       </section>
+
       <FAQ>
         <FAQItem heading="What is the Bulk Slugify Tool?" headingId="what-is-the-bulk-slugify-tool">
           <p>

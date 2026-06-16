@@ -52,6 +52,7 @@ export function InfoBlock(): JSX.Element {
           <li>Click on any shortened URL to test it</li>
         </ol>
       </section>
+
       <FAQ>
         <FAQItem heading="What is a URL shortener?" headingId="what-is-a-url-shortener">
           <p>

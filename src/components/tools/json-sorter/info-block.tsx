@@ -89,6 +89,7 @@ export function InfoBlock(): JSX.Element {
           <li>Improve readability of complex nested JSON structures.</li>
         </ul>
       </section>
+
       <FAQ>
         <FAQItem heading="Why sort JSON keys?" headingId="why-sort-json-keys">
           <p>

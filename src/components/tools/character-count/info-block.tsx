@@ -49,6 +49,7 @@ export function InfoBlock(): JSX.Element {
           <li>Improve readability by understanding text structure.</li>
         </ul>
       </section>
+
       <FAQ>
         <FAQItem heading="What statistics are provided?" headingId="what-statistics-are-provided">
           <p>

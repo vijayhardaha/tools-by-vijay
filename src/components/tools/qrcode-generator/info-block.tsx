@@ -38,6 +38,7 @@ export function InfoBlock(): JSX.Element {
           <li>Great for developers integrating QR codes into apps or websites.</li>
         </ul>
       </section>
+
       <FAQ>
         <FAQItem heading="What is a QR code?" headingId="what-is-a-qr-code">
           <p>

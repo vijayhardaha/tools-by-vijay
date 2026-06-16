@@ -92,6 +92,7 @@ export function InfoBlock(): JSX.Element {
           <li>Change passwords periodically, especially for critical accounts.</li>
         </ul>
       </section>
+
       <FAQ>
         <FAQItem heading="How is strength measured?" headingId="how-is-strength-measured">
           <p>

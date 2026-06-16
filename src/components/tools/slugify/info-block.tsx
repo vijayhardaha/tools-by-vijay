@@ -156,6 +156,7 @@ export function InfoBlock(): JSX.Element {
           <li>The final string is returned as a clean, URL-friendly slug.</li>
         </ol>
       </section>
+
       <FAQ>
         <FAQItem heading="What is a URL slug?" headingId="what-is-a-url-slug">
           <p>

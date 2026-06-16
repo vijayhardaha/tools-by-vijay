@@ -52,6 +52,7 @@ export function InfoBlock(): JSX.Element {
           <li>Change passwords regularly, especially for your most sensitive accounts.</li>
         </ul>
       </section>
+
       <FAQ>
         <FAQItem heading="How strong are generated passwords?" headingId="how-strong-are-generated-passwords">
           <p>

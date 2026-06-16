@@ -39,6 +39,7 @@ export function InfoBlock(): JSX.Element {
           <li>Helps debug and troubleshoot URL-related issues in your projects.</li>
         </ul>
       </section>
+
       <FAQ>
         <FAQItem heading="What is URL encoding?" headingId="what-is-url-encoding">
           <p>

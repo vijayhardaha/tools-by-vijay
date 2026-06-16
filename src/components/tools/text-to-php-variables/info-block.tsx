@@ -83,6 +83,7 @@ export function InfoBlock(): JSX.Element {
           <li>Prepare data for use in PHP applications or scripts.</li>
         </ul>
       </section>
+
       <FAQ>
         <FAQItem heading="What naming conventions are supported?" headingId="what-naming-conventions-are-supported">
           <p>

@@ -76,6 +76,7 @@ export function InfoBlock(): JSX.Element {
           </div>
         </div>
       </section>
+
       <FAQ>
         <FAQItem heading="How does shuffling work?" headingId="how-does-shuffling-work">
           <p>The tool uses the Fisher-Yates shuffle algorithm for unbiased randomization of your text lines.</p>

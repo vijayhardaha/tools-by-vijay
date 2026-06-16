@@ -71,6 +71,7 @@ export function InfoBlock(): JSX.Element {
           </div>
         </div>
       </section>
+
       <FAQ>
         <FAQItem heading="How are usernames generated?" headingId="how-are-usernames-generated">
           <p>

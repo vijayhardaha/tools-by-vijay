@@ -38,6 +38,7 @@ export function InfoBlock(): JSX.Element {
           <li>Great for writers, editors, and developers working on text-heavy projects.</li>
         </ul>
       </section>
+
       <FAQ>
         <FAQItem heading="Straight vs curly quotes?" headingId="straight-vs-curly-quotes">
           <p>
