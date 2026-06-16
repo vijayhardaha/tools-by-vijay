@@ -41,8 +41,8 @@ const categories: Category[] = [
       'Boost your productivity with professional tools for JS, CSS, and HTML. Minify code, convert units, and format data instantly.',
   },
   {
-    label: 'Web & URL Tools',
-    slug: 'web-url-tools',
+    label: 'Web & URL',
+    slug: 'web-url',
     description:
       'Manage and manipulate web links and data encoding to ensure seamless connectivity and clean URLs across all platforms.',
     seoTitle: 'Web Utility Tools – URL Shorteners & Encoders',
