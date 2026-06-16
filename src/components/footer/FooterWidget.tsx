@@ -37,7 +37,7 @@ export function FooterWidget({ title, links }: FooterWidgetProps): JSX.Element {
 
   return (
     <nav className={cn('footer-widget')} aria-label={title}>
-      <h3 className={cn('mb-2 text-base font-bold')}>{title}</h3>
+      <h3 className={cn('mb-2 text-xl font-bold')}>{title}</h3>
       <ul className={cn('flex flex-col gap-1')}>
         {links.map((link) => (
           <li key={link.name} className={cn('m-0 p-0')}>
@@ -45,7 +45,7 @@ export function FooterWidget({ title, links }: FooterWidgetProps): JSX.Element {
               href={link.href}
               className={cn(
                 // Text & colors
-                'text-muted-foreground hover:text-primary',
+                'text-foreground hover:text-primary',
 
                 // Typography
                 'text-sm',
