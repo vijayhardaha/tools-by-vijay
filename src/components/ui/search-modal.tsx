@@ -132,7 +132,7 @@ export function SearchModal({ data, maxResults = 5, open, onOpenChange }: Search
       onOpenChange(false);
       setQuery('');
       setActiveIndex(0);
-      router.push(`/tools/${slug}`);
+      router.push(`/${slug}`);
     },
     [router, onOpenChange]
   );
