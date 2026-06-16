@@ -6,15 +6,16 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 import { EntryContent } from '@/components/page/EntryContent';
-import type { BreadcrumbItem } from '@/components/page/PageBreadcrumb';
 import { PageContent } from '@/components/page/PageContent';
 import { PageHeader } from '@/components/page/PageHeader';
 import { PageLayout } from '@/components/page/PageLayout';
 import { Slugify } from '@/components/tools/slugify';
 import type { Tool } from '@/constants/tools';
+import type { BreadcrumbItem } from '@/utils/breadcrumb';
+import { buildBreadcrumbs } from '@/utils/breadcrumb';
 import { getCategoryBySlug } from '@/utils/categories';
 import { buildMetadata } from '@/utils/meta';
-import { globalSchema, buildBreadcrumbs } from '@/utils/schema';
+import { globalSchema } from '@/utils/schema';
 import { siteUrl, getSeoByPath } from '@/utils/seo';
 import { findToolBySlug, getToolIcon } from '@/utils/tools';
 
@@ -37,9 +38,9 @@ const categoryPath = `/tools/${tool?.category || ''}`;
  * @type {BreadcrumbItem[]}
  */
 const breadcrumbItems: BreadcrumbItem[] = [
-  { label: 'Home', href: '/' },
-  { label: categoryLabel, href: categoryPath },
-  { label: tool?.title || '' },
+  { name: 'Home', path: '/' },
+  { name: categoryLabel, path: categoryPath },
+  { name: tool?.title || '', path: '' },
 ];
 
 /**

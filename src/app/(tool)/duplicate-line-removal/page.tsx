@@ -11,9 +11,10 @@ import { PageHeader } from '@/components/page/PageHeader';
 import { PageLayout } from '@/components/page/PageLayout';
 import { DuplicateLineRemoval } from '@/components/tools/duplicate-line-removal';
 import type { Tool } from '@/constants/tools';
+import { buildBreadcrumbs } from '@/utils/breadcrumb';
 import { getCategoryBySlug } from '@/utils/categories';
 import { buildMetadata } from '@/utils/meta';
-import { globalSchema, buildBreadcrumbs } from '@/utils/schema';
+import { globalSchema } from '@/utils/schema';
 import { siteUrl } from '@/utils/seo';
 import { findToolBySlug, getToolIcon } from '@/utils/tools';
 
@@ -74,9 +75,9 @@ export default function DuplicateLineRemovalToolTool(): JSX.Element {
           description={tool.description}
           icon={getToolIcon(tool.slug)}
           breadcrumbItems={[
-            { label: 'Home', href: '/' },
-            { label: getCategoryBySlug(tool.category)?.title || 'Tools', href: `/tools/${tool.category}` },
-            { label: tool.title },
+            { name: 'Home', path: '/' },
+            { name: getCategoryBySlug(tool.category)?.title || 'Tools', path: `/tools/${tool.category}` },
+            { name: tool.title, path: '' },
           ]}
         />
         <PageContent>
