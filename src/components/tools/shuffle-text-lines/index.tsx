@@ -1,7 +1,7 @@
 'use client';
 
 import type { JSX } from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { InfoBlock } from './info-block';
 import { InputBlock } from './input-block';
@@ -14,15 +14,24 @@ import { OutputBlock } from './output-block';
  */
 export function ShuffleTextLines(): JSX.Element {
   const [input, setInput] = useState<string>('');
-  const [output, setOutput] = useState<string>('');
   const [removeDuplicates, setRemoveDuplicates] = useState<boolean>(false);
   const [removeEmptyLines, setRemoveEmptyLines] = useState<boolean>(true);
   const [trimLines, setTrimLines] = useState<boolean>(true);
 
+  const [output, setOutput] = useState<string>('');
+
   /**
-   * Handles the submission of the input text, shuffles the lines, and updates the output.
+   * Shuffles the lines whenever input or options change.
+   * Uses useEffect + setState because Math.random() is impure
+   * (cannot be used in useMemo which must be pure).
    */
-  const handleSubmit = (): void => {
+  useEffect(() => {
+    if (!input) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- Must use useEffect because Math.random() is impure
+      setOutput('');
+      return;
+    }
+
     let lines: string[] = input.split('\n');
 
     if (removeDuplicates) {
@@ -43,7 +52,7 @@ export function ShuffleTextLines(): JSX.Element {
     }
 
     setOutput(lines.join('\n'));
-  };
+  }, [input, removeDuplicates, removeEmptyLines, trimLines]);
 
   /**
    * Clears the input and output fields.
@@ -75,12 +84,11 @@ export function ShuffleTextLines(): JSX.Element {
           setRemoveEmptyLines={setRemoveEmptyLines}
           trimLines={trimLines}
           setTrimLines={setTrimLines}
-          onSubmit={handleSubmit}
           onReset={handleReset}
           onClear={handleClear}
         />
 
-        {output && <OutputBlock output={output} />}
+        <OutputBlock output={output} />
       </div>
 
       <div className="mt-16">

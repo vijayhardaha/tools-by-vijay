@@ -1,7 +1,7 @@
 'use client';
 
 import type { JSX } from 'react';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 
 import { InfoBlock } from './info-block';
 import { InputBlock } from './input-block';
@@ -14,23 +14,25 @@ import { OutputBlock } from './output-block';
  */
 export function UrlDecoderEncoder(): JSX.Element {
   const [input, setInput] = useState<string>('');
-  const [output, setOutput] = useState<string>('');
   const [isEncoding, setIsEncoding] = useState<boolean>(true);
 
   /**
-   * Processes the input string by encoding or decoding it based on the current mode.
+   * Computes the encoded/decoded URL reactively.
    */
-  const handleProcess = (): void => {
-    const result = isEncoding ? encodeURIComponent(input) : decodeURIComponent(input);
-    setOutput(result);
-  };
+  const output = useMemo<string>(() => {
+    if (!input) return '';
+    try {
+      return isEncoding ? encodeURIComponent(input) : decodeURIComponent(input);
+    } catch {
+      return '';
+    }
+  }, [input, isEncoding]);
 
   /**
    * Clears the input and output fields.
    */
   const handleClear = (): void => {
     setInput('');
-    setOutput('');
   };
 
   /**
@@ -49,12 +51,11 @@ export function UrlDecoderEncoder(): JSX.Element {
           setInput={setInput}
           isEncoding={isEncoding}
           setIsEncoding={setIsEncoding}
-          onProcess={handleProcess}
           onClear={handleClear}
           onReset={handleReset}
         />
 
-        {output && <OutputBlock output={output} />}
+        <OutputBlock output={output} />
       </div>
 
       <div className="mt-16">

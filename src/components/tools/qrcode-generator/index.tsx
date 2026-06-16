@@ -1,7 +1,7 @@
 'use client';
 
 import type { JSX } from 'react';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 
 import { InfoBlock } from './info-block';
 import { InputBlock } from './input-block';
@@ -17,26 +17,20 @@ import { OutputBlock } from './output-block';
 export function QRCodeGenerator(): JSX.Element {
   const [input, setInput] = useState<string>('');
   const [size, setSize] = useState<number>(256);
-  const [output, setOutput] = useState<string>('');
 
   /**
-   * Generates a QR code URL based on the input data and size.
-   * Updates the output state with the generated QR code URL.
+   * Computes the QR code URL reactively.
    */
-  const generateQRCode = (): void => {
-    if (!input) return;
-    const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(
-      input
-    )}&size=${size}x${size}`;
-    setOutput(qrCodeUrl);
-  };
+  const output = useMemo<string>(() => {
+    if (!input) return '';
+    return `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(input)}&size=${size}x${size}`;
+  }, [input, size]);
 
   /**
    * Clears the input and output states.
    */
   const handleClear = (): void => {
     setInput('');
-    setOutput('');
   };
 
   /**
@@ -55,12 +49,11 @@ export function QRCodeGenerator(): JSX.Element {
           setInput={setInput}
           size={size}
           setSize={setSize}
-          onSubmit={generateQRCode}
           onClear={handleClear}
           onReset={handleReset}
         />
 
-        {output && <OutputBlock output={output} />}
+        <OutputBlock output={output} />
       </div>
 
       <div className="mt-16">

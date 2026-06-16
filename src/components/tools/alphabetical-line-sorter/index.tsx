@@ -1,7 +1,7 @@
 'use client';
 
 import type { JSX } from 'react';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 
 import { InfoBlock } from './info-block';
 import { InputBlock } from './input-block';
@@ -15,21 +15,16 @@ import { OutputBlock } from './output-block';
  */
 export function AlphabeticalLineSorter(): JSX.Element {
   const [input, setInput] = useState<string>('');
-  const [output, setOutput] = useState<string>('');
   const [reverseSort, setReverseSort] = useState<boolean>(false);
   const [removeDuplicates, setRemoveDuplicates] = useState<boolean>(false);
   const [sortType, setSortType] = useState<'standard' | 'ascii'>('standard');
 
   /**
-   * Handles the submission of the input text for sorting.
    * Processes the input based on the selected options (reverse sort, remove duplicates, sort type).
-   * Updates the output state with the sorted lines.
-   *
-   * @returns {void}
-   *
-   * @function
    */
-  const handleSubmit = (): void => {
+  const output = useMemo<string>(() => {
+    if (!input) return '';
+
     let lines = input.split('\n');
 
     if (removeDuplicates) {
@@ -52,8 +47,8 @@ export function AlphabeticalLineSorter(): JSX.Element {
       sortedLines.reverse();
     }
 
-    setOutput(sortedLines.join('\n'));
-  };
+    return sortedLines.join('\n');
+  }, [input, removeDuplicates, sortType, reverseSort]);
 
   /**
    * Handles the clearing of the input and output states.
@@ -65,7 +60,6 @@ export function AlphabeticalLineSorter(): JSX.Element {
    */
   const handleClear = (): void => {
     setInput('');
-    setOutput('');
   };
 
   /**
@@ -99,12 +93,11 @@ export function AlphabeticalLineSorter(): JSX.Element {
               setSortType(value);
             }
           }}
-          onSubmit={handleSubmit}
           onReset={handleReset}
           onClear={handleClear}
         />
 
-        {output && <OutputBlock output={output} />}
+        <OutputBlock output={output} />
       </div>
 
       <div className="mt-16">

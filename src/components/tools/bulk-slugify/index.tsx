@@ -1,7 +1,7 @@
 'use client';
 
 import type { JSX } from 'react';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 
 import latinize from 'latinize';
 import slugify from 'slugify';
@@ -21,7 +21,6 @@ import { OutputBlock } from './output-block';
  */
 export function BulkSlugify(): JSX.Element {
   const [input, setInput] = useState<string>('');
-  const [output, setOutput] = useState<string>('');
   const [useUnderscore, setUseUnderscore] = useState<boolean>(false);
   const [removeNumbers, setRemoveNumbers] = useState<boolean>(false);
   const [useLowercase, setUseLowercase] = useState<boolean>(true);
@@ -29,14 +28,12 @@ export function BulkSlugify(): JSX.Element {
   const [keepEmptyLines, setKeepEmptyLines] = useState<boolean>(false);
 
   /**
-   * Generates slugs from the input text based on configuration options
-   *
-   * @param {string} text - The input text to convert to slugs
-   *
-   * @returns {string} The processed slugs as a newline-separated string
+   * Computes slugs reactively whenever input or options change
    */
-  const generateSlugs = (text: string): string => {
-    return text
+  const output = useMemo<string>(() => {
+    if (!input) return '';
+
+    return input
       .split('\n')
       .filter((line) => keepEmptyLines || line.trim() !== '')
       .map((line) => {
@@ -58,22 +55,13 @@ export function BulkSlugify(): JSX.Element {
         });
       })
       .join('\n');
-  };
-
-  /**
-   * Handles the generation of slugs when the user clicks the generate button
-   */
-  const handleSubmit = () => {
-    const slugs: string = generateSlugs(input);
-    setOutput(slugs);
-  };
+  }, [input, useUnderscore, removeNumbers, useLowercase, useLitinize, keepEmptyLines]);
 
   /**
    * Clears the input and output fields
    */
   const handleClear = () => {
     setInput('');
-    setOutput('');
   };
 
   /**
@@ -104,12 +92,11 @@ export function BulkSlugify(): JSX.Element {
           setUseLitinize={setUseLitinize}
           keepEmptyLines={keepEmptyLines}
           setKeepEmptyLines={setKeepEmptyLines}
-          onSubmit={handleSubmit}
           onClear={handleClear}
           onReset={handleReset}
         />
 
-        {output && <OutputBlock output={output} />}
+        <OutputBlock output={output} />
       </div>
 
       <InfoBlock />

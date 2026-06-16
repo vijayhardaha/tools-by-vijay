@@ -1,7 +1,7 @@
 'use client';
 
 import type { JSX } from 'react';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 
 import { InfoBlock } from './info-block';
 import { InputBlock } from './input-block';
@@ -15,57 +15,53 @@ import { OutputBlock } from './output-block';
  */
 export function ReplaceQuotes(): JSX.Element {
   const [input, setInput] = useState<string>('');
-  const [output, setOutput] = useState<string>('');
   const [replaceType, setReplaceType] = useState<'simple-to-curly' | 'curly-to-simple'>('simple-to-curly');
   const [replaceApostrophes, setReplaceApostrophes] = useState<boolean>(true);
   const [replaceStandaloneQuotes, setReplaceStandaloneQuotes] = useState<boolean>(false);
 
   /**
-   * Handles the quote replacement process
-   *
-   * @returns {void}
-   *
-   * @function
-   * @throws {Error} If an invalid replace type is provided
+   * Computes the quote replacement reactively.
    */
-  const handleSubmit = (): void => {
+  const output = useMemo<string>(() => {
+    if (!input) return '';
+
     let replacedText: string = input;
 
     switch (replaceType) {
       case 'simple-to-curly':
         if (replaceApostrophes) {
           replacedText = replacedText
-            // Replace apostrophes in contractions (e.g., isn't → isn’t)
-            .replace(/\b(\w+)'(\w+)\b/g, '$1’$2');
+            // Replace apostrophes in contractions (e.g., isn't -> isn't)
+            .replace(/\b(\w+)'(\w+)\b/g, '$1\u2019$2');
         }
 
         replacedText = replacedText
-          // Replace double quotes used for quoting (e.g., "text" → “text”)
-          .replace(/"([^"]*)"/g, '“$1”')
-          // Replace single quotes used for quoting (e.g., 'text' → ‘text’)
-          .replace(/'([^']*)'/g, '‘$1’');
+          // Replace double quotes used for quoting (e.g., "text" -> \u201ctext\u201d)
+          .replace(/"([^"]*)"/g, '\u201c$1\u201d')
+          // Replace single quotes used for quoting (e.g., 'text' -> \u2018text\u2019)
+          .replace(/'([^']*)'/g, '\u2018$1\u2019');
 
         if (replaceStandaloneQuotes) {
           replacedText = replacedText
-            // Replace remaining standalone double quotes → “
-            .replace(/"/g, '“')
-            // Replace remaining standalone single quotes → ‘
-            .replace(/'/g, '‘');
+            // Replace remaining standalone double quotes
+            .replace(/"/g, '\u201c')
+            // Replace remaining standalone single quotes
+            .replace(/'/g, '\u2018');
         }
         break;
       case 'curly-to-simple':
         replacedText = replacedText
           // Replace curly single quotes with straight quotes
-          .replace(/[‘’]/g, "'")
+          .replace(/[\u2018\u2019]/g, "'")
           // Replace curly double quotes with straight quotes
-          .replace(/[“”]/g, '"');
+          .replace(/[\u201c\u201d]/g, '"');
         break;
       default:
-        throw new Error('Invalid replace type');
+        return input;
     }
 
-    setOutput(replacedText);
-  };
+    return replacedText;
+  }, [input, replaceType, replaceApostrophes, replaceStandaloneQuotes]);
 
   /**
    * Clears the output while keeping the input and other states intact
@@ -76,7 +72,6 @@ export function ReplaceQuotes(): JSX.Element {
    */
   const handleClear = (): void => {
     setInput('');
-    setOutput('');
   };
 
   /**
@@ -105,12 +100,11 @@ export function ReplaceQuotes(): JSX.Element {
           setReplaceApostrophes={setReplaceApostrophes}
           replaceStandaloneQuotes={replaceStandaloneQuotes}
           setReplaceStandaloneQuotes={setReplaceStandaloneQuotes}
-          onSubmit={handleSubmit}
           onReset={handleReset}
           onClear={handleClear}
         />
 
-        {output && <OutputBlock output={output} />}
+        <OutputBlock output={output} />
       </div>
 
       <div className="mt-16">

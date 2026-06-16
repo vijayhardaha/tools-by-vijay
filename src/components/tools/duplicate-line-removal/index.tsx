@@ -1,7 +1,7 @@
 'use client';
 
 import type { JSX } from 'react';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 
 import { InfoBlock } from './info-block';
 import { InputBlock } from './input-block';
@@ -15,19 +15,16 @@ import { OutputBlock } from './output-block';
  */
 export function DuplicateLineRemoval(): JSX.Element {
   const [input, setInput] = useState<string>('');
-  const [output, setOutput] = useState<string>('');
   const [sortType, setSortType] = useState<'none' | 'alphabetical' | 'ascii'>('none');
   const [reverseSort, setReverseSort] = useState<boolean>(false);
 
   /**
    * Processes the input to remove duplicate lines, sort them based on the selected sort type,
    * and optionally reverse the order.
-   *
-   * @returns {void}
-   *
-   * @function
    */
-  const handleSubmit = (): void => {
+  const output = useMemo<string>(() => {
+    if (!input) return '';
+
     const lines = input
       .split('\n')
       .map((line) => line.trim())
@@ -47,8 +44,8 @@ export function DuplicateLineRemoval(): JSX.Element {
       sortedLines.reverse();
     }
 
-    setOutput(sortedLines.join('\n'));
-  };
+    return sortedLines.join('\n');
+  }, [input, sortType, reverseSort]);
 
   /**
    * Clears the input and output fields.
@@ -59,7 +56,6 @@ export function DuplicateLineRemoval(): JSX.Element {
    */
   const handleClear = (): void => {
     setInput('');
-    setOutput('');
   };
 
   /**
@@ -89,12 +85,11 @@ export function DuplicateLineRemoval(): JSX.Element {
           }}
           reverseSort={reverseSort}
           setReverseSort={setReverseSort}
-          onSubmit={handleSubmit}
           onReset={handleReset}
           onClear={handleClear}
         />
 
-        {output && <OutputBlock output={output} />}
+        <OutputBlock output={output} />
       </div>
 
       <div className="mt-16">

@@ -1,7 +1,7 @@
 'use client';
 
 import type { JSX } from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { InfoBlock } from './info-block';
 import { InputBlock } from './input-block';
@@ -23,13 +23,10 @@ export function PasswordGenerator(): JSX.Element {
   const [password, setPassword] = useState<string>('');
 
   /**
-   * Generates a password based on the current settings
-   *
-   * @returns {string} The generated password or an error message
-   *
-   * @function
+   * Generates a password reactively whenever options change.
+   * Uses useEffect because Math.random() is impure and cannot be used in useMemo.
    */
-  const generatePassword = (): string => {
+  useEffect(() => {
     // Character sets
     const uppercaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     const lowercaseChars = 'abcdefghijklmnopqrstuvwxyz';
@@ -55,30 +52,20 @@ export function PasswordGenerator(): JSX.Element {
 
     // Make sure at least one character set is selected
     if (charPool.length === 0) {
-      return 'Select at least one character type';
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- Math.random() is impure, must use useEffect
+      setPassword('Select at least one character type');
+      return;
     }
 
     // Generate password
-    let password = '';
+    let generated = '';
     for (let i = 0; i < length; i++) {
       const randomIndex = Math.floor(Math.random() * charPool.length);
-      password += charPool[randomIndex];
+      generated += charPool[randomIndex];
     }
 
-    return password;
-  };
-
-  /**
-   * Handles the password generation action and updates state
-   *
-   * @returns {void}
-   *
-   * @function
-   */
-  const handleSubmit = (): void => {
-    const password = generatePassword();
-    setPassword(password);
-  };
+    setPassword(generated);
+  }, [length, useUppercase, useLowercase, useNumbers, useSymbols, excludeSimilar]);
 
   /**
    * Resets all password generation options to their default values
@@ -94,7 +81,6 @@ export function PasswordGenerator(): JSX.Element {
     setUseNumbers(true);
     setUseSymbols(true);
     setExcludeSimilar(false);
-    setPassword('');
   };
 
   return (
@@ -113,11 +99,10 @@ export function PasswordGenerator(): JSX.Element {
           setUseSymbols={setUseSymbols}
           excludeSimilar={excludeSimilar}
           setExcludeSimilar={setExcludeSimilar}
-          onSubmit={handleSubmit}
           onReset={handleReset}
         />
 
-        {password && <OutputBlock password={password} />}
+        <OutputBlock password={password} />
       </div>
 
       <div className="mt-16">

@@ -1,7 +1,7 @@
 'use client';
 
 import type { JSX } from 'react';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 
 import latinize from 'latinize';
 import slugify from 'slugify';
@@ -20,20 +20,19 @@ type VariableCase = 'camelCase' | 'snake_case' | 'PascalCase';
  */
 export function TextToPhpVariables(): JSX.Element {
   const [input, setInput] = useState<string>('');
-  const [output, setOutput] = useState<string>('');
   const [variableCase, setVariableCase] = useState<VariableCase>('snake_case');
-  const [error, setError] = useState<string>('');
 
   /**
    * Converts text to the selected variable case.
    *
    * @param {string} text - The input text to convert.
+   * @param {VariableCase} caseType - The target variable case.
    *
    * @returns {string} The converted variable name.
    */
-  const convertToVariableCase = (text: string): string => {
+  const convertToVariableCase = (text: string, caseType: VariableCase): string => {
     const slug = slugify(latinize(text), { lower: true, strict: true, replacement: '_' });
-    switch (variableCase) {
+    switch (caseType) {
       case 'camelCase':
         return slug.replace(/_([a-z])/g, (_, letter) => letter.toUpperCase());
       case 'PascalCase':
@@ -44,41 +43,30 @@ export function TextToPhpVariables(): JSX.Element {
     }
   };
 
-  /**
-   * Handles the conversion process.
-   */
-  const handleSubmit = (): void => {
-    setError('');
+  // Derive error state from input — only shows when there's content that's all whitespace
+  const error = input.length > 0 && !input.trim() ? 'Please enter valid text content.' : '';
 
-    if (!input.trim()) {
-      setError('Please enter valid text content.');
-      setOutput('');
-      return;
-    }
+  /**
+   * Computes PHP variables reactively.
+   */
+  const output = useMemo<string>(() => {
+    if (!input.trim()) return '';
 
     const lines = input
       .split('\n')
       .map((line) => line.trim())
       .filter((line) => line.length > 0);
 
-    if (lines.length === 0) {
-      setError('No valid lines found after processing.');
-      setOutput('');
-      return;
-    }
+    if (lines.length === 0) return '';
 
-    const variables = lines.map((line) => `$${convertToVariableCase(line)} = '';`).join('\n');
-
-    setOutput(variables);
-  };
+    return lines.map((line) => `$${convertToVariableCase(line, variableCase)} = '';`).join('\n');
+  }, [input, variableCase]);
 
   /**
    * Clears the input and output fields.
    */
   const handleClear = (): void => {
     setInput('');
-    setOutput('');
-    setError('');
   };
 
   /**
@@ -97,12 +85,11 @@ export function TextToPhpVariables(): JSX.Element {
           setInput={setInput}
           variableCase={variableCase}
           setVariableCase={(value) => setVariableCase(value as VariableCase)}
-          onSubmit={handleSubmit}
           onClear={handleClear}
           onReset={handleReset}
           error={error}
         />
-        {output && <OutputBlock output={output} />}
+        <OutputBlock output={output} />
       </div>
 
       <div className="mt-16">
