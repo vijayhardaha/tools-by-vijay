@@ -1,4 +1,7 @@
 import type { JSX } from 'react';
+
+import { Credits } from '@/components/tools/tool-credits';
+import { FAQ, FAQItem } from '@/components/tools/tool-faq';
 /**
  * Provides information about the Country Name Generator Tool, including its purpose,
  * usage instructions, and benefits.
@@ -7,9 +10,11 @@ import type { JSX } from 'react';
  */
 export function InfoBlock(): JSX.Element {
   return (
-    <div className="max-w-none space-y-8">
+    <div className="space-y-8 md:space-y-12">
       <section>
-        <h2 className="text-primary mb-4 text-xl font-bold">About Country Name Generator</h2>
+        <h2 className="text-primary mb-4 text-xl font-bold" id="about-country-name-generator">
+          About Country Name Generator
+        </h2>
         <p className="mb-4">
           The Country Name Generator tool helps you generate random country names for testing, educational purposes, or
           creative projects. It is useful for developers, educators, and content creators.
@@ -17,7 +22,9 @@ export function InfoBlock(): JSX.Element {
       </section>
 
       <section>
-        <h3 className="text-primary mb-4 text-lg font-bold">How to Use This Tool</h3>
+        <h3 className="text-primary mb-4 text-lg font-bold" id="how-to-use-this-tool">
+          How to Use This Tool
+        </h3>
         <ol className="list-decimal space-y-2 pl-6">
           <li>
             <strong>Enter Count:</strong> Specify the number of country names to generate.
@@ -32,7 +39,9 @@ export function InfoBlock(): JSX.Element {
       </section>
 
       <section>
-        <h3 className="text-primary mb-4 text-lg font-bold">Why Use This Tool</h3>
+        <h3 className="text-primary mb-4 text-lg font-bold" id="why-use-this-tool">
+          Why Use This Tool
+        </h3>
         <ul className="list-inside list-disc space-y-1 pl-4">
           <li>Quickly generate random country names for testing or mock data.</li>
           <li>Save time when working on projects requiring placeholder data.</li>
@@ -41,24 +50,48 @@ export function InfoBlock(): JSX.Element {
       </section>
 
       <section>
-        <h3 className="text-primary mb-4 text-lg font-bold">Example Usage</h3>
+        <h3 className="text-primary mb-4 text-lg font-bold" id="example-usage">
+          Example Usage
+        </h3>
         <div className="space-y-4">
           <div>
-            <h4 className="mb-2 font-medium">Input Example:</h4>
+            <h4 className="mb-2 font-medium" id="input-example">
+              Input Example:
+            </h4>
             <pre className="bg-secondary overflow-x-auto rounded-xl p-4 text-sm">{`Count: 5`}</pre>
           </div>
 
           <div>
-            <h4 className="mb-2 font-medium">Output Example:</h4>
+            <h4 className="mb-2 font-medium" id="output-example">
+              Output Example:
+            </h4>
             <pre className="bg-secondary overflow-x-auto rounded-xl p-4 text-sm">
               {`1. Eldoria\n2. Zynthar\n3. Lumora\n4. Virelia\n5. Drakonia`}
             </pre>
           </div>
         </div>
       </section>
+      <FAQ>
+        <FAQItem heading="How many countries are included?" headingId="how-many-countries-are-included">
+          <p>
+            The tool contains over 200 country names including sovereign nations, territories, and disputed regions.
+          </p>
+        </FAQItem>
+        <FAQItem heading="Can I generate multiple names?" headingId="can-i-generate-multiple-names">
+          <p>Yes, generate up to 200 names at once by adjusting the count setting.</p>
+        </FAQItem>
+        <FAQItem heading="Are names unique?" headingId="are-names-unique">
+          <p>Each name is independently selected, so the same country may appear multiple times in one generation.</p>
+        </FAQItem>
+        <FAQItem heading="What is this useful for?" headingId="what-is-this-useful-for">
+          <p>
+            Testing, populating databases, creating demo data, generating sample content, and educational geography
+            activities.
+          </p>
+        </FAQItem>
+      </FAQ>
 
-      <section>
-        <h3 className="text-primary mb-4 text-lg font-bold">Credits & Source</h3>
+      <Credits>
         <p>
           Maintained by{' '}
           <a
@@ -71,7 +104,7 @@ export function InfoBlock(): JSX.Element {
           </a>
           . This tool is designed to assist with generating random country names for various purposes.
         </p>
-      </section>
+      </Credits>
     </div>
   );
 }

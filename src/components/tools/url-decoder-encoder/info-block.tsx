@@ -1,4 +1,7 @@
 import type { JSX } from 'react';
+
+import { Credits } from '@/components/tools/tool-credits';
+import { FAQ, FAQItem } from '@/components/tools/tool-faq';
 /**
  * Provides information about the URL Decoder/Encoder Tool, including its purpose,
  * usage instructions, and examples.
@@ -7,9 +10,11 @@ import type { JSX } from 'react';
  */
 export function InfoBlock(): JSX.Element {
   return (
-    <div className="max-w-none space-y-8">
+    <div className="space-y-8 md:space-y-12">
       <section>
-        <h2 className="text-primary mb-4 text-xl font-bold">About URL Decoder/Encoder Tool</h2>
+        <h2 className="text-primary mb-4 text-xl font-bold" id="about-url-decoder-encoder-tool">
+          About URL Decoder/Encoder Tool
+        </h2>
         <p className="mb-4">
           This tool helps you encode or decode URLs easily. Encoding ensures that special characters in a URL are
           converted to a format that can be transmitted over the internet. Decoding reverses this process, converting
@@ -24,7 +29,9 @@ export function InfoBlock(): JSX.Element {
       </section>
 
       <section>
-        <h3 className="text-primary mb-4 text-lg font-bold">Why Use This Tool?</h3>
+        <h3 className="text-primary mb-4 text-lg font-bold" id="why-use-this-tool">
+          Why Use This Tool?
+        </h3>
         <ul className="list-inside list-disc space-y-1 pl-4">
           <li>Encode URLs to make them safe for transmission over the internet.</li>
           <li>Decode URLs to view their original content in a human-readable format.</li>
@@ -32,9 +39,41 @@ export function InfoBlock(): JSX.Element {
           <li>Helps debug and troubleshoot URL-related issues in your projects.</li>
         </ul>
       </section>
+      <FAQ>
+        <FAQItem heading="What is URL encoding?" headingId="what-is-url-encoding">
+          <p>
+            URL encoding converts special characters into a format safe for transmission. For example, spaces become{' '}
+            <code>%20</code> and special characters like <code>&amp;</code> become <code>%26</code>.
+          </p>
+        </FAQItem>
+        <FAQItem heading="When should I encode a URL?" headingId="when-should-i-encode-a-url">
+          <p>
+            Encode URLs when they contain special characters, spaces, or non-ASCII characters. Common scenarios include
+            query strings, API requests, and user-generated content in links.
+          </p>
+        </FAQItem>
+        <FAQItem heading="What is encodeURIComponent?" headingId="what-is-encodeuricomponent">
+          <p>
+            <code>encodeURIComponent</code> encodes all special characters in a URL component, making it suitable for
+            query string parameters. This tool uses both <code>encodeURIComponent</code> and{' '}
+            <code>decodeURIComponent</code>.
+          </p>
+        </FAQItem>
+        <FAQItem heading="Is URL encoding reversible?" headingId="is-url-encoding-reversible">
+          <p>
+            Yes, URL encoding is fully reversible. Encoding followed by decoding returns the original string, provided
+            the encoding was done correctly.
+          </p>
+        </FAQItem>
+        <FAQItem heading="Why would I need to decode a URL?" headingId="why-would-i-need-to-decode-a-url">
+          <p>
+            Decoding is useful when reading encoded URLs from logs, APIs, or user input. It converts percent-encoded
+            sequences back to their original characters for readability.
+          </p>
+        </FAQItem>
+      </FAQ>
 
-      <section>
-        <h3 className="text-primary mb-4 text-lg font-bold">Credits & Source</h3>
+      <Credits>
         <p>
           Maintained by{' '}
           <a
@@ -65,7 +104,7 @@ export function InfoBlock(): JSX.Element {
           </a>{' '}
           for its functionality.
         </p>
-      </section>
+      </Credits>
     </div>
   );
 }

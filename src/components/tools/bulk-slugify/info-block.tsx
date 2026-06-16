@@ -1,4 +1,7 @@
 import type { JSX } from 'react';
+
+import { Credits } from '@/components/tools/tool-credits';
+import { FAQ, FAQItem } from '@/components/tools/tool-faq';
 /**
  * Expanded and SEO-optimized version of the Bulk Slugify Tool description.
  * Covers use cases, examples, instructions, and keyword-rich context.
@@ -9,7 +12,9 @@ export function InfoBlock(): JSX.Element {
   return (
     <div className="mt-12 space-y-12">
       <section>
-        <h2 className="text-primary mb-4 text-2xl font-bold">What is the Bulk Slugify Tool?</h2>
+        <h2 className="text-primary mb-4 text-2xl font-bold" id="what-is-the-bulk-slugify-tool">
+          What is the Bulk Slugify Tool?
+        </h2>
         <p className="mb-4">
           The <strong>Bulk Slugify Tool</strong> is a powerful and efficient online utility that allows you to convert
           multiple strings into clean, SEO-friendly slugs at once. It is specifically designed for developers, SEO
@@ -33,7 +38,9 @@ export function InfoBlock(): JSX.Element {
       </section>
 
       <section>
-        <h2 className="text-primary mb-4 text-2xl font-bold">How the Bulk Slugify Tool Works</h2>
+        <h2 className="text-primary mb-4 text-2xl font-bold" id="how-the-bulk-slugify-tool-works">
+          How the Bulk Slugify Tool Works
+        </h2>
         <p className="mb-4">The Bulk Slugify Tool works in three simple steps:</p>
         <ol className="list-decimal space-y-2 pl-6">
           <li>
@@ -56,7 +63,9 @@ export function InfoBlock(): JSX.Element {
       </section>
 
       <section>
-        <h2 className="text-primary mb-4 text-2xl font-bold">Why Use a Bulk Slug Generator?</h2>
+        <h2 className="text-primary mb-4 text-2xl font-bold" id="why-use-a-bulk-slug-generator">
+          Why Use a Bulk Slug Generator?
+        </h2>
         <p className="mb-4">
           A bulk slug generator is essential when dealing with dynamic content, large databases, or automated publishing
           pipelines. Here’s why:
@@ -88,7 +97,9 @@ export function InfoBlock(): JSX.Element {
       </section>
 
       <section>
-        <h2 className="text-primary mb-4 text-2xl font-bold">Top Use Cases</h2>
+        <h2 className="text-primary mb-4 text-2xl font-bold" id="top-use-cases">
+          Top Use Cases
+        </h2>
         <ul className="list-disc space-y-2 pl-6">
           <li>Generating SEO-friendly URLs for bulk product listings on e-commerce platforms.</li>
           <li>Transforming a CSV export of blog titles into usable slugs for programmatic uploads.</li>
@@ -102,7 +113,9 @@ export function InfoBlock(): JSX.Element {
       </section>
 
       <section>
-        <h2 className="text-primary mb-4 text-2xl font-bold">What Makes This Tool Different?</h2>
+        <h2 className="text-primary mb-4 text-2xl font-bold" id="what-makes-this-tool-different">
+          What Makes This Tool Different?
+        </h2>
         <p className="mb-4">
           There are many slug generators online, but few are built for batch processing or large-scale workflows. This
           Bulk Slugify Tool offers:
@@ -123,9 +136,40 @@ export function InfoBlock(): JSX.Element {
           </li>
         </ul>
       </section>
+      <FAQ>
+        <FAQItem heading="What is the Bulk Slugify Tool?" headingId="what-is-the-bulk-slugify-tool">
+          <p>
+            The Bulk Slugify Tool lets you convert multiple strings into SEO-friendly slugs at once. It is designed for
+            developers and content managers who need to process large volumes of titles or headings efficiently.
+          </p>
+        </FAQItem>
+        <FAQItem heading="How many items can I process at once?" headingId="how-many-items-can-i-process-at-once">
+          <p>
+            There is no hard limit. You can paste hundreds of lines at once. All processing happens client-side in your
+            browser, so performance depends on your device.
+          </p>
+        </FAQItem>
+        <FAQItem heading="What options are available?" headingId="what-options-are-available">
+          <p>
+            You can choose between hyphens and underscores, enable lowercase conversion, remove numbers, normalize
+            international characters, and keep or remove empty lines.
+          </p>
+        </FAQItem>
+        <FAQItem heading="What are common use cases?" headingId="what-are-common-use-cases">
+          <p>
+            Common use cases include generating SEO-friendly URLs for e-commerce catalogs, transforming blog titles
+            during CMS migrations, and creating dynamic routes for web applications.
+          </p>
+        </FAQItem>
+        <FAQItem heading="Is this tool free?" headingId="is-this-tool-free">
+          <p>
+            Yes, the tool is completely free to use with no signup required. All processing happens locally for maximum
+            privacy.
+          </p>
+        </FAQItem>
+      </FAQ>
 
-      <section>
-        <h2 className="text-primary mb-4 text-2xl font-bold">Credits & Source Libraries</h2>
+      <Credits heading="Credits & Source Libraries" headingId="credits-source-libraries">
         <p className="mb-4">
           Built and maintained by{' '}
           <a
@@ -165,7 +209,7 @@ export function InfoBlock(): JSX.Element {
         <p className="mt-4">
           Together, these packages ensure fast, accurate, and multilingual slug generation for all modern web use cases.
         </p>
-      </section>
+      </Credits>
     </div>
   );
 }

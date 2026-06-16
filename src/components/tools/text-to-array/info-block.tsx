@@ -1,4 +1,7 @@
 import type { JSX } from 'react';
+
+import { Credits } from '@/components/tools/tool-credits';
+import { FAQ, FAQItem } from '@/components/tools/tool-faq';
 /**
  * Provides information about the Text to Array Converter Tool, including its purpose,
  * usage instructions, and examples.
@@ -7,9 +10,11 @@ import type { JSX } from 'react';
  */
 export function InfoBlock(): JSX.Element {
   return (
-    <div className="max-w-none space-y-8">
+    <div className="space-y-8 md:space-y-12">
       <section>
-        <h2 className="text-primary mb-4 text-xl font-bold">About Text to Array Converter</h2>
+        <h2 className="text-primary mb-4 text-xl font-bold" id="about-text-to-array-converter">
+          About Text to Array Converter
+        </h2>
         <p className="mb-4">
           The Text to Array Converter is a utility tool that helps developers convert multiline text into various array
           and object formats for different programming languages. This tool is especially useful for quickly
@@ -22,7 +27,9 @@ export function InfoBlock(): JSX.Element {
       </section>
 
       <section>
-        <h3 className="text-primary mb-4 text-lg font-bold">How to Use This Tool</h3>
+        <h3 className="text-primary mb-4 text-lg font-bold" id="how-to-use-this-tool">
+          How to Use This Tool
+        </h3>
         <ol className="list-decimal space-y-2 pl-6">
           <li>
             <strong>Enter Your Text:</strong> Type or paste your multiline text into the input area. Each line will
@@ -64,34 +71,46 @@ export function InfoBlock(): JSX.Element {
       </section>
 
       <section>
-        <h3 className="text-primary mb-4 text-lg font-bold">Example Usage</h3>
+        <h3 className="text-primary mb-4 text-lg font-bold" id="example-usage">
+          Example Usage
+        </h3>
         <div className="space-y-4">
           <div>
-            <h4 className="mb-2 font-medium">Input Example:</h4>
+            <h4 className="mb-2 font-medium" id="input-example">
+              Input Example:
+            </h4>
             <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-sm">
               {`United States\nCanada\nUnited Kingdom\nAustralia`}
             </pre>
           </div>
 
           <div>
-            <h4 className="mb-2 font-medium">Output Examples:</h4>
+            <h4 className="mb-2 font-medium" id="output-examples">
+              Output Examples:
+            </h4>
             <div className="space-y-4">
               <div>
-                <h5 className="text-sm font-medium">JSON (Simple):</h5>
+                <h5 className="text-sm font-medium" id="json-simple">
+                  JSON (Simple):
+                </h5>
                 <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-sm">
                   {`[\n\t"United States",\n\t"Canada",\n\t"United Kingdom",\n\t"Australia"\n]`}
                 </pre>
               </div>
 
               <div>
-                <h5 className="text-sm font-medium">JavaScript Array (Associative with Slugified Keys):</h5>
+                <h5 className="text-sm font-medium" id="javascript-array-associative-with-slugified-keys">
+                  JavaScript Array (Associative with Slugified Keys):
+                </h5>
                 <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-sm">
                   {`const textArray = [\n\t{\n\t\t"key": "united_states",\n\t\t"value": "United States"\n\t},\n\t{\n\t\t"key": "canada",\n\t\t"value": "Canada"\n\t},\n\t{\n\t\t"key": "united_kingdom",\n\t\t"value": "United Kingdom"\n\t},\n\t{\n\t\t"key": "australia",\n\t\t"value": "Australia"\n\t}\n];`}
                 </pre>
               </div>
 
               <div>
-                <h5 className="text-sm font-medium">PHP Array (Numeric):</h5>
+                <h5 className="text-sm font-medium" id="php-array-numeric">
+                  PHP Array (Numeric):
+                </h5>
                 <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-sm">
                   {`<?php\n$data = array(\n\t1 => 'United States',\n\t2 => 'Canada',\n\t3 => 'United Kingdom',\n\t4 => 'Australia'\n);`}
                 </pre>
@@ -102,7 +121,9 @@ export function InfoBlock(): JSX.Element {
       </section>
 
       <section>
-        <h3 className="text-primary mb-4 text-lg font-bold">Why Use This Tool</h3>
+        <h3 className="text-primary mb-4 text-lg font-bold" id="why-use-this-tool">
+          Why Use This Tool
+        </h3>
         <ul className="list-inside list-disc space-y-1 pl-4">
           <li>Convert any line-based text into structured data arrays quickly.</li>
           <li>Transform plain lists into code-ready arrays for immediate use.</li>
@@ -112,9 +133,31 @@ export function InfoBlock(): JSX.Element {
           <li>Process and clean up text data by trimming whitespace and removing empty lines.</li>
         </ul>
       </section>
+      <FAQ>
+        <FAQItem heading="What formats can I convert to?" headingId="what-formats-can-i-convert-to">
+          <p>Convert text to JSON arrays, JavaScript arrays, PHP arrays, and WordPress-compatible PHP arrays.</p>
+        </FAQItem>
+        <FAQItem
+          heading="What is the difference between array types?"
+          headingId="what-is-the-difference-between-array-types"
+        >
+          <p>
+            Simple arrays store values. Numeric arrays add incrementing IDs. Associative arrays create key-value pairs
+            with optional slugified keys.
+          </p>
+        </FAQItem>
+        <FAQItem heading="What are slugified keys?" headingId="what-are-slugified-keys">
+          <p>
+            Slugified keys convert values to URL-friendly format (e.g., &quot;United States&quot; becomes
+            &quot;united_states&quot;).
+          </p>
+        </FAQItem>
+        <FAQItem heading="Can I use this for large datasets?" headingId="can-i-use-this-for-large-datasets">
+          <p>Yes, all processing happens client-side with no server limits on input size.</p>
+        </FAQItem>
+      </FAQ>
 
-      <section>
-        <h3 className="text-primary mb-4 text-lg font-bold">Credits & Source</h3>
+      <Credits>
         <p>
           Maintained by{' '}
           <a
@@ -128,7 +171,7 @@ export function InfoBlock(): JSX.Element {
           . This tool is built with web developers in mind to streamline the process of working with text data in
           different programming environments.
         </p>
-      </section>
+      </Credits>
     </div>
   );
 }

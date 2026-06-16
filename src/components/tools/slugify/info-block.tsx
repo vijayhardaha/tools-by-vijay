@@ -1,4 +1,7 @@
 import type { JSX } from 'react';
+
+import { Credits } from '@/components/tools/tool-credits';
+import { FAQ, FAQItem } from '@/components/tools/tool-faq';
 /**
  * Fully expanded version of the Slugify Tool information for SEO purposes.
  * Includes in-depth explanations, keyword-rich content, and added sections.
@@ -9,7 +12,9 @@ export function InfoBlock(): JSX.Element {
   return (
     <div className="mt-12 space-y-12">
       <section>
-        <h2 className="text-primary mb-4 text-2xl font-bold">What is a Slug and Why It Matters?</h2>
+        <h2 className="text-primary mb-4 text-2xl font-bold" id="what-is-a-slug-and-why-it-matters">
+          What is a Slug and Why It Matters?
+        </h2>
         <p className="mb-4">
           A <strong>slug</strong> is the part of a URL that identifies a particular page in a format that’s easy to read
           for both humans and search engines. Typically found at the end of a URL, slugs are derived from page titles
@@ -25,7 +30,9 @@ export function InfoBlock(): JSX.Element {
       </section>
 
       <section>
-        <h2 className="text-primary mb-4 text-2xl font-bold">About the Slugify Tool</h2>
+        <h2 className="text-primary mb-4 text-2xl font-bold" id="about-the-slugify-tool">
+          About the Slugify Tool
+        </h2>
         <p className="mb-4">
           The <strong>Slugify Tool</strong> is a free, web-based utility designed to automatically convert any text—such
           as blog post titles, product names, or article headlines—into a properly formatted, URL-safe slug. It ensures
@@ -47,7 +54,9 @@ export function InfoBlock(): JSX.Element {
       </section>
 
       <section>
-        <h2 className="text-primary mb-4 text-2xl font-bold">Features of the Slugify Tool</h2>
+        <h2 className="text-primary mb-4 text-2xl font-bold" id="features-of-the-slugify-tool">
+          Features of the Slugify Tool
+        </h2>
         <ul className="list-disc space-y-2 pl-6">
           <li>
             <strong>Custom separator support</strong> (hyphens or underscores)
@@ -75,7 +84,9 @@ export function InfoBlock(): JSX.Element {
       </section>
 
       <section>
-        <h2 className="text-primary mb-4 text-2xl font-bold">Why Use This Slugify Tool?</h2>
+        <h2 className="text-primary mb-4 text-2xl font-bold" id="why-use-this-slugify-tool">
+          Why Use This Slugify Tool?
+        </h2>
         <p className="mb-4">
           The Slugify Tool simplifies the process of transforming titles into URL-friendly strings, which is crucial for
           maintaining a clean and structured website. Here&apos;s why you should use this tool:
@@ -101,7 +112,9 @@ export function InfoBlock(): JSX.Element {
       </section>
 
       <section>
-        <h2 className="text-primary mb-4 text-2xl font-bold">Common Use Cases</h2>
+        <h2 className="text-primary mb-4 text-2xl font-bold" id="common-use-cases">
+          Common Use Cases
+        </h2>
         <ul className="list-disc space-y-2 pl-6">
           <li>
             <strong>Blog platforms</strong> like WordPress, Ghost, and custom CMS solutions
@@ -126,7 +139,9 @@ export function InfoBlock(): JSX.Element {
       </section>
 
       <section>
-        <h2 className="text-primary mb-4 text-2xl font-bold">How It Works (Under the Hood)</h2>
+        <h2 className="text-primary mb-4 text-2xl font-bold" id="how-it-works-under-the-hood">
+          How It Works (Under the Hood)
+        </h2>
         <p className="mb-4">
           This tool is built using the open-source <code className="text-sm font-medium text-pink-500">slugify</code>{' '}
           package, which provides advanced string manipulation capabilities. We’ve also integrated{' '}
@@ -141,9 +156,46 @@ export function InfoBlock(): JSX.Element {
           <li>The final string is returned as a clean, URL-friendly slug.</li>
         </ol>
       </section>
+      <FAQ>
+        <FAQItem heading="What is a URL slug?" headingId="what-is-a-url-slug">
+          <p>
+            A URL slug is the part of a URL that identifies a specific page in a human-readable format. Slugs are
+            derived from page titles and use hyphens or underscores to separate words, making URLs clean and
+            SEO-friendly.
+          </p>
+        </FAQItem>
+        <FAQItem heading="How does this slugify tool work?" headingId="how-does-this-slugify-tool-work">
+          <p>
+            This tool uses the <code>slugify</code> package combined with <code>latinize</code> to transform text into
+            URL-safe slugs. It strips special characters, replaces spaces with your chosen separator, converts to
+            lowercase, and normalizes accented characters into ASCII equivalents.
+          </p>
+        </FAQItem>
+        <FAQItem heading="Why are slugs important for SEO?" headingId="why-are-slugs-important-for-seo">
+          <p>
+            Search engines use URL slugs to understand page content. Clean, keyword-rich slugs improve click-through
+            rates and help with rankings. Slugs like <code>/best-javascript-frameworks</code> are far more effective
+            than <code>/page123</code>.
+          </p>
+        </FAQItem>
+        <FAQItem heading="Can I use underscores in slugs?" headingId="can-i-use-underscores-in-slugs">
+          <p>
+            Yes, this tool supports both hyphens and underscores as separators. While hyphens are generally recommended
+            for SEO (Google treats them as word separators), underscores are still widely used in many CMS platforms.
+          </p>
+        </FAQItem>
+        <FAQItem
+          heading="Does this tool handle international characters?"
+          headingId="does-this-tool-handle-international-characters"
+        >
+          <p>
+            Yes, it uses the <code>latinize</code> library to normalize accented characters like <code>é</code>,{' '}
+            <code>ç</code>, <code>ñ</code> into their ASCII equivalents, ensuring your slugs are universally compatible.
+          </p>
+        </FAQItem>
+      </FAQ>
 
-      <section>
-        <h2 className="text-primary mb-4 text-2xl font-bold">Credits & Source Libraries</h2>
+      <Credits heading="Credits & Source Libraries" headingId="credits-source-libraries">
         <p className="mb-4">
           This project is developed and maintained by{' '}
           <a
@@ -180,7 +232,7 @@ export function InfoBlock(): JSX.Element {
             – For replacing accented characters with ASCII equivalents
           </li>
         </ul>
-      </section>
+      </Credits>
     </div>
   );
 }

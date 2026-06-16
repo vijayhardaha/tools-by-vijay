@@ -1,4 +1,7 @@
 import type { JSX } from 'react';
+
+import { Credits } from '@/components/tools/tool-credits';
+import { FAQ, FAQItem } from '@/components/tools/tool-faq';
 /**
  * Provides detailed information about the Alphabetical Line Sorter tool,
  * including its purpose, benefits, usage instructions, and practical examples.
@@ -9,7 +12,10 @@ export function InfoBlock(): JSX.Element {
   return (
     <div className="max-w-none space-y-10 px-4 md:px-0">
       <section>
-        <h2 className="mb-4 text-3xl font-bold">
+        <h2
+          className="mb-4 text-3xl font-bold"
+          id="alphabetical-line-sorter-tool-organize-and-sort-your-text-lines-with-ease"
+        >
           Alphabetical Line Sorter Tool: Organize and Sort Your Text Lines with Ease
         </h2>
         <p className="mb-4">
@@ -26,7 +32,9 @@ export function InfoBlock(): JSX.Element {
       </section>
 
       <section>
-        <h2 className="mb-4 text-2xl font-bold">Benefits of Using Alphabetical Line Sorter</h2>
+        <h2 className="mb-4 text-2xl font-bold" id="benefits-of-using-alphabetical-line-sorter">
+          Benefits of Using Alphabetical Line Sorter
+        </h2>
         <ul className="list-inside list-disc space-y-2 pl-4">
           <li>
             <strong>Improve Data Readability:</strong> Sorted lines make large sets of text easier to scan and
@@ -51,7 +59,9 @@ export function InfoBlock(): JSX.Element {
       </section>
 
       <section>
-        <h2 className="mb-4 text-2xl font-bold">How to Use the Alphabetical Line Sorter Tool</h2>
+        <h2 className="mb-4 text-2xl font-bold" id="how-to-use-the-alphabetical-line-sorter-tool">
+          How to Use the Alphabetical Line Sorter Tool
+        </h2>
         <ol className="list-inside list-decimal space-y-2 pl-4">
           <li>
             <strong>Paste or Enter Your Text:</strong> Input the multiline text you want to sort into the designated
@@ -73,7 +83,9 @@ export function InfoBlock(): JSX.Element {
       </section>
 
       <section>
-        <h2 className="mb-4 text-2xl font-bold">Why You Should Use the Alphabetical Line Sorter</h2>
+        <h2 className="mb-4 text-2xl font-bold" id="why-you-should-use-the-alphabetical-line-sorter">
+          Why You Should Use the Alphabetical Line Sorter
+        </h2>
         <p className="mb-4">
           Sorting text lines alphabetically is a fundamental step in many workflows such as data analysis, content
           management, and software development. By using this tool, you:
@@ -98,35 +110,61 @@ export function InfoBlock(): JSX.Element {
       </section>
 
       <section>
-        <h2 className="mb-4 text-2xl font-bold">Example of Alphabetical Sorting</h2>
+        <h2 className="mb-4 text-2xl font-bold" id="example-of-alphabetical-sorting">
+          Example of Alphabetical Sorting
+        </h2>
         <div className="space-y-6">
           <div>
-            <h3 className="mb-1 text-lg font-semibold">Input Example:</h3>
+            <h3 className="mb-1 text-lg font-semibold" id="input-example">
+              Input Example:
+            </h3>
             <pre className="bg-muted overflow-x-auto rounded-xl p-4 font-mono text-sm">{`banana\napple\norange`}</pre>
           </div>
 
           <div>
-            <h3 className="mb-1 text-lg font-semibold">Output Example (Alphabetical Sort):</h3>
+            <h3 className="mb-1 text-lg font-semibold" id="output-example-alphabetical-sort">
+              Output Example (Alphabetical Sort):
+            </h3>
             <pre className="bg-muted overflow-x-auto rounded-xl p-4 font-mono text-sm">{`apple\nbanana\norange`}</pre>
           </div>
 
           <div>
-            <h3 className="mb-1 text-lg font-semibold">Output Example (Reverse Alphabetical Sort):</h3>
+            <h3 className="mb-1 text-lg font-semibold" id="output-example-reverse-alphabetical-sort">
+              Output Example (Reverse Alphabetical Sort):
+            </h3>
             <pre className="bg-muted overflow-x-auto rounded-xl p-4 font-mono text-sm">{`orange\nbanana\napple`}</pre>
           </div>
         </div>
       </section>
 
       <section>
-        <h2 className="mb-4 text-2xl font-bold">Privacy & Security</h2>
+        <h2 className="mb-4 text-2xl font-bold" id="privacy-security">
+          Privacy & Security
+        </h2>
         <p>
           All sorting operations are performed locally within your browser, which means your data never leaves your
           device. This approach guarantees that sensitive or private information remains secure at all times.
         </p>
       </section>
+      <FAQ>
+        <FAQItem heading="What is alphabetical sorting?" headingId="what-is-alphabetical-sorting">
+          <p>Lines are arranged in A-Z or Z-A order, useful for organizing lists and cleaning up data.</p>
+        </FAQItem>
+        <FAQItem heading="Standard vs ASCII sorting?" headingId="standard-vs-ascii-sorting">
+          <p>
+            Standard uses locale-aware comparison for correct handling of accented characters. ASCII uses byte-order
+            comparison.
+          </p>
+        </FAQItem>
+        <FAQItem heading="Can it remove duplicates?" headingId="can-it-remove-duplicates">
+          <p>Yes, there is an option to remove duplicate lines before sorting.</p>
+        </FAQItem>
+        <FAQItem heading="Is my data private?" headingId="is-my-data-private">
+          <p>Yes, all sorting happens locally in your browser.</p>
+        </FAQItem>
+      </FAQ>
 
-      <section>
-        <h2 className="mb-4 text-2xl font-bold">Credits & Source</h2>
+      <Credits>
         <p>
           This tool is maintained by{' '}
           <a
@@ -140,7 +178,7 @@ export function InfoBlock(): JSX.Element {
           . Designed to simplify and speed up everyday text processing tasks, the Alphabetical Line Sorter is part of a
           comprehensive suite of web developer tools.
         </p>
-      </section>
+      </Credits>
     </div>
   );
 }

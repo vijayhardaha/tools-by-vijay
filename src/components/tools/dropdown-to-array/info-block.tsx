@@ -1,4 +1,7 @@
 import type { JSX } from 'react';
+
+import { Credits } from '@/components/tools/tool-credits';
+import { FAQ, FAQItem } from '@/components/tools/tool-faq';
 /**
  * Provides information about the Dropdown to Array Converter tool, including its purpose,
  * usage instructions, and examples.
@@ -7,9 +10,11 @@ import type { JSX } from 'react';
  */
 export function InfoBlock(): JSX.Element {
   return (
-    <div className="max-w-none space-y-8">
+    <div className="space-y-8 md:space-y-12">
       <section>
-        <h2 className="text-primary mb-4 text-xl font-bold">About Dropdown to Array Converter</h2>
+        <h2 className="text-primary mb-4 text-xl font-bold" id="about-dropdown-to-array-converter">
+          About Dropdown to Array Converter
+        </h2>
         <p className="mb-4">
           The Dropdown to Array Converter is a utility tool that helps developers convert HTML select/dropdown elements
           into various array and object formats for different programming languages. This tool saves time when working
@@ -23,7 +28,9 @@ export function InfoBlock(): JSX.Element {
       </section>
 
       <section>
-        <h3 className="text-primary mb-4 text-lg font-bold">How to Use This Tool</h3>
+        <h3 className="text-primary mb-4 text-lg font-bold" id="how-to-use-this-tool">
+          How to Use This Tool
+        </h3>
         <ol className="list-decimal space-y-2 pl-6">
           <li>
             <strong>Paste Your HTML:</strong> Copy and paste your HTML select element with options into the input area.
@@ -62,41 +69,55 @@ export function InfoBlock(): JSX.Element {
       </section>
 
       <section>
-        <h3 className="text-primary mb-4 text-lg font-bold">Example Usage</h3>
+        <h3 className="text-primary mb-4 text-lg font-bold" id="example-usage">
+          Example Usage
+        </h3>
         <div className="space-y-4">
           <div>
-            <h4 className="mb-2 font-medium">Input Example:</h4>
+            <h4 className="mb-2 font-medium" id="input-example">
+              Input Example:
+            </h4>
             <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-sm">
               {`<select name="country">\n<option value="us">United States</option>\n<option value="ca">Canada</option>\n<option value="uk">United Kingdom</option>\n<option value="au">Australia</option>\nselect>`}
             </pre>
           </div>
 
           <div>
-            <h4 className="mb-2 font-medium">Output Examples:</h4>
+            <h4 className="mb-2 font-medium" id="output-examples">
+              Output Examples:
+            </h4>
             <div className="space-y-4">
               <div>
-                <h5 className="text-sm font-medium">JSON Associative Output:</h5>
+                <h5 className="text-sm font-medium" id="json-associative-output">
+                  JSON Associative Output:
+                </h5>
                 <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-sm">
                   {`[\n\t{\n\t\t"key": "us",\n\t\t"value": "United States"\n\t},\n\t{\n\t\t"key": "ca",\n\t\t"value": "Canada"\n\t},\n\t{\n\t\t"key": "uk",\n\t\t"value": "United Kingdom"\n\t},\n\t{\n\t\t"key": "au",\n\t\t"value": "Australia"\n\t}\n]`}
                 </pre>
               </div>
 
               <div>
-                <h5 className="text-sm font-medium">JavaScript Array (Associative with Slugified Keys):</h5>
+                <h5 className="text-sm font-medium" id="javascript-array-associative-with-slugified-keys">
+                  JavaScript Array (Associative with Slugified Keys):
+                </h5>
                 <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-sm">
                   {`const dropdownArray = [\n\t{\n\t\t"key": "us",\n\t\t"value": "United States"\n\t},\n\t{\n\t\t"key": "ca",\n\t\t"value": "Canada"\n\t},\n\t{\n\t\t"key": "uk",\n\t\t"value": "United Kingdom"\n\t},\n\t{\n\t\t"key": "au",\n\t\t"value": "Australia"\n\t}\n];`}
                 </pre>
               </div>
 
               <div>
-                <h5 className="text-sm font-medium">PHP Array (Simple):</h5>
+                <h5 className="text-sm font-medium" id="php-array-simple">
+                  PHP Array (Simple):
+                </h5>
                 <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-sm">
                   {`<?php\n$data = array(\n\t'United States',\n\t'Canada',\n\t'United Kingdom',\n\t'Australia'\n);`}
                 </pre>
               </div>
 
               <div>
-                <h5 className="text-sm font-medium">WordPress Select Options (Associative):</h5>
+                <h5 className="text-sm font-medium" id="wordpress-select-options-associative">
+                  WordPress Select Options (Associative):
+                </h5>
                 <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-sm">
                   {`<?php\n$data = array(\n\t'us' => __( 'United States', 'text-domain' ),\n\t'ca' => __( 'Canada', 'text-domain' ),\n\t'uk' => __( 'United Kingdom', 'text-domain' ),\n\t'au' => __( 'Australia', 'text-domain' )\n);`}
                 </pre>
@@ -107,7 +128,9 @@ export function InfoBlock(): JSX.Element {
       </section>
 
       <section>
-        <h3 className="text-primary mb-4 text-lg font-bold">Why Use This Tool</h3>
+        <h3 className="text-primary mb-4 text-lg font-bold" id="why-use-this-tool">
+          Why Use This Tool
+        </h3>
         <ul className="list-inside list-disc space-y-1 pl-4">
           <li>Quickly convert HTML dropdowns to usable data structures for your code.</li>
           <li>Save time when migrating between platforms or languages.</li>
@@ -117,9 +140,30 @@ export function InfoBlock(): JSX.Element {
           <li>Generate WordPress-ready select option arrays with proper formatting.</li>
         </ul>
       </section>
+      <FAQ>
+        <FAQItem heading="What is a dropdown converter?" headingId="what-is-a-dropdown-converter">
+          <p>
+            This tool extracts option elements from HTML select dropdowns and converts them into structured arrays for
+            JavaScript, PHP, or WordPress.
+          </p>
+        </FAQItem>
+        <FAQItem heading="What HTML format is expected?" headingId="what-html-format-is-expected">
+          <p>
+            Paste a complete select element or just the option tags. The parser extracts both value and display text.
+          </p>
+        </FAQItem>
+        <FAQItem heading="What output formats are available?" headingId="what-output-formats-are-available">
+          <p>Output formats include JSON, JavaScript, PHP, and WordPress arrays with translation function support.</p>
+        </FAQItem>
+        <FAQItem heading="What are slugified keys?" headingId="what-are-slugified-keys">
+          <p>
+            For associative arrays, option values are transformed into clean keys (e.g., &quot;New York&quot; becomes
+            &quot;new_york&quot;).
+          </p>
+        </FAQItem>
+      </FAQ>
 
-      <section>
-        <h3 className="text-primary mb-4 text-lg font-bold">Credits & Source</h3>
+      <Credits>
         <p>
           Maintained by{' '}
           <a
@@ -133,7 +177,7 @@ export function InfoBlock(): JSX.Element {
           . This tool is built with web developers in mind to streamline the process of working with dropdown menus
           across different programming environments.
         </p>
-      </section>
+      </Credits>
     </div>
   );
 }

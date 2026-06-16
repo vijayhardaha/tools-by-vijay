@@ -1,4 +1,7 @@
 import type { JSX } from 'react';
+
+import { Credits } from '@/components/tools/tool-credits';
+import { FAQ, FAQItem } from '@/components/tools/tool-faq';
 /**
  * Provides information about the JavaScript Minifier Tool, including its purpose,
  * usage instructions, and examples.
@@ -7,9 +10,11 @@ import type { JSX } from 'react';
  */
 export function InfoBlock(): JSX.Element {
   return (
-    <div className="max-w-none space-y-8">
+    <div className="space-y-8 md:space-y-12">
       <section>
-        <h2 className="text-primary mb-4 text-xl font-bold">About JavaScript Minifier Tool</h2>
+        <h2 className="text-primary mb-4 text-xl font-bold" id="about-javascript-minifier-tool">
+          About JavaScript Minifier Tool
+        </h2>
         <p className="mb-4">
           The JavaScript Minifier Tool is an online utility designed to reduce the size of your JavaScript files by
           removing unnecessary characters, whitespace, comments, and optimizing the code structure. This process, known
@@ -26,7 +31,9 @@ export function InfoBlock(): JSX.Element {
       </section>
 
       <section>
-        <h3 className="text-primary mb-4 text-lg font-bold">Why You Should Use a JavaScript Minifier</h3>
+        <h3 className="text-primary mb-4 text-lg font-bold" id="why-you-should-use-a-javascript-minifier">
+          Why You Should Use a JavaScript Minifier
+        </h3>
         <ul className="list-inside list-disc space-y-1 pl-4">
           <li>Reduces file size, leading to faster page loading and better user experience</li>
           <li>Decreases bandwidth usage, which can save costs on hosting and CDN services</li>
@@ -38,7 +45,9 @@ export function InfoBlock(): JSX.Element {
       </section>
 
       <section>
-        <h3 className="text-primary mb-4 text-lg font-bold">How to Use This Tool</h3>
+        <h3 className="text-primary mb-4 text-lg font-bold" id="how-to-use-this-tool">
+          How to Use This Tool
+        </h3>
         <ol className="list-inside list-decimal space-y-1 pl-4">
           <li>Paste your JavaScript code into the input box</li>
           <li>Configure the minification options according to your preferences</li>
@@ -46,9 +55,34 @@ export function InfoBlock(): JSX.Element {
           <li>Copy the minified output using the “Copy to Clipboard” button</li>
         </ol>
       </section>
+      <FAQ>
+        <FAQItem heading="What is JavaScript minification?" headingId="what-is-javascript-minification">
+          <p>
+            JavaScript minification removes unnecessary characters and transforms code to be more compact, often
+            shortening variable names and removing dead code.
+          </p>
+        </FAQItem>
+        <FAQItem heading="What library is used?" headingId="what-library-is-used">
+          <p>
+            This tool uses <code>@putout/minify</code> with options for mangling variables, removing console/debugger
+            statements, and removing comments.
+          </p>
+        </FAQItem>
+        <FAQItem heading="What options are available?" headingId="what-options-are-available">
+          <p>
+            Toggle variable name mangling, console.log removal, debugger removal, and comment removal for fine-grained
+            control.
+          </p>
+        </FAQItem>
+        <FAQItem heading="Does minification affect functionality?" headingId="does-minification-affect-functionality">
+          <p>
+            No, proper minification preserves all functionality. Only optional features like console removal are
+            configurable.
+          </p>
+        </FAQItem>
+      </FAQ>
 
-      <section>
-        <h3 className="text-primary mb-4 text-lg font-bold">Credits & Source</h3>
+      <Credits>
         <p>
           Maintained by{' '}
           <a
@@ -70,7 +104,7 @@ export function InfoBlock(): JSX.Element {
           </a>{' '}
           for JavaScript minification.
         </p>
-      </section>
+      </Credits>
     </div>
   );
 }

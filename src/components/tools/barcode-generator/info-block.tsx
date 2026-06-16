@@ -1,4 +1,7 @@
 import type { JSX } from 'react';
+
+import { Credits } from '@/components/tools/tool-credits';
+import { FAQ, FAQItem } from '@/components/tools/tool-faq';
 /**
  * Provides detailed information about the Barcode Tool,
  * including its purpose, benefits, usage instructions, and practical examples.
@@ -7,9 +10,11 @@ import type { JSX } from 'react';
  */
 export function InfoBlock(): JSX.Element {
   return (
-    <div className="max-w-none space-y-8">
+    <div className="space-y-8 md:space-y-12">
       <section>
-        <h2 className="mb-4 text-xl font-bold">Barcode Tool: Generate Barcodes Instantly</h2>
+        <h2 className="mb-4 text-xl font-bold" id="barcode-tool-generate-barcodes-instantly">
+          Barcode Tool: Generate Barcodes Instantly
+        </h2>
         <p className="mb-4">
           The <strong>Barcode Tool</strong> is an easy-to-use online utility designed to help you generate
           professional-quality barcodes from any text, number, or data input. This tool supports multiple barcode
@@ -24,7 +29,9 @@ export function InfoBlock(): JSX.Element {
       </section>
 
       <section>
-        <h2 className="mb-4 text-xl font-bold">Benefits of Using the Barcode Tool</h2>
+        <h2 className="mb-4 text-xl font-bold" id="benefits-of-using-the-barcode-tool">
+          Benefits of Using the Barcode Tool
+        </h2>
         <ul className="list-inside list-disc space-y-2 pl-4">
           <li>Generate high-quality barcodes suitable for print or digital use.</li>
           <li>Supports various common barcode formats including Code128, UPC, EAN, QR codes, and more.</li>
@@ -36,7 +43,9 @@ export function InfoBlock(): JSX.Element {
       </section>
 
       <section>
-        <h2 className="mb-4 text-xl font-bold">How to Use the Barcode Tool</h2>
+        <h2 className="mb-4 text-xl font-bold" id="how-to-use-the-barcode-tool">
+          How to Use the Barcode Tool
+        </h2>
         <ol className="list-inside list-decimal space-y-2 pl-4">
           <li>
             <strong>Enter Your Data:</strong> Type or paste the text, number, or data you want to encode into the
@@ -61,7 +70,9 @@ export function InfoBlock(): JSX.Element {
       </section>
 
       <section>
-        <h2 className="mb-4 text-xl font-bold">Why Use Barcodes?</h2>
+        <h2 className="mb-4 text-xl font-bold" id="why-use-barcodes">
+          Why Use Barcodes?
+        </h2>
         <ul className="list-inside list-disc space-y-2 pl-4">
           <li>Efficiently encode and represent data in a machine-readable format.</li>
           <li>Widely adopted in retail, manufacturing, logistics, healthcare, and asset tracking.</li>
@@ -72,15 +83,37 @@ export function InfoBlock(): JSX.Element {
       </section>
 
       <section>
-        <h2 className="mb-4 text-xl font-bold">Example Usage</h2>
+        <h2 className="mb-4 text-xl font-bold" id="example-usage">
+          Example Usage
+        </h2>
         <p className="mb-4">
           For instance, you can generate a <em>Code128</em> barcode for a product SKU or a <em>QR code</em> containing a
           URL for marketing campaigns. Just input your data, choose the format, and download the barcode instantly.
         </p>
       </section>
 
-      <section>
-        <h2 className="mb-4 text-xl font-bold">Credits & Source</h2>
+      <FAQ>
+        <FAQItem heading="What barcode formats are supported?" headingId="what-barcode-formats-are-supported">
+          <p>
+            This tool generates Code128 barcodes, one of the most widely used formats supporting alphanumeric data for
+            logistics and inventory.
+          </p>
+        </FAQItem>
+        <FAQItem heading="What can I encode?" headingId="what-can-i-encode">
+          <p>Encode any alphanumeric text like product SKUs, serial numbers, tracking IDs, or inventory codes.</p>
+        </FAQItem>
+        <FAQItem heading="How do I use the generated barcode?" headingId="how-do-i-use-the-generated-barcode">
+          <p>
+            The tool generates a barcode image URL you can display on web pages, print on labels, or use in inventory
+            systems.
+          </p>
+        </FAQItem>
+        <FAQItem heading="Is my data sent to a server?" headingId="is-my-data-sent-to-a-server">
+          <p>Your input data is encoded into the URL. No data is stored or logged by this tool.</p>
+        </FAQItem>
+      </FAQ>
+
+      <Credits>
         <p>
           Maintained by{' '}
           <a
@@ -94,7 +127,7 @@ export function InfoBlock(): JSX.Element {
           . This tool leverages reliable open-source barcode generation libraries to ensure fast, accurate, and
           customizable barcode creation for all your needs.
         </p>
-      </section>
+      </Credits>
     </div>
   );
 }

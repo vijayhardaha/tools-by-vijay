@@ -1,4 +1,7 @@
 import type { JSX } from 'react';
+
+import { Credits } from '@/components/tools/tool-credits';
+import { FAQ, FAQItem } from '@/components/tools/tool-faq';
 /**
  * Provides information about the Px to Rem Converter Tool, including its purpose,
  * usage instructions, and examples.
@@ -7,9 +10,11 @@ import type { JSX } from 'react';
  */
 export function InfoBlock(): JSX.Element {
   return (
-    <div className="max-w-none space-y-8">
+    <div className="space-y-8 md:space-y-12">
       <section>
-        <h2 className="text-primary mb-4 text-xl font-bold">About Px to Rem Converter Tool</h2>
+        <h2 className="text-primary mb-4 text-xl font-bold" id="about-px-to-rem-converter-tool">
+          About Px to Rem Converter Tool
+        </h2>
         <p className="mb-4">
           The Px to Rem Converter Tool helps you convert pixel values to rem units based on a base font size. This is
           useful for creating responsive and scalable designs in web development.
@@ -21,7 +26,9 @@ export function InfoBlock(): JSX.Element {
       </section>
 
       <section>
-        <h3 className="text-primary mb-4 text-lg font-bold">Why You Should Use This Tool</h3>
+        <h3 className="text-primary mb-4 text-lg font-bold" id="why-you-should-use-this-tool">
+          Why You Should Use This Tool
+        </h3>
         <ul className="list-inside list-disc space-y-1 pl-4">
           <li>Ensures your designs are scalable and responsive across devices.</li>
           <li>Helps maintain consistency in typography and spacing.</li>
@@ -31,7 +38,9 @@ export function InfoBlock(): JSX.Element {
       </section>
 
       <section>
-        <h3 className="text-primary mb-4 text-lg font-bold">How to Use This Tool</h3>
+        <h3 className="text-primary mb-4 text-lg font-bold" id="how-to-use-this-tool">
+          How to Use This Tool
+        </h3>
         <ol className="list-decimal space-y-2 pl-6">
           <li>
             <strong>Enter Pixel Value:</strong> Input the pixel value you want to convert.
@@ -44,9 +53,34 @@ export function InfoBlock(): JSX.Element {
           </li>
         </ol>
       </section>
+      <FAQ>
+        <FAQItem
+          heading="What is the difference between px and rem?"
+          headingId="what-is-the-difference-between-px-and-rem"
+        >
+          <p>
+            PX is an absolute pixel unit. REM is relative to the root font size (typically 16px), respecting user
+            preferences for accessibility.
+          </p>
+        </FAQItem>
+        <FAQItem heading="Why use rem over px?" headingId="why-use-rem-over-px">
+          <p>
+            REM units respect browser font size settings for better accessibility and make maintaining consistent
+            spacing easier.
+          </p>
+        </FAQItem>
+        <FAQItem heading="What is the default base font size?" headingId="what-is-the-default-base-font-size">
+          <p>
+            The default is 16px, matching the typical browser default. Customize this to match your project design
+            system.
+          </p>
+        </FAQItem>
+        <FAQItem heading="How to calculate rem manually?" headingId="how-to-calculate-rem-manually">
+          <p>Divide the pixel value by the base font size. For example, with 16px base: 32px / 16 = 2rem.</p>
+        </FAQItem>
+      </FAQ>
 
-      <section>
-        <h3 className="text-primary mb-4 text-lg font-bold">Credits & Source</h3>
+      <Credits>
         <p>
           Maintained by{' '}
           <a
@@ -59,7 +93,7 @@ export function InfoBlock(): JSX.Element {
           </a>
           . This tool is designed to simplify web development workflows and improve design consistency.
         </p>
-      </section>
+      </Credits>
     </div>
   );
 }

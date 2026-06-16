@@ -1,4 +1,7 @@
 import type { JSX } from 'react';
+
+import { Credits } from '@/components/tools/tool-credits';
+import { FAQ, FAQItem } from '@/components/tools/tool-faq';
 /**
  * Provides information about the Unminify Tool, including its purpose,
  * usage instructions, and examples.
@@ -7,9 +10,11 @@ import type { JSX } from 'react';
  */
 export function InfoBlock(): JSX.Element {
   return (
-    <div className="max-w-none space-y-8">
+    <div className="space-y-8 md:space-y-12">
       <section>
-        <h2 className="text-primary mb-4 text-xl font-bold">About Unminify Tool</h2>
+        <h2 className="text-primary mb-4 text-xl font-bold" id="about-unminify-tool">
+          About Unminify Tool
+        </h2>
         <p className="mb-4">
           The Unminify Tool is an online utility designed to make minified or obfuscated code readable and pretty. It
           supports JavaScript, CSS, HTML, XML, and JSON code.
@@ -23,7 +28,9 @@ export function InfoBlock(): JSX.Element {
       </section>
 
       <section>
-        <h3 className="text-primary mb-4 text-lg font-bold">Why You Should Use an Unminify Tool</h3>
+        <h3 className="text-primary mb-4 text-lg font-bold" id="why-you-should-use-an-unminify-tool">
+          Why You Should Use an Unminify Tool
+        </h3>
         <ul className="list-inside list-disc space-y-1 pl-4">
           <li>Makes minified or obfuscated code readable and easier to debug</li>
           <li>Improves code maintainability by formatting it in a structured way</li>
@@ -33,16 +40,37 @@ export function InfoBlock(): JSX.Element {
       </section>
 
       <section>
-        <h3 className="text-primary mb-4 text-lg font-bold">How to Use This Tool</h3>
+        <h3 className="text-primary mb-4 text-lg font-bold" id="how-to-use-this-tool">
+          How to Use This Tool
+        </h3>
         <ol className="list-inside list-decimal space-y-1 pl-4">
           <li>Paste your minified or obfuscated code into the input box</li>
           <li>Click the “Unminify” button to process your code</li>
           <li>Copy the unminified output using the “Copy to Clipboard” button</li>
         </ol>
       </section>
+      <FAQ>
+        <FAQItem heading="What is unminification?" headingId="what-is-unminification">
+          <p>
+            Unminification formats minified code with proper indentation and spacing, making it readable and easier to
+            debug.
+          </p>
+        </FAQItem>
+        <FAQItem heading="What code types are supported?" headingId="what-code-types-are-supported">
+          <p>This tool supports JavaScript, CSS, HTML, XML, and JSON using the Prettier formatter.</p>
+        </FAQItem>
+        <FAQItem heading="Is unminified code identical?" headingId="is-unminified-code-identical">
+          <p>
+            Functionally yes, but formatting is added back. Variable names shortened during minification remain
+            shortened.
+          </p>
+        </FAQItem>
+        <FAQItem heading="What library is used?" headingId="what-library-is-used">
+          <p>This tool uses Prettier, the industry-standard code formatter for consistent, opinionated formatting.</p>
+        </FAQItem>
+      </FAQ>
 
-      <section>
-        <h3 className="text-primary mb-4 text-lg font-bold">Credits & Source</h3>
+      <Credits>
         <p>
           Maintained by{' '}
           <a
@@ -64,7 +92,7 @@ export function InfoBlock(): JSX.Element {
           </a>{' '}
           for unminification.
         </p>
-      </section>
+      </Credits>
     </div>
   );
 }

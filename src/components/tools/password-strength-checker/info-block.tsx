@@ -1,4 +1,7 @@
 import type { JSX } from 'react';
+
+import { Credits } from '@/components/tools/tool-credits';
+import { FAQ, FAQItem } from '@/components/tools/tool-faq';
 /**
  * Provides information about the Password Strength Checker Tool, including its purpose,
  * usage instructions, and examples.
@@ -7,9 +10,11 @@ import type { JSX } from 'react';
  */
 export function InfoBlock(): JSX.Element {
   return (
-    <div className="max-w-none space-y-8">
+    <div className="space-y-8 md:space-y-12">
       <section>
-        <h2 className="text-primary mb-4 text-xl font-bold">About Password Strength Checker Tool</h2>
+        <h2 className="text-primary mb-4 text-xl font-bold" id="about-password-strength-checker-tool">
+          About Password Strength Checker Tool
+        </h2>
         <p className="mb-4">
           The Password Strength Checker tool analyzes your password and provides feedback on its security level. It
           evaluates several criteria including length, character variety, and common patterns to determine how resistant
@@ -23,7 +28,9 @@ export function InfoBlock(): JSX.Element {
       </section>
 
       <section>
-        <h3 className="text-primary mb-4 text-lg font-bold">How Password Strength is Measured</h3>
+        <h3 className="text-primary mb-4 text-lg font-bold" id="how-password-strength-is-measured">
+          How Password Strength is Measured
+        </h3>
         <p className="mb-4">The strength of a password is determined by several factors:</p>
         <ul className="list-inside list-disc space-y-1 pl-4">
           <li>
@@ -46,7 +53,9 @@ export function InfoBlock(): JSX.Element {
       </section>
 
       <section>
-        <h3 className="text-primary mb-4 text-lg font-bold">Common Password Vulnerabilities</h3>
+        <h3 className="text-primary mb-4 text-lg font-bold" id="common-password-vulnerabilities">
+          Common Password Vulnerabilities
+        </h3>
         <ul className="list-inside list-disc space-y-1 pl-4">
           <li>
             <strong>Dictionary Words:</strong> Passwords that are common words or phrases are easily cracked using
@@ -72,7 +81,9 @@ export function InfoBlock(): JSX.Element {
       </section>
 
       <section>
-        <h3 className="text-primary mb-4 text-lg font-bold">Creating Better Passwords</h3>
+        <h3 className="text-primary mb-4 text-lg font-bold" id="creating-better-passwords">
+          Creating Better Passwords
+        </h3>
         <ul className="list-inside list-disc space-y-1 pl-4">
           <li>Use random combinations of characters rather than meaningful words.</li>
           <li>Consider using a passphrase (a sequence of random words) for better memorability and security.</li>
@@ -81,9 +92,31 @@ export function InfoBlock(): JSX.Element {
           <li>Change passwords periodically, especially for critical accounts.</li>
         </ul>
       </section>
+      <FAQ>
+        <FAQItem heading="How is strength measured?" headingId="how-is-strength-measured">
+          <p>
+            Strength is evaluated based on length, character variety, and resistance to common attack patterns. Longer
+            passwords with diverse character types score higher.
+          </p>
+        </FAQItem>
+        <FAQItem heading="Is my password sent to a server?" headingId="is-my-password-sent-to-a-server">
+          <p>No, all analysis happens locally in your browser for maximum privacy.</p>
+        </FAQItem>
+        <FAQItem heading="What makes a password weak?" headingId="what-makes-a-password-weak">
+          <p>
+            Common weaknesses include short length, lack of variety, dictionary words, personal info, keyboard patterns,
+            and password reuse.
+          </p>
+        </FAQItem>
+        <FAQItem heading="What is a passphrase?" headingId="what-is-a-passphrase">
+          <p>
+            A passphrase is a sequence of random words that is easier to remember but still highly secure. It leverages
+            length over complexity.
+          </p>
+        </FAQItem>
+      </FAQ>
 
-      <section>
-        <h3 className="text-primary mb-4 text-lg font-bold">Credits & Source</h3>
+      <Credits>
         <p>
           Maintained by{' '}
           <a
@@ -97,7 +130,7 @@ export function InfoBlock(): JSX.Element {
           . This tool evaluates passwords using industry best practices for password security and runs entirely in your
           browser for maximum privacy.
         </p>
-      </section>
+      </Credits>
     </div>
   );
 }

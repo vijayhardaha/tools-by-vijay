@@ -1,4 +1,7 @@
 import type { JSX } from 'react';
+
+import { Credits } from '@/components/tools/tool-credits';
+import { FAQ, FAQItem } from '@/components/tools/tool-faq';
 /**
  * Provides information about the JSON Sorter Tool, including its purpose,
  * usage instructions, and examples.
@@ -7,9 +10,11 @@ import type { JSX } from 'react';
  */
 export function InfoBlock(): JSX.Element {
   return (
-    <div className="max-w-none space-y-8">
+    <div className="space-y-8 md:space-y-12">
       <section>
-        <h2 className="text-primary mb-4 text-xl font-bold">About JSON Sorter</h2>
+        <h2 className="text-primary mb-4 text-xl font-bold" id="about-json-sorter">
+          About JSON Sorter
+        </h2>
         <p className="mb-4">
           The JSON Sorter is a developer utility that alphabetically sorts the keys in JSON objects. This tool helps
           maintain consistent ordering in JSON files, making them easier to read, compare, and manage in version control
@@ -22,7 +27,9 @@ export function InfoBlock(): JSX.Element {
       </section>
 
       <section>
-        <h3 className="text-primary mb-4 text-lg font-bold">How to Use This Tool</h3>
+        <h3 className="text-primary mb-4 text-lg font-bold" id="how-to-use-this-tool">
+          How to Use This Tool
+        </h3>
         <ol className="list-decimal space-y-2 pl-6">
           <li>
             <strong>Enter Your JSON:</strong> Paste valid JSON content into the input area.
@@ -46,17 +53,23 @@ export function InfoBlock(): JSX.Element {
       </section>
 
       <section>
-        <h3 className="text-primary mb-4 text-lg font-bold">Example Usage</h3>
+        <h3 className="text-primary mb-4 text-lg font-bold" id="example-usage">
+          Example Usage
+        </h3>
         <div className="space-y-4">
           <div>
-            <h4 className="mb-2 font-medium">Input Example:</h4>
+            <h4 className="mb-2 font-medium" id="input-example">
+              Input Example:
+            </h4>
             <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-sm">
               {`{\n\t"zebra": 1,\n\t"apple": 2,\n\t"colors": ["red", "green", "blue"],\n\t"banana": {\n\t\t"yellow": true,\n\t\t"ripe": false\n\t}\n}`}
             </pre>
           </div>
 
           <div>
-            <h4 className="mb-2 font-medium">Output Example:</h4>
+            <h4 className="mb-2 font-medium" id="output-example">
+              Output Example:
+            </h4>
             <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-sm">
               {`{\n\t"apple": 2,\n\t"banana": {\n\t\t"ripe": false,\n\t\t"yellow": true\n\t},\n\t"colors": ["red", "green", "blue"],\n\t"zebra": 1\n}`}
             </pre>
@@ -65,7 +78,9 @@ export function InfoBlock(): JSX.Element {
       </section>
 
       <section>
-        <h3 className="text-primary mb-4 text-lg font-bold">Why Use This Tool</h3>
+        <h3 className="text-primary mb-4 text-lg font-bold" id="why-use-this-tool">
+          Why Use This Tool
+        </h3>
         <ul className="list-inside list-disc space-y-1 pl-4">
           <li>Create consistent JSON formatting for better version control.</li>
           <li>Easily compare JSON structures when keys are in a predictable order.</li>
@@ -74,9 +89,27 @@ export function InfoBlock(): JSX.Element {
           <li>Improve readability of complex nested JSON structures.</li>
         </ul>
       </section>
+      <FAQ>
+        <FAQItem heading="Why sort JSON keys?" headingId="why-sort-json-keys">
+          <p>
+            Sorting keys alphabetically makes files easier to read, compare, and manage in version control with fewer
+            merge conflicts.
+          </p>
+        </FAQItem>
+        <FAQItem heading="Does sorting affect functionality?" headingId="does-sorting-affect-functionality">
+          <p>No, JSON object key order does not affect functionality in most modern applications.</p>
+        </FAQItem>
+        <FAQItem heading="What does spare plain arrays mean?" headingId="what-does-spare-plain-arrays-mean">
+          <p>This preserves original array order when element order is meaningful, such as ranked lists.</p>
+        </FAQItem>
+        <FAQItem heading="What library is used?" headingId="what-library-is-used">
+          <p>
+            This tool uses <code>jsonabc</code> for alphabetically sorting JSON object keys with nested object support.
+          </p>
+        </FAQItem>
+      </FAQ>
 
-      <section>
-        <h3 className="text-primary mb-4 text-lg font-bold">Credits & Source</h3>
+      <Credits>
         <p>
           Maintained by{' '}
           <a
@@ -98,7 +131,7 @@ export function InfoBlock(): JSX.Element {
           </a>{' '}
           for JSON sorting functionality.
         </p>
-      </section>
+      </Credits>
     </div>
   );
 }
