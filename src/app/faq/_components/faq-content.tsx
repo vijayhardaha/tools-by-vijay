@@ -2,7 +2,7 @@
 import type { JSX, ReactNode } from 'react';
 import { useState } from 'react';
 
-import { PiPlusDuotone } from 'react-icons/pi';
+import { PiPlusBold } from 'react-icons/pi';
 
 import { PageContent } from '@/components/page/PageContent';
 import { PageHeader } from '@/components/page/PageHeader';
@@ -41,7 +41,7 @@ function FaqItem({ question, answer, defaultOpen = false }: FaqItemProps): JSX.E
         aria-expanded={isOpen}
       >
         <span className="text-base font-semibold text-gray-900">{question}</span>
-        <PiPlusDuotone
+        <PiPlusBold
           className={cn(
             'size-5 shrink-0 text-gray-400 transition-transform duration-300 ease-in-out',
             isOpen && 'rotate-45'
@@ -174,7 +174,7 @@ export function FaqContent(): JSX.Element {
         description="Everything you need to know about our free tools"
       />
       <PageContent>
-        <div className="mx-auto max-w-3xl space-y-3">
+        <div className="space-y-3">
           {faqs.map((faq, index) => (
             <FaqItem key={index} question={faq.question} answer={faq.answer} />
           ))}
