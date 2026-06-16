@@ -102,7 +102,7 @@ function SearchButton({ onClick }: { onClick: () => void }): JSX.Element {
         'focus-visible:ring-ring/50',
 
         // Layout
-        'inline-flex h-9 cursor-pointer items-center gap-1 rounded-xl border px-2 text-sm',
+        'inline-flex h-9 min-w-9 cursor-pointer items-center justify-center gap-1 rounded-xl border px-2 text-sm',
 
         // Appearance
         'border-gray-950/8 bg-gray-950/2 text-neutral-500',
@@ -119,8 +119,10 @@ function SearchButton({ onClick }: { onClick: () => void }): JSX.Element {
       aria-label="Search tools (Cmd+K)"
     >
       <PiMagnifyingGlassBold className="-ml-0.5 size-4 fill-gray-600 dark:fill-gray-500" />
-      <kbd className="hidden font-sans text-xs/4 text-gray-500 in-[.os-macos_&]:block dark:text-gray-400">⌘K</kbd>
-      <kbd className="hidden font-sans text-xs/4 text-gray-500 not-[.os-macos_&]:block dark:text-gray-400">Ctrl K</kbd>
+      <kbd className="hidden font-sans text-xs/4 text-gray-500 md:in-[.os-macos_&]:block dark:text-gray-400">⌘K</kbd>
+      <kbd className="hidden font-sans text-xs/4 text-gray-500 md:not-[.os-macos_&]:block dark:text-gray-400">
+        Ctrl K
+      </kbd>
     </button>
   );
 }

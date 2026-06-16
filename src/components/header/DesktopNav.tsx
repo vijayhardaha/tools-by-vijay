@@ -75,7 +75,7 @@ export function DesktopNav(): JSX.Element {
                 'text-muted-foreground hover:text-foreground',
 
                 // Layout
-                'inline-flex items-center gap-1 rounded-xl px-2 py-2 text-sm font-medium',
+                'inline-flex items-center gap-1 rounded-xl px-2 py-2 text-sm font-medium whitespace-nowrap',
 
                 // Focus
                 'focus-visible:ring-ring/50 outline-none focus-visible:ring-[3px]',
