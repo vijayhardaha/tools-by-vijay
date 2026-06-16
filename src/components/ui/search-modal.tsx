@@ -81,7 +81,7 @@ export function SearchModal({ data, maxResults = 5, open, onOpenChange }: Search
     () =>
       new Fuse(data, {
         keys: [
-          { name: 'name', weight: 2 },
+          { name: 'title', weight: 2 },
           { name: 'description', weight: 1 },
         ],
         threshold: 0.35,
