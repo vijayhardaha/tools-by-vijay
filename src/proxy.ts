@@ -22,7 +22,12 @@ const MAX_BODY_SIZE = 2_000_000;
 /**
  * Proxy function that guards API routes.
  *
- * Checks origin/referer against allowed origins and enforces a body size limit.
+ * - For mutating methods (POST, PUT, DELETE, PATCH): validates origin/referer
+ *   against allowed origins to prevent CSRF.
+ * - For safe methods (GET, HEAD): skips origin check directly-browsed URLs
+ *   (like OG images) that don't send origin/referer headers.
+ * - Enforces a body size limit on all requests.
+ *
  * Returns a 403 response for unknown origins and a 413 response for oversized bodies.
  *
  * @param {NextRequest} request - The incoming request object.
@@ -30,21 +35,26 @@ const MAX_BODY_SIZE = 2_000_000;
  * @returns {NextResponse | undefined} A response blocking the request, or NextResponse.next() to continue.
  */
 export function proxy(request: NextRequest): NextResponse | undefined {
+  const method = request.method;
   const origin = request.headers.get('origin') || '';
   const referer = request.headers.get('referer') || '';
-  const url = origin || referer;
 
-  // Block requests with no origin/referer
-  if (!url) {
-    return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
+  // Validate origin/referer for mutating requests only
+  if (['POST', 'PUT', 'DELETE', 'PATCH'].includes(method)) {
+    const url = origin || referer;
+
+    // Block mutating requests with no origin/referer
+    if (!url) {
+      return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
+    }
+
+    // Reject unknown origins
+    if (!ALLOWED_ORIGINS.some((allowed) => url.startsWith(allowed))) {
+      return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
+    }
   }
 
-  // Reject unknown origins
-  if (!ALLOWED_ORIGINS.some((allowed) => url.startsWith(allowed))) {
-    return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
-  }
-
-  // Check body size
+  // Check body size on all requests
   const contentLength = request.headers.get('content-length');
   if (contentLength && parseInt(contentLength, 10) > MAX_BODY_SIZE) {
     return NextResponse.json({ error: 'Request too large' }, { status: 413 });
