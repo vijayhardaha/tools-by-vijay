@@ -2,104 +2,120 @@ import type { JSX } from 'react';
 
 import { Credits } from '@/components/tools/tool-credits';
 import { FAQ, FAQItem } from '@/components/tools/tool-faq';
+
 /**
- * Provides information about the Text Case Changer Tool, including its purpose,
- * usage instructions, examples, and benefits.
+ * Comprehensive, SEO-optimized information about the Text Case Changer Tool.
  *
- * @returns {JSX.Element} The rendered component displaying tool information
+ * @returns {JSX.Element} The rendered info block component
  */
 export function InfoBlock(): JSX.Element {
   return (
-    <div className="space-y-8 md:space-y-12">
+    <div className="space-y-12">
       <section>
-        <h2 className="text-primary mb-4 text-2xl font-bold" id="about-text-case-changer">
-          About Text Case Changer
+        <h2 className="text-primary mb-4 text-2xl font-bold" id="what-is-text-case-changer-tool">
+          What Is the Text Case Changer Tool?
         </h2>
         <p className="mb-4">
-          The Text Case Changer tool helps you convert text into various cases such as camelCase, snake_case,
-          PascalCase, UPPERCASE, and lowercase. This tool is useful for developers and content creators who need
-          consistent text formatting.
+          The <strong>Text Case Changer</strong> is a free online utility that helps you instantly convert text between
+          various cases including camelCase, snake_case, PascalCase, UPPERCASE, lowercase, and more for programming and
+          content formatting.
         </p>
         <p className="mb-4">
-          All processing happens directly in your browser – your text is never sent to a server, ensuring privacy and
-          security when working with sensitive data.
+          The Text Case Changer processes your input text through JavaScript string transformation functions. It splits
+          text into words, then reassembles them according to your selected case convention. Each word is transformed
+          appropriately - capitalized, lowercased, or left as-is - then joined with the correct separator for the chosen
+          case.
         </p>
       </section>
 
       <section>
-        <h3 className="text-primary mb-4 text-lg font-bold" id="how-to-use-this-tool">
-          How to Use This Tool
-        </h3>
-        <ol className="list-decimal space-y-2 pl-6">
+        <h2 className="text-primary mb-4 text-2xl font-bold" id="text-case-changer-features">
+          Key Features
+        </h2>
+        <ul className="list-inside list-disc space-y-2 pl-4">
           <li>
-            <strong>Enter Your Text:</strong> Paste or type your text into the input area.
+            Support for 8+ case formats: camelCase, PascalCase, snake_case, SCREAMING_SNAKE_CASE, flatcase, UPPERCASE,
+            lowercase, and more
           </li>
-          <li>
-            <strong>Select Text Case:</strong> Choose the desired text case from the dropdown menu.
-          </li>
-          <li>
-            <strong>Convert:</strong> Click the “Convert” button to change the text case.
-          </li>
-          <li>
-            <strong>Copy Result:</strong> Use the copy button to copy the converted text.
-          </li>
-        </ol>
-      </section>
-
-      <section>
-        <h3 className="text-primary mb-4 text-lg font-bold" id="example-usage">
-          Example Usage
-        </h3>
-        <div className="space-y-4">
-          <div>
-            <h4 className="mb-2 font-medium" id="input-example">
-              Input Example:
-            </h4>
-            <pre className="bg-secondary overflow-x-auto rounded-xl p-4 text-sm">{`hello world\nexample text`}</pre>
-          </div>
-
-          <div>
-            <h4 className="mb-2 font-medium" id="output-example">
-              Output Example:
-            </h4>
-            <pre className="bg-secondary overflow-x-auto rounded-xl p-4 text-sm">{`helloWorld\nexampleText`}</pre>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <h3 className="text-primary mb-4 text-lg font-bold" id="why-use-this-tool">
-          Why Use This Tool
-        </h3>
-        <ul className="list-inside list-disc space-y-1 pl-4">
-          <li>Quickly convert text into various cases for consistent formatting.</li>
-          <li>Save time when working with repetitive text transformations.</li>
-          <li>Ensure proper case formatting for programming or content creation.</li>
-          <li>Prepare text for use in applications, scripts, or documents.</li>
+          <li>Reactive output updates as you type or change case selection</li>
+          <li>Multiline text support preserving line structure in output</li>
+          <li>Client-side processing with zero data transmission for privacy</li>
+          <li>One-click copy for immediate use in code and content</li>
+          <li>Clear and reset options for quick workflow iteration</li>
         </ul>
       </section>
 
+      <section>
+        <h2 className="text-primary mb-4 text-2xl font-bold" id="why-use-text-case-changer">
+          Why Use This Tool
+        </h2>
+        <ul className="list-inside list-disc space-y-2 pl-4">
+          <li>Eliminates manual text reformatting errors in code and documentation</li>
+          <li>Ensures consistent naming convention adherence across large projects</li>
+          <li>Speeds up development workflows with instant case conversion</li>
+          <li>Handles batch processing of multiple lines simultaneously</li>
+          <li>Supports both developer naming conventions and content formatting needs</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 className="text-primary mb-4 text-2xl font-bold" id="text-case-changer-use-cases">
+          Common Use Cases
+        </h2>
+        <ul className="list-inside list-disc space-y-2 pl-4">
+          <li>Converting variable names between camelCase and snake_case for cross-language projects</li>
+          <li>Formatting database column names and API response keys consistently</li>
+          <li>Preparing content for title case and sentence case formatting in publications</li>
+          <li>Transforming configuration keys and environment variable names to UPPERCASE</li>
+          <li>Normalizing user-generated input for consistent data storage and processing</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 className="text-primary mb-4 text-2xl font-bold" id="text-case-changer-technical-details">
+          Technical Details
+        </h2>
+        <p>
+          All case conversion happens client-side using JavaScript string manipulation. The tool splits input into
+          words, applies the selected case transformation rules, and rejoins them with appropriate separators. No
+          external libraries are required - all transformations use native JavaScript regular expressions and string
+          methods.
+        </p>
+      </section>
+
       <FAQ>
+        <FAQItem heading="Is this tool free to use?" headingId="is-this-tool-free">
+          <p>
+            Yes, the Text Case Changer is completely free to use with no signup, registration, or usage limits required.
+          </p>
+        </FAQItem>
+        <FAQItem heading="Is my data sent to a server?" headingId="is-my-data-sent-to-a-server">
+          <p>
+            <p>
+              No, all processing happens locally in your browser. Your data never leaves your device and is not stored
+              or logged anywhere.
+            </p>
+          </p>
+        </FAQItem>
         <FAQItem heading="What text cases are supported?" headingId="what-text-cases-are-supported">
           <p>
-            This tool supports Sentence case, lower case, UPPER CASE, Capitalized Case, Alternating Case, Title Case,
-            and Inverse Case.
+            This tool supports camelCase, PascalCase, snake_case, SCREAMING_SNAKE_CASE, flatcase, UPPERCASE, and
+            lowercase conversions.
           </p>
         </FAQItem>
-        <FAQItem
-          heading="What is the difference between Title and Capitalized Case?"
-          headingId="what-is-the-difference-between-title-and-capitalized-case"
-        >
-          <p>
-            Title Case capitalizes the first letter of every word. Capitalized Case capitalizes the first letter of each
-            line.
-          </p>
-        </FAQItem>
-        <FAQItem heading="Is my text sent to a server?" headingId="is-my-text-sent-to-a-server">
+        <FAQItem heading="Is my text sent to a server?" headingId="text-case-changer-is-my-text-sent-to-a-server">
           <p>No, all processing happens in your browser. Your data never leaves your device.</p>
         </FAQItem>
         <FAQItem heading="Can I convert multiple lines?" headingId="can-i-convert-multiple-lines">
           <p>Yes, the tool handles multiline text, preserving line structure in the output.</p>
+        </FAQItem>
+        <FAQItem heading="Can I use this tool offline?" headingId="can-i-use-this-tool-offline">
+          <p>
+            <p>
+              Yes, since all processing happens client-side in your browser, this tool works offline once the page has
+              loaded.
+            </p>
+          </p>
         </FAQItem>
       </FAQ>
 
@@ -114,7 +130,8 @@ export function InfoBlock(): JSX.Element {
           >
             Vijay Hardaha
           </a>
-          . This tool is built to simplify the process of converting text into various cases.
+          . This tool is built with modern web technologies and industry-standard open-source libraries to deliver
+          reliable, high-quality results.
         </p>
       </Credits>
     </div>

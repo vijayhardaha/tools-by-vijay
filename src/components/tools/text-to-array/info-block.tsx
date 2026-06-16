@@ -2,139 +2,114 @@ import type { JSX } from 'react';
 
 import { Credits } from '@/components/tools/tool-credits';
 import { FAQ, FAQItem } from '@/components/tools/tool-faq';
+
 /**
- * Provides information about the Text to Array Converter Tool, including its purpose,
- * usage instructions, and examples.
+ * Comprehensive, SEO-optimized information about the Text to Array Converter Tool.
  *
- * @returns {JSX.Element} The rendered component displaying tool information
+ * @returns {JSX.Element} The rendered info block component
  */
 export function InfoBlock(): JSX.Element {
   return (
-    <div className="space-y-8 md:space-y-12">
+    <div className="space-y-12">
       <section>
-        <h2 className="text-primary mb-4 text-2xl font-bold" id="about-text-to-array-converter">
-          About Text to Array Converter
+        <h2 className="text-primary mb-4 text-2xl font-bold" id="what-is-text-to-array-tool">
+          What Is the Text to Array Converter Tool?
         </h2>
         <p className="mb-4">
-          The Text to Array Converter is a utility tool that helps developers convert multiline text into various array
-          and object formats for different programming languages. This tool is especially useful for quickly
-          transforming lists, comma-separated values, or any line-based data into structured arrays for your code.
+          The <strong>Text to Array Converter</strong> is a free online utility that helps you convert plain text lists
+          into structured PHP, JavaScript, JSON, or WordPress arrays with configurable key generation and formatting
+          options.
         </p>
         <p className="mb-4">
-          All conversion happens directly in your browser – your text is never sent to a server, ensuring privacy and
-          security when working with sensitive data.
+          The Text to Array Converter parses multiline text input, applies preprocessing options (trimming, empty line
+          removal), then formats each line into the selected output format. For associative arrays, it generates keys
+          from the text values with optional slugification for clean, URL-friendly keys.
         </p>
       </section>
 
       <section>
-        <h3 className="text-primary mb-4 text-lg font-bold" id="how-to-use-this-tool">
-          How to Use This Tool
-        </h3>
-        <ol className="list-decimal space-y-2 pl-6">
-          <li>
-            <strong>Enter Your Text:</strong> Type or paste your multiline text into the input area. Each line will
-            become an element in the resulting array.
-          </li>
-          <li>
-            <strong>Configure Processing Options:</strong> Choose whether to trim whitespace from each line and whether
-            to remove empty lines from the input.
-          </li>
-          <li>
-            <strong>Select Output Format:</strong> Choose the programming language and format you want to convert to
-            (JSON, JavaScript, PHP, or WordPress).
-          </li>
-          <li>
-            <strong>Choose Array Structure:</strong> Pick how you want your data structured:
-            <ul className="list-disc pt-2 pl-6">
-              <li>
-                <strong>Simple:</strong> Just the values in a basic array
-              </li>
-              <li>
-                <strong>Numeric:</strong> Arrays containing both ID and text value
-              </li>
-              <li>
-                <strong>Associative:</strong> Key-value pairs with slugified keys or numeric keys
-              </li>
-            </ul>
-          </li>
-          <li>
-            <strong>Enable Slugified Keys:</strong> For associative arrays, you can enable this feature to automatically
-            generate clean, URL-friendly keys from the line text.
-          </li>
-          <li>
-            <strong>Convert:</strong> Click the “Convert” button to generate your output.
-          </li>
-          <li>
-            <strong>Copy Result:</strong> Use the copy button to copy the result to your clipboard.
-          </li>
-        </ol>
-      </section>
-
-      <section>
-        <h3 className="text-primary mb-4 text-lg font-bold" id="example-usage">
-          Example Usage
-        </h3>
-        <div className="space-y-4">
-          <div>
-            <h4 className="mb-2 font-medium" id="input-example">
-              Input Example:
-            </h4>
-            <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-sm">
-              {`United States\nCanada\nUnited Kingdom\nAustralia`}
-            </pre>
-          </div>
-
-          <div>
-            <h4 className="mb-2 font-medium" id="output-examples">
-              Output Examples:
-            </h4>
-            <div className="space-y-4">
-              <div>
-                <h5 className="text-sm font-medium" id="json-simple">
-                  JSON (Simple):
-                </h5>
-                <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-sm">
-                  {`[\n\t"United States",\n\t"Canada",\n\t"United Kingdom",\n\t"Australia"\n]`}
-                </pre>
-              </div>
-
-              <div>
-                <h5 className="text-sm font-medium" id="javascript-array-associative-with-slugified-keys">
-                  JavaScript Array (Associative with Slugified Keys):
-                </h5>
-                <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-sm">
-                  {`const textArray = [\n\t{\n\t\t"key": "united_states",\n\t\t"value": "United States"\n\t},\n\t{\n\t\t"key": "canada",\n\t\t"value": "Canada"\n\t},\n\t{\n\t\t"key": "united_kingdom",\n\t\t"value": "United Kingdom"\n\t},\n\t{\n\t\t"key": "australia",\n\t\t"value": "Australia"\n\t}\n];`}
-                </pre>
-              </div>
-
-              <div>
-                <h5 className="text-sm font-medium" id="php-array-numeric">
-                  PHP Array (Numeric):
-                </h5>
-                <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-sm">
-                  {`<?php\n$data = array(\n\t1 => 'United States',\n\t2 => 'Canada',\n\t3 => 'United Kingdom',\n\t4 => 'Australia'\n);`}
-                </pre>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <h3 className="text-primary mb-4 text-lg font-bold" id="why-use-this-tool">
-          Why Use This Tool
-        </h3>
-        <ul className="list-inside list-disc space-y-1 pl-4">
-          <li>Convert any line-based text into structured data arrays quickly.</li>
-          <li>Transform plain lists into code-ready arrays for immediate use.</li>
-          <li>Prepare data from spreadsheets or text files for use in your applications.</li>
-          <li>Generate slugified keys automatically for cleaner code and better compatibility.</li>
-          <li>Format text data for use in JavaScript, PHP, or WordPress applications.</li>
-          <li>Process and clean up text data by trimming whitespace and removing empty lines.</li>
+        <h2 className="text-primary mb-4 text-2xl font-bold" id="text-to-array-features">
+          Key Features
+        </h2>
+        <ul className="list-inside list-disc space-y-2 pl-4">
+          <li>Multi-format output: JSON, JavaScript arrays, JavaScript objects, PHP arrays, and WordPress arrays</li>
+          <li>Three array structures: simple values, numeric with IDs, and associative key-value pairs</li>
+          <li>Optional slugified key generation for clean, consistent associative array keys</li>
+          <li>Text preprocessing with trimming and empty line removal options</li>
+          <li>WordPress output with __() translation function wrapper for internationalization</li>
+          <li>One-click copy for direct use in code development</li>
         </ul>
       </section>
 
+      <section>
+        <h2 className="text-primary mb-4 text-2xl font-bold" id="why-use-text-to-array">
+          Why Use This Tool
+        </h2>
+        <ul className="list-inside list-disc space-y-2 pl-4">
+          <li>Eliminates manual array construction for data migration and platform transitions</li>
+          <li>Saves hours of formatting time when converting between data representation formats</li>
+          <li>Provides WordPress-ready output with translation function integration</li>
+          <li>Produces consistent, readable array formatting following language best practices</li>
+          <li>Supports multiple output targets from a single text input interface</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 className="text-primary mb-4 text-2xl font-bold" id="text-to-array-use-cases">
+          Common Use Cases
+        </h2>
+        <ul className="list-inside list-disc space-y-2 pl-4">
+          <li>Converting CSV and text exports into structured JSON for API development</li>
+          <li>Transforming configuration lists into PHP arrays for WordPress theme and plugin development</li>
+          <li>Generating JavaScript array constants for front-end application development</li>
+          <li>Creating test data arrays in multiple formats for cross-platform testing</li>
+          <li>Building dropdown option arrays and select menu data structures for web forms</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 className="text-primary mb-4 text-2xl font-bold" id="text-to-array-technical-details">
+          Technical Details
+        </h2>
+        <p>
+          The tool processes text entirely client-side. It uses{' '}
+          <a
+            href="https://www.npmjs.com/package/slugify"
+            className="font-medium text-pink-500 underline hover:no-underline"
+            target="_blank"
+            rel="noreferrer"
+          >
+            slugify
+          </a>{' '}
+          and{' '}
+          <a
+            href="https://www.npmjs.com/package/latinize"
+            className="font-medium text-pink-500 underline hover:no-underline"
+            target="_blank"
+            rel="noreferrer"
+          >
+            latinize
+          </a>{' '}
+          for key generation in associative arrays. Output formatting uses custom JavaScript logic for each target
+          language, applying proper syntax, indentation, and language-specific conventions.
+        </p>
+      </section>
+
       <FAQ>
+        <FAQItem heading="Is this tool free to use?" headingId="is-this-tool-free">
+          <p>
+            Yes, the Text to Array Converter is completely free to use with no signup, registration, or usage limits
+            required.
+          </p>
+        </FAQItem>
+        <FAQItem heading="Is my data sent to a server?" headingId="is-my-data-sent-to-a-server">
+          <p>
+            <p>
+              No, all processing happens locally in your browser. Your data never leaves your device and is not stored
+              or logged anywhere.
+            </p>
+          </p>
+        </FAQItem>
         <FAQItem heading="What formats can I convert to?" headingId="what-formats-can-i-convert-to">
           <p>Convert text to JSON arrays, JavaScript arrays, PHP arrays, and WordPress-compatible PHP arrays.</p>
         </FAQItem>
@@ -149,12 +124,17 @@ export function InfoBlock(): JSX.Element {
         </FAQItem>
         <FAQItem heading="What are slugified keys?" headingId="what-are-slugified-keys">
           <p>
-            Slugified keys convert values to URL-friendly format (e.g., &quot;United States&quot; becomes
-            &quot;united_states&quot;).
+            Slugified keys convert values to URL-friendly format, for example &quot;United States&quot; becomes
+            &quot;united_states&quot;.
           </p>
         </FAQItem>
-        <FAQItem heading="Can I use this for large datasets?" headingId="can-i-use-this-for-large-datasets">
-          <p>Yes, all processing happens client-side with no server limits on input size.</p>
+        <FAQItem heading="Can I use this tool offline?" headingId="can-i-use-this-tool-offline">
+          <p>
+            <p>
+              Yes, since all processing happens client-side in your browser, this tool works offline once the page has
+              loaded.
+            </p>
+          </p>
         </FAQItem>
       </FAQ>
 
@@ -169,8 +149,8 @@ export function InfoBlock(): JSX.Element {
           >
             Vijay Hardaha
           </a>
-          . This tool is built with web developers in mind to streamline the process of working with text data in
-          different programming environments.
+          . This tool is built with modern web technologies and industry-standard open-source libraries to deliver
+          reliable, high-quality results.
         </p>
       </Credits>
     </div>

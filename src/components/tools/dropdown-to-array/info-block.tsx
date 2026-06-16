@@ -2,146 +2,97 @@ import type { JSX } from 'react';
 
 import { Credits } from '@/components/tools/tool-credits';
 import { FAQ, FAQItem } from '@/components/tools/tool-faq';
+
 /**
- * Provides information about the Dropdown to Array Converter tool, including its purpose,
- * usage instructions, and examples.
+ * Comprehensive, SEO-optimized information about the Dropdown to Array Converter Tool.
  *
- * @returns {JSX.Element} The rendered component displaying tool information
+ * @returns {JSX.Element} The rendered info block component
  */
 export function InfoBlock(): JSX.Element {
   return (
-    <div className="space-y-8 md:space-y-12">
+    <div className="space-y-12">
       <section>
-        <h2 className="text-primary mb-4 text-2xl font-bold" id="about-dropdown-to-array-converter">
-          About Dropdown to Array Converter
+        <h2 className="text-primary mb-4 text-2xl font-bold" id="what-is-dropdown-to-array-tool">
+          What Is the Dropdown to Array Converter Tool?
         </h2>
         <p className="mb-4">
-          The Dropdown to Array Converter is a utility tool that helps developers convert HTML select/dropdown elements
-          into various array and object formats for different programming languages. This tool saves time when working
-          with form elements across platforms, allowing you to quickly transform dropdown options into usable data
-          structures.
+          The <strong>Dropdown to Array Converter</strong> is a free online utility that helps you transform HTML select
+          dropdown options into structured JSON, JavaScript, PHP, or WordPress arrays, eliminating manual data entry for
+          form migration.
         </p>
         <p className="mb-4">
-          All conversion happens directly in your browser – your HTML code is never sent to a server, ensuring privacy
-          and security when working with sensitive data.
+          The Dropdown to Array Converter parses HTML select element markup, extracting option values and display text
+          from option tags. It then formats the extracted data into your chosen output format and structure, with
+          options for slugified keys and multi-language output.
         </p>
       </section>
 
       <section>
-        <h3 className="text-primary mb-4 text-lg font-bold" id="how-to-use-this-tool">
-          How to Use This Tool
-        </h3>
-        <ol className="list-decimal space-y-2 pl-6">
-          <li>
-            <strong>Paste Your HTML:</strong> Copy and paste your HTML select element with options into the input area.
-            You can paste a complete select element or just the option tags.
-          </li>
-          <li>
-            <strong>Select Output Format:</strong> Choose the programming language and format you want to convert to
-            (JSON, JavaScript, PHP, or WordPress).
-          </li>
-          <li>
-            <strong>Choose Array Structure:</strong> Pick how you want your data structured:
-            <ul className="list-disc pt-2 pl-6">
-              <li>
-                <strong>Associative:</strong> Object/array with value as key and text as value
-              </li>
-              <li>
-                <strong>Numeric:</strong> Arrays containing both ID and text value
-              </li>
-              <li>
-                <strong>Simple:</strong> Just the text values in an array
-              </li>
-            </ul>
-          </li>
-          <li>
-            <strong>Enable Slugified Keys:</strong> Optionally, you can enable this feature to automatically generate
-            clean, URL-friendly keys from the option values instead of using the raw values, which is especially useful
-            for associative structures.
-          </li>
-          <li>
-            <strong>Convert:</strong> Click the “Convert” button to generate your output.
-          </li>
-          <li>
-            <strong>Copy Result:</strong> Use the copy button to copy the result to your clipboard.
-          </li>
-        </ol>
-      </section>
-
-      <section>
-        <h3 className="text-primary mb-4 text-lg font-bold" id="example-usage">
-          Example Usage
-        </h3>
-        <div className="space-y-4">
-          <div>
-            <h4 className="mb-2 font-medium" id="input-example">
-              Input Example:
-            </h4>
-            <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-sm">
-              {`<select name="country">\n<option value="us">United States</option>\n<option value="ca">Canada</option>\n<option value="uk">United Kingdom</option>\n<option value="au">Australia</option>\nselect>`}
-            </pre>
-          </div>
-
-          <div>
-            <h4 className="mb-2 font-medium" id="output-examples">
-              Output Examples:
-            </h4>
-            <div className="space-y-4">
-              <div>
-                <h5 className="text-sm font-medium" id="json-associative-output">
-                  JSON Associative Output:
-                </h5>
-                <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-sm">
-                  {`[\n\t{\n\t\t"key": "us",\n\t\t"value": "United States"\n\t},\n\t{\n\t\t"key": "ca",\n\t\t"value": "Canada"\n\t},\n\t{\n\t\t"key": "uk",\n\t\t"value": "United Kingdom"\n\t},\n\t{\n\t\t"key": "au",\n\t\t"value": "Australia"\n\t}\n]`}
-                </pre>
-              </div>
-
-              <div>
-                <h5 className="text-sm font-medium" id="javascript-array-associative-with-slugified-keys">
-                  JavaScript Array (Associative with Slugified Keys):
-                </h5>
-                <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-sm">
-                  {`const dropdownArray = [\n\t{\n\t\t"key": "us",\n\t\t"value": "United States"\n\t},\n\t{\n\t\t"key": "ca",\n\t\t"value": "Canada"\n\t},\n\t{\n\t\t"key": "uk",\n\t\t"value": "United Kingdom"\n\t},\n\t{\n\t\t"key": "au",\n\t\t"value": "Australia"\n\t}\n];`}
-                </pre>
-              </div>
-
-              <div>
-                <h5 className="text-sm font-medium" id="php-array-simple">
-                  PHP Array (Simple):
-                </h5>
-                <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-sm">
-                  {`<?php\n$data = array(\n\t'United States',\n\t'Canada',\n\t'United Kingdom',\n\t'Australia'\n);`}
-                </pre>
-              </div>
-
-              <div>
-                <h5 className="text-sm font-medium" id="wordpress-select-options-associative">
-                  WordPress Select Options (Associative):
-                </h5>
-                <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-sm">
-                  {`<?php\n$data = array(\n\t'us' => __( 'United States', 'text-domain' ),\n\t'ca' => __( 'Canada', 'text-domain' ),\n\t'uk' => __( 'United Kingdom', 'text-domain' ),\n\t'au' => __( 'Australia', 'text-domain' )\n);`}
-                </pre>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <h3 className="text-primary mb-4 text-lg font-bold" id="why-use-this-tool">
-          Why Use This Tool
-        </h3>
-        <ul className="list-inside list-disc space-y-1 pl-4">
-          <li>Quickly convert HTML dropdowns to usable data structures for your code.</li>
-          <li>Save time when migrating between platforms or languages.</li>
-          <li>Generate slugified keys automatically for cleaner code and better compatibility.</li>
-          <li>Easily format data for use in JavaScript, PHP, or WordPress applications.</li>
-          <li>Transform user interface elements directly into data structures for API integration.</li>
-          <li>Generate WordPress-ready select option arrays with proper formatting.</li>
+        <h2 className="text-primary mb-4 text-2xl font-bold" id="dropdown-to-array-features">
+          Key Features
+        </h2>
+        <ul className="list-inside list-disc space-y-2 pl-4">
+          <li>HTML select element parsing with automatic value and text extraction</li>
+          <li>Multi-format output: JSON, JavaScript, PHP, and WordPress arrays</li>
+          <li>Three array structures: simple, numeric with IDs, and associative key-value pairs</li>
+          <li>Optional slugified key generation for clean associative keys</li>
+          <li>WordPress output with __() translation function wrapper</li>
+          <li>One-click copy for direct integration into codebases</li>
         </ul>
       </section>
 
+      <section>
+        <h2 className="text-primary mb-4 text-2xl font-bold" id="why-use-dropdown-to-array">
+          Why Use This Tool
+        </h2>
+        <ul className="list-inside list-disc space-y-2 pl-4">
+          <li>Eliminates manual transcription of dropdown options during form migration</li>
+          <li>Saves development time when converting HTML forms between platforms and frameworks</li>
+          <li>Provides WordPress-ready select option arrays with proper internationalization formatting</li>
+          <li>Maintains both value and display text relationships from original dropdown options</li>
+          <li>Supports multiple output targets from a single HTML input</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 className="text-primary mb-4 text-2xl font-bold" id="dropdown-to-array-use-cases">
+          Common Use Cases
+        </h2>
+        <ul className="list-inside list-disc space-y-2 pl-4">
+          <li>Migrating HTML forms between different CMS platforms and frameworks</li>
+          <li>Converting WordPress select dropdown configurations into PHP array declarations</li>
+          <li>Extracting dropdown data from legacy HTML for use in modern JavaScript applications</li>
+          <li>Transforming HTML select options into JSON API response formats</li>
+          <li>Building reusable dropdown data structures from existing interface components</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 className="text-primary mb-4 text-2xl font-bold" id="dropdown-to-array-technical-details">
+          Technical Details
+        </h2>
+        <p>
+          The parser uses regular expressions to extract option value attributes and text content from HTML option tags.
+          It handles both single and double quoted attribute values. Output formatting applies language-specific syntax
+          for each target format, with optional slugification for associative keys.
+        </p>
+      </section>
+
       <FAQ>
+        <FAQItem heading="Is this tool free to use?" headingId="is-this-tool-free">
+          <p>
+            Yes, the Dropdown to Array Converter is completely free to use with no signup, registration, or usage limits
+            required.
+          </p>
+        </FAQItem>
+        <FAQItem heading="Is my data sent to a server?" headingId="is-my-data-sent-to-a-server">
+          <p>
+            <p>
+              No, all processing happens locally in your browser. Your data never leaves your device and is not stored
+              or logged anywhere.
+            </p>
+          </p>
+        </FAQItem>
         <FAQItem heading="What is a dropdown converter?" headingId="what-is-a-dropdown-converter">
           <p>
             This tool extracts option elements from HTML select dropdowns and converts them into structured arrays for
@@ -156,10 +107,12 @@ export function InfoBlock(): JSX.Element {
         <FAQItem heading="What output formats are available?" headingId="what-output-formats-are-available">
           <p>Output formats include JSON, JavaScript, PHP, and WordPress arrays with translation function support.</p>
         </FAQItem>
-        <FAQItem heading="What are slugified keys?" headingId="what-are-slugified-keys">
+        <FAQItem heading="Can I use this tool offline?" headingId="can-i-use-this-tool-offline">
           <p>
-            For associative arrays, option values are transformed into clean keys (e.g., &quot;New York&quot; becomes
-            &quot;new_york&quot;).
+            <p>
+              Yes, since all processing happens client-side in your browser, this tool works offline once the page has
+              loaded.
+            </p>
           </p>
         </FAQItem>
       </FAQ>
@@ -175,8 +128,8 @@ export function InfoBlock(): JSX.Element {
           >
             Vijay Hardaha
           </a>
-          . This tool is built with web developers in mind to streamline the process of working with dropdown menus
-          across different programming environments.
+          . This tool is built with modern web technologies and industry-standard open-source libraries to deliver
+          reliable, high-quality results.
         </p>
       </Credits>
     </div>

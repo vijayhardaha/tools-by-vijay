@@ -2,97 +2,113 @@ import type { JSX } from 'react';
 
 import { Credits } from '@/components/tools/tool-credits';
 import { FAQ, FAQItem } from '@/components/tools/tool-faq';
+
 /**
- * Provides detailed information about the Barcode Tool,
- * including its purpose, benefits, usage instructions, and practical examples.
+ * Comprehensive, SEO-optimized information about the Barcode Generator Tool.
  *
- * @returns {JSX.Element} The rendered component displaying tool information
+ * @returns {JSX.Element} The rendered info block component
  */
 export function InfoBlock(): JSX.Element {
   return (
-    <div className="space-y-8 md:space-y-12">
+    <div className="space-y-12">
       <section>
-        <h2 className="mb-4 text-xl font-bold" id="barcode-tool-generate-barcodes-instantly">
-          Barcode Tool: Generate Barcodes Instantly
+        <h2 className="text-primary mb-4 text-2xl font-bold" id="what-is-barcode-generator-tool">
+          What Is the Barcode Generator Tool?
         </h2>
         <p className="mb-4">
-          The <strong>Barcode Tool</strong> is an easy-to-use online utility designed to help you generate
-          professional-quality barcodes from any text, number, or data input. This tool supports multiple barcode
-          formats, allowing you to customize the output for your specific needs. Once generated, you can instantly
-          download the barcode image to incorporate into your projects, labels, inventory systems, or marketing
-          materials.
+          The <strong>Barcode Generator</strong> is a free online utility that helps you create industry-standard
+          Code128 barcodes for product tracking, inventory management, and logistics applications with high-quality
+          output.
         </p>
         <p className="mb-4">
-          Built with efficiency and user privacy in mind, all barcode generation happens instantly without sending your
-          data to any server, keeping your information secure.
+          The Barcode Generator uses the{' '}
+          <a
+            href="https://www.npmjs.com/package/jsbarcode"
+            className="font-medium text-pink-500 underline hover:no-underline"
+            target="_blank"
+            rel="noreferrer"
+          >
+            JsBarcode
+          </a>{' '}
+          library to render Code128 barcodes. It encodes your alphanumeric input into the Code128 symbology, calculating
+          check digits and rendering the barcode pattern as an SVG element for crisp, resolution-independent output.
         </p>
       </section>
 
       <section>
-        <h2 className="mb-4 text-xl font-bold" id="benefits-of-using-the-barcode-tool">
-          Benefits of Using the Barcode Tool
+        <h2 className="text-primary mb-4 text-2xl font-bold" id="barcode-generator-features">
+          Key Features
         </h2>
         <ul className="list-inside list-disc space-y-2 pl-4">
-          <li>Generate high-quality barcodes suitable for print or digital use.</li>
-          <li>Supports various common barcode formats including Code128, UPC, EAN, QR codes, and more.</li>
-          <li>Simplifies inventory, retail, and logistics operations by creating scannable codes easily.</li>
-          <li>Customize size, format, and data to fit your specific application.</li>
-          <li>Instant download feature saves you time in integrating barcodes into your workflow.</li>
-          <li>Process entirely in your browser, ensuring your data never leaves your device.</li>
+          <li>Code128 barcode generation supporting full alphanumeric input</li>
+          <li>SVG-based rendering for crisp, scalable barcode images at any resolution</li>
+          <li>Instant generation as you type with no button clicks required</li>
+          <li>Downloadable barcode for print and digital integration</li>
+          <li>Complete client-side processing with no server communication</li>
+          <li>One-click copy for immediate use in documents and labels</li>
         </ul>
       </section>
 
       <section>
-        <h2 className="mb-4 text-xl font-bold" id="how-to-use-the-barcode-tool">
-          How to Use the Barcode Tool
-        </h2>
-        <ol className="list-inside list-decimal space-y-2 pl-4">
-          <li>
-            <strong>Enter Your Data:</strong> Type or paste the text, number, or data you want to encode into the
-            barcode input field.
-          </li>
-          <li>
-            <strong>Select Barcode Format:</strong> Choose from supported barcode types such as Code128, UPC, EAN, or QR
-            code based on your needs.
-          </li>
-          <li>
-            <strong>Customize (Optional):</strong> Adjust size, resolution, or color settings if available to match your
-            design requirements.
-          </li>
-          <li>
-            <strong>Generate Barcode:</strong> Click the “Generate” button to create the barcode image instantly.
-          </li>
-          <li>
-            <strong>Download or Copy:</strong> Save the barcode image to your device or copy it for use in your
-            documents, labels, or websites.
-          </li>
-        </ol>
-      </section>
-
-      <section>
-        <h2 className="mb-4 text-xl font-bold" id="why-use-barcodes">
-          Why Use Barcodes?
+        <h2 className="text-primary mb-4 text-2xl font-bold" id="why-use-barcode-generator">
+          Why Use This Tool
         </h2>
         <ul className="list-inside list-disc space-y-2 pl-4">
-          <li>Efficiently encode and represent data in a machine-readable format.</li>
-          <li>Widely adopted in retail, manufacturing, logistics, healthcare, and asset tracking.</li>
-          <li>Speeds up scanning processes, reducing errors and manual data entry.</li>
-          <li>Improves inventory accuracy and operational workflow.</li>
-          <li>Supports marketing and product identification with scannable codes.</li>
+          <li>Produces industry-standard barcodes compatible with retail and logistics scanning systems</li>
+          <li>Eliminates barcode font and software costs with browser-based generation</li>
+          <li>Delivers print-quality SVG output suitable for labels, packaging, and documentation</li>
+          <li>Supports both numeric and alphanumeric encoding for flexible data representation</li>
+          <li>Operates entirely in-browser for complete data privacy and offline availability</li>
         </ul>
       </section>
 
       <section>
-        <h2 className="mb-4 text-xl font-bold" id="example-usage">
-          Example Usage
+        <h2 className="text-primary mb-4 text-2xl font-bold" id="barcode-generator-use-cases">
+          Common Use Cases
         </h2>
-        <p className="mb-4">
-          For instance, you can generate a <em>Code128</em> barcode for a product SKU or a <em>QR code</em> containing a
-          URL for marketing campaigns. Just input your data, choose the format, and download the barcode instantly.
+        <ul className="list-inside list-disc space-y-2 pl-4">
+          <li>Generating product barcodes for retail inventory management and point-of-sale systems</li>
+          <li>Creating asset tracking labels for equipment, tools, and IT hardware</li>
+          <li>Producing shipping labels with scannable tracking barcodes for logistics</li>
+          <li>Encoding serial numbers and SKU codes for warehouse management systems</li>
+          <li>Generating library barcodes for book checkout and catalog management</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 className="text-primary mb-4 text-2xl font-bold" id="barcode-generator-technical-details">
+          Technical Details
+        </h2>
+        <p>
+          This tool uses the{' '}
+          <a
+            href="https://www.npmjs.com/package/jsbarcode"
+            className="font-medium text-pink-500 underline hover:no-underline"
+            target="_blank"
+            rel="noreferrer"
+          >
+            JsBarcode
+          </a>{' '}
+          library for SVG-based barcode rendering. Code128 is a high-density linear barcode symbology that encodes the
+          full ASCII character set. The library generates the barcode pattern, calculates the check digit, and renders
+          the result as a clean, scalable SVG element.
         </p>
       </section>
 
       <FAQ>
+        <FAQItem heading="Is this tool free to use?" headingId="is-this-tool-free">
+          <p>
+            Yes, the Barcode Generator is completely free to use with no signup, registration, or usage limits required.
+          </p>
+        </FAQItem>
+        <FAQItem heading="Is my data sent to a server?" headingId="is-my-data-sent-to-a-server">
+          <p>
+            <p>
+              No, all processing happens locally in your browser. Your data never leaves your device and is not stored
+              or logged anywhere.
+            </p>
+          </p>
+        </FAQItem>
         <FAQItem heading="What barcode formats are supported?" headingId="what-barcode-formats-are-supported">
           <p>
             This tool generates Code128 barcodes, one of the most widely used formats supporting alphanumeric data for
@@ -108,8 +124,13 @@ export function InfoBlock(): JSX.Element {
             systems.
           </p>
         </FAQItem>
-        <FAQItem heading="Is my data sent to a server?" headingId="is-my-data-sent-to-a-server">
-          <p>Your input data is encoded into the URL. No data is stored or logged by this tool.</p>
+        <FAQItem heading="Can I use this tool offline?" headingId="can-i-use-this-tool-offline">
+          <p>
+            <p>
+              Yes, since all processing happens client-side in your browser, this tool works offline once the page has
+              loaded.
+            </p>
+          </p>
         </FAQItem>
       </FAQ>
 
@@ -124,8 +145,8 @@ export function InfoBlock(): JSX.Element {
           >
             Vijay Hardaha
           </a>
-          . This tool leverages reliable open-source barcode generation libraries to ensure fast, accurate, and
-          customizable barcode creation for all your needs.
+          . This tool is built with modern web technologies and industry-standard open-source libraries to deliver
+          reliable, high-quality results.
         </p>
       </Credits>
     </div>

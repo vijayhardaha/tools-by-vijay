@@ -2,95 +2,97 @@ import type { JSX } from 'react';
 
 import { Credits } from '@/components/tools/tool-credits';
 import { FAQ, FAQItem } from '@/components/tools/tool-faq';
+
 /**
- * Provides information about the Duplicate Line Removal tool, including its purpose,
- * usage instructions, and examples.
+ * Comprehensive, SEO-optimized information about the Duplicate Line Remover Tool.
  *
- * @returns {JSX.Element} The rendered component displaying tool information
+ * @returns {JSX.Element} The rendered info block component
  */
 export function InfoBlock(): JSX.Element {
   return (
-    <div className="space-y-8 md:space-y-12">
+    <div className="space-y-12">
       <section>
-        <h2 className="text-primary mb-4 text-2xl font-bold" id="about-duplicate-line-removal">
-          About Duplicate Line Removal
+        <h2 className="text-primary mb-4 text-2xl font-bold" id="what-is-duplicate-line-removal-tool">
+          What Is the Duplicate Line Remover Tool?
         </h2>
         <p className="mb-4">
-          The Duplicate Line Removal tool helps you clean up text by removing duplicate lines. It also provides options
-          to sort the lines alphabetically, by ASCII values, or leave them unsorted. This tool is useful for text
-          processing, data cleanup, and ensuring unique entries in lists.
+          The <strong>Duplicate Line Remover</strong> is a free online utility that helps you clean your datasets by
+          removing repeated lines while maintaining original order and ensuring each entry is unique with configurable
+          sorting options.
         </p>
         <p className="mb-4">
-          All processing happens directly in your browser – your data is never sent to a server, ensuring privacy and
-          security when working with sensitive information.
+          The Duplicate Line Remover processes each line through a Set-based deduplication algorithm. Lines are trimmed
+          of whitespace, then compared for equality. After removing duplicates, lines can be sorted alphabetically, by
+          ASCII values, or left in their original order. An optional reverse sort is available for descending order.
         </p>
       </section>
 
       <section>
-        <h3 className="text-primary mb-4 text-lg font-bold" id="how-to-use-this-tool">
-          How to Use This Tool
-        </h3>
-        <ol className="list-decimal space-y-2 pl-6">
-          <li>
-            <strong>Enter Your Text:</strong> Paste or type your text into the input area.
-          </li>
-          <li>
-            <strong>Configure Options:</strong>
-            <ul className="list-disc pt-2 pl-6">
-              <li>
-                <strong>Type of Sorting:</strong> Choose between no sorting, alphabetical sorting, or ASCII sorting.
-              </li>
-              <li>
-                <strong>Reverse Sorting:</strong> Enable this option to reverse the sorting order (Z-A or 9-0).
-              </li>
-            </ul>
-          </li>
-          <li>
-            <strong>Process Text:</strong> Click the “Process” button to remove duplicate lines and apply the selected
-            sorting options.
-          </li>
-          <li>
-            <strong>Copy Result:</strong> Copy the processed text to your clipboard for further use.
-          </li>
-        </ol>
-      </section>
-
-      <section>
-        <h3 className="text-primary mb-4 text-lg font-bold" id="example-usage">
-          Example Usage
-        </h3>
-        <div className="space-y-4">
-          <div>
-            <h4 className="mb-2 font-medium" id="input-example">
-              Input Example:
-            </h4>
-            <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-sm">
-              {`apple\nbanana\napple\norange\nbanana`}
-            </pre>
-          </div>
-
-          <div>
-            <h4 className="mb-2 font-medium" id="output-example-alphabetical-sort">
-              Output Example (Alphabetical Sort):
-            </h4>
-            <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-sm">{`apple\nbanana\norange`}</pre>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <h3 className="text-primary mb-4 text-lg font-bold" id="why-use-this-tool">
-          Why Use This Tool
-        </h3>
-        <ul className="list-inside list-disc space-y-1 pl-4">
-          <li>Remove duplicate lines from text files or lists.</li>
-          <li>Sort text data for better readability and organization.</li>
-          <li>Prepare unique entries for further processing or analysis.</li>
-          <li>Clean up messy data with minimal effort.</li>
+        <h2 className="text-primary mb-4 text-2xl font-bold" id="duplicate-line-removal-features">
+          Key Features
+        </h2>
+        <ul className="list-inside list-disc space-y-2 pl-4">
+          <li>Efficient duplicate removal preserving original line order or with sorting</li>
+          <li>Three sorting options: no sort, alphabetical (locale-aware), and ASCII (byte-order)</li>
+          <li>Reverse sort toggle for descending order in any sort mode</li>
+          <li>Whitespace trimming before comparison for accurate deduplication</li>
+          <li>Instant client-side processing with no data transmission</li>
+          <li>Clear and reset options for quick workflow iteration</li>
         </ul>
       </section>
 
+      <section>
+        <h2 className="text-primary mb-4 text-2xl font-bold" id="why-use-duplicate-line-removal">
+          Why Use This Tool
+        </h2>
+        <ul className="list-inside list-disc space-y-2 pl-4">
+          <li>Eliminates redundant entries from datasets, lists, and configuration files</li>
+          <li>Ensures data integrity by maintaining only unique entries</li>
+          <li>Organizes data with flexible sorting options for improved readability</li>
+          <li>Accelerates data cleaning workflows that would take hours manually</li>
+          <li>Protects sensitive data with fully client-side processing</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 className="text-primary mb-4 text-2xl font-bold" id="duplicate-line-removal-use-cases">
+          Common Use Cases
+        </h2>
+        <ul className="list-inside list-disc space-y-2 pl-4">
+          <li>Cleaning email lists by removing duplicate addresses before marketing campaigns</li>
+          <li>Deduplicating product SKUs, part numbers, and inventory lists</li>
+          <li>Removing repeated entries from CSV exports and database dumps</li>
+          <li>Cleaning configuration files and environment variable lists</li>
+          <li>Preparing unique entries for dropdown menus, selectors, and form options</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 className="text-primary mb-4 text-2xl font-bold" id="duplicate-line-removal-technical-details">
+          Technical Details
+        </h2>
+        <p>
+          The deduplication algorithm uses JavaScript Set objects for O(n) lookup performance. Lines are trimmed of
+          surrounding whitespace before comparison to prevent false duplicates from formatting differences. The sorting
+          uses either localeCompare for alphabetical ordering or native string comparison for ASCII ordering.
+        </p>
+      </section>
+
       <FAQ>
+        <FAQItem heading="Is this tool free to use?" headingId="is-this-tool-free">
+          <p>
+            Yes, the Duplicate Line Remover is completely free to use with no signup, registration, or usage limits
+            required.
+          </p>
+        </FAQItem>
+        <FAQItem heading="Is my data sent to a server?" headingId="is-my-data-sent-to-a-server">
+          <p>
+            <p>
+              No, all processing happens locally in your browser. Your data never leaves your device and is not stored
+              or logged anywhere.
+            </p>
+          </p>
+        </FAQItem>
         <FAQItem heading="How are duplicates detected?" headingId="how-are-duplicates-detected">
           <p>Lines are compared after trimming whitespace. Identical lines after trimming are considered duplicates.</p>
         </FAQItem>
@@ -100,8 +102,13 @@ export function InfoBlock(): JSX.Element {
         <FAQItem heading="Can I reverse sort order?" headingId="can-i-reverse-sort-order">
           <p>Yes, the Reverse Sorting option reverses the order for any selected sort type.</p>
         </FAQItem>
-        <FAQItem heading="Is my data modified?" headingId="is-my-data-modified">
-          <p>No, processing happens in your browser and nothing is stored. Original data remains unchanged.</p>
+        <FAQItem heading="Can I use this tool offline?" headingId="can-i-use-this-tool-offline">
+          <p>
+            <p>
+              Yes, since all processing happens client-side in your browser, this tool works offline once the page has
+              loaded.
+            </p>
+          </p>
         </FAQItem>
       </FAQ>
 
@@ -116,7 +123,8 @@ export function InfoBlock(): JSX.Element {
           >
             Vijay Hardaha
           </a>
-          . This tool is designed to simplify text processing tasks.
+          . This tool is built with modern web technologies and industry-standard open-source libraries to deliver
+          reliable, high-quality results.
         </p>
       </Credits>
     </div>

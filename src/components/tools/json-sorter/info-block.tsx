@@ -2,95 +2,112 @@ import type { JSX } from 'react';
 
 import { Credits } from '@/components/tools/tool-credits';
 import { FAQ, FAQItem } from '@/components/tools/tool-faq';
+
 /**
- * Provides information about the JSON Sorter Tool, including its purpose,
- * usage instructions, and examples.
+ * Comprehensive, SEO-optimized information about the JSON Sorter Tool.
  *
- * @returns {JSX.Element} The rendered component displaying tool information
+ * @returns {JSX.Element} The rendered info block component
  */
 export function InfoBlock(): JSX.Element {
   return (
-    <div className="space-y-8 md:space-y-12">
+    <div className="space-y-12">
       <section>
-        <h2 className="text-primary mb-4 text-2xl font-bold" id="about-json-sorter">
-          About JSON Sorter
+        <h2 className="text-primary mb-4 text-2xl font-bold" id="what-is-json-sorter-tool">
+          What Is the JSON Sorter Tool?
         </h2>
         <p className="mb-4">
-          The JSON Sorter is a developer utility that alphabetically sorts the keys in JSON objects. This tool helps
-          maintain consistent ordering in JSON files, making them easier to read, compare, and manage in version control
-          systems.
+          The <strong>JSON Sorter</strong> is a free online utility that helps you alphabetically sort JSON object keys
+          to make complex data structures readable, perfect for debugging API responses, managing configuration files,
+          and reducing merge conflicts.
         </p>
         <p className="mb-4">
-          All sorting happens directly in your browser – your data is never sent to a server, ensuring privacy and
-          security when working with sensitive information.
+          The JSON Sorter parses your JSON input using JSON.parse, then recursively sorts all object keys alphabetically
+          using the{' '}
+          <a
+            href="https://github.com/ShivrajRath/jsonabc"
+            className="font-medium text-pink-500 underline hover:no-underline"
+            target="_blank"
+            rel="noreferrer"
+          >
+            jsonabc
+          </a>{' '}
+          library. Nested objects are sorted at every level, while array elements can optionally be preserved in their
+          original order with the spare plain arrays option.
         </p>
       </section>
 
       <section>
-        <h3 className="text-primary mb-4 text-lg font-bold" id="how-to-use-this-tool">
-          How to Use This Tool
-        </h3>
-        <ol className="list-decimal space-y-2 pl-6">
-          <li>
-            <strong>Enter Your JSON:</strong> Paste valid JSON content into the input area.
-          </li>
-          <li>
-            <strong>Configure Sorting Options:</strong>
-            <ul className="list-disc pt-2 pl-6">
-              <li>
-                <strong>Spare plain arrays:</strong> Keep the original order of simple arrays instead of sorting their
-                elements.
-              </li>
-            </ul>
-          </li>
-          <li>
-            <strong>Sort JSON:</strong> Click the “Sort JSON” button to generate alphabetically sorted output.
-          </li>
-          <li>
-            <strong>Copy Result:</strong> Use the copy button to copy the sorted JSON to your clipboard.
-          </li>
-        </ol>
-      </section>
-
-      <section>
-        <h3 className="text-primary mb-4 text-lg font-bold" id="example-usage">
-          Example Usage
-        </h3>
-        <div className="space-y-4">
-          <div>
-            <h4 className="mb-2 font-medium" id="input-example">
-              Input Example:
-            </h4>
-            <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-sm">
-              {`{\n\t"zebra": 1,\n\t"apple": 2,\n\t"colors": ["red", "green", "blue"],\n\t"banana": {\n\t\t"yellow": true,\n\t\t"ripe": false\n\t}\n}`}
-            </pre>
-          </div>
-
-          <div>
-            <h4 className="mb-2 font-medium" id="output-example">
-              Output Example:
-            </h4>
-            <pre className="overflow-x-auto rounded-md bg-gray-100 p-4 text-sm">
-              {`{\n\t"apple": 2,\n\t"banana": {\n\t\t"ripe": false,\n\t\t"yellow": true\n\t},\n\t"colors": ["red", "green", "blue"],\n\t"zebra": 1\n}`}
-            </pre>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <h3 className="text-primary mb-4 text-lg font-bold" id="why-use-this-tool">
-          Why Use This Tool
-        </h3>
-        <ul className="list-inside list-disc space-y-1 pl-4">
-          <li>Create consistent JSON formatting for better version control.</li>
-          <li>Easily compare JSON structures when keys are in a predictable order.</li>
-          <li>Clean up and standardize JSON configuration files.</li>
-          <li>Prepare API responses for documentation or testing.</li>
-          <li>Improve readability of complex nested JSON structures.</li>
+        <h2 className="text-primary mb-4 text-2xl font-bold" id="json-sorter-features">
+          Key Features
+        </h2>
+        <ul className="list-inside list-disc space-y-2 pl-4">
+          <li>Alphabetical sorting of JSON object keys at all nesting levels</li>
+          <li>Optional plain array preservation to maintain meaningful element order</li>
+          <li>Pretty-printed output with proper indentation for readability</li>
+          <li>Error handling for invalid JSON input with clear error messages</li>
+          <li>One-click copy for immediate use in code and configuration files</li>
+          <li>Client-side processing with no data transmission</li>
         </ul>
       </section>
 
+      <section>
+        <h2 className="text-primary mb-4 text-2xl font-bold" id="why-use-json-sorter">
+          Why Use This Tool
+        </h2>
+        <ul className="list-inside list-disc space-y-2 pl-4">
+          <li>Creates consistent, predictable JSON formatting across projects and teams</li>
+          <li>Reduces version control merge conflicts by standardizing key order</li>
+          <li>Improves readability of complex nested JSON structures for debugging</li>
+          <li>Eases comparison of similar JSON files for data validation and testing</li>
+          <li>Enhances documentation and API response readability for consumers</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 className="text-primary mb-4 text-2xl font-bold" id="json-sorter-use-cases">
+          Common Use Cases
+        </h2>
+        <ul className="list-inside list-disc space-y-2 pl-4">
+          <li>Standardizing JSON configuration files for consistent version control diffs</li>
+          <li>Sorting API response JSON for easier debugging during development</li>
+          <li>Organizing i18n translation files and locale JSON for consistent structure</li>
+          <li>Formatting JSON output before code review and documentation</li>
+          <li>Cleaning up JSON data exports for analysis and processing</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 className="text-primary mb-4 text-2xl font-bold" id="json-sorter-technical-details">
+          Technical Details
+        </h2>
+        <p>
+          This tool uses the{' '}
+          <a
+            href="https://github.com/ShivrajRath/jsonabc"
+            className="font-medium text-pink-500 underline hover:no-underline"
+            target="_blank"
+            rel="noreferrer"
+          >
+            jsonabc
+          </a>{' '}
+          npm package for JSON key sorting. The library recursively traverses JSON objects, collecting and
+          alphabetically sorting keys at each level. It handles nested objects, arrays of objects, and mixed data types
+          while preserving all values and data integrity.
+        </p>
+      </section>
+
       <FAQ>
+        <FAQItem heading="Is this tool free to use?" headingId="is-this-tool-free">
+          <p>Yes, the JSON Sorter is completely free to use with no signup, registration, or usage limits required.</p>
+        </FAQItem>
+        <FAQItem heading="Is my data sent to a server?" headingId="is-my-data-sent-to-a-server">
+          <p>
+            <p>
+              No, all processing happens locally in your browser. Your data never leaves your device and is not stored
+              or logged anywhere.
+            </p>
+          </p>
+        </FAQItem>
         <FAQItem heading="Why sort JSON keys?" headingId="why-sort-json-keys">
           <p>
             Sorting keys alphabetically makes files easier to read, compare, and manage in version control with fewer
@@ -103,9 +120,12 @@ export function InfoBlock(): JSX.Element {
         <FAQItem heading="What does spare plain arrays mean?" headingId="what-does-spare-plain-arrays-mean">
           <p>This preserves original array order when element order is meaningful, such as ranked lists.</p>
         </FAQItem>
-        <FAQItem heading="What library is used?" headingId="what-library-is-used">
+        <FAQItem heading="Can I use this tool offline?" headingId="can-i-use-this-tool-offline">
           <p>
-            This tool uses <code>jsonabc</code> for alphabetically sorting JSON object keys with nested object support.
+            <p>
+              Yes, since all processing happens client-side in your browser, this tool works offline once the page has
+              loaded.
+            </p>
           </p>
         </FAQItem>
       </FAQ>
@@ -121,16 +141,8 @@ export function InfoBlock(): JSX.Element {
           >
             Vijay Hardaha
           </a>
-          . This tool uses{' '}
-          <a
-            href="https://github.com/ShivrajRath/jsonabc"
-            className="font-medium text-pink-500 underline hover:no-underline"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            jsonabc
-          </a>{' '}
-          for JSON sorting functionality.
+          . This tool is built with modern web technologies and industry-standard open-source libraries to deliver
+          reliable, high-quality results.
         </p>
       </Credits>
     </div>
