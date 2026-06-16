@@ -101,7 +101,7 @@ const segmentsToPath = (segments?: string[]): string => {
   const path = [...segments.slice(0, -1), last].join('/');
 
   // The special 'index' segment represents the root path
-  return path === 'index' ? '/' : `/${path}`;
+  return path === 'home' ? '/' : `/${path}`;
 };
 
 /**
@@ -121,7 +121,7 @@ function parseParams(segments?: string[]): OgProps {
 
   return {
     title: sanitize(seo?.seoTitle || 'Tools by Vijay Hardaha'),
-    description: sanitize(seo?.seoDescription || 'Free online developer tools and utilities.', 160),
+    description: sanitize(seo?.seoDescription || 'Free online developer tools and utilities.', 300),
     path,
   };
 }
@@ -139,78 +139,90 @@ function OgImage({ title, description, path }: OgProps): JSX.Element {
       style={{
         display: 'flex',
         flexDirection: 'column',
+        alignItems: 'center',
         width: '100%',
         height: '100%',
         background: '#171717',
         color: '#fafafa',
         fontFamily: FONT_FAMILY,
-        padding: '64px 80px',
       }}
     >
-      {/* Top accent bar */}
       <div
         style={{
           display: 'flex',
-          width: '120px',
-          height: '6px',
-          borderRadius: '3px',
-          background: 'linear-gradient(90deg, #f59e0b, #ec4899)',
-          marginBottom: '40px',
-        }}
-      />
-
-      {/* Title */}
-      <div
-        style={{
-          display: 'flex',
-          fontSize: '54px',
-          fontWeight: 700,
-          lineHeight: 1.1,
-          letterSpacing: '-0.02em',
-          color: '#fafafa',
-          marginBottom: '20px',
+          flexDirection: 'column',
+          width: '100%',
+          maxWidth: '500px',
+          flex: 1,
+          padding: '64px 0',
         }}
       >
-        {title}
-      </div>
+        {/* Top accent bar */}
+        <div
+          style={{
+            display: 'flex',
+            width: '120px',
+            height: '6px',
+            borderRadius: '3px',
+            background: 'linear-gradient(90deg, #f59e0b, #ec4899)',
+            marginBottom: '40px',
+          }}
+        />
 
-      {/* Description */}
-      <div
-        style={{
-          display: 'flex',
-          fontSize: '24px',
-          fontWeight: 400,
-          lineHeight: 1.4,
-          color: '#a3a3a3',
-          marginBottom: 'auto',
-        }}
-      >
-        {description}
-      </div>
-
-      {/* Bottom section: decorative dots + author + URL */}
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          borderTop: '1px solid #262626',
-          paddingTop: '28px',
-        }}
-      >
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-          {/* Decorative gradient dots */}
-          <div style={{ display: 'flex', gap: '8px' }}>
-            <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#f59e0b' }} />
-            <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#ec4899' }} />
-            <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#8b5cf6' }} />
-          </div>
-          <span style={{ fontSize: '18px', fontWeight: 500, color: '#737373' }}>Vijay Hardaha</span>
+        {/* Title */}
+        <div
+          style={{
+            display: 'flex',
+            fontSize: '44px',
+            fontWeight: 700,
+            lineHeight: 1.1,
+            letterSpacing: '-0.02em',
+            color: '#ffd230',
+            marginBottom: '20px',
+          }}
+        >
+          {title}
         </div>
 
-        <span style={{ fontSize: '16px', fontWeight: 400, color: '#525252' }}>
-          toolsbyvijay.vercel.app{path || '/'}
-        </span>
+        {/* Description */}
+        <div
+          style={{
+            display: 'flex',
+            fontSize: '22px',
+            fontWeight: 400,
+            lineHeight: 1.4,
+            color: '#a3a3a3',
+            marginBottom: 'auto',
+          }}
+        >
+          {description}
+        </div>
+
+        {/* Bottom section: decorative dots + author + URL */}
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            borderTop: '1px solid #262626',
+            paddingTop: '28px',
+            gap: '6px',
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            {/* Decorative gradient dots */}
+            <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+              <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#f59e0b' }} />
+              <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#ec4899' }} />
+              <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#8b5cf6' }} />
+            </div>
+            <span style={{ fontSize: '18px', fontWeight: 500, color: '#737373' }}>Tools by Vijay Hardaha</span>
+          </div>
+
+          <span style={{ fontSize: '16px', fontWeight: 400, color: '#525252' }}>
+            toolsbyvijay.vercel.app{path || '/'}
+          </span>
+        </div>
       </div>
     </div>
   );
