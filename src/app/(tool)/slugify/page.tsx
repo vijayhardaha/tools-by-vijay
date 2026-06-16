@@ -6,11 +6,13 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 import { EntryContent } from '@/components/page/EntryContent';
+import type { BreadcrumbItem } from '@/components/page/PageBreadcrumb';
 import { PageContent } from '@/components/page/PageContent';
 import { PageHeader } from '@/components/page/PageHeader';
 import { PageLayout } from '@/components/page/PageLayout';
 import { Slugify } from '@/components/tools/slugify';
 import type { Tool } from '@/constants/tools';
+import { getCategoryBySlug } from '@/utils/categories';
 import { buildMetadata } from '@/utils/meta';
 import { globalSchema, buildBreadcrumbs } from '@/utils/schema';
 import { siteUrl } from '@/utils/seo';
@@ -28,12 +30,19 @@ const description = tool?.seoDescription || '';
 const path = `/${tool?.slug || ''}`;
 const rootUrl = siteUrl();
 
+const categoryLabel = getCategoryBySlug(tool?.category || '')?.label || 'Tools';
+const categoryPath = `/tools/${tool?.category || ''}`;
+
 /**
- * SEO metadata for the Slugify page.
+ * Breadcrumb items for the tool page: Home / Category / Tool Name.
  *
- * @type {Metadata}
+ * @type {BreadcrumbItem[]}
  */
-export const metadata: Metadata = buildMetadata({ title, description, path });
+const breadcrumbItems: BreadcrumbItem[] = [
+  { label: 'Home', href: '/' },
+  { label: categoryLabel, href: categoryPath },
+  { label: tool?.name || '' },
+];
 
 /**
  * Schema.org structured data for the Slugify page.
@@ -41,8 +50,18 @@ export const metadata: Metadata = buildMetadata({ title, description, path });
 const schemaData = [
   ...globalSchema(),
   webPageSchema({ rootUrl, path, breadcrumb: true }, { name: title, description }),
-  breadcrumbSchema({ rootUrl, items: buildBreadcrumbs(path, 'Slugify Tool') }),
+  breadcrumbSchema({
+    rootUrl,
+    items: buildBreadcrumbs(path, 'Slugify Tool', [{ name: categoryLabel, path: categoryPath }]),
+  }),
 ];
+
+/**
+ * SEO metadata for the Slugify page.
+ *
+ * @type {Metadata}
+ */
+export const metadata: Metadata = buildMetadata({ title, description, path });
 
 /**
  * Slugify tool page component.
@@ -64,6 +83,7 @@ export default function SlugifyToolTool(): JSX.Element {
           title={tool.name}
           description={tool.description}
           icon={getToolIcon(tool.slug)}
+          breadcrumbItems={breadcrumbItems}
         />
         <PageContent>
           <EntryContent tool={tool}>

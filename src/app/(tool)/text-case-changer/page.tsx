@@ -9,6 +9,7 @@ import { PageHeader } from '@/components/page/PageHeader';
 import { PageLayout } from '@/components/page/PageLayout';
 import { TextCaseChanger } from '@/components/tools/text-case-changer';
 import type { Tool } from '@/constants/tools';
+import { getCategoryBySlug } from '@/utils/categories';
 import { buildMetadata } from '@/utils/meta';
 import { findToolBySlug, getToolIcon } from '@/utils/tools';
 
@@ -43,7 +44,17 @@ export default function TextCaseChangerToolTool(): JSX.Element {
 
   return (
     <PageLayout>
-      <PageHeader pageName={tool.name} title={tool.name} description={tool.description} icon={getToolIcon(tool.slug)} />
+      <PageHeader
+        pageName={tool.name}
+        title={tool.name}
+        description={tool.description}
+        icon={getToolIcon(tool.slug)}
+        breadcrumbItems={[
+          { label: 'Home', href: '/' },
+          { label: getCategoryBySlug(tool.category)?.label || 'Tools', href: `/tools/${tool.category}` },
+          { label: tool.name },
+        ]}
+      />
       <PageContent>
         <EntryContent tool={tool}>
           <TextCaseChanger />
