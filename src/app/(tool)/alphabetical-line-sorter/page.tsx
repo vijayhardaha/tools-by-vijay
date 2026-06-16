@@ -27,7 +27,7 @@ const tool: Tool | null = findToolBySlug('alphabetical-line-sorter');
 export const metadata: Metadata = buildMetadata({
   title: tool?.seoTitle || '',
   description: tool?.seoDescription || '',
-  path: `/tools/${tool?.slug || ''}`,
+  path: `/${tool?.slug || ''}`,
 });
 
 /**

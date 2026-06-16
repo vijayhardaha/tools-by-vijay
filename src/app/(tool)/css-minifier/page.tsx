@@ -27,7 +27,7 @@ const tool: Tool | null = findToolBySlug('css-minifier');
 export const metadata: Metadata = buildMetadata({
   title: tool?.seoTitle || '',
   description: tool?.seoDescription || '',
-  path: `/tools/${tool?.slug || ''}`,
+  path: `/${tool?.slug || ''}`,
 });
 
 /**

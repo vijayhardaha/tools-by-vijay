@@ -25,7 +25,7 @@ const tool: Tool | null = findToolBySlug('slugify');
 
 const title = tool?.seoTitle || '';
 const description = tool?.seoDescription || '';
-const path = `/tools/${tool?.slug || ''}`;
+const path = `/${tool?.slug || ''}`;
 const rootUrl = siteUrl();
 
 /**
