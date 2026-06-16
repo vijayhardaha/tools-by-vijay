@@ -1,5 +1,7 @@
 import type { JSX } from 'react';
 
+import { breadcrumbSchema, webPageSchema } from '@vijayhardaha/schema-builder';
+import { JsonLd } from '@vijayhardaha/schema-builder/react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -12,6 +14,8 @@ import { ToolCard } from '@/components/tool/tool-card';
 import { categoryIcons } from '@/constants/category-icons';
 import { getCategoryBySlug } from '@/utils/categories';
 import { buildMetadata } from '@/utils/meta';
+import { globalSchema, buildBreadcrumbs } from '@/utils/schema';
+import { siteUrl } from '@/utils/seo';
 import { getToolsByCategory } from '@/utils/tools';
 
 /**
@@ -59,52 +63,69 @@ export default async function CategoryPage({ params }: CategoryPageProps): Promi
   const categoryTools = getToolsByCategory(slug);
   const icon = categoryIcons[slug];
   const toolCount = categoryTools.length;
+  const rootUrl = siteUrl();
+  const path = `/tools/${slug}`;
+  const title = category.seoTitle;
+  const description = category.seoDescription;
+
+  const schemaData = [
+    ...globalSchema(),
+    webPageSchema({ rootUrl, path, breadcrumb: true }, { name: title, description }),
+    breadcrumbSchema({ rootUrl, items: buildBreadcrumbs(path, category.label, [{ name: 'Tools', path: '/tools' }]) }),
+  ];
 
   return (
-    <PageLayout>
-      <PageHeader
-        pageName={category.label}
-        title={category.label}
-        description={category.description}
-        icon={icon}
-        breadcrumbItems={[{ label: 'Home', href: '/' }, { label: 'Tools', href: '/tools' }, { label: category.label }]}
-      />
-      <PageContent>
-        <div className="space-y-12">
-          {/* Tool grid section */}
-          <section>
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
-              {categoryTools.map((tool) => (
-                <ToolCard key={tool.slug} slug={tool.slug} />
-              ))}
-            </div>
-          </section>
-
-          {/* About section */}
-          <section>
-            <h2 className="text-primary mb-4 text-2xl font-bold">About {category.label} Tools</h2>
-            <div className="text-muted-foreground text-base leading-relaxed">
-              <CategoryAbout slug={slug} />
-            </div>
-          </section>
-
-          {/* Popular tools section */}
-          {toolCount > 0 && (
+    <>
+      <JsonLd data={schemaData} />
+      <PageLayout>
+        <PageHeader
+          pageName={category.label}
+          title={category.label}
+          description={category.description}
+          icon={icon}
+          breadcrumbItems={[
+            { label: 'Home', href: '/' },
+            { label: 'Tools', href: '/tools' },
+            { label: category.label },
+          ]}
+        />
+        <PageContent>
+          <div className="space-y-12">
+            {/* Tool grid section */}
             <section>
-              <h2 className="text-primary mb-4 text-2xl font-bold">Popular Tools</h2>
-              <ul className="text-muted-foreground list-disc space-y-1.5 pl-6">
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
                 {categoryTools.map((tool) => (
-                  <li key={tool.slug}>
-                    <Link href={`/${tool.slug}`} className="font-medium text-pink-500 underline hover:no-underline">
-                      {tool.name}
-                    </Link>
-                  </li>
+                  <ToolCard key={tool.slug} slug={tool.slug} />
                 ))}
-              </ul>
+              </div>
             </section>
-          )}
-        </div>
-      </PageContent>
-    </PageLayout>
+
+            {/* About section */}
+            <section>
+              <h2 className="text-primary mb-4 text-2xl font-bold">About {category.label} Tools</h2>
+              <div className="text-muted-foreground text-base leading-relaxed">
+                <CategoryAbout slug={slug} />
+              </div>
+            </section>
+
+            {/* Popular tools section */}
+            {toolCount > 0 && (
+              <section>
+                <h2 className="text-primary mb-4 text-2xl font-bold">Popular Tools</h2>
+                <ul className="text-muted-foreground list-disc space-y-1.5 pl-6">
+                  {categoryTools.map((tool) => (
+                    <li key={tool.slug}>
+                      <Link href={`/${tool.slug}`} className="font-medium text-pink-500 underline hover:no-underline">
+                        {tool.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
+          </div>
+        </PageContent>
+      </PageLayout>
+    </>
   );
 }
