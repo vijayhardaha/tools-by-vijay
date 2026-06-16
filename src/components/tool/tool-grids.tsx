@@ -40,7 +40,7 @@ export function ToolGridSection({ heading, tools }: ToolGridSectionProps): JSX.E
           const icon = getToolIcon(tool.slug);
 
           return (
-            <Link key={tool.slug} href={`/tools/${tool.slug}`} className="block">
+            <Link key={tool.slug} href={`/${tool.slug}`} className="block">
               <Card className={cn('bg-white', 'cursor-pointer transition-shadow hover:shadow-md')}>
                 <CardContent className="flex flex-col gap-2">
                   {icon && (
