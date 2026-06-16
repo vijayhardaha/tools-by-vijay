@@ -8,6 +8,7 @@ import { useState } from 'react';
 import TinyURL from 'tinyurl';
 import validUrl from 'valid-url';
 
+import { ExampleBlock } from './example-block';
 import { InfoBlock } from './info-block';
 import { InputBlock } from './input-block';
 import { OutputBlock } from './output-block';
@@ -122,6 +123,19 @@ export function UrlShortener(): JSX.Element {
     setError('');
   };
 
+  /**
+   * Loads an example with predefined input values and options.
+   *
+   * @param {object} values - The example values.
+   *
+   * @returns {void}
+   */
+  const handleExample = (values: Record<string, any>): void => {
+    if ('input' in values) {
+      setInput(values.input);
+    }
+  };
+
   return (
     <>
       <div className="grid grid-cols-1 gap-4 md:gap-6">
@@ -133,6 +147,8 @@ export function UrlShortener(): JSX.Element {
           isLoading={isLoading}
           error={error}
         />
+
+        <ExampleBlock onExample={handleExample} />
 
         {results.length > 0 && <OutputBlock results={results} />}
       </div>

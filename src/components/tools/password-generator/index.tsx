@@ -3,6 +3,7 @@
 import type { JSX } from 'react';
 import { useEffect, useState } from 'react';
 
+import { ExampleBlock } from './example-block';
 import { InfoBlock } from './info-block';
 import { InputBlock } from './input-block';
 import { OutputBlock } from './output-block';
@@ -83,6 +84,34 @@ export function PasswordGenerator(): JSX.Element {
     setExcludeSimilar(false);
   };
 
+  /**
+   * Loads an example with predefined input values and options.
+   *
+   * @param {object} values - The example values.
+   *
+   * @returns {void}
+   */
+  const handleExample = (values: Record<string, any>): void => {
+    if ('length' in values) {
+      setLength(values.length);
+    }
+    if ('useUppercase' in values) {
+      setUseUppercase(values.useUppercase);
+    }
+    if ('useLowercase' in values) {
+      setUseLowercase(values.useLowercase);
+    }
+    if ('useNumbers' in values) {
+      setUseNumbers(values.useNumbers);
+    }
+    if ('useSymbols' in values) {
+      setUseSymbols(values.useSymbols);
+    }
+    if ('excludeSimilar' in values) {
+      setExcludeSimilar(values.excludeSimilar);
+    }
+  };
+
   return (
     <>
       <div className="grid grid-cols-1 gap-4 md:gap-6">
@@ -101,6 +130,8 @@ export function PasswordGenerator(): JSX.Element {
           setExcludeSimilar={setExcludeSimilar}
           onReset={handleReset}
         />
+
+        <ExampleBlock onExample={handleExample} />
 
         <OutputBlock password={password} />
       </div>

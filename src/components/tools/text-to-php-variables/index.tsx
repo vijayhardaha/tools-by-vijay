@@ -6,6 +6,7 @@ import { useMemo, useState } from 'react';
 import latinize from 'latinize';
 import slugify from 'slugify';
 
+import { ExampleBlock } from './example-block';
 import { InfoBlock } from './info-block';
 import { InputBlock } from './input-block';
 import { OutputBlock } from './output-block';
@@ -83,6 +84,22 @@ export function TextToPhpVariables(): JSX.Element {
     setVariableCase('snake_case');
   };
 
+  /**
+   * Loads an example with predefined input values and options.
+   *
+   * @param {object} values - The example values.
+   *
+   * @returns {void}
+   */
+  const handleExample = (values: Record<string, any>): void => {
+    if ('input' in values) {
+      setInput(values.input);
+    }
+    if ('variableCase' in values) {
+      setVariableCase(values.variableCase);
+    }
+  };
+
   return (
     <>
       <div className="grid grid-cols-1 gap-4 md:gap-6">
@@ -95,6 +112,8 @@ export function TextToPhpVariables(): JSX.Element {
           onReset={handleReset}
           error={error}
         />
+        <ExampleBlock onExample={handleExample} />
+
         <OutputBlock output={output} />
       </div>
 

@@ -3,6 +3,7 @@
 import type { JSX } from 'react';
 import { useState } from 'react';
 
+import { ExampleBlock } from './example-block';
 import { InfoBlock } from './info-block';
 import { InputBlock } from './input-block';
 import { OutputBlock } from './output-block';
@@ -99,6 +100,31 @@ export function JsMinifier(): JSX.Element {
     setOptions((prev) => ({ ...prev, [key]: value }));
   };
 
+  /**
+   * Loads an example with predefined input values and options.
+   *
+   * @param {object} values - The example values.
+   *
+   * @returns {void}
+   */
+  const handleExample = (values: Record<string, any>): void => {
+    if ('input' in values) {
+      setInput(values.input);
+    }
+    if ('mangle' in values) {
+      updateOption('mangle', values.mangle);
+    }
+    if ('removeConsole' in values) {
+      updateOption('removeConsole', values.removeConsole);
+    }
+    if ('removeDebugger' in values) {
+      updateOption('removeDebugger', values.removeDebugger);
+    }
+    if ('removeComments' in values) {
+      updateOption('removeComments', values.removeComments);
+    }
+  };
+
   return (
     <>
       <div className="grid grid-cols-1 gap-4 md:gap-6">
@@ -113,6 +139,8 @@ export function JsMinifier(): JSX.Element {
           isLoading={isLoading}
           error={error}
         />
+
+        <ExampleBlock onExample={handleExample} />
 
         {output && <OutputBlock output={output} input={input} />}
       </div>

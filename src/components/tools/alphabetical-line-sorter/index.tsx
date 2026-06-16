@@ -3,6 +3,7 @@
 import type { JSX } from 'react';
 import { useMemo, useState } from 'react';
 
+import { ExampleBlock } from './example-block';
 import { InfoBlock } from './info-block';
 import { InputBlock } from './input-block';
 import { OutputBlock } from './output-block';
@@ -77,6 +78,28 @@ export function AlphabeticalLineSorter(): JSX.Element {
     setSortType('standard');
   };
 
+  /**
+   * Loads an example with predefined input values and options.
+   *
+   * @param {object} values - The example values.
+   *
+   * @returns {void}
+   */
+  const handleExample = (values: Record<string, any>): void => {
+    if ('input' in values) {
+      setInput(values.input);
+    }
+    if ('reverseSort' in values) {
+      setReverseSort(values.reverseSort);
+    }
+    if ('removeDuplicates' in values) {
+      setRemoveDuplicates(values.removeDuplicates);
+    }
+    if ('sortType' in values) {
+      setSortType(values.sortType);
+    }
+  };
+
   return (
     <>
       <div className="grid grid-cols-1 gap-4 md:gap-6">
@@ -96,6 +119,8 @@ export function AlphabeticalLineSorter(): JSX.Element {
           onReset={handleReset}
           onClear={handleClear}
         />
+
+        <ExampleBlock onExample={handleExample} />
 
         <OutputBlock output={output} />
       </div>

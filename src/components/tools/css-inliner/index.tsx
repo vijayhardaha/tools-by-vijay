@@ -3,6 +3,7 @@
 import type { JSX } from 'react';
 import { useState } from 'react';
 
+import { ExampleBlock } from './example-block';
 import { InfoBlock } from './info-block';
 import { InputBlock } from './input-block';
 import { OutputBlock } from './output-block';
@@ -61,6 +62,22 @@ export function CssInliner(): JSX.Element {
     setError('');
   };
 
+  /**
+   * Loads an example with predefined input values and options.
+   *
+   * @param {object} values - The example values.
+   *
+   * @returns {void}
+   */
+  const handleExample = (values: Record<string, any>): void => {
+    if ('htmlInput' in values) {
+      setHtmlInput(values.htmlInput);
+    }
+    if ('cssInput' in values) {
+      setCssInput(values.cssInput);
+    }
+  };
+
   return (
     <>
       <div className="grid grid-cols-1 gap-4 md:gap-6">
@@ -74,6 +91,8 @@ export function CssInliner(): JSX.Element {
           isLoading={isLoading}
           error={error}
         />
+
+        <ExampleBlock onExample={handleExample} />
 
         {output && <OutputBlock output={output} />}
       </div>
