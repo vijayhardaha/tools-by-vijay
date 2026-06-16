@@ -10,7 +10,7 @@ import { InfoBlock } from './info-block';
 import { InputBlock } from './input-block';
 import { OutputBlock } from './output-block';
 
-type VariableCase = 'camelCase' | 'snake_case' | 'PascalCase';
+type VariableCase = 'camelCase' | 'snake_case' | 'PascalCase' | 'SCREAMING_SNAKE_CASE' | 'flatcase' | 'UPPERCASE';
 
 /**
  * Main component for the Text to PHP Variables tool.
@@ -37,6 +37,12 @@ export function TextToPhpVariables(): JSX.Element {
         return slug.replace(/_([a-z])/g, (_, letter) => letter.toUpperCase());
       case 'PascalCase':
         return slug.replace(/(^|_)([a-z])/g, (_, __, letter) => letter.toUpperCase());
+      case 'SCREAMING_SNAKE_CASE':
+        return slug.toUpperCase();
+      case 'flatcase':
+        return slug.replace(/_/g, '');
+      case 'UPPERCASE':
+        return slug.replace(/_/g, '').toUpperCase();
       case 'snake_case':
       default:
         return slug;

@@ -12,7 +12,7 @@ export function InfoBlock(): JSX.Element {
   return (
     <div className="space-y-8 md:space-y-12">
       <section>
-        <h2 className="text-primary mb-4 text-xl font-bold" id="about-text-to-php-variables">
+        <h2 className="text-primary mb-4 text-2xl font-bold" id="about-text-to-php-variables">
           About Text to PHP Variables
         </h2>
         <p className="mb-4">
@@ -86,8 +86,8 @@ export function InfoBlock(): JSX.Element {
       <FAQ>
         <FAQItem heading="What naming conventions are supported?" headingId="what-naming-conventions-are-supported">
           <p>
-            camelCase, snake_case, and PascalCase. Each line becomes a valid PHP variable following your chosen
-            convention.
+            camelCase, PascalCase, snake_case, SCREAMING_SNAKE_CASE, flatcase, and UPPERCASE. Each line becomes a valid
+            PHP variable following your chosen convention.
           </p>
         </FAQItem>
         <FAQItem heading="What is the output format?" headingId="what-is-the-output-format">

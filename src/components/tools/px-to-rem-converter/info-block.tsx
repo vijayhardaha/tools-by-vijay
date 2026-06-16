@@ -12,7 +12,7 @@ export function InfoBlock(): JSX.Element {
   return (
     <div className="space-y-8 md:space-y-12">
       <section>
-        <h2 className="text-primary mb-4 text-xl font-bold" id="about-px-to-rem-converter-tool">
+        <h2 className="text-primary mb-4 text-2xl font-bold" id="about-px-to-rem-converter-tool">
           About Px to Rem Converter Tool
         </h2>
         <p className="mb-4">

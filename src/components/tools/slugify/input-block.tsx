@@ -42,7 +42,7 @@ interface InputBlockProps {
 }
 
 /**
- * A React component for generating slugs from input strings with various options.
+ * A React component for generating slugs from input strings Various options.
  *
  *  @param {InputBlockProps} props - The props for the component.
  *
@@ -96,7 +96,7 @@ export function InputBlock({
                 disabled={!useUnderscore}
                 className={cn('opacity-100!')}
               >
-                <span className="text-xs">With dash (-)</span>
+                <span className="text-xs">Dash (-)</span>
               </Button>
 
               <Button
@@ -106,7 +106,7 @@ export function InputBlock({
                 disabled={useUnderscore}
                 className={cn('opacity-100!')}
               >
-                <span className="text-xs">With underscore (_)</span>
+                <span className="text-xs">Underscore (_)</span>
               </Button>
             </div>
           </div>

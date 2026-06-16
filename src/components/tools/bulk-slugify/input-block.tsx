@@ -49,7 +49,7 @@ interface InputBlockProps {
  * Component for user input and configuration options for the Bulk Slugify tool
  *
  * This component provides a form for users to input text strings to be slugified,
- * along with configuration options for the slugification process such as separator
+ * along Configuration options for the slugification process such as separator
  * type, case conversion, number removal, and character normalization.
  *
  * @param {InputBlockProps} props - The props for the component.
@@ -106,7 +106,7 @@ export function InputBlock({
                 disabled={!useUnderscore}
                 className={cn('opacity-100!')}
               >
-                <span className="text-xs">With dash (-)</span>
+                <span className="text-xs">Dash (-)</span>
               </Button>
               <Button
                 size="sm"
@@ -115,7 +115,7 @@ export function InputBlock({
                 disabled={useUnderscore}
                 className={cn('opacity-100!')}
               >
-                <span className="text-xs">With underscore (_)</span>
+                <span className="text-xs">Underscore (_)</span>
               </Button>
             </div>
           </div>

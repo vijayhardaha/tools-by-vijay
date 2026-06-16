@@ -12,7 +12,7 @@ export function InfoBlock(): JSX.Element {
   return (
     <div className="space-y-8 md:space-y-12">
       <section>
-        <h2 className="text-primary mb-4 text-xl font-bold" id="about-qr-code-tool">
+        <h2 className="text-primary mb-4 text-2xl font-bold" id="about-qr-code-tool">
           About QR Code Tool
         </h2>
         <p className="mb-4">

@@ -72,8 +72,11 @@ export function InputBlock({
             onValueChange={setVariableCase}
             options={[
               { value: 'camelCase', label: 'Camel Case' },
-              { value: 'snake_case', label: 'Snake Case' },
               { value: 'PascalCase', label: 'Pascal Case' },
+              { value: 'snake_case', label: 'Snake Case' },
+              { value: 'SCREAMING_SNAKE_CASE', label: 'Screaming Snake Case' },
+              { value: 'flatcase', label: 'Flat Case' },
+              { value: 'UPPERCASE', label: 'Uppercase' },
             ]}
           />
 

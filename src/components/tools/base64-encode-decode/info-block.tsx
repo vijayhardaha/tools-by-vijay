@@ -13,7 +13,7 @@ export function InfoBlock(): JSX.Element {
   return (
     <div className="space-y-8 md:space-y-12">
       <section>
-        <h2 className="text-primary mb-4 text-xl font-bold" id="about-base64-encode-decode-tool">
+        <h2 className="text-primary mb-4 text-2xl font-bold" id="about-base64-encode-decode-tool">
           About Base64 Encode/Decode Tool
         </h2>
         <p className="mb-4">
