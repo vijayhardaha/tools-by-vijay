@@ -90,7 +90,31 @@ const mergeDeep = (target: Record<string, unknown>, source: Record<string, unkno
 const buildSeoTitle = (title: string = '', postfix: boolean): string => {
   if (!title) return SITE_CONFIG.title;
   if (!postfix) return title;
-  return [title, '|', SITE_CONFIG.name].join(' ');
+  return [title, '—', SITE_CONFIG.name].join(' ');
+};
+
+/**
+ * Build the OG image URL for a page.
+ *
+ * Creates a path-based URL like /api/og/about.png instead of a query
+ * string, which is better for SEO and CDN caching. The API route looks
+ * up title and description from the centralized SEO data source using
+ * the path embedded in the URL.
+ *
+ * @param {string} [path] - The page path (e.g. '/about', '/tools/writing-editing').
+ *
+ * @returns {string} The full URL to the dynamic OG image.
+ *
+ * @example
+ * buildOgImageUrl('/about')        // '/api/og/about.png'
+ * buildOgImageUrl('/')             // '/api/og/index.png'
+ * buildOgImageUrl('/tools')        // '/api/og/tools.png'
+ * buildOgImageUrl('/slugify')      // '/api/og/slugify.png'
+ */
+const buildOgImageUrl = (path: string = '/'): string => {
+  // Root path → /api/og/index.png, everything else → /api/og/{path}.png
+  const cleanPath = path === '/' ? 'index' : path.replace(/^\//, '');
+  return `/api/og/${cleanPath}.png`;
 };
 
 /**
@@ -107,15 +131,19 @@ const buildSeoTitle = (title: string = '', postfix: boolean): string => {
  * @example
  * const meta = buildMetadata({ title: 'About', description: 'About page', path: 'about' });
  */
-export const buildMetadata = ({ title = '', description = '', path = '', postfix = false }: SeoProps): Metadata => {
+export const buildMetadata = ({ title = '', description = '', path = '', postfix = true }: SeoProps): Metadata => {
   const canonical = path ? getPermaLink(path) : siteUrl();
   const titleAndDescription = { title: buildSeoTitle(title, postfix), description: description || '' };
+  const ogImage = buildOgImageUrl(path || '/');
+  const ogImageMeta = { url: ogImage, width: 1200, height: 630, alt: titleAndDescription.title, type: 'image/png' };
+
   const newMetadata = mergeDeep(SITE_METADATA as Record<string, unknown>, {
     ...titleAndDescription,
     metadataBase: new URL(siteUrl()),
     alternates: { canonical },
-    openGraph: { ...titleAndDescription, url: canonical },
-    twitter: { ...titleAndDescription },
+    openGraph: { ...titleAndDescription, url: canonical, images: ogImageMeta },
+    twitter: { ...titleAndDescription, images: ogImageMeta },
   });
+
   return newMetadata as Metadata;
 };

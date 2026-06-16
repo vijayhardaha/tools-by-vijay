@@ -1,3 +1,7 @@
+import categories from '@/constants/categories';
+import pageSeo from '@/constants/page-seo';
+import tools from '@/constants/tools';
+
 /**
  * Return a normalized base URL for the running application.
  *
@@ -69,4 +73,105 @@ const cleanPath = (path: string = ''): string => {
  */
 export const getPermaLink = (path: string = ''): string => {
   return [siteUrl(), cleanPath(path)].filter(Boolean).join('/');
+};
+
+// ==============================================================================
+// Unified SEO Data Lookup — combines info pages, tools, and categories
+// ==============================================================================
+
+/**
+ * Helper to convert a slug into a full URL path.
+ *
+ * @param {string} slug - The URL slug (empty for home).
+ *
+ * @returns {string} The full URL path.
+ *
+ * @example
+ * slugToPath('')       // '/'
+ * slugToPath('about')  // '/about'
+ */
+const slugToPath = (slug: string): string => {
+  return slug === '' ? '/' : `/${slug}`;
+};
+
+/**
+ * Interface representing combined SEO data for any page.
+ *
+ * Provides both display-oriented fields (title, description) and
+ * SEO-oriented fields (seoTitle, seoDescription, path) plus the
+ * raw slug for programmatic use.
+ *
+ * @type {SeoData}
+ * @property {string} slug - Clean URL slug (e.g. 'about', 'tools', '' for home)
+ * @property {string} path - Full URL path (e.g. '/about', '/tools')
+ * @property {string} title - Display title (tool name / category label / page name)
+ * @property {string} description - Display description
+ * @property {string} seoTitle - SEO-optimized title for metadata
+ * @property {string} seoDescription - SEO-optimized description for metadata
+ */
+export interface SeoData {
+  slug: string;
+  path: string;
+  title: string;
+  description: string;
+  seoTitle: string;
+  seoDescription: string;
+}
+
+/**
+ * Merged constant of SEO data for all pages across the site, combining:
+ *
+ * - Info pages (about, contact, faq, privacy, terms, tools listing)
+ * - Individual tool pages (/{slug})
+ * - Category pages (/tools/{slug})
+ * - Home page (/)
+ *
+ * Built once at module load time for efficient lookups.
+ */
+export const allSeoData: SeoData[] = [
+  ...pageSeo.map((page) => ({
+    slug: page.slug,
+    path: slugToPath(page.slug),
+    title: page.title,
+    description: page.description,
+    seoTitle: page.title,
+    seoDescription: page.description,
+  })),
+  ...tools.map((tool) => ({
+    slug: tool.slug,
+    path: `/${tool.slug}`,
+    title: tool.name,
+    description: tool.description,
+    seoTitle: tool.seoTitle,
+    seoDescription: tool.seoDescription,
+  })),
+  ...categories.map((category) => ({
+    slug: category.slug,
+    path: `/tools/${category.slug}`,
+    title: category.label,
+    description: category.description,
+    seoTitle: category.seoTitle,
+    seoDescription: category.seoDescription,
+  })),
+];
+
+/**
+ * Look up SEO data for a page by its URL path.
+ *
+ * Searches the pre-built merged constant for a matching path.
+ * Returns null if no matching page is found.
+ *
+ * @param {string} path - The URL path to look up (e.g. '/about', '/slugify', '/tools/writing-editing').
+ *
+ * @returns {SeoData | null} The matching SEO data, or null if not found.
+ *
+ * @example
+ * getSeoByPath('/about')
+ * // => { slug: 'about', path: '/about', title: 'About', seoTitle: 'About', ... }
+ *
+ * getSeoByPath('/slugify')
+ * // => { slug: 'slugify', path: '/slugify', title: 'Slugify', seoTitle: 'Slugify Tool...', ... }
+ */
+export const getSeoByPath = (path: string): SeoData | null => {
+  return allSeoData.find((page) => page.path === path) || null;
 };
