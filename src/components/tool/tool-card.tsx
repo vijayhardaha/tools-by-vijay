@@ -33,7 +33,7 @@ export function ToolCard({ slug, className = '' }: ToolCardProps): JSX.Element |
   if (!tool) return null;
 
   return (
-    <Link href={`/tools/${tool.slug}`}>
+    <Link href={`/${tool.slug}`}>
       <div
         className={cn(
           'group border-border bg-card text-card-foreground relative top-0 flex items-center gap-4 rounded-xl border px-4 py-4 transition-all duration-200 ease-in-out md:px-6 md:py-5',
