@@ -138,7 +138,7 @@ export interface SeoData {
  *
  * Built once at module load time for efficient lookups.
  */
-export const allSeoData: SeoData[] = [
+const allSeoData: SeoData[] = [
   ...pages.map((page) => ({
     slug: page.slug,
     path: slugToPath(page.slug),

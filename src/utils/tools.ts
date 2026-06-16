@@ -5,20 +5,6 @@ import tools from '@/constants/tools';
 import type { Tool } from '@/constants/tools';
 
 /**
- * Generate a permalink path for a tool by its slug.
- *
- * @param {string} slug - The tool slug
- *
- * @returns {string} The URL path for the tool, e.g. "/slugify"
- *
- * @example
- * getToolPath('slugify') // => '/slugify'
- */
-export const getToolPath = (slug: string): string => {
-  return `/${slug}`;
-};
-
-/**
  * Find a tool by its slug
  *
  * @param {string} slug - The slug to search for

@@ -5,7 +5,7 @@ import { Cascadia_Mono, Funnel_Display } from 'next/font/google';
  */
 const sansFont = Funnel_Display({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
+  weight: ['300', '400', '500', '600', '700'],
   style: ['normal'],
   variable: '--font-app-sans',
   display: 'swap',

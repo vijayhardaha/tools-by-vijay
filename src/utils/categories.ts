@@ -20,12 +20,3 @@ export const getAllCategories = (): Category[] => {
 export const getCategoryBySlug = (slug: string): Category | null => {
   return categories.find((category) => category.slug === slug) || null;
 };
-
-/**
- * Get all category slugs
- *
- * @returns {string[]} Array of all category slugs
- */
-export const getAllCategorySlugs = (): string[] => {
-  return categories.map((category) => category.slug);
-};
