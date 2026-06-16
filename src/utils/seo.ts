@@ -1,5 +1,5 @@
 import categories from '@/constants/categories';
-import pageSeo from '@/constants/page-seo';
+import { pages } from '@/constants/pages';
 import tools from '@/constants/tools';
 
 /**
@@ -36,21 +36,22 @@ export const siteUrl = (): string => {
 /**
  * Normalizes a path for canonical usage.
  *
- * - Removes leading and trailing slashes
+ * - Removes leading and trailing slashes only (preserves slashes in middle)
  * - Returns empty string for root
  *
  * @param {string} [path] - The input path or slug.
  *
- * @returns {string} A clean relative path without leading slash.
+ * @returns {string} A clean relative path without leading/trailing slash.
  *
  * @example
- * cleanPath("about") // "about"
- * cleanPath("/about") // "about"
- * cleanPath("/about/") // "about"
- * cleanPath("") // ""
- * cleanPath("/") // ""
+ * cleanPath("about")                    // "about"
+ * cleanPath("/about")                   // "about"
+ * cleanPath("/about/")                  // "about"
+ * cleanPath("/tools/category-name/")    // "tools/category-name"
+ * cleanPath("")                          // ""
+ * cleanPath("/")                         // ""
  */
-const cleanPath = (path: string = ''): string => {
+export const cleanPath = (path: string = ''): string => {
   return path.trim().replace(/^\/+/, '').replace(/\/+$/, '');
 };
 
@@ -80,18 +81,24 @@ export const getPermaLink = (path: string = ''): string => {
 // ==============================================================================
 
 /**
- * Helper to convert a slug into a full URL path.
+ * Convert a slug into a clean path (no leading/trailing slashes).
+ *
+ * Uses cleanPath to strip any accidental leading/trailing slashes,
+ * preventing issues like `//` when slugs already contain slashes.
  *
  * @param {string} slug - The URL slug (empty for home).
  *
- * @returns {string} The full URL path.
+ * @returns {string} The clean path.
  *
  * @example
- * slugToPath('')       // '/'
- * slugToPath('about')  // '/about'
+ * slugToPath('')              // ''
+ * slugToPath('about')         // 'about'
+ * slugToPath('/about')        // 'about'
+ * slugToPath('/about/')       // 'about'
+ * slugToPath('/tools/category-name/') // 'tools/category-name'
  */
 const slugToPath = (slug: string): string => {
-  return slug === '' ? '/' : `/${slug}`;
+  return cleanPath(slug);
 };
 
 /**
@@ -103,8 +110,8 @@ const slugToPath = (slug: string): string => {
  *
  * @type {SeoData}
  * @property {string} slug - Clean URL slug (e.g. 'about', 'tools', '' for home)
- * @property {string} path - Full URL path (e.g. '/about', '/tools')
- * @property {string} title - Display title (tool name / category label / page name)
+ * @property {string} path - Clean path without leading slash (e.g. 'about', 'tools', '' for home)
+ * @property {string} title - Display title (tool title / category title / page name)
  * @property {string} description - Display description
  * @property {string} seoTitle - SEO-optimized title for metadata
  * @property {string} seoDescription - SEO-optimized description for metadata
@@ -126,29 +133,32 @@ export interface SeoData {
  * - Category pages (/tools/{slug})
  * - Home page (/)
  *
+ * Paths are stored WITHOUT leading slash (e.g. 'about', 'tools/writing-editing').
+ * The getSeoByPath() function handles normalization for both with and without slash.
+ *
  * Built once at module load time for efficient lookups.
  */
 export const allSeoData: SeoData[] = [
-  ...pageSeo.map((page) => ({
+  ...pages.map((page) => ({
     slug: page.slug,
     path: slugToPath(page.slug),
     title: page.title,
     description: page.description,
-    seoTitle: page.title,
-    seoDescription: page.description,
+    seoTitle: page.seoTitle,
+    seoDescription: page.seoDescription,
   })),
   ...tools.map((tool) => ({
     slug: tool.slug,
-    path: `/${tool.slug}`,
-    title: tool.name,
+    path: slugToPath(tool.slug),
+    title: tool.title,
     description: tool.description,
     seoTitle: tool.seoTitle,
     seoDescription: tool.seoDescription,
   })),
   ...categories.map((category) => ({
     slug: category.slug,
-    path: `/tools/${category.slug}`,
-    title: category.label,
+    path: slugToPath(`tools/${category.slug}`),
+    title: category.title,
     description: category.description,
     seoTitle: category.seoTitle,
     seoDescription: category.seoDescription,
@@ -158,20 +168,21 @@ export const allSeoData: SeoData[] = [
 /**
  * Look up SEO data for a page by its URL path.
  *
- * Searches the pre-built merged constant for a matching path.
- * Returns null if no matching page is found.
+ * Accepts paths with or without a leading slash — normalizes automatically.
+ * All seo paths are stored WITHOUT leading slash (via slugToPath), so
+ * normalization strips any slashes before comparison.
  *
- * @param {string} path - The URL path to look up (e.g. '/about', '/slugify', '/tools/writing-editing').
+ * @param {string} path - The URL path to look up (e.g. '/about', 'about', '/slugify').
  *
  * @returns {SeoData | null} The matching SEO data, or null if not found.
  *
  * @example
- * getSeoByPath('/about')
- * // => { slug: 'about', path: '/about', title: 'About', seoTitle: 'About', ... }
- *
+ * getSeoByPath('/about')  // works
+ * getSeoByPath('about')   // also works
  * getSeoByPath('/slugify')
- * // => { slug: 'slugify', path: '/slugify', title: 'Slugify', seoTitle: 'Slugify Tool...', ... }
+ * // => { slug: 'slugify', path: 'slugify', title: 'Slugify', seoTitle: 'Slugify Tool...', ... }
  */
 export const getSeoByPath = (path: string): SeoData | null => {
-  return allSeoData.find((page) => page.path === path) || null;
+  const normalized = cleanPath(path);
+  return allSeoData.find((page) => page.path === normalized) || null;
 };

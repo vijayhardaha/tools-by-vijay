@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 import { SITE_CONFIG, SITE_METADATA } from '@/constants/seo';
-import { siteUrl, getPermaLink } from '@/utils/seo';
+import { siteUrl, getPermaLink, cleanPath } from '@/utils/seo';
 
 /**
  * Props for generating metadata, including title, description, and path for SEO.
@@ -96,25 +96,23 @@ const buildSeoTitle = (title: string = '', postfix: boolean): string => {
 /**
  * Build the OG image URL for a page.
  *
- * Creates a path-based URL like /api/og/about.png instead of a query
- * string, which is better for SEO and CDN caching. The API route looks
- * up title and description from the centralized SEO data source using
- * the path embedded in the URL.
+ * Creates a path-based URL like /api/og/about.png. The path may have a
+ * leading slash (e.g. '/about') — cleanPath normalizes it.
+ * Empty string or '/' for the home page becomes 'index'.
  *
- * @param {string} [path] - The page path (e.g. '/about', '/tools/writing-editing').
+ * @param {string} [path] - The page path (e.g. '/about', '' for home).
  *
  * @returns {string} The full URL to the dynamic OG image.
  *
  * @example
- * buildOgImageUrl('/about')        // '/api/og/about.png'
- * buildOgImageUrl('/')             // '/api/og/index.png'
- * buildOgImageUrl('/tools')        // '/api/og/tools.png'
- * buildOgImageUrl('/slugify')      // '/api/og/slugify.png'
+ * buildOgImageUrl('/about')             // '/api/og/about.png'
+ * buildOgImageUrl('')                   // '/api/og/index.png'
+ * buildOgImageUrl('/tools/writing-editing') // '/api/og/tools/writing-editing.png'
  */
-const buildOgImageUrl = (path: string = '/'): string => {
-  // Root path → /api/og/index.png, everything else → /api/og/{path}.png
-  const cleanPath = path === '/' ? 'index' : path.replace(/^\//, '');
-  return `/api/og/${cleanPath}.png`;
+const buildOgImageUrl = (path: string = ''): string => {
+  const clean = cleanPath(path);
+  const slug = !clean ? 'index' : clean;
+  return getPermaLink(`/api/og/${slug}.png`);
 };
 
 /**
@@ -135,7 +133,14 @@ export const buildMetadata = ({ title = '', description = '', path = '', postfix
   const canonical = path ? getPermaLink(path) : siteUrl();
   const titleAndDescription = { title: buildSeoTitle(title, postfix), description: description || '' };
   const ogImage = buildOgImageUrl(path || '/');
-  const ogImageMeta = { url: ogImage, width: 1200, height: 630, alt: titleAndDescription.title, type: 'image/png' };
+  const ogImageMeta = {
+    url: ogImage,
+    secureUrl: ogImage,
+    width: 1200,
+    height: 630,
+    alt: titleAndDescription.title,
+    type: 'image/png',
+  };
 
   const newMetadata = mergeDeep(SITE_METADATA as Record<string, unknown>, {
     ...titleAndDescription,

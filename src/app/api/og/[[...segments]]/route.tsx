@@ -12,7 +12,7 @@
  *   /api/og/slugify.png         → Slugify tool page (/slugify)
  *
  * The route looks up the page's SEO data (title, description) from the
- * centralized page-seo constants, which also combines tool and category
+ * centralized pages constants, which also combines tool and category
  * SEO data. This ensures OG images always stay in sync with page metadata.
  *
  * Returns a 1200×630 PNG image suitable for social sharing.
@@ -208,7 +208,9 @@ function OgImage({ title, description, path }: OgProps): JSX.Element {
           <span style={{ fontSize: '18px', fontWeight: 500, color: '#737373' }}>Vijay Hardaha</span>
         </div>
 
-        <span style={{ fontSize: '16px', fontWeight: 400, color: '#525252' }}>toolsbyvijay.vercel.app{path}</span>
+        <span style={{ fontSize: '16px', fontWeight: 400, color: '#525252' }}>
+          toolsbyvijay.vercel.app{path || '/'}
+        </span>
       </div>
     </div>
   );
