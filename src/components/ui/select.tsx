@@ -135,7 +135,7 @@ export function Select({
           // Data attributes
           'data-slot=select-trigger',
           'data-placeholder:text-muted-foreground',
-          'data-[size=default]:h-9 data-[size=sm]:h-8',
+          'data-[size=default]:h-10 data-[size=sm]:h-8',
 
           // Slot-based styles
           '*:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2',
@@ -188,7 +188,7 @@ export function Select({
                     'relative flex w-full items-center gap-2',
 
                     // Spacing
-                    'rounded-xs py-1.5 pr-8 pl-2 text-sm',
+                    'rounded-xs py-2 pr-8 pl-2 text-sm',
 
                     // Outline
                     'outline-hidden select-none',
