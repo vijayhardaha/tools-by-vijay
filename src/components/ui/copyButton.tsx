@@ -16,12 +16,14 @@ import { cn } from '@/utils/classnames';
  * @property {string} [copyText] - The label when not yet copied
  * @property {string} [copiedText] - The label after successful copy
  * @property {string} [className] - Additional CSS classes
+ * @property {boolean} [disabled] - Whether the button is disabled
  */
 interface CopyButtonProps {
   text: string;
   copyText?: string;
   copiedText?: string;
   className?: string;
+  disabled?: boolean;
 }
 
 /**
@@ -36,6 +38,7 @@ export function CopyButton({
   copyText = 'Copy',
   copiedText = 'Copied!',
   className = '',
+  disabled,
 }: CopyButtonProps): JSX.Element {
   const [copied, setCopied] = useState(false);
 
@@ -51,7 +54,12 @@ export function CopyButton({
   };
 
   return (
-    <Button variant={copied ? 'success' : 'secondary'} onClick={handleCopy} className={cn('min-w-30', className)}>
+    <Button
+      variant={copied ? 'success' : 'secondary'}
+      onClick={handleCopy}
+      disabled={disabled || !text}
+      className={cn('min-w-30', className)}
+    >
       {copied ? <CheckIcon className="h-4 w-4" /> : <CopyIcon className="h-4 w-4" />}
       {copied ? copiedText : copyText}
     </Button>
