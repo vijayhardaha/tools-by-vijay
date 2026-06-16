@@ -46,7 +46,27 @@ export interface CategoryIcons {
 /**
  * Re-export for use in tool cards and other components.
  */
-export { PiCaretRightBold } from 'react-icons/pi';
+export {
+  PiArrowRight,
+  PiBowlSteamThin,
+  PiCaretRightBold,
+  PiCodeBold,
+  PiFacebookLogoBold,
+  PiGithubLogo,
+  PiGlobe,
+  PiLinkedinLogoBold,
+  PiMagicWand,
+  PiMonitor,
+  PiNotePencilBold,
+  PiRocket,
+  PiShieldCheckBold,
+  PiSparkle,
+  PiStudent,
+  PiTelegramLogoBold,
+  PiUser,
+  PiWhatsappLogoBold,
+  PiXLogo,
+} from 'react-icons/pi';
 
 /**
  * A mapping of tool slugs to their corresponding icon components.
