@@ -50,18 +50,17 @@ src/
     home/                   # ToolCard (home page grid)
     shared/                 # VercelAnalytics
   constants/
-    tools.ts                # Tool[] data (name, slug, description, seoTitle, seoDescription, category)
+    tools.ts                # Tool[] data (slug, title, description, seoTitle, seoDescription, category)
     categories.ts           # Category[] data (label, slug, description, seoTitle, seoDescription)
-    tool-icons.tsx          # slug → React icon mapping for tools (must be manually kept in sync)
-    category-icons.tsx      # slug → React icon mapping for categories (Pi Duotone)
+    icons.tsx               # slug → React icon mapping for both tools and categories
+    pages.ts                # PageEntry[] data (slug, title, description, seoTitle, seoDescription)
+    links.tsx               # Footer link groups + SocialMediaLink[] (icon as ReactNode)
     seo.ts                  # SITE_CONFIG, SITE_METADATA, GOOGLE_ANALYTICS_ID
-    footer-links.ts         # Footer nav link groups (tools + pages)
-    social-links.ts         # SocialMediaLink[]
   utils/
     tools.ts                # Tool helpers: getAllTools, findToolBySlug, getToolsByCategory, getToolIcon, getToolsByCategories, etc.
     categories.ts           # Category helpers: getAllCategories, getCategoryBySlug, etc.
     meta.ts                 # buildMetadata() — generates Next.js Metadata with OG/Twitter card merging
-    seo.ts                  # siteUrl(), getPermaLink()
+    seo.ts                  # siteUrl(), getPermaLink(), getSeoByPath(), allSeoData, cleanPath — unified SEO lookup
     schema.ts               # Schema.org JSON-LD: globalSchema(), buildBreadcrumbs() with parent support
     fonts.ts                # Work Sans + Geist Mono font config
     classnames.ts           # cn() utility (clsx + twMerge)
@@ -88,7 +87,7 @@ src/app/(tool)/<slug>/page.tsx
 │   │   │     breadcrumbItems={[   # Home / Category / Tool Name
 │   │   │       {label:'Home', href:'/'},
 │   │   │       {label: categoryLabel, href: categoryPath},
-│   │   │       {label: tool.name}]}
+│   │   │       {label: tool.title}]}
 │   │   ├── <PageContent>
 │   │   │   └── <EntryWithSidebar> # 4-col article + 2-col sidebar (randomized category widgets)
 │   │   │       └── <ToolComponent># The actual interactive tool
@@ -140,12 +139,13 @@ src/app/tools/[slug]/page.tsx   # Single category page (async, depends on params
 
 1. Tools are **declared statically** in `src/constants/tools.ts` as `Tool[]`
 2. Categories in `src/constants/categories.ts` as `Category[]`
-3. Tool icons in `src/constants/tool-icons.tsx` as `slug → ReactElement` map
-4. Category icons in `src/constants/category-icons.tsx` as `slug → ReactElement` map
+3. All icons in `src/constants/icons.tsx` as `slug → ReactElement` maps (`toolIcons`, `categoryIcons`)
+4. Page SEO in `src/constants/pages.ts` as `PageEntry[]`
 5. The home page (`page.tsx`) groups tools by category using `getToolsByCategories()`
 6. Each tool page reads its data via `findToolBySlug()` at module scope
 7. Tool components operate purely client-side with `useState` — no data fetching for tools themselves
 8. Heavy processing (minification) goes through `src/app/api/` POST routes
+9. Unified SEO lookup (`getSeoByPath`) combines pages, tools, and categories from `allSeoData` in `utils/seo.ts`
 
 ## API Routes
 
@@ -166,12 +166,12 @@ All accept JSON body, return JSON. Error format: `{ error: string }` with approp
 Required files to create/modify:
 
 1. **`src/constants/tools.ts`** — Add `Tool` object to array
-2. **`src/constants/tool-icons.tsx`** — Map slug → icon element
+2. **`src/constants/icons.tsx`** — Map slug → icon element in `toolIcons`
 3. **`src/components/tools/<slug>/`** — Create index.tsx, input-block.tsx, output-block.tsx, info-block.tsx
 4. **`src/app/(tool)/<slug>/page.tsx`** — Create page with standard boilerplate (module-level: tool, rootUrl, categoryLabel, categoryPath, schemaData, metadata; JSX: JsonLd + PageLayout + PageHeader with breadcrumbItems)
-5. **`src/constants/footer-links.tsx`** — Add to appropriate footer section
+5. **`src/constants/links.tsx`** — Add to appropriate footer section
 
-**Gotcha**: The tool slug must be identical across all locations. The directory name, `tools.ts` slug, `tool-icons.tsx` key, page path, and any footer links must all match exactly.
+**Gotcha**: The tool slug must be identical across all locations. The directory name, `tools.ts` slug, `icons.tsx` key, page path, and any footer links must all match exactly.
 
 ## Conventions
 
@@ -191,6 +191,7 @@ Required files to create/modify:
 - `buildMetadata()` deep-merges page-specific values with `SITE_METADATA` (which includes OG/Twitter/image defaults). For info pages, metadata strings are deduplicated via module-level variables shared with schema data.
 - Schema.org JSON-LD is injected via `<JsonLd>` component at the page level using `globalSchema()` + `webPageSchema()` (or `aboutPageSchema`/`contactPageSchema`) + `breadcrumbSchema()` from `@vijayhardaha/schema-builder`
 - `buildBreadcrumbs()` from `utils/schema.ts` supports optional `parents` array for multi-level breadcrumbs (e.g. Home > Category > Tool)
+- Unified SEO data (`allSeoData`) in `utils/seo.ts` combines pages, tools, and categories for lookup via `getSeoByPath()`
 - Sitemap auto-generated on build by `next-sitemap` (configured in `next-sitemap.config.js`)
 - Google Analytics via `@next/third-parties/google`
 - Vercel Analytics via `@vercel/analytics`
@@ -222,14 +223,16 @@ Required files to create/modify:
 - **`@vijayhardaha/dev-config`** is a shared private package that owns ESLint, Prettier, Commitlint, and tsconfig base configs. Don't modify their behavior at the project level unless you need project-specific overrides.
 - **Tailwind v4** uses the new CSS-based config (`@theme` in `globals.css`), not the old `tailwind.config.js` JS approach.
 - **`buildMetadata()`** uses a `mergeDeep()` function that overwrites arrays from source (not concat). This means if you pass `keywords` in page metadata, it replaces all global keywords.
-- **Tool icons** are manually mapped in `tool-icons.tsx` and can easily get out of sync when adding tools. Always check `tool-icons.tsx` after adding a tool.
-- **Category icons** are mapped in `category-icons.tsx` — must be kept in sync with `categories.ts` slugs.
+- **Tool icons** are mapped in `icons.tsx` (`toolIcons`) and can easily get out of sync when adding tools. Always check `icons.tsx` after adding a tool.
+- **Category icons** are also in `icons.tsx` (`categoryIcons`) — must be kept in sync with `categories.ts` slugs.
 - **`SubmitEvent`** type is imported from React (`import type { SubmitEvent } from 'react'`), not the DOM global.
 - **The build command** runs both `next build` AND `next-sitemap` — sitemap generation will fail if the build didn't complete successfully.
 - **Schema.org data** uses `@vijayhardaha/schema-builder` package, which provides `personSchema`, `organizationSchema`, `webSiteSchema`, `webPageSchema`, `aboutPageSchema`, `contactPageSchema`, `breadcrumbSchema`, `softwareAppSchema`, and `JsonLd` React component.
 - **`output: 'standalone'`** in next.config.ts means the build output includes a minimal `node_modules` for self-contained deployment.
 - **Sidebar widgets** `(EntryWithSidebar)` randomly picks two different categories to display — this happens only on initial render via a `useRef` guard.
 - **Schema constants** are defined at module level for static pages (tools, about, contact, faq, terms, privacy, tools listing) and inside the component for the dynamic category page (`/tools/[slug]`) which depends on `params`.
+- **Unified SEO lookup** (`allSeoData` in `utils/seo.ts`) merges pages, tools, and categories into a single array — paths stored with leading slash. Use `getSeoByPath()` for lookups.
+- **`Tool.title`** is the display name (was `Tool.name`), keep this in mind when referencing tool fields.
 
 ## Deployment
 
