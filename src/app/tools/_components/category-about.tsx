@@ -91,7 +91,7 @@ function CreativeGeneratorsAbout(): JSX.Element {
 const aboutComponents: Record<string, () => JSX.Element> = {
   'writing-editing': WritingEditingAbout,
   'developer-suite': DeveloperSuiteAbout,
-  'web-url-tools': WebUrlToolsAbout,
+  'web-url': WebUrlToolsAbout,
   'security-privacy': SecurityPrivacyAbout,
   'creative-generators': CreativeGeneratorsAbout,
 };
