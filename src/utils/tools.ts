@@ -1,6 +1,6 @@
 import type { ReactElement } from 'react';
 
-import { toolIcons } from '@/constants/tool-icons';
+import { toolIcons } from '@/constants/icons';
 import tools from '@/constants/tools';
 import type { Tool } from '@/constants/tools';
 

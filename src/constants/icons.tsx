@@ -1,6 +1,11 @@
 import type { ReactElement } from 'react';
 
 import {
+  PiCodeDuotone,
+  PiGlobeDuotone,
+  PiNotePencilDuotone,
+  PiShieldCheckDuotone,
+  PiSparkleDuotone,
   PiFadersHorizontalBold,
   PiFadersBold,
   PiPasswordBold,
@@ -30,13 +35,25 @@ export interface ToolIcons {
 }
 
 /**
+ * A mapping of category slugs to their corresponding icon elements.
+ *
+ * @type {CategoryIcons}
+ */
+export interface CategoryIcons {
+  [key: string]: ReactElement;
+}
+
+/**
+ * Re-export for use in tool cards and other components.
+ */
+export { PiCaretRightBold } from 'react-icons/pi';
+
+/**
  * A mapping of tool slugs to their corresponding icon components.
  * Each key is a tool slug, and the value is the icon element.
  *
  * @type {ToolIcons}
  */
-export { PiCaretRightBold } from 'react-icons/pi';
-
 export const toolIcons: ToolIcons = {
   slugify: <PiFadersHorizontalBold />,
   'bulk-slugify': <PiFadersBold />,
@@ -65,4 +82,18 @@ export const toolIcons: ToolIcons = {
   unminify: <PiFileHtmlBold />,
   'barcode-generator': <PiQuotesFill />,
   'qrcode-generator': <PiShieldCheckBold />,
+};
+
+/**
+ * A mapping of category slugs to their corresponding icon components.
+ * Each key is a category slug, and the value is the icon element.
+ *
+ * @type {CategoryIcons}
+ */
+export const categoryIcons: CategoryIcons = {
+  'writing-editing': <PiNotePencilDuotone />,
+  'developer-suite': <PiCodeDuotone />,
+  'web-url-tools': <PiGlobeDuotone />,
+  'security-privacy': <PiShieldCheckDuotone />,
+  'creative-generators': <PiSparkleDuotone />,
 };
