@@ -34,7 +34,7 @@ export function PageLayout({ children }: PageLayoutProps): JSX.Element {
       </a>
 
       <Header />
-      <main id="main-content" className="min-h-160 overflow-x-hidden pt-8 pb-12">
+      <main id="main-content" className="min-h-160 overflow-x-hidden pt-8 pb-16">
         {children}
       </main>
       <Footer />
