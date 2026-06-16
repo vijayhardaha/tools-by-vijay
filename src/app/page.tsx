@@ -4,7 +4,7 @@ import { PageLayout } from '@/components/page/PageLayout';
 import { ToolCard } from '@/components/tool/tool-card';
 import { Container } from '@/components/ui/container';
 import type { Tool } from '@/constants/tools';
-import type { Category } from '@/constants/tools-categories';
+import type { Category } from '@/constants/categories';
 import { getCategoryBySlug } from '@/utils/categories';
 import { getToolsByCategories } from '@/utils/tools';
 

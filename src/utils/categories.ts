@@ -1,5 +1,5 @@
-import categories from '@/constants/tools-categories';
-import type { Category } from '@/constants/tools-categories';
+import categories from '@/constants/categories';
+import type { Category } from '@/constants/categories';
 
 /**
  * Get all categories

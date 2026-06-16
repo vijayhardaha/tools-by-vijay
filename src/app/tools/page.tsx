@@ -7,10 +7,10 @@ import { PageContent } from '@/components/page/PageContent';
 import { PageHeader } from '@/components/page/PageHeader';
 import { PageLayout } from '@/components/page/PageLayout';
 import { ToolCard } from '@/components/tool/tool-card';
+import categories from '@/constants/categories';
+import type { Category } from '@/constants/categories';
 import { categoryIcons } from '@/constants/category-icons';
 import tools from '@/constants/tools';
-import categories from '@/constants/tools-categories';
-import type { Category } from '@/constants/tools-categories';
 import { buildMetadata } from '@/utils/meta';
 import { getToolsByCategory } from '@/utils/tools';
 
