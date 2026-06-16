@@ -3,7 +3,7 @@ import type { JSX } from 'react';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
-import { EntryWithSidebar } from '@/components/page/EntryWithSidebar';
+import { EntryContent } from '@/components/page/EntryContent';
 import { PageContent } from '@/components/page/PageContent';
 import { PageHeader } from '@/components/page/PageHeader';
 import { PageLayout } from '@/components/page/PageLayout';
@@ -45,9 +45,9 @@ export default function Base64EncodeDecodeTool(): JSX.Element {
     <PageLayout>
       <PageHeader pageName={tool.name} title={tool.name} description={tool.description} icon={getToolIcon(tool.slug)} />
       <PageContent>
-        <EntryWithSidebar tool={tool}>
+        <EntryContent tool={tool}>
           <Base64EncodeDecode />
-        </EntryWithSidebar>
+        </EntryContent>
       </PageContent>
     </PageLayout>
   );
