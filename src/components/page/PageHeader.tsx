@@ -1,6 +1,7 @@
 import type { JSX, ReactNode } from 'react';
 
 import { PageBreadcrumb } from '@/components/page/PageBreadcrumb';
+import type { BreadcrumbItem } from '@/components/page/PageBreadcrumb';
 import { Container } from '@/components/ui/container';
 import { cn } from '@/utils/classnames';
 
@@ -12,12 +13,14 @@ import { cn } from '@/utils/classnames';
  * @property {string} [description] - Optional description text for the page
  * @property {ReactNode | null} [icon] - Optional icon element to display next to the title
  * @property {string} [pageName] - The current page name for the breadcrumb navigation
+ * @property {BreadcrumbItem[]} [breadcrumbItems] - Multi-level breadcrumb items for deeper navigation
  */
 interface PageHeaderProps {
   title: string;
   description?: string;
   icon?: ReactNode | null;
   pageName?: string;
+  breadcrumbItems?: BreadcrumbItem[];
 }
 
 /**
@@ -27,7 +30,13 @@ interface PageHeaderProps {
  *
  * @returns {JSX.Element} The rendered component.
  */
-export function PageHeader({ title, description, icon = null, pageName }: PageHeaderProps): JSX.Element {
+export function PageHeader({
+  title,
+  description,
+  icon = null,
+  pageName,
+  breadcrumbItems,
+}: PageHeaderProps): JSX.Element {
   const gradients = [
     // radial
     'radial-gradient(100% 225% at 100% 0%, #FAFF00 0%, #000000 100%)',
@@ -45,7 +54,11 @@ export function PageHeader({ title, description, icon = null, pageName }: PageHe
     <div className={cn('-mt-8 mb-8', 'text-white')} style={{ background: gradients, backgroundBlendMode: blendModes }}>
       <Container className="mb-4">
         <div className={cn('py-10')}>
-          {pageName && <PageBreadcrumb pageName={pageName} />}
+          {breadcrumbItems ? (
+            <PageBreadcrumb items={breadcrumbItems} />
+          ) : pageName ? (
+            <PageBreadcrumb pageName={pageName} />
+          ) : null}
           <h1 className={cn('inline-flex items-center space-x-2 text-2xl font-bold md:text-3xl')}>
             {icon && <span className="mr-2 inline-block">{icon}</span>}
             {title}
