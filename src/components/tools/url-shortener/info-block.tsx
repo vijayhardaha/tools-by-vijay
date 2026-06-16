@@ -112,10 +112,8 @@ export function InfoBlock(): JSX.Element {
         </FAQItem>
         <FAQItem heading="Is my data sent to a server?" headingId="is-my-data-sent-to-a-server">
           <p>
-            <p>
-              Your data is sent to our server-side API for processing only. It is not stored, logged, or shared with any
-              third parties and is discarded immediately after processing.
-            </p>
+            Your data is sent to our server-side API for processing only. It is not stored, logged, or shared with any
+            third parties and is discarded immediately after processing.
           </p>
         </FAQItem>
         <FAQItem heading="What is a URL shortener?" headingId="what-is-a-url-shortener">
@@ -137,9 +135,7 @@ export function InfoBlock(): JSX.Element {
           <p>URLs shortened through TinyURL are typically permanent. However, keep a backup of your original URLs.</p>
         </FAQItem>
         <FAQItem heading="Can I use this tool offline?" headingId="can-i-use-this-tool-offline">
-          <p>
-            <p>This tool requires a server-side API call, so an internet connection is needed for processing.</p>
-          </p>
+          <p>This tool requires a server-side API call, so an internet connection is needed for processing.</p>
         </FAQItem>
       </FAQ>
 

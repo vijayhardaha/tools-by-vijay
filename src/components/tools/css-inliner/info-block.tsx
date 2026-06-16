@@ -120,10 +120,8 @@ export function InfoBlock(): JSX.Element {
         </FAQItem>
         <FAQItem heading="Is my data sent to a server?" headingId="is-my-data-sent-to-a-server">
           <p>
-            <p>
-              Your data is sent to our server-side API for processing only. It is not stored, logged, or shared with any
-              third parties and is discarded immediately after processing.
-            </p>
+            Your data is sent to our server-side API for processing only. It is not stored, logged, or shared with any
+            third parties and is discarded immediately after processing.
           </p>
         </FAQItem>
         <FAQItem heading="What is CSS inlining?" headingId="what-is-css-inlining">
@@ -148,9 +146,7 @@ export function InfoBlock(): JSX.Element {
           <p>This tool uses juice for CSS inlining and Prettier for formatting the output.</p>
         </FAQItem>
         <FAQItem heading="Can I use this tool offline?" headingId="can-i-use-this-tool-offline">
-          <p>
-            <p>This tool requires a server-side API call, so an internet connection is needed for processing.</p>
-          </p>
+          <p>This tool requires a server-side API call, so an internet connection is needed for processing.</p>
         </FAQItem>
       </FAQ>
 

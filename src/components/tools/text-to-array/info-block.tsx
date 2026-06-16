@@ -104,10 +104,8 @@ export function InfoBlock(): JSX.Element {
         </FAQItem>
         <FAQItem heading="Is my data sent to a server?" headingId="is-my-data-sent-to-a-server">
           <p>
-            <p>
-              No, all processing happens locally in your browser. Your data never leaves your device and is not stored
-              or logged anywhere.
-            </p>
+            No, all processing happens locally in your browser. Your data never leaves your device and is not stored or
+            logged anywhere.
           </p>
         </FAQItem>
         <FAQItem heading="What formats can I convert to?" headingId="what-formats-can-i-convert-to">
@@ -130,10 +128,8 @@ export function InfoBlock(): JSX.Element {
         </FAQItem>
         <FAQItem heading="Can I use this tool offline?" headingId="can-i-use-this-tool-offline">
           <p>
-            <p>
-              Yes, since all processing happens client-side in your browser, this tool works offline once the page has
-              loaded.
-            </p>
+            Yes, since all processing happens client-side in your browser, this tool works offline once the page has
+            loaded.
           </p>
         </FAQItem>
       </FAQ>
