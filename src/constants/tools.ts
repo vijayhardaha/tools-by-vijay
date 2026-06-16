@@ -102,7 +102,7 @@ const tools: Tool[] = [
     seoTitle: 'Bulk URL Shortener – Create Short Links via TinyURL',
     seoDescription:
       'Shorten multiple URLs instantly. Create clean, clickable links for social media and marketing using the TinyURL API.',
-    category: 'web-url-tools',
+    category: 'web-url',
   },
   {
     name: 'Dropdown to Array',
@@ -202,7 +202,7 @@ const tools: Tool[] = [
     seoTitle: 'URL Encoder & Decoder – Convert URL Special Characters',
     seoDescription:
       'Easily encode or decode URL strings. Ensure your web links are functional and free of character-encoding errors.',
-    category: 'web-url-tools',
+    category: 'web-url',
   },
   {
     name: 'Base64 Encode/Decode',
@@ -212,7 +212,7 @@ const tools: Tool[] = [
     seoTitle: 'Base64 Converter – Encode and Decode Text & Files',
     seoDescription:
       'Quickly encode or decode Base64 strings and files. The ideal tool for secure data transmission and web embedding.',
-    category: 'web-url-tools',
+    category: 'web-url',
   },
   {
     name: 'Country Name Generator',
