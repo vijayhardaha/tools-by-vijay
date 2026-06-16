@@ -67,28 +67,27 @@ export function DesktopNav(): JSX.Element {
             onMouseEnter={() => handleMouseEnter(category.slug)}
             onMouseLeave={handleMouseLeave}
           >
-            {/* Top-level button */}
-            <button
-              type="button"
+            {/* Top-level category link */}
+            <Link
+              href={`/tools/${category.slug}`}
               className={cn(
                 // Text & colors
                 'text-muted-foreground hover:text-foreground',
 
                 // Layout
-                'inline-flex cursor-pointer items-center gap-1 rounded-xl px-2 py-2 text-sm font-medium',
+                'inline-flex items-center gap-1 rounded-xl px-2 py-2 text-sm font-medium',
 
                 // Focus
                 'focus-visible:ring-ring/50 outline-none focus-visible:ring-[3px]',
 
                 // Transitions
-                'transition-colors',
+                'no-underline transition-colors',
 
                 // States
                 activeMenu === category.slug && 'text-foreground bg-muted'
               )}
               aria-expanded={activeMenu === category.slug}
               aria-haspopup="true"
-              onClick={() => setActiveMenu(activeMenu === category.slug ? null : category.slug)}
             >
               {category.label}
               <PiCaretDownBold
@@ -97,7 +96,7 @@ export function DesktopNav(): JSX.Element {
                   activeMenu === category.slug && 'rotate-180'
                 )}
               />
-            </button>
+            </Link>
 
             {/* Dropdown submenu */}
             {activeMenu === category.slug && (

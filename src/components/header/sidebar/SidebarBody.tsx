@@ -1,10 +1,14 @@
+'use client';
+
 import type { JSX, ReactNode } from 'react';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 
 import Link from 'next/link';
 import { Scrollbars } from 'react-custom-scrollbars-4';
+import { PiCaretDownBold } from 'react-icons/pi';
 
 import { getAllCategories } from '@/utils/categories';
+import { cn } from '@/utils/classnames';
 import { getToolsByCategories } from '@/utils/tools';
 
 /**
@@ -38,36 +42,71 @@ const NavLink = ({ href, children, className = '' }: NavLinkProps): JSX.Element 
 );
 
 /**
- * Props for the CategorySection component.
+ * Props for the CategoryAccordion component.
  *
- * @type {CategorySectionProps}
- * @property {string} title - The section heading text
+ * @type {CategoryAccordionProps}
+ * @property {string} title - The category label text
+ * @property {string} slug - The category slug for the link
  * @property {{ slug: string; name: string }[]} tools - Array of tools in this category
  */
-interface CategorySectionProps {
+interface CategoryAccordionProps {
   title: string;
+  slug: string;
   tools: { slug: string; name: string }[];
 }
 
 /**
- * CategorySection component to display a group of tool links.
+ * CategoryAccordion component that displays a category header with expand/collapse
+ * for its tool links. The category name is a link, and the caret button toggles
+ * the submenu.
  *
- * @param {CategorySectionProps} props - Component props.
+ * @param {CategoryAccordionProps} props - Component props.
  *
- * @returns {JSX.Element} Category section with tool links.
+ * @returns {JSX.Element} Category accordion section.
  */
-const CategorySection = ({ title, tools }: CategorySectionProps): JSX.Element => (
-  <div className="mb-6">
-    <h3 className="text-foreground mb-3 text-sm font-bold uppercase">{title}</h3>
-    <ul className="space-y-3">
-      {tools.map((tool) => (
-        <li key={tool.slug}>
-          <NavLink href={`/${tool.slug}`}>{tool.name}</NavLink>
-        </li>
-      ))}
-    </ul>
-  </div>
-);
+const CategoryAccordion = ({ title, slug, tools }: CategoryAccordionProps): JSX.Element => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  return (
+    <div className="mb-4">
+      <div className="flex items-center justify-between">
+        <Link
+          href={`/tools/${slug}`}
+          className="text-foreground hover:text-primary flex-1 text-sm font-bold uppercase transition-colors hover:underline"
+        >
+          {title}
+        </Link>
+        <button
+          type="button"
+          onClick={() => setIsOpen((prev) => !prev)}
+          className="text-muted-foreground hover:text-foreground flex size-7 items-center justify-center rounded-lg transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-pink-500 focus-visible:ring-offset-1"
+          aria-expanded={isOpen}
+          aria-label={`Toggle ${title} tools`}
+        >
+          <PiCaretDownBold
+            className={cn('size-4 transition-transform duration-300 ease-in-out', isOpen && 'rotate-180')}
+          />
+        </button>
+      </div>
+      <div
+        className={cn(
+          'grid transition-all duration-300 ease-in-out',
+          isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
+        )}
+      >
+        <div className="overflow-hidden">
+          <ul className="mt-4 space-y-4 pl-2">
+            {tools.map((tool) => (
+              <li key={tool.slug}>
+                <NavLink href={`/${tool.slug}`}>{tool.name}</NavLink>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 /**
  * SidebarBody component containing navigation links and tool categories.
@@ -101,12 +140,28 @@ export function SidebarBody(): JSX.Element {
             const categoryTools = categorizedTools[category.slug] || [];
             if (categoryTools.length === 0) return null;
 
-            return <CategorySection key={category.slug} title={category.label} tools={categoryTools} />;
+            return (
+              <CategoryAccordion
+                key={category.slug}
+                title={category.label}
+                slug={category.slug}
+                tools={categoryTools}
+              />
+            );
           })}
 
           {/* Handle any uncategorized tools */}
           {categorizedTools['uncategorized'] && categorizedTools['uncategorized'].length > 0 && (
-            <CategorySection title="Other Tools" tools={categorizedTools['uncategorized']} />
+            <div className="mb-4">
+              <h3 className="text-foreground mb-2 text-sm font-bold uppercase">Other Tools</h3>
+              <ul className="space-y-2">
+                {categorizedTools['uncategorized'].map((tool) => (
+                  <li key={tool.slug}>
+                    <NavLink href={`/${tool.slug}`}>{tool.name}</NavLink>
+                  </li>
+                ))}
+              </ul>
+            </div>
           )}
 
           <div className="border-border border-t pt-4">
