@@ -1,6 +1,6 @@
 'use client';
 
-import type { JSX, SubmitEvent } from 'react';
+import type { JSX } from 'react';
 
 import { ToolInputHeader } from '@/components/tool/tool-input-header';
 import { Button } from '@/components/ui/button';
@@ -23,7 +23,6 @@ import { cn } from '@/utils/classnames';
  * @property {(value: boolean) => void} setRemoveNumbers - Callback to toggle number removal
  * @property {(value: boolean) => void} setUseLowercase - Callback to toggle lowercase conversion
  * @property {(value: boolean) => void} setUseLitinize - Callback to toggle latinize
- * @property {() => void} onSubmit - Callback to trigger slug generation
  * @property {() => void} onClear - Callback to clear input and output
  * @property {() => void} onReset - Callback to reset all options
  * @property {boolean} keepEmptyLines - Whether to keep empty lines in output
@@ -40,7 +39,6 @@ interface InputBlockProps {
   setRemoveNumbers: (value: boolean) => void;
   setUseLowercase: (value: boolean) => void;
   setUseLitinize: (value: boolean) => void;
-  onSubmit: () => void;
   onClear: () => void;
   onReset: () => void;
   keepEmptyLines: boolean;
@@ -69,22 +67,11 @@ export function InputBlock({
   setRemoveNumbers,
   setUseLowercase,
   setUseLitinize,
-  onSubmit,
   onClear,
   onReset,
   keepEmptyLines = false,
   setKeepEmptyLines,
 }: InputBlockProps): JSX.Element {
-  /**
-   * Handles form submission to generate slugs
-   *
-   * @param {object} e - Event object
-   */
-  const handleSubmit = (e: SubmitEvent) => {
-    e.preventDefault();
-    onSubmit();
-  };
-
   return (
     <Card>
       <CardHeader>
@@ -96,7 +83,7 @@ export function InputBlock({
         />
       </CardHeader>
       <CardContent>
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4 md:gap-6">
+        <div className="flex flex-col gap-4 md:gap-6">
           <Textarea
             id="text-input"
             placeholder="Enter multiple lines of text to slugify"
@@ -150,13 +137,7 @@ export function InputBlock({
               Keep empty lines
             </Checkbox>
           </div>
-
-          <div className="flex flex-wrap gap-2">
-            <Button type="submit" variant="default" disabled={!input}>
-              Generate
-            </Button>
-          </div>
-        </form>
+        </div>
       </CardContent>
     </Card>
   );

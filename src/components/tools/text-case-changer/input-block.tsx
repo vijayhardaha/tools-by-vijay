@@ -1,10 +1,9 @@
 'use client';
 
-import type { JSX, SubmitEvent } from 'react';
+import type { JSX } from 'react';
 
 import { ToolInputHeader } from '@/components/tool/tool-input-header';
 import { Alert } from '@/components/ui/alert';
-import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { Select } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
@@ -17,7 +16,6 @@ import { Textarea } from '@/components/ui/textarea';
  * @property {(value: string) => void} setInput - Callback to update the input text
  * @property {string} textCase - The selected text case option
  * @property {(value: string) => void} setTextCase - Callback to update the text case option
- * @property {() => void} onSubmit - Callback to trigger text case conversion
  * @property {() => void} onClear - Callback to clear input and output
  * @property {() => void} onReset - Callback to reset all options
  * @property {string} [error] - Current error message, if any
@@ -27,7 +25,6 @@ interface InputBlockProps {
   setInput: (value: string) => void;
   textCase: string;
   setTextCase: (value: string) => void;
-  onSubmit: () => void;
   onClear: () => void;
   onReset: () => void;
   error?: string;
@@ -45,33 +42,22 @@ export function InputBlock({
   setInput,
   textCase,
   setTextCase,
-  onSubmit,
   onClear,
   onReset,
   error,
 }: InputBlockProps): JSX.Element {
-  /**
-   * Handles the form submission event.
-   *
-   * @param {SubmitEvent} e - The form submission event.
-   */
-  const handleSubmit = (e: SubmitEvent): void => {
-    e.preventDefault();
-    onSubmit();
-  };
-
   return (
     <Card>
       <CardHeader>
         <ToolInputHeader
-          title="Text Input"
+          title="Input Strings"
           desc="Paste multiline text to change its case"
           onClear={onClear}
           onReset={onReset}
         />
       </CardHeader>
       <CardContent>
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4 md:gap-6">
+        <div className="flex flex-col gap-4 md:gap-6">
           <Textarea
             id="text-input"
             placeholder={`Item 1\nItem 2\nItem 3`}
@@ -95,14 +81,8 @@ export function InputBlock({
             ]}
           />
 
-          <div className="flex flex-wrap gap-2">
-            <Button type="submit" variant="default" disabled={!input}>
-              Convert
-            </Button>
-          </div>
-
           {error && <Alert variant="danger" title="Error" text={error} />}
-        </form>
+        </div>
       </CardContent>
     </Card>
   );

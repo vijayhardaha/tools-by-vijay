@@ -1,9 +1,8 @@
 'use client';
 
-import type { JSX, SubmitEvent } from 'react';
+import type { JSX } from 'react';
 
 import { ToolInputHeader } from '@/components/tool/tool-input-header';
-import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Textarea } from '@/components/ui/textarea';
@@ -20,7 +19,6 @@ import { Textarea } from '@/components/ui/textarea';
  * @property {(value: boolean) => void} setRemoveEmptyLines - Callback to toggle empty line removal
  * @property {boolean} trimLines - Whether to trim whitespace from lines
  * @property {(value: boolean) => void} setTrimLines - Callback to toggle line trimming
- * @property {() => void} onSubmit - Callback to trigger shuffling
  * @property {() => void} onReset - Callback to reset all options
  * @property {() => void} onClear - Callback to clear input and output
  */
@@ -33,7 +31,6 @@ interface InputBlockProps {
   setRemoveEmptyLines: (value: boolean) => void;
   trimLines: boolean;
   setTrimLines: (value: boolean) => void;
-  onSubmit: () => void;
   onReset: () => void;
   onClear: () => void;
 }
@@ -55,32 +52,21 @@ export function InputBlock({
   setRemoveEmptyLines,
   trimLines,
   setTrimLines,
-  onSubmit,
   onReset,
   onClear,
 }: InputBlockProps): JSX.Element {
-  /**
-   * Handles form submission to shuffle lines.
-   *
-   * @param {SubmitEvent} e - The form submission event.
-   */
-  const handleSubmit = (e: SubmitEvent) => {
-    e.preventDefault();
-    onSubmit();
-  };
-
   return (
     <Card>
       <CardHeader>
         <ToolInputHeader
-          title="Shuffle Text Lines Input"
+          title="Input Strings"
           desc="Enter your text and configure options to shuffle lines randomly."
           onClear={onClear}
           onReset={onReset}
         />
       </CardHeader>
       <CardContent>
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4 md:gap-6">
+        <div className="flex flex-col gap-4 md:gap-6">
           <Textarea
             id="text-input"
             placeholder="Enter text to shuffle..."
@@ -102,13 +88,7 @@ export function InputBlock({
               Trim Lines
             </Checkbox>
           </div>
-
-          <div className="flex flex-wrap gap-2">
-            <Button type="submit" variant="default">
-              Process
-            </Button>
-          </div>
-        </form>
+        </div>
       </CardContent>
     </Card>
   );

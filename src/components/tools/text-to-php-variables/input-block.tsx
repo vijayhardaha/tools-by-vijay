@@ -1,10 +1,10 @@
 'use client';
 
-import type { JSX, SubmitEvent } from 'react';
+import type { JSX } from 'react';
 
+import { ToolInputHeader } from '@/components/tool/tool-input-header';
 import { Alert } from '@/components/ui/alert';
-import { Button } from '@/components/ui/button';
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { Select } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
 
@@ -16,7 +16,6 @@ import { Textarea } from '@/components/ui/textarea';
  * @property {(value: string) => void} setInput - Callback to update the input
  * @property {string} variableCase - The selected variable naming convention
  * @property {(value: string) => void} setVariableCase - Callback to update naming convention
- * @property {() => void} onSubmit - Callback to trigger generation
  * @property {() => void} onClear - Callback to clear input and output
  * @property {() => void} onReset - Callback to reset all options
  * @property {string} [error] - Current error message, if any
@@ -26,7 +25,6 @@ interface InputBlockProps {
   setInput: (value: string) => void;
   variableCase: string;
   setVariableCase: (value: string) => void;
-  onSubmit: () => void;
   onClear: () => void;
   onReset: () => void;
   error?: string;
@@ -44,29 +42,22 @@ export function InputBlock({
   setInput,
   variableCase,
   setVariableCase,
-  onSubmit,
   onClear,
   onReset,
   error,
 }: InputBlockProps): JSX.Element {
-  /**
-   * Handles form submission.
-   *
-   * @param {SubmitEvent} e - The form submission event.
-   */
-  const handleSubmit = (e: SubmitEvent): void => {
-    e.preventDefault();
-    onSubmit();
-  };
-
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Text Input</CardTitle>
-        <CardDescription>Paste multiline text to generate PHP variables</CardDescription>
+        <ToolInputHeader
+          title="Text Input"
+          desc="Paste multiline text to generate PHP variables"
+          onClear={onClear}
+          onReset={onReset}
+        />
       </CardHeader>
       <CardContent>
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4 md:gap-6">
+        <div className="flex flex-col gap-4 md:gap-6">
           <Textarea
             id="text-input"
             placeholder={`Item 1\nItem 2\nItem 3`}
@@ -86,22 +77,8 @@ export function InputBlock({
             ]}
           />
 
-          <div className="flex flex-wrap gap-2">
-            <Button type="submit" variant="default" disabled={!input}>
-              Generate
-            </Button>
-
-            <Button type="button" variant="outline" onClick={onClear}>
-              Clear
-            </Button>
-
-            <Button type="button" variant="destructive" onClick={onReset}>
-              Reset
-            </Button>
-          </div>
-
           {error && <Alert variant="danger" title="Error" text={error} />}
-        </form>
+        </div>
       </CardContent>
     </Card>
   );

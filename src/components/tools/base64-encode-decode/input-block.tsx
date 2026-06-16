@@ -1,9 +1,8 @@
 'use client';
 
-import type { JSX, SubmitEvent } from 'react';
+import type { JSX } from 'react';
 
 import { ToolInputHeader } from '@/components/tool/tool-input-header';
-import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { RadioBox } from '@/components/ui/radiobox';
 import { Textarea } from '@/components/ui/textarea';
@@ -16,7 +15,6 @@ import { Textarea } from '@/components/ui/textarea';
  * @property {(value: string) => void} setInput - Callback to update the input text
  * @property {boolean} isEncoding - Whether the current mode is encoding
  * @property {(value: boolean) => void} setIsEncoding - Callback to toggle encode/decode mode
- * @property {() => void} onProcess - Callback to trigger encoding or decoding
  * @property {() => void} onClear - Callback to clear input and output
  * @property {() => void} onReset - Callback to reset to defaults
  */
@@ -25,7 +23,6 @@ interface InputBlockProps {
   setInput: (value: string) => void;
   isEncoding: boolean;
   setIsEncoding: (value: boolean) => void;
-  onProcess: () => void;
   onClear: () => void;
   onReset: () => void;
 }
@@ -43,20 +40,9 @@ export function InputBlock({
   setInput,
   isEncoding,
   setIsEncoding,
-  onProcess,
   onClear,
   onReset,
 }: InputBlockProps): JSX.Element {
-  /**
-   * Handles the form submission to process the input.
-   *
-   * @param {SubmitEvent} e - The form submission event.
-   */
-  const handleSubmit = (e: SubmitEvent) => {
-    e.preventDefault();
-    onProcess();
-  };
-
   return (
     <Card>
       <CardHeader>
@@ -68,11 +54,11 @@ export function InputBlock({
         />
       </CardHeader>
       <CardContent>
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4 md:gap-6">
+        <div className="flex flex-col gap-4 md:gap-6">
           <Textarea
             id="base64-input"
             placeholder="Text to base64 encode or decode"
-            rows={5}
+            rows={8}
             value={input}
             onChange={(e) => setInput(e.target.value)}
           />
@@ -95,13 +81,7 @@ export function InputBlock({
               Decode
             </RadioBox>
           </div>
-
-          <div className="flex flex-wrap gap-2">
-            <Button type="submit" variant="default" disabled={!input}>
-              Process
-            </Button>
-          </div>
-        </form>
+        </div>
       </CardContent>
     </Card>
   );

@@ -1,6 +1,6 @@
 'use client';
 
-import type { JSX, SubmitEvent } from 'react';
+import type { JSX } from 'react';
 
 import { ToolInputHeader } from '@/components/tool/tool-input-header';
 import { Button } from '@/components/ui/button';
@@ -23,7 +23,6 @@ import { cn } from '@/utils/classnames';
  * @property {(value: boolean) => void} setUseLowercase - Callback to toggle lowercase conversion
  * @property {boolean} useLitinize - Whether to normalize unicode characters
  * @property {(value: boolean) => void} setUseLitinize - Callback to toggle latinize
- * @property {() => void} onSubmit - Callback to trigger slug generation
  * @property {() => void} onClear - Callback to clear input and output
  * @property {() => void} onReset - Callback to reset all options
  */
@@ -38,7 +37,6 @@ interface InputBlockProps {
   setUseLowercase: (value: boolean) => void;
   useLitinize: boolean;
   setUseLitinize: (value: boolean) => void;
-  onSubmit: () => void;
   onClear: () => void;
   onReset: () => void;
 }
@@ -61,20 +59,9 @@ export function InputBlock({
   setUseLowercase,
   useLitinize = true,
   setUseLitinize,
-  onSubmit,
   onClear,
   onReset,
 }: InputBlockProps): JSX.Element {
-  /**
-   * Handles form submission and triggers slug generation.
-   *
-   * @param {SubmitEvent} e - The form event.
-   */
-  const handleSubmit = (e: SubmitEvent) => {
-    e.preventDefault();
-    onSubmit();
-  };
-
   return (
     <Card>
       <CardHeader>
@@ -86,7 +73,7 @@ export function InputBlock({
         />
       </CardHeader>
       <CardContent>
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4 md:gap-6">
+        <div className="flex flex-col gap-4 md:gap-6">
           <Input
             id="text-input"
             type="text"
@@ -137,13 +124,7 @@ export function InputBlock({
               Use latinize
             </Checkbox>
           </div>
-
-          <div className="flex flex-wrap gap-2">
-            <Button type="submit" variant="default" disabled={!input}>
-              Generate
-            </Button>
-          </div>
-        </form>
+        </div>
       </CardContent>
     </Card>
   );

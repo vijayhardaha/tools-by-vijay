@@ -1,9 +1,8 @@
 'use client';
 
-import type { JSX, SubmitEvent } from 'react';
+import type { JSX } from 'react';
 
 import { ToolInputHeader } from '@/components/tool/tool-input-header';
-import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { Checkbox } from '@/components/ui/checkbox';
 import { RadioBox } from '@/components/ui/radiobox';
@@ -21,7 +20,6 @@ import { Textarea } from '@/components/ui/textarea';
  * @property {(value: boolean) => void} setReplaceApostrophes - Callback to toggle apostrophe replacement
  * @property {boolean} replaceStandaloneQuotes - Whether to replace standalone quotes
  * @property {(value: boolean) => void} setReplaceStandaloneQuotes - Callback to toggle standalone quote replacement
- * @property {() => void} onSubmit - Callback to trigger quote replacement
  * @property {() => void} onClear - Callback to clear input and output
  * @property {() => void} onReset - Callback to reset all options
  */
@@ -34,7 +32,6 @@ interface InputBlockProps {
   setReplaceApostrophes: (value: boolean) => void;
   replaceStandaloneQuotes: boolean;
   setReplaceStandaloneQuotes: (value: boolean) => void;
-  onSubmit: () => void;
   onClear: () => void;
   onReset: () => void;
 }
@@ -56,32 +53,21 @@ export function InputBlock({
   setReplaceApostrophes,
   replaceStandaloneQuotes,
   setReplaceStandaloneQuotes,
-  onSubmit,
   onClear,
   onReset,
 }: InputBlockProps): JSX.Element {
-  /**
-   * Handles form submission by preventing default behavior and triggering the replace action.
-   *
-   * @param {SubmitEvent} e - Form event object
-   */
-  const handleSubmit = (e: SubmitEvent) => {
-    e.preventDefault();
-    onSubmit();
-  };
-
   return (
     <Card>
       <CardHeader>
         <ToolInputHeader
-          title="Replace Quotes"
+          title="Text Input"
           desc="Enter text and choose the type of quote replacement"
           onClear={onClear}
           onReset={onReset}
         />
       </CardHeader>
       <CardContent>
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4 md:gap-6">
+        <div className="flex flex-col gap-4 md:gap-6">
           <Textarea
             id="text-input"
             placeholder="Enter your text here..."
@@ -125,13 +111,7 @@ export function InputBlock({
               Replace Standalone Quotes
             </Checkbox>
           </div>
-
-          <div className="flex flex-wrap gap-2">
-            <Button type="submit" variant="default" disabled={!input}>
-              Replace Quotes
-            </Button>
-          </div>
-        </form>
+        </div>
       </CardContent>
     </Card>
   );

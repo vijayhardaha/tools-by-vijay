@@ -1,9 +1,8 @@
 'use client';
 
-import type { JSX, SubmitEvent } from 'react';
+import type { JSX } from 'react';
 
 import { ToolInputHeader } from '@/components/tool/tool-input-header';
-import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { Checkbox } from '@/components/ui/checkbox';
 import { RadioBox } from '@/components/ui/radiobox';
@@ -19,7 +18,6 @@ import { Textarea } from '@/components/ui/textarea';
  * @property {(value: string) => void} setSortType - Callback to update sort type
  * @property {boolean} reverseSort - Whether to sort in reverse order
  * @property {(value: boolean) => void} setReverseSort - Callback to toggle reverse sort
- * @property {() => void} onSubmit - Callback to trigger processing
  * @property {() => void} onReset - Callback to reset all options
  * @property {() => void} onClear - Callback to clear input and output
  */
@@ -30,7 +28,6 @@ interface InputBlockProps {
   setSortType: (value: string) => void;
   reverseSort: boolean;
   setReverseSort: (value: boolean) => void;
-  onSubmit: () => void;
   onReset: () => void;
   onClear: () => void;
 }
@@ -50,32 +47,21 @@ export function InputBlock({
   setSortType,
   reverseSort,
   setReverseSort,
-  onSubmit,
   onReset,
   onClear,
 }: InputBlockProps): JSX.Element {
-  /**
-   * Handles form submission by preventing default behavior and triggering conversion.
-   *
-   * @param {SubmitEvent} e - Form event object.
-   */
-  const handleSubmit = (e: SubmitEvent) => {
-    e.preventDefault();
-    onSubmit();
-  };
-
   return (
     <Card>
       <CardHeader>
         <ToolInputHeader
-          title="Duplicate Line Removal Input"
+          title="Input Strings"
           desc="Enter your text and configure options to remove duplicate lines and sort them."
           onClear={onClear}
           onReset={onReset}
         />
       </CardHeader>
       <CardContent>
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4 md:gap-6">
+        <div className="flex flex-col gap-4 md:gap-6">
           <Textarea
             id="text-input"
             placeholder="Enter text with duplicate lines..."
@@ -116,13 +102,7 @@ export function InputBlock({
               Reverse Sorting (Z-A or 9-0)
             </Checkbox>
           </div>
-
-          <div className="flex flex-wrap gap-2">
-            <Button type="submit" variant="default">
-              Process
-            </Button>
-          </div>
-        </form>
+        </div>
       </CardContent>
     </Card>
   );

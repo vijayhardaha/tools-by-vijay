@@ -71,7 +71,7 @@ export function InputBlock({
           <Textarea
             id="url-input"
             placeholder={`https://example.com/very-long-url\nhttps://another-example.com/with/multiple/path/segments`}
-            rows={5}
+            rows={8}
             value={input}
             onChange={(e) => setInput(e.target.value)}
           />

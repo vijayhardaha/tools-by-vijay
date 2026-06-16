@@ -92,7 +92,7 @@ export function InputBlock({
     <Card>
       <CardHeader>
         <ToolInputHeader
-          title="Text Input"
+          title="Input Strings"
           desc="Paste multiline text and convert to various array formats"
           onClear={onClear}
           onReset={onReset}
