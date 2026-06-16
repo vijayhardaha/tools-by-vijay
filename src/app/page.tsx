@@ -16,7 +16,7 @@ import { siteUrl, getSeoByPath } from '@/utils/seo';
 import { getToolsByCategories } from '@/utils/tools';
 
 const rootUrl = siteUrl();
-const { seoTitle, seoDescription, path: seoPath } = getSeoByPath('/')!;
+const { seoTitle, seoDescription, path: seoPath } = getSeoByPath('')!;
 
 const schemaData = [
   ...globalSchema(),
@@ -65,7 +65,7 @@ export default function Home(): JSX.Element {
             return (
               <section key={categorySlug} className="mb-10">
                 <div className="mb-6">
-                  <h2 className="text-foreground mb-1 text-2xl font-bold">{category.label}</h2>
+                  <h2 className="text-foreground mb-1 text-2xl font-bold">{category.title}</h2>
                   <p className="text-muted-foreground">{category.description}</p>
                 </div>
 

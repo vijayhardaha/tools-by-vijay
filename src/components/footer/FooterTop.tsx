@@ -2,7 +2,7 @@ import type { JSX } from 'react';
 
 import { FooterAbout } from '@/components/footer/FooterAbout';
 import { FooterWidget } from '@/components/footer/FooterWidget';
-import footerLinks from '@/constants/footer-links';
+import footerLinks from '@/constants/links';
 
 /**
  * Top section of the footer containing about information and navigation widgets.

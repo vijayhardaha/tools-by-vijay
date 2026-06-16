@@ -89,7 +89,7 @@ export function DesktopNav(): JSX.Element {
               aria-expanded={activeMenu === category.slug}
               aria-haspopup="true"
             >
-              {category.label}
+              {category.title}
               <PiCaretDownBold
                 className={cn(
                   'size-3.5 transition-transform duration-200',
@@ -113,7 +113,7 @@ export function DesktopNav(): JSX.Element {
                       href={`/${tool.slug}`}
                       className="text-muted-foreground hover:text-foreground hover:bg-muted flex items-center px-4 py-2 text-sm transition-colors"
                     >
-                      {tool.name}
+                      {tool.title}
                     </Link>
                   ))}
                 </div>

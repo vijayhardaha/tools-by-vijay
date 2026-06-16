@@ -248,7 +248,7 @@ export function SearchModal({ data, maxResults = 5, open, onOpenChange }: Search
                       {/* Tool info */}
                       <div className="min-w-0 flex-1">
                         <div className="text-foreground truncate font-medium">
-                          <HighlightMatch text={tool.name} query={query} />
+                          <HighlightMatch text={tool.title} query={query} />
                         </div>
                         <div className="truncate text-xs text-neutral-500">
                           <HighlightMatch text={tool.description} query={query} />

@@ -1,20 +1,20 @@
-import type { JSX, ElementType } from 'react';
+import type { JSX, ReactNode } from 'react';
 
 import { Button } from '@/components/ui/button';
 import { SheetFooter } from '@/components/ui/sheet';
-import { socialMediaLinks } from '@/constants/social-links';
+import { socialMediaLinks } from '@/constants/links';
 
 /**
  * Props for the SocialButton component.
  *
  * @type {SocialButtonProps}
- * @property {ElementType} icon - The icon component for the social platform
+ * @property {ReactNode} icon - The icon component for the social platform
  * @property {string} href - The URL to the social media profile
  * @property {string} label - The accessible label for the button
  * @property {string} [color] - The hover color class for the button
  */
 interface SocialButtonProps {
-  icon: ElementType;
+  icon: ReactNode;
   href: string;
   label: string;
   color?: string;
@@ -27,7 +27,7 @@ interface SocialButtonProps {
  *
  * @returns {JSX.Element} A button with social media icon
  */
-const SocialButton = ({ icon: Icon, href, label, color }: SocialButtonProps): JSX.Element => (
+const SocialButton = ({ icon, href, label, color }: SocialButtonProps): JSX.Element => (
   <Button
     variant="outline"
     size="icon"
@@ -35,7 +35,7 @@ const SocialButton = ({ icon: Icon, href, label, color }: SocialButtonProps): JS
     className={`rounded-xl hover:border-transparent hover:text-white ${color}`}
   >
     <a href={href} aria-label={label} rel="noopener noreferrer" target="_blank">
-      <Icon className="h-4 w-4" />
+      <span className="h-4 w-4">{icon}</span>
       <span className="sr-only">{label}</span>
     </a>
   </Button>

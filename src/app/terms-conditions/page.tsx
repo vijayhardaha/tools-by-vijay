@@ -12,12 +12,12 @@ import { globalSchema, buildBreadcrumbs } from '@/utils/schema';
 import { siteUrl, getSeoByPath } from '@/utils/seo';
 
 const rootUrl = siteUrl();
-const { seoTitle, seoDescription, path: seoPath } = getSeoByPath('/terms-conditions')!;
+const { title, description, seoTitle, seoDescription, path: seoPath } = getSeoByPath('terms-conditions')!;
 
 const schemaData = [
   ...globalSchema(),
   webPageSchema({ rootUrl, path: seoPath, breadcrumb: true }, { name: seoTitle, description: seoDescription }),
-  breadcrumbSchema({ rootUrl, items: buildBreadcrumbs(seoPath, 'Terms & Conditions') }),
+  breadcrumbSchema({ rootUrl, items: buildBreadcrumbs(seoPath, title) }),
 ];
 
 /**
@@ -25,7 +25,7 @@ const schemaData = [
  *
  * @type {Metadata}
  */
-export const metadata: Metadata = buildMetadata({ seoTitle, seoDescription, path: seoPath });
+export const metadata: Metadata = buildMetadata({ title: seoTitle, description: seoDescription, path: seoPath });
 
 /**
  * Terms and Conditions page component.
@@ -38,11 +38,7 @@ export default function TermsConditions(): JSX.Element {
     <>
       <JsonLd data={schemaData} />
       <PageLayout>
-        <PageHeader
-          pageName="Terms & Conditions"
-          title="Terms and Conditions"
-          description="Please read these terms carefully before using our free online tools and services."
-        />
+        <PageHeader pageName={title} title={title} description={description} />
         <PageContent>
           <div className="space-y-6 text-base leading-relaxed text-gray-800">
             <p>

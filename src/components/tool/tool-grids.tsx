@@ -49,7 +49,7 @@ export function ToolGridSection({ heading, tools }: ToolGridSectionProps): JSX.E
                     </span>
                   )}
                   <div className="flex min-w-0 flex-col gap-1">
-                    <span className="text-base font-semibold">{tool.name}</span>
+                    <span className="text-base font-semibold">{tool.title}</span>
                     <span className="text-muted-foreground truncate text-xs">{tool.description}</span>
                   </div>
                 </CardContent>

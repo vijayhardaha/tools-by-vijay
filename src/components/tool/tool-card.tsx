@@ -2,7 +2,7 @@ import type { JSX } from 'react';
 
 import Link from 'next/link';
 
-import { PiCaretRightBold } from '@/constants/tool-icons';
+import { PiCaretRightBold } from '@/constants/icons';
 import type { Tool } from '@/constants/tools';
 import { cn } from '@/utils/classnames';
 import { findToolBySlug, getToolIcon } from '@/utils/tools';
@@ -48,7 +48,7 @@ export function ToolCard({ slug, className = '' }: ToolCardProps): JSX.Element |
 
         {/* Column 2: Heading + Description (truncated) */}
         <div className="min-w-0 flex-1">
-          <h3 className="truncate text-base font-bold">{tool.name}</h3>
+          <h3 className="truncate text-base font-bold">{tool.title}</h3>
           <p className="text-muted-foreground truncate text-sm">{tool.description}</p>
         </div>
 

@@ -52,7 +52,7 @@ const NavLink = ({ href, children, className = '' }: NavLinkProps): JSX.Element 
 interface CategoryAccordionProps {
   title: string;
   slug: string;
-  tools: { slug: string; name: string }[];
+  tools: { slug: string; title: string }[];
 }
 
 /**
@@ -98,7 +98,7 @@ const CategoryAccordion = ({ title, slug, tools }: CategoryAccordionProps): JSX.
           <ul className="mt-4 space-y-4 pl-2">
             {tools.map((tool) => (
               <li key={tool.slug}>
-                <NavLink href={`/${tool.slug}`}>{tool.name}</NavLink>
+                <NavLink href={`/${tool.slug}`}>{tool.title}</NavLink>
               </li>
             ))}
           </ul>
@@ -143,7 +143,7 @@ export function SidebarBody(): JSX.Element {
             return (
               <CategoryAccordion
                 key={category.slug}
-                title={category.label}
+                title={category.title}
                 slug={category.slug}
                 tools={categoryTools}
               />
@@ -157,7 +157,7 @@ export function SidebarBody(): JSX.Element {
               <ul className="space-y-2">
                 {categorizedTools['uncategorized'].map((tool) => (
                   <li key={tool.slug}>
-                    <NavLink href={`/${tool.slug}`}>{tool.name}</NavLink>
+                    <NavLink href={`/${tool.slug}`}>{tool.title}</NavLink>
                   </li>
                 ))}
               </ul>

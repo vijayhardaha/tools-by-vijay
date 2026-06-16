@@ -25,14 +25,10 @@ import { findToolBySlug, getToolIcon } from '@/utils/tools';
  */
 const tool: Tool | null = findToolBySlug('slugify');
 
-const {
-  title: seoTitle = '',
-  description: seoDescription = '',
-  path: seoPath = '',
-} = getSeoByPath(`/${tool?.slug || ''}`) || {};
+const { seoTitle = '', seoDescription = '', path: seoPath = '' } = getSeoByPath(`/${tool?.slug || ''}`) || {};
 const rootUrl = siteUrl();
 
-const categoryLabel = getCategoryBySlug(tool?.category || '')?.label || 'Tools';
+const categoryLabel = getCategoryBySlug(tool?.category || '')?.title || 'Tools';
 const categoryPath = `/tools/${tool?.category || ''}`;
 
 /**
@@ -43,7 +39,7 @@ const categoryPath = `/tools/${tool?.category || ''}`;
 const breadcrumbItems: BreadcrumbItem[] = [
   { label: 'Home', href: '/' },
   { label: categoryLabel, href: categoryPath },
-  { label: tool?.name || '' },
+  { label: tool?.title || '' },
 ];
 
 /**
@@ -54,7 +50,7 @@ const schemaData = [
   webPageSchema({ rootUrl, path: seoPath, breadcrumb: true }, { name: seoTitle, description: seoDescription }),
   breadcrumbSchema({
     rootUrl,
-    items: buildBreadcrumbs(seoPath, `${tool?.name || ''} Tool`, [{ name: categoryLabel, path: categoryPath }]),
+    items: buildBreadcrumbs(seoPath, `${tool?.title || ''} Tool`, [{ name: categoryLabel, path: categoryPath }]),
   }),
 ];
 
@@ -63,7 +59,7 @@ const schemaData = [
  *
  * @type {Metadata}
  */
-export const metadata: Metadata = buildMetadata({ seoTitle, seoDescription, path: seoPath });
+export const metadata: Metadata = buildMetadata({ title: seoTitle, description: seoDescription, path: seoPath });
 
 /**
  * Slugify tool page component.
@@ -81,8 +77,8 @@ export default function SlugifyToolTool(): JSX.Element {
       <JsonLd data={schemaData} />
       <PageLayout>
         <PageHeader
-          pageName={tool.name}
-          title={tool.name}
+          pageName={tool.title}
+          title={tool.title}
           description={tool.description}
           icon={getToolIcon(tool.slug)}
           breadcrumbItems={breadcrumbItems}

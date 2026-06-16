@@ -11,7 +11,7 @@ import { PageContent } from '@/components/page/PageContent';
 import { PageHeader } from '@/components/page/PageHeader';
 import { PageLayout } from '@/components/page/PageLayout';
 import { ToolCard } from '@/components/tool/tool-card';
-import { categoryIcons } from '@/constants/category-icons';
+import { categoryIcons } from '@/constants/icons';
 import { getCategoryBySlug } from '@/utils/categories';
 import { buildMetadata } from '@/utils/meta';
 import { globalSchema, buildBreadcrumbs } from '@/utils/schema';
@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
 
   if (!seo) return {};
 
-  return buildMetadata({ title: seo.title, description: seo.description, path: seo.path });
+  return buildMetadata({ title: seo.seoTitle, description: seo.seoDescription, path: seo.path });
 }
 
 /**
@@ -66,13 +66,13 @@ export default async function CategoryPage({ params }: CategoryPageProps): Promi
   const rootUrl = siteUrl();
   const path = `/tools/${slug}`;
   const seo = getSeoByPath(`/tools/${slug}`);
-  const title = seo?.title || category.seoTitle;
-  const description = seo?.description || category.seoDescription;
+  const title = seo?.seoTitle || category.seoTitle;
+  const description = seo?.seoDescription || category.seoDescription;
 
   const schemaData = [
     ...globalSchema(),
     webPageSchema({ rootUrl, path, breadcrumb: true }, { name: title, description }),
-    breadcrumbSchema({ rootUrl, items: buildBreadcrumbs(path, category.label, [{ name: 'Tools', path: '/tools' }]) }),
+    breadcrumbSchema({ rootUrl, items: buildBreadcrumbs(path, category.title, [{ name: 'Tools', path: '/tools' }]) }),
   ];
 
   return (
@@ -80,14 +80,14 @@ export default async function CategoryPage({ params }: CategoryPageProps): Promi
       <JsonLd data={schemaData} />
       <PageLayout>
         <PageHeader
-          pageName={category.label}
-          title={category.label}
+          pageName={category.title}
+          title={category.title}
           description={category.description}
           icon={icon}
           breadcrumbItems={[
             { label: 'Home', href: '/' },
             { label: 'Tools', href: '/tools' },
-            { label: category.label },
+            { label: category.title },
           ]}
         />
         <PageContent>
@@ -103,7 +103,7 @@ export default async function CategoryPage({ params }: CategoryPageProps): Promi
 
             {/* About section */}
             <section>
-              <h2 className="text-primary mb-4 text-2xl font-bold">About {category.label} Tools</h2>
+              <h2 className="text-primary mb-4 text-2xl font-bold">About {category.title} Tools</h2>
               <div className="text-muted-foreground text-base leading-relaxed">
                 <CategoryAbout slug={slug} />
               </div>
@@ -117,7 +117,7 @@ export default async function CategoryPage({ params }: CategoryPageProps): Promi
                   {categoryTools.map((tool) => (
                     <li key={tool.slug}>
                       <Link href={`/${tool.slug}`} className="font-medium text-pink-500 underline hover:no-underline">
-                        {tool.name}
+                        {tool.title}
                       </Link>
                     </li>
                   ))}

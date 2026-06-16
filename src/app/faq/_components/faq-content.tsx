@@ -4,9 +4,6 @@ import { useState } from 'react';
 
 import { PiPlusBold } from 'react-icons/pi';
 
-import { PageContent } from '@/components/page/PageContent';
-import { PageHeader } from '@/components/page/PageHeader';
-import { PageLayout } from '@/components/page/PageLayout';
 import { cn } from '@/utils/classnames';
 
 /**
@@ -167,19 +164,10 @@ const faqs: FaqItemProps[] = [
  */
 export function FaqContent(): JSX.Element {
   return (
-    <PageLayout>
-      <PageHeader
-        pageName="FAQ"
-        title="Frequently Asked Questions"
-        description="Everything you need to know about our free tools"
-      />
-      <PageContent>
-        <div className="space-y-3">
-          {faqs.map((faq, index) => (
-            <FaqItem key={index} question={faq.question} answer={faq.answer} />
-          ))}
-        </div>
-      </PageContent>
-    </PageLayout>
+    <div className="space-y-3">
+      {faqs.map((faq, index) => (
+        <FaqItem key={index} question={faq.question} answer={faq.answer} />
+      ))}
+    </div>
   );
 }

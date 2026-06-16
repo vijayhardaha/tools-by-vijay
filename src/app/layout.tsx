@@ -28,7 +28,9 @@ export default function RootLayout({ children }: { children: ReactNode }): JSX.E
     <html lang="en" className={fontClassNames}>
       <body>
         <TooltipProvider>{children}</TooltipProvider>
+
         <OSDetectionScript />
+
         {process.env.NODE_ENV === 'production' && (
           <>
             <GoogleAnalytics gaId={GOOGLE_ANALYTICS_ID} />

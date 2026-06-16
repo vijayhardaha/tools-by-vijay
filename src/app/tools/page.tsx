@@ -11,7 +11,7 @@ import { PageLayout } from '@/components/page/PageLayout';
 import { ToolCard } from '@/components/tool/tool-card';
 import categories from '@/constants/categories';
 import type { Category } from '@/constants/categories';
-import { categoryIcons } from '@/constants/category-icons';
+import { categoryIcons } from '@/constants/icons';
 import tools from '@/constants/tools';
 import { buildMetadata } from '@/utils/meta';
 import { globalSchema, buildBreadcrumbs } from '@/utils/schema';
@@ -19,7 +19,7 @@ import { siteUrl, getSeoByPath } from '@/utils/seo';
 import { getToolsByCategory } from '@/utils/tools';
 
 const rootUrl = siteUrl();
-const { seoTitle, seoDescription, path: seoPath } = getSeoByPath('/tools')!;
+const { seoTitle, seoDescription, path: seoPath } = getSeoByPath('tools')!;
 
 const schemaData = [
   ...globalSchema(),
@@ -32,7 +32,7 @@ const schemaData = [
  *
  * @type {Metadata}
  */
-export const metadata: Metadata = buildMetadata({ seoTitle, seoDescription, path: seoPath });
+export const metadata: Metadata = buildMetadata({ title: seoTitle, description: seoDescription, path: seoPath });
 
 /**
  * Tools page component.
@@ -73,7 +73,7 @@ export default function Tools(): JSX.Element {
                           </span>
                         )}
                         <div className="flex flex-col">
-                          <h2 className="text-xl font-bold">{category.label}</h2>
+                          <h2 className="text-xl font-bold">{category.title}</h2>
                           <span className="text-muted-foreground text-sm">
                             {toolCount} {toolCount === 1 ? 'tool' : 'tools'}
                           </span>

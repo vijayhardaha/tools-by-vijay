@@ -12,12 +12,12 @@ import { globalSchema, buildBreadcrumbs } from '@/utils/schema';
 import { siteUrl, getSeoByPath } from '@/utils/seo';
 
 const rootUrl = siteUrl();
-const { seoTitle, seoDescription, path: seoPath } = getSeoByPath('/about')!;
+const { title, description, seoTitle, seoDescription, path: seoPath } = getSeoByPath('about')!;
 
 const schemaData = [
   ...globalSchema(),
   aboutPageSchema({ rootUrl, path: seoPath, breadcrumb: true }, { name: seoTitle, description: seoDescription }),
-  breadcrumbSchema({ rootUrl, items: buildBreadcrumbs(seoPath, 'About') }),
+  breadcrumbSchema({ rootUrl, items: buildBreadcrumbs(seoPath, title) }),
 ];
 
 /**
@@ -25,7 +25,7 @@ const schemaData = [
  *
  * @type {Metadata}
  */
-export const metadata: Metadata = buildMetadata({ seoTitle, seoDescription, path: seoPath });
+export const metadata: Metadata = buildMetadata({ title: seoTitle, description: seoDescription, path: seoPath });
 
 /**
  * About page component.
@@ -38,11 +38,7 @@ export default function About(): JSX.Element {
     <>
       <JsonLd data={schemaData} />
       <PageLayout>
-        <PageHeader
-          pageName="About"
-          title="About"
-          description="Meet Vijay, a web developer and vegan creating fast, privacy-first online tools for developers and content creators."
-        />
+        <PageHeader pageName={title} title={title} description={description} />
         <PageContent>
           <div className="space-y-6 text-base leading-relaxed text-gray-800">
             <p>

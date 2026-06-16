@@ -37,7 +37,7 @@ export const metadata: Metadata = buildMetadata({
 
 const rootUrl = siteUrl();
 
-const categoryLabel = getCategoryBySlug(tool?.category || '')?.label || 'Tools';
+const categoryLabel = getCategoryBySlug(tool?.category || '')?.title || 'Tools';
 const categoryPath = `/tools/${tool?.category || ''}`;
 
 const schemaData = [
@@ -48,7 +48,7 @@ const schemaData = [
   ),
   breadcrumbSchema({
     rootUrl,
-    items: buildBreadcrumbs(`/${tool?.slug || ''}`, `${tool?.name || ''} Tool`, [
+    items: buildBreadcrumbs(`/${tool?.slug || ''}`, `${tool?.title || ''} Tool`, [
       { name: categoryLabel, path: categoryPath },
     ]),
   }),
@@ -69,14 +69,14 @@ export default function UrlShortenerToolTool(): JSX.Element {
       <JsonLd data={schemaData} />
       <PageLayout>
         <PageHeader
-          pageName={tool.name}
-          title={tool.name}
+          pageName={tool.title}
+          title={tool.title}
           description={tool.description}
           icon={getToolIcon(tool.slug)}
           breadcrumbItems={[
             { label: 'Home', href: '/' },
-            { label: getCategoryBySlug(tool.category)?.label || 'Tools', href: `/tools/${tool.category}` },
-            { label: tool.name },
+            { label: getCategoryBySlug(tool.category)?.title || 'Tools', href: `/tools/${tool.category}` },
+            { label: tool.title },
           ]}
         />
         <PageContent>

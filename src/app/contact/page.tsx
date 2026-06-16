@@ -14,12 +14,12 @@ import { globalSchema, buildBreadcrumbs } from '@/utils/schema';
 import { siteUrl, getSeoByPath } from '@/utils/seo';
 
 const rootUrl = siteUrl();
-const { seoTitle, seoDescription, path: seoPath } = getSeoByPath('/contact')!;
+const { title, description, seoTitle, seoDescription, path: seoPath } = getSeoByPath('contact')!;
 
 const schemaData = [
   ...globalSchema(),
   contactPageSchema({ rootUrl, path: seoPath, breadcrumb: true }, { name: seoTitle, description: seoDescription }),
-  breadcrumbSchema({ rootUrl, items: buildBreadcrumbs(seoPath, 'Contact') }),
+  breadcrumbSchema({ rootUrl, items: buildBreadcrumbs(seoPath, title) }),
 ];
 
 /**
@@ -27,7 +27,7 @@ const schemaData = [
  *
  * @type {Metadata}
  */
-export const metadata: Metadata = buildMetadata({ seoTitle, seoDescription, path: seoPath });
+export const metadata: Metadata = buildMetadata({ title: seoTitle, description: seoDescription, path: seoPath });
 
 /**
  * Contact page component
@@ -40,11 +40,7 @@ export default function Contact(): JSX.Element {
     <>
       <JsonLd data={schemaData} />
       <PageLayout>
-        <PageHeader
-          pageName="Contact"
-          title="Contact"
-          description="Reach out to Vijay for freelance web development, open source collaboration, or general inquiries."
-        />
+        <PageHeader pageName={title} title={title} description={description} />
         <PageContent>
           <div className="space-y-6 text-base leading-relaxed text-gray-800">
             <p>
