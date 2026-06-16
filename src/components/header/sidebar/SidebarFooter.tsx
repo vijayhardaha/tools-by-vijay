@@ -1,6 +1,5 @@
 import type { JSX, ReactNode } from 'react';
 
-import { Button } from '@/components/ui/button';
 import { SheetFooter } from '@/components/ui/sheet';
 import { socialMediaLinks } from '@/constants/links';
 
@@ -21,24 +20,23 @@ interface SocialButtonProps {
 }
 
 /**
- * SocialButton component for social media links
+ * Social media link styled as a button.
  *
  * @param {SocialButtonProps} props - Component props
  *
- * @returns {JSX.Element} A button with social media icon
+ * @returns {JSX.Element} The rendered social link.
  */
 const SocialButton = ({ icon, href, label, color }: SocialButtonProps): JSX.Element => (
-  <Button
-    variant="outline"
-    size="icon"
-    asChild
-    className={`rounded-xl hover:border-transparent hover:text-white ${color}`}
+  <a
+    href={href}
+    aria-label={label}
+    rel="noopener noreferrer"
+    target="_blank"
+    className={`bg-background border-primary text-primary inline-flex size-10 items-center justify-center rounded-xl border text-sm font-semibold transition-all hover:border-transparent hover:text-white active:scale-[0.98] ${color}`}
   >
-    <a href={href} aria-label={label} rel="noopener noreferrer" target="_blank">
-      <span className="h-4 w-4">{icon}</span>
-      <span className="sr-only">{label}</span>
-    </a>
-  </Button>
+    <span className="h-4 w-4">{icon}</span>
+    <span className="sr-only">{label}</span>
+  </a>
 );
 
 /**
