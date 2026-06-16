@@ -43,6 +43,49 @@
   --radius-md: var(--radius);
   --radius-lg: calc(var(--radius) + 2px);
   --radius-xl: calc(var(--radius) + 4px);
+
+  --animate-fade-in-up: fade-in-up 0.6s ease-out forwards;
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.beam-border {
+  --angle: 0deg;
+
+  background: conic-gradient(
+    from var(--angle),
+    transparent 0deg,
+    transparent 300deg,
+
+    var(--beam-1) 320deg,
+    var(--beam-2) 335deg,
+    var(--beam-3) 350deg,
+
+    transparent 360deg
+  );
+
+  animation: rotate-beam 4s linear infinite;
+}
+
+@keyframes rotate-beam {
+  to {
+    --angle: 360deg;
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @layer base {
