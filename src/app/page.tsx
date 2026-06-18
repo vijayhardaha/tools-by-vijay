@@ -287,7 +287,7 @@ export default function Home(): JSX.Element {
       <JsonLd data={schemaData} />
 
       <PageLayout>
-        {/* ════════════════════════════════════════════ HERO SECTION ════════════════════════════════════════════ */}
+        {/* ═══════════ HERO SECTION ═══════════ */}
         <section
           className="relative -mt-8 overflow-hidden pt-8"
           style={{
@@ -341,7 +341,7 @@ export default function Home(): JSX.Element {
           </Container>
         </section>
 
-        {/* ════════════════════════════════════════ BROWSE BY CATEGORY ════════════════════════════════════════ */}
+        {/* ═══════════ BROWSE BY CATEGORY ═══════════ */}
         <section className="bg-muted py-16 md:py-20">
           <Container>
             <SectionHeading
@@ -375,7 +375,7 @@ export default function Home(): JSX.Element {
           </Container>
         </section>
 
-        {/* ══════════════════════════════════════ FAST, LIGHTWEIGHT + CONTINUOUS IMPROVEMENT ══════════════════════════════════════ */}
+        {/* ═════════ FAST, LIGHTWEIGHT + CONTINUOUS IMPROVEMENT ═════════ */}
         <Section className="bg-white">
           <div className="grid gap-4 md:grid-cols-2 md:gap-6">
             {/* Card 1: Fast, Lightweight & Privacy-Friendly */}
@@ -406,7 +406,7 @@ export default function Home(): JSX.Element {
           </div>
         </Section>
 
-        {/* ════════════════════════════════════════ POPULAR TOOLS ════════════════════════════════════════ */}
+        {/* ═══════════ POPULAR TOOLS ═══════════ */}
         <Section>
           <SectionHeading
             subheading="Popular Tools"
@@ -421,7 +421,7 @@ export default function Home(): JSX.Element {
           </div>
         </Section>
 
-        {/* ════════════════════════════════════════════ WHO CAN BENEFIT? ════════════════════════════════════════════ */}
+        {/* ═══════════ WHO CAN BENEFIT? ═══════════ */}
         <section className="bg-muted py-16 md:py-20">
           <Container>
             <SectionHeading
@@ -447,7 +447,7 @@ export default function Home(): JSX.Element {
           </Container>
         </section>
 
-        {/* ════════════════════════════════════ BUILT FOR DEVELOPERS, BY A DEVELOPER ════════════════════════════════════ */}
+        {/* ═══════ BUILT FOR DEVELOPERS, BY A DEVELOPER ═══════ */}
         <section className="bg-neutral-900 py-16 text-white md:py-20">
           <Container>
             <div className="flex flex-col-reverse items-center gap-8 md:flex-row">
@@ -474,7 +474,7 @@ export default function Home(): JSX.Element {
           </Container>
         </section>
 
-        {/* ════════════════════════════════════════ WHAT YOU'LL FIND ON THIS SITE ════════════════════════════════════════ */}
+        {/* ═══════════ WHAT YOU'LL FIND ON THIS SITE ═══════════ */}
         <section className="bg-neutral-100 py-16 md:py-20">
           <Container>
             <SectionHeading
@@ -511,7 +511,7 @@ export default function Home(): JSX.Element {
           </Container>
         </section>
 
-        {/* ════════════════════════════════════════ WHY USE ONLINE DEVELOPER TOOLS? ════════════════════════════════════════ */}
+        {/* ═══════════ WHY USE ONLINE DEVELOPER TOOLS? ═══════════ */}
         <Section>
           <h2 className="text-foreground mb-4 text-center text-2xl font-bold md:text-3xl">
             Why Use Online Developer Tools?
@@ -535,7 +535,7 @@ export default function Home(): JSX.Element {
           </div>
         </Section>
 
-        {/* ════════════════════════════════════════ CTA: QUESTIONS & SUGGESTIONS ════════════════════════════════════════ */}
+        {/* ═══════════ CTA: QUESTIONS & SUGGESTIONS ═══════════ */}
         <section
           className="relative flex items-center overflow-hidden bg-neutral-900 py-20 md:py-26"
           style={{
@@ -580,7 +580,7 @@ export default function Home(): JSX.Element {
           </Container>
         </section>
 
-        {/* ════════════════════════════════════════ JOIN THE MISSION ════════════════════════════════════════ */}
+        {/* ═══════════ JOIN THE MISSION ═══════════ */}
         <section className="py-16 md:py-20">
           <Container>
             <div className="rounded-3xl bg-neutral-900 px-8 py-12 text-white md:px-16 md:py-16">
