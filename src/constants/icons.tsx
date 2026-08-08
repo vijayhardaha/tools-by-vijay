@@ -62,7 +62,6 @@ export {
   PiShieldCheckBold,
   PiSparkle,
   PiStudent,
-  PiTelegramLogoBold,
   PiUser,
   PiWhatsappLogoBold,
   PiXLogo,
