@@ -6,7 +6,9 @@ import { useMemo, useState } from 'react';
 import latinize from 'latinize';
 import slugify from 'slugify';
 
-import { ExampleBlock } from './example-block';
+import { ToolExampleBlock } from '@/components/tool/ToolExampleBlock';
+import { getToolExamples } from '@/constants/tool-examples';
+
 import { InfoBlock } from './info-block';
 import { InputBlock } from './input-block';
 import { OutputBlock } from './output-block';
@@ -61,8 +63,6 @@ export function Slugify(): JSX.Element {
    * Loads an example with predefined input values and options.
    *
    * @param {object} values - The example values.
-   *
-   * @returns {void}
    */
   const handleExample = (values: Record<string, any>): void => {
     if ('input' in values) {
@@ -100,7 +100,7 @@ export function Slugify(): JSX.Element {
           onReset={handleReset}
         />
 
-        <ExampleBlock onExample={handleExample} />
+        <ToolExampleBlock examples={getToolExamples('slugify')} onExample={handleExample} />
 
         <OutputBlock output={output} />
       </div>

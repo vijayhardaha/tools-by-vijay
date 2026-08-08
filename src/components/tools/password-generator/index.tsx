@@ -3,7 +3,9 @@
 import type { JSX } from 'react';
 import { useEffect, useState } from 'react';
 
-import { ExampleBlock } from './example-block';
+import { ToolExampleBlock } from '@/components/tool/ToolExampleBlock';
+import { getToolExamples } from '@/constants/tool-examples';
+
 import { InfoBlock } from './info-block';
 import { InputBlock } from './input-block';
 import { OutputBlock } from './output-block';
@@ -71,8 +73,6 @@ export function PasswordGenerator(): JSX.Element {
   /**
    * Resets all password generation options to their default values
    *
-   * @returns {void}
-   *
    * @function
    */
   const handleReset = (): void => {
@@ -88,8 +88,6 @@ export function PasswordGenerator(): JSX.Element {
    * Loads an example with predefined input values and options.
    *
    * @param {object} values - The example values.
-   *
-   * @returns {void}
    */
   const handleExample = (values: Record<string, any>): void => {
     if ('length' in values) {
@@ -131,7 +129,7 @@ export function PasswordGenerator(): JSX.Element {
           onReset={handleReset}
         />
 
-        <ExampleBlock onExample={handleExample} />
+        <ToolExampleBlock examples={getToolExamples('password-generator')} onExample={handleExample} />
 
         <OutputBlock password={password} />
       </div>

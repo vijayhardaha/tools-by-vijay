@@ -5,7 +5,9 @@ import { useState } from 'react';
 
 import jsonabc from 'jsonabc';
 
-import { ExampleBlock } from './example-block';
+import { ToolExampleBlock } from '@/components/tool/ToolExampleBlock';
+import { getToolExamples } from '@/constants/tool-examples';
+
 import { InfoBlock } from './info-block';
 import { InputBlock } from './input-block';
 import { OutputBlock } from './output-block';
@@ -24,8 +26,6 @@ export function JsonSorter(): JSX.Element {
 
   /**
    * Handles the sorting process when user submits the form
-   *
-   * @returns {void}
    *
    * @function
    */
@@ -60,8 +60,6 @@ export function JsonSorter(): JSX.Element {
   /**
    * Clears only the JSON input field
    *
-   * @returns {void}
-   *
    * @function
    */
   const handleClear = (): void => {
@@ -72,8 +70,6 @@ export function JsonSorter(): JSX.Element {
 
   /**
    * Resets all input fields and output
-   *
-   * @returns {void}
    *
    * @function
    */
@@ -86,8 +82,6 @@ export function JsonSorter(): JSX.Element {
    * Loads an example with predefined input values and options.
    *
    * @param {object} values - The example values.
-   *
-   * @returns {void}
    */
   const handleExample = (values: Record<string, any>): void => {
     if ('input' in values) {
@@ -112,7 +106,7 @@ export function JsonSorter(): JSX.Element {
           error={error}
         />
 
-        <ExampleBlock onExample={handleExample} />
+        <ToolExampleBlock examples={getToolExamples('json-sorter')} onExample={handleExample} />
 
         {output && <OutputBlock output={output} />}
       </div>
