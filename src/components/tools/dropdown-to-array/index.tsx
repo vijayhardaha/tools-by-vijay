@@ -301,8 +301,6 @@ export function DropdownToArray(): JSX.Element {
 
   /**
    * Handles the conversion process when the user submits the form.
-   *
-   * @returns {void}
    */
   const handleSubmit = (): void => {
     const parsedOptions = parseHtmlInput();
@@ -316,8 +314,6 @@ export function DropdownToArray(): JSX.Element {
 
   /**
    * Clears only the input field while keeping other settings intact.
-   *
-   * @returns {void}
    */
   const handleClear = (): void => {
     setInput('');
@@ -327,8 +323,6 @@ export function DropdownToArray(): JSX.Element {
 
   /**
    * Resets all input fields and output.
-   *
-   * @returns {void}
    */
   const handleReset = (): void => {
     handleClear();
@@ -341,8 +335,6 @@ export function DropdownToArray(): JSX.Element {
    * Loads an example with predefined input values and options.
    *
    * @param {object} values - The example values.
-   *
-   * @returns {void}
    */
   const handleExample = (values: Record<string, any>): void => {
     if ('input' in values) {

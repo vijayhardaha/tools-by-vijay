@@ -51,8 +51,6 @@ export function DuplicateLineRemoval(): JSX.Element {
   /**
    * Clears the input and output fields.
    *
-   * @returns {void}
-   *
    * @function
    */
   const handleClear = (): void => {
@@ -61,8 +59,6 @@ export function DuplicateLineRemoval(): JSX.Element {
 
   /**
    * Resets all states to their initial values.
-   *
-   * @returns {void}
    *
    * @function
    */
@@ -76,8 +72,6 @@ export function DuplicateLineRemoval(): JSX.Element {
    * Loads an example with predefined input values and options.
    *
    * @param {object} values - The example values.
-   *
-   * @returns {void}
    */
   const handleExample = (values: Record<string, any>): void => {
     if ('input' in values) {

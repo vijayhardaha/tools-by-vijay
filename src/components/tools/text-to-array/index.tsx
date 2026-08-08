@@ -275,8 +275,6 @@ export function TextToArray(): JSX.Element {
   /**
    * Handles the conversion process when the user submits the form.
    *
-   * @returns {void}
-   *
    * @function
    */
   const handleSubmit = (): void => {
@@ -292,8 +290,6 @@ export function TextToArray(): JSX.Element {
   /**
    * Clears only the text input field
    *
-   * @returns {void}
-   *
    * @function
    */
   const handleClear = (): void => {
@@ -304,8 +300,6 @@ export function TextToArray(): JSX.Element {
 
   /**
    * Resets all input fields and output
-   *
-   * @returns {void}
    *
    * @function
    */
@@ -322,8 +316,6 @@ export function TextToArray(): JSX.Element {
    * Loads an example with predefined input values and options.
    *
    * @param {object} values - The example values.
-   *
-   * @returns {void}
    */
   const handleExample = (values: Record<string, any>): void => {
     if ('input' in values) {

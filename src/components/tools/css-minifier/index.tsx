@@ -104,8 +104,6 @@ export function CssMinifier(): JSX.Element {
    * Clears the input and output fields.
    * Resets the input, output, and error states to their initial values.
    *
-   * @returns {void}
-   *
    * @function
    */
   const handleClear = (): void => {
@@ -117,8 +115,6 @@ export function CssMinifier(): JSX.Element {
   /**
    * Resets all options to their default values.
    * Resets the options state to its initial values and clears input and output fields.
-   *
-   * @returns {void}
    *
    * @function
    */
@@ -158,8 +154,6 @@ export function CssMinifier(): JSX.Element {
    * Loads an example with predefined input values and options.
    *
    * @param {object} values - The example values.
-   *
-   * @returns {void}
    */
   const handleExample = (values: Record<string, any>): void => {
     if ('input' in values) {

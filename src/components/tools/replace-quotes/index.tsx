@@ -67,8 +67,6 @@ export function ReplaceQuotes(): JSX.Element {
   /**
    * Clears the output while keeping the input and other states intact
    *
-   * @returns {void}
-   *
    * @function
    */
   const handleClear = (): void => {
@@ -77,8 +75,6 @@ export function ReplaceQuotes(): JSX.Element {
 
   /**
    * Resets all input fields, output, and options
-   *
-   * @returns {void}
    *
    * @function
    */
@@ -93,8 +89,6 @@ export function ReplaceQuotes(): JSX.Element {
    * Loads an example with predefined input values and options.
    *
    * @param {object} values - The example values.
-   *
-   * @returns {void}
    */
   const handleExample = (values: Record<string, any>): void => {
     if ('input' in values) {

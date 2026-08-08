@@ -92,8 +92,6 @@ export function HtmlMinifier(): JSX.Element {
    * Handles the minification process when the "Minify" button is clicked
    * Makes an API call to the server-side minification endpoint
    *
-   * @returns {void}
-   *
    * @async
    * @function
    */
@@ -129,8 +127,6 @@ export function HtmlMinifier(): JSX.Element {
   /**
    * Clears the input and output fields
    *
-   * @returns {void}
-   *
    * @function
    */
   const handleClear = (): void => {
@@ -141,8 +137,6 @@ export function HtmlMinifier(): JSX.Element {
 
   /**
    * Resets all options to their default values
-   *
-   * @returns {void}
    *
    * @function
    */
@@ -167,8 +161,6 @@ export function HtmlMinifier(): JSX.Element {
    * Loads an example with predefined input values and options.
    *
    * @param {object} values - The example values.
-   *
-   * @returns {void}
    */
   const handleExample = (values: Record<string, any>): void => {
     if ('input' in values) {

@@ -55,8 +55,6 @@ export function AlphabeticalLineSorter(): JSX.Element {
    * Handles the clearing of the input and output states.
    * Resets the input and output to empty strings.
    *
-   * @returns {void}
-   *
    * @function
    */
   const handleClear = (): void => {
@@ -66,8 +64,6 @@ export function AlphabeticalLineSorter(): JSX.Element {
   /**
    * Handles the reset of the input and output states.
    * Resets all options to their default values.
-   *
-   * @returns {void}
    *
    * @function
    */
@@ -82,8 +78,6 @@ export function AlphabeticalLineSorter(): JSX.Element {
    * Loads an example with predefined input values and options.
    *
    * @param {object} values - The example values.
-   *
-   * @returns {void}
    */
   const handleExample = (values: Record<string, any>): void => {
     if ('input' in values) {
