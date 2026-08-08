@@ -20,10 +20,32 @@ if (process.env.NODE_ENV === 'development') {
 const MAX_BODY_SIZE = 2_000_000;
 
 /**
+ * Determine whether the given URI's origin is in the allowlist.
+ *
+ * Parses the URI as a `URL` and compares its canonical `origin` (scheme,
+ * host, port) against the allowed list. This prevents subdomain or
+ * scheme-bypass attacks that a naive `startsWith` prefix check would allow
+ * (e.g. `https://toolsbyvijay.vercel.app.attacker.com`).
+ *
+ * @param {string} uriString - The raw Origin or Referer header value.
+ * @param {string[]} allowed - List of allowed origins.
+ *
+ * @returns {boolean} True when the parsed origin is allowed, false otherwise.
+ */
+function isAllowedOrigin(uriString: string, allowed: string[]): boolean {
+  try {
+    const url = new URL(uriString);
+    return allowed.includes(url.origin);
+  } catch {
+    return false;
+  }
+}
+
+/**
  * Proxy function that guards API routes.
  *
  * - For mutating methods (POST, PUT, DELETE, PATCH): validates origin/referer
- *   against allowed origins to prevent CSRF.
+ *   against allowed origins (via URL parsing) to prevent CSRF.
  * - For safe methods (GET, HEAD): skips origin check directly-browsed URLs
  *   (like OG images) that don't send origin/referer headers.
  * - Enforces a body size limit on all requests.
@@ -48,8 +70,8 @@ export function proxy(request: NextRequest): NextResponse | undefined {
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
     }
 
-    // Reject unknown origins
-    if (!ALLOWED_ORIGINS.some((allowed) => url.startsWith(allowed))) {
+    // Reject unknown origins (exact origin match via URL parsing)
+    if (!isAllowedOrigin(url, ALLOWED_ORIGINS)) {
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
     }
   }

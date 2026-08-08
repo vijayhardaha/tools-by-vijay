@@ -3,6 +3,8 @@ import { NextResponse } from 'next/server';
 // eslint-disable-next-line import-x/namespace
 import * as prettier from 'prettier';
 
+import { API_LIMITS, rateLimit } from '@/utils/api';
+
 /**
  * API route handler for inlining CSS into HTML.
  *
@@ -12,6 +14,15 @@ import * as prettier from 'prettier';
  */
 export async function POST(request: Request): Promise<Response> {
   try {
+    // Rate limit by client IP to protect against abuse
+    const clientIp = request.headers.get('x-forwarded-for') || 'unknown';
+    if (!rateLimit(clientIp)) {
+      return NextResponse.json(
+        { error: 'Rate limit exceeded. Please try again later.' },
+        { status: 429, headers: { 'Retry-After': '60' } }
+      );
+    }
+
     // Define the expected input structure
     type InlineCssRequest = { html: string; css: string };
 
@@ -19,6 +30,21 @@ export async function POST(request: Request): Promise<Response> {
 
     if (!html || !css) {
       return NextResponse.json({ error: 'HTML and CSS inputs are required' }, { status: 400 });
+    }
+
+    // Reject oversized payloads before any heavy processing
+    if (html.length > API_LIMITS.HTML_MAX_LENGTH) {
+      return NextResponse.json(
+        { error: `HTML input too large. Maximum ${API_LIMITS.HTML_MAX_LENGTH} characters.` },
+        { status: 413 }
+      );
+    }
+
+    if (css.length > API_LIMITS.CSS_MAX_LENGTH) {
+      return NextResponse.json(
+        { error: `CSS input too large. Maximum ${API_LIMITS.CSS_MAX_LENGTH} characters.` },
+        { status: 413 }
+      );
     }
 
     // Inline CSS into HTML

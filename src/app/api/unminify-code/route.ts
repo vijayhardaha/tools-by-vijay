@@ -5,6 +5,8 @@ import parserHtml from 'prettier/plugins/html';
 import parserCss from 'prettier/plugins/postcss';
 import prettier from 'prettier/standalone';
 
+import { API_LIMITS, rateLimit } from '@/utils/api';
+
 export const runtime = 'edge';
 
 /**
@@ -28,10 +30,27 @@ interface UnminifyCodeRequest {
  */
 export async function POST(request: Request): Promise<Response> {
   try {
+    // Rate limit by client IP to protect against abuse
+    const clientIp = request.headers.get('x-forwarded-for') || 'unknown';
+    if (!rateLimit(clientIp)) {
+      return NextResponse.json(
+        { error: 'Rate limit exceeded. Please try again later.' },
+        { status: 429, headers: { 'Retry-After': '60' } }
+      );
+    }
+
     const { code, codeType }: UnminifyCodeRequest = await request.json();
 
     if (!code || !codeType) {
       return NextResponse.json({ error: 'Code and codeType are required' }, { status: 400 });
+    }
+
+    // Reject oversized payloads before any heavy processing
+    if (typeof code === 'string' && code.length > API_LIMITS.TEXT_MAX_LENGTH) {
+      return NextResponse.json(
+        { error: `Code input too large. Maximum ${API_LIMITS.TEXT_MAX_LENGTH} characters.` },
+        { status: 413 }
+      );
     }
 
     let parser: string = 'babel';

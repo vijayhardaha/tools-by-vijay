@@ -1,6 +1,8 @@
 import CleanCSS from 'clean-css';
 import { NextResponse } from 'next/server';
 
+import { API_LIMITS, rateLimit } from '@/utils/api';
+
 /**
  * API route handler for CSS minification
  *
@@ -10,6 +12,15 @@ import { NextResponse } from 'next/server';
  */
 export async function POST(request: Request): Promise<Response> {
   try {
+    // Rate limit by client IP to protect against abuse
+    const clientIp = request.headers.get('x-forwarded-for') || 'unknown';
+    if (!rateLimit(clientIp)) {
+      return NextResponse.json(
+        { error: 'Rate limit exceeded. Please try again later.' },
+        { status: 429, headers: { 'Retry-After': '60' } }
+      );
+    }
+
     // Define the expected input structure
     type MinifyCssRequest = { css: string; options?: CleanCSS.Options };
 
@@ -17,6 +28,14 @@ export async function POST(request: Request): Promise<Response> {
 
     if (!css || typeof css !== 'string') {
       return NextResponse.json({ error: 'Invalid CSS input' }, { status: 400 });
+    }
+
+    // Reject oversized payloads before any heavy processing
+    if (css.length > API_LIMITS.CSS_MAX_LENGTH) {
+      return NextResponse.json(
+        { error: `CSS input too large. Maximum ${API_LIMITS.CSS_MAX_LENGTH} characters.` },
+        { status: 413 }
+      );
     }
 
     // Create a new CleanCSS instance with the provided options
