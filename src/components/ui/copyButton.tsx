@@ -27,7 +27,11 @@ interface CopyButtonProps {
 }
 
 /**
- * Reusable copy button component with copied state feedback
+ * Reusable copy button component with copied state feedback.
+ *
+ * Falls back to `document.execCommand('copy')` when the async Clipboard API is
+ * unavailable (e.g. insecure HTTP context or denied permissions) so the copy
+ * never silently fails.
  *
  * @param {CopyButtonProps} props - The component props
  *
@@ -44,11 +48,26 @@ export function CopyButton({
 
   /**
    * Copies the text to the clipboard and updates the copied state.
+   * Uses the Clipboard API with a legacy execCommand fallback.
+   *
+   * @returns {Promise<void>}
    */
   const handleCopy = async (): Promise<void> => {
-    if (text) {
+    if (!text) return;
+
+    try {
       await navigator.clipboard.writeText(text);
       setCopied(true);
+    } catch {
+      // Clipboard API unavailable (insecure context / denied permission) —
+      // fall back to the legacy method.
+      try {
+        fallbackCopy(text);
+        setCopied(true);
+      } catch (fallbackError) {
+        console.error('[CopyButton] Failed to copy text:', fallbackError);
+      }
+    } finally {
       setTimeout(() => setCopied(false), 1000);
     }
   };
@@ -64,4 +83,38 @@ export function CopyButton({
       {copied ? copiedText : copyText}
     </Button>
   );
+}
+
+/**
+ * Fallback copy implementation using a hidden textarea and execCommand.
+ *
+ * @param {string} text - The text to copy.
+ *
+ * @throws {Error} When the copy command reports failure.
+ */
+function fallbackCopy(text: string): void {
+  const textarea = document.createElement('textarea');
+
+  // Hide the textarea without removing it from the layout flow.
+  textarea.style.position = 'fixed';
+  textarea.style.top = '0';
+  textarea.style.left = '0';
+  textarea.style.opacity = '0';
+  textarea.style.pointerEvents = 'none';
+  textarea.setAttribute('readonly', '');
+  textarea.value = text;
+
+  document.body.appendChild(textarea);
+
+  try {
+    textarea.select();
+    textarea.setSelectionRange(0, text.length);
+    const successful = document.execCommand('copy');
+
+    if (!successful) {
+      throw new Error('execCommand copy failed');
+    }
+  } finally {
+    document.body.removeChild(textarea);
+  }
 }

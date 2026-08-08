@@ -44,6 +44,22 @@ const defaultIcons: Record<string, ReactElement> = {
 };
 
 /**
+ * Live-region role per variant.
+ *
+ * - `status` for non-urgent feedback (info/success/default): announced by
+ *   screen readers without interrupting the user.
+ * - `alert` for urgent feedback (warning/danger): announced immediately,
+ *   interrupting the current announcement.
+ */
+const alertRoleMap: Record<NonNullable<AlertProps['variant']>, string> = {
+  info: 'status',
+  success: 'status',
+  warning: 'alert',
+  danger: 'alert',
+  default: 'status',
+};
+
+/**
  * Props for the Alert component.
  *
  * @type {AlertProps}
@@ -83,7 +99,12 @@ export function Alert({
   const iconToRender = icon || defaultIcons[variant];
 
   return (
-    <div data-slot="alert" role="alert" className={cn(alertVariants({ variant }), className)} {...props}>
+    <div
+      data-slot="alert"
+      role={alertRoleMap[variant]}
+      className={cn(alertVariants({ variant }), className)}
+      {...props}
+    >
       {icon !== null && iconToRender}
       {children}
 

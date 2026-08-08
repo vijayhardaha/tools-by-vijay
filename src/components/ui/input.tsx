@@ -21,12 +21,12 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
  *
  * @returns {JSX.Element} Input component
  */
-export function Input({ className, type = 'text', ...props }: InputProps): JSX.Element {
+export function Input({ className, type = 'text', autoComplete, spellCheck, ...props }: InputProps): JSX.Element {
   return (
     <input
       type={type}
-      autoComplete="off"
-      spellCheck="false"
+      autoComplete={autoComplete ?? 'off'}
+      spellCheck={spellCheck ?? 'false'}
       data-slot="input"
       className={cn(
         // Layout & sizing

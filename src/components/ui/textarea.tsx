@@ -19,12 +19,12 @@ interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
  *
  * @returns {JSX.Element} The rendered textarea component
  */
-export function Textarea({ className, ...props }: TextareaProps): JSX.Element {
+export function Textarea({ className, autoComplete, spellCheck, ...props }: TextareaProps): JSX.Element {
   return (
     <textarea
       data-slot="textarea"
-      autoComplete="off"
-      spellCheck="false"
+      autoComplete={autoComplete ?? 'off'}
+      spellCheck={spellCheck ?? 'false'}
       className={cn(
         // Layout & spacing
         'flex h-auto min-h-16 w-full items-center',
