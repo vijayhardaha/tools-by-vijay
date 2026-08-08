@@ -166,6 +166,28 @@ const allSeoData: SeoData[] = [
 ];
 
 /**
+ * Detect paths that occur more than once across the merged SEO data.
+ *
+ * A silent collision would cause a route to resolve to the wrong page's SEO
+ * metadata (title, description, canonical). Logs a warning per duplicate path.
+ *
+ * @param {SeoData[]} data - The merged SEO data array.
+ */
+function validateSeoData(data: SeoData[]): void {
+  const seen = new Set<string>();
+
+  for (const item of data) {
+    if (seen.has(item.path)) {
+      console.warn(`⚠️ Duplicate path in SEO data: ${item.path}`);
+    }
+    seen.add(item.path);
+  }
+}
+
+// Run collision checks at module load time.
+validateSeoData(allSeoData);
+
+/**
  * Look up SEO data for a page by its URL path.
  *
  * Accepts paths with or without a leading slash — normalizes automatically.

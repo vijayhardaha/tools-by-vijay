@@ -30,5 +30,13 @@ export interface BreadcrumbItem {
  * buildBreadcrumbs('/slugify', 'Slugify', [{ name: 'Writing & Editing', path: '/tools/writing-editing' }])
  */
 export function buildBreadcrumbs(path: string, currentPage: string, parents?: BreadcrumbItem[]): BreadcrumbItem[] {
-  return [{ name: 'Home', path: '/' }, ...(parents || []), { name: currentPage, path }];
+  // Normalize the path: ensure it always starts with a single leading slash
+  const normalizedPath = path.startsWith('/') ? path : `/${path}`;
+
+  // Validate the path shape (safe URL segment chars) — warn on suspicious input
+  if (!/^\/[\w\-/]*$/.test(normalizedPath)) {
+    console.warn(`Invalid breadcrumb path: ${path}`);
+  }
+
+  return [{ name: 'Home', path: '/' }, ...(parents || []), { name: currentPage, path: normalizedPath }];
 }
