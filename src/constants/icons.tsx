@@ -113,7 +113,7 @@ export const toolIcons: ToolIcons = {
 export const categoryIcons: CategoryIcons = {
   'writing-editing': <PiNotePencilDuotone />,
   'developer-suite': <PiCodeDuotone />,
-  'web-url-tools': <PiGlobeDuotone />,
+  'web-url': <PiGlobeDuotone />,
   'security-privacy': <PiShieldCheckDuotone />,
   'creative-generators': <PiSparkleDuotone />,
 };
