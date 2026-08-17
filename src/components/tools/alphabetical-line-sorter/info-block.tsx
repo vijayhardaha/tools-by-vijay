@@ -2,7 +2,7 @@ import type { JSX } from 'react';
 
 import { JsonLd } from '@vijayhardaha/schema-builder/react';
 
-import { Credits } from '@/components/tool/ToolCredits';
+import { ToolCreditsSection } from '@/components/tool/ToolCredits';
 import { ToolFAQItem, ToolFAQSection } from '@/components/tool/ToolFAQ';
 import {
   ToolInfoSection,
@@ -110,21 +110,7 @@ export function InfoBlock(): JSX.Element {
         ))}
       </ToolFAQSection>
 
-      <Credits>
-        <p>
-          Maintained by{' '}
-          <a
-            href="https://x.com/vijayhardaha"
-            className="font-medium text-pink-500 underline hover:no-underline"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            Vijay Hardaha
-          </a>
-          . This tool is built with modern web technologies and industry-standard open-source libraries to deliver
-          reliable, high-quality results.
-        </p>
-      </Credits>
+      <ToolCreditsSection />
     </div>
   );
 }
