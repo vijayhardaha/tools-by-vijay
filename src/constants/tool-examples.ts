@@ -24,67 +24,6 @@ const slugifyExamples: Example[] = [
 ];
 
 /**
- * Password Generator tool examples.
- */
-const passwordGeneratorExamples: Example[] = [
-  {
-    label: 'Load Example 1',
-    data: {
-      length: 16,
-      useUppercase: true,
-      useLowercase: true,
-      useNumbers: true,
-      useSymbols: true,
-      excludeSimilar: false,
-    },
-  },
-  {
-    label: 'Load Example 2',
-    data: {
-      length: 20,
-      useUppercase: true,
-      useLowercase: true,
-      useNumbers: true,
-      useSymbols: true,
-      excludeSimilar: false,
-    },
-  },
-  {
-    label: 'Load Example 3',
-    data: {
-      length: 6,
-      useUppercase: false,
-      useLowercase: false,
-      useNumbers: true,
-      useSymbols: false,
-      excludeSimilar: false,
-    },
-  },
-  {
-    label: 'Load Example 4',
-    data: {
-      length: 12,
-      useUppercase: true,
-      useLowercase: true,
-      useNumbers: false,
-      useSymbols: false,
-      excludeSimilar: false,
-    },
-  },
-  {
-    label: 'Load Example 5',
-    data: {
-      length: 16,
-      useUppercase: true,
-      useLowercase: true,
-      useNumbers: true,
-      useSymbols: true,
-      excludeSimilar: true,
-    },
-  },
-];
-
-/**
  * Centralized example data for every tool, keyed by tool slug.
  *
  * Examples are split into per-tool variables for clarity, then merged into
@@ -92,10 +31,7 @@ const passwordGeneratorExamples: Example[] = [
  * one file per tool) removes the duplicated example-block components and
  * makes updates a single-source change.
  */
-const toolExamples: Record<string, Example[]> = {
-  slugify: slugifyExamples,
-  'password-generator': passwordGeneratorExamples,
-};
+const toolExamples: Record<string, Example[]> = { slugify: slugifyExamples };
 
 /**
  * Look up the centralized examples for a tool slug.
