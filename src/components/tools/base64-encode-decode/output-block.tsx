@@ -37,7 +37,7 @@ export function OutputBlock({ output }: OutputBlockProps): JSX.Element {
         </div>
       </CardHeader>
       <CardContent>
-        <Textarea value={output} rows={5} readOnly data-output />
+        <Textarea value={output} rows={8} readOnly data-output />
       </CardContent>
     </Card>
   );
