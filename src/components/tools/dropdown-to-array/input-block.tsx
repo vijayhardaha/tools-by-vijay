@@ -92,7 +92,7 @@ export function InputBlock({
             <Textarea
               id="html-input"
               placeholder={`<select>\n<option value='option1'>Option 1</option>\n<option value='option2'>Option 2</option>\n</select>`}
-              className="min-h-28"
+              rows={10}
               value={input}
               onChange={(e) => setInput(e.target.value)}
             />
