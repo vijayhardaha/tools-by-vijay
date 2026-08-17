@@ -6,7 +6,9 @@ import { useState } from 'react';
 import latinize from 'latinize';
 import slugify from 'slugify';
 
-import { ExampleBlock } from './example-block';
+import { ToolExampleBlock } from '@/components/tool/ToolExampleBlock';
+
+import { EXAMPLES } from './examples';
 import { InfoBlock } from './info-block';
 import { InputBlock } from './input-block';
 import { OutputBlock } from './output-block';
@@ -353,7 +355,9 @@ export function DropdownToArray(): JSX.Element {
 
   return (
     <>
-      <div className="space-y-6 md:space-y-8">
+      <div className="space-y-6">
+        <ToolExampleBlock examples={EXAMPLES} onExample={handleExample} />
+
         <InputBlock
           input={input}
           setInput={setInput}
@@ -368,8 +372,6 @@ export function DropdownToArray(): JSX.Element {
           onReset={handleReset}
           error={error}
         />
-
-        <ExampleBlock onExample={handleExample} />
 
         {output && <OutputBlock output={output} />}
       </div>
