@@ -6,8 +6,8 @@ import { useState } from 'react';
 import jsonabc from 'jsonabc';
 
 import { ToolExampleBlock } from '@/components/tool/ToolExampleBlock';
-import { getToolExamples } from '@/constants/tool-examples';
 
+import { EXAMPLES } from './examples';
 import { InfoBlock } from './info-block';
 import { InputBlock } from './input-block';
 import { OutputBlock } from './output-block';
@@ -94,7 +94,9 @@ export function JsonSorter(): JSX.Element {
 
   return (
     <>
-      <div className="space-y-6 md:space-y-8">
+      <div className="space-y-6">
+        <ToolExampleBlock examples={EXAMPLES} onExample={handleExample} />
+
         <InputBlock
           input={input}
           setInput={setInput}
@@ -105,8 +107,6 @@ export function JsonSorter(): JSX.Element {
           onReset={handleReset}
           error={error}
         />
-
-        <ToolExampleBlock examples={getToolExamples('json-sorter')} onExample={handleExample} />
 
         {output && <OutputBlock output={output} />}
       </div>
