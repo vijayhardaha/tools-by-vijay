@@ -3,7 +3,9 @@
 import type { JSX } from 'react';
 import { useState } from 'react';
 
-import { ExampleBlock } from './example-block';
+import { ToolExampleBlock } from '@/components/tool/ToolExampleBlock';
+
+import { EXAMPLES } from './examples';
 import { InfoBlock } from './info-block';
 import { InputBlock } from './input-block';
 import { OutputBlock } from './output-block';
@@ -154,10 +156,10 @@ export function PasswordStrengthChecker(): JSX.Element {
 
   return (
     <>
-      <div className="space-y-6 md:space-y-8">
-        <InputBlock password={password} onSubmit={handleSubmit} onClear={handleClear} />
+      <div className="space-y-6">
+        <ToolExampleBlock examples={EXAMPLES} onExample={handleExample} />
 
-        <ExampleBlock onExample={handleExample} />
+        <InputBlock password={password} onSubmit={handleSubmit} onClear={handleClear} />
 
         {password && <OutputBlock strength={strength} />}
       </div>
