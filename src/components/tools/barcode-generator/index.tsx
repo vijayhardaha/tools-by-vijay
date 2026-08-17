@@ -142,7 +142,9 @@ export function BarcodeGenerator(): JSX.Element {
 
   return (
     <>
-      <div className="space-y-6 md:space-y-8">
+      <div className="space-y-6">
+        <ExampleBlock onExample={handleExample} />
+
         <InputBlock
           input={input}
           setInput={setInput}
@@ -151,8 +153,6 @@ export function BarcodeGenerator(): JSX.Element {
           onClear={handleClear}
           onReset={handleReset}
         />
-
-        <ExampleBlock onExample={handleExample} />
 
         <OutputBlock value={input} options={options} />
       </div>
