@@ -8,7 +8,7 @@ import type { ToolFaqItem } from '@/utils/faq';
  *
  * @type {ToolFaqItem[]}
  */
-export const qrcodeFaqItems: ToolFaqItem[] = [
+export const FAQS: ToolFaqItem[] = [
   {
     heading: 'Is this tool free to use?',
     headingId: 'is-this-tool-free',

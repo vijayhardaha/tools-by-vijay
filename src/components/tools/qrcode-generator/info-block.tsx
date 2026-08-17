@@ -2,13 +2,13 @@ import type { JSX } from 'react';
 
 import { JsonLd } from '@vijayhardaha/schema-builder/react';
 
-import { Credits } from '@/components/tools/tool-credits';
-import { FAQ, FAQItem } from '@/components/tools/tool-faq';
+import { Credits } from '@/components/tool/ToolCredits';
+import { FAQ, FAQItem } from '@/components/tool/ToolFAQ';
 import { buildFaqPageSchema } from '@/utils/faq';
 
-import { qrcodeFaqItems } from './faq';
+import { FAQS } from './faqs';
 
-const faqSchemaData = [buildFaqPageSchema('qrcode-generator', qrcodeFaqItems)];
+const faqSchemaData = [buildFaqPageSchema('qrcode-generator', FAQS)];
 
 /**
  * Comprehensive, SEO-optimized information about the QR Code Generator Tool.
@@ -105,7 +105,7 @@ export function InfoBlock(): JSX.Element {
       </section>
 
       <FAQ>
-        {qrcodeFaqItems.map((item) => (
+        {FAQS.map((item) => (
           <FAQItem key={item.headingId} heading={item.heading} headingId={item.headingId}>
             <p>{item.answer}</p>
           </FAQItem>

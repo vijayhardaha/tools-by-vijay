@@ -2,26 +2,27 @@
 
 import type { JSX, HTMLAttributes, ReactNode } from 'react';
 
+import { ToolInfoSectionHeading } from '@/components/tool/ToolInfoSection';
 import { cn } from '@/utils/classnames';
 
 /**
- * Props for the FAQ wrapper component.
+ * Props for the ToolFAQSection wrapper component.
  *
- * @type {FAQProps}
+ * @type {ToolFAQSectionProps}
  */
-interface FAQProps extends HTMLAttributes<HTMLDivElement> {
+interface ToolFAQSectionProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
 }
 
 /**
- * Props for the FAQItem component.
+ * Props for the ToolFAQItem component.
  *
- * @type {FAQItemProps}
+ * @type {ToolFAQItemProps}
  * @property {string} heading - The FAQ question text
  * @property {string} [headingClassName] - Additional CSS classes for the heading
  * @property {string} [headingId] - Hardcoded slugified ID for the heading
  */
-interface FAQItemProps extends HTMLAttributes<HTMLDivElement> {
+interface ToolFAQItemProps extends HTMLAttributes<HTMLDivElement> {
   heading: string;
   headingClassName?: string;
   headingId?: string;
@@ -29,39 +30,38 @@ interface FAQItemProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 /**
- * FAQ wrapper component that renders a FAQ section with an h2 heading and a list of FAQ items.
+ * FAQ section wrapper component that renders a FAQ section with an h2 heading
+ * and a list of FAQ items.
  *
- * @param {FAQProps} props - Component props
+ * @param {ToolFAQSectionProps} props - Component props
  *
  * @returns {JSX.Element} The rendered FAQ section
  */
-export function FAQ({ className, children, ...props }: FAQProps): JSX.Element {
+export function ToolFAQSection({ className, children, ...props }: ToolFAQSectionProps): JSX.Element {
   return (
     <section className={cn('space-y-4 md:space-y-6', className)} {...props}>
       <hr className="border-secondary mb-8 border-t border-dashed md:mb-12" />
-      <h2 id="frequently-asked-questions" className="text-primary mb-4 text-2xl font-bold">
-        Frequently Asked Questions
-      </h2>
+      <ToolInfoSectionHeading id="frequently-asked-questions">Frequently Asked Questions</ToolInfoSectionHeading>
       <div className="flex flex-col gap-4 md:gap-6">{children}</div>
     </section>
   );
 }
 
 /**
- * FAQItem component that renders a single FAQ item with a heading and content.
+ * ToolFAQItem component that renders a single FAQ item with a heading and content.
  *
- * @param {FAQItemProps} props - Component props
+ * @param {ToolFAQItemProps} props - Component props
  *
  * @returns {JSX.Element} The rendered FAQ item
  */
-export function FAQItem({
+export function ToolFAQItem({
   heading,
   headingClassName,
   headingId,
   className,
   children,
   ...props
-}: FAQItemProps): JSX.Element {
+}: ToolFAQItemProps): JSX.Element {
   return (
     <div className={cn('space-y-2', className)} {...props}>
       <h3 id={headingId} className={cn('text-primary text-lg font-bold', headingClassName)}>
@@ -71,3 +71,10 @@ export function FAQItem({
     </div>
   );
 }
+
+/**
+ * Legacy aliases kept for tools that have not been migrated yet.
+ *
+ * @deprecated Use {@link ToolFAQSection} and {@link ToolFAQItem} instead.
+ */
+export { ToolFAQSection as FAQ, ToolFAQItem as FAQItem };
