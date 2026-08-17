@@ -3,7 +3,9 @@
 import type { JSX } from 'react';
 import { useState } from 'react';
 
-import { ExampleBlock } from './example-block';
+import { ToolExampleBlock } from '@/components/tool/ToolExampleBlock';
+
+import { EXAMPLES } from './examples';
 import { InfoBlock } from './info-block';
 import { InputBlock } from './input-block';
 import { OutputBlock } from './output-block';
@@ -143,7 +145,7 @@ export function BarcodeGenerator(): JSX.Element {
   return (
     <>
       <div className="space-y-6">
-        <ExampleBlock onExample={handleExample} />
+        <ToolExampleBlock examples={EXAMPLES} onExample={handleExample} />
 
         <InputBlock
           input={input}
