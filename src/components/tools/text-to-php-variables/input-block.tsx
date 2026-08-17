@@ -61,7 +61,7 @@ export function InputBlock({
           <Textarea
             id="text-input"
             placeholder={`Item 1\nItem 2\nItem 3`}
-            rows={5}
+            rows={10}
             value={input}
             onChange={(e) => setInput(e.target.value)}
           />
