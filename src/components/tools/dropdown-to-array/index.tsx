@@ -343,6 +343,12 @@ export function DropdownToArray(): JSX.Element {
     if ('outputFormat' in values) {
       setOutputFormat(values.outputFormat);
     }
+    if ('arrayType' in values) {
+      setArrayType(values.arrayType);
+    }
+    if ('useSlugKeys' in values) {
+      setUseSlugKeys(values.useSlugKeys);
+    }
   };
 
   return (

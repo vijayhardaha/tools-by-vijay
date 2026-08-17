@@ -159,6 +159,12 @@ export function CssMinifier(): JSX.Element {
     if ('input' in values) {
       setInput(values.input);
     }
+    if ('level' in values) {
+      updateOption('level', values.level);
+    }
+    if ('compress' in values) {
+      updateOption('compress', values.compress);
+    }
   };
 
   return (

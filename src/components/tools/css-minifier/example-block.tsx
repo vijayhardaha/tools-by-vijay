@@ -28,6 +28,8 @@ export function ExampleBlock({ onExample }: ExampleBlockProps): JSX.Element {
           onExample({
             input:
               '.btn {\n  background-color: #007bff;\n  color: white;\n  padding: 10px 20px;\n  border: none;\n  border-radius: 4px;\n  font-size: 16px;\n  cursor: pointer;\n}\n\n.btn:hover {\n  background-color: #0056b3;\n}',
+            level: 2,
+            compress: true,
           })
         }
       >
@@ -39,6 +41,8 @@ export function ExampleBlock({ onExample }: ExampleBlockProps): JSX.Element {
           onExample({
             input:
               '.container {\n  max-width: 1200px;\n  margin: 0 auto;\n  padding: 0 15px;\n}\n\n.row {\n  display: flex;\n  flex-wrap: wrap;\n  margin: 0 -15px;\n}\n\n.col {\n  flex: 1;\n  padding: 0 15px;\n}',
+            level: 1,
+            compress: false,
           })
         }
       >
@@ -61,6 +65,8 @@ export function ExampleBlock({ onExample }: ExampleBlockProps): JSX.Element {
           onExample({
             input:
               '.card {\n  border: 1px solid #ddd;\n  border-radius: 8px;\n  overflow: hidden;\n  box-shadow: 0 2px 4px rgba(0,0,0,0.1);\n}\n\n.card-header {\n  background: #f8f9fa;\n  padding: 12px 16px;\n  border-bottom: 1px solid #ddd;\n  font-weight: bold;\n}\n\n.card-body {\n  padding: 16px;\n}',
+            level: 0,
+            compress: false,
           })
         }
       >

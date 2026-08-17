@@ -166,6 +166,18 @@ export function HtmlMinifier(): JSX.Element {
     if ('input' in values) {
       setInput(values.input);
     }
+    if ('removeComments' in values) {
+      updateOption('removeComments', values.removeComments);
+    }
+    if ('collapseWhitespace' in values) {
+      updateOption('collapseWhitespace', values.collapseWhitespace);
+    }
+    if ('minifyCSS' in values) {
+      updateOption('minifyCSS', values.minifyCSS);
+    }
+    if ('minifyJS' in values) {
+      updateOption('minifyJS', values.minifyJS);
+    }
   };
 
   return (
