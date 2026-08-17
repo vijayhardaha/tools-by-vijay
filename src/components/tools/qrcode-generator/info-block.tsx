@@ -3,7 +3,13 @@ import type { JSX } from 'react';
 import { JsonLd } from '@vijayhardaha/schema-builder/react';
 
 import { Credits } from '@/components/tool/ToolCredits';
-import { FAQ, FAQItem } from '@/components/tool/ToolFAQ';
+import { ToolFAQItem, ToolFAQSection } from '@/components/tool/ToolFAQ';
+import {
+  ToolInfoSection,
+  ToolInfoSectionContent,
+  ToolInfoSectionHeading,
+  ToolInfoSectionList,
+} from '@/components/tool/ToolInfoSection';
 import { buildFaqPageSchema } from '@/utils/faq';
 
 import { FAQS } from './faqs';
@@ -19,98 +25,104 @@ export function InfoBlock(): JSX.Element {
   return (
     <div className="space-y-12">
       <JsonLd data={faqSchemaData} />
-      <section>
-        <h2 className="text-primary mb-4 text-2xl font-bold" id="what-is-qrcode-generator-tool">
+
+      <ToolInfoSection>
+        <ToolInfoSectionHeading id="what-is-qrcode-generator-tool">
           What Is the QR Code Generator Tool?
-        </h2>
-        <p className="mb-4">
-          The <strong>QR Code Generator</strong> is a free online utility that helps you generate high-resolution QR
-          codes from URLs, text, or any data, creating scannable codes for marketing, authentication, and information
-          sharing.
-        </p>
-        <p className="mb-4">
-          The QR Code Generator uses the{' '}
-          <a
-            href="https://github.com/zpao/qrcode.react"
-            className="font-medium text-pink-500 underline hover:no-underline"
-            target="_blank"
-            rel="noreferrer"
-          >
-            qrcode.react
-          </a>{' '}
-          library to create QR code images from your input text. It generates the QR matrix, applies error correction
-          for scan reliability, and renders the result as a canvas element. You can customize the size and error
-          correction level, and download the QR code as an image.
-        </p>
-      </section>
+        </ToolInfoSectionHeading>
+        <ToolInfoSectionContent>
+          <p>
+            The <strong>QR Code Generator</strong> is a free online utility that helps you generate high-resolution QR
+            codes from URLs, text, or any data, creating scannable codes for marketing, authentication, and information
+            sharing.
+          </p>
+          <p>
+            The QR Code Generator uses the{' '}
+            <a
+              href="https://github.com/zpao/qrcode.react"
+              className="font-medium text-pink-500 underline hover:no-underline"
+              target="_blank"
+              rel="noreferrer"
+            >
+              qrcode.react
+            </a>{' '}
+            library to create QR code images from your input text. It generates the QR matrix, applies error correction
+            for scan reliability, and renders the result as a canvas element. You can customize the size and error
+            correction level, and download the QR code as an image.
+          </p>
+        </ToolInfoSectionContent>
+      </ToolInfoSection>
 
-      <section>
-        <h2 className="text-primary mb-4 text-2xl font-bold" id="qrcode-generator-features">
-          Key Features
-        </h2>
-        <ul className="list-inside list-disc space-y-2 pl-4">
-          <li>QR code generation from any text, URL, or data input</li>
-          <li>Customizable size from 128px to 512px via slider control</li>
-          <li>Error correction level selection (Low, Medium, Quartile, High)</li>
-          <li>Canvas-based generation for crisp output at any resolution</li>
-          <li>Downloadable QR code image for use in print and digital materials</li>
-          <li>Instant generation with no server communication required</li>
-        </ul>
-      </section>
+      <ToolInfoSection>
+        <ToolInfoSectionList
+          id="qrcode-generator-features"
+          title="Key Features"
+          items={[
+            'QR code generation from any text, URL, or data input',
+            'Customizable size from 128px to 512px via slider control',
+            'Error correction level selection (Low, Medium, Quartile, High)',
+            'Canvas-based generation for crisp output at any resolution',
+            'Downloadable QR code image for use in print and digital materials',
+            'Instant generation with no server communication required',
+          ]}
+        />
+      </ToolInfoSection>
 
-      <section>
-        <h2 className="text-primary mb-4 text-2xl font-bold" id="why-use-qrcode-generator">
-          Why Use This Tool
-        </h2>
-        <ul className="list-inside list-disc space-y-2 pl-4">
-          <li>Provides quick access to websites, contact info, and resources via smartphone scanning</li>
-          <li>Enhances marketing materials and product packaging with interactive digital links</li>
-          <li>Eliminates manual URL entry errors with scannable QR code convenience</li>
-          <li>Supports multiple data types from URLs to plain text and contact information</li>
-          <li>Delivers professional-quality output suitable for both digital and print use</li>
-        </ul>
-      </section>
+      <ToolInfoSection>
+        <ToolInfoSectionList
+          id="why-use-qrcode-generator"
+          title="Why Use This Tool"
+          items={[
+            'Provides quick access to websites, contact info, and resources via smartphone scanning',
+            'Enhances marketing materials and product packaging with interactive digital links',
+            'Eliminates manual URL entry errors with scannable QR code convenience',
+            'Supports multiple data types from URLs to plain text and contact information',
+            'Delivers professional-quality output suitable for both digital and print use',
+          ]}
+        />
+      </ToolInfoSection>
 
-      <section>
-        <h2 className="text-primary mb-4 text-2xl font-bold" id="qrcode-generator-use-cases">
-          Common Use Cases
-        </h2>
-        <ul className="list-inside list-disc space-y-2 pl-4">
-          <li>Adding scannable links to business cards, flyers, and print advertisements</li>
-          <li>Providing quick access to restaurant menus, event details, and product information</li>
-          <li>Creating QR codes for Wi-Fi network sharing and contactless check-ins</li>
-          <li>Embedding QR codes in email signatures and digital business cards</li>
-          <li>Generating QR codes for authentication flows and two-factor enrollment</li>
-        </ul>
-      </section>
+      <ToolInfoSection>
+        <ToolInfoSectionList
+          id="qrcode-generator-use-cases"
+          title="Common Use Cases"
+          items={[
+            'Adding scannable links to business cards, flyers, and print advertisements',
+            'Providing quick access to restaurant menus, event details, and product information',
+            'Creating QR codes for Wi-Fi network sharing and contactless check-ins',
+            'Embedding QR codes in email signatures and digital business cards',
+            'Generating QR codes for authentication flows and two-factor enrollment',
+          ]}
+        />
+      </ToolInfoSection>
 
-      <section>
-        <h2 className="text-primary mb-4 text-2xl font-bold" id="qrcode-generator-technical-details">
-          Technical Details
-        </h2>
-        <p>
-          This tool uses the{' '}
-          <a
-            href="https://github.com/zpao/qrcode.react"
-            className="font-medium text-pink-500 underline hover:no-underline"
-            target="_blank"
-            rel="noreferrer"
-          >
-            qrcode.react
-          </a>{' '}
-          library for QR code generation. It creates QR code matrices with configurable error correction levels, then
-          renders them to HTML canvas elements. The resulting images can be downloaded as PNG files for use in various
-          media.
-        </p>
-      </section>
+      <ToolInfoSection>
+        <ToolInfoSectionHeading id="qrcode-generator-technical-details">Technical Details</ToolInfoSectionHeading>
+        <ToolInfoSectionContent>
+          <p>
+            This tool uses the{' '}
+            <a
+              href="https://github.com/zpao/qrcode.react"
+              className="font-medium text-pink-500 underline hover:no-underline"
+              target="_blank"
+              rel="noreferrer"
+            >
+              qrcode.react
+            </a>{' '}
+            library for QR code generation. It creates QR code matrices with configurable error correction levels, then
+            renders them to HTML canvas elements. The resulting images can be downloaded as PNG files for use in various
+            media.
+          </p>
+        </ToolInfoSectionContent>
+      </ToolInfoSection>
 
-      <FAQ>
+      <ToolFAQSection>
         {FAQS.map((item) => (
-          <FAQItem key={item.headingId} heading={item.heading} headingId={item.headingId}>
+          <ToolFAQItem key={item.headingId} heading={item.heading} headingId={item.headingId}>
             <p>{item.answer}</p>
-          </FAQItem>
+          </ToolFAQItem>
         ))}
-      </FAQ>
+      </ToolFAQSection>
 
       <Credits>
         <p>
