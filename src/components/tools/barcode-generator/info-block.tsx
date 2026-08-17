@@ -1,7 +1,19 @@
 import type { JSX } from 'react';
 
+import { JsonLd } from '@vijayhardaha/schema-builder/react';
+
 import { Credits } from '@/components/tools/tool-credits';
 import { FAQ, FAQItem } from '@/components/tools/tool-faq';
+import { faqPageSchema } from '@/utils/faq';
+
+import { barcodeFaqItems } from './faq';
+
+/**
+ * Comprehensive, SEO-optimized information about the Barcode Generator Tool.
+ *
+ * @returns {JSX.Element} The rendered info block component
+ */
+const faqSchemaData = [faqPageSchema(barcodeFaqItems)];
 
 /**
  * Comprehensive, SEO-optimized information about the Barcode Generator Tool.
@@ -11,6 +23,7 @@ import { FAQ, FAQItem } from '@/components/tools/tool-faq';
 export function InfoBlock(): JSX.Element {
   return (
     <div className="space-y-12">
+      <JsonLd data={faqSchemaData} />
       <section>
         <h2 className="text-primary mb-4 text-2xl font-bold" id="what-is-barcode-generator-tool">
           What Is the Barcode Generator Tool?
@@ -96,38 +109,11 @@ export function InfoBlock(): JSX.Element {
       </section>
 
       <FAQ>
-        <FAQItem heading="Is this tool free to use?" headingId="is-this-tool-free">
-          <p>
-            Yes, the Barcode Generator is completely free to use with no signup, registration, or usage limits required.
-          </p>
-        </FAQItem>
-        <FAQItem heading="Is my data sent to a server?" headingId="is-my-data-sent-to-a-server">
-          <p>
-            No, all processing happens locally in your browser. Your data never leaves your device and is not stored or
-            logged anywhere.
-          </p>
-        </FAQItem>
-        <FAQItem heading="What barcode formats are supported?" headingId="what-barcode-formats-are-supported">
-          <p>
-            This tool supports many popular symbologies, including Code128, Code39, EAN-13, EAN-8, UPC, UPC-E, ITF-14,
-            ITF, MSI, Pharmacode, and Codabar. Code128 is the default and supports full alphanumeric data.
-          </p>
-        </FAQItem>
-        <FAQItem heading="What can I encode?" headingId="what-can-i-encode">
-          <p>Encode any alphanumeric text like product SKUs, serial numbers, tracking IDs, or inventory codes.</p>
-        </FAQItem>
-        <FAQItem heading="How do I use the generated barcode?" headingId="how-do-i-use-the-generated-barcode">
-          <p>
-            The tool renders the barcode as an SVG element directly in your browser. You can print it on labels, embed
-            it in documents, or use it in inventory systems.
-          </p>
-        </FAQItem>
-        <FAQItem heading="Can I use this tool offline?" headingId="can-i-use-this-tool-offline">
-          <p>
-            Yes, since all processing happens client-side in your browser, this tool works offline once the page has
-            loaded.
-          </p>
-        </FAQItem>
+        {barcodeFaqItems.map((item) => (
+          <FAQItem key={item.headingId} heading={item.heading} headingId={item.headingId}>
+            <p>{item.answer}</p>
+          </FAQItem>
+        ))}
       </FAQ>
 
       <Credits>
