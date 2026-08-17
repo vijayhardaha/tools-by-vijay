@@ -40,12 +40,12 @@ export function InfoBlock(): JSX.Element {
           Key Features
         </h2>
         <ul className="list-inside list-disc space-y-2 pl-4">
-          <li>Code128 barcode generation supporting full alphanumeric input</li>
+          <li>Multiple barcode formats including Code128, Code39, EAN, UPC, ITF, MSI, Pharmacode, and Codabar</li>
           <li>SVG-based rendering for crisp, scalable barcode images at any resolution</li>
           <li>Instant generation as you type with no button clicks required</li>
-          <li>Downloadable barcode for print and digital integration</li>
+          <li>Configurable bar width, height, and text visibility and alignment</li>
           <li>Complete client-side processing with no server communication</li>
-          <li>One-click copy for immediate use in documents and labels</li>
+          <li>Print-ready SVG output suitable for labels, packaging, and documentation</li>
         </ul>
       </section>
 
@@ -109,8 +109,8 @@ export function InfoBlock(): JSX.Element {
         </FAQItem>
         <FAQItem heading="What barcode formats are supported?" headingId="what-barcode-formats-are-supported">
           <p>
-            This tool generates Code128 barcodes, one of the most widely used formats supporting alphanumeric data for
-            logistics and inventory.
+            This tool supports many popular symbologies, including Code128, Code39, EAN-13, EAN-8, UPC, UPC-E, ITF-14,
+            ITF, MSI, Pharmacode, and Codabar. Code128 is the default and supports full alphanumeric data.
           </p>
         </FAQItem>
         <FAQItem heading="What can I encode?" headingId="what-can-i-encode">
@@ -118,8 +118,8 @@ export function InfoBlock(): JSX.Element {
         </FAQItem>
         <FAQItem heading="How do I use the generated barcode?" headingId="how-do-i-use-the-generated-barcode">
           <p>
-            The tool generates a barcode image URL you can display on web pages, print on labels, or use in inventory
-            systems.
+            The tool renders the barcode as an SVG element directly in your browser. You can print it on labels, embed
+            it in documents, or use it in inventory systems.
           </p>
         </FAQItem>
         <FAQItem heading="Can I use this tool offline?" headingId="can-i-use-this-tool-offline">

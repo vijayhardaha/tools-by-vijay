@@ -30,12 +30,7 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
 
   // --- Images ---
-  images: {
-    remotePatterns: [
-      { protocol: 'https', hostname: 'api.qrserver.com', pathname: '/**' },
-      { protocol: 'https', hostname: 'barcode.tec-it.com', pathname: '/**' },
-    ],
-  },
+  images: { remotePatterns: [{ protocol: 'https', hostname: 'api.qrserver.com', pathname: '/**' }] },
 
   // --- Redirects ---
   async redirects() {
