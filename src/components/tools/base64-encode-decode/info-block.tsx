@@ -1,7 +1,20 @@
 import type { JSX } from 'react';
 
+import { JsonLd } from '@vijayhardaha/schema-builder/react';
+
 import { Credits } from '@/components/tool/ToolCredits';
-import { FAQ, FAQItem } from '@/components/tool/ToolFAQ';
+import { ToolFAQItem, ToolFAQSection } from '@/components/tool/ToolFAQ';
+import {
+  ToolInfoSection,
+  ToolInfoSectionContent,
+  ToolInfoSectionHeading,
+  ToolInfoSectionList,
+} from '@/components/tool/ToolInfoSection';
+import { buildFaqPageSchema } from '@/utils/faq';
+
+import { FAQS } from './faqs';
+
+const faqSchemaData = [buildFaqPageSchema('base64-encode-decode', FAQS)];
 
 /**
  * Comprehensive, SEO-optimized information about the Base64 Encoder / Decoder Tool.
@@ -11,111 +24,87 @@ import { FAQ, FAQItem } from '@/components/tool/ToolFAQ';
 export function InfoBlock(): JSX.Element {
   return (
     <div className="space-y-12">
-      <section>
-        <h2 className="text-primary mb-4 text-2xl font-bold" id="what-is-base64-encode-decode-tool">
+      <JsonLd data={faqSchemaData} />
+
+      <ToolInfoSection>
+        <ToolInfoSectionHeading id="what-is-base64-encode-decode-tool">
           What Is the Base64 Encoder / Decoder Tool?
-        </h2>
-        <p className="mb-4">
-          The <strong>Base64 Encoder / Decoder</strong> is a free online utility that helps you convert text or data to
-          Base64 format and back, essential for embedding images in CSS/HTML, transmitting binary data via text-based
-          protocols, and API development.
-        </p>
-        <p className="mb-4">
-          The Base64 Encoder/Decoder uses native browser functions - btoa() for encoding (binary to ASCII) and atob()
-          for decoding (ASCII to binary). Encoding converts binary data into a 64-character ASCII subset safe for
-          text-based transmission. Decoding reverses the process to retrieve the original data.
-        </p>
-      </section>
+        </ToolInfoSectionHeading>
+        <ToolInfoSectionContent>
+          <p>
+            The <strong>Base64 Encoder / Decoder</strong> is a free online utility that helps you convert text or data
+            to Base64 format and back, essential for embedding images in CSS/HTML, transmitting binary data via
+            text-based protocols, and API development.
+          </p>
+          <p>
+            The Base64 Encoder/Decoder uses native browser functions - btoa() for encoding (binary to ASCII) and atob()
+            for decoding (ASCII to binary). Encoding converts binary data into a 64-character ASCII subset safe for
+            text-based transmission. Decoding reverses the process to retrieve the original data.
+          </p>
+        </ToolInfoSectionContent>
+      </ToolInfoSection>
 
-      <section>
-        <h2 className="text-primary mb-4 text-2xl font-bold" id="base64-encode-decode-features">
-          Key Features
-        </h2>
-        <ul className="list-inside list-disc space-y-2 pl-4">
-          <li>Two-way encoding and decoding with mode toggle for flexible operation</li>
-          <li>Native browser API integration for reliable, standards-compliant conversion</li>
-          <li>Real-time output updates as you type or switch modes</li>
-          <li>Error handling for invalid Base64 input during decoding</li>
-          <li>One-click copy for immediate use in code and configuration</li>
-          <li>Complete client-side processing with zero data transmission</li>
-        </ul>
-      </section>
+      <ToolInfoSection>
+        <ToolInfoSectionList
+          id="base64-encode-decode-features"
+          title="Key Features"
+          items={[
+            'Two-way encoding and decoding with mode toggle for flexible operation',
+            'Native browser API integration for reliable, standards-compliant conversion',
+            'Real-time output updates as you type or switch modes',
+            'Error handling for invalid Base64 input during decoding',
+            'One-click copy for immediate use in code and configuration',
+            'Complete client-side processing with zero data transmission',
+          ]}
+        />
+      </ToolInfoSection>
 
-      <section>
-        <h2 className="text-primary mb-4 text-2xl font-bold" id="why-use-base64-encode-decode">
-          Why Use This Tool
-        </h2>
-        <ul className="list-inside list-disc space-y-2 pl-4">
-          <li>Enables safe embedding of binary data in JSON, XML, HTML, and text-based protocols</li>
-          <li>Supports image embedding directly in CSS and HTML without external file references</li>
-          <li>Facilitates binary data transmission through APIs and messaging systems</li>
-          <li>Helps debug and inspect Base64-encoded data in development workflows</li>
-          <li>Processes entirely in-browser with no server communication</li>
-        </ul>
-      </section>
+      <ToolInfoSection>
+        <ToolInfoSectionList
+          id="why-use-base64-encode-decode"
+          title="Why Use This Tool"
+          items={[
+            'Enables safe embedding of binary data in JSON, XML, HTML, and text-based protocols',
+            'Supports image embedding directly in CSS and HTML without external file references',
+            'Facilitates binary data transmission through APIs and messaging systems',
+            'Helps debug and inspect Base64-encoded data in development workflows',
+            'Processes entirely in-browser with no server communication',
+          ]}
+        />
+      </ToolInfoSection>
 
-      <section>
-        <h2 className="text-primary mb-4 text-2xl font-bold" id="base64-encode-decode-use-cases">
-          Common Use Cases
-        </h2>
-        <ul className="list-inside list-disc space-y-2 pl-4">
-          <li>Embedding small images directly in CSS as data URIs for faster page loads</li>
-          <li>Encoding binary data for transmission in JSON API requests and responses</li>
-          <li>Converting file content for storage in text-based databases and configuration files</li>
-          <li>Debugging Base64-encoded data from email attachments and web services</li>
-          <li>Preparing data for Basic Authentication headers and token encoding</li>
-        </ul>
-      </section>
+      <ToolInfoSection>
+        <ToolInfoSectionList
+          id="base64-encode-decode-use-cases"
+          title="Common Use Cases"
+          items={[
+            'Embedding small images directly in CSS as data URIs for faster page loads',
+            'Encoding binary data for transmission in JSON API requests and responses',
+            'Converting file content for storage in text-based databases and configuration files',
+            'Debugging Base64-encoded data from email attachments and web services',
+            'Preparing data for Basic Authentication headers and token encoding',
+          ]}
+        />
+      </ToolInfoSection>
 
-      <section>
-        <h2 className="text-primary mb-4 text-2xl font-bold" id="base64-encode-decode-technical-details">
-          Technical Details
-        </h2>
-        <p>
-          This tool uses the native browser functions btoa() and atob(), which are part of the Window API available in
-          all modern browsers. btoa() converts binary strings to Base64 ASCII, while atob() reverses the process. The
-          tool handles Unicode strings properly by ensuring correct character encoding before conversion.
-        </p>
-      </section>
+      <ToolInfoSection>
+        <ToolInfoSectionHeading id="base64-encode-decode-technical-details">Technical Details</ToolInfoSectionHeading>
+        <ToolInfoSectionContent>
+          <p>
+            This tool uses the native browser functions btoa() and atob(), which are part of the Window API available in
+            all modern browsers. btoa() converts binary strings to Base64 ASCII, while atob() reverses the process. The
+            tool handles Unicode strings properly by ensuring correct character encoding before conversion.
+          </p>
+        </ToolInfoSectionContent>
+      </ToolInfoSection>
 
-      <FAQ>
-        <FAQItem heading="Is this tool free to use?" headingId="is-this-tool-free">
-          <p>
-            Yes, the Base64 Encoder / Decoder is completely free to use with no signup, registration, or usage limits
-            required.
-          </p>
-        </FAQItem>
-        <FAQItem heading="Is my data sent to a server?" headingId="is-my-data-sent-to-a-server">
-          <p>
-            No, all processing happens locally in your browser. Your data never leaves your device and is not stored or
-            logged anywhere.
-          </p>
-        </FAQItem>
-        <FAQItem heading="What is Base64 encoding?" headingId="what-is-base64-encoding">
-          <p>
-            Base64 encoding converts binary data into ASCII text using 64 printable characters. It is commonly used for
-            transmitting data over media designed to handle text.
-          </p>
-        </FAQItem>
-        <FAQItem heading="When should I use Base64?" headingId="when-should-i-use-base64-encoding">
-          <p>
-            Base64 is useful when embedding binary data in text formats like JSON, XML, or HTML, sending binary data in
-            email attachments, or storing binary data in databases.
-          </p>
-        </FAQItem>
-        <FAQItem heading="Is Base64 encoding secure?" headingId="is-base64-encoding-secure">
-          <p>
-            Base64 is not encryption, it is an encoding scheme. It does not provide any security. Use proper encryption
-            like AES if you need to protect your data.
-          </p>
-        </FAQItem>
-        <FAQItem heading="Can I use this tool offline?" headingId="can-i-use-this-tool-offline">
-          <p>
-            Yes, since all processing happens client-side in your browser, this tool works offline once the page has
-            loaded.
-          </p>
-        </FAQItem>
-      </FAQ>
+      <ToolFAQSection>
+        {FAQS.map((item) => (
+          <ToolFAQItem key={item.headingId} heading={item.heading} headingId={item.headingId}>
+            <p>{item.answer}</p>
+          </ToolFAQItem>
+        ))}
+      </ToolFAQSection>
 
       <Credits>
         <p>
