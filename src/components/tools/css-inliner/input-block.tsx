@@ -75,7 +75,7 @@ export function InputBlock({
             <Label htmlFor="html-input">HTML Input</Label>
             <Textarea
               placeholder="Enter HTML here..."
-              rows={5}
+              rows={8}
               value={htmlInput}
               onChange={(e) => setHtmlInput(e.target.value)}
             />
@@ -84,7 +84,7 @@ export function InputBlock({
             <Label htmlFor="css-input">CSS Input</Label>
             <Textarea
               placeholder="Enter CSS here..."
-              rows={5}
+              rows={8}
               value={cssInput}
               onChange={(e) => setCssInput(e.target.value)}
             />
