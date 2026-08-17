@@ -1,4 +1,4 @@
-import { getInfoPageMetadata, withInfoPage } from '@/components/page/withInfoPage';
+import { getInfoPageMetadata, WithInfoPage } from '@/components/page/WithInfoPage';
 
 /**
  * SEO metadata for the Terms & Conditions page.
@@ -12,7 +12,7 @@ export const metadata = getInfoPageMetadata('terms-conditions');
  *
  * @returns {JSX.Element} The rendered Terms and Conditions page.
  */
-export default withInfoPage({
+export default WithInfoPage({
   slug: 'terms-conditions',
   children: (
     <div className="space-y-6 text-base leading-relaxed text-gray-800">

@@ -1,5 +1,5 @@
 import { FaqContent } from '@/app/faq/_components/faq-content';
-import { getInfoPageMetadata, withInfoPage } from '@/components/page/withInfoPage';
+import { getInfoPageMetadata, WithInfoPage } from '@/components/page/WithInfoPage';
 
 /**
  * SEO metadata for the FAQ page.
@@ -13,4 +13,4 @@ export const metadata = getInfoPageMetadata('faq');
  *
  * @returns {JSX.Element} The rendered FAQ page.
  */
-export default withInfoPage({ slug: 'faq', children: <FaqContent /> });
+export default WithInfoPage({ slug: 'faq', children: <FaqContent /> });

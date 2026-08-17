@@ -1,4 +1,4 @@
-import { getInfoPageMetadata, withInfoPage } from '@/components/page/withInfoPage';
+import { getInfoPageMetadata, WithInfoPage } from '@/components/page/WithInfoPage';
 
 /**
  * SEO metadata for the About page.
@@ -12,7 +12,7 @@ export const metadata = getInfoPageMetadata('about');
  *
  * @returns {JSX.Element} The rendered About page.
  */
-export default withInfoPage({
+export default WithInfoPage({
   slug: 'about',
   schemaType: 'about',
   children: (

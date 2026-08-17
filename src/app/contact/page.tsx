@@ -1,7 +1,7 @@
 import { FaFacebookF, FaXTwitter, FaGithub, FaInstagram } from 'react-icons/fa6';
 import { TbWorldWww } from 'react-icons/tb';
 
-import { getInfoPageMetadata, withInfoPage } from '@/components/page/withInfoPage';
+import { getInfoPageMetadata, WithInfoPage } from '@/components/page/WithInfoPage';
 
 /**
  * SEO metadata for the Contact page.
@@ -15,7 +15,7 @@ export const metadata = getInfoPageMetadata('contact');
  *
  * @returns {JSX.Element} The rendered Contact page.
  */
-export default withInfoPage({
+export default WithInfoPage({
   slug: 'contact',
   schemaType: 'contact',
   children: (

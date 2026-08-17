@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 
-import { getInfoPageMetadata, withInfoPage } from '@/components/page/withInfoPage';
+import { getInfoPageMetadata, WithInfoPage } from '@/components/page/WithInfoPage';
 
 /**
  * SEO metadata for the Privacy Policy page.
@@ -14,7 +14,7 @@ export const metadata: Metadata = getInfoPageMetadata('privacy-policy');
  *
  * @returns {JSX.Element} The rendered Privacy Policy page.
  */
-export default withInfoPage({
+export default WithInfoPage({
   slug: 'privacy-policy',
   children: (
     <div className="space-y-6 text-base leading-relaxed text-gray-800">

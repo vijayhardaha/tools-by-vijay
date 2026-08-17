@@ -53,7 +53,7 @@ export function getInfoPageMetadata(slug: string): Metadata {
  *
  * @returns {() => JSX.Element} A page component rendering the standard layout.
  */
-export function withInfoPage({ slug, schemaType = 'webPage', children }: InfoPageConfig): () => JSX.Element {
+export function WithInfoPage({ slug, schemaType = 'webPage', children }: InfoPageConfig): () => JSX.Element {
   return function InfoPage(): JSX.Element {
     const { title, description, seoTitle, seoDescription, path } = getSeoByPath(slug)!;
     const rootUrl = siteUrl();
