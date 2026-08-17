@@ -1,7 +1,7 @@
 'use client';
 
 import type { JSX } from 'react';
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 
 import { ExampleBlock } from './example-block';
 import { InfoBlock } from './info-block';
@@ -9,23 +9,38 @@ import { InputBlock } from './input-block';
 import { OutputBlock } from './output-block';
 
 /**
- * QRCodeGeneratorTool is a React functional component that provides a tool
- * for generating QR codes based on user input. It includes input fields for
- * data and size, and displays the generated QR code.
+ * Supported QR code error correction levels.
+ */
+export const ERROR_LEVELS = ['L', 'M', 'Q', 'H'] as const;
+
+/**
+ * QR code error correction level.
+ *
+ * @type {QrErrorLevel}
+ */
+export type QrErrorLevel = (typeof ERROR_LEVELS)[number];
+
+/**
+ * Default QR code size in pixels.
+ */
+const defaultSize = 256;
+
+/**
+ * Default error correction level (medium, ~15% recovery).
+ */
+const defaultLevel: QrErrorLevel = 'M';
+
+/**
+ * QRCodeGenerator is a React functional component that renders a client-side
+ * QR code using the qrcode.react library, with configurable size and error
+ * correction level.
  *
  * @returns {JSX.Element} The rendered QR code generator tool component.
  */
 export function QRCodeGenerator(): JSX.Element {
   const [input, setInput] = useState<string>('');
-  const [size, setSize] = useState<number>(256);
-
-  /**
-   * Computes the QR code URL reactively.
-   */
-  const output = useMemo<string>(() => {
-    if (!input) return '';
-    return `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(input)}&size=${size}x${size}`;
-  }, [input, size]);
+  const [size, setSize] = useState<number>(defaultSize);
+  const [level, setLevel] = useState<QrErrorLevel>(defaultLevel);
 
   /**
    * Clears the input and output states.
@@ -35,11 +50,12 @@ export function QRCodeGenerator(): JSX.Element {
   };
 
   /**
-   * Resets the input, output, and size states to their default values.
+   * Clears the input and resets the size and error level to their defaults.
    */
   const handleReset = (): void => {
     handleClear();
-    setSize(256);
+    setSize(defaultSize);
+    setLevel(defaultLevel);
   };
 
   /**
@@ -54,6 +70,9 @@ export function QRCodeGenerator(): JSX.Element {
     if ('size' in values) {
       setSize(values.size);
     }
+    if ('level' in values) {
+      setLevel(values.level as QrErrorLevel);
+    }
   };
 
   return (
@@ -64,13 +83,15 @@ export function QRCodeGenerator(): JSX.Element {
           setInput={setInput}
           size={size}
           setSize={setSize}
+          level={level}
+          setLevel={setLevel}
           onClear={handleClear}
           onReset={handleReset}
         />
 
         <ExampleBlock onExample={handleExample} />
 
-        <OutputBlock output={output} />
+        <OutputBlock value={input} size={size} level={level} />
       </div>
 
       <InfoBlock />

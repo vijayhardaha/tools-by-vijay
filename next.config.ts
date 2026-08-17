@@ -29,9 +29,6 @@ const nextConfig: NextConfig = {
   // Remove `X-Powered-By` header for a slightly improved security posture
   poweredByHeader: false,
 
-  // --- Images ---
-  images: { remotePatterns: [{ protocol: 'https', hostname: 'api.qrserver.com', pathname: '/**' }] },
-
   // --- Redirects ---
   async redirects() {
     return [

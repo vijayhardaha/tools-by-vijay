@@ -23,16 +23,16 @@ export function InfoBlock(): JSX.Element {
         <p className="mb-4">
           The QR Code Generator uses the{' '}
           <a
-            href="https://www.npmjs.com/package/qrcode"
+            href="https://github.com/zpao/qrcode.react"
             className="font-medium text-pink-500 underline hover:no-underline"
             target="_blank"
             rel="noreferrer"
           >
-            qrcode
+            qrcode.react
           </a>{' '}
-          npm package to create QR code images from your input text. It generates the QR matrix, applies error
-          correction for scan reliability, and renders the result as a canvas element. You can customize the size and
-          download the QR code as an image.
+          library to create QR code images from your input text. It generates the QR matrix, applies error correction
+          for scan reliability, and renders the result as a canvas element. You can customize the size and error
+          correction level, and download the QR code as an image.
         </p>
       </section>
 
@@ -43,7 +43,7 @@ export function InfoBlock(): JSX.Element {
         <ul className="list-inside list-disc space-y-2 pl-4">
           <li>QR code generation from any text, URL, or data input</li>
           <li>Customizable size from 128px to 512px via slider control</li>
-          <li>High-quality rendering for reliable smartphone scanning</li>
+          <li>Error correction level selection (Low, Medium, Quartile, High)</li>
           <li>Canvas-based generation for crisp output at any resolution</li>
           <li>Downloadable QR code image for use in print and digital materials</li>
           <li>Instant generation with no server communication required</li>
@@ -83,16 +83,16 @@ export function InfoBlock(): JSX.Element {
         <p>
           This tool uses the{' '}
           <a
-            href="https://www.npmjs.com/package/qrcode"
+            href="https://github.com/zpao/qrcode.react"
             className="font-medium text-pink-500 underline hover:no-underline"
             target="_blank"
             rel="noreferrer"
           >
-            qrcode
+            qrcode.react
           </a>{' '}
-          npm package for QR code generation. The library creates QR code matrices with configurable error correction
-          levels, then renders them to HTML canvas elements. The resulting images can be downloaded as PNG files for use
-          in various media.
+          library for QR code generation. It creates QR code matrices with configurable error correction levels, then
+          renders them to HTML canvas elements. The resulting images can be downloaded as PNG files for use in various
+          media.
         </p>
       </section>
 

@@ -4,9 +4,14 @@ import type { JSX } from 'react';
 
 import { ToolInputHeader } from '@/components/tool/tool-input-header';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
+import { HelpTip } from '@/components/ui/helptip';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { Select } from '@/components/ui/select';
 import { Slider } from '@/components/ui/slider';
+
+import { ERROR_LEVELS } from './index';
+import type { QrErrorLevel } from './index';
 
 /**
  * Interface for the QR code generator input component props.
@@ -16,6 +21,8 @@ import { Slider } from '@/components/ui/slider';
  * @property {(value: string) => void} setInput - Callback to update the input
  * @property {number} size - The QR code size in pixels
  * @property {(value: number) => void} setSize - Callback to update the size
+ * @property {QrErrorLevel} level - The error correction level
+ * @property {(value: QrErrorLevel) => void} setLevel - Callback to update the error level
  * @property {() => void} onClear - Callback to clear input and output
  * @property {() => void} onReset - Callback to reset all options
  */
@@ -24,19 +31,31 @@ interface InputBlockProps {
   setInput: (value: string) => void;
   size: number;
   setSize: (value: number) => void;
+  level: QrErrorLevel;
+  setLevel: (value: QrErrorLevel) => void;
   onClear: () => void;
   onReset: () => void;
 }
 
 /**
  * InputBlock is a React functional component that provides
- * input fields and controls for generating a QR code.
+ * input fields and controls for generating a QR code, including the data
+ * value, size slider, and error correction level select.
  *
- *  @param {InputBlockProps} props - The props for the component.
+ * @param {InputBlockProps} props - The props for the component.
  *
  * @returns {JSX.Element} The rendered QR code input component.
  */
-export function InputBlock({ input, setInput, size, setSize, onClear, onReset }: InputBlockProps): JSX.Element {
+export function InputBlock({
+  input,
+  setInput,
+  size,
+  setSize,
+  level,
+  setLevel,
+  onClear,
+  onReset,
+}: InputBlockProps): JSX.Element {
   return (
     <Card>
       <CardHeader>
@@ -57,14 +76,46 @@ export function InputBlock({ input, setInput, size, setSize, onClear, onReset }:
             onChange={(e) => setInput(e.target.value)}
           />
 
-          <div className="flex flex-col gap-2">
-            <Label htmlFor="qr-size">
-              QR Code Size:{' '}
-              <span className="text-muted-foreground text-sm">
-                <code className="bg-muted px-1 font-medium text-pink-500">{size}px</code>
-              </span>
-            </Label>
-            <Slider id="qr-size" value={size} min={128} max={512} step={1} onValueChange={(value) => setSize(value)} />
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div className="flex flex-col gap-2">
+              <Label htmlFor="qr-size">
+                QR Code Size:{' '}
+                <span className="text-muted-foreground text-sm">
+                  <code className="bg-muted px-1 font-medium text-pink-500">{size}px</code>
+                </span>
+              </Label>
+              <Slider
+                id="qr-size"
+                value={size}
+                min={128}
+                max={512}
+                step={1}
+                onValueChange={(value) => setSize(value)}
+              />
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <div className="flex items-center gap-2">
+                <Label htmlFor="qr-level">Error Level</Label>
+                <HelpTip text="Higher error correction levels make the QR code more resilient to damage or obstruction, at the cost of a denser pattern." />
+              </div>
+              <Select
+                id="qr-level"
+                value={level}
+                onValueChange={(value) => setLevel(value as QrErrorLevel)}
+                options={ERROR_LEVELS.map((option) => ({
+                  value: option,
+                  label:
+                    option === 'L'
+                      ? 'L – Low (7%)'
+                      : option === 'M'
+                        ? 'M – Medium (15%)'
+                        : option === 'Q'
+                          ? 'Q – Quartile (25%)'
+                          : 'H – High (30%)',
+                }))}
+              />
+            </div>
           </div>
         </div>
       </CardContent>
