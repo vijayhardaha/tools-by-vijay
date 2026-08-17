@@ -4,7 +4,7 @@ import { JsonLd } from '@vijayhardaha/schema-builder/react';
 
 import { Credits } from '@/components/tools/tool-credits';
 import { FAQ, FAQItem } from '@/components/tools/tool-faq';
-import { faqPageSchema } from '@/utils/faq';
+import { buildFaqPageSchema } from '@/utils/faq';
 
 import { barcodeFaqItems } from './faq';
 
@@ -13,7 +13,7 @@ import { barcodeFaqItems } from './faq';
  *
  * @returns {JSX.Element} The rendered info block component
  */
-const faqSchemaData = [faqPageSchema(barcodeFaqItems)];
+const faqSchemaData = [buildFaqPageSchema('barcode-generator', barcodeFaqItems)];
 
 /**
  * Comprehensive, SEO-optimized information about the Barcode Generator Tool.

@@ -4,11 +4,11 @@ import { JsonLd } from '@vijayhardaha/schema-builder/react';
 
 import { Credits } from '@/components/tools/tool-credits';
 import { FAQ, FAQItem } from '@/components/tools/tool-faq';
-import { faqPageSchema } from '@/utils/faq';
+import { buildFaqPageSchema } from '@/utils/faq';
 
 import { qrcodeFaqItems } from './faq';
 
-const faqSchemaData = [faqPageSchema(qrcodeFaqItems)];
+const faqSchemaData = [buildFaqPageSchema('qrcode-generator', qrcodeFaqItems)];
 
 /**
  * Comprehensive, SEO-optimized information about the QR Code Generator Tool.

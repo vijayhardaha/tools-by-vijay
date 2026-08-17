@@ -12,7 +12,7 @@
         "@radix-ui/react-tooltip": "^1.2.16",
         "@vercel/analytics": "^2.0.1",
         "@vercel/og": "^1.0.1",
-        "@vijayhardaha/schema-builder": "^1.2.1",
+        "@vijayhardaha/schema-builder": "^1.3.0",
         "class-variance-authority": "^0.7.1",
         "clean-css": "^5.3.3",
         "clsx": "^2.1.1",
@@ -513,7 +513,7 @@
 
     "@vijayhardaha/dev-config": ["@vijayhardaha/dev-config@2.3.1", "", { "peerDependencies": { "@commitlint/cli": ">=21", "@commitlint/config-conventional": ">=21", "@commitlint/types": ">=21", "@eslint/compat": ">=2", "@eslint/js": ">=10", "@next/eslint-plugin-next": ">=16", "@prettier/plugin-xml": ">=3", "@typescript-eslint/eslint-plugin": ">=8", "@typescript-eslint/parser": ">=8", "eslint": ">=10", "eslint-config-next": ">=16", "eslint-config-prettier": ">=10", "eslint-import-resolver-typescript": ">=4", "eslint-plugin-import-x": ">=4", "eslint-plugin-jsdoc": ">=62", "eslint-plugin-jsx-a11y": ">=6", "eslint-plugin-prettier": ">=5", "eslint-plugin-react": ">=7", "eslint-plugin-react-hooks": ">=5", "globals": ">=17", "husky": ">=9", "next": ">=16", "next-sitemap": ">=4", "prettier": ">=3", "stylelint": ">=17", "stylelint-config-property-sort-order-smacss": ">=11", "stylelint-config-standard-scss": ">=17", "stylelint-order": ">=8", "typescript": ">=5", "typescript-eslint": ">=8" }, "optionalPeers": ["@commitlint/cli", "@commitlint/config-conventional", "@commitlint/types", "@next/eslint-plugin-next", "@typescript-eslint/eslint-plugin", "@typescript-eslint/parser", "eslint-config-next", "eslint-import-resolver-typescript", "eslint-plugin-jsx-a11y", "eslint-plugin-react", "eslint-plugin-react-hooks", "husky", "next", "next-sitemap", "stylelint", "stylelint-config-property-sort-order-smacss", "stylelint-config-standard-scss", "stylelint-order", "typescript", "typescript-eslint"] }, "sha512-Fp29Rcj5Kb2W58ZDMWgAfhZoMxWh/f9p3ceGvKvH0nsPSMMqYnIDWUHqxGqVuryOTB+m42zoOrt9RDDOhFp9xA=="],
 
-    "@vijayhardaha/schema-builder": ["@vijayhardaha/schema-builder@1.2.1", "", { "dependencies": { "react": "^19.2.8", "react-dom": "^19.2.8", "schema-dts": "^2.0.0" } }, "sha512-Kuzd6ry/gvM5MAsUtSfkdNaZFi7Y1UFFgd/LsIDWgkkt4MD51H/8eaxZ80frgx+Pj57cPU5LOD6sg0pJ4EIsow=="],
+    "@vijayhardaha/schema-builder": ["@vijayhardaha/schema-builder@1.3.0", "", { "dependencies": { "react": "^19.2.8", "react-dom": "^19.2.8", "schema-dts": "^2.0.0" } }, "sha512-NkFaFfM65n5RIgnUZECGhYWQPZeuuwqQpLPwq4dQMt0tJ711Q/xqz+g/XLfNOxpLu2jnttl7AfC4nv1ZOkBOJw=="],
 
     "@xml-tools/parser": ["@xml-tools/parser@1.0.11", "", { "dependencies": { "chevrotain": "7.1.1" } }, "sha512-aKqQ077XnR+oQtHJlrAflaZaL7qZsulWc/i/ZEooar5JiWj1eLt0+Wg28cpa+XLney107wXqneC+oG1IZvxkTA=="],
 

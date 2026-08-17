@@ -1,3 +1,7 @@
+import { faqPageSchema } from '@vijayhardaha/schema-builder';
+
+import { siteUrl } from '@/utils/seo';
+
 /**
  * A single FAQ entry for a tool.
  *
@@ -13,19 +17,21 @@ export interface ToolFaqItem {
 }
 
 /**
- * Build a Schema.org FAQPage entity from tool FAQ items.
+ * Build a Schema.org FAQPage entity for a tool using the
+ * `faqPageSchema` builder from `@vijayhardaha/schema-builder`.
  *
+ * Maps the tool FAQ items onto the package item shape and resolves the page
+ * URL from the tool slug.
+ *
+ * @param {string} slug - The tool slug used to resolve the page path.
  * @param {ToolFaqItem[]} items - The FAQ entries to include.
  *
- * @returns {Record<string, unknown>} The FAQPage schema entity.
+ * @returns {ReturnType<typeof faqPageSchema>} The FAQPage schema entity.
  */
-export function faqPageSchema(items: ToolFaqItem[]): Record<string, unknown> {
-  return {
-    '@type': 'FAQPage',
-    mainEntity: items.map((item) => ({
-      '@type': 'Question',
-      name: item.heading,
-      acceptedAnswer: { '@type': 'Answer', text: item.answer },
-    })),
-  };
+export function buildFaqPageSchema(slug: string, items: ToolFaqItem[]): ReturnType<typeof faqPageSchema> {
+  return faqPageSchema({
+    rootUrl: siteUrl(),
+    path: `/${slug}`,
+    items: items.map((item) => ({ question: item.heading, answer: item.answer })),
+  });
 }
