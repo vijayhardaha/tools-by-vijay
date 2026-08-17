@@ -1,7 +1,14 @@
 import type { JSX } from 'react';
 
+import { JsonLd } from '@vijayhardaha/schema-builder/react';
+
 import { Credits } from '@/components/tools/tool-credits';
 import { FAQ, FAQItem } from '@/components/tools/tool-faq';
+import { faqPageSchema } from '@/utils/faq';
+
+import { qrcodeFaqItems } from './faq';
+
+const faqSchemaData = [faqPageSchema(qrcodeFaqItems)];
 
 /**
  * Comprehensive, SEO-optimized information about the QR Code Generator Tool.
@@ -11,6 +18,7 @@ import { FAQ, FAQItem } from '@/components/tools/tool-faq';
 export function InfoBlock(): JSX.Element {
   return (
     <div className="space-y-12">
+      <JsonLd data={faqSchemaData} />
       <section>
         <h2 className="text-primary mb-4 text-2xl font-bold" id="what-is-qrcode-generator-tool">
           What Is the QR Code Generator Tool?
@@ -97,38 +105,11 @@ export function InfoBlock(): JSX.Element {
       </section>
 
       <FAQ>
-        <FAQItem heading="Is this tool free to use?" headingId="is-this-tool-free">
-          <p>
-            Yes, the QR Code Generator is completely free to use with no signup, registration, or usage limits required.
-          </p>
-        </FAQItem>
-        <FAQItem heading="Is my data sent to a server?" headingId="is-my-data-sent-to-a-server">
-          <p>
-            No, all processing happens locally in your browser. Your data never leaves your device and is not stored or
-            logged anywhere.
-          </p>
-        </FAQItem>
-        <FAQItem heading="What is a QR code?" headingId="what-is-a-qr-code">
-          <p>
-            A QR code (Quick Response) is a two-dimensional barcode that stores data like URLs or text. It can be
-            scanned by smartphones for quick access.
-          </p>
-        </FAQItem>
-        <FAQItem heading="What data can be encoded?" headingId="what-data-can-be-encoded">
-          <p>
-            QR codes can store URLs, text, phone numbers, emails, and more. This tool supports encoding text or URL
-            data.
-          </p>
-        </FAQItem>
-        <FAQItem heading="How do I change the size?" headingId="how-do-i-change-the-size">
-          <p>Use the slider to adjust from 128px to 512px. Larger codes are easier to scan from a distance.</p>
-        </FAQItem>
-        <FAQItem heading="Can I use this tool offline?" headingId="can-i-use-this-tool-offline">
-          <p>
-            Yes, since all processing happens client-side in your browser, this tool works offline once the page has
-            loaded.
-          </p>
-        </FAQItem>
+        {qrcodeFaqItems.map((item) => (
+          <FAQItem key={item.headingId} heading={item.heading} headingId={item.headingId}>
+            <p>{item.answer}</p>
+          </FAQItem>
+        ))}
       </FAQ>
 
       <Credits>
