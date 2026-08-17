@@ -7,8 +7,8 @@ import latinize from 'latinize';
 import slugify from 'slugify';
 
 import { ToolExampleBlock } from '@/components/tool/ToolExampleBlock';
-import { getToolExamples } from '@/constants/tool-examples';
 
+import { EXAMPLES } from './examples';
 import { InfoBlock } from './info-block';
 import { InputBlock } from './input-block';
 import { OutputBlock } from './output-block';
@@ -84,7 +84,9 @@ export function Slugify(): JSX.Element {
 
   return (
     <>
-      <div className="space-y-6 md:space-y-8">
+      <div className="space-y-6">
+        <ToolExampleBlock examples={EXAMPLES} onExample={handleExample} />
+
         <InputBlock
           input={input}
           setInput={setInput}
@@ -99,8 +101,6 @@ export function Slugify(): JSX.Element {
           onClear={handleClear}
           onReset={handleReset}
         />
-
-        <ToolExampleBlock examples={getToolExamples('slugify')} onExample={handleExample} />
 
         <OutputBlock output={output} />
       </div>
