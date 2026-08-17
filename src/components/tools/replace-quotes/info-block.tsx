@@ -1,7 +1,20 @@
 import type { JSX } from 'react';
 
+import { JsonLd } from '@vijayhardaha/schema-builder/react';
+
 import { Credits } from '@/components/tool/ToolCredits';
-import { FAQ, FAQItem } from '@/components/tool/ToolFAQ';
+import { ToolFAQItem, ToolFAQSection } from '@/components/tool/ToolFAQ';
+import {
+  ToolInfoSection,
+  ToolInfoSectionContent,
+  ToolInfoSectionHeading,
+  ToolInfoSectionList,
+} from '@/components/tool/ToolInfoSection';
+import { buildFaqPageSchema } from '@/utils/faq';
+
+import { FAQS } from './faqs';
+
+const faqSchemaData = [buildFaqPageSchema('replace-quotes', FAQS)];
 
 /**
  * Comprehensive, SEO-optimized information about the Replace Quotes Tool.
@@ -11,110 +24,87 @@ import { FAQ, FAQItem } from '@/components/tool/ToolFAQ';
 export function InfoBlock(): JSX.Element {
   return (
     <div className="space-y-12">
-      <section>
-        <h2 className="text-primary mb-4 text-2xl font-bold" id="what-is-replace-quotes-tool">
+      <JsonLd data={faqSchemaData} />
+
+      <ToolInfoSection>
+        <ToolInfoSectionHeading id="what-is-replace-quotes-tool">
           What Is the Replace Quotes Tool?
-        </h2>
-        <p className="mb-4">
-          The <strong>Replace Quotes</strong> is a free online utility that helps you convert between straight quotes
-          and typographically correct curly quotes, ensuring professional typography for publishing or clean code for
-          development.
-        </p>
-        <p className="mb-4">
-          The Replace Quotes tool uses pattern matching to identify quotation marks and apostrophes in your text, then
-          replaces them according to your selected conversion direction. It handles straight-to-curly and
-          curly-to-straight conversions, with optional handling of apostrophes and standalone (unmatched) quotes.
-        </p>
-      </section>
+        </ToolInfoSectionHeading>
+        <ToolInfoSectionContent>
+          <p>
+            The <strong>Replace Quotes</strong> is a free online utility that helps you convert between straight quotes
+            and typographically correct curly quotes, ensuring professional typography for publishing or clean code for
+            development.
+          </p>
+          <p>
+            The Replace Quotes tool uses pattern matching to identify quotation marks and apostrophes in your text, then
+            replaces them according to your selected conversion direction. It handles straight-to-curly and
+            curly-to-straight conversions, with optional handling of apostrophes and standalone (unmatched) quotes.
+          </p>
+        </ToolInfoSectionContent>
+      </ToolInfoSection>
 
-      <section>
-        <h2 className="text-primary mb-4 text-2xl font-bold" id="replace-quotes-features">
-          Key Features
-        </h2>
-        <ul className="list-inside list-disc space-y-2 pl-4">
-          <li>Two conversion directions: straight to curly and curly to straight</li>
-          <li>Optional apostrophe replacement for typographically correct contractions</li>
-          <li>Standalone quote handling for unmatched or orphaned quotation marks</li>
-          <li>Reactive output updates as you type or change conversion options</li>
-          <li>Multiline text support for document-level quote replacement</li>
-          <li>Complete client-side processing with zero data transmission</li>
-        </ul>
-      </section>
+      <ToolInfoSection>
+        <ToolInfoSectionList
+          id="replace-quotes-features"
+          title="Key Features"
+          items={[
+            'Two conversion directions: straight to curly and curly to straight',
+            'Optional apostrophe replacement for typographically correct contractions',
+            'Standalone quote handling for unmatched or orphaned quotation marks',
+            'Reactive output updates as you type or change conversion options',
+            'Multiline text support for document-level quote replacement',
+            'Complete client-side processing with zero data transmission',
+          ]}
+        />
+      </ToolInfoSection>
 
-      <section>
-        <h2 className="text-primary mb-4 text-2xl font-bold" id="why-use-replace-quotes">
-          Why Use This Tool
-        </h2>
-        <ul className="list-inside list-disc space-y-2 pl-4">
-          <li>Elevates text quality with professional typographic quotation marks</li>
-          <li>Ensures consistent quote styling across documents and publications</li>
-          <li>Prepares text for publishing platforms that require straight quotes for compatibility</li>
-          <li>Saves hours of manual find-and-replace editing in long documents</li>
-          <li>Handles edge cases like apostrophes and standalone quotes automatically</li>
-        </ul>
-      </section>
+      <ToolInfoSection>
+        <ToolInfoSectionList
+          id="why-use-replace-quotes"
+          title="Why Use This Tool"
+          items={[
+            'Elevates text quality with professional typographic quotation marks',
+            'Ensures consistent quote styling across documents and publications',
+            'Prepares text for publishing platforms that require straight quotes for compatibility',
+            'Saves hours of manual find-and-replace editing in long documents',
+            'Handles edge cases like apostrophes and standalone quotes automatically',
+          ]}
+        />
+      </ToolInfoSection>
 
-      <section>
-        <h2 className="text-primary mb-4 text-2xl font-bold" id="replace-quotes-use-cases">
-          Common Use Cases
-        </h2>
-        <ul className="list-inside list-disc space-y-2 pl-4">
-          <li>Preparing manuscripts and articles for publication with proper typographic quotes</li>
-          <li>Converting curly quotes to straight quotes for code compatibility in development</li>
-          <li>Formatting blog posts and web content with professional typography standards</li>
-          <li>Cleaning up text pasted from word processors that use inconsistent quote styles</li>
-          <li>Standardizing quote formatting across large content libraries and CMS imports</li>
-        </ul>
-      </section>
+      <ToolInfoSection>
+        <ToolInfoSectionList
+          id="replace-quotes-use-cases"
+          title="Common Use Cases"
+          items={[
+            'Preparing manuscripts and articles for publication with proper typographic quotes',
+            'Converting curly quotes to straight quotes for code compatibility in development',
+            'Formatting blog posts and web content with professional typography standards',
+            'Cleaning up text pasted from word processors that use inconsistent quote styles',
+            'Standardizing quote formatting across large content libraries and CMS imports',
+          ]}
+        />
+      </ToolInfoSection>
 
-      <section>
-        <h2 className="text-primary mb-4 text-2xl font-bold" id="replace-quotes-technical-details">
-          Technical Details
-        </h2>
-        <p>
-          The quote replacement uses regular expressions to identify straight quotes and curly quotes in text. Smart
-          detection handles opening vs. closing quote orientation for accurate curly quote replacement. Processing is
-          entirely client-side using native JavaScript regex.
-        </p>
-      </section>
+      <ToolInfoSection>
+        <ToolInfoSectionHeading id="replace-quotes-technical-details">Technical Details</ToolInfoSectionHeading>
+        <ToolInfoSectionContent>
+          <p>
+            The quote replacement uses regular expressions to identify straight quotes and curly quotes in text. Smart
+            detection handles opening vs. closing quote orientation for accurate curly quote replacement. Processing is
+            entirely client-side using native JavaScript regex.
+          </p>
+        </ToolInfoSectionContent>
+      </ToolInfoSection>
 
-      <FAQ>
-        <FAQItem heading="Is this tool free to use?" headingId="is-this-tool-free">
-          <p>
-            Yes, the Replace Quotes is completely free to use with no signup, registration, or usage limits required.
-          </p>
-        </FAQItem>
-        <FAQItem heading="Is my data sent to a server?" headingId="is-my-data-sent-to-a-server">
-          <p>
-            No, all processing happens locally in your browser. Your data never leaves your device and is not stored or
-            logged anywhere.
-          </p>
-        </FAQItem>
-        <FAQItem heading="Straight vs curly quotes?" headingId="straight-vs-curly-quotes">
-          <p>
-            Straight quotes are basic keyboard marks. Curly quotes are typographically correct for professional
-            publishing and improve readability.
-          </p>
-        </FAQItem>
-        <FAQItem heading="When to use curly quotes?" headingId="when-to-use-curly-quotes">
-          <p>
-            Use curly quotes in professional publishing and formal documents. Straight quotes are fine for code and
-            informal communication.
-          </p>
-        </FAQItem>
-        <FAQItem heading="Does this replace apostrophes?" headingId="does-this-replace-apostrophes">
-          <p>
-            Yes, the Replace Apostrophes option converts apostrophes in contractions to typographically correct curly
-            versions.
-          </p>
-        </FAQItem>
-        <FAQItem heading="Can I use this tool offline?" headingId="can-i-use-this-tool-offline">
-          <p>
-            Yes, since all processing happens client-side in your browser, this tool works offline once the page has
-            loaded.
-          </p>
-        </FAQItem>
-      </FAQ>
+      <ToolFAQSection>
+        {FAQS.map((item) => (
+          <ToolFAQItem key={item.headingId} heading={item.heading} headingId={item.headingId}>
+            <p>{item.answer}</p>
+          </ToolFAQItem>
+        ))}
+      </ToolFAQSection>
 
       <Credits>
         <p>
