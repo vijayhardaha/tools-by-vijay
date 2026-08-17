@@ -1,7 +1,20 @@
 import type { JSX } from 'react';
 
+import { JsonLd } from '@vijayhardaha/schema-builder/react';
+
 import { Credits } from '@/components/tool/ToolCredits';
-import { FAQ, FAQItem } from '@/components/tool/ToolFAQ';
+import { ToolFAQItem, ToolFAQSection } from '@/components/tool/ToolFAQ';
+import {
+  ToolInfoSection,
+  ToolInfoSectionContent,
+  ToolInfoSectionHeading,
+  ToolInfoSectionList,
+} from '@/components/tool/ToolInfoSection';
+import { buildFaqPageSchema } from '@/utils/faq';
+
+import { FAQS } from './faqs';
+
+const faqSchemaData = [buildFaqPageSchema('bulk-slugify', FAQS)];
 
 /**
  * Comprehensive, SEO-optimized information about the Bulk Slugify Tool.
@@ -11,129 +24,104 @@ import { FAQ, FAQItem } from '@/components/tool/ToolFAQ';
 export function InfoBlock(): JSX.Element {
   return (
     <div className="space-y-12">
-      <section>
-        <h2 className="text-primary mb-4 text-2xl font-bold" id="what-is-bulk-slugify-tool">
-          What Is the Bulk Slugify Tool?
-        </h2>
-        <p className="mb-4">
-          The <strong>Bulk Slugify</strong> is a free online utility that helps you transform multiple lines of text
-          into SEO-friendly slugs simultaneously, ideal for batch processing large sets of URLs for e-commerce or
-          migrations.
-        </p>
-        <p className="mb-4">
-          The Bulk Slugify Tool processes each line of your input independently through the same slugification pipeline
-          - removing special characters, normalizing Unicode, converting case, and applying your chosen separator. Each
-          line becomes a clean, URL-safe slug, and results are returned line-by-line for easy copying and integration.
-        </p>
-      </section>
+      <JsonLd data={faqSchemaData} />
 
-      <section>
-        <h2 className="text-primary mb-4 text-2xl font-bold" id="bulk-slugify-features">
-          Key Features
-        </h2>
-        <ul className="list-inside list-disc space-y-2 pl-4">
-          <li>Batch processing of hundreds of lines simultaneously with instant results</li>
-          <li>Custom separator selection with hyphens or underscores per line</li>
-          <li>Lowercase conversion toggle for consistent formatting across all slugs</li>
-          <li>Number removal option for cleaner categorical URL structures</li>
-          <li>International character normalization via Latinize</li>
-          <li>Empty line handling to maintain or filter blank entries</li>
-        </ul>
-      </section>
+      <ToolInfoSection>
+        <ToolInfoSectionHeading id="what-is-bulk-slugify-tool">What Is the Bulk Slugify Tool?</ToolInfoSectionHeading>
+        <ToolInfoSectionContent>
+          <p>
+            The <strong>Bulk Slugify</strong> is a free online utility that helps you transform multiple lines of text
+            into SEO-friendly slugs simultaneously, ideal for batch processing large sets of URLs for e-commerce or
+            migrations.
+          </p>
+          <p>
+            The Bulk Slugify Tool processes each line of your input independently through the same slugification
+            pipeline - removing special characters, normalizing Unicode, converting case, and applying your chosen
+            separator. Each line becomes a clean, URL-safe slug, and results are returned line-by-line for easy copying
+            and integration.
+          </p>
+        </ToolInfoSectionContent>
+      </ToolInfoSection>
 
-      <section>
-        <h2 className="text-primary mb-4 text-2xl font-bold" id="why-use-bulk-slugify">
-          Why Use This Tool
-        </h2>
-        <ul className="list-inside list-disc space-y-2 pl-4">
-          <li>Eliminates hours of manual slug creation for large content libraries and product catalogs</li>
-          <li>Maintains consistent URL patterns and formatting across entire websites and platforms</li>
-          <li>Reduces errors from manual data entry with automated special character filtering</li>
-          <li>Provides multi-language support with Unicode and accented character normalization</li>
-          <li>Accelerates content migration workflows for CMS transitions and site launches</li>
-        </ul>
-      </section>
+      <ToolInfoSection>
+        <ToolInfoSectionList
+          id="bulk-slugify-features"
+          title="Key Features"
+          items={[
+            'Batch processing of hundreds of lines simultaneously with instant results',
+            'Custom separator selection with hyphens or underscores per line',
+            'Lowercase conversion toggle for consistent formatting across all slugs',
+            'Number removal option for cleaner categorical URL structures',
+            'International character normalization via Latinize',
+            'Empty line handling to maintain or filter blank entries',
+          ]}
+        />
+      </ToolInfoSection>
 
-      <section>
-        <h2 className="text-primary mb-4 text-2xl font-bold" id="bulk-slugify-use-cases">
-          Common Use Cases
-        </h2>
-        <ul className="list-inside list-disc space-y-2 pl-4">
-          <li>Generating SEO-optimized URLs for thousands of e-commerce product listings in bulk</li>
-          <li>Transforming CSV or spreadsheet exports of blog titles into ready-to-use slugs for CMS uploads</li>
-          <li>Creating dynamic page routes during content migration between platforms and frameworks</li>
-          <li>Building URL structures for large documentation sites, knowledge bases, and help centers</li>
-          <li>Processing database records into URL-friendly formats for API endpoints and headless CMS systems</li>
-        </ul>
-      </section>
+      <ToolInfoSection>
+        <ToolInfoSectionList
+          id="why-use-bulk-slugify"
+          title="Why Use This Tool"
+          items={[
+            'Eliminates hours of manual slug creation for large content libraries and product catalogs',
+            'Maintains consistent URL patterns and formatting across entire websites and platforms',
+            'Reduces errors from manual data entry with automated special character filtering',
+            'Provides multi-language support with Unicode and accented character normalization',
+            'Accelerates content migration workflows for CMS transitions and site launches',
+          ]}
+        />
+      </ToolInfoSection>
 
-      <section>
-        <h2 className="text-primary mb-4 text-2xl font-bold" id="bulk-slugify-technical-details">
-          Technical Details
-        </h2>
-        <p>
-          The Bulk Slugify Tool combines the{' '}
-          <a
-            href="https://www.npmjs.com/package/slugify"
-            className="font-medium text-pink-500 underline hover:no-underline"
-            target="_blank"
-            rel="noreferrer"
-          >
-            slugify
-          </a>{' '}
-          and{' '}
-          <a
-            href="https://www.npmjs.com/package/latinize"
-            className="font-medium text-pink-500 underline hover:no-underline"
-            target="_blank"
-            rel="noreferrer"
-          >
-            latinize
-          </a>{' '}
-          open-source libraries with custom line-by-line processing logic. Each line is independently processed through
-          the full slugification pipeline, ensuring that individual formatting rules apply consistently across all
-          entries. The tool runs entirely client-side with no data transmission.
-        </p>
-      </section>
+      <ToolInfoSection>
+        <ToolInfoSectionList
+          id="bulk-slugify-use-cases"
+          title="Common Use Cases"
+          items={[
+            'Generating SEO-optimized URLs for thousands of e-commerce product listings in bulk',
+            'Transforming CSV or spreadsheet exports of blog titles into ready-to-use slugs for CMS uploads',
+            'Creating dynamic page routes during content migration between platforms and frameworks',
+            'Building URL structures for large documentation sites, knowledge bases, and help centers',
+            'Processing database records into URL-friendly formats for API endpoints and headless CMS systems',
+          ]}
+        />
+      </ToolInfoSection>
 
-      <FAQ>
-        <FAQItem heading="Is this tool free to use?" headingId="is-this-tool-free">
-          <p>Yes, the Bulk Slugify is completely free to use with no signup, registration, or usage limits required.</p>
-        </FAQItem>
-        <FAQItem heading="Is my data sent to a server?" headingId="is-my-data-sent-to-a-server">
+      <ToolInfoSection>
+        <ToolInfoSectionHeading id="bulk-slugify-technical-details">Technical Details</ToolInfoSectionHeading>
+        <ToolInfoSectionContent>
           <p>
-            No, all processing happens locally in your browser. Your data never leaves your device and is not stored or
-            logged anywhere.
+            The Bulk Slugify Tool combines the{' '}
+            <a
+              href="https://www.npmjs.com/package/slugify"
+              className="font-medium text-pink-500 underline hover:no-underline"
+              target="_blank"
+              rel="noreferrer"
+            >
+              slugify
+            </a>{' '}
+            and{' '}
+            <a
+              href="https://www.npmjs.com/package/latinize"
+              className="font-medium text-pink-500 underline hover:no-underline"
+              target="_blank"
+              rel="noreferrer"
+            >
+              latinize
+            </a>{' '}
+            open-source libraries with custom line-by-line processing logic. Each line is independently processed
+            through the full slugification pipeline, ensuring that individual formatting rules apply consistently across
+            all entries. The tool runs entirely client-side with no data transmission.
           </p>
-        </FAQItem>
-        <FAQItem heading="How many items can I process at once?" headingId="how-many-items-can-i-process-at-once">
-          <p>
-            There is no hard limit. You can paste hundreds of lines at once. All processing happens client-side in your
-            browser, so performance depends on your device.
-          </p>
-        </FAQItem>
-        <FAQItem
-          heading="What are common use cases for bulk slugification?"
-          headingId="what-are-common-use-cases-for-bulk-slugification"
-        >
-          <p>
-            Common use cases include generating SEO-friendly URLs for e-commerce catalogs, transforming blog titles
-            during CMS migrations, and creating dynamic routes for web applications.
-          </p>
-        </FAQItem>
-        <FAQItem heading="What options are available?" headingId="bulk-slugify-what-options-are-available">
-          <p>
-            You can choose between hyphens and underscores, enable lowercase conversion, remove numbers, normalize
-            international characters, and keep or remove empty lines.
-          </p>
-        </FAQItem>
-        <FAQItem heading="Can I use this tool offline?" headingId="can-i-use-this-tool-offline">
-          <p>
-            Yes, since all processing happens client-side in your browser, this tool works offline once the page has
-            loaded.
-          </p>
-        </FAQItem>
-      </FAQ>
+        </ToolInfoSectionContent>
+      </ToolInfoSection>
+
+      <ToolFAQSection>
+        {FAQS.map((item) => (
+          <ToolFAQItem key={item.headingId} heading={item.heading} headingId={item.headingId}>
+            <p>{item.answer}</p>
+          </ToolFAQItem>
+        ))}
+      </ToolFAQSection>
 
       <Credits>
         <p>
