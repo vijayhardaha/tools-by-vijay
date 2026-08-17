@@ -1,7 +1,20 @@
 import type { JSX } from 'react';
 
+import { JsonLd } from '@vijayhardaha/schema-builder/react';
+
 import { Credits } from '@/components/tool/ToolCredits';
-import { FAQ, FAQItem } from '@/components/tool/ToolFAQ';
+import { ToolFAQItem, ToolFAQSection } from '@/components/tool/ToolFAQ';
+import {
+  ToolInfoSection,
+  ToolInfoSectionContent,
+  ToolInfoSectionHeading,
+  ToolInfoSectionList,
+} from '@/components/tool/ToolInfoSection';
+import { buildFaqPageSchema } from '@/utils/faq';
+
+import { FAQS } from './faqs';
+
+const faqSchemaData = [buildFaqPageSchema('random-username-generator', FAQS)];
 
 /**
  * Comprehensive, SEO-optimized information about the Random Username Generator Tool.
@@ -11,105 +24,89 @@ import { FAQ, FAQItem } from '@/components/tool/ToolFAQ';
 export function InfoBlock(): JSX.Element {
   return (
     <div className="space-y-12">
-      <section>
-        <h2 className="text-primary mb-4 text-2xl font-bold" id="what-is-random-username-generator-tool">
+      <JsonLd data={faqSchemaData} />
+
+      <ToolInfoSection>
+        <ToolInfoSectionHeading id="what-is-random-username-generator-tool">
           What Is the Random Username Generator Tool?
-        </h2>
-        <p className="mb-4">
-          The <strong>Random Username Generator</strong> is a free online utility that helps you create creative, unique
-          usernames for gaming, social media, and online profiles by combining adjectives, nouns, and numbers for
-          memorable handles.
-        </p>
-        <p className="mb-4">
-          The Random Username Generator combines adjectives and nouns from curated word lists to create readable,
-          memorable usernames. Each username follows the pattern [Adjective][Noun][Number], creating combinations like
-          BraveWizard742. You control the quantity and regenerate for fresh results with one click.
-        </p>
-      </section>
+        </ToolInfoSectionHeading>
+        <ToolInfoSectionContent>
+          <p>
+            The <strong>Random Username Generator</strong> is a free online utility that helps you create creative,
+            unique usernames for gaming, social media, and online profiles by combining adjectives, nouns, and numbers
+            for memorable handles.
+          </p>
+          <p>
+            The Random Username Generator combines adjectives and nouns from curated word lists to create readable,
+            memorable usernames. Each username follows the pattern [Adjective][Noun][Number], creating combinations like
+            BraveWizard742. You control the quantity and regenerate for fresh results with one click.
+          </p>
+        </ToolInfoSectionContent>
+      </ToolInfoSection>
 
-      <section>
-        <h2 className="text-primary mb-4 text-2xl font-bold" id="random-username-generator-features">
-          Key Features
-        </h2>
-        <ul className="list-inside list-disc space-y-2 pl-4">
-          <li>Combines adjectives and nouns for readable, memorable username patterns</li>
-          <li>Appends random 2-4 digit numbers for uniqueness and availability</li>
-          <li>Configurable quantity from 1 to 200 usernames per generation</li>
-          <li>Clean, formatted output with sequential numbering</li>
-          <li>One-click copy for immediate use in profiles and signup forms</li>
-          <li>Positive, appropriate word choices suitable for all audiences</li>
-        </ul>
-      </section>
+      <ToolInfoSection>
+        <ToolInfoSectionList
+          id="random-username-generator-features"
+          title="Key Features"
+          items={[
+            'Combines adjectives and nouns for readable, memorable username patterns',
+            'Appends random 2-4 digit numbers for uniqueness and availability',
+            'Configurable quantity from 1 to 200 usernames per generation',
+            'Clean, formatted output with sequential numbering',
+            'One-click copy for immediate use in profiles and signup forms',
+            'Positive, appropriate word choices suitable for all audiences',
+          ]}
+        />
+      </ToolInfoSection>
 
-      <section>
-        <h2 className="text-primary mb-4 text-2xl font-bold" id="why-use-random-username-generator">
-          Why Use This Tool
-        </h2>
-        <ul className="list-inside list-disc space-y-2 pl-4">
-          <li>Generates creative, available usernames when your first choices are taken</li>
-          <li>Produces readable, memorable names that are easy to share and recall</li>
-          <li>Saves time brainstorming unique handles across multiple platforms</li>
-          <li>Provides ready-to-use names for game characters and online profiles</li>
-          <li>Supports batch generation for testing and development purposes</li>
-        </ul>
-      </section>
+      <ToolInfoSection>
+        <ToolInfoSectionList
+          id="why-use-random-username-generator"
+          title="Why Use This Tool"
+          items={[
+            'Generates creative, available usernames when your first choices are taken',
+            'Produces readable, memorable names that are easy to share and recall',
+            'Saves time brainstorming unique handles across multiple platforms',
+            'Provides ready-to-use names for game characters and online profiles',
+            'Supports batch generation for testing and development purposes',
+          ]}
+        />
+      </ToolInfoSection>
 
-      <section>
-        <h2 className="text-primary mb-4 text-2xl font-bold" id="random-username-generator-use-cases">
-          Common Use Cases
-        </h2>
-        <ul className="list-inside list-disc space-y-2 pl-4">
-          <li>Finding available usernames for social media platforms like Twitter, Instagram, and TikTok</li>
-          <li>Creating character names for MMOs, RPGs, and online gaming communities</li>
-          <li>Generating test user accounts for QA, development, and staging environments</li>
-          <li>Producing anonymous usernames for forums, communities, and discussion boards</li>
-          <li>Creating unique handles for streaming platforms like Twitch and YouTube</li>
-        </ul>
-      </section>
+      <ToolInfoSection>
+        <ToolInfoSectionList
+          id="random-username-generator-use-cases"
+          title="Common Use Cases"
+          items={[
+            'Finding available usernames for social media platforms like Twitter, Instagram, and TikTok',
+            'Creating character names for MMOs, RPGs, and online gaming communities',
+            'Generating test user accounts for QA, development, and staging environments',
+            'Producing anonymous usernames for forums, communities, and discussion boards',
+            'Creating unique handles for streaming platforms like Twitch and YouTube',
+          ]}
+        />
+      </ToolInfoSection>
 
-      <section>
-        <h2 className="text-primary mb-4 text-2xl font-bold" id="random-username-generator-technical-details">
+      <ToolInfoSection>
+        <ToolInfoSectionHeading id="random-username-generator-technical-details">
           Technical Details
-        </h2>
-        <p>
-          The generator maintains curated word lists of 31 adjectives and 31 nouns. Each username combines a randomly
-          selected adjective with a randomly selected noun and a 2-4 digit random number suffix. The combination creates
-          approximately 31 x 31 x 900 = 864,900 possible unique username combinations.
-        </p>
-      </section>
+        </ToolInfoSectionHeading>
+        <ToolInfoSectionContent>
+          <p>
+            The generator maintains curated word lists of 31 adjectives and 31 nouns. Each username combines a randomly
+            selected adjective with a randomly selected noun and a 2-4 digit random number suffix. The combination
+            creates approximately 31 x 31 x 900 = 864,900 possible unique username combinations.
+          </p>
+        </ToolInfoSectionContent>
+      </ToolInfoSection>
 
-      <FAQ>
-        <FAQItem heading="Is this tool free to use?" headingId="is-this-tool-free">
-          <p>
-            Yes, the Random Username Generator is completely free to use with no signup, registration, or usage limits
-            required.
-          </p>
-        </FAQItem>
-        <FAQItem heading="Is my data sent to a server?" headingId="is-my-data-sent-to-a-server">
-          <p>
-            No, all processing happens locally in your browser. Your data never leaves your device and is not stored or
-            logged anywhere.
-          </p>
-        </FAQItem>
-        <FAQItem heading="How are usernames generated?" headingId="how-are-usernames-generated">
-          <p>Usernames combine a random adjective, noun, and number for readable, unique results.</p>
-        </FAQItem>
-        <FAQItem heading="How many can I generate?" headingId="how-many-can-i-generate">
-          <p>Generate up to 200 usernames at once, each independently randomized.</p>
-        </FAQItem>
-        <FAQItem
-          heading="Are generated usernames guaranteed unique?"
-          headingId="are-generated-usernames-guaranteed-unique"
-        >
-          <p>Not guaranteed since random combinations may produce duplicates with large generation counts.</p>
-        </FAQItem>
-        <FAQItem heading="Can I use this tool offline?" headingId="can-i-use-this-tool-offline">
-          <p>
-            Yes, since all processing happens client-side in your browser, this tool works offline once the page has
-            loaded.
-          </p>
-        </FAQItem>
-      </FAQ>
+      <ToolFAQSection>
+        {FAQS.map((item) => (
+          <ToolFAQItem key={item.headingId} heading={item.heading} headingId={item.headingId}>
+            <p>{item.answer}</p>
+          </ToolFAQItem>
+        ))}
+      </ToolFAQSection>
 
       <Credits>
         <p>

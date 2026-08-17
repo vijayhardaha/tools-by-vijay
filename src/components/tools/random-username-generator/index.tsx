@@ -3,83 +3,13 @@
 import type { JSX } from 'react';
 import { useEffect, useState } from 'react';
 
-import { ExampleBlock } from './example-block';
+import { ToolExampleBlock } from '@/components/tool/ToolExampleBlock';
+
+import { EXAMPLES } from './examples';
 import { InfoBlock } from './info-block';
 import { InputBlock } from './input-block';
 import { OutputBlock } from './output-block';
-
-/**
- * A tool for generating random usernames.
- *
- * @returns {JSX.Element} The RandomUsernameGeneratorTool component.
- */
-const adjectives = [
-  'Cool',
-  'Fast',
-  'Smart',
-  'Brave',
-  'Happy',
-  'Lucky',
-  'Clever',
-  'Strong',
-  'Bold',
-  'Bright',
-  'Fierce',
-  'Gentle',
-  'Kind',
-  'Loyal',
-  'Quick',
-  'Sharp',
-  'Witty',
-  'Zesty',
-  'Charming',
-  'Daring',
-  'Energetic',
-  'Fearless',
-  'Graceful',
-  'Humble',
-  'Jolly',
-  'Mighty',
-  'Noble',
-  'Playful',
-  'Radiant',
-  'Savvy',
-  'Vivid',
-];
-
-const nouns = [
-  'Tiger',
-  'Eagle',
-  'Shark',
-  'Wizard',
-  'Ninja',
-  'Hero',
-  'Phoenix',
-  'Dragon',
-  'Knight',
-  'Samurai',
-  'Pirate',
-  'Ranger',
-  'Warrior',
-  'Falcon',
-  'Wolf',
-  'Panther',
-  'Lion',
-  'Bear',
-  'Hawk',
-  'Cheetah',
-  'Leopard',
-  'Fox',
-  'Dolphin',
-  'Stallion',
-  'Viper',
-  'Cobra',
-  'Jaguar',
-  'Otter',
-  'Penguin',
-  'Raven',
-  'Swan',
-];
+import { ADJECTIVES, NOUNS } from './words';
 
 /**
  * A tool for generating random usernames.
@@ -106,8 +36,8 @@ export function RandomUsernameGenerator(): JSX.Element {
     }
 
     const generated = Array.from({ length: count }, () => {
-      const adjective = adjectives[Math.floor(Math.random() * adjectives.length)];
-      const noun = nouns[Math.floor(Math.random() * nouns.length)];
+      const adjective = ADJECTIVES[Math.floor(Math.random() * ADJECTIVES.length)];
+      const noun = NOUNS[Math.floor(Math.random() * NOUNS.length)];
       const number = Math.floor(Math.random() * 1000);
       return `${adjective}${noun}${number}`;
     });
@@ -142,9 +72,10 @@ export function RandomUsernameGenerator(): JSX.Element {
 
   return (
     <>
-      <div className="space-y-6 md:space-y-8">
+      <div className="space-y-6">
+        <ToolExampleBlock examples={EXAMPLES} onExample={handleExample} />
+
         <InputBlock count={count} setCount={setCount} onRandom={handleRandom} onClear={handleClear} error={error} />
-        <ExampleBlock onExample={handleExample} />
 
         <OutputBlock output={output} />
       </div>
