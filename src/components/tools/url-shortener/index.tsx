@@ -8,7 +8,9 @@ import { useState } from 'react';
 import TinyURL from 'tinyurl';
 import validUrl from 'valid-url';
 
-import { ExampleBlock } from './example-block';
+import { ToolExampleBlock } from '@/components/tool/ToolExampleBlock';
+
+import { EXAMPLES } from './examples';
 import { InfoBlock } from './info-block';
 import { InputBlock } from './input-block';
 import { OutputBlock } from './output-block';
@@ -136,7 +138,9 @@ export function UrlShortener(): JSX.Element {
 
   return (
     <>
-      <div className="space-y-6 md:space-y-8">
+      <div className="space-y-6">
+        <ToolExampleBlock examples={EXAMPLES} onExample={handleExample} />
+
         <InputBlock
           input={input}
           setInput={setInput}
@@ -145,8 +149,6 @@ export function UrlShortener(): JSX.Element {
           isLoading={isLoading}
           error={error}
         />
-
-        <ExampleBlock onExample={handleExample} />
 
         {results.length > 0 && <OutputBlock results={results} />}
       </div>

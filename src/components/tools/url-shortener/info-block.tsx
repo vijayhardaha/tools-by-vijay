@@ -1,7 +1,20 @@
 import type { JSX } from 'react';
 
+import { JsonLd } from '@vijayhardaha/schema-builder/react';
+
 import { Credits } from '@/components/tool/ToolCredits';
-import { FAQ, FAQItem } from '@/components/tool/ToolFAQ';
+import { ToolFAQItem, ToolFAQSection } from '@/components/tool/ToolFAQ';
+import {
+  ToolInfoSection,
+  ToolInfoSectionContent,
+  ToolInfoSectionHeading,
+  ToolInfoSectionList,
+} from '@/components/tool/ToolInfoSection';
+import { buildFaqPageSchema } from '@/utils/faq';
+
+import { FAQS } from './faqs';
+
+const faqSchemaData = [buildFaqPageSchema('url-shortener', FAQS)];
 
 /**
  * Comprehensive, SEO-optimized information about the URL Shortener Tool.
@@ -11,133 +24,111 @@ import { FAQ, FAQItem } from '@/components/tool/ToolFAQ';
 export function InfoBlock(): JSX.Element {
   return (
     <div className="space-y-12">
-      <section>
-        <h2 className="text-primary mb-4 text-2xl font-bold" id="what-is-url-shortener-tool">
-          What Is the URL Shortener Tool?
-        </h2>
-        <p className="mb-4">
-          The <strong>URL Shortener</strong> is a free online utility that helps you convert long URLs into short,
-          manageable links using the TinyURL API, perfect for social media, SMS marketing, and clean campaign URLs.
-        </p>
-        <p className="mb-4">
-          The URL Shortener sends each valid URL to the{' '}
-          <a
-            href="https://tinyurl.com/"
-            className="font-medium text-pink-500 underline hover:no-underline"
-            target="_blank"
-            rel="noreferrer"
-          >
-            TinyURL
-          </a>{' '}
-          API, which generates a short redirect link. URLs are validated before processing to ensure they include proper
-          protocol prefixes (http:// or https://). Invalid URLs are reported with clear error messages. The tool
-          processes all valid URLs simultaneously.
-        </p>
-      </section>
+      <JsonLd data={faqSchemaData} />
 
-      <section>
-        <h2 className="text-primary mb-4 text-2xl font-bold" id="url-shortener-features">
-          Key Features
-        </h2>
-        <ul className="list-inside list-disc space-y-2 pl-4">
-          <li>Bulk URL shortening with batch processing of multiple links simultaneously</li>
-          <li>URL validation to ensure only properly formatted web addresses are processed</li>
-          <li>TinyURL API integration for reliable short link generation</li>
-          <li>Individual copy buttons for each shortened URL</li>
-          <li>Copy All button for bulk copying of all valid results</li>
-          <li>Clickable shortened links for immediate testing and verification</li>
-        </ul>
-      </section>
-
-      <section>
-        <h2 className="text-primary mb-4 text-2xl font-bold" id="why-use-url-shortener">
-          Why Use This Tool
-        </h2>
-        <ul className="list-inside list-disc space-y-2 pl-4">
-          <li>Creates clean, shareable links optimized for character-limited platforms like Twitter and SMS</li>
-          <li>Reduces visual clutter in marketing materials and printed communications</li>
-          <li>Provides professional-looking links for brand presentations and campaign materials</li>
-          <li>Processes multiple URLs simultaneously for time-saving bulk operations</li>
-          <li>Validates URLs before processing to prevent errors and wasted API calls</li>
-        </ul>
-      </section>
-
-      <section>
-        <h2 className="text-primary mb-4 text-2xl font-bold" id="url-shortener-use-cases">
-          Common Use Cases
-        </h2>
-        <ul className="list-inside list-disc space-y-2 pl-4">
-          <li>Shortening links for social media posts with character limitations on Twitter and LinkedIn</li>
-          <li>Creating clean SMS marketing links from long tracking URLs and affiliate links</li>
-          <li>Preparing shortened URLs for print materials, business cards, and billboards</li>
-          <li>Bulk processing of marketing campaign URLs for email newsletters</li>
-          <li>Generating short links for QR codes from long destination URLs</li>
-        </ul>
-      </section>
-
-      <section>
-        <h2 className="text-primary mb-4 text-2xl font-bold" id="url-shortener-technical-details">
-          Technical Details
-        </h2>
-        <p>
-          This tool uses the{' '}
-          <a
-            href="https://tinyurl.com/"
-            className="font-medium text-pink-500 underline hover:no-underline"
-            target="_blank"
-            rel="noreferrer"
-          >
-            TinyURL
-          </a>{' '}
-          API service for URL shortening and the{' '}
-          <a
-            href="https://www.npmjs.com/package/valid-url"
-            className="font-medium text-pink-500 underline hover:no-underline"
-            target="_blank"
-            rel="noreferrer"
-          >
-            valid-url
-          </a>{' '}
-          npm package for URL validation. Each URL is validated for proper formatting, then sent to TinyURL&apos;s API
-          to generate a shortened redirect link. The tool processes one URL per line in the input, handling each
-          independently.
-        </p>
-      </section>
-
-      <FAQ>
-        <FAQItem heading="Is this tool free to use?" headingId="is-this-tool-free">
+      <ToolInfoSection>
+        <ToolInfoSectionHeading id="what-is-url-shortener-tool">What Is the URL Shortener Tool?</ToolInfoSectionHeading>
+        <ToolInfoSectionContent>
           <p>
-            Yes, the URL Shortener is completely free to use with no signup, registration, or usage limits required.
+            The <strong>URL Shortener</strong> is a free online utility that helps you convert long URLs into short,
+            manageable links using the TinyURL API, perfect for social media, SMS marketing, and clean campaign URLs.
           </p>
-        </FAQItem>
-        <FAQItem heading="Is my data sent to a server?" headingId="is-my-data-sent-to-a-server">
           <p>
-            Your data is sent to our server-side API for processing only. It is not stored, logged, or shared with any
-            third parties and is discarded immediately after processing.
+            The URL Shortener sends each valid URL to the{' '}
+            <a
+              href="https://tinyurl.com/"
+              className="font-medium text-pink-500 underline hover:no-underline"
+              target="_blank"
+              rel="noreferrer"
+            >
+              TinyURL
+            </a>{' '}
+            API, which generates a short redirect link. URLs are validated before processing to ensure they include
+            proper protocol prefixes (http:// or https://). Invalid URLs are reported with clear error messages. The
+            tool processes all valid URLs simultaneously.
           </p>
-        </FAQItem>
-        <FAQItem heading="What is a URL shortener?" headingId="what-is-a-url-shortener">
+        </ToolInfoSectionContent>
+      </ToolInfoSection>
+
+      <ToolInfoSection>
+        <ToolInfoSectionList
+          id="url-shortener-features"
+          title="Key Features"
+          items={[
+            'Bulk URL shortening with batch processing of multiple links simultaneously',
+            'URL validation to ensure only properly formatted web addresses are processed',
+            'TinyURL API integration for reliable short link generation',
+            'Individual copy buttons for each shortened URL',
+            'Copy All button for bulk copying of all valid results',
+            'Clickable shortened links for immediate testing and verification',
+          ]}
+        />
+      </ToolInfoSection>
+
+      <ToolInfoSection>
+        <ToolInfoSectionList
+          id="why-use-url-shortener"
+          title="Why Use This Tool"
+          items={[
+            'Creates clean, shareable links optimized for character-limited platforms like Twitter and SMS',
+            'Reduces visual clutter in marketing materials and printed communications',
+            'Provides professional-looking links for brand presentations and campaign materials',
+            'Processes multiple URLs simultaneously for time-saving bulk operations',
+            'Validates URLs before processing to prevent errors and wasted API calls',
+          ]}
+        />
+      </ToolInfoSection>
+
+      <ToolInfoSection>
+        <ToolInfoSectionList
+          id="url-shortener-use-cases"
+          title="Common Use Cases"
+          items={[
+            'Shortening links for social media posts with character limitations on Twitter and LinkedIn',
+            'Creating clean SMS marketing links from long tracking URLs and affiliate links',
+            'Preparing shortened URLs for print materials, business cards, and billboards',
+            'Bulk processing of marketing campaign URLs for email newsletters',
+            'Generating short links for QR codes from long destination URLs',
+          ]}
+        />
+      </ToolInfoSection>
+
+      <ToolInfoSection>
+        <ToolInfoSectionHeading id="url-shortener-technical-details">Technical Details</ToolInfoSectionHeading>
+        <ToolInfoSectionContent>
           <p>
-            A URL shortener creates a shorter link that redirects to the original destination. Shortened URLs are easier
-            to share on social media and in print materials.
+            This tool uses the{' '}
+            <a
+              href="https://tinyurl.com/"
+              className="font-medium text-pink-500 underline hover:no-underline"
+              target="_blank"
+              rel="noreferrer"
+            >
+              TinyURL
+            </a>{' '}
+            API service for URL shortening and the{' '}
+            <a
+              href="https://www.npmjs.com/package/valid-url"
+              className="font-medium text-pink-500 underline hover:no-underline"
+              target="_blank"
+              rel="noreferrer"
+            >
+              valid-url
+            </a>{' '}
+            npm package for URL validation. Each URL is validated for proper formatting, then sent to TinyURL&apos;s API
+            to generate a shortened redirect link. The tool processes one URL per line in the input, handling each
+            independently.
           </p>
-        </FAQItem>
-        <FAQItem heading="How does this tool work?" headingId="how-does-this-tool-work">
-          <p>
-            This tool uses the TinyURL API to create shortened links. Enter one or more URLs, and valid URLs get
-            shortened links that redirect to your destination.
-          </p>
-        </FAQItem>
-        <FAQItem heading="Can I shorten multiple URLs?" headingId="can-i-shorten-multiple-urls">
-          <p>Yes, enter one URL per line. The tool processes all valid URLs simultaneously.</p>
-        </FAQItem>
-        <FAQItem heading="Are shortened URLs permanent?" headingId="are-shortened-urls-permanent">
-          <p>URLs shortened through TinyURL are typically permanent. However, keep a backup of your original URLs.</p>
-        </FAQItem>
-        <FAQItem heading="Can I use this tool offline?" headingId="can-i-use-this-tool-offline">
-          <p>This tool requires a server-side API call, so an internet connection is needed for processing.</p>
-        </FAQItem>
-      </FAQ>
+        </ToolInfoSectionContent>
+      </ToolInfoSection>
+
+      <ToolFAQSection>
+        {FAQS.map((item) => (
+          <ToolFAQItem key={item.headingId} heading={item.heading} headingId={item.headingId}>
+            <p>{item.answer}</p>
+          </ToolFAQItem>
+        ))}
+      </ToolFAQSection>
 
       <Credits>
         <p>
