@@ -269,12 +269,13 @@ const countries = [
 export function CountryNameGenerator(): JSX.Element {
   const [count, setCount] = useState<number>(1);
   const [output, setOutput] = useState<string[]>([]);
+  const [regen, setRegen] = useState<number>(0);
 
   // Derive error state from count
   const error = count <= 0 || count > 200 ? 'Please enter a number between 1 and 200.' : '';
 
   /**
-   * Generates random country names whenever count changes.
+   * Generates random country names whenever count or the regen counter changes.
    * Uses useEffect because Math.random() is impure.
    */
   useEffect(() => {
@@ -287,7 +288,14 @@ export function CountryNameGenerator(): JSX.Element {
     const generated = Array.from({ length: count }, () => countries[Math.floor(Math.random() * countries.length)]);
 
     setOutput(generated);
-  }, [count]);
+  }, [count, regen]);
+
+  /**
+   * Generates a fresh set of random country names.
+   */
+  const handleRandom = (): void => {
+    setRegen((prev) => prev + 1);
+  };
 
   /**
    * Clears the output and error states.
@@ -310,7 +318,7 @@ export function CountryNameGenerator(): JSX.Element {
   return (
     <>
       <div className="space-y-6 md:space-y-8">
-        <InputBlock count={count} setCount={setCount} onClear={handleClear} error={error} />
+        <InputBlock count={count} setCount={setCount} onRandom={handleRandom} onClear={handleClear} error={error} />
         <ExampleBlock onExample={handleExample} />
 
         <OutputBlock output={output} />

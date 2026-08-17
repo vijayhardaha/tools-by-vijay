@@ -13,12 +13,14 @@ import { Input } from '@/components/ui/input';
  * @type {InputBlockProps}
  * @property {number} count - The number of names to generate
  * @property {(value: number) => void} setCount - Callback to update generation count
+ * @property {() => void} onRandom - Callback to regenerate random names
  * @property {() => void} onClear - Callback to clear the output
  * @property {string} [error] - Current error message, if any
  */
 interface InputBlockProps {
   count: number;
   setCount: (value: number) => void;
+  onRandom: () => void;
   onClear: () => void;
   error?: string;
 }
@@ -30,11 +32,16 @@ interface InputBlockProps {
  *
  * @returns {JSX.Element} The CountryNameGeneratorInput component.
  */
-export function InputBlock({ count, setCount, onClear, error }: InputBlockProps): JSX.Element {
+export function InputBlock({ count, setCount, onRandom, onClear, error }: InputBlockProps): JSX.Element {
   return (
     <Card>
       <CardHeader>
-        <ToolInputHeader title="Country Name Generator" desc="Generate random country names" onClear={onClear} />
+        <ToolInputHeader
+          title="Country Name Generator"
+          desc="Generate random country names"
+          onRandom={onRandom}
+          onClear={onClear}
+        />
       </CardHeader>
       <CardContent>
         <div className="flex flex-col gap-4 md:gap-6">

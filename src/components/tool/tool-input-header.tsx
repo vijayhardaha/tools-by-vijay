@@ -2,7 +2,7 @@
 
 import type { ComponentPropsWithoutRef, JSX } from 'react';
 
-import { MdCleaningServices } from 'react-icons/md';
+import { MdCasino, MdCleaningServices } from 'react-icons/md';
 import { RiResetLeftFill } from 'react-icons/ri';
 
 import { Button } from '@/components/ui/button';
@@ -16,12 +16,14 @@ import { cn } from '@/utils/classnames';
  * @type {ToolInputHeaderProps}
  * @property {string} [title] - The title text to display
  * @property {string} [desc] - The description text to display
+ * @property {() => void} [onRandom] - Callback for the random action button
  * @property {() => void} [onClear] - Callback for the clear action button
  * @property {() => void} [onReset] - Callback for the reset action button
  */
 interface ToolInputHeaderProps {
   title?: string;
   desc?: string;
+  onRandom?: () => void;
   onClear?: () => void;
   onReset?: () => void;
   className?: string;
@@ -41,13 +43,14 @@ interface ToolInputHeaderProps {
 export function ToolInputHeader({
   title,
   desc,
+  onRandom,
   onClear,
   onReset,
   className,
   ...rest
 }: ToolInputHeaderProps & Omit<ComponentPropsWithoutRef<'div'>, 'title'>): JSX.Element | null {
   const hasText = title !== undefined || desc !== undefined;
-  const hasActions = onClear !== undefined || onReset !== undefined;
+  const hasActions = onRandom !== undefined || onClear !== undefined || onReset !== undefined;
 
   if (!hasText && !hasActions) return null;
 
@@ -63,6 +66,17 @@ export function ToolInputHeader({
       {hasActions && (
         <TooltipProvider delayDuration={0}>
           <div className="flex shrink-0 flex-nowrap gap-2">
+            {onRandom !== undefined && (
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button type="button" variant="primary" size="icon" onClick={onRandom}>
+                    <MdCasino />
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>Random</TooltipContent>
+              </Tooltip>
+            )}
+
             {onClear !== undefined && (
               <Tooltip>
                 <TooltipTrigger asChild>
