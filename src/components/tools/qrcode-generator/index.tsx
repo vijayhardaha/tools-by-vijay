@@ -77,7 +77,9 @@ export function QRCodeGenerator(): JSX.Element {
 
   return (
     <>
-      <div className="space-y-6 md:space-y-8">
+      <div className="space-y-6">
+        <ExampleBlock onExample={handleExample} />
+
         <InputBlock
           input={input}
           setInput={setInput}
@@ -88,8 +90,6 @@ export function QRCodeGenerator(): JSX.Element {
           onClear={handleClear}
           onReset={handleReset}
         />
-
-        <ExampleBlock onExample={handleExample} />
 
         <OutputBlock value={input} size={size} level={level} />
       </div>
