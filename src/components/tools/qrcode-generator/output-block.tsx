@@ -31,9 +31,15 @@ export function OutputBlock({ output }: OutputBlockProps): JSX.Element {
         <CardDescription>Scan or download your QR code</CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="flex flex-col gap-4 md:gap-6">
-          <Image src={output} alt="Generated QR Code" className="w-auto max-w-xs" width={250} height={250} />
-        </div>
+        {output ? (
+          <div className="flex flex-col gap-4 md:gap-6">
+            <Image src={output} alt="Generated QR Code" className="w-auto max-w-xs" width={250} height={250} />
+          </div>
+        ) : (
+          <div className="border-border text-muted-foreground flex min-h-48 items-center justify-center rounded-xl border border-dashed text-center text-sm">
+            Enter text or URL above and your QR code will be shown here
+          </div>
+        )}
       </CardContent>
     </Card>
   );
