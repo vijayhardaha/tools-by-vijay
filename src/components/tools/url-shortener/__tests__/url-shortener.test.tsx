@@ -4,6 +4,7 @@ import { afterEach, describe, expect, it, vi } from 'vitest';
 
 import { UrlShortener } from '@/components/tools/url-shortener';
 import { EXAMPLES } from '@/components/tools/url-shortener/examples';
+import { InputBlock } from '@/components/tools/url-shortener/input-block';
 
 describe('UrlShortener tool', () => {
   afterEach(() => {
@@ -54,6 +55,19 @@ describe('UrlShortener tool', () => {
     render(<UrlShortener />);
 
     expect(screen.getByRole('button', { name: /shorten/i })).toBeDisabled();
+  });
+
+  it('renders an error alert inside the input block when an error is set', () => {
+    render(
+      <InputBlock
+        input="https://example.com"
+        setInput={vi.fn()}
+        onSubmit={vi.fn()}
+        onClear={vi.fn()}
+        error="Please enter at least one URL"
+      />
+    );
+    expect(screen.getByText('Please enter at least one URL')).toBeInTheDocument();
   });
 
   it('marks invalid URLs as invalid in the results', async () => {

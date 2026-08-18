@@ -1,9 +1,13 @@
 import { render, screen } from '@testing-library/react';
-import { describe, expect, it } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 
 import { CompressionInfo } from '@/components/ui/compression-info';
 
 describe('CompressionInfo', () => {
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
   it('shows an empty-output message when output is null', () => {
     render(<CompressionInfo input="abc" output={null} />);
     expect(screen.getByText('Output is empty')).toBeInTheDocument();
@@ -45,6 +49,21 @@ describe('CompressionInfo', () => {
   it('only shows compressed size when input is empty', () => {
     render(<CompressionInfo input="" output="data" />);
     expect(screen.getByText(/Compressed size:/)).toBeInTheDocument();
+    expect(screen.queryByText(/Original size:/)).not.toBeInTheDocument();
+  });
+
+  it('shows 0 bytes when the output blob size is zero', () => {
+    // Defensive branch: a truthy output whose Blob reports size 0.
+    vi.spyOn(Blob.prototype, 'size', 'get').mockReturnValue(0);
+    render(<CompressionInfo input="x" output="y" />);
+    expect(screen.getByText('0 bytes')).toBeInTheDocument();
+  });
+
+  it('skips the savings stats when the input blob size is zero', () => {
+    // First Blob (output) sizes 10 bytes; second Blob (input) sizes 0 bytes.
+    vi.spyOn(Blob.prototype, 'size', 'get').mockReturnValueOnce(10).mockReturnValue(0);
+    render(<CompressionInfo input="abcdef" output="xy" />);
+    expect(screen.getByText('10 bytes')).toBeInTheDocument();
     expect(screen.queryByText(/Original size:/)).not.toBeInTheDocument();
   });
 });

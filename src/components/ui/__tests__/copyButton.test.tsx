@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
@@ -50,6 +50,19 @@ describe('CopyButton', () => {
     expect(await screen.findByRole('button', { name: 'Copied!' })).toBeInTheDocument();
   });
 
+  it('resets back to the copy label after the copied timeout', async () => {
+    const user = userEvent.setup();
+    mockClipboard({ writeText: vi.fn().mockResolvedValue(undefined) });
+
+    render(<CopyButton text="secret-value" />);
+    await user.click(screen.getByRole('button', { name: 'Copy' }));
+    expect(await screen.findByRole('button', { name: 'Copied!' })).toBeInTheDocument();
+
+    // The 1s feedback timeout must restore the idle label.
+    await new Promise((resolve) => setTimeout(resolve, 1100));
+    expect(screen.getByRole('button', { name: 'Copy' })).toBeInTheDocument();
+  });
+
   it('falls back to execCommand when the Clipboard API is unavailable', async () => {
     const user = userEvent.setup();
     mockClipboard(undefined);
@@ -76,14 +89,19 @@ describe('CopyButton', () => {
     expect(screen.getByRole('button', { name: 'Copy' })).toBeInTheDocument();
   });
 
-  it('does not copy when text is empty', async () => {
-    const user = userEvent.setup();
+  it('does not copy when text is empty', () => {
     const writeText = vi.fn();
     mockClipboard({ writeText });
 
     render(<CopyButton text="" />);
-    await user.click(screen.getByRole('button'));
+    const button = screen.getByRole('button');
+    expect(button).toBeDisabled();
+
+    // fireEvent bypasses the disabled attribute so the handler's empty-text
+    // guard (line 56) executes; userEvent would silently ignore the click.
+    fireEvent.click(button);
     expect(writeText).not.toHaveBeenCalled();
+    expect(screen.getByRole('button', { name: 'Copy' })).toBeInTheDocument();
   });
 
   it('merges a custom className', () => {

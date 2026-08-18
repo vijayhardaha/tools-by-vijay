@@ -1,7 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 
 import { SITE_CONFIG, SITE_METADATA } from '@/constants/seo';
-import { buildMetadata } from '@/utils/meta';
+import { buildMetadata, mergeDeep } from '@/utils/meta';
 import { siteUrl } from '@/utils/seo';
 
 describe('buildMetadata()', () => {
@@ -84,5 +84,29 @@ describe('buildMetadata()', () => {
     const before = JSON.stringify(SITE_METADATA);
     buildMetadata({ title: 'A', description: 'B', path: 'a' });
     expect(JSON.stringify(SITE_METADATA)).toBe(before);
+  });
+});
+
+describe('mergeDeep()', () => {
+  it('replaces arrays on the target with source arrays', () => {
+    const result = mergeDeep({ keywords: ['old'] }, { keywords: ['new', 'values'] });
+    expect(result.keywords).toEqual(['new', 'values']);
+  });
+
+  it('recursively merges nested plain objects', () => {
+    const result = mergeDeep({ openGraph: { title: 'Old', description: 'Keep' } }, { openGraph: { title: 'New' } });
+    expect(result.openGraph).toEqual({ title: 'New', description: 'Keep' });
+  });
+
+  it('lets primitive source values override target values', () => {
+    const result = mergeDeep({ title: 'Old', description: 'Keep' }, { title: 'New' });
+    expect(result).toEqual({ title: 'New', description: 'Keep' });
+  });
+
+  it('does not recurse when the target is not a plain object', () => {
+    // An array is not a plain object (constructor is not Object), so the
+    // merge loop is skipped and the source is not merged in.
+    const result = mergeDeep({ url: 'https://target.com' }, [1, 2] as unknown as Record<string, unknown>);
+    expect(result).toEqual({ url: 'https://target.com' });
   });
 });
