@@ -4,7 +4,7 @@
   "description": "A collection of free online tools built to make developer’s lives easier. From code optimization to text transformation, find the tools you need for your projects.",
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build --webpack && next-sitemap",
+    "build": "bun run build:llms && next build --webpack && next-sitemap",
     "build:llms": "bun scripts/build-llms-txt.ts",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",

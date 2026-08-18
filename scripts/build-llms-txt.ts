@@ -106,7 +106,6 @@ function buildLlmstxt(): string {
 
   lines.push('---');
   lines.push('');
-  lines.push('Generated at: ' + new Date().toISOString());
   lines.push('Total tools: ' + tools.length);
 
   return lines.join('\n');
