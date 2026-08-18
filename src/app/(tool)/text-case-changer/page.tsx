@@ -68,6 +68,7 @@ export default function TextCaseChangerToolTool(): JSX.Element {
   return (
     <>
       <JsonLd data={schemaData} />
+
       <PageLayout>
         <PageHeader
           pageName={tool.title}

@@ -76,6 +76,7 @@ export default function SlugifyToolTool(): JSX.Element {
   return (
     <>
       <JsonLd data={schemaData} />
+
       <PageLayout>
         <PageHeader
           pageName={tool.title}

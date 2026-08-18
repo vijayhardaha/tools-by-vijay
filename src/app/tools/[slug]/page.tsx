@@ -79,6 +79,7 @@ export default async function CategoryPage({ params }: CategoryPageProps): Promi
   return (
     <>
       <JsonLd data={schemaData} />
+
       <PageLayout>
         <PageHeader
           pageName={category.title}

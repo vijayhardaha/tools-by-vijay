@@ -68,6 +68,7 @@ export default function TextToPhpVariablesToolTool(): JSX.Element {
   return (
     <>
       <JsonLd data={schemaData} />
+
       <PageLayout>
         <PageHeader
           pageName={tool.title}

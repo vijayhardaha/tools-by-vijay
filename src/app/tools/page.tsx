@@ -47,6 +47,7 @@ export default function Tools(): JSX.Element {
   return (
     <>
       <JsonLd data={schemaData} />
+
       <PageLayout>
         <PageHeader
           pageName="Tools"

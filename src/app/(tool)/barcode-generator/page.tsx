@@ -68,6 +68,7 @@ export default function BarcodeGeneratorToolTool(): JSX.Element {
   return (
     <>
       <JsonLd data={schemaData} />
+
       <PageLayout>
         <PageHeader
           pageName={tool.title}
