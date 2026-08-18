@@ -2,16 +2,33 @@
   "name": "tools-by-vijay",
   "version": "0.1.0",
   "description": "A collection of free online tools built to make developer’s lives easier. From code optimization to text transformation, find the tools you need for your projects.",
-  "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --webpack && next-sitemap",
+    "build:llms": "bun scripts/build-llms-txt.ts",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "format": "prettier --write --log-level error .",
     "format:check": "prettier --check .",
     "tsc": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
     "prepare": "husky"
+  },
+  "type": "module",
+  "author": {
+    "name": "Vijay Hardaha",
+    "url": "https://github.com/vijayhardaha/"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/vijayhardaha/tools-by-vijay",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vijayhardaha/tools-by-vijay.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vijayhardaha/tools-by-vijay/issues"
   },
   "dependencies": {
     "@next/third-parties": "^16.3.1",
@@ -54,6 +71,9 @@
     "@eslint/compat": "^2.1.0",
     "@prettier/plugin-xml": "^3.4.2",
     "@tailwindcss/postcss": "^4.3.3",
+    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.4",
     "@types/clean-css": "^4.2.11",
     "@types/dom-to-image": "^2.6.7",
     "@types/file-saver": "^2.0.7",
@@ -69,29 +89,36 @@
     "@typescript-eslint/eslint-plugin": "^8.67.0",
     "@typescript-eslint/parser": "^8.67.0",
     "@vijayhardaha/dev-config": "^2.3.1",
+    "@vitejs/plugin-react": "^6.0.5",
+    "@vitest/coverage-v8": "^4.1.10",
+    "canvas": "^3.2.3",
     "cross-env": "^10.1.0",
     "eslint": "^10.8.1",
     "eslint-config-next": "^16.3.1",
     "eslint-config-prettier": "^10.1.8",
     "eslint-import-resolver-typescript": "^4.4.5",
     "eslint-plugin-import-x": "^4.17.1",
-    "eslint-plugin-jsdoc": "^64.2.0",
+    "eslint-plugin-jsdoc": "^64.2.1",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-prettier": "^5.5.6",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.1.1",
     "globals": "^17.11.0",
     "husky": "^9.1.7",
+    "jsdom": "^30.0.1",
     "next-sitemap": "^4.2.3",
     "postcss": "^8.5.26",
     "postcss-load-config": "^6.0.1",
     "prettier": "^3.9.6",
     "prettier-plugin-tailwindcss": "^0.8.1",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.67.0"
+    "typescript-eslint": "^8.67.0",
+    "vitest": "^4.1.10"
   },
   "trustedDependencies": [
+    "canvas",
     "sharp",
+    "tailwindcss-corner-shape",
     "unrs-resolver"
   ]
 }
