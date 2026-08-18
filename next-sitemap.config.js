@@ -9,7 +9,7 @@
  * ======================================================================
  */
 
-const { createSitemapConfig } = require('@vijayhardaha/dev-config/next-sitemap');
+import { createSitemapConfig } from '@vijayhardaha/dev-config/next-sitemap';
 
 const siteDomain = 'https://toolsbyvijay.vercel.app';
 
@@ -46,4 +46,4 @@ const additionalPaths = [...CATEGORY_SLUGS.map((slug) => sitemapEntry(`/tools/${
 /** @type {import('next-sitemap').IConfig} */
 const config = { ...baseConfig, ...{ additionalPaths: async () => additionalPaths } };
 
-module.exports = config;
+export default config;
