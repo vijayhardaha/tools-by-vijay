@@ -68,7 +68,9 @@ export function WithInfoPage({ slug, schemaType = 'webPage', faqItems = [], chil
       case 'about':
         return [aboutPageSchema({ rootUrl, path, breadcrumb: true }, { name: seoTitle, description: seoDescription })];
       case 'contact':
-        return [contactPageSchema({ rootUrl, path, breadcrumb: true }, { name: seoTitle, description: seoDescription })];
+        return [
+          contactPageSchema({ rootUrl, path, breadcrumb: true }, { name: seoTitle, description: seoDescription }),
+        ];
       case 'faq':
         return [
           webPageSchema({ rootUrl, path, breadcrumb: true }, { name: seoTitle, description: seoDescription }),
