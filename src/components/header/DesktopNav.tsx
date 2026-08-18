@@ -8,7 +8,7 @@ import { PiCaretDownBold } from 'react-icons/pi';
 
 import { getAllCategories } from '@/utils/categories';
 import { cn } from '@/utils/classnames';
-import { getToolsByCategory } from '@/utils/tools';
+import { getToolsByCategory, getToolsBySubCategory } from '@/utils/tools';
 
 /**
  * DesktopNav component — a horizontal navigation bar for desktop screens.
@@ -107,14 +107,21 @@ export function DesktopNav(): JSX.Element {
               >
                 {/* Rounded box */}
                 <div className="border-border min-w-56 rounded-xl border bg-white py-2 shadow-xl">
-                  {tools.map((tool) => (
-                    <Link
-                      key={tool.slug}
-                      href={`/${tool.slug}`}
-                      className="text-muted-foreground hover:text-foreground hover:bg-muted flex items-center px-4 py-2 text-sm transition-colors"
-                    >
-                      {tool.title}
-                    </Link>
+                  {Object.entries(getToolsBySubCategory(tools)).map(([subCategory, subCategoryTools]) => (
+                    <div key={subCategory} className="mb-2 last:mb-0">
+                      <p className="text-muted-foreground px-4 pt-2 pb-1 text-xs font-bold tracking-wider uppercase">
+                        {subCategory}
+                      </p>
+                      {subCategoryTools.map((tool) => (
+                        <Link
+                          key={tool.slug}
+                          href={`/${tool.slug}`}
+                          className="text-muted-foreground hover:text-foreground hover:bg-muted flex items-center px-4 py-2 text-sm transition-colors"
+                        >
+                          {tool.title}
+                        </Link>
+                      ))}
+                    </div>
                   ))}
                 </div>
               </div>

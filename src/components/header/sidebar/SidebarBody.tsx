@@ -7,9 +7,10 @@ import Link from 'next/link';
 import { Scrollbars } from 'react-custom-scrollbars-4';
 import { PiCaretDownBold } from 'react-icons/pi';
 
+import type { Tool } from '@/constants/tools';
 import { getAllCategories } from '@/utils/categories';
 import { cn } from '@/utils/classnames';
-import { getToolsByCategories } from '@/utils/tools';
+import { getToolsByCategories, getToolsBySubCategory } from '@/utils/tools';
 
 /**
  * Props for the NavLink component.
@@ -47,12 +48,12 @@ const NavLink = ({ href, children, className = '' }: NavLinkProps): JSX.Element 
  * @type {CategoryAccordionProps}
  * @property {string} title - The category label text
  * @property {string} slug - The category slug for the link
- * @property {{ slug: string; name: string }[]} tools - Array of tools in this category
+ * @property {Tool[]} tools - Array of tools in this category
  */
 interface CategoryAccordionProps {
   title: string;
   slug: string;
-  tools: { slug: string; title: string }[];
+  tools: Tool[];
 }
 
 /**
@@ -66,6 +67,7 @@ interface CategoryAccordionProps {
  */
 const CategoryAccordion = ({ title, slug, tools }: CategoryAccordionProps): JSX.Element => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const subCategoryGroups = getToolsBySubCategory(tools);
 
   return (
     <div className="mb-4">
@@ -95,13 +97,20 @@ const CategoryAccordion = ({ title, slug, tools }: CategoryAccordionProps): JSX.
         )}
       >
         <div className="overflow-hidden">
-          <ul className="mt-4 space-y-4 pl-2">
-            {tools.map((tool) => (
-              <li key={tool.slug}>
-                <NavLink href={`/${tool.slug}`}>{tool.title}</NavLink>
-              </li>
+          <div className="mt-4 space-y-4 pl-2">
+            {Object.entries(subCategoryGroups).map(([subCategory, subCategoryTools]) => (
+              <div key={subCategory}>
+                <h4 className="text-muted-foreground mb-2 text-xs font-bold tracking-wider uppercase">{subCategory}</h4>
+                <ul className="space-y-3">
+                  {subCategoryTools.map((tool) => (
+                    <li key={tool.slug}>
+                      <NavLink href={`/${tool.slug}`}>{tool.title}</NavLink>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
       </div>
     </div>

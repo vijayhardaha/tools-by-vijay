@@ -45,6 +45,29 @@ export const getToolsByCategories = (): Record<string, Tool[]> => {
 };
 
 /**
+ * Group tools by their sub-category
+ *
+ * Preserves the order of the tools array within each sub-category group.
+ *
+ * @param {Tool[]} categoryTools - The tools to group
+ *
+ * @returns {Record<string, Tool[]>} An object with sub-category labels as keys and arrays of tools as values
+ */
+export const getToolsBySubCategory = (categoryTools: Tool[]): Record<string, Tool[]> => {
+  return categoryTools.reduce(
+    (grouped, tool) => {
+      const key = tool.subCategory;
+      if (!grouped[key]) {
+        grouped[key] = [];
+      }
+      grouped[key].push(tool);
+      return grouped;
+    },
+    {} as Record<string, Tool[]>
+  );
+};
+
+/**
  * Get the icon for a specific tool
  *
  * @param {string} slug - The tool slug to get the icon for
