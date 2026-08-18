@@ -69,8 +69,8 @@ export function ToolInputHeader({
             {onRandom !== undefined && (
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Button type="button" variant="primary" size="icon" onClick={onRandom}>
-                    <MdCasino />
+                  <Button type="button" variant="primary" size="icon" onClick={onRandom} className="group">
+                    <MdCasino className="transition-transform duration-200 group-hover:rotate-6" />
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent>Random</TooltipContent>
@@ -80,8 +80,8 @@ export function ToolInputHeader({
             {onClear !== undefined && (
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Button type="button" variant="secondary" size="icon" onClick={onClear}>
-                    <MdCleaningServices />
+                  <Button type="button" variant="secondary" size="icon" onClick={onClear} className="group">
+                    <MdCleaningServices className="transition-transform duration-200 group-hover:rotate-6" />
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent>Clear</TooltipContent>
@@ -91,8 +91,8 @@ export function ToolInputHeader({
             {onReset !== undefined && (
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Button type="reset" variant="destructive" size="icon" onClick={onReset}>
-                    <RiResetLeftFill />
+                  <Button type="reset" variant="destructive" size="icon" onClick={onReset} className="group">
+                    <RiResetLeftFill className="transition-transform duration-200 group-hover:rotate-6" />
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent>Reset</TooltipContent>
