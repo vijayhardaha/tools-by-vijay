@@ -109,9 +109,7 @@ export function DesktopNav(): JSX.Element {
                 <div className="border-border min-w-56 rounded-xl border bg-white py-2 shadow-xl">
                   {Object.entries(getToolsBySubCategory(tools)).map(([subCategory, subCategoryTools]) => (
                     <div key={subCategory} className="mb-2 last:mb-0">
-                      <p className="text-muted-foreground px-4 pt-2 pb-1 text-xs font-bold tracking-wider uppercase">
-                        {subCategory}
-                      </p>
+                      <p className="text-muted-foreground px-4 pt-2 pb-1 text-sm font-bold uppercase">{subCategory}</p>
                       {subCategoryTools.map((tool) => (
                         <Link
                           key={tool.slug}
