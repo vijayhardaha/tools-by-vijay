@@ -60,23 +60,28 @@ export function WithInfoPage({ slug, schemaType = 'webPage', faqItems = [], chil
   const { title, description, seoTitle, seoDescription, path } = getSeoByPath(slug)!;
   const rootUrl = siteUrl();
 
-  // Select the schema.org type that best describes the page.
-  const pageSchema = (() => {
+  // Select the schema.org type(s) that best describe the page. About and
+  // Contact replace the generic WebPage schema with a more specific type,
+  // while FAQ supplements it (a FAQ page is still a WebPage).
+  const pageSchemas = (() => {
     switch (schemaType) {
       case 'about':
-        return aboutPageSchema({ rootUrl, path, breadcrumb: true }, { name: seoTitle, description: seoDescription });
+        return [aboutPageSchema({ rootUrl, path, breadcrumb: true }, { name: seoTitle, description: seoDescription })];
       case 'contact':
-        return contactPageSchema({ rootUrl, path, breadcrumb: true }, { name: seoTitle, description: seoDescription });
+        return [contactPageSchema({ rootUrl, path, breadcrumb: true }, { name: seoTitle, description: seoDescription })];
       case 'faq':
-        return buildFaqPageSchema(slug, faqItems);
+        return [
+          webPageSchema({ rootUrl, path, breadcrumb: true }, { name: seoTitle, description: seoDescription }),
+          buildFaqPageSchema(slug, faqItems),
+        ];
       default:
-        return webPageSchema({ rootUrl, path, breadcrumb: true }, { name: seoTitle, description: seoDescription });
+        return [webPageSchema({ rootUrl, path, breadcrumb: true }, { name: seoTitle, description: seoDescription })];
     }
   })();
 
   const schemaData = [
     ...globalSchema(),
-    pageSchema,
+    ...pageSchemas,
     breadcrumbSchema({ rootUrl, items: buildBreadcrumbs(path, title) }),
   ];
 

@@ -57,7 +57,9 @@ describe('WithInfoPage', () => {
 
     const script = container.querySelector('script[type="application/ld+json"]');
     expect(script).toBeInTheDocument();
+    // FAQ supplements the WebPage schema rather than replacing it.
     expect(script?.textContent).toContain('FAQPage');
+    expect(script?.textContent).toContain('WebPage');
     expect(script?.textContent).toContain('Is it free?');
   });
 });
