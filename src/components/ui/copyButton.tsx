@@ -53,8 +53,7 @@ export function CopyButton({
    * @returns {Promise<void>}
    */
   const handleCopy = async (): Promise<void> => {
-    if (!text) return;
-
+    // The button is disabled whenever text is empty, so no guard is needed here.
     try {
       await navigator.clipboard.writeText(text);
       setCopied(true);

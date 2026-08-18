@@ -39,12 +39,12 @@ export function Slider({
   min = 0,
   max = 100,
   step = 1,
-  value = min,
+  value,
   onValueChange,
   disabled = false,
   ...props
 }: SliderProps): JSX.Element {
-  const [localValue, setLocalValue] = useState(value);
+  const [localValue, setLocalValue] = useState(value ?? min);
 
   // Derive the effective value during render (fixes set-state-in-effect)
   const currentValue = value !== undefined ? value : localValue;

@@ -119,11 +119,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant = 'default', size = 'default', asChild = false, children, ...props }, ref) => {
     const Comp = asChild ? Slot : 'button';
 
-    // Ensure props is an object before spreading
-    const validProps = props && typeof props === 'object' ? props : {};
-
     return (
-      <Comp data-slot="button" className={cn(buttonVariants({ variant, size, className }))} {...validProps} ref={ref}>
+      <Comp data-slot="button" className={cn(buttonVariants({ variant, size, className }))} {...props} ref={ref}>
         {children}
       </Comp>
     );

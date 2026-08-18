@@ -173,7 +173,7 @@ const allSeoData: SeoData[] = [
  *
  * @param {SeoData[]} data - The merged SEO data array.
  */
-function validateSeoData(data: SeoData[]): void {
+export function validateSeoData(data: SeoData[]): void {
   const seen = new Set<string>();
 
   for (const item of data) {

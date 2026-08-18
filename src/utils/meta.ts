@@ -55,7 +55,10 @@ const isPlainObject = (value: unknown): value is AnyObject => {
  *
  * @returns {Record<string, unknown>} A new object resulting from merging source into target.
  */
-const mergeDeep = (target: Record<string, unknown>, source: Record<string, unknown>): Record<string, unknown> => {
+export const mergeDeep = (
+  target: Record<string, unknown>,
+  source: Record<string, unknown>
+): Record<string, unknown> => {
   const output = { ...target };
 
   if (isPlainObject(target) && isPlainObject(source)) {
