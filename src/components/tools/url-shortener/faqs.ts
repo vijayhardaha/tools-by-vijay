@@ -30,7 +30,7 @@ export const FAQS: ToolFaqItem[] = [
     heading: 'How does this tool work?',
     headingId: 'how-does-this-tool-work',
     answer:
-      'This tool uses the TinyURL API to create shortened links. Enter one or more URLs, and valid URLs get shortened links that redirect to your destination.',
+      'This tool uses the URLfy API to create shortened links. Enter one or more URLs, and valid URLs get shortened links that redirect to your destination.',
   },
   {
     heading: 'Can I shorten multiple URLs?',
@@ -40,7 +40,7 @@ export const FAQS: ToolFaqItem[] = [
   {
     heading: 'Are shortened URLs permanent?',
     headingId: 'are-shortened-urls-permanent',
-    answer: 'URLs shortened through TinyURL are typically permanent. However, keep a backup of your original URLs.',
+    answer: 'URLs shortened through URLfy are typically permanent. However, keep a backup of your original URLs.',
   },
   {
     heading: 'Can I use this tool offline?',

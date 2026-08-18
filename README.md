@@ -44,7 +44,7 @@ I often found myself switching between different online tools spread across mult
 
 | Tool                 | Description                                  |
 | -------------------- | -------------------------------------------- |
-| URL Shortener        | Bulk shorten links using TinyURL API         |
+| URL Shortener        | Bulk shorten links using URLfy API           |
 | URL Decoder/Encoder  | Encode or decode URL components              |
 | Base64 Encode/Decode | Convert text/files to Base64 format and back |
 

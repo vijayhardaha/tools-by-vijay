@@ -218,10 +218,10 @@ const tools: Tool[] = [
     slug: 'url-shortener',
     title: 'URL Shortener',
     description:
-      'Convert long, cumbersome URLs into short, manageable links using the TinyURL API. Perfect for social media and clean marketing campaigns.',
-    seoTitle: 'Bulk URL Shortener – Create Short Links via TinyURL',
+      'Convert long, cumbersome URLs into short, manageable links using the URLfy API. Perfect for social media and clean marketing campaigns.',
+    seoTitle: 'Bulk URL Shortener – Create Short Links via URLfy',
     seoDescription:
-      'Shorten multiple URLs instantly. Create clean, clickable links for social media and marketing using the TinyURL API.',
+      'Shorten multiple URLs instantly. Create clean, clickable links for social media and marketing using the URLfy API.',
     category: 'web-url',
   },
 

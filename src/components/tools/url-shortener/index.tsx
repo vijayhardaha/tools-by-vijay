@@ -1,11 +1,8 @@
-/// <reference path="./tinyurl.d.ts" />
-
 'use client';
 
 import type { JSX } from 'react';
 import { useState } from 'react';
 
-import TinyURL from 'tinyurl';
 import validUrl from 'valid-url';
 
 import { ToolExampleBlock } from '@/components/tool/ToolExampleBlock';
@@ -30,10 +27,15 @@ interface UrlResult {
 }
 
 /**
+ * Base URL for the URLfy API.
+ */
+const URLFY_API_URL = 'https://www.urlfy.org/api/v1/shorten';
+
+/**
  * Main component for the URL Shortener Tool.
  *
  * This component manages the state and functionality of the URL shortener tool,
- * allowing users to shorten multiple URLs in bulk using the TinyURL API.
+ * allowing users to shorten multiple URLs in bulk using the URLfy API.
  *
  * @returns {JSX.Element} The rendered URL Shortener Tool component.
  */
@@ -53,7 +55,7 @@ export function UrlShortener(): JSX.Element {
   const isValidUrl = (url: string): boolean => validUrl.isWebUri(url) !== undefined;
 
   /**
-   * Shortens a single URL using TinyURL API
+   * Shortens a single URL using the URLfy API
    *
    * @param {string} url - URL to shorten
    *
@@ -63,8 +65,18 @@ export function UrlShortener(): JSX.Element {
     if (!url || url.trim() === '') return '';
 
     try {
-      const shortenedUrl = await TinyURL.shorten(url);
-      return shortenedUrl;
+      const response = await fetch(URLFY_API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`URLfy API request failed with status ${response.status}`);
+      }
+
+      const data = (await response.json()) as { shortUrl: string };
+      return data.shortUrl;
     } catch (err) {
       console.error(`Error shortening URL ${url}:`, err);
       return 'Error: Failed to shorten URL';

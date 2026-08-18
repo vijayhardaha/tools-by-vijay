@@ -31,17 +31,17 @@ export function InfoBlock(): JSX.Element {
         <ToolInfoSectionContent>
           <p>
             The <strong>URL Shortener</strong> is a free online utility that helps you convert long URLs into short,
-            manageable links using the TinyURL API, perfect for social media, SMS marketing, and clean campaign URLs.
+            manageable links using the URLfy API, perfect for social media, SMS marketing, and clean campaign URLs.
           </p>
           <p>
             The URL Shortener sends each valid URL to the{' '}
             <a
-              href="https://tinyurl.com/"
+              href="https://www.urlfy.org/"
               className="font-medium text-pink-500 underline hover:no-underline"
               target="_blank"
               rel="noreferrer"
             >
-              TinyURL
+              URLfy
             </a>{' '}
             API, which generates a short redirect link. URLs are validated before processing to ensure they include
             proper protocol prefixes (http:// or https://). Invalid URLs are reported with clear error messages. The
@@ -57,7 +57,7 @@ export function InfoBlock(): JSX.Element {
           items={[
             'Bulk URL shortening with batch processing of multiple links simultaneously',
             'URL validation to ensure only properly formatted web addresses are processed',
-            'TinyURL API integration for reliable short link generation',
+            'URLfy API integration for reliable short link generation',
             'Individual copy buttons for each shortened URL',
             'Copy All button for bulk copying of all valid results',
             'Clickable shortened links for immediate testing and verification',
@@ -99,14 +99,14 @@ export function InfoBlock(): JSX.Element {
           <p>
             This tool uses the{' '}
             <a
-              href="https://tinyurl.com/"
+              href="https://www.urlfy.org/api-doc"
               className="font-medium text-pink-500 underline hover:no-underline"
               target="_blank"
               rel="noreferrer"
             >
-              TinyURL
+              URLfy
             </a>{' '}
-            API service for URL shortening and the{' '}
+            RESTful API for URL shortening and the{' '}
             <a
               href="https://www.npmjs.com/package/valid-url"
               className="font-medium text-pink-500 underline hover:no-underline"
@@ -115,8 +115,9 @@ export function InfoBlock(): JSX.Element {
             >
               valid-url
             </a>{' '}
-            npm package for URL validation. Each URL is validated for proper formatting, then sent to TinyURL&apos;s API
-            to generate a shortened redirect link. The tool processes one URL per line in the input, handling each
+            npm package for URL validation. Each URL is validated for proper formatting, then sent to URLfy&apos;s{' '}
+            <code className="bg-muted rounded px-1 font-medium text-pink-500">POST /api/v1/shorten</code> endpoint to
+            generate a shortened redirect link. The tool processes one URL per line in the input, handling each
             independently.
           </p>
         </ToolInfoSectionContent>

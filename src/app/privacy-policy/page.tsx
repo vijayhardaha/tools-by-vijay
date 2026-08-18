@@ -172,8 +172,8 @@ export default function PrivacyPolicyPage(): JSX.Element {
         <p>
           For tools that process data server-side, we use well-established open-source libraries including{' '}
           <strong>html-minifier-terser</strong>, <strong>clean-css</strong>, <strong>@putout/minify</strong>,
-          <strong>juice</strong>, <strong>Prettier</strong>, and <strong>tinyurl</strong>. These libraries run on our
-          own server infrastructure — your data is not sent to any third-party API or service for processing.
+          <strong>juice</strong>, and <strong>Prettier</strong>. These libraries run on our own server infrastructure —
+          your data is not sent to any third-party API or service for processing.
         </p>
 
         <h2 className="text-xl font-bold text-gray-900">Data Security</h2>
