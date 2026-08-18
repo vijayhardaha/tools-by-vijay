@@ -1,0 +1,185 @@
+# Tools by Vijay
+
+> Online tools to help developers and workers work faster and smarter. Boost your productivity with free, browser-based utilities.
+
+This site hosts 27 tools organised into 5 categories. Every tool runs entirely in the browser, so your input never leaves your device and results are instant.
+
+## Sitemaps
+
+[XML Sitemap](https://toolsbyvijay.vercel.app/sitemap.xml): Includes all crawlable and indexable pages.
+
+## Pages
+
+- https://toolsbyvijay.vercel.app/ (Home)
+- https://toolsbyvijay.vercel.app/tools -- All free online tools (27)
+- https://toolsbyvijay.vercel.app/about -- About Vijay Hardaha
+- https://toolsbyvijay.vercel.app/contact -- Contact
+- https://toolsbyvijay.vercel.app/faq -- Frequently asked questions
+- https://toolsbyvijay.vercel.app/privacy-policy -- Privacy policy
+- https://toolsbyvijay.vercel.app/terms-conditions -- Terms and conditions
+
+## Categories (5)
+- https://toolsbyvijay.vercel.app/tools/creative-generators -- Creative Generators (4 tools)
+- https://toolsbyvijay.vercel.app/tools/developer-suite -- Developer Suite (10 tools)
+- https://toolsbyvijay.vercel.app/tools/security-privacy -- Security & Privacy (2 tools)
+- https://toolsbyvijay.vercel.app/tools/web-url -- Web & URL (3 tools)
+- https://toolsbyvijay.vercel.app/tools/writing-editing -- Writing & Editing (8 tools)
+
+## Tools (27 tools)
+
+- **Barcode Generator**
+  - Description: Create industry-standard barcodes for product tracking and inventory management. Generate high-quality images ready for printing.
+  - Category: Creative Generators
+  - URL: https://toolsbyvijay.vercel.app/barcode-generator
+
+- **QRCode Generator**
+  - Description: Generate high-resolution QR codes from URLs, text, or contact information. Bridge the gap between physical media and digital content.
+  - Category: Creative Generators
+  - URL: https://toolsbyvijay.vercel.app/qrcode-generator
+
+- **Country Name Generator**
+  - Description: Generate unique, fictional country names for world-building. Ideal for authors, RPG game masters, and creative simulation projects.
+  - Category: Creative Generators
+  - URL: https://toolsbyvijay.vercel.app/country-name-generator
+
+- **Random Username Generator**
+  - Description: Generate creative and unique usernames based on your preferences. Stop struggling to find available handles for social media or gaming.
+  - Category: Creative Generators
+  - URL: https://toolsbyvijay.vercel.app/random-username-generator
+
+- **Unminify**
+  - Description: Reverse minification for HTML, CSS, and JavaScript. Beautify compressed code to make it readable for debugging and auditing.
+  - Category: Developer Suite
+  - URL: https://toolsbyvijay.vercel.app/unminify
+
+- **CSS Minifier**
+  - Description: Optimize your stylesheets by removing redundant spaces and comments. Achieve faster CSS rendering and improved overall site performance.
+  - Category: Developer Suite
+  - URL: https://toolsbyvijay.vercel.app/css-minifier
+
+- **HTML Minifier**
+  - Description: Compress HTML files by removing unnecessary whitespace, comments, and characters. Reduce page size to significantly improve website load speed.
+  - Category: Developer Suite
+  - URL: https://toolsbyvijay.vercel.app/html-minifier
+
+- **JS Minifier**
+  - Description: Compress JavaScript files to minimize payload size. Improve browser execution speed and reduce bandwidth consumption for your web applications.
+  - Category: Developer Suite
+  - URL: https://toolsbyvijay.vercel.app/js-minifier
+
+- **Dropdown to Array**
+  - Description: Quickly transform HTML `<select>` dropdown options into structured PHP or JavaScript arrays. Eliminate manual coding for data migration.
+  - Category: Developer Suite
+  - URL: https://toolsbyvijay.vercel.app/dropdown-to-array
+
+- **Text to Array**
+  - Description: Convert plain text lists into valid PHP or JavaScript arrays with auto-generated keys. Streamline your development workflow for configuration files.
+  - Category: Developer Suite
+  - URL: https://toolsbyvijay.vercel.app/text-to-array
+
+- **Text to PHP Variables**
+  - Description: Automatically wrap lines of text into PHP variable declarations. Streamline the process of creating configuration lists and arrays.
+  - Category: Developer Suite
+  - URL: https://toolsbyvijay.vercel.app/text-to-php-variables
+
+- **CSS Inliner**
+  - Description: Transform external or internal CSS rules into inline HTML styles. Essential for maximizing email template compatibility across all clients.
+  - Category: Developer Suite
+  - URL: https://toolsbyvijay.vercel.app/css-inliner
+
+- **JSON Sorter**
+  - Description: Alphabetically sort JSON keys to make complex data structures readable. Perfect for debugging API responses and ensuring data consistency.
+  - Category: Developer Suite
+  - URL: https://toolsbyvijay.vercel.app/json-sorter
+
+- **PX to REM Converter**
+  - Description: Convert pixel (PX) values to REM units for scalable web typography. Essential for building accessible, responsive designs that adapt to user settings.
+  - Category: Developer Suite
+  - URL: https://toolsbyvijay.vercel.app/px-to-rem-converter
+
+- **Password Generator**
+  - Description: Create strong, high-entropy passwords instantly. Customize length and complexity to secure your professional and personal accounts against breaches.
+  - Category: Security & Privacy
+  - URL: https://toolsbyvijay.vercel.app/password-generator
+
+- **Password Strength Checker**
+  - Description: Analyze your password strength in real-time. Receive instant security feedback and actionable tips to protect yourself from brute-force attacks.
+  - Category: Security & Privacy
+  - URL: https://toolsbyvijay.vercel.app/password-strength-checker
+
+- **Base64 Encode/Decode**
+  - Description: Convert text or files to Base64 format and back again. Essential for embedding images in CSS/HTML or transmitting binary data via text.
+  - Category: Web & URL
+  - URL: https://toolsbyvijay.vercel.app/base64-encode-decode
+
+- **URL Decoder/Encoder**
+  - Description: Encode or decode URL components to ensure special characters are handled correctly across different web browsers and servers.
+  - Category: Web & URL
+  - URL: https://toolsbyvijay.vercel.app/url-decoder-encoder
+
+- **URL Shortener**
+  - Description: Convert long, cumbersome URLs into short, manageable links using the URLfy API. Perfect for social media and clean marketing campaigns.
+  - Category: Web & URL
+  - URL: https://toolsbyvijay.vercel.app/url-shortener
+
+- **Bulk Slugify**
+  - Description: Transform multiple lines of text into SEO-friendly slugs simultaneously. Ideal for batch processing large sets of URLs for e-commerce or migrations.
+  - Category: Writing & Editing
+  - URL: https://toolsbyvijay.vercel.app/bulk-slugify
+
+- **Slugify**
+  - Description: Convert any string into clean, SEO-optimized URL slugs. Perfect for creating readable, search-engine-friendly permalinks for blogs and websites.
+  - Category: Writing & Editing
+  - URL: https://toolsbyvijay.vercel.app/slugify
+
+- **Alphabetical Line Sorter**
+  - Description: Organize text lines alphabetically, numerically, or in reverse order. Efficiently manage lists, logs, and data sets.
+  - Category: Writing & Editing
+  - URL: https://toolsbyvijay.vercel.app/alphabetical-line-sorter
+
+- **Duplicate Line Removal**
+  - Description: Clean your datasets by removing duplicate lines of text. Maintain original order while ensuring every entry is unique.
+  - Category: Writing & Editing
+  - URL: https://toolsbyvijay.vercel.app/duplicate-line-removal
+
+- **Shuffle Text Lines**
+  - Description: Randomize the order of your text lines instantly. Useful for creating fair lists, randomized test data, or creative brainstorming.
+  - Category: Writing & Editing
+  - URL: https://toolsbyvijay.vercel.app/shuffle-text-lines
+
+- **Character Count**
+  - Description: Get a detailed analysis of your text, including character count, word count, and space count. Perfect for meeting strict social media or academic limits.
+  - Category: Writing & Editing
+  - URL: https://toolsbyvijay.vercel.app/character-count
+
+- **Replace Quotes**
+  - Description: Easily toggle between "smart" curly quotes and straight quotes. Ensure professional typography for publishing or clean code for development.
+  - Category: Writing & Editing
+  - URL: https://toolsbyvijay.vercel.app/replace-quotes
+
+- **Text Case Changer**
+  - Description: Instantly convert text between UPPERCASE, lowercase, Title Case, and Sentence case. Quickly fix formatting errors in large blocks of text.
+  - Category: Writing & Editing
+  - URL: https://toolsbyvijay.vercel.app/text-case-changer
+
+## Navigation
+- **All Tools** -- /tools
+- **Categories** -- /tools (dropdown with all links)
+- **About** -- /about
+- **Contact** -- /contact
+- **FAQ** -- /faq
+
+## URL Patterns
+- https://toolsbyvijay.vercel.app/{tool-slug}
+- https://toolsbyvijay.vercel.app/tools/{category-slug}
+- https://toolsbyvijay.vercel.app/tools
+- https://toolsbyvijay.vercel.app/about
+- https://toolsbyvijay.vercel.app/contact
+- https://toolsbyvijay.vercel.app/faq
+- https://toolsbyvijay.vercel.app/privacy-policy
+- https://toolsbyvijay.vercel.app/terms-conditions
+
+---
+
+Generated at: 2026-08-18T01:26:39.455Z
+Total tools: 27
