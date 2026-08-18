@@ -52,7 +52,7 @@ function buildLlmstxt(): string {
   lines.push('- ' + SITE_URL + '/tools -- All free online tools (' + tools.length + ')');
   lines.push('- ' + SITE_URL + '/about -- About Vijay Hardaha');
   lines.push('- ' + SITE_URL + '/contact -- Contact');
-  lines.push('- ' + SITE_URL + '/faq -- Frequently asked questions');
+  lines.push('- ' + SITE_URL + '/faq -- Frequently asked questions (FAQPage schema)');
   lines.push('- ' + SITE_URL + '/privacy-policy -- Privacy policy');
   lines.push('- ' + SITE_URL + '/terms-conditions -- Terms and conditions');
   lines.push('');
