@@ -58,12 +58,16 @@ export function WithInfoPage({ slug, schemaType = 'webPage', children }: InfoPag
   const rootUrl = siteUrl();
 
   // Select the schema.org type that best describes the page.
-  const pageSchema =
-    schemaType === 'about'
-      ? aboutPageSchema({ rootUrl, path, breadcrumb: true }, { name: seoTitle, description: seoDescription })
-      : schemaType === 'contact'
-        ? contactPageSchema({ rootUrl, path, breadcrumb: true }, { name: seoTitle, description: seoDescription })
-        : webPageSchema({ rootUrl, path, breadcrumb: true }, { name: seoTitle, description: seoDescription });
+  const pageSchema = (() => {
+    switch (schemaType) {
+      case 'about':
+        return aboutPageSchema({ rootUrl, path, breadcrumb: true }, { name: seoTitle, description: seoDescription });
+      case 'contact':
+        return contactPageSchema({ rootUrl, path, breadcrumb: true }, { name: seoTitle, description: seoDescription });
+      default:
+        return webPageSchema({ rootUrl, path, breadcrumb: true }, { name: seoTitle, description: seoDescription });
+    }
+  })();
 
   const schemaData = [
     ...globalSchema(),
