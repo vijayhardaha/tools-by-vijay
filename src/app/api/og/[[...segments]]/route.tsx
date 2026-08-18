@@ -52,9 +52,11 @@ interface OgProps {
  *
  * @param {string} baseUrl - The base URL for the font files.
  *
- * @returns {Promise<Array<{name: string; data: ArrayBuffer; weight: number; style: string}>>} Font options for ImageResponse.
+ * @returns {Promise<Array<{name: string; data: ArrayBuffer; weight: 400 | 500 | 700; style: 'normal'}>>} Font options for ImageResponse.
  */
-async function loadFonts(baseUrl: string) {
+async function loadFonts(
+  baseUrl: string
+): Promise<Array<{ name: string; data: ArrayBuffer; weight: 400 | 500 | 700; style: 'normal' }>> {
   const weights = [
     { weight: 400 as const, file: 'FunnelDisplay-Regular.ttf' },
     { weight: 500 as const, file: 'FunnelDisplay-Medium.ttf' },
