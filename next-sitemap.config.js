@@ -11,7 +11,7 @@
 
 import { createSitemapConfig } from '@vijayhardaha/dev-config/next-sitemap';
 
-const siteDomain = 'https://toolsbyvijay.vercel.app';
+const siteDomain = process.env.NEXT_PUBLIC_SITE_URL || 'https://toolsbyvijay.vercel.app';
 
 /**
  * All category slugs for dynamic category pages at /tools/:slug.

@@ -14,7 +14,7 @@ import tools from '../src/constants/tools';
 // ── Config ─────────────────────────────────────────────────────────────────
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const OUTPUT_FILE = path.resolve(__dirname, '..', 'public', 'llms.txt');
-const SITE_URL = 'https://toolsbyvijay.vercel.app';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://toolsbyvijay.vercel.app';
 
 /**
  * Assemble the llms.txt markdown content from the site constants.
