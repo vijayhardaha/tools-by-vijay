@@ -1,6 +1,36 @@
 import { describe, expect, it } from 'vitest';
 
-import { buildFaqPageSchema } from '@/utils/faq';
+import { buildFaqPageSchema, reactNodeToText } from '@/utils/faq';
+
+describe('reactNodeToText()', () => {
+  it('returns plain text for a simple string', () => {
+    expect(reactNodeToText('Hello world')).toBe('Hello world');
+  });
+
+  it('concatenates strings inside a fragment', () => {
+    expect(reactNodeToText(<>Visit the About page.</>)).toBe('Visit the About page.');
+  });
+
+  it('drops markup but keeps link text', () => {
+    expect(
+      reactNodeToText(
+        <>
+          Read the <a href="/about">About</a> page.
+        </>
+      )
+    ).toBe('Read the About page.');
+  });
+
+  it('collapses whitespace and trims the result', () => {
+    expect(reactNodeToText('  line one\n    line two  ')).toBe('line one line two');
+  });
+
+  it('handles null, undefined, and booleans as empty strings', () => {
+    expect(reactNodeToText(null)).toBe('');
+    expect(reactNodeToText(undefined)).toBe('');
+    expect(reactNodeToText(true)).toBe('');
+  });
+});
 
 describe('buildFaqPageSchema()', () => {
   it('builds a FAQPage schema entity for a tool slug', () => {
