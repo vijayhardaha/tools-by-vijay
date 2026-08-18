@@ -8,6 +8,7 @@ import { PageContent } from '@/components/page/PageContent';
 import { PageHeader } from '@/components/page/PageHeader';
 import { PageLayout } from '@/components/page/PageLayout';
 import { buildBreadcrumbs } from '@/utils/breadcrumb';
+import { buildFaqPageSchema, type ToolFaqItem } from '@/utils/faq';
 import { buildMetadata } from '@/utils/meta';
 import { globalSchema } from '@/utils/schema';
 import { getSeoByPath, siteUrl } from '@/utils/seo';
@@ -17,7 +18,7 @@ import { getSeoByPath, siteUrl } from '@/utils/seo';
  *
  * @type {InfoPageSchemaType}
  */
-type InfoPageSchemaType = 'webPage' | 'about' | 'contact';
+type InfoPageSchemaType = 'webPage' | 'about' | 'contact' | 'faq';
 
 /**
  * Configuration for a generated info page.
@@ -25,11 +26,13 @@ type InfoPageSchemaType = 'webPage' | 'about' | 'contact';
  * @type {InfoPageConfig}
  * @property {string} slug - The page slug used to look up SEO data (e.g. 'about').
  * @property {InfoPageSchemaType} [schemaType] - Which schema.org type to render (default 'webPage').
+ * @property {ToolFaqItem[]} [faqItems] - FAQ entries used when schemaType is 'faq'.
  * @property {ReactNode} children - The page-specific content rendered inside {@link PageContent}.
  */
 interface InfoPageConfig {
   slug: string;
   schemaType?: InfoPageSchemaType;
+  faqItems?: ToolFaqItem[];
   children: ReactNode;
 }
 
@@ -53,7 +56,7 @@ export function getInfoPageMetadata(slug: string): Metadata {
  *
  * @returns {JSX.Element} The rendered info page layout.
  */
-export function WithInfoPage({ slug, schemaType = 'webPage', children }: InfoPageConfig): JSX.Element {
+export function WithInfoPage({ slug, schemaType = 'webPage', faqItems = [], children }: InfoPageConfig): JSX.Element {
   const { title, description, seoTitle, seoDescription, path } = getSeoByPath(slug)!;
   const rootUrl = siteUrl();
 
@@ -64,6 +67,8 @@ export function WithInfoPage({ slug, schemaType = 'webPage', children }: InfoPag
         return aboutPageSchema({ rootUrl, path, breadcrumb: true }, { name: seoTitle, description: seoDescription });
       case 'contact':
         return contactPageSchema({ rootUrl, path, breadcrumb: true }, { name: seoTitle, description: seoDescription });
+      case 'faq':
+        return buildFaqPageSchema(slug, faqItems);
       default:
         return webPageSchema({ rootUrl, path, breadcrumb: true }, { name: seoTitle, description: seoDescription });
     }

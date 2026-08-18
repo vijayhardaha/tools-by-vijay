@@ -43,4 +43,21 @@ describe('WithInfoPage', () => {
     expect(screen.getByRole('main')).toBeInTheDocument();
     expect(screen.getByText('Contact body')).toBeInTheDocument();
   });
+
+  it('injects FAQPage JSON-LD schema when schemaType is faq', () => {
+    const { container } = render(
+      <WithInfoPage
+        slug="faq"
+        schemaType="faq"
+        faqItems={[{ heading: 'Is it free?', headingId: 'is-it-free', answer: 'Yes, completely free.' }]}
+      >
+        <p>FAQ body</p>
+      </WithInfoPage>
+    );
+
+    const script = container.querySelector('script[type="application/ld+json"]');
+    expect(script).toBeInTheDocument();
+    expect(script?.textContent).toContain('FAQPage');
+    expect(script?.textContent).toContain('Is it free?');
+  });
 });
