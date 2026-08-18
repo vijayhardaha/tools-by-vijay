@@ -2,7 +2,7 @@
 
 import type { JSX, SubmitEvent } from 'react';
 
-import { ToolInputHeader } from '@/components/tool/tool-input-header';
+import { ToolInputHeader } from '@/components/tool/ToolInputHeader';
 import type { HtmlMinifierOptions } from '@/components/tools/html-minifier';
 import { Alert } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';

@@ -3,7 +3,7 @@
 import type { JSX, ReactNode } from 'react';
 import { useEffect, useRef, useState } from 'react';
 
-import { ToolGridSection } from '@/components/tool/tool-grids';
+import { ToolGridSection } from '@/components/tool/ToolGrids';
 import toolsList from '@/constants/tools';
 import type { Tool } from '@/constants/tools';
 import { getToolsByCategory } from '@/utils/tools';

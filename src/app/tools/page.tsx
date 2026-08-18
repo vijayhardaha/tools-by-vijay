@@ -8,7 +8,7 @@ import type { Metadata } from 'next';
 import { PageContent } from '@/components/page/PageContent';
 import { PageHeader } from '@/components/page/PageHeader';
 import { PageLayout } from '@/components/page/PageLayout';
-import { ToolCard } from '@/components/tool/tool-card';
+import { ToolCard } from '@/components/tool/ToolCard';
 import categories from '@/constants/categories';
 import type { Category } from '@/constants/categories';
 import { categoryIcons } from '@/constants/icons';

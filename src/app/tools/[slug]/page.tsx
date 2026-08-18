@@ -10,7 +10,7 @@ import { CategoryAbout } from '@/app/tools/_components/category-about';
 import { PageContent } from '@/components/page/PageContent';
 import { PageHeader } from '@/components/page/PageHeader';
 import { PageLayout } from '@/components/page/PageLayout';
-import { ToolCard } from '@/components/tool/tool-card';
+import { ToolCard } from '@/components/tool/ToolCard';
 import { categoryIcons } from '@/constants/icons';
 import { buildBreadcrumbs } from '@/utils/breadcrumb';
 import { getCategoryBySlug } from '@/utils/categories';

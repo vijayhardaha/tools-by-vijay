@@ -6,7 +6,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 import { PageLayout } from '@/components/page/PageLayout';
-import { ToolCard } from '@/components/tool/tool-card';
+import { ToolCard } from '@/components/tool/ToolCard';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Container } from '@/components/ui/container';
