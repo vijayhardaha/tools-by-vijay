@@ -46,40 +46,39 @@ export function getInfoPageMetadata(slug: string): Metadata {
 }
 
 /**
- * Wrap an info page in the standard layout (JSON-LD schema, header, and
- * content shell), removing the boilerplate shared by all info pages.
+ * Render an info page wrapped in the standard layout (JSON-LD schema, header,
+ * and content shell), removing the boilerplate shared by all info pages.
  *
- * @param {InfoPageConfig} config - The page configuration.
+ * @param {InfoPageConfig} props - The page configuration.
  *
- * @returns {() => JSX.Element} A page component rendering the standard layout.
+ * @returns {JSX.Element} The rendered info page layout.
  */
-export function WithInfoPage({ slug, schemaType = 'webPage', children }: InfoPageConfig): () => JSX.Element {
-  return function InfoPage(): JSX.Element {
-    const { title, description, seoTitle, seoDescription, path } = getSeoByPath(slug)!;
-    const rootUrl = siteUrl();
+export function WithInfoPage({ slug, schemaType = 'webPage', children }: InfoPageConfig): JSX.Element {
+  const { title, description, seoTitle, seoDescription, path } = getSeoByPath(slug)!;
+  const rootUrl = siteUrl();
 
-    // Select the schema.org type that best describes the page.
-    const pageSchema =
-      schemaType === 'about'
-        ? aboutPageSchema({ rootUrl, path, breadcrumb: true }, { name: seoTitle, description: seoDescription })
-        : schemaType === 'contact'
-          ? contactPageSchema({ rootUrl, path, breadcrumb: true }, { name: seoTitle, description: seoDescription })
-          : webPageSchema({ rootUrl, path, breadcrumb: true }, { name: seoTitle, description: seoDescription });
+  // Select the schema.org type that best describes the page.
+  const pageSchema =
+    schemaType === 'about'
+      ? aboutPageSchema({ rootUrl, path, breadcrumb: true }, { name: seoTitle, description: seoDescription })
+      : schemaType === 'contact'
+        ? contactPageSchema({ rootUrl, path, breadcrumb: true }, { name: seoTitle, description: seoDescription })
+        : webPageSchema({ rootUrl, path, breadcrumb: true }, { name: seoTitle, description: seoDescription });
 
-    const schemaData = [
-      ...globalSchema(),
-      pageSchema,
-      breadcrumbSchema({ rootUrl, items: buildBreadcrumbs(path, title) }),
-    ];
+  const schemaData = [
+    ...globalSchema(),
+    pageSchema,
+    breadcrumbSchema({ rootUrl, items: buildBreadcrumbs(path, title) }),
+  ];
 
-    return (
-      <>
-        <JsonLd data={schemaData} />
-        <PageLayout>
-          <PageHeader pageName={title} title={title} description={description} />
-          <PageContent>{children}</PageContent>
-        </PageLayout>
-      </>
-    );
-  };
+  return (
+    <>
+      <JsonLd data={schemaData} />
+
+      <PageLayout>
+        <PageHeader pageName={title} title={title} description={description} />
+        <PageContent>{children}</PageContent>
+      </PageLayout>
+    </>
+  );
 }

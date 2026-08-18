@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import { FaqContent } from '@/app/faq/_components/faq-content';
 import { getInfoPageMetadata, WithInfoPage } from '@/components/page/WithInfoPage';
 
@@ -13,4 +15,10 @@ export const metadata = getInfoPageMetadata('faq');
  *
  * @returns {JSX.Element} The rendered FAQ page.
  */
-export default WithInfoPage({ slug: 'faq', children: <FaqContent /> });
+export default function FaqPage(): JSX.Element {
+  return (
+    <WithInfoPage slug="faq">
+      <FaqContent />
+    </WithInfoPage>
+  );
+}
