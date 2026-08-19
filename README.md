@@ -80,6 +80,16 @@ bun run dev
 
 Open your browser at [http://localhost:3000](http://localhost:3000)
 
+### 🔑 Redis (optional) — API rate limiting
+
+The API route limiter is backed by a shared Vercel KV (Upstash Redis) store. To enable it, copy the example env file and fill in your credentials, or link **Storage → KV** in the Vercel dashboard (env vars are auto-injected, no code change needed):
+
+```bash
+cp .env.example .env.local
+```
+
+Rate limiting fails open (requests allowed) when Redis isn't configured, so the app runs fine without it — limits just aren't enforced.
+
 ## 🛠️ Tech Stack
 
 - [Next.js 16](https://nextjs.org/) (App Router, Turbopack)
@@ -88,6 +98,7 @@ Open your browser at [http://localhost:3000](http://localhost:3000)
 - [Bun](https://bun.sh/) (Package manager + runtime)
 - [React Icons](https://react-icons.github.io/react-icons/) (Phosphor Duotone)
 - [@vijayhardaha/schema-builder](https://www.npmjs.com/package/@vijayhardaha/schema-builder) (Schema.org structured data)
+- [Upstash Redis](https://upstash.com/) via [Vercel KV](https://vercel.com/docs/storage/vercel-kv) (API rate limiting)
 
 ## 📄 Pages
 

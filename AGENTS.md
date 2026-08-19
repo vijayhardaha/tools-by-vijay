@@ -8,6 +8,7 @@
 - **Package manager**: Bun (v1+)
 - **Node**: v24 (`.nvmrc`)
 - **Deployment**: Vercel (`output: 'standalone'`)
+- **Datastore / rate limiting**: Vercel KV (Upstash Redis) via `@upstash/redis` — see Environment Variables
 
 ## Essential Commands
 
@@ -161,6 +162,8 @@ All accept JSON body, return JSON. Error format: `{ error: string }` with approp
 
 **Security**: `src/proxy.ts` (`config.matcher: '/api/:path*'`) guards all API routes — validates origin/referer against the production URL (and localhost:3000 in dev only) and enforces a 2MB body limit. Requests without a valid origin get 403, oversized bodies get 413. The `unminify-code` route additionally runs on Edge Runtime (`export const runtime = 'edge'`).
 
+**Rate limiting**: Every API route is guarded by `rateLimit()` from `src/utils/api.ts` (default 30 req / 60s per IP → 429 + `Retry-After`). Counters live in **Vercel KV (Upstash Redis)** via `@upstash/redis` using an atomic fixed-window counter (`INCR`, then `EXPIRE` on the first request in a window), so limits are shared across all serverless/edge instances — not held in memory. The limiter **fails open** (allows requests) when Redis is not configured, so local dev and builds never break.
+
 ## Adding a New Tool
 
 Required files to create/modify:
@@ -219,6 +222,7 @@ Required files to create/modify:
 ## Gotchas & Non-Obvious Facts
 
 - **`src/proxy.ts`** is a Next.js 16 Proxy file convention. It runs before every `/api/*` request and handles origin validation + body size limits centrally. Don't duplicate that logic in individual route handlers.
+- **Rate limiting** uses Vercel KV (Upstash Redis) via `@upstash/redis`, never in-memory. `rateLimit()` is async and **fails open** when Redis is unconfigured, so don't rely on it until you've linked Vercel KV / set the env vars. Credentials are read lazily from `UPSTASH_REDIS_REST_URL`/`UPSTASH_REDIS_REST_TOKEN` or `KV_REST_API_URL`/`KV_REST_API_TOKEN`.
 - **No test framework** exists in this project. Don't look for `jest`, `vitest`, or `playwright` config.
 - **`@vijayhardaha/dev-config`** is a shared private package that owns ESLint, Prettier, Commitlint, and tsconfig base configs. Don't modify their behavior at the project level unless you need project-specific overrides.
 - **Tailwind v4** uses the new CSS-based config (`@theme` in `globals.css`), not the old `tailwind.config.js` JS approach.
@@ -233,6 +237,17 @@ Required files to create/modify:
 - **Schema constants** are defined at module level for static pages (tools, about, contact, faq, terms, privacy, tools listing) and inside the component for the dynamic category page (`/tools/[slug]`) which depends on `params`.
 - **Unified SEO lookup** (`allSeoData` in `utils/seo.ts`) merges pages, tools, and categories into a single array — paths stored with leading slash. Use `getSeoByPath()` for lookups.
 - **`Tool.title`** is the display name (was `Tool.name`), keep this in mind when referencing tool fields.
+
+## Environment Variables
+
+| Variable                   | Required | Description                             |
+| -------------------------- | -------- | --------------------------------------- |
+| `UPSTASH_REDIS_REST_URL`   | No\*     | Upstash Redis REST endpoint (preferred) |
+| `UPSTASH_REDIS_REST_TOKEN` | No\*     | Upstash Redis REST token (preferred)    |
+| `KV_REST_API_URL`          | No\*     | Vercel KV REST endpoint (fallback)      |
+| `KV_REST_API_TOKEN`        | No\*     | Vercel KV REST token (fallback)         |
+
+\* Only used for API rate limiting (`src/utils/api.ts`). Link **Storage → KV (Upstash Redis)** in the Vercel dashboard and the vars are injected automatically. The code prefers `UPSTASH_REDIS_REST_*` and falls back to `KV_REST_API_*`; both are read lazily. Rate limiting is inert (fails open) when neither pair is present — see `.env.example`.
 
 ## Deployment
 
