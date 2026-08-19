@@ -1,3 +1,5 @@
+import { Redis } from '@upstash/redis';
+
 /**
  * Centralized configured limits for API request validation.
  *
@@ -55,99 +57,120 @@ export function withTimeout<T>(
 // ============================================================================
 
 /**
- * Simple in-memory, IP-based rate limiting for API routes.
+ * Lazily-created Upstash Redis client backed by Vercel KV.
  *
- * Tracks request counts per IP within a sliding window and rejects requests
- * that exceed the configured limit. This protects expensive operations
- * (minification, encoding, etc.) from abuse and distributed denial of service.
+ * Vercel's free "KV" storage is Upstash Redis under the hood. Connection
+ * secrets are read from `process.env`, preferring `UPSTASH_REDIS_REST_URL` /
+ * `UPSTASH_REDIS_REST_TOKEN` (the names Upstash provides) and falling back to
+ * `KV_REST_API_URL` / `KV_REST_API_TOKEN` (the names Vercel KV exports), so
+ * either works after linking storage in the Vercel dashboard.
  *
- * @type {RateLimitRecord}
- * @property {number} count - Number of requests counted within the current window.
- * @property {number} resetTime - Epoch ms at which the current window resets.
+ * `undefined` until first use; `null` once we've confirmed Redis is unavailable.
  */
-interface RateLimitRecord {
-  count: number;
-  resetTime: number;
+let redisClient: Redis | null | undefined;
+
+/**
+ * Return (creating on first use) the Redis client, or `null` when unavailable.
+ *
+ * When Redis is not configured the limiter fails-open so local development and
+ * the build never break due to a missing datastore.
+ *
+ * @returns {Redis | null} The configured client, or null when unavailable.
+ */
+function getRedis(): Redis | null {
+  if (redisClient !== undefined) {
+    return redisClient;
+  }
+
+  const url = process.env['UPSTASH_REDIS_REST_URL'] || process.env['KV_REST_API_URL'];
+  const token = process.env['UPSTASH_REDIS_REST_TOKEN'] || process.env['KV_REST_API_TOKEN'];
+
+  if (!url || !token) {
+    console.warn('[RateLimit] Redis not configured — rate limiting disabled.');
+    redisClient = null;
+    return redisClient;
+  }
+
+  redisClient = new Redis({ url, token });
+  return redisClient;
 }
 
-/** In-memory store of request counts keyed by client IP. */
-const requestCounts = new Map<string, RateLimitRecord>();
+/**
+ * Build the namespaced Redis key for a client IP.
+ *
+ * @param {string} ip - The client IP address.
+ *
+ * @returns {string} The Redis key for the given IP.
+ */
+function rateLimitKey(ip: string): string {
+  return `rate-limit:v1:${ip}`;
+}
 
 /**
  * Increment the request counter for an IP and report whether the request is
  * allowed to proceed.
  *
+ * Backed by Redis (Vercel KV) with an atomic fixed-window counter: each request
+ * runs `INCR` on the per-IP key and, on the first request in a window, sets an
+ * `EXPIRE` equal to the window length. Because the counter lives in a shared,
+ * distributed store (rather than a per-instance `Map`), limits hold across all
+ * serverless and edge invocations.
+ *
+ * When Redis is not configured the request is allowed (fail-open).
+ *
  * @param {string} ip - The client IP address.
  * @param {number} [limit] - Max requests allowed within the window (default 30).
  * @param {number} [windowMs] - Length of the window in ms (default 60,000).
  *
- * @returns {boolean} True when the request is within the limit, false when rate-limited.
+ * @returns {Promise<boolean>} True when the request is within the limit, false when rate-limited.
  */
-export function rateLimit(ip: string, limit: number = 30, windowMs: number = 60000): boolean {
-  const now = Date.now();
-  const record = requestCounts.get(ip);
+export async function rateLimit(ip: string, limit: number = 30, windowMs: number = 60000): Promise<boolean> {
+  const client = getRedis();
 
-  // No prior record, or window expired → start a fresh window
-  if (!record || record.resetTime < now) {
-    requestCounts.set(ip, { count: 1, resetTime: now + windowMs });
+  // No datastore configured — allow to keep local/dev working.
+  if (!client) {
     return true;
   }
 
-  if (record.count < limit) {
-    record.count++;
-    return true;
+  const key = rateLimitKey(ip);
+  const ttlSeconds = Math.max(1, Math.floor(windowMs / 1000));
+
+  // Atomic increment; the batch of upstream callers can't race past the limit.
+  const count = await client.incr(key);
+
+  // First request within the window → (re)arm the TTL so the key auto-expires.
+  if (count === 1) {
+    await client.expire(key, ttlSeconds);
   }
 
-  return false;
+  return count <= limit;
 }
 
 /**
  * Get the remaining allowance and window reset time for an IP.
  *
- * Utility function for monitoring/debugging. Not required for rate limiting to work.
+ * Utility function for monitoring/debugging. Not required for rate limiting to
+ * work. Returns a full allowance when Redis is not configured.
  *
  * @param {string} ip - The client IP address.
  * @param {number} [limit] - The configured per-window limit (default 30).
  *
- * @returns {{ remaining: number; resetTime: number }} Remaining requests and reset time.
+ * @returns {Promise<{ remaining: number; resetTime: number }>} Remaining requests and reset time.
  *
  * @internal
  */
-export function getRateLimit(ip: string, limit: number = 30): { remaining: number; resetTime: number } {
-  const record = requestCounts.get(ip);
+export async function getRateLimit(ip: string, limit: number = 30): Promise<{ remaining: number; resetTime: number }> {
+  const client = getRedis();
 
-  if (!record || record.resetTime < Date.now()) {
+  if (!client) {
     return { remaining: limit, resetTime: Date.now() + 60000 };
   }
 
-  return { remaining: Math.max(0, limit - record.count), resetTime: record.resetTime };
-}
+  const key = rateLimitKey(ip);
+  const [count, ttlSeconds] = await Promise.all([client.get<number>(key), client.ttl(key)]);
 
-/**
- * Remove expired entries from the in-memory store to prevent unbounded growth.
- *
- * Called automatically every 5 minutes. Can also be called manually if needed.
- *
- * @internal
- */
-export function cleanupExpiredEntries(): void {
-  const now = Date.now();
-  let removed = 0;
+  const remaining = Math.max(0, limit - (count ?? 0));
+  const resetTime = ttlSeconds > 0 ? Date.now() + ttlSeconds * 1000 : Date.now() + 60000;
 
-  for (const [ip, record] of requestCounts.entries()) {
-    if (record.resetTime < now) {
-      requestCounts.delete(ip);
-      removed++;
-    }
-  }
-
-  if (removed > 0) {
-    console.log(`[RateLimit] Cleaned up ${removed} expired entries`);
-  }
-}
-
-// Periodically purge stale entries. Guarded for environments (e.g. Edge) where
-// a global timer may not be available.
-if (typeof setInterval !== 'undefined') {
-  setInterval(cleanupExpiredEntries, 5 * 60 * 1000);
+  return { remaining, resetTime };
 }

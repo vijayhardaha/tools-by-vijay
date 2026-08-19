@@ -16,7 +16,7 @@ export async function POST(request: Request): Promise<Response> {
   try {
     // Rate limit by client IP to protect against abuse
     const clientIp = request.headers.get('x-forwarded-for') || 'unknown';
-    if (!rateLimit(clientIp)) {
+    if (!(await rateLimit(clientIp))) {
       return NextResponse.json(
         { error: 'Rate limit exceeded. Please try again later.' },
         { status: 429, headers: { 'Retry-After': '60' } }
