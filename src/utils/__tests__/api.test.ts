@@ -184,3 +184,107 @@ describe('safeApiErrorMessage', () => {
     expect(safeApiErrorMessage(undefined, 'hint', 'fallback')).toBe('fallback');
   });
 });
+
+describe('getClientIp', () => {
+  it('takes the first entry of a comma-separated x-forwarded-for chain', async () => {
+    const { getClientIp } = await import('../api');
+
+    const request = new Request('http://localhost/api/test', {
+      headers: { 'x-forwarded-for': '203.0.113.7, 10.0.0.1, 10.0.0.2' },
+    });
+
+    expect(getClientIp(request)).toBe('203.0.113.7');
+  });
+
+  it('falls back to unknown when the header is missing or empty', async () => {
+    const { getClientIp } = await import('../api');
+
+    expect(getClientIp(new Request('http://localhost/api/test'))).toBe('unknown');
+    expect(getClientIp(new Request('http://localhost/api/test', { headers: { 'x-forwarded-for': '' } }))).toBe(
+      'unknown'
+    );
+  });
+});
+
+describe('withApiGuard', () => {
+  beforeEach(() => {
+    vi.resetModules();
+    // Fail-open limiter: no Redis env, so guard tests focus on wrapper behavior.
+    delete process.env['UPSTASH_REDIS_REST_URL'];
+    delete process.env['UPSTASH_REDIS_REST_TOKEN'];
+  });
+
+  afterEach(() => {
+    delete process.env['UPSTASH_REDIS_REST_URL'];
+    delete process.env['UPSTASH_REDIS_REST_TOKEN'];
+    redisMocks.incr.mockReset();
+    redisMocks.expire.mockReset();
+    redisMocks.exec.mockReset();
+  });
+
+  it('passes successful handler responses through untouched', async () => {
+    const { withApiGuard } = await import('../api');
+
+    const handler = withApiGuard(
+      { scope: 'test', syntaxHint: 'hint', fallbackMessage: 'fallback', logLabel: 'test error' },
+      async () => new Response('{"ok":true}', { status: 200 })
+    );
+
+    const response = await handler(new Request('http://localhost/api/test'));
+    expect(response.status).toBe(200);
+    await expect(response.json()).resolves.toEqual({ ok: true });
+  });
+
+  it('converts TimeoutError into a 422 with the dedicated message', async () => {
+    const { TimeoutError, withApiGuard } = await import('../api');
+
+    const handler = withApiGuard(
+      { scope: 'test', syntaxHint: 'hint', fallbackMessage: 'fallback', logLabel: 'test error' },
+      async () => {
+        throw new TimeoutError();
+      }
+    );
+
+    const response = await handler(new Request('http://localhost/api/test'));
+    expect(response.status).toBe(422);
+    await expect(response.json()).resolves.toEqual({ error: 'Processing timeout — input too complex' });
+  });
+
+  it('collapses unexpected handler errors into a safe 500', async () => {
+    const consoleError = vi.spyOn(console, 'error').mockImplementation(() => {});
+    const { withApiGuard } = await import('../api');
+
+    const handler = withApiGuard(
+      { scope: 'test', syntaxHint: 'hint', fallbackMessage: 'fallback', logLabel: 'test error' },
+      async () => {
+        throw new Error("ENOENT: open '/etc/passwd'");
+      }
+    );
+
+    const response = await handler(new Request('http://localhost/api/test'));
+    expect(response.status).toBe(500);
+    await expect(response.json()).resolves.toEqual({ error: 'fallback' });
+    expect(consoleError).toHaveBeenCalled();
+    consoleError.mockRestore();
+  });
+
+  it('answers 429 with Retry-After when the rate limit rejects', async () => {
+    process.env['UPSTASH_REDIS_REST_URL'] = 'https://example.upstash.io';
+    process.env['UPSTASH_REDIS_REST_TOKEN'] = 'test-token';
+    redisMocks.incr.mockResolvedValue(31);
+    redisMocks.expire.mockResolvedValue(1);
+    redisMocks.exec.mockResolvedValue([31]);
+
+    const { withApiGuard } = await import('../api');
+
+    const handler = withApiGuard(
+      { scope: 'test', syntaxHint: 'hint', fallbackMessage: 'fallback', logLabel: 'test error' },
+      async () => new Response('{"ok":true}')
+    );
+
+    const response = await handler(new Request('http://localhost/api/test'));
+    expect(response.status).toBe(429);
+    expect(response.headers.get('Retry-After')).toBe('60');
+    await expect(response.json()).resolves.toEqual({ error: 'Rate limit exceeded. Please try again later.' });
+  });
+});
