@@ -137,3 +137,27 @@ describe('parseJsonBody', () => {
     await expect(parseJsonBody(makeRequest('null'))).resolves.toBeNull();
   });
 });
+
+describe('safeApiErrorMessage', () => {
+  it('maps syntax-like errors to the per-route hint', async () => {
+    const { safeApiErrorMessage } = await import('../api');
+
+    expect(safeApiErrorMessage(new Error('SyntaxError: Unexpected token (1:5)'), 'hint', 'fallback')).toBe('hint');
+    expect(safeApiErrorMessage(new Error('Unexpected end of input'), 'hint', 'fallback')).toBe('hint');
+    expect(safeApiErrorMessage(new Error('Unterminated string constant'), 'hint', 'fallback')).toBe('hint');
+  });
+
+  it('collapses unexpected errors to the generic fallback without leaking details', async () => {
+    const { safeApiErrorMessage } = await import('../api');
+
+    const error = new Error("ENOENT: no such file or directory, open '/etc/passwd'");
+    expect(safeApiErrorMessage(error, 'hint', 'fallback')).toBe('fallback');
+  });
+
+  it('handles non-Error throwables', async () => {
+    const { safeApiErrorMessage } = await import('../api');
+
+    expect(safeApiErrorMessage('a plain string', 'hint', 'fallback')).toBe('fallback');
+    expect(safeApiErrorMessage(undefined, 'hint', 'fallback')).toBe('fallback');
+  });
+});

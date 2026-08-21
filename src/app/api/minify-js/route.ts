@@ -3,7 +3,7 @@
 import { minify } from '@putout/minify';
 import { NextResponse } from 'next/server';
 
-import { API_LIMITS, parseJsonBody, withTimeout, rateLimit } from '@/utils/api';
+import { API_LIMITS, parseJsonBody, safeApiErrorMessage, withTimeout, rateLimit } from '@/utils/api';
 
 /**
  * Interface for the JavaScript minification request.
@@ -90,7 +90,13 @@ export async function POST(request: Request): Promise<Response> {
 
     console.error('JavaScript minification error:', error);
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : 'Failed to minify JavaScript' },
+      {
+        error: safeApiErrorMessage(
+          error,
+          'Syntax error in your JavaScript input — please fix it and try again.',
+          'Failed to minify JavaScript. Please try again later.'
+        ),
+      },
       { status: 500 }
     );
   }

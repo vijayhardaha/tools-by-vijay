@@ -1,7 +1,7 @@
 import { minify } from 'html-minifier-terser';
 import { NextResponse } from 'next/server';
 
-import { API_LIMITS, parseJsonBody, withTimeout, rateLimit } from '@/utils/api';
+import { API_LIMITS, parseJsonBody, safeApiErrorMessage, withTimeout, rateLimit } from '@/utils/api';
 
 /**
  * API route handler for HTML minification.
@@ -65,7 +65,13 @@ export async function POST(request: Request): Promise<Response> {
 
     console.error('HTML minification error:', error);
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : 'Failed to minify HTML' },
+      {
+        error: safeApiErrorMessage(
+          error,
+          'Invalid HTML input — please fix syntax errors and try again.',
+          'Failed to minify HTML. Please try again later.'
+        ),
+      },
       { status: 500 }
     );
   }

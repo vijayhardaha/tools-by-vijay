@@ -81,6 +81,39 @@ export async function parseJsonBody<T extends object>(request: Request): Promise
 }
 
 // ============================================================================
+// Client-safe error messages
+// ============================================================================
+
+/**
+ * Error message patterns that indicate a syntax problem in the user's own
+ * input, as raised by the parsing libraries used by the API routes.
+ */
+const SYNTAX_ERROR_PATTERNS: RegExp[] = [/syntax/i, /unexpected (token|character|end)/i, /unclosed|unterminated/i];
+
+/**
+ * Convert a caught error into a safe client-facing message.
+ *
+ * Raw library error text can embed filesystem paths, internal snippets, and
+ * implementation details, so it is never echoed to clients. Errors that look
+ * like syntax problems in the user's own input are answered with a
+ * per-route hint; everything else collapses to a generic fallback. The full
+ * error stays in server logs only (callers console.error it).
+ *
+ * @param {unknown} error - The caught error.
+ * @param {string} syntaxHint - Safe message for user-input syntax errors.
+ * @param {string} fallback - Safe generic message for unexpected errors.
+ *
+ * @returns {string} A safe message suitable for the JSON error response.
+ *
+ * @example
+ * safeApiErrorMessage(error, 'Invalid JavaScript input', 'Failed to minify JavaScript')
+ */
+export function safeApiErrorMessage(error: unknown, syntaxHint: string, fallback: string): string {
+  const message = error instanceof Error ? error.message : '';
+  return SYNTAX_ERROR_PATTERNS.some((pattern) => pattern.test(message)) ? syntaxHint : fallback;
+}
+
+// ============================================================================
 // Rate Limiting
 // ============================================================================
 

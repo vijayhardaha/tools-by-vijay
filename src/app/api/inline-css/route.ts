@@ -2,7 +2,7 @@ import juice from 'juice';
 import { NextResponse } from 'next/server';
 import { format } from 'prettier';
 
-import { API_LIMITS, parseJsonBody, rateLimit } from '@/utils/api';
+import { API_LIMITS, parseJsonBody, rateLimit, safeApiErrorMessage } from '@/utils/api';
 
 /**
  * API route handler for inlining CSS into HTML.
@@ -65,7 +65,13 @@ export async function POST(request: Request): Promise<Response> {
   } catch (error) {
     console.error('Error processing request:', error);
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : 'Internal server error' },
+      {
+        error: safeApiErrorMessage(
+          error,
+          'Invalid HTML or CSS input — please fix syntax errors and try again.',
+          'Failed to inline CSS. Please try again later.'
+        ),
+      },
       { status: 500 }
     );
   }

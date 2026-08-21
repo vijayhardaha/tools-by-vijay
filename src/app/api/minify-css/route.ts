@@ -1,7 +1,7 @@
 import CleanCSS from 'clean-css';
 import { NextResponse } from 'next/server';
 
-import { API_LIMITS, parseJsonBody, rateLimit } from '@/utils/api';
+import { API_LIMITS, parseJsonBody, rateLimit, safeApiErrorMessage } from '@/utils/api';
 
 /**
  * API route handler for CSS minification
@@ -77,7 +77,13 @@ export async function POST(request: Request): Promise<Response> {
   } catch (error) {
     console.error('CSS minification error:', error);
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : 'Failed to minify CSS' },
+      {
+        error: safeApiErrorMessage(
+          error,
+          'Invalid CSS input — please fix syntax errors and try again.',
+          'Failed to minify CSS. Please try again later.'
+        ),
+      },
       { status: 500 }
     );
   }
