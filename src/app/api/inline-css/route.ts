@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 // eslint-disable-next-line import-x/namespace
 import * as prettier from 'prettier';
 
-import { API_LIMITS, rateLimit } from '@/utils/api';
+import { API_LIMITS, parseJsonBody, rateLimit } from '@/utils/api';
 
 /**
  * API route handler for inlining CSS into HTML.
@@ -26,7 +26,12 @@ export async function POST(request: Request): Promise<Response> {
     // Define the expected input structure
     type InlineCssRequest = { html: string; css: string };
 
-    const { html, css }: InlineCssRequest = await request.json();
+    const body = await parseJsonBody<InlineCssRequest>(request);
+    if (!body) {
+      return NextResponse.json({ error: 'Invalid JSON body' }, { status: 400 });
+    }
+
+    const { html, css } = body;
 
     if (!html || !css) {
       return NextResponse.json({ error: 'HTML and CSS inputs are required' }, { status: 400 });

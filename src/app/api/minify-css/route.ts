@@ -1,7 +1,7 @@
 import CleanCSS from 'clean-css';
 import { NextResponse } from 'next/server';
 
-import { API_LIMITS, rateLimit } from '@/utils/api';
+import { API_LIMITS, parseJsonBody, rateLimit } from '@/utils/api';
 
 /**
  * API route handler for CSS minification
@@ -24,7 +24,12 @@ export async function POST(request: Request): Promise<Response> {
     // Define the expected input structure
     type MinifyCssRequest = { css: string; options?: CleanCSS.Options };
 
-    const { css, options }: MinifyCssRequest = await request.json();
+    const body = await parseJsonBody<MinifyCssRequest>(request);
+    if (!body) {
+      return NextResponse.json({ error: 'Invalid JSON body' }, { status: 400 });
+    }
+
+    const { css, options } = body;
 
     if (!css || typeof css !== 'string') {
       return NextResponse.json({ error: 'Invalid CSS input' }, { status: 400 });

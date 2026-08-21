@@ -1,11 +1,12 @@
 // @vitest-environment node
 /**
  * ========================================================================
- * Tests: API utilities (rate limiting) in src/utils/api.ts
+ * Tests: API utilities (rate limiting, JSON body parsing) in src/utils/api.ts
  * ========================================================================
- * Purpose: Prove the limiter fails open when Redis errors at runtime and
- *          that counters are scoped per endpoint instead of shared across
- *          the whole site.
+ * Purpose: Prove the limiter fails open when Redis errors at runtime, that
+ *          counters are scoped per endpoint instead of shared across the
+ *          whole site, and that parseJsonBody swallows parse errors so
+ *          route handlers can answer malformed bodies with a clean 400.
  * ========================================================================
  */
 
@@ -95,5 +96,44 @@ describe('rateLimit', () => {
 
     await expect(rateLimit('1.2.3.4', 'unminify-code')).resolves.toBe(true);
     expect(redisMocks.expire).toHaveBeenCalledWith('rate-limit:v1:unminify-code:1.2.3.4', 60);
+  });
+});
+
+describe('parseJsonBody', () => {
+  /**
+   * Builds a POST request carrying `raw` as the verbatim body.
+   *
+   * @param {string} raw - Raw request body text.
+   *
+   * @returns {Request} Request targeting a fictional API route.
+   */
+  const makeRequest = (raw: string): Request =>
+    new Request('http://localhost/api/test', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: raw,
+    });
+
+  it('returns the parsed object for a valid JSON body', async () => {
+    const { parseJsonBody } = await import('../api');
+
+    await expect(parseJsonBody<{ css: string }>(makeRequest('{"css":"body{color:red}"}'))).resolves.toEqual({
+      css: 'body{color:red}',
+    });
+  });
+
+  it('returns null for a malformed JSON body instead of throwing', async () => {
+    const { parseJsonBody } = await import('../api');
+
+    await expect(parseJsonBody(makeRequest('{"css": '))).resolves.toBeNull();
+    await expect(parseJsonBody(makeRequest('not json at all'))).resolves.toBeNull();
+  });
+
+  it('returns null for non-object JSON bodies', async () => {
+    const { parseJsonBody } = await import('../api');
+
+    await expect(parseJsonBody(makeRequest('"just a string"'))).resolves.toBeNull();
+    await expect(parseJsonBody(makeRequest('42'))).resolves.toBeNull();
+    await expect(parseJsonBody(makeRequest('null'))).resolves.toBeNull();
   });
 });

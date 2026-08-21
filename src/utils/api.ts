@@ -53,6 +53,34 @@ export function withTimeout<T>(
 }
 
 // ============================================================================
+// Request body parsing
+// ============================================================================
+
+/**
+ * Parse a request body as a JSON object.
+ *
+ * Returns `null` instead of throwing when the body is not valid JSON or is
+ * not a JSON object (a string, number, boolean, or `null` body). Route
+ * handlers turn `null` into a clean 400 response so JSON parser internals
+ * and body echoes never leak through the generic 500 catch.
+ *
+ * @template T - Expected body shape; unchecked cast, callers validate fields.
+ *
+ * @param {Request} request - The incoming request object.
+ *
+ * @returns {Promise<T | null>} The parsed body object, or null when invalid.
+ */
+export async function parseJsonBody<T extends object>(request: Request): Promise<T | null> {
+  try {
+    const body: unknown = await request.json();
+
+    return typeof body === 'object' && body !== null ? (body as T) : null;
+  } catch {
+    return null;
+  }
+}
+
+// ============================================================================
 // Rate Limiting
 // ============================================================================
 

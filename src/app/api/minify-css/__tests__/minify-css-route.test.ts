@@ -46,6 +46,21 @@ const makeRequest = (body: unknown): Request =>
     body: JSON.stringify(body),
   });
 
+/**
+ * Builds a POST request carrying `raw` as the verbatim body (no re-encoding),
+ * for malformed-JSON regression tests.
+ *
+ * @param {string} raw - Raw request body text.
+ *
+ * @returns {Request} Request targeting /api/minify-css.
+ */
+const makeRawRequest = (raw: string): Request =>
+  new Request('http://localhost/api/minify-css', {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: raw,
+  });
+
 beforeAll(async () => {
   probeServer = createServer((_request, response) => {
     response.writeHead(200, { 'content-type': 'text/css' });
@@ -67,6 +82,22 @@ describe('POST /api/minify-css', () => {
     expect(response.status).toBe(200);
     const body = await response.json();
     expect(body.minifiedCss).toBe('body{color:red}');
+  });
+
+  it('returns 400 for a malformed JSON body instead of 500 with parser internals', async () => {
+    const response = await POST(makeRawRequest('{"css": '));
+
+    expect(response.status).toBe(400);
+    const body = await response.json();
+    expect(body).toEqual({ error: 'Invalid JSON body' });
+  });
+
+  it('returns 400 when the JSON body is not an object', async () => {
+    const response = await POST(makeRequest('just a string'));
+
+    expect(response.status).toBe(400);
+    const body = await response.json();
+    expect(body).toEqual({ error: 'Invalid JSON body' });
   });
 
   it('accepts the option shape sent by the CSS minifier UI', async () => {

@@ -1,7 +1,7 @@
 import { minify } from 'html-minifier-terser';
 import { NextResponse } from 'next/server';
 
-import { API_LIMITS, withTimeout, rateLimit } from '@/utils/api';
+import { API_LIMITS, parseJsonBody, withTimeout, rateLimit } from '@/utils/api';
 
 /**
  * API route handler for HTML minification.
@@ -24,7 +24,12 @@ export async function POST(request: Request): Promise<Response> {
     // Define the expected input structure
     type MinifyHtmlRequest = { html: string; options?: Record<string, unknown> };
 
-    const { html, options }: MinifyHtmlRequest = await request.json();
+    const body = await parseJsonBody<MinifyHtmlRequest>(request);
+    if (!body) {
+      return NextResponse.json({ error: 'Invalid JSON body' }, { status: 400 });
+    }
+
+    const { html, options } = body;
 
     if (!html || typeof html !== 'string') {
       return NextResponse.json({ error: 'Invalid HTML input' }, { status: 400 });

@@ -5,7 +5,7 @@ import parserHtml from 'prettier/plugins/html';
 import parserCss from 'prettier/plugins/postcss';
 import prettier from 'prettier/standalone';
 
-import { API_LIMITS, rateLimit } from '@/utils/api';
+import { API_LIMITS, parseJsonBody, rateLimit } from '@/utils/api';
 
 export const runtime = 'edge';
 
@@ -39,7 +39,12 @@ export async function POST(request: Request): Promise<Response> {
       );
     }
 
-    const { code, codeType }: UnminifyCodeRequest = await request.json();
+    const body = await parseJsonBody<UnminifyCodeRequest>(request);
+    if (!body) {
+      return NextResponse.json({ error: 'Invalid JSON body' }, { status: 400 });
+    }
+
+    const { code, codeType } = body;
 
     if (!code || !codeType) {
       return NextResponse.json({ error: 'Code and codeType are required' }, { status: 400 });

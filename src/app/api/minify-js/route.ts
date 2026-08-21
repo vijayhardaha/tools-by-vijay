@@ -3,7 +3,7 @@
 import { minify } from '@putout/minify';
 import { NextResponse } from 'next/server';
 
-import { API_LIMITS, withTimeout, rateLimit } from '@/utils/api';
+import { API_LIMITS, parseJsonBody, withTimeout, rateLimit } from '@/utils/api';
 
 /**
  * Interface for the JavaScript minification request.
@@ -41,7 +41,12 @@ export async function POST(request: Request): Promise<Response> {
       );
     }
 
-    const { js, options = {} }: MinifyJsRequest = await request.json();
+    const body = await parseJsonBody<MinifyJsRequest>(request);
+    if (!body) {
+      return NextResponse.json({ error: 'Invalid JSON body' }, { status: 400 });
+    }
+
+    const { js, options = {} } = body;
 
     if (!js || typeof js !== 'string') {
       return NextResponse.json({ error: 'Invalid JavaScript input' }, { status: 400 });
