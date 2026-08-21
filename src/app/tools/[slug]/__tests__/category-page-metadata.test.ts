@@ -32,3 +32,13 @@ describe('generateMetadata (category page)', () => {
     expect(metadata.robots).toEqual({ index: true, follow: true });
   });
 });
+
+describe('generateStaticParams (category page)', () => {
+  it('pre-renders every known category slug', async () => {
+    const { generateStaticParams } = await import('../page');
+
+    const params = await generateStaticParams();
+
+    expect(params).toEqual(getAllCategories().map((category) => ({ slug: category.slug })));
+  });
+});
