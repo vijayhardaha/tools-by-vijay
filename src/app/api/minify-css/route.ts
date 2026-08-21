@@ -38,8 +38,18 @@ export async function POST(request: Request): Promise<Response> {
       );
     }
 
-    // Create a new CleanCSS instance with the provided options
-    const cleanCss = new CleanCSS({ ...options, returnPromise: true });
+    // Build a fixed, whitelisted CleanCSS configuration. User input must
+    // never control `inline`/`rebaseTo`/`inlineRequest`: local @import
+    // inlining reads arbitrary files from disk and remote inlining makes
+    // the server fetch arbitrary URLs (SSRF). Only the benign fields the
+    // CSS minifier UI sends are forwarded.
+    const { level, format } = options ?? {};
+    const cleanCss = new CleanCSS({
+      ...(typeof level === 'number' ? { level } : {}),
+      ...(format !== null && typeof format === 'object' && !Array.isArray(format) ? { format } : {}),
+      inline: ['none'],
+      returnPromise: true,
+    });
 
     // Minify the CSS
     const minified = await cleanCss.minify(css);
