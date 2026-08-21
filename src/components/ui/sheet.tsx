@@ -264,7 +264,10 @@ function SheetContent({ className = '', children, side = 'right', ...props }: Sh
           'shadow-lg',
           // Transitions
           'transition-all duration-300 ease-in-out',
-          !open && 'pointer-events-none',
+          // "invisible" (visibility:hidden) removes the closed panel from the
+          // tab order and the accessibility tree; transition-all keeps it
+          // visible until the exit animation finishes.
+          open ? 'visible' : 'pointer-events-none invisible',
           side === 'right' && [
             'inset-y-0 right-0 h-full w-3/4 border-l sm:max-w-sm',
             open

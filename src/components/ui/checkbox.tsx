@@ -89,7 +89,7 @@ export function Checkbox({
       <input
         type="checkbox"
         id={id}
-        className="hidden cursor-pointer"
+        className="peer sr-only cursor-pointer"
         checked={isChecked}
         onChange={handleChange}
         disabled={disabled}
@@ -99,7 +99,9 @@ export function Checkbox({
         data-slot="checkbox-indicator"
         className={cn(
           'flex h-5 w-5 cursor-pointer items-center justify-center rounded-xl border',
-          isChecked ? 'bg-primary border-primary text-primary-foreground' : 'border-input'
+          isChecked ? 'bg-primary border-primary text-primary-foreground' : 'border-input',
+          // Keyboard focus ring, driven by the visually-hidden peer input
+          'peer-focus-visible:ring-ring peer-focus-visible:ring-2 peer-focus-visible:ring-offset-2'
         )}
       >
         {isChecked && <CheckIcon className="h-3 w-3" />}

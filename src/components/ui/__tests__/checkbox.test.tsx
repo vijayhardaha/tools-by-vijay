@@ -56,4 +56,22 @@ describe('Checkbox', () => {
     render(<Checkbox required>Option</Checkbox>);
     expect(screen.getByRole('checkbox')).toBeRequired();
   });
+
+  it('keeps the input in the tab order instead of display:none', () => {
+    render(<Checkbox>Option</Checkbox>);
+    const checkbox = screen.getByRole('checkbox');
+
+    // "hidden" (display:none) removes the input from tab order and the
+    // accessibility tree; "sr-only" hides it visually only.
+    expect(checkbox).not.toHaveClass('hidden');
+    expect(checkbox).toHaveClass('sr-only');
+    expect(checkbox).toHaveClass('peer');
+  });
+
+  it('exposes a visible keyboard focus ring on the indicator', () => {
+    render(<Checkbox>Option</Checkbox>);
+
+    const indicator = document.querySelector('[data-slot="checkbox-indicator"]');
+    expect(indicator).toHaveClass('peer-focus-visible:ring-2');
+  });
 });
