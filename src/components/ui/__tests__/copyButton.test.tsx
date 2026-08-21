@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
@@ -107,5 +107,64 @@ describe('CopyButton', () => {
   it('merges a custom className', () => {
     const { container } = render(<CopyButton text="x" className="custom-copy" />);
     expect(container.querySelector('button')).toHaveClass('custom-copy');
+  });
+
+  it('restarts the copied feedback window on a rapid second click', async () => {
+    vi.useFakeTimers();
+
+    try {
+      mockClipboard({ writeText: vi.fn().mockResolvedValue(undefined) });
+
+      render(<CopyButton text="double-click" />);
+      const button = screen.getByRole('button', { name: 'Copy' });
+
+      // fireEvent avoids user-event's internal timers, which hang under
+      // fake timers; act(async) flushes the awaited clipboard promise.
+      fireEvent.click(button);
+      await act(async () => {});
+      expect(screen.getByRole('button', { name: 'Copied!' })).toBeInTheDocument();
+
+      // Halfway through the first feedback window, copy again.
+      await act(async () => {
+        await vi.advanceTimersByTimeAsync(500);
+      });
+      fireEvent.click(button);
+      await act(async () => {});
+
+      // 500ms after the second click, the first window would have expired —
+      // the feedback must still show because the window restarted.
+      await act(async () => {
+        await vi.advanceTimersByTimeAsync(500);
+      });
+      expect(screen.getByRole('button', { name: 'Copied!' })).toBeInTheDocument();
+
+      await act(async () => {
+        await vi.advanceTimersByTimeAsync(600);
+      });
+      expect(screen.getByRole('button', { name: 'Copy' })).toBeInTheDocument();
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
+  it('clears the pending reset timer on unmount', async () => {
+    vi.useFakeTimers();
+
+    try {
+      mockClipboard({ writeText: vi.fn().mockResolvedValue(undefined) });
+
+      const { unmount } = render(<CopyButton text="gone-soon" />);
+      fireEvent.click(screen.getByRole('button', { name: 'Copy' }));
+      await act(async () => {});
+
+      // Advancing past the timeout after unmount must not throw (the timer
+      // is cleared in the unmount effect instead of calling setState).
+      unmount();
+      await act(async () => {
+        await vi.advanceTimersByTimeAsync(2000);
+      });
+    } finally {
+      vi.useRealTimers();
+    }
   });
 });

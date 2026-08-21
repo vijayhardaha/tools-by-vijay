@@ -1,7 +1,7 @@
 'use client';
 
 import type { JSX, KeyboardEvent, HTMLAttributes } from 'react';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useId, useRef, useState } from 'react';
 
 import { LuCheck as CheckIcon, LuChevronDown as ChevronDownIcon } from 'react-icons/lu';
 
@@ -69,6 +69,9 @@ export function Select({
   const [localValue, setLocalValue] = useState<string>(defaultValue || value || '');
   const [open, setOpen] = useState(false);
   const selectRef = useRef<HTMLDivElement>(null);
+  // Unique per instance: hardcoded ids broke aria-controls/activedescendant
+  // when two Selects were rendered on the same page.
+  const listboxId = useId();
 
   // Derive the effective value during render (fixes set-state-in-effect)
   const selectedValue = value !== undefined ? value : localValue;
@@ -196,7 +199,7 @@ export function Select({
         disabled={disabled}
         aria-expanded={open}
         aria-haspopup="listbox"
-        aria-controls="select-listbox"
+        aria-controls={listboxId}
         className={cn(
           // Layout & flex
           'flex w-fit items-center justify-between gap-2',
@@ -239,9 +242,9 @@ export function Select({
       {/* Dropdown Content */}
       {open && (
         <div
-          id="select-listbox"
+          id={listboxId}
           role="listbox"
-          aria-activedescendant={activeIndex >= 0 ? `select-option-${activeIndex}` : undefined}
+          aria-activedescendant={activeIndex >= 0 ? `${listboxId}-option-${activeIndex}` : undefined}
           data-slot="select-content"
           className={cn(
             // Position
@@ -265,7 +268,7 @@ export function Select({
               return (
                 <div
                   key={option.value}
-                  id={`select-option-${index}`}
+                  id={`${listboxId}-option-${index}`}
                   role="option"
                   tabIndex={-1}
                   aria-selected={isSelected}

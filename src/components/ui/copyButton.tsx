@@ -1,7 +1,7 @@
 'use client';
 
 import type { JSX } from 'react';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { LuCopy as CopyIcon, LuCheck as CheckIcon } from 'react-icons/lu';
 
@@ -45,6 +45,17 @@ export function CopyButton({
   disabled,
 }: CopyButtonProps): JSX.Element {
   const [copied, setCopied] = useState(false);
+  const resetTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Clear any pending state reset when the button unmounts so the timeout
+  // can never fire setState on an unmounted component.
+  useEffect(() => {
+    return () => {
+      if (resetTimeoutRef.current) {
+        clearTimeout(resetTimeoutRef.current);
+      }
+    };
+  }, []);
 
   /**
    * Copies the text to the clipboard and updates the copied state.
@@ -67,7 +78,12 @@ export function CopyButton({
         console.error('[CopyButton] Failed to copy text:', fallbackError);
       }
     } finally {
-      setTimeout(() => setCopied(false), 1000);
+      // A rapid second click clears the previous timer so the feedback
+      // always lasts the full window from the latest copy.
+      if (resetTimeoutRef.current) {
+        clearTimeout(resetTimeoutRef.current);
+      }
+      resetTimeoutRef.current = setTimeout(() => setCopied(false), 1000);
     }
   };
 

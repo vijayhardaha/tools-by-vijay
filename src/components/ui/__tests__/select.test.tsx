@@ -120,4 +120,25 @@ describe('Select', () => {
     expect(trigger).toHaveAttribute('id', 'format-select');
     expect(trigger.parentElement).not.toHaveAttribute('id');
   });
+
+  it('generates unique listbox ids so multiple Selects can coexist', async () => {
+    const user = userEvent.setup();
+    render(
+      <>
+        <Select options={options} />
+        <Select options={options} />
+      </>
+    );
+
+    const triggers = screen.getAllByRole('button');
+    const controls = triggers.map((trigger) => trigger.getAttribute('aria-controls'));
+
+    expect(controls[0]).toBeTruthy();
+    expect(controls[0]).not.toBe(controls[1]);
+
+    await user.click(triggers[0]);
+    const listbox = screen.getByRole('listbox');
+    expect(listbox.id).toBe(controls[0]);
+    expect(listbox.getAttribute('aria-activedescendant')).toContain(`${controls[0]}-option-`);
+  });
 });
