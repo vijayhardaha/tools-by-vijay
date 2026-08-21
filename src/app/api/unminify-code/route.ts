@@ -5,9 +5,14 @@ import parserHtml from 'prettier/plugins/html';
 import parserCss from 'prettier/plugins/postcss';
 import prettier from 'prettier/standalone';
 
-import { API_LIMITS, parseJsonBody, rateLimit } from '@/utils/api';
+import { API_LIMITS, parseJsonBody, rateLimit, safeApiErrorMessage } from '@/utils/api';
 
 export const runtime = 'edge';
+
+/**
+ * Code types accepted by this route, mapped 1:1 to prettier parsers/plugins.
+ */
+const CODE_TYPES = ['html', 'json', 'css', 'babel'] as const;
 
 /**
  * Interface for the unminify code request.
@@ -46,12 +51,19 @@ export async function POST(request: Request): Promise<Response> {
 
     const { code, codeType } = body;
 
-    if (!code || !codeType) {
-      return NextResponse.json({ error: 'Code and codeType are required' }, { status: 400 });
+    // Reject wrong-shaped fields before anything else: a truthy non-string
+    // code used to skip the size guard entirely, and an unknown codeType
+    // silently fell through to the babel parser.
+    if (typeof code !== 'string' || code.length === 0) {
+      return NextResponse.json({ error: 'Code is required and must be a non-empty string' }, { status: 400 });
+    }
+
+    if (!CODE_TYPES.includes(codeType)) {
+      return NextResponse.json({ error: 'Invalid codeType. Must be one of: html, json, css, babel' }, { status: 400 });
     }
 
     // Reject oversized payloads before any heavy processing
-    if (typeof code === 'string' && code.length > API_LIMITS.TEXT_MAX_LENGTH) {
+    if (code.length > API_LIMITS.TEXT_MAX_LENGTH) {
       return NextResponse.json(
         { error: `Code input too large. Maximum ${API_LIMITS.TEXT_MAX_LENGTH} characters.` },
         { status: 413 }
@@ -75,7 +87,7 @@ export async function POST(request: Request): Promise<Response> {
         parser = 'css';
         plugins = [parserCss];
         break;
-      default:
+      case 'babel':
         parser = 'babel';
         plugins = [parserBabel, parserJson];
         break;
@@ -87,7 +99,13 @@ export async function POST(request: Request): Promise<Response> {
   } catch (error) {
     console.error('Unminification error:', error);
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : 'Failed to unminify code' },
+      {
+        error: safeApiErrorMessage(
+          error,
+          'Syntax error in your code — please fix it and try again.',
+          'Failed to format code. Please try again later.'
+        ),
+      },
       { status: 500 }
     );
   }

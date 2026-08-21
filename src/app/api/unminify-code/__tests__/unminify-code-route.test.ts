@@ -51,4 +51,42 @@ describe('POST /api/unminify-code', () => {
     const body = await response.json();
     expect(body).toEqual({ error: 'Invalid JSON body' });
   });
+
+  it('returns 400 when code is a truthy non-string', async () => {
+    const response = await POST(makeRawRequest('{"code":{"a":1},"codeType":"babel"}'));
+
+    expect(response.status).toBe(400);
+    const body = await response.json();
+    expect(body).toEqual({ error: 'Code is required and must be a non-empty string' });
+  });
+
+  it('returns 400 when code is an empty string', async () => {
+    const response = await POST(makeRawRequest('{"code":"","codeType":"babel"}'));
+
+    expect(response.status).toBe(400);
+    const body = await response.json();
+    expect(body).toEqual({ error: 'Code is required and must be a non-empty string' });
+  });
+
+  it('returns 400 for an unknown codeType instead of silently using babel', async () => {
+    const response = await POST(makeRawRequest('{"code":"x = 1","codeType":"python"}'));
+
+    expect(response.status).toBe(400);
+    const body = await response.json();
+    expect(body).toEqual({ error: 'Invalid codeType. Must be one of: html, json, css, babel' });
+  });
+
+  it('applies the size guard to string code and rejects oversized input', async () => {
+    const response = await POST(makeRawRequest(`{"code":"${'x'.repeat(5_000_001)}","codeType":"babel"}`));
+
+    expect(response.status).toBe(413);
+  });
+
+  it('answers code syntax errors with a safe message, not library details', async () => {
+    const response = await POST(makeRawRequest('{"code":"const a = = 1;","codeType":"babel"}'));
+
+    expect(response.status).toBe(500);
+    const body = await response.json();
+    expect(body).toEqual({ error: 'Syntax error in your code — please fix it and try again.' });
+  });
 });
