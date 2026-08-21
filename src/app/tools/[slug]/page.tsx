@@ -40,7 +40,11 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
   const { slug } = await params;
   const seo = getSeoByPath(`/tools/${slug}`);
 
-  if (!seo) return {};
+  // Unknown category slug — the component renders notFound(). Keep the URL
+  // out of search indexes instead of inheriting the home page title/canonical.
+  if (!seo) {
+    return { robots: { index: false } };
+  }
 
   return buildMetadata({ title: seo.seoTitle, description: seo.seoDescription, path: seo.path });
 }

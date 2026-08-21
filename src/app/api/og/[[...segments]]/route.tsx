@@ -27,6 +27,8 @@ import { getSeoByPath } from '@/utils/seo';
 
 export const runtime = 'edge';
 
+const FONT_FAMILY = 'FunnelDisplay';
+
 /**
  * Interface for route params.
  *
@@ -37,8 +39,14 @@ interface OgRouteParams {
   segments?: string[];
 }
 
-const FONT_FAMILY = 'FunnelDisplay';
-
+/**
+ * Interface for the content rendered into an OG image.
+ *
+ * @type {OgProps}
+ * @property {string} title - Page title rendered as the main heading
+ * @property {string} description - Page description rendered below the title
+ * @property {string} path - Page path shown in the footer URL
+ */
 interface OgProps {
   title: string;
   description: string;
@@ -102,8 +110,9 @@ const segmentsToPath = (segments?: string[]): string => {
   const last = segments[segments.length - 1].replace(/\.png$/i, '');
   const path = [...segments.slice(0, -1), last].join('/');
 
-  // The special 'index' segment represents the root path
-  return path === 'home' ? '/' : `/${path}`;
+  // The 'home' and 'index' segments represent the root path ('index' is
+  // what buildMetadata emits as the home page OG image filename)
+  return path === 'home' || path === 'index' ? '/' : `/${path}`;
 };
 
 /**

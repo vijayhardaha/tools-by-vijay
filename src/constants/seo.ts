@@ -59,11 +59,15 @@ const seoImage = {
 
 /**
  * The main metadata object containing all SEO-related information for the website.
+ *
+ * No `alternates.canonical` or `openGraph.url` here: pages that fail SEO
+ * lookup (unknown slugs) and every 404 inherit these defaults, and pinning
+ * them to the site root would tell crawlers those junk URLs are homepage
+ * duplicates. Every real page sets its own canonical via `buildMetadata()`.
  */
 export const SITE_METADATA: Metadata = {
   ...titleAndDescription,
   metadataBase: new URL(siteUrl()),
-  alternates: { canonical: siteUrl() },
   keywords: SEO_KEYWORDS,
   applicationName: SITE_CONFIG.name,
   authors: [{ name: SITE_CONFIG.creator.name, url: SITE_CONFIG.creator.urls.gravatar }],
@@ -74,14 +78,7 @@ export const SITE_METADATA: Metadata = {
   classification: SITE_CONFIG.classification,
   verification: { google: GOOGLE_SITE_VERIFICATION },
   icons: { icon: '/favicon.ico', apple: '/apple-touch-icon.png' },
-  openGraph: {
-    ...titleAndDescription,
-    images: seoImage,
-    type: 'website',
-    siteName: SITE_CONFIG.name,
-    locale: 'en_US',
-    url: SITE_CONFIG.url,
-  },
+  openGraph: { ...titleAndDescription, images: seoImage, type: 'website', siteName: SITE_CONFIG.name, locale: 'en_US' },
   twitter: {
     ...titleAndDescription,
     card: 'summary_large_image',
