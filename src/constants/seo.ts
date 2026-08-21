@@ -12,7 +12,7 @@ export const SITE_CONFIG = {
   description:
     'Online tools to help developers and workers work faster and smarter. Boost your productivity with free, browser-based utilities.',
   titlePostfix: 'Tools by Vijay Hardaha',
-  separator: '-',
+  separator: '—',
   url: process.env.NEXT_PUBLIC_SITE_URL || 'https://toolsbyvijay.vercel.app',
   twitterHandle: '@vijayhardaha',
   category: 'Developer Tools',

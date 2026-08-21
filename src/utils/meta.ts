@@ -93,7 +93,7 @@ export const mergeDeep = (
 const buildSeoTitle = (title: string = '', postfix: boolean): string => {
   if (!title) return SITE_CONFIG.title;
   if (!postfix) return title;
-  return [title, '—', SITE_CONFIG.name].join(' ');
+  return [title, SITE_CONFIG.separator, SITE_CONFIG.name].join(' ');
 };
 
 /**
