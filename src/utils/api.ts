@@ -1,4 +1,5 @@
 import { Redis } from '@upstash/redis';
+import { NextResponse } from 'next/server';
 
 /**
  * Centralized configured limits for API request validation.
@@ -17,9 +18,6 @@ export const API_LIMITS = {
   /** Max length (characters) of HTML source passed to the minifier. */
   HTML_MAX_LENGTH: 1_000_000, // 1 MB
 
-  /** Max length (characters) for base64 content encoding/decoding. */
-  BASE64_MAX_LENGTH: 50_000_000, // 50 MB
-
   /** Max length (characters) for generic text-based operations. */
   TEXT_MAX_LENGTH: 5_000_000, // 5 MB
 
@@ -31,6 +29,26 @@ export const API_LIMITS = {
 } as const;
 
 /**
+ * Sentinel error signaling that `withTimeout` expired.
+ *
+ * Route handlers never inspect error message text; `withApiGuard` checks this
+ * type and answers timeouts with a dedicated 422 response.
+ *
+ * @type {TimeoutError}
+ */
+export class TimeoutError extends Error {
+  /**
+   * Create a timeout sentinel error.
+   *
+   * @param {string} [message] - Optional message for server-side logs.
+   */
+  constructor(message = 'Operation timeout') {
+    super(message);
+    this.name = 'TimeoutError';
+  }
+}
+
+/**
  * Resolve `promise` only if it settles within `ms` milliseconds.
  *
  * Used to bound expensive processing so a single overly-complex request cannot
@@ -40,14 +58,14 @@ export const API_LIMITS = {
  *
  * @param {Promise<T>} promise - The operation to race against the timeout.
  * @param {number} ms - Timeout budget in milliseconds.
- * @param {Error} [timeoutError] - Error to reject with on timeout (defaults to a generic timeout error).
+ * @param {Error} [timeoutError] - Error to reject with on timeout (defaults to a {@link TimeoutError} sentinel).
  *
  * @returns {Promise<T>} The promise result, or a rejection on timeout.
  */
 export function withTimeout<T>(
   promise: Promise<T>,
   ms: number,
-  timeoutError = new Error('Operation timeout')
+  timeoutError: TimeoutError = new TimeoutError()
 ): Promise<T> {
   return Promise.race([promise, new Promise<T>((_, reject) => setTimeout(() => reject(timeoutError), ms))]);
 }
@@ -226,30 +244,82 @@ export async function rateLimit(
 }
 
 /**
- * Get the remaining allowance and window reset time for an IP.
+ * Extract the client IP from the `x-forwarded-for` header.
  *
- * Utility function for monitoring/debugging. Not required for rate limiting to
- * work. Returns a full allowance when Redis is not configured.
+ * The header can carry a comma-separated chain (`client, proxy1, proxy2`) on
+ * platforms like Vercel; only the first entry identifies the client. Using the
+ * raw header would create a distinct counter per proxy chain, and all requests
+ * without the header share the `'unknown'` bucket.
  *
- * @param {string} ip - The client IP address.
- * @param {number} [limit] - The configured per-window limit (default 30).
+ * @param {Request} request - The incoming request object.
  *
- * @returns {Promise<{ remaining: number; resetTime: number }>} Remaining requests and reset time.
- *
- * @internal
+ * @returns {string} The first forwarded IP, trimmed, or 'unknown'.
  */
-export async function getRateLimit(ip: string, limit: number = 30): Promise<{ remaining: number; resetTime: number }> {
-  const client = getRedis();
+export function getClientIp(request: Request): string {
+  return (request.headers.get('x-forwarded-for') || '').split(',')[0]?.trim() || 'unknown';
+}
 
-  if (!client) {
-    return { remaining: limit, resetTime: Date.now() + 60000 };
-  }
+// ============================================================================
+// Route guard
+// ============================================================================
 
-  const key = rateLimitKey('default', ip);
-  const [count, ttlSeconds] = await Promise.all([client.get<number>(key), client.ttl(key)]);
+/**
+ * Configuration for {@link withApiGuard}.
+ *
+ * @type {ApiGuardOptions}
+ * @property {string} scope - Rate-limit scope (e.g. "minify-css") giving each endpoint its own counter.
+ * @property {string} syntaxHint - Safe message for user-input syntax errors.
+ * @property {string} fallbackMessage - Safe generic message for unexpected errors.
+ * @property {string} logLabel - Prefix for server-side error logs (e.g. "CSS minification error").
+ */
+export interface ApiGuardOptions {
+  scope: string;
+  syntaxHint: string;
+  fallbackMessage: string;
+  logLabel: string;
+}
 
-  const remaining = Math.max(0, limit - (count ?? 0));
-  const resetTime = ttlSeconds > 0 ? Date.now() + ttlSeconds * 1000 : Date.now() + 60000;
+/**
+ * Wrap an API route handler with the guard concerns shared by every route:
+ * per-endpoint rate limiting, timeout handling, and safe error responses.
+ *
+ * The wrapped flow answers 429 (with `Retry-After`) when the rate limit is
+ * exceeded, converts thrown {@link TimeoutError} sentinels into a 422 with a
+ * dedicated message (422 = unprocessable input; 408 would claim the *client*
+ * timed out), and collapses any other thrown error into a safe 500 message via
+ * {@link safeApiErrorMessage} after logging the details server-side.
+ *
+ * @param {ApiGuardOptions} options - Guard configuration for the endpoint.
+ * @param {(request: Request) => Promise<Response>} handler - The route logic (parsing, validation, processing).
+ *
+ * @returns {(request: Request) => Promise<Response>} The wrapped POST handler.
+ */
+export function withApiGuard(
+  options: ApiGuardOptions,
+  handler: (request: Request) => Promise<Response>
+): (request: Request) => Promise<Response> {
+  return async (request: Request): Promise<Response> => {
+    try {
+      const clientIp = getClientIp(request);
 
-  return { remaining, resetTime };
+      if (!(await rateLimit(clientIp, options.scope))) {
+        return NextResponse.json(
+          { error: 'Rate limit exceeded. Please try again later.' },
+          { status: 429, headers: { 'Retry-After': '60' } }
+        );
+      }
+
+      return await handler(request);
+    } catch (error) {
+      if (error instanceof TimeoutError) {
+        return NextResponse.json({ error: 'Processing timeout — input too complex' }, { status: 422 });
+      }
+
+      console.error(`${options.logLabel}:`, error);
+      return NextResponse.json(
+        { error: safeApiErrorMessage(error, options.syntaxHint, options.fallbackMessage) },
+        { status: 500 }
+      );
+    }
+  };
 }
