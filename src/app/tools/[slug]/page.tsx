@@ -13,7 +13,7 @@ import { PageLayout } from '@/components/page/PageLayout';
 import { ToolCard } from '@/components/tool/ToolCard';
 import { categoryIcons } from '@/constants/icons';
 import { buildBreadcrumbs } from '@/utils/breadcrumb';
-import { getCategoryBySlug } from '@/utils/categories';
+import { getAllCategories, getCategoryBySlug } from '@/utils/categories';
 import { buildMetadata } from '@/utils/meta';
 import { globalSchema, webPageSchema } from '@/utils/schema';
 import { siteUrl, getSeoByPath } from '@/utils/seo';
@@ -27,6 +27,16 @@ import { getToolsByCategory } from '@/utils/tools';
  */
 interface CategoryPageProps {
   params: Promise<{ slug: string }>;
+}
+
+/**
+ * Pre-render every category page at build time so no request hits a cold
+ * server-render after a deploy.
+ *
+ * @returns {Promise<Array<{ slug: string }>>} Params for each known category.
+ */
+export async function generateStaticParams(): Promise<Array<{ slug: string }>> {
+  return getAllCategories().map((category) => ({ slug: category.slug }));
 }
 
 /**
