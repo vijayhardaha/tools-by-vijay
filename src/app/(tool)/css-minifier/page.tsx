@@ -1,92 +1,26 @@
 import type { JSX } from 'react';
 
-import { breadcrumbSchema } from '@vijayhardaha/schema-builder';
-import { JsonLd } from '@vijayhardaha/schema-builder/react';
 import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
 
-import { EntryContent } from '@/components/page/EntryContent';
-import { PageContent } from '@/components/page/PageContent';
-import { PageHeader } from '@/components/page/PageHeader';
-import { PageLayout } from '@/components/page/PageLayout';
+import { WithToolPage, getToolPageMetadata } from '@/components/page/WithToolPage';
 import { CssMinifier } from '@/components/tools/css-minifier';
-import type { Tool } from '@/constants/tools';
-import { buildBreadcrumbs } from '@/utils/breadcrumb';
-import { getCategoryBySlug } from '@/utils/categories';
-import { buildMetadata } from '@/utils/meta';
-import { globalSchema, webPageSchema } from '@/utils/schema';
-import { siteUrl } from '@/utils/seo';
-import { findToolBySlug, getToolIcon } from '@/utils/tools';
 
 /**
- * Retrieves tool data for the CSS Minifier tool.
- *
- * @constant {Tool|null} tool - The tool object containing metadata and configuration.
- */
-const tool: Tool | null = findToolBySlug('css-minifier');
-
-/**
- * SEO metadata for the CSS Minifier tool page.
+ * SEO metadata for the CssMinifier tool page.
  *
  * @type {Metadata}
  */
-export const metadata: Metadata = buildMetadata({
-  title: tool?.seoTitle || '',
-  description: tool?.seoDescription || '',
-  path: `/${tool?.slug || ''}`,
-});
+export const metadata: Metadata = getToolPageMetadata('css-minifier');
 
-const rootUrl = siteUrl();
-
-const categoryLabel = getCategoryBySlug(tool?.category || '')?.title || 'Tools';
-const categoryPath = `/tools/${tool?.category || ''}`;
-
-const schemaData = [
-  ...globalSchema(),
-  webPageSchema(
-    { rootUrl, path: `/${tool?.slug || ''}`, breadcrumb: true },
-    { name: tool?.seoTitle, description: tool?.seoDescription }
-  ),
-  breadcrumbSchema({
-    rootUrl,
-    items: buildBreadcrumbs(`/${tool?.slug || ''}`, `${tool?.title || ''} Tool`, [
-      { name: categoryLabel, path: categoryPath },
-    ]),
-  }),
-];
 /**
- * CSS Minifier tool page component.
- * Renders the page layout with header and the CSS Minifier tool.
+ * CssMinifier tool page component.
  *
- * @returns {JSX.Element} The rendered CSS Minifier tool page component.
+ * @returns {JSX.Element} The rendered CssMinifier tool page.
  */
-export default function CssMinifierToolTool(): JSX.Element {
-  if (!tool) {
-    notFound(); // Render a 404 page if the tool is null
-  }
-
+export default function CssMinifierToolPage(): JSX.Element {
   return (
-    <>
-      <JsonLd data={schemaData} />
-
-      <PageLayout>
-        <PageHeader
-          pageName={tool.title}
-          title={tool.title}
-          description={tool.description}
-          icon={getToolIcon(tool.slug)}
-          breadcrumbItems={[
-            { name: 'Home', path: '/' },
-            { name: getCategoryBySlug(tool.category)?.title || 'Tools', path: `/tools/${tool.category}` },
-            { name: tool.title, path: '' },
-          ]}
-        />
-        <PageContent>
-          <EntryContent tool={tool}>
-            <CssMinifier />
-          </EntryContent>
-        </PageContent>
-      </PageLayout>
-    </>
+    <WithToolPage slug="css-minifier">
+      <CssMinifier />
+    </WithToolPage>
   );
 }
