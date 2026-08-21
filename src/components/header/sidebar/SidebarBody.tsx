@@ -1,10 +1,9 @@
 'use client';
 
 import type { JSX, ReactNode } from 'react';
-import { useRef, useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import Link from 'next/link';
-import { Scrollbars } from 'react-custom-scrollbars-4';
 import { PiCaretDownBold } from 'react-icons/pi';
 
 import type { Tool } from '@/constants/tools';
@@ -127,24 +126,9 @@ const CategoryAccordion = ({ title, slug, tools }: CategoryAccordionProps): JSX.
 export function SidebarBody(): JSX.Element {
   // Group tools by category
   const categorizedTools = getToolsByCategories();
-  const scrollbarsRef = useRef<Scrollbars>(null);
-
-  useEffect(() => {
-    // Initialize scrollbar or perform additional setup if needed
-    if (scrollbarsRef.current) {
-      scrollbarsRef.current.scrollToTop();
-    }
-  }, []);
 
   return (
-    <Scrollbars
-      ref={scrollbarsRef}
-      autoHide
-      autoHideTimeout={500}
-      autoHideDuration={100}
-      universal={true}
-      className="h-full w-full"
-    >
+    <div className="h-full w-full overflow-y-auto">
       <div className="px-4">
         <nav className="text-muted-foreground text-sm">
           {getAllCategories().map((category) => {
@@ -187,6 +171,6 @@ export function SidebarBody(): JSX.Element {
           </div>
         </nav>
       </div>
-    </Scrollbars>
+    </div>
   );
 }
