@@ -48,15 +48,19 @@ function isAllowedOrigin(uriString: string, allowed: string[]): boolean {
  *   against allowed origins (via URL parsing) to prevent CSRF.
  * - For safe methods (GET, HEAD): skips origin check directly-browsed URLs
  *   (like OG images) that don't send origin/referer headers.
- * - Enforces a body size limit on all requests.
+ * - Enforces a body size limit on all requests. Requests with a declared
+ *   `content-length` are checked cheaply; chunked requests (no
+ *   `content-length`) are measured by consuming the stream and aborted the
+ *   moment the limit is exceeded, so at most MAX_BODY_SIZE bytes are ever
+ *   buffered.
  *
  * Returns a 403 response for unknown origins and a 413 response for oversized bodies.
  *
  * @param {NextRequest} request - The incoming request object.
  *
- * @returns {NextResponse | undefined} A response blocking the request, or NextResponse.next() to continue.
+ * @returns {Promise<NextResponse | undefined>} A response blocking the request, or NextResponse.next() to continue.
  */
-export function proxy(request: NextRequest): NextResponse | undefined {
+export async function proxy(request: NextRequest): Promise<NextResponse | undefined> {
   const method = request.method;
   const origin = request.headers.get('origin') || '';
   const referer = request.headers.get('referer') || '';
@@ -76,10 +80,28 @@ export function proxy(request: NextRequest): NextResponse | undefined {
     }
   }
 
-  // Check body size on all requests
+  // Fast path: a declared content-length is checked without touching the body
   const contentLength = request.headers.get('content-length');
   if (contentLength && parseInt(contentLength, 10) > MAX_BODY_SIZE) {
     return NextResponse.json({ error: 'Request too large' }, { status: 413 });
+  }
+
+  // Chunked requests carry no content-length and would otherwise bypass the
+  // cap entirely (routes buffer the full JSON before their own checks).
+  if (!contentLength && request.body) {
+    const reader = request.body.getReader();
+    let received = 0;
+
+    for (;;) {
+      const { done, value } = await reader.read();
+      if (done) break;
+
+      received += value.byteLength;
+      if (received > MAX_BODY_SIZE) {
+        await reader.cancel();
+        return NextResponse.json({ error: 'Request too large' }, { status: 413 });
+      }
+    }
   }
 
   // Allow the request to proceed
