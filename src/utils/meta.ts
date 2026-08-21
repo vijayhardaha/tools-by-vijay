@@ -112,7 +112,7 @@ const buildSeoTitle = (title: string = '', postfix: boolean): string => {
  * buildOgImageUrl('')                   // '/api/og/index.png'
  * buildOgImageUrl('/tools/writing-editing') // '/api/og/tools/writing-editing.png'
  */
-const buildOgImageUrl = (path: string = ''): string => {
+export const buildOgImageUrl = (path: string = ''): string => {
   const clean = cleanPath(path);
   const slug = !clean ? 'index' : clean;
   return getPermaLink(`/api/og/${slug}.png`);

@@ -1,6 +1,6 @@
 import type { JSX } from 'react';
 
-import { webPageSchema, breadcrumbSchema } from '@vijayhardaha/schema-builder';
+import { breadcrumbSchema } from '@vijayhardaha/schema-builder';
 import { JsonLd } from '@vijayhardaha/schema-builder/react';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
@@ -14,7 +14,7 @@ import type { Tool } from '@/constants/tools';
 import { buildBreadcrumbs } from '@/utils/breadcrumb';
 import { getCategoryBySlug } from '@/utils/categories';
 import { buildMetadata } from '@/utils/meta';
-import { globalSchema } from '@/utils/schema';
+import { globalSchema, webPageSchema } from '@/utils/schema';
 import { siteUrl } from '@/utils/seo';
 import { findToolBySlug, getToolIcon } from '@/utils/tools';
 

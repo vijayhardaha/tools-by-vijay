@@ -1,7 +1,7 @@
 import type { JSX } from 'react';
 import { Fragment } from 'react';
 
-import { breadcrumbSchema, webPageSchema } from '@vijayhardaha/schema-builder';
+import { breadcrumbSchema } from '@vijayhardaha/schema-builder';
 import { JsonLd } from '@vijayhardaha/schema-builder/react';
 import type { Metadata } from 'next';
 
@@ -15,7 +15,7 @@ import { categoryIcons } from '@/constants/icons';
 import tools from '@/constants/tools';
 import { buildBreadcrumbs } from '@/utils/breadcrumb';
 import { buildMetadata } from '@/utils/meta';
-import { globalSchema } from '@/utils/schema';
+import { globalSchema, webPageSchema } from '@/utils/schema';
 import { siteUrl, getSeoByPath } from '@/utils/seo';
 import { getToolsByCategory } from '@/utils/tools';
 

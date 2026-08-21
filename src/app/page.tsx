@@ -1,6 +1,5 @@
 import type { JSX, ReactNode } from 'react';
 
-import { webPageSchema } from '@vijayhardaha/schema-builder';
 import { JsonLd } from '@vijayhardaha/schema-builder/react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
@@ -33,7 +32,7 @@ import tools from '@/constants/tools';
 import type { Tool } from '@/constants/tools';
 import { cn } from '@/utils/classnames';
 import { buildMetadata } from '@/utils/meta';
-import { globalSchema } from '@/utils/schema';
+import { globalSchema, webPageSchema } from '@/utils/schema';
 import { siteUrl, getSeoByPath } from '@/utils/seo';
 
 const rootUrl = siteUrl();

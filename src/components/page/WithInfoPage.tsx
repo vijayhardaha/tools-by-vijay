@@ -1,6 +1,6 @@
 import type { JSX, ReactNode } from 'react';
 
-import { aboutPageSchema, breadcrumbSchema, contactPageSchema, webPageSchema } from '@vijayhardaha/schema-builder';
+import { breadcrumbSchema } from '@vijayhardaha/schema-builder';
 import { JsonLd } from '@vijayhardaha/schema-builder/react';
 import type { Metadata } from 'next';
 
@@ -10,7 +10,7 @@ import { PageLayout } from '@/components/page/PageLayout';
 import { buildBreadcrumbs } from '@/utils/breadcrumb';
 import { buildFaqPageSchema, type ToolFaqItem } from '@/utils/faq';
 import { buildMetadata } from '@/utils/meta';
-import { globalSchema } from '@/utils/schema';
+import { aboutPageSchema, contactPageSchema, globalSchema, webPageSchema } from '@/utils/schema';
 import { getSeoByPath, siteUrl } from '@/utils/seo';
 
 /**
