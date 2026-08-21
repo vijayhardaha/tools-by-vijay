@@ -92,10 +92,11 @@ export function InfoBlock(): JSX.Element {
         <ToolInfoSectionHeading id="password-generator-technical-details">Technical Details</ToolInfoSectionHeading>
         <ToolInfoSectionContent>
           <p>
-            Password generation uses JavaScript&apos;s Math.random() for character selection from dynamically built
-            character pools. The character pool is constructed based on user-selected options, and an optional filter
-            removes visually similar characters. All generation occurs client-side with no data transmitted to any
-            server.
+            Password generation uses the browser&apos;s cryptographically secure random number generator
+            (crypto.getRandomValues) with rejection sampling to avoid bias when selecting characters from dynamically
+            built character pools. The character pool is constructed based on user-selected options, and an optional
+            filter removes visually similar characters. All generation occurs client-side with no data transmitted to
+            any server.
           </p>
         </ToolInfoSectionContent>
       </ToolInfoSection>

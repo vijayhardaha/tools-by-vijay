@@ -9,6 +9,7 @@ import { EXAMPLES } from './examples';
 import { InfoBlock } from './info-block';
 import { InputBlock } from './input-block';
 import { OutputBlock } from './output-block';
+import { getSecureRandomInt } from './random';
 
 /**
  * Main component for the Password Generator tool.
@@ -27,7 +28,7 @@ export function PasswordGenerator(): JSX.Element {
 
   /**
    * Generates a password reactively whenever options change.
-   * Uses useEffect because Math.random() is impure and cannot be used in useMemo.
+   * Uses useEffect because random generation is impure and cannot run in render.
    */
   useEffect(() => {
     // Character sets
@@ -55,7 +56,7 @@ export function PasswordGenerator(): JSX.Element {
 
     // Make sure at least one character set is selected
     if (charPool.length === 0) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect -- Math.random() is impure, must use useEffect
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- random generation is impure, must use useEffect
       setPassword('Select at least one character type');
       return;
     }
@@ -63,7 +64,7 @@ export function PasswordGenerator(): JSX.Element {
     // Generate password
     let generated = '';
     for (let i = 0; i < length; i++) {
-      const randomIndex = Math.floor(Math.random() * charPool.length);
+      const randomIndex = getSecureRandomInt(charPool.length);
       generated += charPool[randomIndex];
     }
 
