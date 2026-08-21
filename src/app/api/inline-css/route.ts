@@ -1,7 +1,6 @@
 import juice from 'juice';
 import { NextResponse } from 'next/server';
-// eslint-disable-next-line import-x/namespace
-import * as prettier from 'prettier';
+import { format } from 'prettier';
 
 import { API_LIMITS, parseJsonBody, rateLimit } from '@/utils/api';
 
@@ -56,8 +55,7 @@ export async function POST(request: Request): Promise<Response> {
     const inlinedHtml: string = juice.inlineContent(html, css);
 
     // Format the inlined HTML using Prettier
-    // eslint-disable-next-line import-x/namespace
-    let formattedHtml: string = await prettier.format(inlinedHtml, { parser: 'html', singleQuote: true });
+    let formattedHtml: string = await format(inlinedHtml, { parser: 'html', singleQuote: true });
 
     if (!formattedHtml.trim()) {
       formattedHtml = inlinedHtml; // Fallback to the original inlined HTML if formatting fails
