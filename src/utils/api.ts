@@ -96,35 +96,46 @@ function getRedis(): Redis | null {
 }
 
 /**
- * Build the namespaced Redis key for a client IP.
+ * Build the namespaced Redis key for an endpoint scope and client IP.
  *
+ * @param {string} scope - Endpoint identifier (e.g. "minify-css") so each API gets its own counter.
  * @param {string} ip - The client IP address.
  *
- * @returns {string} The Redis key for the given IP.
+ * @returns {string} The Redis key for the given scope and IP.
  */
-function rateLimitKey(ip: string): string {
-  return `rate-limit:v1:${ip}`;
+function rateLimitKey(scope: string, ip: string): string {
+  return `rate-limit:v1:${scope}:${ip}`;
 }
 
 /**
- * Increment the request counter for an IP and report whether the request is
- * allowed to proceed.
+ * Increment the request counter for an endpoint scope and IP and report
+ * whether the request is allowed to proceed.
  *
- * Backed by Redis (Vercel KV) with an atomic fixed-window counter: each request
- * runs `INCR` on the per-IP key and, on the first request in a window, sets an
- * `EXPIRE` equal to the window length. Because the counter lives in a shared,
- * distributed store (rather than a per-instance `Map`), limits hold across all
- * serverless and edge invocations.
+ * Backed by Redis (Vercel KV) with a fixed-window counter: each request runs
+ * `INCR` on the per-endpoint, per-IP key and, on the first request in a
+ * window, sets an `EXPIRE` equal to the window length. Counters are scoped
+ * per endpoint so heavy usage of one tool never eats into another tool's
+ * allowance. Because the counter lives in a shared, distributed store
+ * (rather than a per-instance `Map`), limits hold across all serverless and
+ * edge invocations.
  *
- * When Redis is not configured the request is allowed (fail-open).
+ * When Redis is not configured — or errors at runtime (misconfigured token,
+ * outage, network blip) — the request is allowed (fail-open) so a datastore
+ * problem can never take the API routes down.
  *
  * @param {string} ip - The client IP address.
- * @param {number} [limit] - Max requests allowed within the window (default 30).
+ * @param {string} scope - Endpoint identifier (e.g. "minify-css") giving each API its own bucket.
+ * @param {number} [limit] - Max requests allowed within the window per endpoint (default 30).
  * @param {number} [windowMs] - Length of the window in ms (default 60,000).
  *
  * @returns {Promise<boolean>} True when the request is within the limit, false when rate-limited.
  */
-export async function rateLimit(ip: string, limit: number = 30, windowMs: number = 60000): Promise<boolean> {
+export async function rateLimit(
+  ip: string,
+  scope: string,
+  limit: number = 30,
+  windowMs: number = 60000
+): Promise<boolean> {
   const client = getRedis();
 
   // No datastore configured — allow to keep local/dev working.
@@ -132,18 +143,25 @@ export async function rateLimit(ip: string, limit: number = 30, windowMs: number
     return true;
   }
 
-  const key = rateLimitKey(ip);
+  const key = rateLimitKey(scope, ip);
   const ttlSeconds = Math.max(1, Math.floor(windowMs / 1000));
 
-  // Atomic increment; the batch of upstream callers can't race past the limit.
-  const count = await client.incr(key);
+  try {
+    // INCR is atomic; EXPIRE arms the TTL only on the first request of the
+    // window so the key auto-expires even though the two calls are separate.
+    const count = await client.incr(key);
 
-  // First request within the window → (re)arm the TTL so the key auto-expires.
-  if (count === 1) {
-    await client.expire(key, ttlSeconds);
+    if (count === 1) {
+      await client.expire(key, ttlSeconds);
+    }
+
+    return count <= limit;
+  } catch (error) {
+    // Redis misconfigured or unreachable — degrade gracefully instead of
+    // failing every API route. Details stay in server logs only.
+    console.error(`[RateLimit] Redis unavailable for "${scope}", failing open:`, error);
+    return true;
   }
-
-  return count <= limit;
 }
 
 /**
@@ -166,7 +184,7 @@ export async function getRateLimit(ip: string, limit: number = 30): Promise<{ re
     return { remaining: limit, resetTime: Date.now() + 60000 };
   }
 
-  const key = rateLimitKey(ip);
+  const key = rateLimitKey('default', ip);
   const [count, ttlSeconds] = await Promise.all([client.get<number>(key), client.ttl(key)]);
 
   const remaining = Math.max(0, limit - (count ?? 0));
