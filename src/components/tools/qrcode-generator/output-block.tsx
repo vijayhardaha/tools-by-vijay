@@ -9,6 +9,7 @@ import { PiDownloadSimple } from 'react-icons/pi';
 import type { QrErrorLevel } from '@/components/tools/qrcode-generator';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { downloadCanvasPng } from '@/utils/canvas';
 
 /**
  * Scale factor applied when rendering the downloadable PNG.
@@ -64,11 +65,7 @@ export function OutputBlock({ value, size, level }: OutputBlockProps): JSX.Eleme
     context.imageSmoothingEnabled = false;
     context.drawImage(canvas, 0, 0, scaled.width, scaled.height);
 
-    const url = scaled.toDataURL('image/png');
-    const anchor = document.createElement('a');
-    anchor.href = url;
-    anchor.download = 'qrcode.png';
-    anchor.click();
+    downloadCanvasPng(scaled, 'qrcode.png');
   };
 
   return (

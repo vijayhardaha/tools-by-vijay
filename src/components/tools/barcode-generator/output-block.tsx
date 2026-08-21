@@ -10,6 +10,7 @@ import { PiDownloadSimple } from 'react-icons/pi';
 import type { BarcodeOptions } from '@/components/tools/barcode-generator';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
+import { downloadCanvasPng } from '@/utils/canvas';
 
 /**
  * Scale factor applied to the on-screen preview canvas for sharper rendering.
@@ -106,11 +107,7 @@ export function OutputBlock({ value, options }: OutputBlockProps): JSX.Element {
       margin: 10 * DOWNLOAD_SCALE,
     });
 
-    const url = canvas.toDataURL('image/png');
-    const anchor = document.createElement('a');
-    anchor.href = url;
-    anchor.download = 'barcode.png';
-    anchor.click();
+    downloadCanvasPng(canvas, 'barcode.png');
   };
 
   return (
