@@ -12,16 +12,36 @@
 
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
-/** Shared Redis client method mocks, hoisted so the vi.mock factory can see them. */
-const redisMocks = vi.hoisted(() => ({ incr: vi.fn(), expire: vi.fn() }));
+/** Shared Redis pipeline mocks, hoisted so the vi.mock factory can see them. */
+const redisMocks = vi.hoisted(() => ({ incr: vi.fn(), expire: vi.fn(), exec: vi.fn() }));
 
 vi.mock('@upstash/redis', () => ({
   Redis: class {
-    /** Mocked INCR — returns or rejects per test setup. */
-    incr = redisMocks.incr;
+    /**
+     * Mocked pipeline builder — records chained commands on the shared
+     * mocks and supports chaining like the real SDK.
+     *
+     * @returns {object} The chainable pipeline builder mock.
+     */
+    pipeline() {
+      const builder: {
+        incr: (...args: unknown[]) => unknown;
+        expire: (...args: unknown[]) => unknown;
+        exec: <T>(...args: unknown[]) => Promise<T>;
+      } = {
+        incr: (...args: unknown[]) => {
+          redisMocks.incr(...args);
+          return builder;
+        },
+        expire: (...args: unknown[]) => {
+          redisMocks.expire(...args);
+          return builder;
+        },
+        exec: <T>(...args: unknown[]): Promise<T> => redisMocks.exec(...args) as Promise<T>,
+      };
 
-    /** Mocked EXPIRE — always resolves. */
-    expire = redisMocks.expire;
+      return builder;
+    }
   },
 }));
 
@@ -38,6 +58,7 @@ describe('rateLimit', () => {
     vi.restoreAllMocks();
     redisMocks.incr.mockReset();
     redisMocks.expire.mockReset();
+    redisMocks.exec.mockReset();
   });
 
   it('allows requests when Redis is not configured', async () => {
@@ -47,11 +68,11 @@ describe('rateLimit', () => {
     const { rateLimit } = await import('../api');
 
     await expect(rateLimit('1.2.3.4', 'minify-css')).resolves.toBe(true);
-    expect(redisMocks.incr).not.toHaveBeenCalled();
+    expect(redisMocks.exec).not.toHaveBeenCalled();
   });
 
   it('fails open (allows the request) when Redis errors at runtime', async () => {
-    redisMocks.incr.mockRejectedValue(new Error('Upstash connection failed'));
+    redisMocks.exec.mockRejectedValue(new Error('Upstash connection failed'));
 
     const { rateLimit } = await import('../api');
 
@@ -59,12 +80,14 @@ describe('rateLimit', () => {
   });
 
   it('keeps separate counters per endpoint scope for the same IP', async () => {
-    // Model real INCR semantics: one counter per key.
+    // Model real INCR semantics: one counter per key, driven by the key
+    // recorded on the pipelined incr call.
     const counters = new Map<string, number>();
-    redisMocks.incr.mockImplementation(async (key: string) => {
+    redisMocks.exec.mockImplementation(async () => {
+      const key = redisMocks.incr.mock.calls.at(-1)?.[0] as string;
       const next = (counters.get(key) ?? 0) + 1;
       counters.set(key, next);
-      return next;
+      return [next, 1];
     });
     // Pre-fill the first scope past the default limit of 30.
     counters.set('rate-limit:v1:minify-css:1.2.3.4', 30);
@@ -79,23 +102,23 @@ describe('rateLimit', () => {
   });
 
   it('enforces the limit within a single endpoint scope', async () => {
-    redisMocks.incr.mockResolvedValue(31);
-    redisMocks.expire.mockResolvedValue(1);
+    redisMocks.exec.mockResolvedValue([31, 0]);
 
     const { rateLimit } = await import('../api');
 
     await expect(rateLimit('1.2.3.4', 'minify-css')).resolves.toBe(false);
-    expect(redisMocks.expire).not.toHaveBeenCalled();
   });
 
-  it('arms the TTL on the first request of a window', async () => {
-    redisMocks.incr.mockResolvedValue(1);
-    redisMocks.expire.mockResolvedValue(1);
+  it('arms the TTL in the same pipeline as the INCR', async () => {
+    redisMocks.exec.mockResolvedValue([1, 1]);
 
     const { rateLimit } = await import('../api');
 
     await expect(rateLimit('1.2.3.4', 'unminify-code')).resolves.toBe(true);
-    expect(redisMocks.expire).toHaveBeenCalledWith('rate-limit:v1:unminify-code:1.2.3.4', 60);
+    expect(redisMocks.incr).toHaveBeenCalledWith('rate-limit:v1:unminify-code:1.2.3.4');
+    // EXPIRE NX arms the TTL only when none exists, preserving the
+    // fixed-window semantics — and travels in the same request as INCR.
+    expect(redisMocks.expire).toHaveBeenCalledWith('rate-limit:v1:unminify-code:1.2.3.4', 60, 'NX');
   });
 });
 

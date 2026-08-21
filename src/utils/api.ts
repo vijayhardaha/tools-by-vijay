@@ -172,9 +172,10 @@ function rateLimitKey(scope: string, ip: string): string {
  * Increment the request counter for an endpoint scope and IP and report
  * whether the request is allowed to proceed.
  *
- * Backed by Redis (Vercel KV) with a fixed-window counter: each request runs
- * `INCR` on the per-endpoint, per-IP key and, on the first request in a
- * window, sets an `EXPIRE` equal to the window length. Counters are scoped
+ * Backed by Redis (Vercel KV) with a fixed-window counter: each request
+ * pipelines `INCR` with `EXPIRE ... NX` on the per-endpoint, per-IP key —
+ * one request to Redis, so the counter and its TTL are always armed
+ * together. Counters are scoped
  * per endpoint so heavy usage of one tool never eats into another tool's
  * allowance. Because the counter lives in a shared, distributed store
  * (rather than a per-instance `Map`), limits hold across all serverless and
@@ -208,13 +209,12 @@ export async function rateLimit(
   const ttlSeconds = Math.max(1, Math.floor(windowMs / 1000));
 
   try {
-    // INCR is atomic; EXPIRE arms the TTL only on the first request of the
-    // window so the key auto-expires even though the two calls are separate.
-    const count = await client.incr(key);
-
-    if (count === 1) {
-      await client.expire(key, ttlSeconds);
-    }
+    // INCR and EXPIRE travel in a single pipeline request so a crash between
+    // two separate calls can never strand a counter without a TTL (which
+    // would permanently limit that IP+endpoint until manual deletion).
+    // EXPIRE NX arms the TTL only when the key has none, preserving the
+    // fixed-window semantics of arming on the first request of a window.
+    const [count] = await client.pipeline().incr(key).expire(key, ttlSeconds, 'NX').exec<[number]>();
 
     return count <= limit;
   } catch (error) {
