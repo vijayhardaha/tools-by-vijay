@@ -3,6 +3,7 @@
 import type { JSX } from 'react';
 import { useState } from 'react';
 
+import { createExampleHandler } from '@/components/tool/createExampleHandler';
 import { ToolExampleBlock } from '@/components/tool/ToolExampleBlock';
 
 import { EXAMPLES } from './examples';
@@ -159,28 +160,13 @@ export function HtmlMinifier(): JSX.Element {
     setOptions((prevOptions) => ({ ...prevOptions, [key]: value }));
   };
 
-  /**
-   * Loads an example with predefined input values and options.
-   *
-   * @param {object} values - The example values.
-   */
-  const handleExample = (values: Record<string, any>): void => {
-    if ('input' in values) {
-      setInput(values.input);
-    }
-    if ('removeComments' in values) {
-      updateOption('removeComments', values.removeComments);
-    }
-    if ('collapseWhitespace' in values) {
-      updateOption('collapseWhitespace', values.collapseWhitespace);
-    }
-    if ('minifyCSS' in values) {
-      updateOption('minifyCSS', values.minifyCSS);
-    }
-    if ('minifyJS' in values) {
-      updateOption('minifyJS', values.minifyJS);
-    }
-  };
+  const handleExample = createExampleHandler({
+    input: setInput,
+    removeComments: (value) => updateOption('removeComments', value),
+    collapseWhitespace: (value) => updateOption('collapseWhitespace', value),
+    minifyCSS: (value) => updateOption('minifyCSS', value),
+    minifyJS: (value) => updateOption('minifyJS', value),
+  });
 
   return (
     <>

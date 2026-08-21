@@ -3,6 +3,7 @@
 import type { JSX } from 'react';
 import { useState } from 'react';
 
+import { createExampleHandler } from '@/components/tool/createExampleHandler';
 import { ToolExampleBlock } from '@/components/tool/ToolExampleBlock';
 
 import { EXAMPLES } from './examples';
@@ -143,16 +144,7 @@ export function PasswordStrengthChecker(): JSX.Element {
     setStrength(defaultStengthOptions);
   };
 
-  /**
-   * Loads an example with predefined input values and options.
-   *
-   * @param {object} values - The example values.
-   */
-  const handleExample = (values: Record<string, any>): void => {
-    if ('password' in values) {
-      handleSubmit(values.password);
-    }
-  };
+  const handleExample = createExampleHandler({ password: (value) => handleSubmit(value) });
 
   return (
     <>

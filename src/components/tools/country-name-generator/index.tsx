@@ -3,6 +3,7 @@
 import type { JSX } from 'react';
 import { useEffect, useState } from 'react';
 
+import { createExampleHandler } from '@/components/tool/createExampleHandler';
 import { ToolExampleBlock } from '@/components/tool/ToolExampleBlock';
 
 import { COUNTRIES } from './countries';
@@ -54,16 +55,7 @@ export function CountryNameGenerator(): JSX.Element {
     setOutput([]);
   };
 
-  /**
-   * Loads an example with predefined input values and options.
-   *
-   * @param {object} values - The example values.
-   */
-  const handleExample = (values: Record<string, any>): void => {
-    if ('count' in values) {
-      setCount(values.count);
-    }
-  };
+  const handleExample = createExampleHandler({ count: setCount });
 
   return (
     <>

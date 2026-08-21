@@ -3,6 +3,7 @@
 import type { JSX } from 'react';
 import { useMemo, useState } from 'react';
 
+import { createExampleHandler } from '@/components/tool/createExampleHandler';
 import { ToolExampleBlock } from '@/components/tool/ToolExampleBlock';
 
 import { EXAMPLES } from './examples';
@@ -76,25 +77,12 @@ export function AlphabeticalLineSorter(): JSX.Element {
     setSortType('standard');
   };
 
-  /**
-   * Loads an example with predefined input values and options.
-   *
-   * @param {object} values - The example values.
-   */
-  const handleExample = (values: Record<string, any>): void => {
-    if ('input' in values) {
-      setInput(values.input);
-    }
-    if ('reverseSort' in values) {
-      setReverseSort(values.reverseSort);
-    }
-    if ('removeDuplicates' in values) {
-      setRemoveDuplicates(values.removeDuplicates);
-    }
-    if ('sortType' in values) {
-      setSortType(values.sortType);
-    }
-  };
+  const handleExample = createExampleHandler({
+    input: setInput,
+    reverseSort: setReverseSort,
+    removeDuplicates: setRemoveDuplicates,
+    sortType: setSortType,
+  });
 
   return (
     <>

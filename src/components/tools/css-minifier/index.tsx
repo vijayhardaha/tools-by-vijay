@@ -3,6 +3,7 @@
 import type { JSX } from 'react';
 import { useState } from 'react';
 
+import { createExampleHandler } from '@/components/tool/createExampleHandler';
 import { ToolExampleBlock } from '@/components/tool/ToolExampleBlock';
 
 import { EXAMPLES } from './examples';
@@ -152,22 +153,11 @@ export function CssMinifier(): JSX.Element {
     }));
   };
 
-  /**
-   * Loads an example with predefined input values and options.
-   *
-   * @param {object} values - The example values.
-   */
-  const handleExample = (values: Record<string, any>): void => {
-    if ('input' in values) {
-      setInput(values.input);
-    }
-    if ('level' in values) {
-      updateOption('level', values.level);
-    }
-    if ('compress' in values) {
-      updateOption('compress', values.compress);
-    }
-  };
+  const handleExample = createExampleHandler({
+    input: setInput,
+    level: (value) => updateOption('level', value),
+    compress: (value) => updateOption('compress', value),
+  });
 
   return (
     <>

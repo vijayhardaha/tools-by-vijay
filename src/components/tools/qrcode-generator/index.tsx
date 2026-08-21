@@ -3,6 +3,7 @@
 import type { JSX } from 'react';
 import { useState } from 'react';
 
+import { createExampleHandler } from '@/components/tool/createExampleHandler';
 import { ToolExampleBlock } from '@/components/tool/ToolExampleBlock';
 
 import { EXAMPLES } from './examples';
@@ -60,22 +61,11 @@ export function QRCodeGenerator(): JSX.Element {
     setLevel(defaultLevel);
   };
 
-  /**
-   * Loads an example with predefined input values and options.
-   *
-   * @param {object} values - The example values.
-   */
-  const handleExample = (values: Record<string, any>): void => {
-    if ('input' in values) {
-      setInput(values.input);
-    }
-    if ('size' in values) {
-      setSize(values.size);
-    }
-    if ('level' in values) {
-      setLevel(values.level as QrErrorLevel);
-    }
-  };
+  const handleExample = createExampleHandler({
+    input: setInput,
+    size: setSize,
+    level: (value) => setLevel(value as QrErrorLevel),
+  });
 
   return (
     <>

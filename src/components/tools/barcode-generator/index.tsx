@@ -3,6 +3,7 @@
 import type { JSX } from 'react';
 import { useState } from 'react';
 
+import { createExampleHandler } from '@/components/tool/createExampleHandler';
 import { ToolExampleBlock } from '@/components/tool/ToolExampleBlock';
 
 import { EXAMPLES } from './examples';
@@ -116,31 +117,14 @@ export function BarcodeGenerator(): JSX.Element {
     setOptions(defaultOptions);
   };
 
-  /**
-   * Loads an example with predefined input values and options.
-   *
-   * @param {object} values - The example values.
-   */
-  const handleExample = (values: Record<string, any>): void => {
-    if ('input' in values) {
-      setInput(values.input);
-    }
-    if ('format' in values) {
-      updateOption('format', values.format as BarcodeFormat);
-    }
-    if ('width' in values) {
-      updateOption('width', values.width);
-    }
-    if ('height' in values) {
-      updateOption('height', values.height);
-    }
-    if ('showText' in values) {
-      updateOption('showText', values.showText);
-    }
-    if ('textAlign' in values) {
-      updateOption('textAlign', values.textAlign as BarcodeTextAlign);
-    }
-  };
+  const handleExample = createExampleHandler({
+    input: setInput,
+    format: (value) => updateOption('format', value as BarcodeFormat),
+    width: (value) => updateOption('width', value),
+    height: (value) => updateOption('height', value),
+    showText: (value) => updateOption('showText', value),
+    textAlign: (value) => updateOption('textAlign', value as BarcodeTextAlign),
+  });
 
   return (
     <>

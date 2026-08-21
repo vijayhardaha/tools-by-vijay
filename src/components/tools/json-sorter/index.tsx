@@ -5,6 +5,7 @@ import { useState } from 'react';
 
 import jsonabc from 'jsonabc';
 
+import { createExampleHandler } from '@/components/tool/createExampleHandler';
 import { ToolExampleBlock } from '@/components/tool/ToolExampleBlock';
 
 import { EXAMPLES } from './examples';
@@ -78,19 +79,7 @@ export function JsonSorter(): JSX.Element {
     setSpareArrays(true);
   };
 
-  /**
-   * Loads an example with predefined input values and options.
-   *
-   * @param {object} values - The example values.
-   */
-  const handleExample = (values: Record<string, any>): void => {
-    if ('input' in values) {
-      setInput(values.input);
-    }
-    if ('spareArrays' in values) {
-      setSpareArrays(values.spareArrays);
-    }
-  };
+  const handleExample = createExampleHandler({ input: setInput, spareArrays: setSpareArrays });
 
   return (
     <>

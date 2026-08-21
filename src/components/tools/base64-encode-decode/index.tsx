@@ -3,6 +3,7 @@
 import type { JSX } from 'react';
 import { useMemo, useState } from 'react';
 
+import { createExampleHandler } from '@/components/tool/createExampleHandler';
 import { ToolExampleBlock } from '@/components/tool/ToolExampleBlock';
 
 import { EXAMPLES } from './examples';
@@ -46,19 +47,7 @@ export function Base64EncodeDecode(): JSX.Element {
     setIsEncoding(true);
   };
 
-  /**
-   * Loads an example with predefined input values and options.
-   *
-   * @param {object} values - The example values.
-   */
-  const handleExample = (values: Record<string, any>): void => {
-    if ('input' in values) {
-      setInput(values.input);
-    }
-    if ('isEncoding' in values) {
-      setIsEncoding(values.isEncoding);
-    }
-  };
+  const handleExample = createExampleHandler({ input: setInput, isEncoding: setIsEncoding });
 
   return (
     <>

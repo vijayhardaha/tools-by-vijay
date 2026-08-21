@@ -3,6 +3,7 @@
 import type { JSX } from 'react';
 import { useMemo, useState } from 'react';
 
+import { createExampleHandler } from '@/components/tool/createExampleHandler';
 import { ToolExampleBlock } from '@/components/tool/ToolExampleBlock';
 
 import { EXAMPLES } from './examples';
@@ -70,22 +71,7 @@ export function DuplicateLineRemoval(): JSX.Element {
     setReverseSort(false);
   };
 
-  /**
-   * Loads an example with predefined input values and options.
-   *
-   * @param {object} values - The example values.
-   */
-  const handleExample = (values: Record<string, any>): void => {
-    if ('input' in values) {
-      setInput(values.input);
-    }
-    if ('sortType' in values) {
-      setSortType(values.sortType);
-    }
-    if ('reverseSort' in values) {
-      setReverseSort(values.reverseSort);
-    }
-  };
+  const handleExample = createExampleHandler({ input: setInput, sortType: setSortType, reverseSort: setReverseSort });
 
   return (
     <>

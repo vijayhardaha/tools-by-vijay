@@ -3,6 +3,7 @@
 import type { JSX } from 'react';
 import { useState } from 'react';
 
+import { createExampleHandler } from '@/components/tool/createExampleHandler';
 import { ToolExampleBlock } from '@/components/tool/ToolExampleBlock';
 
 import { EXAMPLES } from './examples';
@@ -78,19 +79,7 @@ export function Unminify(): JSX.Element {
     setError('');
   };
 
-  /**
-   * Loads an example with predefined input values and options.
-   *
-   * @param {object} values - The example values.
-   */
-  const handleExample = (values: Record<string, any>): void => {
-    if ('input' in values) {
-      setInput(values.input);
-    }
-    if ('codeType' in values) {
-      setCodeType(values.codeType);
-    }
-  };
+  const handleExample = createExampleHandler({ input: setInput, codeType: setCodeType });
 
   return (
     <>

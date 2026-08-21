@@ -6,6 +6,7 @@ import { useMemo, useState } from 'react';
 import latinize from 'latinize';
 import slugify from 'slugify';
 
+import { createExampleHandler } from '@/components/tool/createExampleHandler';
 import { ToolExampleBlock } from '@/components/tool/ToolExampleBlock';
 
 import { EXAMPLES } from './examples';
@@ -79,22 +80,11 @@ export function BulkSlugify(): JSX.Element {
     setKeepEmptyLines(false);
   };
 
-  /**
-   * Loads an example with predefined input values and options.
-   *
-   * @param {object} values - The example values.
-   */
-  const handleExample = (values: Record<string, any>): void => {
-    if ('input' in values) {
-      setInput(values.input);
-    }
-    if ('removeNumbers' in values) {
-      setRemoveNumbers(values.removeNumbers);
-    }
-    if ('useUnderscore' in values) {
-      setUseUnderscore(values.useUnderscore);
-    }
-  };
+  const handleExample = createExampleHandler({
+    input: setInput,
+    removeNumbers: setRemoveNumbers,
+    useUnderscore: setUseUnderscore,
+  });
 
   return (
     <>

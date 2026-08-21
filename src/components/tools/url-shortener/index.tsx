@@ -5,6 +5,7 @@ import { useState } from 'react';
 
 import validUrl from 'valid-url';
 
+import { createExampleHandler } from '@/components/tool/createExampleHandler';
 import { ToolExampleBlock } from '@/components/tool/ToolExampleBlock';
 
 import { EXAMPLES } from './examples';
@@ -137,16 +138,7 @@ export function UrlShortener(): JSX.Element {
     setError('');
   };
 
-  /**
-   * Loads an example with predefined input values and options.
-   *
-   * @param {object} values - The example values.
-   */
-  const handleExample = (values: Record<string, any>): void => {
-    if ('input' in values) {
-      setInput(values.input);
-    }
-  };
+  const handleExample = createExampleHandler({ input: setInput });
 
   return (
     <>

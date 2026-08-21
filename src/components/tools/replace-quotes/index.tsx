@@ -3,6 +3,7 @@
 import type { JSX } from 'react';
 import { useMemo, useState } from 'react';
 
+import { createExampleHandler } from '@/components/tool/createExampleHandler';
 import { ToolExampleBlock } from '@/components/tool/ToolExampleBlock';
 
 import { EXAMPLES } from './examples';
@@ -87,25 +88,12 @@ export function ReplaceQuotes(): JSX.Element {
     setReplaceStandaloneQuotes(false);
   };
 
-  /**
-   * Loads an example with predefined input values and options.
-   *
-   * @param {object} values - The example values.
-   */
-  const handleExample = (values: Record<string, any>): void => {
-    if ('input' in values) {
-      setInput(values.input);
-    }
-    if ('replaceType' in values) {
-      setReplaceType(values.replaceType);
-    }
-    if ('replaceApostrophes' in values) {
-      setReplaceApostrophes(values.replaceApostrophes);
-    }
-    if ('replaceStandaloneQuotes' in values) {
-      setReplaceStandaloneQuotes(values.replaceStandaloneQuotes);
-    }
-  };
+  const handleExample = createExampleHandler({
+    input: setInput,
+    replaceType: setReplaceType,
+    replaceApostrophes: setReplaceApostrophes,
+    replaceStandaloneQuotes: setReplaceStandaloneQuotes,
+  });
 
   return (
     <>

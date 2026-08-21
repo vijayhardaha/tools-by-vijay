@@ -3,6 +3,7 @@
 import type { JSX } from 'react';
 import { useState } from 'react';
 
+import { createExampleHandler } from '@/components/tool/createExampleHandler';
 import { ToolExampleBlock } from '@/components/tool/ToolExampleBlock';
 
 import { EXAMPLES } from './examples';
@@ -50,19 +51,7 @@ export function PxToRemConverter(): JSX.Element {
 
   const remValue = calculateRem(pxValue, baseFontSize);
 
-  /**
-   * Loads an example with predefined input values and options.
-   *
-   * @param {object} values - The example values.
-   */
-  const handleExample = (values: Record<string, any>): void => {
-    if ('pxValue' in values) {
-      setPxValue(values.pxValue);
-    }
-    if ('baseFontSize' in values) {
-      setBaseFontSize(values.baseFontSize);
-    }
-  };
+  const handleExample = createExampleHandler({ pxValue: setPxValue, baseFontSize: setBaseFontSize });
 
   return (
     <>

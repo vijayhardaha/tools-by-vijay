@@ -3,6 +3,7 @@
 import type { JSX } from 'react';
 import { useState } from 'react';
 
+import { createExampleHandler } from '@/components/tool/createExampleHandler';
 import { ToolExampleBlock } from '@/components/tool/ToolExampleBlock';
 
 import { EXAMPLES } from './examples';
@@ -102,28 +103,13 @@ export function JsMinifier(): JSX.Element {
     setOptions((prev) => ({ ...prev, [key]: value }));
   };
 
-  /**
-   * Loads an example with predefined input values and options.
-   *
-   * @param {object} values - The example values.
-   */
-  const handleExample = (values: Record<string, any>): void => {
-    if ('input' in values) {
-      setInput(values.input);
-    }
-    if ('mangle' in values) {
-      updateOption('mangle', values.mangle);
-    }
-    if ('removeConsole' in values) {
-      updateOption('removeConsole', values.removeConsole);
-    }
-    if ('removeDebugger' in values) {
-      updateOption('removeDebugger', values.removeDebugger);
-    }
-    if ('removeComments' in values) {
-      updateOption('removeComments', values.removeComments);
-    }
-  };
+  const handleExample = createExampleHandler({
+    input: setInput,
+    mangle: (value) => updateOption('mangle', value),
+    removeConsole: (value) => updateOption('removeConsole', value),
+    removeDebugger: (value) => updateOption('removeDebugger', value),
+    removeComments: (value) => updateOption('removeComments', value),
+  });
 
   return (
     <>

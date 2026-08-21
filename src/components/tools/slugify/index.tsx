@@ -6,6 +6,7 @@ import { useMemo, useState } from 'react';
 import latinize from 'latinize';
 import slugify from 'slugify';
 
+import { createExampleHandler } from '@/components/tool/createExampleHandler';
 import { ToolExampleBlock } from '@/components/tool/ToolExampleBlock';
 
 import { EXAMPLES } from './examples';
@@ -59,28 +60,13 @@ export function Slugify(): JSX.Element {
     setUseLitinize(true);
   };
 
-  /**
-   * Loads an example with predefined input values and options.
-   *
-   * @param {object} values - The example values.
-   */
-  const handleExample = (values: Record<string, any>): void => {
-    if ('input' in values) {
-      setInput(values.input);
-    }
-    if ('useUnderscore' in values) {
-      setUseUnderscore(values.useUnderscore);
-    }
-    if ('removeNumbers' in values) {
-      setRemoveNumbers(values.removeNumbers);
-    }
-    if ('useLowercase' in values) {
-      setUseLowercase(values.useLowercase);
-    }
-    if ('useLitinize' in values) {
-      setUseLitinize(values.useLitinize);
-    }
-  };
+  const handleExample = createExampleHandler({
+    input: setInput,
+    useUnderscore: setUseUnderscore,
+    removeNumbers: setRemoveNumbers,
+    useLowercase: setUseLowercase,
+    useLitinize: setUseLitinize,
+  });
 
   return (
     <>

@@ -6,6 +6,7 @@ import { useState } from 'react';
 import latinize from 'latinize';
 import slugify from 'slugify';
 
+import { createExampleHandler } from '@/components/tool/createExampleHandler';
 import { ToolExampleBlock } from '@/components/tool/ToolExampleBlock';
 
 import { EXAMPLES } from './examples';
@@ -333,25 +334,12 @@ export function DropdownToArray(): JSX.Element {
     setUseSlugKeys(true);
   };
 
-  /**
-   * Loads an example with predefined input values and options.
-   *
-   * @param {object} values - The example values.
-   */
-  const handleExample = (values: Record<string, any>): void => {
-    if ('input' in values) {
-      setInput(values.input);
-    }
-    if ('outputFormat' in values) {
-      setOutputFormat(values.outputFormat);
-    }
-    if ('arrayType' in values) {
-      setArrayType(values.arrayType);
-    }
-    if ('useSlugKeys' in values) {
-      setUseSlugKeys(values.useSlugKeys);
-    }
-  };
+  const handleExample = createExampleHandler({
+    input: setInput,
+    outputFormat: setOutputFormat,
+    arrayType: setArrayType,
+    useSlugKeys: setUseSlugKeys,
+  });
 
   return (
     <>

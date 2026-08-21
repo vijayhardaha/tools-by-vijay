@@ -3,6 +3,7 @@
 import type { JSX } from 'react';
 import { useEffect, useState } from 'react';
 
+import { createExampleHandler } from '@/components/tool/createExampleHandler';
 import { ToolExampleBlock } from '@/components/tool/ToolExampleBlock';
 
 import { EXAMPLES } from './examples';
@@ -75,25 +76,12 @@ export function ShuffleTextLines(): JSX.Element {
     setTrimLines(true);
   };
 
-  /**
-   * Loads an example with predefined input values and options.
-   *
-   * @param {object} values - The example values.
-   */
-  const handleExample = (values: Record<string, any>): void => {
-    if ('input' in values) {
-      setInput(values.input);
-    }
-    if ('removeDuplicates' in values) {
-      setRemoveDuplicates(values.removeDuplicates);
-    }
-    if ('removeEmptyLines' in values) {
-      setRemoveEmptyLines(values.removeEmptyLines);
-    }
-    if ('trimLines' in values) {
-      setTrimLines(values.trimLines);
-    }
-  };
+  const handleExample = createExampleHandler({
+    input: setInput,
+    removeDuplicates: setRemoveDuplicates,
+    removeEmptyLines: setRemoveEmptyLines,
+    trimLines: setTrimLines,
+  });
 
   return (
     <>

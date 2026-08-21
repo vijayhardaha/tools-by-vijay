@@ -3,6 +3,7 @@
 import type { JSX } from 'react';
 import { useState } from 'react';
 
+import { createExampleHandler } from '@/components/tool/createExampleHandler';
 import { ToolExampleBlock } from '@/components/tool/ToolExampleBlock';
 
 import { EXAMPLES } from './examples';
@@ -40,16 +41,7 @@ export function CharacterCount(): JSX.Element {
 
   const stats = calculateStats(text);
 
-  /**
-   * Loads an example with predefined input values and options.
-   *
-   * @param {object} values - The example values.
-   */
-  const handleExample = (values: Record<string, any>): void => {
-    if ('text' in values) {
-      setText(values.text);
-    }
-  };
+  const handleExample = createExampleHandler({ text: setText });
 
   return (
     <>

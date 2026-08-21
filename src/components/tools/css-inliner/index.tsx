@@ -3,6 +3,7 @@
 import type { JSX } from 'react';
 import { useState } from 'react';
 
+import { createExampleHandler } from '@/components/tool/createExampleHandler';
 import { ToolExampleBlock } from '@/components/tool/ToolExampleBlock';
 
 import { EXAMPLES } from './examples';
@@ -64,19 +65,7 @@ export function CssInliner(): JSX.Element {
     setError('');
   };
 
-  /**
-   * Loads an example with predefined input values and options.
-   *
-   * @param {object} values - The example values.
-   */
-  const handleExample = (values: Record<string, any>): void => {
-    if ('htmlInput' in values) {
-      setHtmlInput(values.htmlInput);
-    }
-    if ('cssInput' in values) {
-      setCssInput(values.cssInput);
-    }
-  };
+  const handleExample = createExampleHandler({ htmlInput: setHtmlInput, cssInput: setCssInput });
 
   return (
     <>
