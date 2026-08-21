@@ -1,26 +1,20 @@
 import { minify } from 'html-minifier-terser';
 import { NextResponse } from 'next/server';
 
-import { API_LIMITS, parseJsonBody, safeApiErrorMessage, withTimeout, rateLimit } from '@/utils/api';
+import { API_LIMITS, parseJsonBody, withApiGuard, withTimeout } from '@/utils/api';
 
 /**
- * API route handler for HTML minification.
- *
- * @param {Request} request - The incoming request object.
- *
- * @returns {Promise<Response>} JSON response with minified HTML or an error message.
+ * API route handler for HTML minification, wrapped in the shared guard
+ * (rate limiting, timeout → 422, safe error responses).
  */
-export async function POST(request: Request): Promise<Response> {
-  try {
-    // Rate limit by client IP to protect against abuse
-    const clientIp = request.headers.get('x-forwarded-for') || 'unknown';
-    if (!(await rateLimit(clientIp, 'minify-html'))) {
-      return NextResponse.json(
-        { error: 'Rate limit exceeded. Please try again later.' },
-        { status: 429, headers: { 'Retry-After': '60' } }
-      );
-    }
-
+export const POST = withApiGuard(
+  {
+    scope: 'minify-html',
+    syntaxHint: 'Invalid HTML input — please fix syntax errors and try again.',
+    fallbackMessage: 'Failed to minify HTML. Please try again later.',
+    logLabel: 'HTML minification error',
+  },
+  async (request: Request): Promise<Response> => {
     // Define the expected input structure
     type MinifyHtmlRequest = { html: string; options?: Record<string, unknown> };
 
@@ -56,23 +50,5 @@ export async function POST(request: Request): Promise<Response> {
     );
 
     return NextResponse.json({ minifiedHtml });
-  } catch (error) {
-    const message = error instanceof Error ? error.message : '';
-
-    if (message.toLowerCase().includes('timeout')) {
-      return NextResponse.json({ error: 'Processing timeout — input too complex' }, { status: 408 });
-    }
-
-    console.error('HTML minification error:', error);
-    return NextResponse.json(
-      {
-        error: safeApiErrorMessage(
-          error,
-          'Invalid HTML input — please fix syntax errors and try again.',
-          'Failed to minify HTML. Please try again later.'
-        ),
-      },
-      { status: 500 }
-    );
   }
-}
+);

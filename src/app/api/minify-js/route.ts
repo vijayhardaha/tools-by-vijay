@@ -3,7 +3,7 @@
 import { minify } from '@putout/minify';
 import { NextResponse } from 'next/server';
 
-import { API_LIMITS, parseJsonBody, safeApiErrorMessage, withTimeout, rateLimit } from '@/utils/api';
+import { API_LIMITS, parseJsonBody, withApiGuard, withTimeout } from '@/utils/api';
 
 /**
  * Interface for the JavaScript minification request.
@@ -22,25 +22,17 @@ interface MinifyJsRequest {
 }
 
 /**
- * API route handler for JavaScript minification
- *
- * @param {Request} request - The incoming request object
- *
- * @returns {Promise<Response>} JSON response with minified JS or error
- *
- * @throws {Error} When minification fails or input is invalid
+ * API route handler for JavaScript minification, wrapped in the shared guard
+ * (rate limiting, timeout → 422, safe error responses).
  */
-export async function POST(request: Request): Promise<Response> {
-  try {
-    // Rate limit by client IP to protect against abuse
-    const clientIp = request.headers.get('x-forwarded-for') || 'unknown';
-    if (!(await rateLimit(clientIp, 'minify-js'))) {
-      return NextResponse.json(
-        { error: 'Rate limit exceeded. Please try again later.' },
-        { status: 429, headers: { 'Retry-After': '60' } }
-      );
-    }
-
+export const POST = withApiGuard(
+  {
+    scope: 'minify-js',
+    syntaxHint: 'Syntax error in your JavaScript input — please fix it and try again.',
+    fallbackMessage: 'Failed to minify JavaScript. Please try again later.',
+    logLabel: 'JavaScript minification error',
+  },
+  async (request: Request): Promise<Response> => {
     const body = await parseJsonBody<MinifyJsRequest>(request);
     if (!body) {
       return NextResponse.json({ error: 'Invalid JSON body' }, { status: 400 });
@@ -81,26 +73,8 @@ export async function POST(request: Request): Promise<Response> {
       reduction:
         minifiedSize >= originalSize ? '0%' : `${(((originalSize - minifiedSize) / originalSize) * 100).toFixed(2)}%`,
     });
-  } catch (error) {
-    const message = error instanceof Error ? error.message : '';
-
-    if (message.toLowerCase().includes('timeout')) {
-      return NextResponse.json({ error: 'Processing timeout — input too complex' }, { status: 408 });
-    }
-
-    console.error('JavaScript minification error:', error);
-    return NextResponse.json(
-      {
-        error: safeApiErrorMessage(
-          error,
-          'Syntax error in your JavaScript input — please fix it and try again.',
-          'Failed to minify JavaScript. Please try again later.'
-        ),
-      },
-      { status: 500 }
-    );
   }
-}
+);
 
 /**
  * Minifies JavaScript using Putout Minify

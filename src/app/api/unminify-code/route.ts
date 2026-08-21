@@ -1,11 +1,12 @@
 import { NextResponse } from 'next/server';
+import type { Plugin } from 'prettier';
 import parserBabel from 'prettier/plugins/babel';
 import parserJson from 'prettier/plugins/estree';
 import parserHtml from 'prettier/plugins/html';
 import parserCss from 'prettier/plugins/postcss';
 import prettier from 'prettier/standalone';
 
-import { API_LIMITS, parseJsonBody, rateLimit, safeApiErrorMessage } from '@/utils/api';
+import { API_LIMITS, parseJsonBody, withApiGuard } from '@/utils/api';
 
 export const runtime = 'edge';
 
@@ -27,23 +28,17 @@ interface UnminifyCodeRequest {
 }
 
 /**
- * API route handler for unminifying code.
- *
- * @param {Request} request - The incoming request object.
- *
- * @returns {Promise<Response>} JSON response with unminified code or error.
+ * API route handler for unminifying code, wrapped in the shared guard
+ * (rate limiting, timeout → 422, safe error responses).
  */
-export async function POST(request: Request): Promise<Response> {
-  try {
-    // Rate limit by client IP to protect against abuse
-    const clientIp = request.headers.get('x-forwarded-for') || 'unknown';
-    if (!(await rateLimit(clientIp, 'unminify-code'))) {
-      return NextResponse.json(
-        { error: 'Rate limit exceeded. Please try again later.' },
-        { status: 429, headers: { 'Retry-After': '60' } }
-      );
-    }
-
+export const POST = withApiGuard(
+  {
+    scope: 'unminify-code',
+    syntaxHint: 'Syntax error in your code — please fix it and try again.',
+    fallbackMessage: 'Failed to format code. Please try again later.',
+    logLabel: 'Unminification error',
+  },
+  async (request: Request): Promise<Response> => {
     const body = await parseJsonBody<UnminifyCodeRequest>(request);
     if (!body) {
       return NextResponse.json({ error: 'Invalid JSON body' }, { status: 400 });
@@ -71,7 +66,7 @@ export async function POST(request: Request): Promise<Response> {
     }
 
     let parser: string = 'babel';
-    let plugins: any[] = [parserBabel];
+    let plugins: Plugin[] = [parserBabel];
 
     // Determine the parser and plugins based on the code type
     switch (codeType) {
@@ -96,17 +91,5 @@ export async function POST(request: Request): Promise<Response> {
     // Format the code using Prettier
     const unminifiedCode = await prettier.format(code, { parser, plugins });
     return NextResponse.json({ unminifiedCode });
-  } catch (error) {
-    console.error('Unminification error:', error);
-    return NextResponse.json(
-      {
-        error: safeApiErrorMessage(
-          error,
-          'Syntax error in your code — please fix it and try again.',
-          'Failed to format code. Please try again later.'
-        ),
-      },
-      { status: 500 }
-    );
   }
-}
+);

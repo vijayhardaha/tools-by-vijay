@@ -2,26 +2,20 @@ import juice from 'juice';
 import { NextResponse } from 'next/server';
 import { format } from 'prettier';
 
-import { API_LIMITS, parseJsonBody, rateLimit, safeApiErrorMessage } from '@/utils/api';
+import { API_LIMITS, parseJsonBody, withApiGuard } from '@/utils/api';
 
 /**
- * API route handler for inlining CSS into HTML.
- *
- * @param {Request} request - The incoming request object.
- *
- * @returns {Promise<Response>} JSON response with inlined and formatted HTML or an error message.
+ * API route handler for inlining CSS into HTML, wrapped in the shared guard
+ * (rate limiting, timeout → 422, safe error responses).
  */
-export async function POST(request: Request): Promise<Response> {
-  try {
-    // Rate limit by client IP to protect against abuse
-    const clientIp = request.headers.get('x-forwarded-for') || 'unknown';
-    if (!(await rateLimit(clientIp, 'inline-css'))) {
-      return NextResponse.json(
-        { error: 'Rate limit exceeded. Please try again later.' },
-        { status: 429, headers: { 'Retry-After': '60' } }
-      );
-    }
-
+export const POST = withApiGuard(
+  {
+    scope: 'inline-css',
+    syntaxHint: 'Invalid HTML or CSS input — please fix syntax errors and try again.',
+    fallbackMessage: 'Failed to inline CSS. Please try again later.',
+    logLabel: 'Error processing request',
+  },
+  async (request: Request): Promise<Response> => {
     // Define the expected input structure
     type InlineCssRequest = { html: string; css: string };
 
@@ -54,25 +48,16 @@ export async function POST(request: Request): Promise<Response> {
     // Inline CSS into HTML
     const inlinedHtml: string = juice.inlineContent(html, css);
 
-    // Format the inlined HTML using Prettier
+    // Format the inlined HTML using Prettier. Note: prettier's format never
+    // returns an empty string for non-empty input — the trim() guard below
+    // only covers pathological all-whitespace results, not format failures
+    // (those reject and surface through the guard's 500 path).
     let formattedHtml: string = await format(inlinedHtml, { parser: 'html', singleQuote: true });
 
     if (!formattedHtml.trim()) {
-      formattedHtml = inlinedHtml; // Fallback to the original inlined HTML if formatting fails
+      formattedHtml = inlinedHtml;
     }
 
     return NextResponse.json({ formattedHtml });
-  } catch (error) {
-    console.error('Error processing request:', error);
-    return NextResponse.json(
-      {
-        error: safeApiErrorMessage(
-          error,
-          'Invalid HTML or CSS input — please fix syntax errors and try again.',
-          'Failed to inline CSS. Please try again later.'
-        ),
-      },
-      { status: 500 }
-    );
   }
-}
+);
