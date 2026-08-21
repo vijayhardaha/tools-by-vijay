@@ -382,7 +382,7 @@ export default function Home(): JSX.Element {
               <div className="mb-4 inline-flex size-12 items-center justify-center rounded-xl bg-blue-100 text-blue-600">
                 <PiRocket className="size-6" />
               </div>
-              <h3 className="text-foreground mb-3 text-xl font-bold">Fast, Lightweight & Privacy-Friendly</h3>
+              <h2 className="text-foreground mb-3 text-xl font-bold">Fast, Lightweight & Privacy-Friendly</h2>
               <p className="text-muted-foreground leading-relaxed">
                 No sign-up, no downloads, no hassle. All tools run instantly in your browser — with zero tracking and
                 zero clutter. Everything is designed to be fast, lightweight, and privacy-focused. You get full
@@ -395,7 +395,7 @@ export default function Home(): JSX.Element {
               <div className="mb-4 inline-flex size-12 items-center justify-center rounded-xl bg-amber-100 text-amber-600">
                 <PiMonitor className="size-6" />
               </div>
-              <h3 className="text-foreground mb-3 text-xl font-bold">Continuous Improvement</h3>
+              <h2 className="text-foreground mb-3 text-xl font-bold">Continuous Improvement</h2>
               <p className="text-muted-foreground leading-relaxed">
                 The developer ecosystem evolves rapidly — and so will this platform. I regularly add new tools, fix
                 bugs, and optimize performance based on feedback from users like you. If there&apos;s a specific tool
