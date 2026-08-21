@@ -1,6 +1,6 @@
 'use client';
 
-import type { JSX } from 'react';
+import type { FocusEvent, JSX } from 'react';
 import { useState, useRef, useEffect } from 'react';
 
 import Link from 'next/link';
@@ -12,8 +12,10 @@ import { getToolsByCategory, getToolsBySubCategory } from '@/utils/tools';
 
 /**
  * DesktopNav component — a horizontal navigation bar for desktop screens.
- * Each top-level item is a category label. On hover, a dropdown submenu
- * appears with a triangle pointer and rounded box containing tool links.
+ * Each top-level item is a category label. A dropdown submenu with a
+ * triangle pointer and rounded box containing tool links opens on hover
+ * and on keyboard focus, and closes on mouse leave, focus leaving the
+ * item, Escape, or clicking outside.
  *
  * @returns {JSX.Element} The desktop navigation component
  */
@@ -32,6 +34,17 @@ export function DesktopNav(): JSX.Element {
     timeoutRef.current = setTimeout(() => {
       setActiveMenu(null);
     }, 150);
+  };
+
+  /**
+   * Closes the dropdown when keyboard focus leaves the nav item entirely.
+   *
+   * @param {FocusEvent<HTMLDivElement>} event - The blur event; kept open when focus moved to a child.
+   */
+  const handleFocusLeave = (event: FocusEvent<HTMLDivElement>) => {
+    if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+      setActiveMenu(null);
+    }
   };
 
   // Close menu on Escape
@@ -66,6 +79,8 @@ export function DesktopNav(): JSX.Element {
             className="relative"
             onMouseEnter={() => handleMouseEnter(category.slug)}
             onMouseLeave={handleMouseLeave}
+            onFocus={() => handleMouseEnter(category.slug)}
+            onBlur={handleFocusLeave}
           >
             {/* Top-level category link */}
             <Link
@@ -87,7 +102,6 @@ export function DesktopNav(): JSX.Element {
                 activeMenu === category.slug && 'text-foreground bg-muted'
               )}
               aria-expanded={activeMenu === category.slug}
-              aria-haspopup="true"
             >
               {category.title}
               <PiCaretDownBold

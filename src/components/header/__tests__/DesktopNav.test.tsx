@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it } from 'vitest';
 
@@ -72,5 +72,52 @@ describe('DesktopNav', () => {
 
     await user.click(screen.getByRole('button', { name: 'Outside' }));
     expect(screen.queryByText('Encoding & Decoding')).not.toBeInTheDocument();
+  });
+
+  it('opens the dropdown when the category link receives keyboard focus', () => {
+    render(<DesktopNav />);
+
+    fireEvent.focus(screen.getByRole('link', { name: /Web & URL/ }));
+
+    expect(screen.getByText('Encoding & Decoding')).toBeInTheDocument();
+  });
+
+  it('keeps the dropdown open while focus moves into it', () => {
+    render(<DesktopNav />);
+
+    const trigger = screen.getByRole('link', { name: /Web & URL/ });
+    fireEvent.focus(trigger);
+    const toolLink = screen.getByRole('link', { name: /Base64 Encode/ });
+    fireEvent.blur(trigger, { relatedTarget: toolLink });
+    fireEvent.focus(toolLink);
+
+    expect(screen.getByText('Encoding & Decoding')).toBeInTheDocument();
+  });
+
+  it('closes the dropdown when keyboard focus leaves the nav item', () => {
+    render(
+      <div>
+        <DesktopNav />
+        <button type="button">Elsewhere</button>
+      </div>
+    );
+
+    const trigger = screen.getByRole('link', { name: /Web & URL/ });
+    fireEvent.focus(trigger);
+    expect(screen.getByText('Encoding & Decoding')).toBeInTheDocument();
+
+    fireEvent.blur(trigger, { relatedTarget: screen.getByRole('button', { name: 'Elsewhere' }) });
+    expect(screen.queryByText('Encoding & Decoding')).not.toBeInTheDocument();
+  });
+
+  it('reflects open state with aria-expanded and does not claim aria-haspopup', () => {
+    render(<DesktopNav />);
+
+    const trigger = screen.getByRole('link', { name: /Web & URL/ });
+    expect(trigger).toHaveAttribute('aria-expanded', 'false');
+    expect(trigger).not.toHaveAttribute('aria-haspopup');
+
+    fireEvent.focus(trigger);
+    expect(trigger).toHaveAttribute('aria-expanded', 'true');
   });
 });
