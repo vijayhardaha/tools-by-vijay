@@ -82,6 +82,10 @@ describe('POST /api/minify-css', () => {
     expect(response.status).toBe(200);
     const body = await response.json();
     expect(body.minifiedCss).toBe('body{color:red}');
+    // Stats are flat top-level fields, matching the other minification routes.
+    expect(body.stats).toBeUndefined();
+    expect(body.originalSize).toBeGreaterThan(0);
+    expect(body.minifiedSize).toBeGreaterThan(0);
   });
 
   it('returns 400 for a malformed JSON body instead of 500 with parser internals', async () => {
