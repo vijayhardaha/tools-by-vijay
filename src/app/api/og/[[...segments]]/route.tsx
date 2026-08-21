@@ -23,7 +23,7 @@ import type { JSX } from 'react';
 
 import { ImageResponse } from '@vercel/og';
 
-import { getSeoByPath } from '@/utils/seo';
+import { getSeoByPath, siteUrl } from '@/utils/seo';
 
 export const runtime = 'edge';
 
@@ -222,7 +222,8 @@ function OgImage({ title, description, path }: OgProps): JSX.Element {
           </div>
 
           <span style={{ fontSize: '18px', fontWeight: 400, color: '#525252' }}>
-            toolsbyvijay.vercel.app{path || '/'}
+            {new URL(siteUrl()).host}
+            {path || '/'}
           </span>
         </div>
       </div>
