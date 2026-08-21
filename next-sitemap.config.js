@@ -9,15 +9,25 @@
  * ======================================================================
  */
 
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
 import { createSitemapConfig } from '@vijayhardaha/dev-config/next-sitemap';
 
 const siteDomain = process.env.NEXT_PUBLIC_SITE_URL || 'https://toolsbyvijay.vercel.app';
 
-/**
- * All category slugs for dynamic category pages at /tools/:slug.
- * Keep in sync with src/constants/categories.ts.
- */
-const CATEGORY_SLUGS = ['writing-editing', 'developer-suite', 'web-url', 'security-privacy', 'creative-generators'];
+// next-sitemap loads this config with plain require (no TS transpilation),
+// so the shared categories constant cannot be imported directly. Read the
+// source instead and extract the slug literals — single source of truth,
+// no manual list to keep in sync.
+const categoriesPath = path.join(path.dirname(fileURLToPath(import.meta.url)), 'src/constants/categories.ts');
+const categoriesSource = fs.readFileSync(categoriesPath, 'utf8');
+const CATEGORY_SLUGS = [...categoriesSource.matchAll(/slug:\s*'([^']+)'/g)].map((match) => match[1]);
+
+if (CATEGORY_SLUGS.length === 0) {
+  throw new Error(`No category slugs found in ${categoriesPath} — check the slug literal format.`);
+}
 
 /** @type {import('next-sitemap').IConfig} */
 const baseConfig = createSitemapConfig({
