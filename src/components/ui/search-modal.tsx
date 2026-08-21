@@ -4,7 +4,7 @@ import type { JSX } from 'react';
 import { useEffect, useState, useRef, useMemo, useCallback } from 'react';
 
 import * as Dialog from '@radix-ui/react-dialog';
-import Fuse from 'fuse.js';
+import type Fuse from 'fuse.js';
 import { useRouter } from 'next/navigation';
 import { FiSearch, FiCommand } from 'react-icons/fi';
 import { PiMagnifyingGlassBold } from 'react-icons/pi';
@@ -72,28 +72,42 @@ function HighlightMatch({ text, query }: { text: string; query: string }): JSX.E
 export function SearchModal({ data, maxResults = 5, open, onOpenChange }: SearchModalProps): JSX.Element {
   const [query, setQuery] = useState('');
   const [activeIndex, setActiveIndex] = useState(0);
+  const [fuse, setFuse] = useState<Fuse<Tool> | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
   const listRef = useRef<HTMLUListElement>(null);
 
-  // Fuse.js instance for fuzzy search
-  const fuse = useMemo(
-    () =>
-      new Fuse(data, {
-        keys: [
-          { name: 'title', weight: 2 },
-          { name: 'description', weight: 1 },
-        ],
-        threshold: 0.35,
-        distance: 100,
-        minMatchCharLength: 1,
-      }),
-    [data]
-  );
+  // Fuse.js is lazy-loaded on first open so it never lands in the
+  // site-wide bundle — search is the only consumer of the library.
+  useEffect(() => {
+    if (!open || fuse) return;
+
+    let cancelled = false;
+
+    import('fuse.js').then(({ default: FuseJS }) => {
+      if (cancelled) return;
+
+      setFuse(
+        new FuseJS(data, {
+          keys: [
+            { name: 'title', weight: 2 },
+            { name: 'description', weight: 1 },
+          ],
+          threshold: 0.35,
+          distance: 100,
+          minMatchCharLength: 1,
+        })
+      );
+    });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [open, fuse, data]);
 
   // Derive search results — useMemo avoids setState-in-effect lint errors
   const results = useMemo(() => {
-    if (!query.trim()) return [];
+    if (!query.trim() || !fuse) return [];
 
     return fuse
       .search(query)
