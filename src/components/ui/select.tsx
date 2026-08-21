@@ -33,6 +33,7 @@ interface SelectOption extends HTMLAttributes<HTMLDivElement> {
  * @property {string} [placeholder] - Placeholder text when no option is selected
  * @property {string} [className] - Additional CSS classes
  * @property {'default' | 'sm'} [size] - The size variant of the select
+ * @property {string} [id] - Applied to the trigger button so `<Label htmlFor>` associates correctly
  */
 interface SelectProps extends HTMLAttributes<HTMLDivElement> {
   value?: string;
@@ -43,6 +44,7 @@ interface SelectProps extends HTMLAttributes<HTMLDivElement> {
   placeholder?: string;
   className?: string;
   size?: 'default' | 'sm';
+  id?: string;
 }
 
 /**
@@ -53,6 +55,7 @@ interface SelectProps extends HTMLAttributes<HTMLDivElement> {
  * @returns {JSX.Element} The rendered select component
  */
 export function Select({
+  id,
   value,
   defaultValue,
   onValueChange,
@@ -185,6 +188,7 @@ export function Select({
       {/* Select Trigger */}
       <button
         type="button"
+        id={id}
         onClick={open ? () => setOpen(false) : openDropdown}
         onKeyDown={handleTriggerKeyDown}
         data-slot="select-trigger"

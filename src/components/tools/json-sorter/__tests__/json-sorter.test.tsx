@@ -21,7 +21,7 @@ describe('JsonSorter tool', () => {
     const input = screen.getAllByRole('textbox')[0];
     expect(input).toHaveValue(EXAMPLES[0].data.input as string);
 
-    await user.click(screen.getByRole('button', { name: /sort/i }));
+    await user.click(screen.getByRole('button', { name: /^sort json$/i }));
 
     const output = document.querySelector('[data-output]') as HTMLInputElement;
     // jsonabc sorts object keys alphabetically: apple should come first.
@@ -37,7 +37,7 @@ describe('JsonSorter tool', () => {
     // fireEvent avoids user-event keyboard parsing of the brace characters.
     fireEvent.change(input, { target: { value: '{ not valid json' } });
 
-    await user.click(screen.getByRole('button', { name: /sort/i }));
+    await user.click(screen.getByRole('button', { name: /^sort json$/i }));
 
     expect(screen.getAllByText(/Invalid JSON/i).length).toBeGreaterThan(0);
   });

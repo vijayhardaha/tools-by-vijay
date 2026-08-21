@@ -137,15 +137,15 @@ describe('Progress', () => {
 });
 
 describe('HelpTip', () => {
-  it('renders an info icon with the help text as its accessible label', () => {
+  it('renders a focusable trigger whose accessible name is the help text', () => {
     // The app wraps everything in a TooltipProvider at the layout level.
     render(
       <TooltipProvider>
         <HelpTip text="Explains the option" />
       </TooltipProvider>
     );
-    const icon = screen.getByTestId('helptip-icon');
-    expect(icon).toBeInTheDocument();
-    expect(icon).toHaveAttribute('aria-label', 'Explains the option');
+
+    expect(screen.getByRole('button', { name: 'Explains the option' })).toBeInTheDocument();
+    expect(screen.getByTestId('helptip-icon')).toHaveAttribute('aria-hidden', 'true');
   });
 });

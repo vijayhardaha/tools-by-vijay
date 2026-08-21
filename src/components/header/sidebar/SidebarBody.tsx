@@ -90,10 +90,12 @@ const CategoryAccordion = ({ title, slug, tools }: CategoryAccordionProps): JSX.
           />
         </button>
       </div>
+      {/* visibility (not just opacity) keeps collapsed links out of the tab
+          order and accessibility tree while preserving the grid animation */}
       <div
         className={cn(
           'grid transition-all duration-300 ease-in-out',
-          isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
+          isOpen ? 'visible grid-rows-[1fr] opacity-100' : 'invisible grid-rows-[0fr] opacity-0'
         )}
       >
         <div className="overflow-hidden">

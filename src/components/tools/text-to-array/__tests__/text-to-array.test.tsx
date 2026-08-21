@@ -35,7 +35,8 @@ describe('TextToArray tool', () => {
     // Load an example first (its data has no outputFormat override).
     await user.click(screen.getByRole('button', { name: EXAMPLES[0].label }));
 
-    await user.click(screen.getByRole('button', { name: /json/i }));
+    // The trigger is named by its associated label (Output Format).
+    await user.click(screen.getByRole('button', { name: /output format/i }));
     await user.click(screen.getByRole('option', { name: 'PHP Array' }));
     await user.click(screen.getByRole('button', { name: /convert/i }));
 

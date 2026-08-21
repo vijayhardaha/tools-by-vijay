@@ -82,8 +82,11 @@ export function Slider({
           // Layout & appearance
           'bg-input m-0 h-px flex-1 appearance-none border-none',
 
-          // Focus
-          'focus:outline-none',
+          // Focus (keyboard) — ring the thumb so there is a visible
+          // focus indicator (WCAG 2.4.7); hidden for pointer focus
+          'focus-visible:outline-none',
+          'focus-visible:[&::-webkit-slider-thumb]:ring-ring/50 focus-visible:[&::-webkit-slider-thumb]:ring-[3px]',
+          'focus-visible:[&::-moz-range-thumb]:ring-ring/50 focus-visible:[&::-moz-range-thumb]:ring-[3px]',
 
           // Active states
           'active:[&::-webkit-slider-thumb]:ring-primary/15 active:[&::-webkit-slider-thumb]:h-6 active:[&::-webkit-slider-thumb]:w-6 active:[&::-webkit-slider-thumb]:ring-4',

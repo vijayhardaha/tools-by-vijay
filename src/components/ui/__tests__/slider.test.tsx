@@ -44,4 +44,13 @@ describe('Slider', () => {
     const { container } = render(<Slider value={10} onValueChange={vi.fn()} className="custom-slider" />);
     expect(container.querySelector('div')).toHaveClass('custom-slider');
   });
+
+  it('keeps a keyboard focus ring on the thumb (WCAG 2.4.7)', () => {
+    render(<Slider value={50} onValueChange={vi.fn()} />);
+    const input = screen.getByRole('slider');
+
+    expect(input.className).toContain('focus-visible:[&::-webkit-slider-thumb]:ring-ring/50');
+    expect(input.className).toContain('focus-visible:[&::-moz-range-thumb]:ring-ring/50');
+    expect(input.className).not.toContain('focus:outline-none');
+  });
 });

@@ -69,7 +69,14 @@ export function ToolInputHeader({
             {onRandom !== undefined && (
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Button type="button" variant="primary" size="icon" onClick={onRandom} className="group">
+                  <Button
+                    type="button"
+                    variant="primary"
+                    size="icon"
+                    onClick={onRandom}
+                    aria-label="Random"
+                    className="group"
+                  >
                     <MdCasino className="transition-transform duration-200 group-hover:rotate-6" />
                   </Button>
                 </TooltipTrigger>
@@ -80,7 +87,14 @@ export function ToolInputHeader({
             {onClear !== undefined && (
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Button type="button" variant="secondary" size="icon" onClick={onClear} className="group">
+                  <Button
+                    type="button"
+                    variant="secondary"
+                    size="icon"
+                    onClick={onClear}
+                    aria-label="Clear"
+                    className="group"
+                  >
                     <MdCleaningServices className="transition-transform duration-200 group-hover:rotate-6" />
                   </Button>
                 </TooltipTrigger>
@@ -91,7 +105,14 @@ export function ToolInputHeader({
             {onReset !== undefined && (
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Button type="reset" variant="destructive" size="icon" onClick={onReset} className="group">
+                  <Button
+                    type="reset"
+                    variant="destructive"
+                    size="icon"
+                    onClick={onReset}
+                    aria-label="Reset"
+                    className="group"
+                  >
                     <RiResetLeftFill className="transition-transform duration-200 group-hover:rotate-6" />
                   </Button>
                 </TooltipTrigger>

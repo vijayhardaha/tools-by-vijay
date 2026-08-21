@@ -80,4 +80,12 @@ describe('ToolInputHeader', () => {
     render(<ToolInputHeader title="T" data-testid="header-wrapper" />);
     expect(screen.getByTestId('header-wrapper')).toBeInTheDocument();
   });
+
+  it('gives the icon buttons accessible names instead of tooltip-only labels', () => {
+    render(<ToolInputHeader title="Input" onRandom={vi.fn()} onClear={vi.fn()} onReset={vi.fn()} />);
+
+    expect(screen.getByRole('button', { name: 'Random' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Clear' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Reset' })).toBeInTheDocument();
+  });
 });

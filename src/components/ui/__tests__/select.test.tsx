@@ -112,4 +112,12 @@ describe('Select', () => {
     await user.click(screen.getByRole('button'));
     expect(screen.getByText('No options available')).toBeInTheDocument();
   });
+
+  it('applies the id prop to the trigger button so Label htmlFor associates', () => {
+    render(<Select id="format-select" options={options} />);
+
+    const trigger = screen.getByRole('button');
+    expect(trigger).toHaveAttribute('id', 'format-select');
+    expect(trigger.parentElement).not.toHaveAttribute('id');
+  });
 });

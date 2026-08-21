@@ -31,12 +31,13 @@ describe('QRCodeGenerator tool', () => {
     const user = userEvent.setup();
     render(<QRCodeGenerator />);
 
-    // The trigger's accessible name is its current selection (M – Medium).
-    await user.click(screen.getByRole('button', { name: /medium/i }));
+    // The trigger is named by its associated label (Label htmlFor now
+    // reaches the button); its text shows the current selection.
+    const trigger = screen.getByRole('button', { name: /error level/i });
+    await user.click(trigger);
     await user.click(screen.getByRole('option', { name: /high/i }));
 
-    // The select trigger now reflects the chosen high error level.
-    expect(screen.getByRole('button', { name: /high/i })).toBeInTheDocument();
+    expect(trigger).toHaveTextContent('H – High (30%)');
   });
 
   it('changes the size via the slider', async () => {

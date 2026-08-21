@@ -53,4 +53,23 @@ describe('SidebarBody', () => {
     expect(screen.getByRole('link', { name: 'About' })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Contact' })).toBeInTheDocument();
   });
+
+  it('removes collapsed submenu links from the tab order via visibility', async () => {
+    const user = userEvent.setup();
+    render(<SidebarBody />);
+
+    const category = getAllCategories()[0];
+    const toggleButton = screen.getByRole('button', { name: `Toggle ${category.title} tools` });
+    // The animated grid wrapper lives in the same accordion block as the toggle.
+    const gridWrapper = toggleButton.closest('.mb-4')?.querySelector('div.grid');
+
+    // Collapsed: invisible (visibility:hidden) keeps links out of the tab order.
+    expect(gridWrapper?.className).toContain('invisible');
+
+    await user.click(toggleButton);
+
+    // Expanded: visible again, links are tabbable.
+    expect(gridWrapper?.className).toContain('visible');
+    expect(gridWrapper?.className).not.toContain('invisible');
+  });
 });
