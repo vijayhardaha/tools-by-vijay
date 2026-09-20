@@ -24,7 +24,7 @@ describe('JsonSorter tool', () => {
     await user.click(screen.getByRole('button', { name: /^sort json$/i }));
 
     const output = document.querySelector('[data-output]') as HTMLInputElement;
-    // jsonabc sorts object keys alphabetically: apple should come first.
+    // Alphabetical sort places object keys in ascending order: apple first.
     expect(output?.value).toContain('"apple"');
     expect(output?.value.indexOf('"apple"')).toBeLessThan(output.value.indexOf('"zebra"'));
   });
@@ -54,5 +54,35 @@ describe('JsonSorter tool', () => {
     await user.click(clearButton);
 
     expect(screen.getAllByRole('textbox')[0]).toHaveValue('');
+  });
+
+  it('sorts by ASCII code when the ASCII method is selected', async () => {
+    const user = userEvent.setup();
+    render(<JsonSorter />);
+
+    fireEvent.change(screen.getAllByRole('textbox')[0], { target: { value: '{"a":1,"B":2,"apple":3}' } });
+
+    // The trigger is named by its associated label, not by the selected text.
+    await user.click(screen.getByRole('button', { name: /sort method/i }));
+    await user.click(screen.getByRole('option', { name: 'ASCII' }));
+    await user.click(screen.getByRole('button', { name: /^sort json$/i }));
+
+    const output = document.querySelector('[data-output]') as HTMLTextAreaElement;
+    // ASCII puts uppercase B before lowercase a.
+    expect(output.value.indexOf('"B"')).toBeLessThan(output.value.indexOf('"a"'));
+  });
+
+  it('reverses key order when Z-A is selected', async () => {
+    const user = userEvent.setup();
+    render(<JsonSorter />);
+
+    fireEvent.change(screen.getAllByRole('textbox')[0], { target: { value: '{"a":1,"b":2}' } });
+
+    await user.click(screen.getByRole('button', { name: /sort order/i }));
+    await user.click(screen.getByRole('option', { name: 'Z-A' }));
+    await user.click(screen.getByRole('button', { name: /^sort json$/i }));
+
+    const output = document.querySelector('[data-output]') as HTMLTextAreaElement;
+    expect(output.value.indexOf('"b"')).toBeLessThan(output.value.indexOf('"a"'));
   });
 });
