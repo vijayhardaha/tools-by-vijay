@@ -23,18 +23,14 @@ describe('CountryNameGenerator tool', () => {
     expect(output?.value.split('\n').filter(Boolean)).toHaveLength(count);
   });
 
-  it('regenerates names when the random button is clicked', async () => {
+  it('regenerates names when the generate button is clicked', async () => {
     const user = userEvent.setup();
     render(<CountryNameGenerator />);
 
     await user.click(screen.getByRole('button', { name: EXAMPLES[0].label }));
     const before = (document.querySelector('[data-output]') as HTMLTextAreaElement).value;
 
-    // The random/clear/reset icon buttons have no accessible name (tooltips
-    // only); the first non-example button is the random action.
-    const buttons = screen.getAllByRole('button');
-    const randomButton = buttons.find((button) => !/Load Example/.test(button.textContent || ''))!;
-    await user.click(randomButton);
+    await user.click(screen.getByRole('button', { name: 'Generate Country Names' }));
     const after = (document.querySelector('[data-output]') as HTMLTextAreaElement).value;
 
     expect(after.split('\n').filter(Boolean)).toHaveLength(5);
