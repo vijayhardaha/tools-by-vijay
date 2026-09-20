@@ -35,19 +35,14 @@ export function InfoBlock(): JSX.Element {
             files, and reducing merge conflicts.
           </p>
           <p>
-            The JSON Sorter parses your JSON input using JSON.parse, then recursively sorts all object keys
-            alphabetically using the{' '}
-            <a
-              href="https://github.com/ShivrajRath/jsonabc"
-              className="font-medium text-pink-500 underline hover:no-underline"
-              target="_blank"
-              rel="noreferrer"
-            >
-              jsonabc
-            </a>{' '}
-            library. Nested objects are sorted at every level, while array elements can optionally be preserved in their
-            original order with the spare plain arrays option.
+            The JSON Sorter parses your JSON input using JSON.parse, then recursively sorts all object keys at every
+            nesting level. You can choose between two comparison methods and sort in either direction:{' '}
+            <strong>Alphabetical</strong> ignores letter case and reads numbers naturally, so <code>apple</code> and{' '}
+            <code>Apple</code> sort together and <code>2</code> comes before <code>10</code>. <strong>ASCII</strong>{' '}
+            compares raw character codes, so <code>10</code> comes before <code>2</code> and uppercase letters come
+            before lowercase ones. Sort order toggles between A-Z and Z-A.
           </p>
+          <p>Array elements can optionally be preserved in their original order with the spare plain arrays option.</p>
         </ToolInfoSectionContent>
       </ToolInfoSection>
 
@@ -56,7 +51,9 @@ export function InfoBlock(): JSX.Element {
           id="json-sorter-features"
           title="Key Features"
           items={[
-            'Alphabetical sorting of JSON object keys at all nesting levels',
+            'Choose between Alphabetical and ASCII key comparison',
+            'Sort ascending (A-Z) or descending (Z-A) with a single toggle',
+            'Sorting applied recursively to JSON object keys at all nesting levels',
             'Optional plain array preservation to maintain meaningful element order',
             'Pretty-printed output with proper indentation for readability',
             'Error handling for invalid JSON input with clear error messages',
@@ -98,18 +95,11 @@ export function InfoBlock(): JSX.Element {
         <ToolInfoSectionHeading id="json-sorter-technical-details">Technical Details</ToolInfoSectionHeading>
         <ToolInfoSectionContent>
           <p>
-            This tool uses the{' '}
-            <a
-              href="https://github.com/ShivrajRath/jsonabc"
-              className="font-medium text-pink-500 underline hover:no-underline"
-              target="_blank"
-              rel="noreferrer"
-            >
-              jsonabc
-            </a>{' '}
-            npm package for JSON key sorting. The library recursively traverses JSON objects, collecting and
-            alphabetically sorting keys at each level. It handles nested objects, arrays of objects, and mixed data
-            types while preserving all values and data integrity.
+            This tool runs a small, dependency-free sorting engine in your browser. It recursively traverses JSON
+            objects and sorts keys at each level using either a locale-aware, case-insensitive comparator (Alphabetical)
+            or a strict UTF-16 code-unit comparator (ASCII). A custom serializer emits the result with four-space
+            indentation while preserving the exact key order the sorter produced, including numeric-like keys such as{' '}
+            <code>2</code> and <code>10</code>. All values and data integrity are preserved.
           </p>
         </ToolInfoSectionContent>
       </ToolInfoSection>

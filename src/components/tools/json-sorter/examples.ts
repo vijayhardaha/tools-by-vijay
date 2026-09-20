@@ -2,7 +2,8 @@ import type { Example } from '@/components/tool/ToolExampleBlock';
 
 /**
  * Example data and option presets for the json-sorter tool.
- * Each example loads a predefined JSON input with spareArrays enabled.
+ * Each example loads a predefined JSON input with a sort method and order so
+ * the different modes are easy to try.
  */
 export const EXAMPLES: Example[] = [
   {
@@ -11,6 +12,8 @@ export const EXAMPLES: Example[] = [
       input:
         '{\n  "zebra": "africa",\n  "apple": "fruit",\n  "mango": "tropical",\n  "banana": "yellow",\n  "camel": "desert"\n}',
       spareArrays: true,
+      sortMode: 'alphabetical',
+      sortOrder: 'asc',
     },
   },
   {
@@ -19,6 +22,8 @@ export const EXAMPLES: Example[] = [
       input:
         '{\n  "name": "John",\n  "age": 30,\n  "email": "john@example.com",\n  "address": {\n    "zip": "10001",\n    "city": "New York",\n    "street": "123 Main St",\n    "country": "USA"\n  }\n}',
       spareArrays: true,
+      sortMode: 'alphabetical',
+      sortOrder: 'asc',
     },
   },
   {
@@ -27,6 +32,8 @@ export const EXAMPLES: Example[] = [
       input:
         '{\n  "version": "2.0",\n  "debug": false,\n  "database": {\n    "port": 5432,\n    "host": "localhost",\n    "name": "app_db"\n  },\n  "logging": {\n    "level": "info",\n    "file": "/var/log/app.log"\n  }\n}',
       spareArrays: true,
+      sortMode: 'ascii',
+      sortOrder: 'asc',
     },
   },
   {
@@ -35,6 +42,8 @@ export const EXAMPLES: Example[] = [
       input:
         '{\n  "name": "test",\n  "items": ["z", "a", "m"],\n  "config": {\n    "enable": true,\n    "timeout": 30\n  }\n}',
       spareArrays: true,
+      sortMode: 'alphabetical',
+      sortOrder: 'desc',
     },
   },
 ];

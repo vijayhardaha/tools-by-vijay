@@ -3,8 +3,6 @@
 import type { JSX } from 'react';
 import { useState } from 'react';
 
-import jsonabc from 'jsonabc';
-
 import { createExampleHandler } from '@/components/tool/createExampleHandler';
 import { ToolExampleBlock } from '@/components/tool/ToolExampleBlock';
 
@@ -12,10 +10,12 @@ import { EXAMPLES } from './examples';
 import { InfoBlock } from './info-block';
 import { InputBlock } from './input-block';
 import { OutputBlock } from './output-block';
+import { sortJson } from './sort';
+import type { SortMode, SortOrder } from './sort';
 
 /**
  * Main component for the JSON Sorter tool.
- * Manages the state and functionality for sorting JSON objects alphabetically.
+ * Manages the state and functionality for sorting JSON object keys.
  *
  * @returns {JSX.Element} The complete JSON sorter tool with input options, output display, and information
  */
@@ -23,6 +23,8 @@ export function JsonSorter(): JSX.Element {
   const [input, setInput] = useState<string>('');
   const [output, setOutput] = useState<string>('');
   const [spareArrays, setSpareArrays] = useState<boolean>(true);
+  const [sortMode, setSortMode] = useState<SortMode>('alphabetical');
+  const [sortOrder, setSortOrder] = useState<SortOrder>('asc');
   const [error, setError] = useState<string>('');
 
   /**
@@ -49,9 +51,9 @@ export function JsonSorter(): JSX.Element {
         return;
       }
 
-      // Sort the JSON using jsonabc
-      const output = jsonabc.sort(input, spareArrays);
-      setOutput(output);
+      // Sort the JSON using the selected method and order
+      const sorted = sortJson(input, { mode: sortMode, order: sortOrder, spareArrays });
+      setOutput(sorted);
     } catch (err) {
       setError(`Error sorting JSON: ${err instanceof Error ? err.message : 'Unknown error'}`);
       setOutput('');
@@ -77,9 +79,16 @@ export function JsonSorter(): JSX.Element {
   const handleReset = (): void => {
     handleClear();
     setSpareArrays(true);
+    setSortMode('alphabetical');
+    setSortOrder('asc');
   };
 
-  const handleExample = createExampleHandler({ input: setInput, spareArrays: setSpareArrays });
+  const handleExample = createExampleHandler({
+    input: setInput,
+    spareArrays: setSpareArrays,
+    sortMode: setSortMode,
+    sortOrder: setSortOrder,
+  });
 
   return (
     <>
@@ -91,6 +100,10 @@ export function JsonSorter(): JSX.Element {
           setInput={setInput}
           spareArrays={spareArrays}
           setSpareArrays={setSpareArrays}
+          sortMode={sortMode}
+          setSortMode={setSortMode}
+          sortOrder={sortOrder}
+          setSortOrder={setSortOrder}
           onSubmit={handleSubmit}
           onClear={handleClear}
           onReset={handleReset}

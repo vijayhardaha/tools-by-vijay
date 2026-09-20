@@ -28,7 +28,7 @@ export function OutputBlock({ output }: OutputBlockProps): JSX.Element {
         <div className="flex w-full flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex flex-col gap-1.5">
             <CardTitle>Output</CardTitle>
-            <CardDescription>The alphabetically sorted JSON output</CardDescription>
+            <CardDescription>Your JSON with keys sorted by the selected method and order</CardDescription>
           </div>
           <div className="inline-flex">
             <CopyButton text={output} />
