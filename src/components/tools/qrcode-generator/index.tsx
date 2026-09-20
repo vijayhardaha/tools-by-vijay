@@ -6,22 +6,11 @@ import { useState } from 'react';
 import { createExampleHandler } from '@/components/tool/createExampleHandler';
 import { ToolExampleBlock } from '@/components/tool/ToolExampleBlock';
 
+import type { QrErrorLevel } from './constants';
 import { EXAMPLES } from './examples';
 import { InfoBlock } from './info-block';
 import { InputBlock } from './input-block';
 import { OutputBlock } from './output-block';
-
-/**
- * Supported QR code error correction levels.
- */
-export const ERROR_LEVELS = ['L', 'M', 'Q', 'H'] as const;
-
-/**
- * QR code error correction level.
- *
- * @type {QrErrorLevel}
- */
-export type QrErrorLevel = (typeof ERROR_LEVELS)[number];
 
 /**
  * Default QR code size in pixels.

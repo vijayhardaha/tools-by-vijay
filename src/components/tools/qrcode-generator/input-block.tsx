@@ -10,8 +10,8 @@ import { Label } from '@/components/ui/label';
 import { Select } from '@/components/ui/select';
 import { Slider } from '@/components/ui/slider';
 
-import { ERROR_LEVELS } from './index';
-import type { QrErrorLevel } from './index';
+import { ERROR_LEVELS } from './constants';
+import type { QrErrorLevel } from './constants';
 
 /**
  * Interface for the QR code generator input component props.

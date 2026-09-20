@@ -7,10 +7,11 @@ import JsBarcode from 'jsbarcode';
 import Barcode from 'react-barcode';
 import { PiDownloadSimple } from 'react-icons/pi';
 
-import type { BarcodeOptions } from '@/components/tools/barcode-generator';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
 import { downloadCanvasPng } from '@/utils/canvas';
+
+import type { BarcodeOptions } from './constants';
 
 /**
  * Scale factor applied to the on-screen preview canvas for sharper rendering.

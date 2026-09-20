@@ -6,10 +6,11 @@ import { useRef } from 'react';
 import { QRCodeCanvas } from 'qrcode.react';
 import { PiDownloadSimple } from 'react-icons/pi';
 
-import type { QrErrorLevel } from '@/components/tools/qrcode-generator';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
 import { downloadCanvasPng } from '@/utils/canvas';
+
+import type { QrErrorLevel } from './constants';
 
 /**
  * Scale factor applied when rendering the downloadable PNG.

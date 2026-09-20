@@ -9,8 +9,8 @@ import { Label } from '@/components/ui/label';
 import { Select } from '@/components/ui/select';
 import { Slider } from '@/components/ui/slider';
 
-import { BARCODE_FORMATS } from './index';
-import type { BarcodeOptions, BarcodeFormat, BarcodeTextAlign } from './index';
+import { BARCODE_FORMATS } from './constants';
+import type { BarcodeOptions, BarcodeFormat, BarcodeTextAlign } from './constants';
 
 /**
  * Props for the BarcodeGeneratorInput component.
