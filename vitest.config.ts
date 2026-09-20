@@ -17,12 +17,16 @@ export default defineConfig({
   plugins: [react()],
 
   // Shorthand for src/ imports
-  resolve: { alias: { '@': resolve(import.meta.dirname, 'src') } },
+  resolve: { alias: { '@': resolve('.', 'src') } },
 
   // --- Tests Configs ---
   test: {
     // jsdom environment for DOM component testing with Testing Library
     environment: 'jsdom',
+
+    // Generous per-test budget: coverage instrumentation slows cold imports
+    // of heavy config graphs past the 5s default under load spikes
+    testTimeout: 20000,
 
     // Global setup: jest-dom matchers + console mock
     setupFiles: ['./vitest.setup.ts'],
@@ -31,13 +35,18 @@ export default defineConfig({
     globals: true,
 
     // Test file patterns
-    include: ['**/*.test.{ts,tsx}', '**/*.spec.{ts,tsx}'],
+    include: ['**/*.test.{js,mjs,cjs,ts,tsx}', '**/*.spec.{js,mjs,cjs,ts,tsx}'],
 
     // V8-based coverage with text/JSON/HTML reports
     coverage: {
       provider: 'v8',
       reporter: ['text', 'json', 'html'],
-      include: ['src/**/*.{ts,tsx}'],
+      include: ['src/**/*.{js,mjs,cjs,ts,tsx}'],
+
+      // Enforce the documented 100% target: vitest exits non-zero when any
+      // metric in any file drops below it, instead of only printing numbers.
+      thresholds: { statements: 100, branches: 100, functions: 100, lines: 100 },
+
       exclude: [
         'node_modules/',
         'vitest.config.ts',
