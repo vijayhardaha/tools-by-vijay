@@ -1,9 +1,10 @@
 'use client';
 
-import type { JSX } from 'react';
+import type { JSX, SubmitEvent } from 'react';
 
 import { ToolInputHeader } from '@/components/tool/ToolInputHeader';
 import { Alert } from '@/components/ui/alert';
+import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 
@@ -13,14 +14,14 @@ import { Input } from '@/components/ui/input';
  * @type {InputBlockProps}
  * @property {number} count - The number of usernames to generate
  * @property {(value: number) => void} setCount - Callback to update generation count
- * @property {() => void} onRandom - Callback to regenerate random usernames
+ * @property {() => void} onSubmit - Callback to generate usernames
  * @property {() => void} onClear - Callback to clear input and output
  * @property {string} [error] - Current error message, if any
  */
 interface InputBlockProps {
   count: number;
   setCount: (value: number) => void;
-  onRandom: () => void;
+  onSubmit: () => void;
   onClear: () => void;
   error?: string;
 }
@@ -32,19 +33,24 @@ interface InputBlockProps {
  *
  * @returns {JSX.Element} The RandomUsernameGeneratorInput component.
  */
-export function InputBlock({ count, setCount, onRandom, onClear, error }: InputBlockProps): JSX.Element {
+export function InputBlock({ count, setCount, onSubmit, onClear, error }: InputBlockProps): JSX.Element {
+  /**
+   * Handles form submission and triggers username generation.
+   *
+   * @param {SubmitEvent} e - The form event.
+   */
+  const handleSubmit = (e: SubmitEvent) => {
+    e.preventDefault();
+    onSubmit();
+  };
+
   return (
     <Card>
       <CardHeader>
-        <ToolInputHeader
-          title="Username Generator"
-          desc="Generate random usernames"
-          onRandom={onRandom}
-          onClear={onClear}
-        />
+        <ToolInputHeader title="Username Generator" desc="Generate random usernames" onClear={onClear} />
       </CardHeader>
       <CardContent>
-        <div className="flex flex-col gap-4 md:gap-6">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4 md:gap-6">
           <Input
             id="count-input"
             type="number"
@@ -56,8 +62,14 @@ export function InputBlock({ count, setCount, onRandom, onClear, error }: InputB
             onChange={(e) => setCount(Number(e.target.value))}
           />
 
+          <div className="flex flex-wrap gap-2">
+            <Button type="submit" variant="default" disabled={!!error}>
+              Generate Usernames
+            </Button>
+          </div>
+
           {error && <Alert variant="danger" title="Error" text={error} />}
-        </div>
+        </form>
       </CardContent>
     </Card>
   );

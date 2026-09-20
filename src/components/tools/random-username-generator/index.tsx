@@ -47,9 +47,9 @@ export function RandomUsernameGenerator(): JSX.Element {
   }, [count, regen]);
 
   /**
-   * Generates a fresh set of random usernames.
+   * Generates a fresh set of random usernames when the form is submitted.
    */
-  const handleRandom = (): void => {
+  const handleSubmit = (): void => {
     setRegen((prev) => prev + 1);
   };
 
@@ -67,7 +67,7 @@ export function RandomUsernameGenerator(): JSX.Element {
       <div className="space-y-6">
         <ToolExampleBlock examples={EXAMPLES} onExample={handleExample} />
 
-        <InputBlock count={count} setCount={setCount} onRandom={handleRandom} onClear={handleClear} error={error} />
+        <InputBlock count={count} setCount={setCount} onSubmit={handleSubmit} onClear={handleClear} error={error} />
 
         <OutputBlock output={output} />
       </div>
