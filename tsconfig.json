@@ -6,44 +6,23 @@
 //          across code.
 // Docs:    https://www.typescriptlang.org/tsconfig
 // =======================================================================
+
 {
   "extends": "@vijayhardaha/dev-config/tsconfig",
   "compilerOptions": {
     "paths": { "@/*": ["./src/*"] },
+    "jsx": "preserve",
+
     // ----------------------------------------------------------------------
     // Plugins & extras
     // ----------------------------------------------------------------------
-    "plugins": [{ "name": "next" }],
-    "jsx": "preserve"
+    "plugins": [{ "name": "next" }]
   },
+
   // ---- Includes ----
   // Files to include in the project type-checking scope
-  "include": [
-    ".next/dev/types/**/*.ts",
-    ".next/types/**/*.ts",
-    "*.config.mjs",
-    "*.config.ts",
-    "*.d.ts",
-    "**/*.js",
-    "**/*.jsx",
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.mjs",
-    "**/*.cjs",
-    "next-env.d.ts"
-  ],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+
   // ---- Excludes ----
-  "exclude": [
-    "node_modules",
-    "output",
-    "build",
-    "coverage",
-    "dist",
-    ".git",
-    ".github",
-    ".fallow",
-    ".tmp",
-    "docs",
-    "ublic"
-  ]
+  "exclude": ["node_modules", "build", "dist", "out", "coverage", "public"]
 }
