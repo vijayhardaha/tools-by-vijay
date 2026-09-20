@@ -71,10 +71,3 @@ export function ToolFAQItem({
     </div>
   );
 }
-
-/**
- * Legacy aliases kept for tools that have not been migrated yet.
- *
- * @deprecated Use {@link ToolFAQSection} and {@link ToolFAQItem} instead.
- */
-export { ToolFAQSection as FAQ, ToolFAQItem as FAQItem };

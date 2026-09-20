@@ -118,7 +118,7 @@ const PRESET_OVERRIDES: Record<CleanerPreset, Partial<CleanerOptions>> = {
  *
  * @type {{ value: CleanerPreset; label: string; description: string }[]}
  */
-export const PRESETS: { value: CleanerPreset; label: string; description: string }[] = [
+const PRESETS: { value: CleanerPreset; label: string; description: string }[] = [
   {
     value: 'safe',
     label: 'Safe',
