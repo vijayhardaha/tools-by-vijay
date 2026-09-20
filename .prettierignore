@@ -20,14 +20,10 @@ yarn.lock
 # Common Auto-Generated YAML
 # ----------------------------------------------------------------------
 # These are typically generated or CI-related - not meant to be formatted.
-._circleci/
 .gitlab/
 .gitlab-ci.yml
-azure-pipelines.yml
-bitbucket-pipelines.yml
 docker-compose.yaml
 docker-compose.yml
-*.kubeconfig
 
 # ----------------------------------------------------------------------
 # Public & Static Assets
