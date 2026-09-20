@@ -62,7 +62,7 @@ export function Slider({
         'relative flex w-full items-center',
 
         // Spacing
-        'py-3',
+        'h-8 py-4',
 
         // Disabled
         'data-disabled:opacity-50',
