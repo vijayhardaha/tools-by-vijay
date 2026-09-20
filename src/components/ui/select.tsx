@@ -202,7 +202,7 @@ export function Select({
         aria-controls={listboxId}
         className={cn(
           // Layout & flex
-          'flex w-fit items-center justify-between gap-2',
+          'flex w-fit min-w-36 items-center justify-between gap-2',
 
           // Spacing
           'rounded-xs border bg-transparent px-3 py-2 text-sm whitespace-nowrap',
