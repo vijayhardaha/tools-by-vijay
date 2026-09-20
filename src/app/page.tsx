@@ -61,7 +61,7 @@ const POPULAR_TOOL_SLUGS: string[] = [
   'text-to-array',
   'unminify',
   'url-shortener',
-  'alphabetical-line-sorter',
+  'html-cleaner',
   'bulk-slugify',
   'duplicate-line-removal',
   'slugify',
