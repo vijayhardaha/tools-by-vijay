@@ -38,6 +38,7 @@ export interface SocialMediaLink {
  */
 const footerLinks: Record<string, FooterLink[]> = {
   tools: [
+    { name: 'HTML Cleaner', href: '/html-cleaner' },
     { name: 'Slugify', href: '/slugify' },
     { name: 'Bulk Slugify', href: '/bulk-slugify' },
     { name: 'URL Shortener', href: '/url-shortener' },

@@ -23,6 +23,7 @@ import {
   PiQuotesFill,
   PiShuffleBold,
   PiGlobeBold,
+  PiBroomBold,
 } from 'react-icons/pi';
 
 /**
@@ -79,6 +80,7 @@ export const toolIcons: ToolIcons = {
   'password-generator': <PiPasswordBold />,
   'password-strength-checker': <PiShieldCheckBold />,
   'html-minifier': <PiFileHtmlBold />,
+  'html-cleaner': <PiBroomBold />,
   'css-minifier': <PiFileCssBold />,
   'js-minifier': <PiFileJsBold />,
   'url-shortener': <PiLinkBold />,

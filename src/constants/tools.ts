@@ -99,6 +99,17 @@ const tools: Tool[] = [
     subCategory: 'Minify & Beautify',
   },
   {
+    slug: 'js-minifier',
+    title: 'JS Minifier',
+    description:
+      'Compress JavaScript files to minimize payload size. Improve browser execution speed and reduce bandwidth consumption for your web applications.',
+    seoTitle: 'JavaScript Minifier – Compress JS Code for Faster Loading',
+    seoDescription:
+      'Shrink your JavaScript files with our JS minifier. Improve site speed and performance by removing unnecessary code bloat.',
+    category: 'developer-suite',
+    subCategory: 'Minify & Beautify',
+  },
+  {
     slug: 'html-minifier',
     title: 'HTML Minifier',
     description:
@@ -110,13 +121,13 @@ const tools: Tool[] = [
     subCategory: 'Minify & Beautify',
   },
   {
-    slug: 'js-minifier',
-    title: 'JS Minifier',
+    slug: 'html-cleaner',
+    title: 'HTML Cleaner',
     description:
-      'Compress JavaScript files to minimize payload size. Improve browser execution speed and reduce bandwidth consumption for your web applications.',
-    seoTitle: 'JavaScript Minifier – Compress JS Code for Faster Loading',
+      'Turn messy HTML from Google Docs, Word, a CMS, or a scraper into clean, predictable markup. Strip inline styles, junk classes and ids, empty elements, and comments in one click.',
+    seoTitle: 'HTML Cleaner – Strip Styles, Classes & Messy Markup',
     seoDescription:
-      'Shrink your JavaScript files with our JS minifier. Improve site speed and performance by removing unnecessary code bloat.',
+      'Paste HTML from Google Docs, Word, or a scraper and get clean, readable markup instantly. Remove inline styles, classes, ids, and empty tags — free and private in your browser.',
     category: 'developer-suite',
     subCategory: 'Minify & Beautify',
   },

@@ -2,7 +2,7 @@
 
 > Online tools to help developers and workers work faster and smarter. Boost your productivity with free, browser-based utilities.
 
-This site hosts 27 tools organised into 5 categories. Every tool runs entirely in the browser, so your input never leaves your device and results are instant.
+This site hosts 28 tools organised into 5 categories. Every tool runs entirely in the browser, so your input never leaves your device and results are instant.
 
 ## Sitemaps
 
@@ -11,7 +11,7 @@ This site hosts 27 tools organised into 5 categories. Every tool runs entirely i
 ## Pages
 
 - https://toolsbyvijay.vercel.app/ (Home)
-- https://toolsbyvijay.vercel.app/tools -- All free online tools (27)
+- https://toolsbyvijay.vercel.app/tools -- All free online tools (28)
 - https://toolsbyvijay.vercel.app/about -- About Vijay Hardaha
 - https://toolsbyvijay.vercel.app/contact -- Contact
 - https://toolsbyvijay.vercel.app/faq -- Frequently asked questions (FAQPage schema)
@@ -20,12 +20,12 @@ This site hosts 27 tools organised into 5 categories. Every tool runs entirely i
 
 ## Categories (5)
 - https://toolsbyvijay.vercel.app/tools/creative-generators -- Creative Generators (4 tools)
-- https://toolsbyvijay.vercel.app/tools/developer-suite -- Developer Suite (10 tools)
+- https://toolsbyvijay.vercel.app/tools/developer-suite -- Developer Suite (11 tools)
 - https://toolsbyvijay.vercel.app/tools/security-privacy -- Security & Privacy (2 tools)
 - https://toolsbyvijay.vercel.app/tools/web-url -- Web & URL (3 tools)
 - https://toolsbyvijay.vercel.app/tools/writing-editing -- Writing & Editing (8 tools)
 
-## Tools (27 tools)
+## Tools (28 tools)
 
 - **Barcode Generator**
   - Description: Create industry-standard barcodes for product tracking and inventory management. Generate high-quality images ready for printing.
@@ -57,15 +57,20 @@ This site hosts 27 tools organised into 5 categories. Every tool runs entirely i
   - Category: Developer Suite
   - URL: https://toolsbyvijay.vercel.app/css-minifier
 
+- **JS Minifier**
+  - Description: Compress JavaScript files to minimize payload size. Improve browser execution speed and reduce bandwidth consumption for your web applications.
+  - Category: Developer Suite
+  - URL: https://toolsbyvijay.vercel.app/js-minifier
+
 - **HTML Minifier**
   - Description: Compress HTML files by removing unnecessary whitespace, comments, and characters. Reduce page size to significantly improve website load speed.
   - Category: Developer Suite
   - URL: https://toolsbyvijay.vercel.app/html-minifier
 
-- **JS Minifier**
-  - Description: Compress JavaScript files to minimize payload size. Improve browser execution speed and reduce bandwidth consumption for your web applications.
+- **HTML Cleaner**
+  - Description: Turn messy HTML from Google Docs, Word, a CMS, or a scraper into clean, predictable markup. Strip inline styles, junk classes and ids, empty elements, and comments in one click.
   - Category: Developer Suite
-  - URL: https://toolsbyvijay.vercel.app/js-minifier
+  - URL: https://toolsbyvijay.vercel.app/html-cleaner
 
 - **Dropdown to Array**
   - Description: Quickly transform HTML `<select>` dropdown options into structured PHP or JavaScript arrays. Eliminate manual coding for data migration.
@@ -181,4 +186,4 @@ This site hosts 27 tools organised into 5 categories. Every tool runs entirely i
 
 ---
 
-Total tools: 27
+Total tools: 28
