@@ -26,6 +26,7 @@ export function PasswordGenerator(): JSX.Element {
   const [useSymbols, setUseSymbols] = useState<boolean>(true);
   const [excludeSimilar, setExcludeSimilar] = useState<boolean>(false);
   const [password, setPassword] = useState<string>('');
+  const [regen, setRegen] = useState<number>(0);
 
   /**
    * Generates a password reactively whenever options change.
@@ -70,7 +71,14 @@ export function PasswordGenerator(): JSX.Element {
     }
 
     setPassword(generated);
-  }, [length, useUppercase, useLowercase, useNumbers, useSymbols, excludeSimilar]);
+  }, [length, useUppercase, useLowercase, useNumbers, useSymbols, excludeSimilar, regen]);
+
+  /**
+   * Generates a fresh password when the form is submitted.
+   */
+  const handleSubmit = (): void => {
+    setRegen((prev) => prev + 1);
+  };
 
   /**
    * Resets all password generation options to their default values
@@ -113,6 +121,7 @@ export function PasswordGenerator(): JSX.Element {
           setUseSymbols={setUseSymbols}
           excludeSimilar={excludeSimilar}
           setExcludeSimilar={setExcludeSimilar}
+          onSubmit={handleSubmit}
           onReset={handleReset}
         />
 

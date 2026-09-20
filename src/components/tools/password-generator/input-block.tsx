@@ -1,8 +1,9 @@
 'use client';
 
-import type { JSX } from 'react';
+import type { JSX, SubmitEvent } from 'react';
 
 import { ToolInputHeader } from '@/components/tool/ToolInputHeader';
+import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { Checkbox } from '@/components/ui/checkbox';
 import { HelpTip } from '@/components/ui/helptip';
@@ -25,6 +26,7 @@ import { Slider } from '@/components/ui/slider';
  * @property {(value: boolean) => void} setUseSymbols - Callback to toggle symbol inclusion
  * @property {boolean} excludeSimilar - Whether to exclude similar looking characters
  * @property {(value: boolean) => void} setExcludeSimilar - Callback to toggle similar character exclusion
+ * @property {() => void} onSubmit - Callback to regenerate the password
  * @property {() => void} onReset - Callback to reset all options
  */
 interface InputBlockProps {
@@ -40,6 +42,7 @@ interface InputBlockProps {
   setUseSymbols: (value: boolean) => void;
   excludeSimilar: boolean;
   setExcludeSimilar: (value: boolean) => void;
+  onSubmit: () => void;
   onReset: () => void;
 }
 
@@ -64,15 +67,26 @@ export function InputBlock({
   setUseSymbols,
   excludeSimilar,
   setExcludeSimilar,
+  onSubmit,
   onReset,
 }: InputBlockProps): JSX.Element {
+  /**
+   * Handles form submission and triggers password regeneration.
+   *
+   * @param {SubmitEvent} e - The form event.
+   */
+  const handleSubmit = (e: SubmitEvent) => {
+    e.preventDefault();
+    onSubmit();
+  };
+
   return (
     <Card>
       <CardHeader>
         <ToolInputHeader title="Password Options" desc="Customize your password settings" onReset={onReset} />
       </CardHeader>
       <CardContent>
-        <div className="flex flex-col gap-4 md:gap-6">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4 md:gap-6">
           <div className="space-y-2">
             <Label htmlFor="password-length">
               Password Length:{' '}
@@ -116,7 +130,13 @@ export function InputBlock({
 
             <HelpTip text="This option removes characters that look alike (such as the letter 'O' and number '0'). Use this to create passwords that are less confusing to read and type, especially when sharing passwords verbally or in print." />
           </div>
-        </div>
+
+          <div className="flex flex-wrap gap-2">
+            <Button type="submit" variant="default">
+              Generate Password
+            </Button>
+          </div>
+        </form>
       </CardContent>
     </Card>
   );
