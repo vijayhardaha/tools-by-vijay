@@ -63,8 +63,9 @@ describe('tools utils', () => {
       expect(grouped['Minify & Beautify'].map((tool) => tool.slug)).toEqual([
         'unminify',
         'css-minifier',
-        'html-minifier',
         'js-minifier',
+        'html-minifier',
+        'html-cleaner',
       ]);
     });
 
