@@ -10,7 +10,7 @@
 
 I often found myself switching between different online tools spread across multiple websites. So I created **Tools by Vijay** to bring them together under one clean interface. It's simple, fast, and focused on just what's needed — no ads, no distractions.
 
-## 🧰 Tools (27 Total)
+## 🧰 Tools (28 Total)
 
 ### Writing & Editing
 
@@ -34,6 +34,7 @@ I often found myself switching between different online tools spread across mult
 | CSS Minifier          | Minify CSS files for faster page loads                  |
 | JS Minifier           | Shrink JavaScript files                                 |
 | CSS Inliner           | Inline CSS styles for email templates                   |
+| HTML Cleaner          | Strip styles, classes, and junk from messy HTML         |
 | Unminify              | Beautify minified HTML, CSS, and JS code                |
 | JSON Sorter           | Sort JSON object keys alphabetically                    |
 | Dropdown to Array     | Convert HTML dropdowns into PHP/JS arrays               |
@@ -59,7 +60,7 @@ I often found myself switching between different online tools spread across mult
 
 | Tool                      | Description                                         |
 | ------------------------- | --------------------------------------------------- |
-| QR Code Generator         | Generate high-resolution QR codes                   |
+| QRCode Generator          | Generate high-resolution QR codes                   |
 | Barcode Generator         | Create industry-standard barcodes                   |
 | Random Username Generator | Generate creative and unique usernames              |
 | Country Name Generator    | Generate fictional country names for world-building |
@@ -103,7 +104,7 @@ Rate limiting fails open (requests allowed) when Redis isn't configured, so the 
 ## 📄 Pages
 
 - **Home** (`/`) — Categorized tool cards with rich SEO content
-- **Tools** (`/tools`) — All 27 tools grouped by category
+- **Tools** (`/tools`) — All 28 tools grouped by category
 - **Category pages** (`/tools/{slug}`) — Tools filtered by category with about sections
 - **Individual tool pages** (`/{slug}`) — Each tool with full functionality
 - **About** (`/about`) — Platform story and mission
