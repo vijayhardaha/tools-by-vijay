@@ -41,7 +41,7 @@ describe('UrlShortener tool', () => {
 
     await waitFor(() => {
       expect(fetchMock).toHaveBeenCalledWith(
-        'https://www.urlfy.org/api/v1/shorten',
+        'https://urlfy.org/api/v1/shorten',
         expect.objectContaining({ method: 'POST' })
       );
     });

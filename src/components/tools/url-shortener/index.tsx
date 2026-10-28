@@ -30,7 +30,7 @@ interface UrlResult {
 /**
  * Base URL for the URLfy API.
  */
-const URLFY_API_URL = 'https://www.urlfy.org/api/v1/shorten';
+const URLFY_API_URL = 'https://urlfy.org/api/v1/shorten';
 
 /**
  * Main component for the URL Shortener Tool.
